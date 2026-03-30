@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="tables">
+        <div>
+            <table class="tabs">
+                <td id="_tab0" class="chosen" onclick="selectsection(0)">Aktuálně</td>
+                <td id="_tab5" class="unchosen" onclick="selectsection(5)">Pěšo</td>
+                <td id="_tab1" class="unchosen" onclick="selectsection(1)">Stanice</td>
+            </table>
+            <table class="tabs">
+                <td id="_tab2" class="unchosen" onclick="selectsection(2)">Vlaky</td>
+                <td id="_tab3" class="unchosen" onclick="selectsection(3)">Pozice</td>
+                <td id="_tab4" class="unchosen" onclick="selectsection(4)">IDOS</td>
+            </table>
+            <table id="_information">
+
+            </table>
+        </div>
+        <div id="_section1">
+            <div class="s1optionsframe">
+                <input id="_searchstation" onclick="search(this.value)" oninput="search(this.value)"></input>
+                <div id="_s1optionsclose" onclick="closes1options()">X</div>
+            </div>
+
+            <div id="_s1options"></div>
+        </div>
+        <div id="_section0">
+            <div class="filters">
+                <div class="filters1">
+                    <div id="_arrivals" class="unselected" onclick="selectfilter('arrivals')">Příjezdy</div>
+                    <div id="_departures" class="selected" onclick="selectfilter('departures')">Odjezdy</div>
+                </div>
+                <div class="filters2">
+                    <div id="ps" class="selected" onclick="selectfilter('ps')">Ps</div>
+                    <div id="os" class="selected" onclick="selectfilter('os')">Os</div>
+                    <div id="sp" class="selected" onclick="selectfilter('sp')">Sp</div>
+                    <div id="sh" class="selected" onclick="selectfilter('sh')">Sh</div>
+                    <div id="r" class="selected" onclick="selectfilter('r')">R</div>
+                    <div id="ec" class="selected" onclick="selectfilter('ec')">EC</div>
+                </div>
+                <div class="filters3">
+                    <div id="_destheader">Spoje do:</div>
+                    <select id="_destinations" class="selected" onchange="selectdestination(this.value)"></select>
+                </div>
+            </div>
+            <table id="_timetable">
+
+            </table>
+        </div>
+        <div id="_section2">
+            <div id="_doublestop" class="active">
+                <div class="progress-box">
+                    <div class="stations">
+                        <span id="_dss1">Praha hl.n.</span>
+                        <span id="_dss2">Brno hl.n.</span>
+                    </div>
+
+                    <div class="track"></div>
+                    <div class="progresstrack" id="_dspt"></div>
+                </div>
+            </div>
+            <div id="_singlestop" class="inactive">
+                <div class="progress-box">
+                    <div class="station">
+                        <span id="_sss1">Praha hl.n.</span>
+                    </div>
+
+                    <div class="singlestop-track"></div>
+                    <div class="progresstrack" id="singlestop"></div>
+                </div>
+            </div>
+            <div id="_firststop" class="inactive">
+                <div class="progress-box">
+                    <div class="station">
+                        <span id="_fss1">Praha hl.n.</span>
+                    </div>
+
+                    <div class="firststop-track"></div>
+                </div>
+            </div>
+            <div id="_laststop" class="inactive">
+                <div class="progress-box">
+                    <div class="station">
+                        <span id="_lss1">Praha hl.n.</span>
+                    </div>
+
+                    <div class="laststop-track"></div>
+                    <div class="progresstrack" id="singlestop"></div>
+                </div>
+            </div>
+            <table id="_traintimetableheader"></table>
+            <table id="_traintimetable"></table>
+        </div>
+        <div id="_section3">
+
+        </div>
+        <div id="_section4" class="search-panel">
+            <div class="idossearchh">
+                <span>ODKUD</span>
+                <span>KAM</span>
+            </div>
+            <div class="idossearch">
+                <input id="_idosstart" onclick="search(this.value, _section4options, true, 0, this, true)" oninput="search(this.value, _section4options, true, 0, this)" type="text" placeholder="Zadejte stanici...">
+                <input id="_idosend" onclick="search(this.value, _section4options, true, 1, this, true)" oninput="search(this.value, _section4options, true, 1, this)" type="text" placeholder="Cílová stanice...">
+            </div>
+            <div id="_section4options"></div>
+            <button class="idossearchs" onclick="printidos()">HLEDAT</button>
+            <table>
+                <tr>
+                    <td>ČAS</td>
+                    <td>VZDÁLENOST</td>
+                </tr>
+            </table>
+            <table id="_idosresults">
+
+            </table>
+        </div>
+        <div id="_section5">
+            <table id="_walkables">
+                
+            </table>
+        </div>
+        <div id="_subsection5">
+            <table>
+                <tr>
+                    <td id="_mintogoal">5 minut do cíle</td>
+                </tr>
+                <tr>
+                    <td id="_turnbtn">OTOČIT SE</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="json/timetable_data.js"></script>
+    <script src="timetableanalysis.js"></script>
+    <script>
+    </script>
+</body>
+</html>

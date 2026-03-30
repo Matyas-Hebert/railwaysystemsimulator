@@ -1,0 +1,503 @@
+* {
+    box-sizing: border-box;
+}
+
+table {
+    border-collapse: collapse;
+    border: none;
+    text-align: left;
+    background-color: #1a237e;
+    color: #e0e0e0;
+    width: 100%;
+    table-layout: auto;
+}
+
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: #323db1;
+}
+
+tr {
+    border: 1px solid black;
+}
+
+td, th{
+    padding: 12px 8px;
+    text-wrap-mode: nowrap;
+    text-align: left;
+    font-size: 0.9rem;
+    overflow: hidden;
+}
+
+.scroll-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.scroll-text {
+    display: inline-block;
+    padding-left: 0%;
+    animation: slide-end 5s linear infinite;
+}
+
+@keyframes slide-end {
+    0% { transform: translateX(0); }
+    33% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+#_dss2 {
+    text-align: right;
+}
+
+#_mintogoal {
+    font-size: 2rem;
+}
+
+#_turnbtn {
+    background-color: rgb(221, 144, 0);
+    color: black;
+}
+
+.scroll-container .scroll-text {
+    animation-play-state: paused;
+}
+
+td:first-child, th:first-child {
+    font-weight: bold;
+}
+
+#_timetable, #_walkables, #_traintimetable, #_traintimetableheader {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.subtext{
+    font-size: 0.75rem;
+}
+
+.trainname{
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.5em;
+}
+
+.rightalign{
+    text-align: right;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.delayed{
+    background-color: rgb(126, 5, 5);
+}
+
+.tables{
+    display: flex;
+    flex-direction: row;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}   
+
+.tabs tr{
+    display: flex;
+    width: 100%;
+}
+
+.tabs td{
+    flex: 1;
+    text-align: center;
+    font-size: large;
+}
+
+td:last-child, th:last-child {
+    width: auto;
+    text-align: center;
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .tables {
+    flex-direction: column;
+  }
+  
+  .tables table, .tables div {
+    width: 100%;
+    font: large;
+  }
+
+  .scroll-container .scroll-text {
+    animation-play-state: running;
+  }
+}
+
+.tableheader{
+    background-color: rgb(16, 69, 184);
+}
+
+.lime{
+    background-color: rgb(32, 139, 32);
+}
+
+.detail{
+    background-color: rgb(87,87,248);
+    border: white solid 5px;
+    box-sizing: border-box;
+}
+
+.unselected{
+    background-color: rgb(120, 163, 120);
+}
+
+.selected{
+    background-color: rgb(38, 156, 38);
+}
+
+table{
+    padding: 0px;
+}
+
+.filters{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background-color: rgb(38, 156, 38);
+}
+
+.filters1, .filters2, .filters3{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    align-items: center;
+}
+
+.search-result{
+    padding-top: 5px;
+    font-size: 1rem;
+    background-color: #1a237e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: white;
+    border-bottom: rgb(141, 111, 111) solid 1px;
+}
+
+.main-text{
+    padding-left: 10px;
+}
+
+.alt-text{
+    text-align: right;
+    padding-right: 10px;
+    font-size: 0.8em;
+}
+
+#_destinations{
+    font-size: 0.8em;
+    text-align: left;
+    border: none;
+    margin-right: 5px;
+}
+
+#_destheader{
+    text-wrap-mode: nowrap;
+    padding: 10px;
+}
+
+.chosen{
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.lastSectionRow{
+    border-bottom: white solid 5px;
+}
+
+.unchosen{
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.filters div{
+    font-size: large;
+    text-align: center;
+    border: black solid 1px;
+    border-bottom: 0px;
+    box-sizing: border-box;
+}
+
+.filters1 div{
+    width: 100%;
+}
+
+.filters2 div{
+    width: 100%;
+}
+
+.filters3 div{
+    width: 100%;
+    background-color: rgb(38, 156, 38);
+}
+
+#_walkables tr:first-child th, 
+#_walkables tr:first-child td
+{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #1a237e;
+}
+
+.walkable td{
+    font-size: 1.2em;
+    padding: 10px;
+}
+
+.innertablerow td{
+    background-color: #4c56bd;
+}
+
+.innertable td{
+    font-size: 0.8em;
+}
+
+.innertable td .subtext{
+    font-size: 0.7em;
+}
+
+#_traintimetable td {
+    text-align: center;
+}
+
+#_traintimetableheader td{
+    text-align: center;
+}
+
+.border {
+    background-color: rgb(0, 0, 0);
+}
+
+.visibleoverflow td {
+    overflow: visible;
+}
+
+.progress-box {
+    width: 100%;
+    background-color: #1a237e;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.stations {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.station {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.track, .singlestop-track {
+    position: relative;
+    width: 100%;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.firststop-track {
+    position: relative;
+    width: 50% !important;
+    left: 50%;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.laststop-track {
+    position: relative;
+    width: 50% !important;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.progresstrack {
+    position: relative;
+    height: 4px;
+    bottom: 4px;
+    background-color: rgb(255, 255, 255);
+}
+
+#singlestop {
+    width: 50% !important;
+}
+
+.singlestop-track::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    left: 50%;
+    top: 2px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.firststop-track::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    top: 2px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.laststop-track::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    top: 2px;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.track::before{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.track::after{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    z-index: 5;
+    right: 0%;
+}
+
+.train {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 30px !important;
+    height: 30px !important;
+    transform: translate(-50%, -50%) scaleX(-1);
+    line-height: 1;
+    white-space: nowrap;
+    font-size: 24px;
+    z-index: 10;
+    cursor: default;
+}
+
+.inactive {
+    display: none;
+}
+
+.search-panel {
+    background-color: #1a237e;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    margin: 20px auto;
+}
+
+.idossearchh {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    padding: 0 5px;
+}
+
+#_idosresults {
+    width: 100%;
+}
+
+.idossearch {
+    display: flex;
+    gap: 10px;
+}
+
+.s1optionsframe {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+
+#_s1optionsclose {
+    flex: 1;
+    right: 0;
+    height: 45px;
+    padding: 0 15px;
+    background-color: #5f1313;
+    font-size: 1rem;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.idossearch input {
+    flex: 1;
+    height: 45px;
+    padding: 0 15px;
+    min-width: 0;
+    background-color: #fff;
+    font-size: 1rem;
+    color: #1a237e;
+}
+
+#_searchstation {
+    flex: 3;
+    height: 45px;
+    padding: 0 15px;
+    background-color: #fff;
+    font-size: 1rem;
+    color: #1a237e;
+}
+
+.idossearchs {
+    display: block;
+    width: 100%;
+    height: 55px;
+    margin-top: 15px;
+    background-color: #269c26;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+select option {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
