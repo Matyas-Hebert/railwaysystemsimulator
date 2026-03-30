@@ -1441,11 +1441,9 @@ let connstruct = {};
 let filters = {"departures": true, "types": [true, true, true, true, true, true], "statid": -1};
 // 0 - in station, 1 - on train, 2 - walking
 let currentposition = JSON.parse(localStorage.getItem("_currentposition"));
-//currentposition.statID = 322;
-//currentposition.transporttype = 0;
-//currentposition.statID = 1273;
-//updatepositionlocalstorage();
-// 0 Aktualne, 1 Stanice, 2 Vlaky, 3 Pozice, 4 IDOS
+if (currentposition = null){
+    console.log("nothing is here");
+}
 let currentsection = 0;
 let section1id = 200;
 let section4ids = [69, 420];
