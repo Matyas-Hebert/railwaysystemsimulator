@@ -103,6 +103,26 @@ tr:nth-child(even) {
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }   
 
+#_start {
+    height: 100vh;
+    padding: 1rem;
+    box-sizing: border-box;
+
+    position: relative;
+}
+
+#_startoptions {
+    overflow-y: auto;
+}
+
+#_startsearch {
+    position: absolute;
+    bottom: 1rem;   
+    left: 1rem;  
+    right: 1rem; 
+    width: calc(100% - 2rem);
+}
+
 .tabs tr{
     display: flex;
     width: 100%;

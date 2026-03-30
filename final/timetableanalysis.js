@@ -929,6 +929,7 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
             "includered": false,
             "includetrainnameclass": true});
         row.cells[1].id = "_clock";
+        row.cells[0].style.textWrap = "wrap";
     }
 
     let departures = filters["departures"];
@@ -1187,7 +1188,18 @@ function printidos(){
     });
 }
 
-function search(search, options=_s1options, section4 = false, id=0, inputfield=null, clear=false){
+function startgame(){
+    currentposition = {
+        transporttype: 0,
+        statID: startid
+    };
+    currentsection = 0;
+    console.log(currentposition, currentsection);
+    printcurrentsection();
+    updatepositionlocalstorage();
+};
+
+function search(search, options=_s1options, section4 = false, id=0, inputfield=null, clear=false, start=false){
     options.innerHTML = "";
     let i = 0;
     if (clear){
@@ -1204,6 +1216,11 @@ function search(search, options=_s1options, section4 = false, id=0, inputfield=n
                 inputfield.value = opt.name;
                 console.log(search);
                 console.log(section4ids);
+            }
+            if (start){
+                startid = opt.id;
+                inputfield.value = opt.name;
+                console.log(inputfield, opt);
             }
             else {
                 section1id = opt.id;
@@ -1358,6 +1375,13 @@ function updatepositionlocalstorage(){
 
 function printcurrentsection(force = false){
     console.log(currentposition);
+    _start.style.display = "none";
+    _tables.style.display = "none";
+    if (currentposition == null){
+        _start.style.display = "block";
+        return;
+    }
+    _tables.style.display = "flex";
     _section0.style.display = currentsection <= 1 ? "block" : "none";
     _section1.style.display = currentsection == 1 ? "block" : "none";
     _section2.style.display = currentsection == 2 ? "block" : "none";
@@ -1441,12 +1465,11 @@ let connstruct = {};
 let filters = {"departures": true, "types": [true, true, true, true, true, true], "statid": -1};
 // 0 - in station, 1 - on train, 2 - walking
 let currentposition = JSON.parse(localStorage.getItem("_currentposition"));
-if (currentposition = null){
-    console.log("nothing is here");
-}
+currentposition = null;
 let currentsection = 0;
 let section1id = 200;
 let section4ids = [69, 420];
+let startid = -1;
 let section2data = {"lineID": 1, "tripID": 1, "day": 0, "hidesinfront": true};
 printcurrentsection();
 setInterval(updateclock, 1000);

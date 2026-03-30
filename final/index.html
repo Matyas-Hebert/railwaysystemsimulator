@@ -7,7 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <div class="tables">
+    <div id="_start">
+        <div class="idossearch">
+            <input id="_startstart" onclick="search(this.value, _startoptions, false, 0, this, true, true)" oninput="search(this.value, _startoptions, false, 0, this, false, true)" type="text" placeholder="Zadejte stanici...">
+        </div>
+        <div id="_startoptions"></div>
+        <button class="idossearchs" id="_startsearch" onclick="startgame()">ZAČÍT</button>
+    </div>
+    <div id="_tables" class="tables">
         <div>
             <table class="tabs">
                 <td id="_tab0" class="chosen" onclick="selectsection(0)">Aktuálně</td>
