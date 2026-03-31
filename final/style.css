@@ -81,8 +81,9 @@ td:first-child, th:first-child {
 
 .trainname{
     font-weight: bold;
-    text-align: left;
-    font-size: 1.5em;
+    font-size: 1.7em;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .pinnedlist{

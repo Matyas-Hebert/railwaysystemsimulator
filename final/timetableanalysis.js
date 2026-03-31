@@ -957,14 +957,13 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
     if (includeheader){
         row = addrow({
             "table": table, 
-            "c1t": station.name, 
-            "c2t": formatTime(time),
+            "c1t": station.name,
             "firstcolspan": true,
             "onlythreecols": true,
             "includered": false,
             "includetrainnameclass": true});
-        row.cells[1].id = "_clock";
-        row.cells[1].style.fontSize = "1.2em";
+        row.cells[0].style.width = "100%";
+        row.cells[0].style.textAlign = "center";
         if (currentsection == 1){
             let pinned = false;
             if (pinnedstations.includes(stationID)){
@@ -1201,7 +1200,7 @@ function searchstations(search, firstid=null){
     exact.forEach(ex =>{
         valid.unshift(ex);
     })
-    if (valid != null){
+    if (first != null){
         valid.unshift(first);
     }
     return valid;
@@ -1484,7 +1483,6 @@ function printcurrentsection(force = false){
     _tab0.className = currentsection == 0 ? "chosen" : "unchosen";
     _tab1.className = currentsection == 1 ? "chosen" : "unchosen";
     _tab2.className = currentsection == 2 ? "chosen" : "unchosen";
-    _tab3.className = currentsection == 3 ? "chosen" : "unchosen";
     _tab4.className = currentsection == 4 ? "chosen" : "unchosen";
     _tab5.className = currentsection == 5 ? "chosen" : "unchosen";
     _tab5.style.display = currentposition.transporttype == 0 ? "block" : "none";
@@ -1567,6 +1565,6 @@ let section4ids = [69, 420];
 let startid = -1;
 let section2data = {"lineID": 1, "tripID": 1, "day": 0, "hidesinfront": true};
 printcurrentsection();
-//setInterval(updateclock, 1000);
+setInterval(updateclock, 1000);
 //setInterval(printcurrentsection, 5000);
 let m = timetable.stations.length;
