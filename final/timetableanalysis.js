@@ -930,9 +930,9 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
 
     if (currentsection == 1){
         _pinnedlist.innerHTML = "";
-        _pinnedlist.style.display = "flex";
-        _pinnedlisttoggle.style.display = "block";
-        _pinnedlisttoggle.innerHTML = "ULOŽENÉ STANICE ("+String(pinnedstations.length)+")";
+        _pinnedlist.style.display = "grid";
+        _pinnedlisttoggle.style.display = "flex";
+        _pinnedlisttoggle.innerHTML = String(pinnedstations.length);
         if (pinnedstations.length == 0){
             _pinnedlist.style.display = "none";
             _pinnedlisttoggle.style.display = "none";
@@ -1178,23 +1178,32 @@ function normalize(string){
     return string.normalize("NFD").replace(/-/g, '').replace(/\./g, '').replace(/[\u0300-\u036f]/g, "").replace(/ /g,'').toLowerCase();
 }
 
-function searchstations(search){
+function searchstations(search, firstid=null){
     let updatedsearch = normalize(search);
     let valid = [];
     let exact = [];
+    let first = null;
     timetable.stations.forEach(station => {
         let name = normalize(station.name);
         if (name == updatedsearch || name.replace("hln", "") == updatedsearch || name.replace("hls", "") == updatedsearch){
-            exact.push({"name":station.name, "district":station.district, "id": station.id});
+            exact.push({"name":station.name, "district":station.district, "id": station.id, "color": false});
         }
         else if (name.includes(updatedsearch)){
-            valid.push({"name":station.name, "district":station.district, "id": station.id});
+            if (station.id == firstid){
+                first = {"name":station.name, "district":station.district, "id": station.id, "color": true};
+            }
+            else{
+                valid.push({"name":station.name, "district":station.district, "id": station.id, "color": false});
+            }
         }
     });
     valid = valid.sort((a, b) => a.name.localeCompare(b.name, 'cs'));
     exact.forEach(ex =>{
         valid.unshift(ex);
     })
+    if (valid != null){
+        valid.unshift(first);
+    }
     return valid;
 }
 
@@ -1259,6 +1268,20 @@ function startgame(){
     updatepositionlocalstorage();
 };
 
+function switchidoslocations(){
+    console.log("switching");
+    let tmp = section4ids[0];
+    section4ids[0] = section4ids[1];
+    section4ids[1] = tmp;
+    let tmpvalue = _idosstart.value;
+    let tmphtml = _idosstart.innerHTML;
+    _idosstart.value = _idosend.value;
+    _idosstart.innerHTML = _idosend.innerHTML;
+    _idosend.value = tmpvalue;
+    _idosend.innerHTML = tmphtml;
+    printcurrentsection();
+}
+
 function search(search, options=_s1options, section4 = false, id=0, inputfield=null, clear=false, start=false){
     options.innerHTML = "";
     let i = 0;
@@ -1266,21 +1289,25 @@ function search(search, options=_s1options, section4 = false, id=0, inputfield=n
         inputfield.value = "";
         search = inputfield.value;
     }
-    let opts = searchstations(search);
+    let opts;
+    if (currentsection == 4 && currentposition.transporttype == 0){
+        opts = searchstations(search, currentposition.statID);
+    }
+    else{
+        opts = searchstations(search);
+    }
     opts.slice(0,20).forEach(opt => {
+        console.log(opt);
         let newdiv = document.createElement("div");
         newdiv.className = "search-result";
         newdiv.onclick = function(){
             if (section4){
                 section4ids[id] = opt.id;
                 inputfield.value = opt.name;
-                console.log(search);
-                console.log(section4ids);
             }
             if (start){
                 startid = opt.id;
                 inputfield.value = opt.name;
-                console.log(inputfield, opt);
             }
             else {
                 section1id = opt.id;
@@ -1292,6 +1319,9 @@ function search(search, options=_s1options, section4 = false, id=0, inputfield=n
             <span class="main-text">${opt.name}</span>
             <span class="alt-text">${opt.district}</span>
         `;
+        if (opt.color){
+            newdiv.className = "colored-search-result";
+        }
         options.appendChild(newdiv);
         i++;
     });

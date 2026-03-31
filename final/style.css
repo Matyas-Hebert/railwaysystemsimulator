@@ -86,19 +86,40 @@ td:first-child, th:first-child {
 }
 
 .pinnedlist{
-    display: flex;
-    flex-direction: row;
+    display: grid;
     padding: 1rem;
     color: white;
+    align-items: stretch;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 0.5rem;
+    grid-row-gap: 0.5rem;
+
+    div{
+        height: "100%";
+        border: black dashed 2px;
+        background-color: #626ac4;
+        color: rgb(239, 255, 183);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0.5rem;
+    }
 }
 
 .pinnedlisttoggle{
+    height: 45px;
     font-size: 1.5rem;
-    padding: 1rem;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    width: 100%;
+    text-align: center;
     color: white;
+    background-color: #b37134;
+    
+    width: 45px !important;
+    border-radius: 50%;
 }
 
 .rightalign{
@@ -221,6 +242,18 @@ table{
     align-items: center;
     width: 100%;
     color: white;
+    border-bottom: rgb(141, 111, 111) solid 1px;
+}
+
+.colored-search-result{
+    padding-top: 5px;
+    font-size: 1rem;
+    background-color: #d87837;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: rgb(0, 0, 0);
     border-bottom: rgb(141, 111, 111) solid 1px;
 }
 
@@ -499,6 +532,15 @@ table{
     font-size: 0.9rem;
     margin-bottom: 5px;
     padding: 0 5px;
+    position: relative;
+}
+
+.idossearchh::after {
+    content: '⇆';
+    font-size: 1.5rem;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -20%);
 }
 
 #_idosresults {

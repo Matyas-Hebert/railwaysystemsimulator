@@ -31,7 +31,6 @@
             </table>
         </div>
         <div id="_section1">
-            <div onclick="togglepinnedlist()" class="pinnedlisttoggle" id="_pinnedlisttoggle">ULOŽENÉ STANICE (5)</div>
             <div id="_pinnedlist" class="pinnedlist">
                 <div>Station 1</div>
                 <div>Station 2</div>
@@ -39,7 +38,8 @@
                 <div>Station 4</div>
             </div>
             <div class="s1optionsframe">
-                <input id="_searchstation" onclick="search(this.value)" oninput="search(this.value)"></input>
+                <div onclick="togglepinnedlist()" class="pinnedlisttoggle" id="_pinnedlisttoggle">5</div>
+                <input id="_searchstation" onclick="search(this.value, _s1options, false, 0, _searchstation, true)" oninput="search(this.value, _s1options, false, 0, _searchstation, false)"></input>
                 <div id="_s1optionsclose" onclick="closes1options()">X</div>
             </div>
 
@@ -116,7 +116,7 @@
 
         </div>
         <div id="_section4" class="search-panel">
-            <div class="idossearchh">
+            <div class="idossearchh" onclick="switchidoslocations()">
                 <span>ODKUD</span>
                 <span>KAM</span>
             </div>
