@@ -899,6 +899,16 @@ function selectdestination(id){
     printcurrentsection(true);
 }
 
+function togglepinnedlist(){
+    pinnedstationsopened = !pinnedstationsopened;
+    console.log("toggled", pinnedstationsopened);
+    printcurrentsection();
+}
+
+function savepinnedlist(){
+    localStorage.setItem("_pinnedstations", JSON.stringify(pinnedstations));
+}
+
 async function printtimetable(stationID, includegetonbutton = true, table=_timetable, includeheader=true, linescnt=15, timeoffset=0, force=false){
     if (isOpen && !force){
         return;
@@ -918,6 +928,32 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
     const station = timetable.stations[stationID];
     time %= 86400;
 
+    if (currentsection == 1){
+        _pinnedlist.innerHTML = "";
+        _pinnedlist.style.display = "flex";
+        _pinnedlisttoggle.style.display = "block";
+        _pinnedlisttoggle.innerHTML = "ULOŽENÉ STANICE ("+String(pinnedstations.length)+")";
+        if (pinnedstations.length == 0){
+            _pinnedlist.style.display = "none";
+            _pinnedlisttoggle.style.display = "none";
+        }
+        if (!pinnedstationsopened){
+            _pinnedlist.style.display = "none";
+        }
+        else{
+            pinnedstations.forEach(pinnedstation => {
+                const newdiv = document.createElement("div");
+                newdiv.innerHTML = "📌 "+timetable.stations[pinnedstation].name;
+                newdiv.onclick = function(){
+                    section1id = pinnedstation;
+                    currentsection = 1;
+                    printcurrentsection();
+                };
+                _pinnedlist.appendChild(newdiv);
+            });
+        }
+    }
+
     if (includeheader){
         row = addrow({
             "table": table, 
@@ -928,6 +964,31 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
             "includered": false,
             "includetrainnameclass": true});
         row.cells[1].id = "_clock";
+        row.cells[1].style.fontSize = "1.2em";
+        if (currentsection == 1){
+            let pinned = false;
+            if (pinnedstations.includes(stationID)){
+                row.className = 'pinned';
+                pinned = true;
+            }
+            else{
+                row.className = 'notpinned';
+            }
+            row.onclick = function(){
+                if (!pinned){
+                    pinnedstations.push(stationID);
+                    printcurrentsection();
+                    savepinnedlist();
+                }
+                else{
+                    const index = pinnedstations.indexOf(stationID);
+                    pinnedstations.splice(index, 1);
+                    printcurrentsection();
+                    savepinnedlist();
+                }
+            };
+        }
+
         row.cells[0].style.textWrap = "wrap";
     }
 
@@ -1255,6 +1316,8 @@ function printwalkable(stationID){
     let rc2 = r1.insertCell(1);
     let rc3 = r1.insertCell(2);
     rc1.innerText = timetable.stations[stationID].name;
+    rc1.className = "overflowvisible";
+    rc2.className = "overflowvisiblelowerlayer";
     const currentDate = new Date();
     var time = currentDate.getHours()*3600 + currentDate.getMinutes()*60 + currentDate.getSeconds();
     rc3.innerText = formatTime(time, false);
@@ -1465,14 +1528,15 @@ let connstruct = {};
 let filters = {"departures": true, "types": [true, true, true, true, true, true], "statid": -1};
 // 0 - in station, 1 - on train, 2 - walking
 let currentposition = JSON.parse(localStorage.getItem("_currentposition"));
+let pinnedstations = localStorage.getItem("_pinnedstations") == null ? [] :
+                    JSON.parse(localStorage.getItem("_pinnedstations"));
+let pinnedstationsopened = false;
 let currentsection = 0;
 let section1id = 200;
 let section4ids = [69, 420];
 let startid = -1;
 let section2data = {"lineID": 1, "tripID": 1, "day": 0, "hidesinfront": true};
 printcurrentsection();
-setInterval(updateclock, 1000);
-setInterval(printcurrentsection, 5000);
+//setInterval(updateclock, 1000);
+//setInterval(printcurrentsection, 5000);
 let m = timetable.stations.length;
-
-searchstations("ves");

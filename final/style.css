@@ -85,6 +85,22 @@ td:first-child, th:first-child {
     font-size: 1.5em;
 }
 
+.pinnedlist{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    color: white;
+}
+
+.pinnedlisttoggle{
+    font-size: 1.5rem;
+    padding: 1rem;
+    display: block;
+    text-align: center;
+    width: 100%;
+    color: white;
+}
+
 .rightalign{
     text-align: right;
 }
@@ -308,6 +324,14 @@ table{
     overflow: visible;
 }
 
+.overflowvisible {
+    overflow: visible;
+}
+
+.overflowvisiblelowerlayer {
+    display: block;
+}
+
 .progress-box {
     width: 100%;
     background-color: #1a237e;
@@ -410,6 +434,25 @@ table{
     transform: translate(-50%, -42%);
     border-radius: 50%;
     z-index: 5;
+}
+
+.notpinned {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><text y='32' font-size='30'>📌</text></svg>");
+    background-repeat: no-repeat;
+    
+    background-position: calc(100% - 5px) 5px; 
+    
+    background-size: 25px 25px;
+    filter: grayscale(1);
+}
+
+.pinned {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><text y='32' font-size='30'>📌</text></svg>");
+    background-repeat: no-repeat;
+    
+    background-position: calc(100% - 5px) 5px; 
+    
+    background-size: 25px 25px;
 }
 
 .track::after{
