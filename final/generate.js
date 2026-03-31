@@ -17,7 +17,8 @@ function parseLineName(name){
         "company": part1parts[0].substring(1, part1parts[0].length-1),
         "type": getTypeID(part1parts[1]),
         "number": part1parts[2],
-        "interval": parseInt(parts[2])*60
+        "interval": parseInt(parts[2])*60,
+        "uvrat": parseInt(parts[3])
     }
 
     if (part1parts.length >= 4){
@@ -44,7 +45,10 @@ function getTrips(startTime, interval){
     return trips = Math.floor(availableTime / interval);
 }
 
-function getStopTimeFromType(type){
+function getStopTimeFromType(type, uvrat=false){
+    if (uvrat){
+        return 600;
+    }
     if (type == "HSR"){
         return 180;
     }
@@ -197,6 +201,9 @@ async function generateTimeTables() {
         lines[i]["starttime"] = starttime;
         lines[i+1]["starttime"] = starttime;
         let trips = getTrips(starttime, lineinfo.interval);
+        if (trips <= 2){
+            console.log("low trips", trips, "for", line.name, lineinfo);
+        }
         lines[i]["trips"] = trips;
         lines[i+1]["trips"] = trips;
         lines[i]["stops"] = [];
@@ -210,6 +217,7 @@ async function generateTimeTables() {
         let lastlat;
         let lastlon;
         let found = new Set();
+        let j = 0;
         line.stationIds.forEach(stationID => {
             let station = map.stations[stationID];
             if (!isFirstStationOfLine){
@@ -219,6 +227,10 @@ async function generateTimeTables() {
             lastlon = station.lng;
             let repeat = stationIDtonewID[stationID] == undefined || found.has(stationIDtonewID[stationID]);
             if (!overrides.includes(stationID) && !station.isWaypoint && !repeat){
+                let isuvrat = lineinfo.uvrat == j;
+                if (isuvrat){
+                    console.log(station.name, "is uvrat");
+                }
                 if (previousStation != null){
                     stations[stationIDtonewID[previousStation]].departures.push(i);
                     stations[stationIDtonewID[previousStation]].arrivals.push(i+1);
@@ -226,14 +238,14 @@ async function generateTimeTables() {
                 if (!isFirstStationOfLine){
                     totaltime += getTimeFromDistanceAndType(distanceacc, line.mode);
                     lines[i]["stops"].push({
-                        "sid": stationIDtonewID[stationID], "arr": Math.round(totaltime), "dep": Math.round(totaltime+=getStopTimeFromType(line.mode)), "dist": distanceacc
+                        "sid": stationIDtonewID[stationID], "arr": Math.round(totaltime), "dep": Math.round(totaltime+=getStopTimeFromType(line.mode, isuvrat)), "dist": distanceacc
                     });
                     stations[stationIDtonewID[stationID]].arrivals.push(i);
                     stations[stationIDtonewID[stationID]].departures.push(i+1);
                     distanceacc = 0;
                 }
                 else{
-                    totaltime += getStopTimeFromType(line.mode);
+                    totaltime += getStopTimeFromType(line.mode, isuvrat);
                     lines[i]["orig"] = stationIDtonewID[stationID];
                     lines[i]["stops"].push({
                         "sid": stationIDtonewID[stationID], "arr": 0, "dep": Math.round(totaltime), "dist": distanceacc
@@ -243,6 +255,7 @@ async function generateTimeTables() {
                 isFirstStationOfLine = false;
                 found.add(stationIDtonewID[previousStation]);
                 found.add(stationIDtonewID[stationID]);
+                j++;
             }
         });
         lines[i]["dest"] = lines[i]["stops"][lines[i]["stops"].length-1].sid;

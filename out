@@ -1,0 +1,207 @@
+1 Praha 116
+2 Brno 88
+3 Olomouc 83
+4 Jindřichův Hradec 82
+5 Chomutov 71
+6 Plzeň 68
+7 České Budějovice 67
+8 Žďár n. S. 67
+9 Karlovy Vary 62
+10 Beroun 61
+11 Nový Jičín 60
+12 Litoměřice 60
+13 Blansko 59
+14 Ostrava 59
+15 Kladno 57
+16 Liberec 55
+17 Třebíč 54
+18 Pardubice 54
+19 Ústí n. O. 54
+20 Klatovy 53
+21 Semily 51
+22 Hradec Králové 51
+23 Košice 51
+24 Prostějov 50
+25 Uherské Hradiště 49
+26 Vsetín 47
+27 Kutná Hora 47
+28 Chrudim 47
+29 Svitavy 46
+30 Frýdek-Místek 45
+31 Rokycany 45
+32 Náchod 43
+33 Přerov 43
+34 Mělník 43
+35 Opava 43
+36 Levice 43
+37 Děčín 42
+38 Čadca 42
+39 Benešov 42
+40 Bratislava 42
+41 Prachatice 40
+42 Jablonec n. N. 39
+43 Strakonice 38
+44 Teplice 38
+45 Příbram 38
+46 Louny 38
+47 Stará Ľubovňa 37
+48 Jihlava 36
+49 Vyškov 36
+50 Zlín 35
+51 Jičín 34
+52 Česká Lípa 34
+53 Znojmo 34
+54 Rakovník 34
+55 Liptovský Mikuláš 34
+56 Sokolov 33
+57 Tábor 33
+58 Nitra 30
+59 Poprad 30
+60 Hodonín 29
+61 Břeclav 28
+62 Mladá Boleslav 28
+63 Karviná 28
+64 Trutnov 28
+65 Domažlice 28
+66 Považská Bystrica 28
+67 Banská Bystrica 28
+68 Gelnica 28
+69 Rychnov n. K. 27
+70 Šumperk 25
+71 Pelhřimov 25
+72 Trenčín 25
+73 Rimavská Sobota 25
+74 Cheb 24
+75 Námestovo 24
+76 Senec 23
+77 Ružomberok 23
+78 Dolný Kubín 23
+79 Kolín 22
+80 Myjava 22
+81 Malacky 22
+82 Žilina 22
+83 Bytča 22
+84 Nové Mesto n. V. 22
+85 Dunajská Streda 22
+86 Martin 22
+87 Nymburk 21
+88 Písek 21
+89 Trnava 21
+90 Revúca 21
+91 Prešov 21
+92 Český Krumlov 20
+93 Havlíčkův Brod 20
+94 Bruntál 19
+95 Nové Zámky 19
+96 Kysucké Nové Mesto 19
+97 Rožňava 19
+98 Ústí n. L. 17
+99 Piešťany 17
+100 Spišská Nová Ves 17
+101 Turčianske Teplice 17
+102 Krupina 17
+103 Púchov 16
+104 Senica 16
+105 Prievidza 16
+106 Zlaté Moravce 15
+107 Kežmarok 15
+108 Sabinov 15
+109 Kroměříž 14
+110 Ilava 14
+111 Hlohovec 14
+112 Lučenec 14
+113 Pezinok 14
+114 Bardejov 14
+115 Detva 14
+116 Tachov 13
+117 Jeseník 13
+118 Komárno 13
+119 Humenné 13
+120 Poltár 13
+121 Zvolen 12
+122 Brezno 12
+123 Topoľčany 12
+124 Tvrdošín 12
+125 Most 11
+126 Skalica 11
+127 Žiar nad Hronom 11
+128 Trebišov 11
+129 Sobrance 10
+130 Snina 10
+131 Partizánske 9
+132 Žarnovica 9
+133 Medzilaborce 9
+134 Galanta 8
+135 Michalovce 8
+136 Banská Štiavnica 7
+137 Svidník 7
+138 Levoča 6
+139 Vranov nad Topľou 6
+140 Veľký Krtíš 5
+141 Bánovce n. B. 3
+142 Šaľa 3
+143 Stropkov 2
+Roprachtice is uvrat
+Dolný Kubín is uvrat
+REPEAT LINE NUMBERS/NICKNAMES
+REPEAT NUMBER: 0132t
+REPEAT NICK: Blud
+REPEAT NUMBER: 11925
+REPEAT NICK: Koloman
+REPEAT NUMBER: 54481
+REPEAT NICK: Rusnák
+REPEAT NUMBER: 0111k
+REPEAT NUMBER: 83272
+REPEAT NUMBER: 21238
+REPEAT NUMBER: 21239
+
+MISSING NICKNAME FOR 296 TRAINS
+REPEAT TOWN NAMES
+MISSING Hl.N.?: Kuřim [Blansko]
+MISSING Hl.N.?: Zlín [Zlín]
+MISSING Hl.N.?: Nový Jičín [Nový Jičín]
+MISSING Hl.N.?: Hodonín [Hodonín]
+MISSING Hl.N.?: Beroun [Beroun]
+MISSING Hl.N.?: Mladá Boleslav [Mladá Boleslav]
+MISSING Hl.N.?: Prostějov [Prostějov]
+MISSING Hl.N.?: Šternberk [Olomouc]
+MISSING Hl.N.?: Mirošov [Rokycany]
+MISSING Hl.N.?: Lipová [Prostějov]
+MISSING Hl.N.?: Žďár nad Sázavou [Žďár n. S.]
+MISSING Hl.N.?: Podbořany [Chomutov]
+MISSING Hl.N.?: Nejdek [Karlovy Vary]
+MISSING Hl.N.?: Bojkovice [Trenčín]
+MISSING Hl.N.?: Valašské Klobouky [Vsetín]
+MISSING Hl.N.?: Chrudim [Chrudim]
+MISSING Hl.N.?: Slaný [Kladno]
+MISSING Hl.N.?: Lovosice [Litoměřice]
+MISSING Hl.N.?: Jirkov [Chomutov]
+MISSING Hl.N.?: Lipová [Cheb]
+MISSING Hl.N.?: Nebovidy [Brno]
+MISSING Hl.N.?: Studénka [Nový Jičín]
+MISSING Hl.N.?: Krnov [Bruntál]
+MISSING Hl.N.?: Kralupy nad Vltavou [Mělník]
+MISSING Hl.N.?: Sedlec [Břeclav]
+MISSING Hl.N.?: Levice [Levice]
+MISSING Hl.N.?: Myjava [Myjava]
+MISSING Hl.N.?: Topoľčany [Topoľčany]
+MISSING Hl.N.?: Lipová [Nové Zámky]
+MISSING Hl.N.?: Smolenice [Trnava]
+MISSING Hl.N.?: Kladno [Žďár n. S.]
+MISSING Hl.N.?: Hviezdoslavov [Senec]
+MISSING Hl.N.?: Mirošov [Vsetín]
+DOUBLE SPACE IN: Martin - Turčianská  Šťiavnička [Martin]
+MISSING Hl.N.?: Plešivec [Rožňava]
+MISSING Hl.N.?: Bohdanovce [Košice]
+MISSING Hl.N.?: Rapšach [Jindřichův Hradec]
+MISSING Hl.N.?: Mariánské Údolí [Olomouc]
+MISSING Hl.N.?: Senec [Plzeň]
+MISSING Hl.N.?: Sedlec [Rokycany]
+MISSING Hl.N.?: Radków [Náchod]
+MISSING Hl.N.?: Tomášov [Senec]
+MISSING Hl.N.?: Lipová [Svidník]
+MISSING Hl.N.?: Sedlec [České Budějovice]
+MISSING Hl.N.?: Benešov [Pelhřimov]
+MISSING Hl.N.?: Čierne [Čadca]
+MISSING Hl.N.?: Písek [Čadca]
+MISSING Hl.N.?: Ratiboř [Vsetín]

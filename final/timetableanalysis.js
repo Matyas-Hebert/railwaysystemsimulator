@@ -243,8 +243,6 @@ function getDelay(lineID, tripNumber, time, stationID, daynumber){
     let delay = 0;//getstartdelay((tripNumber+1) * 100 + lineID * 100000 + daynumber, line.type);
     const starttime = line.starttime + line.interval*tripNumber + daynumber*86400;
     const stops =  line.stops;
-
-    const stoptime = getStopTimeFromType(line.type);
     let previousdeptime = starttime + stops[0].dep + delay;
     let exprecteddeptime = previousdeptime-delay;
 
@@ -272,6 +270,7 @@ function getDelay(lineID, tripNumber, time, stationID, daynumber){
     });
 
     for (let i = 1; i < line.stops.length; i++){
+        const stoptime = line.stops[i].dep - line.stops[i].arr;
         const stop = line.stops[i];
         const standarttraveltime = stop.arr - line.stops[i-1].dep
         const dayssinceera = Math.floor(getCurrentTimeInMs() / (86400000));
@@ -578,7 +577,6 @@ function printschedule(table=_information, conns=connstruct, checkifkick=false, 
     let line = timetable.lines[lineID];
     let stops = line.stops;
     let delay = getDelay(lineID, tripID, time, stops[stops.length-1], day);
-    console.log(delay);
     if (checkifkick){
         if (delay.status == 6){
             currentposition.transporttype = 0;
@@ -723,6 +721,7 @@ function printschedule(table=_information, conns=connstruct, checkifkick=false, 
                 section1id = stop.sid;
                 printcurrentsection();
             }
+            row.cells[0].style.textWrap = "nowrap";
             row = addrow({
                 "table": table, 
                 "c2t": arrstr, 
@@ -1403,6 +1402,7 @@ function printcurrentsection(force = false){
         if (currentposition.transporttype == 1){
             _section0.style.display = "none";
             _section2.style.display = "block";
+            currentposition.hidesinfront = true;
             printschedule(_traintimetable, currentposition, true, true);
         }
         if (currentposition.transporttype == 2){
