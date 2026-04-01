@@ -1293,7 +1293,8 @@ function printidos(){
 function startgame(){
     currentposition = {
         transporttype: 0,
-        statID: startid
+        statID: startid,
+        goalStatID: startid
     };
     currentsection = 0;
     console.log(currentposition, currentsection);
@@ -1330,7 +1331,6 @@ function search(search, options=_s1options, section4 = false, id=0, inputfield=n
         opts = searchstations(search);
     }
     opts.slice(0,20).forEach(opt => {
-        console.log(opt);
         let newdiv = document.createElement("div");
         newdiv.className = "search-result";
         newdiv.onclick = function(){
@@ -1579,16 +1579,13 @@ function printcurrentsection(force = false){
 
 function loadfromlocalstorage(){
     currentposition = JSON.parse(localStorage.getItem("_currentposition"));
+    console.log("loaded", currentposition);
     currentposition.statID = lonlattoid[currentposition.statID];
     if (currentposition.statID == null){
         currentposition = null;
         return;
     }
     currentposition.goalStatID = lonlattoid[currentposition.goalStatID];
-    if (currentposition.goalStatID == null){
-        currentposition = null;
-        return;
-    }
     pinnedstations = localStorage.getItem("_pinnedstations") == null ? [] :
                     JSON.parse(localStorage.getItem("_pinnedstations"));
 }
@@ -1632,7 +1629,7 @@ let connstruct = {};
 let idostime = 0;
 let filters = {"departures": true, "types": [true, true, true, true, true, true], "statid": -1};
 // 0 - in station, 1 - on train, 2 - walking
-let currentposition = {};
+let currentposition = null;
 let pinnedstations = [];
 loadfromlocalstorage();
 let pinnedstationsopened = false;
