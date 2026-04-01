@@ -1408,9 +1408,13 @@ function printwalkable(stationID){
         _walkables.appendChild(d);
         return;
     }
+    let i = 0;
     stationiwd.forEach(iwd => {
         let options = document.createElement("div");
         options.classList = "whiteheader";
+        if (i%2 == 0){
+            options.classList.add("whiteheaderlightbg");
+        }
 
         let name = document.createElement("div");
         name.innerText = timetable.stations[iwd.id].name;
@@ -1441,6 +1445,7 @@ function printwalkable(stationID){
 
         options.style.padding = "0.5rem";
         _walkables.appendChild(options);
+        i++;
     });
 }
 
