@@ -129,11 +129,15 @@ async function generateTimeTables() {
     const citydata = JSON.parse(raw);
 
     const districtcount = {};
+    const lonlattoid = {};
 
     Object.values(map.stations).forEach(async (station, stationID) => {
         if (!station.isWaypoint){
             stationIDtonewID[station.id] = i;
             let name = station.name;
+            let lon = Math.round(station.lng*10000);
+            let lat = Math.round(station.lat*10000);
+            let lonlat = String(lon)+String(lat);
             
             let closest = Infinity;
             let district = undefined;
@@ -168,9 +172,11 @@ async function generateTimeTables() {
                 "iwd": iwd,
                 "name": name,
                 "district": district,
+                "lonlat": lonlat,
                 "departures": [],
                 "arrivals": []
             });
+            lonlattoid[lonlat] = i;
             if (Object.keys(districtcount).includes(district)){
                 districtcount[district]++;
             }
@@ -275,6 +281,7 @@ async function generateTimeTables() {
     
     //console.log(JSON.stringify(timetable, null, "\t"));
     fs.writeFile("final/json/timetable_data.js", "const timetable = " + JSON.stringify(timetable) + ";");
+    fs.writeFile("final/json/lonlat.js", "const lonlattoid = " + JSON.stringify(lonlattoid) + ";");
     return timetable;
 }
 

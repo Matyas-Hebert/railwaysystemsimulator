@@ -1520,7 +1520,11 @@ function printwalkprogress(table){
 }
 
 function updatepositionlocalstorage(){
-    localStorage.setItem("_currentposition", JSON.stringify(currentposition));
+    let tmp = { ...currentposition};
+    tmp.statID = timetable.stations[currentposition.statID].lonlat;
+    tmp.goalStatID = timetable.stations[currentposition.goalStatID].lonlat;
+    console.log(tmp, "saved");
+    localStorage.setItem("_currentposition", JSON.stringify(tmp));
 }
 
 function printcurrentsection(force = false){
@@ -1573,6 +1577,14 @@ function printcurrentsection(force = false){
     }
 }
 
+function loadfromlocalstorage(){
+    currentposition = JSON.parse(localStorage.getItem("_currentposition"));
+    currentposition.statID = lonlattoid[currentposition.statID];
+    currentposition.goalStatID = lonlattoid[currentposition.goalStatID];
+    pinnedstations = localStorage.getItem("_pinnedstations") == null ? [] :
+                    JSON.parse(localStorage.getItem("_pinnedstations"));
+}
+
 console.log(localStorage.getItem("test"));
 localStorage.setItem("test", "value");
 
@@ -1612,9 +1624,9 @@ let connstruct = {};
 let idostime = 0;
 let filters = {"departures": true, "types": [true, true, true, true, true, true], "statid": -1};
 // 0 - in station, 1 - on train, 2 - walking
-let currentposition = JSON.parse(localStorage.getItem("_currentposition"));
-let pinnedstations = localStorage.getItem("_pinnedstations") == null ? [] :
-                    JSON.parse(localStorage.getItem("_pinnedstations"));
+let currentposition = {};
+let pinnedstations = [];
+loadfromlocalstorage();
 let pinnedstationsopened = false;
 let currentsection = 0;
 let section1id = 200;
