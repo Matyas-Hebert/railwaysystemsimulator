@@ -191,6 +191,18 @@ tr:nth-child(even) {
 
 .delayed{
     background-color: rgb(126, 5, 5);
+    position: relative;
+}
+
+.delayed::after{
+    position: absolute;
+    top: 2px;
+    font-weight: bold;
+    right: 8px;
+    font-size: 1.3rem;
+    content: '!';
+    color: black;
+    vertical-align: center;
 }
 
 .tables{
@@ -363,10 +375,14 @@ table{
 
 .filters1 div{
     width: 100%;
+    padding-bottom: .5rem;
+    padding-top: .5rem;
 }
 
 .filters2 div{
     width: 100%;
+    padding-bottom: .5rem;
+    padding-top: .5rem;
 }
 
 .filters3 div{

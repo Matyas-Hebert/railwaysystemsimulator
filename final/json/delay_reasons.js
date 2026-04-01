@@ -30,7 +30,7 @@ const reasons = [
     ["Ošoupané brzdné destičky", 1],
     ["Závada na přejezdu", 1],
     ["Neznámý důvod", 15],
-    ["Červená", 1],
+    ["Červená na semaforu", 1],
     ["Kozel a rudé tričko na trati", 1],
     ["Spadlé vedení", 1],
     ["Ukradené kabely", 1],
@@ -78,5 +78,7 @@ const reasons = [
     ["Půdní sesuv", 1],
     ["Úder blesku do soupravy", 1],
     ["Zpoždění vlaku", 5],
-    ["Pomalá jízda", 5]
+    ["Pomalá jízda", 5],
+    ["Úder meteoritu", 1],
+    ["Náhlá změna jizdního řádu", 3]
 ]

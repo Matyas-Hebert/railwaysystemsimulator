@@ -396,7 +396,6 @@ function toggleSchedule(clickedrow, stopsdata){
         //c4.innerText = stopdata.dist;
 
         if (stopdata.id == filters.statid){
-            console.log("found");
             c1.className = "delayed";
         }
 
@@ -428,6 +427,27 @@ function getontrain(lineID, tripID, day){
     updatepositionlocalstorage();
 }
 
+function getdelayreason(lineID, tripID, day){
+    // reasons[0] je duvod, reasons[1] je weight
+    let total = 0;
+    reasons.forEach(reason => {
+        total += reason[1];
+    });
+    let seed = tripID+lineID*201+day*81573;
+    let r = mulberry32(seed);
+    let target = total*r;
+    total = 0;
+    i = 0;
+    for (let i = 0; i < reasons.length; i++) {
+        total += reasons[i][1];
+        if (total >= target) {
+            return reasons[i][0];
+        }
+    }
+    
+    return reasons[reasons.length - 1][0];
+}
+
 function addrow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibleoverflow=false, includered = true, includetrainnameclass = false, conn = {}, subtextdest = "", noclasssubtextdest = false, goalstationid = 0, includetrainlink = false, includegetonbutton = false, subtexttrain = "", firstcolspan = false, scrolling = false, scrollingfirstcol = false, onlythreecols = false, subtexttime = ""}){
     let row = table.insertRow(-1);
     let c1 = row.insertCell(0);
@@ -446,7 +466,11 @@ function addrow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibl
     if (!onlythreecols || !firstcolspan){
         if (includegetonbutton){
             c3 = row.insertCell(2);
-            c3.innerHTML = `<div onclick="getontrain(${conn.lineID}, ${conn.tripID}, ${conn.day})">NASTOUPIT</div>`
+            c3.innerHTML = `<div>NASTOUPIT</div>`
+            c3.onclick = function(){
+                getontrain(conn.lineID, conn.tripID, conn.day);
+                printcurrentsection();
+            };
             c3.style.backgroundColor = "rgb(38, 156, 38)";
         }
         else{
@@ -508,20 +532,19 @@ function addrow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibl
     }
 
     if (stopsdata){
-        row.style.cursor = "pointer";
         c2.onclick = function(){
             console.log(stopsdata);
             section1id = goalstationid;
             currentsection = 1;
             printcurrentsection();
         }
-        c3.onclick = function(){
-            //toggleSchedule(row, stopsdata);
-            //console.log("toggled");
-            openeddetail = (openeddetail == openeddetailstring) ? "" : openeddetailstring;
-            connstruct = conn;
-            printcurrentsection();
-        };
+        if (!includegetonbutton){
+            c3.onclick = function(){
+                openeddetail = (openeddetail == openeddetailstring) ? "" : openeddetailstring;
+                connstruct = conn;
+                printcurrentsection();
+            };
+        }
     }
     return row;
 }
@@ -618,13 +641,15 @@ function printschedule(table=_information, conns=connstruct, checkifkick=false, 
         }
     }
     let delaystring = "+"+String(Math.floor(delay.delay/60));
+    let delayreason = (delay.delay >= 300 ? getdelayreason(lineID, tripID, day) : "");
 
     row = addrow({
         "table": _traintimetableheader, 
         "c1t": "Vlak", 
         "c2t": "Z/DO", 
         "c3t": delaystring,
-        "includered": delay.delay>=60,
+        "subtexttime": delayreason,
+        "includered": delay.delay>=60 || delay.status == -1,
         "onlythreecols": true});
 
     row = addrow({
@@ -824,7 +849,7 @@ function findpath(startstationID, endstationID, time=-1){
             });
             console.log(p);
 
-            return path; // Můžeš vrátit pole pro vykreslení do HTML tabulky
+            return path;
         }
 
         let station = timetable.stations[stationID];
@@ -1122,7 +1147,7 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
         const regionname = timetable.stations[destinationID].district;
 
         let delaystr = current.delay.status == -1 ? "Zrušeno ve stanici " + timetable.stations[current.delay.station].name : 
-            (current.delay.delay >= 60 ? "+"+String(Math.floor(current.delay.delay/60)) : "");
+            (current.delay.delay >= 60 ? "+"+String(Math.floor(current.delay.delay/60)) : "")+(current.delay.delay >= 300 ? "<br>"+getdelayreason(current.lineID, current.trip, current.day) : "");
 
         stopsdata = [];
 
@@ -1598,5 +1623,5 @@ let startid = -1;
 let section2data = {"lineID": 1, "tripID": 1, "day": 0, "hidesinfront": true};
 printcurrentsection();
 setInterval(updateclock, 1000);
-setInterval(printcurrentsection, 5000);
+//setInterval(printcurrentsection, 5000);
 let m = timetable.stations.length;
