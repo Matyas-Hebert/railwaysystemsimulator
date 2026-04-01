@@ -1580,7 +1580,15 @@ function printcurrentsection(force = false){
 function loadfromlocalstorage(){
     currentposition = JSON.parse(localStorage.getItem("_currentposition"));
     currentposition.statID = lonlattoid[currentposition.statID];
+    if (currentposition.statID == null){
+        currentposition = null;
+        return;
+    }
     currentposition.goalStatID = lonlattoid[currentposition.goalStatID];
+    if (currentposition.goalStatID == null){
+        currentposition = null;
+        return;
+    }
     pinnedstations = localStorage.getItem("_pinnedstations") == null ? [] :
                     JSON.parse(localStorage.getItem("_pinnedstations"));
 }
