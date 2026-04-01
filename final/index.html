@@ -64,6 +64,9 @@
                     <select id="_destinations" class="selected" onchange="selectdestination(this.value)"></select>
                 </div>
             </div>
+            <div id="_timetableheader">
+                Ostrava-Přívoz
+            </div>
             <table id="_timetable">
 
             </table>
@@ -124,6 +127,11 @@
                 <input id="_idosstart" onclick="search(this.value, _section4options, true, 0, this, true)" oninput="search(this.value, _section4options, true, 0, this)" type="text" placeholder="Zadejte stanici...">
                 <input id="_idosend" onclick="search(this.value, _section4options, true, 1, this, true)" oninput="search(this.value, _section4options, true, 1, this)" type="text" placeholder="Cílová stanice...">
             </div>
+            <div class="timesetting">
+                <div onclick="decreasetime()">&lt;</div>
+                <input id="_idostime" oninput="updateidostime()"></input>
+                <div onclick="increasetime()">&gt;</div>
+            </div>
             <div id="_section4options"></div>
             <button class="idossearchs" onclick="printidos()">HLEDAT</button>
             <table>
@@ -137,9 +145,9 @@
             </table>
         </div>
         <div id="_section5">
-            <table id="_walkables">
+            <div id="_walkables">
                 
-            </table>
+            </div>
         </div>
         <div id="_subsection5">
             <table>

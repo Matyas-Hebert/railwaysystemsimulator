@@ -12,7 +12,7 @@ function getStopTimeFromType(type){
     return 180; // in seconds
 }
 
-function formatTime(seconds, includeday = true) {
+function formatTime(seconds, includeday = true, includeseconds = true) {
     const d = Math.floor(seconds/86400);
     let s = (Math.round(seconds) % 86400); 
     if (s < 0){
@@ -22,6 +22,10 @@ function formatTime(seconds, includeday = true) {
     const hh = Math.floor(s / 3600).toString().padStart(2, '0');
     const mm = Math.floor((s % 3600) / 60).toString().padStart(2, '0');
     const ss = (s % 60).toString().padStart(2, '0');
+
+    if (!includeseconds){
+        return `${hh}:${mm}`;
+    }
 
     if (!includeday){
         return `${hh}:${mm}:${ss}`;
@@ -750,9 +754,11 @@ function updateclock(){
     _clock.innerText = formatTime(time);
 }
 
-function findpath(startstationID, endstationID){
+function findpath(startstationID, endstationID, time=-1){
     const currentDate = new Date();
-    var time = currentDate.getHours()*3600 + currentDate.getMinutes()*60 + currentDate.getSeconds();
+    if (time == -1){
+        time = currentDate.getHours()*3600 + currentDate.getMinutes()*60 + currentDate.getSeconds();
+    }
     //time = 14*3600+40*60;
     console.log("starttime", formatTime(time));
     checkedstations = {};
@@ -955,15 +961,18 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
     }
 
     if (includeheader){
-        row = addrow({
-            "table": table, 
-            "c1t": station.name,
-            "firstcolspan": true,
-            "onlythreecols": true,
-            "includered": false,
-            "includetrainnameclass": true});
-        row.cells[0].style.width = "100%";
-        row.cells[0].style.textAlign = "center";
+        row = _timetableheader;
+        row.classList = [];
+        row.innerText = station.name;
+        // addrow({
+        //     "table": table, 
+        //     "c1t": station.name,
+        //     "firstcolspan": true,
+        //     "onlythreecols": true,
+        //     "includered": false,
+        //     "includetrainnameclass": true});
+        // row.cells[0].style.width = "100%";
+        // row.cells[0].style.textAlign = "center";
         if (currentsection == 1){
             let pinned = false;
             if (pinnedstations.includes(stationID)){
@@ -987,8 +996,6 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
                 }
             };
         }
-
-        row.cells[0].style.textWrap = "wrap";
     }
 
     let departures = filters["departures"];
@@ -1147,7 +1154,7 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
             "c3t": formatTime(current.time), 
             "scrolling": destinationname.trim().length >= 18,
             "stopsdata": stopsdata, 
-            "includered": current.delay.delay >= 60, 
+            "includered": current.delay.delay >= 60 || current.delay.status == -1, 
             "conn": conn, 
             "subtextdest": regionname, 
             "subtexttrain": line.nickname,
@@ -1207,10 +1214,12 @@ function searchstations(search, firstid=null){
 }
 
 function printidos(){
-    console.log("omg its happening");
-    let res = findpath(section4ids[0], section4ids[1]);
+    let res = findpath(section4ids[0], section4ids[1], idostime);
     console.log(res);
     _idosresults.innerHTML = "";
+
+    console.log("printing idos");
+
     //_idosresults
 
     res.forEach(result => {
@@ -1330,60 +1339,90 @@ function closes1options(){
     _s1options.innerHTML = "";
 }
 
+function decreasetime(){
+    idostime -= 60*30;
+    updateidostimeview();
+}
+
+function increasetime(){
+    idostime += 60*30;
+    updateidostimeview();
+}
+
+function updateidostime(){
+    let parts = _idostime.value.split(":");
+    if (parts.length < 2){
+        return;
+    }
+    let hours = parseInt(parts[0]);
+    let minutes = parseInt(parts[1]);
+    console.log(hours, minutes);
+    if (minutes > 100){
+        hours = Math.min((hours%10)*10, 20);
+        console.log(hours, minutes);
+        hours += Math.floor(minutes/100);
+        console.log(hours, minutes);
+        minutes %= 100;
+    }
+    console.log(hours, minutes);
+    idostime = hours*3600+minutes*60;
+    updateidostimeview();
+}
+
+function updateidostimeview(){
+    _idostime.value = formatTime(idostime, false, false);
+}
+
 function selectsection(section){
     if (section >= 0 && section < 6){
         currentsection = section;
+    }
+    if (currentsection == 4){
+        const currentDate = new Date();
+        idostime = currentDate.getHours()*3600 + currentDate.getMinutes()*60;
+        updateidostimeview();
     }
     printcurrentsection();
 }
 
 function printwalkable(stationID){
     _walkables.innerHTML = "";
-    let r1 = _walkables.insertRow(-1);
-    r1.className = "walkable";
-    let rc1 = r1.insertCell(0);
-    let rc2 = r1.insertCell(1);
-    let rc3 = r1.insertCell(2);
-    rc1.innerText = timetable.stations[stationID].name;
-    rc1.className = "overflowvisible";
-    rc2.className = "overflowvisiblelowerlayer";
-    const currentDate = new Date();
-    var time = currentDate.getHours()*3600 + currentDate.getMinutes()*60 + currentDate.getSeconds();
-    rc3.innerText = formatTime(time, false);
+
+    let div = document.createElement("div");
+    div.innerText = timetable.stations[stationID].name;
+    div.classList = "whiteheader";
+    _walkables.appendChild(div);
     if (stationID == -1){
-        row = _walkables.insertRow(-1);
-        row.className = "walkable";
-        let c1 = row.insertCell(0);
-        c1.colSpan = 3;
-        c1.innerText = "Jsi ve vlaku, nikam nejdeš!"
+        let d = document.createElement("div");
+        d.innerText = "Jsi ve vlaku, nikam nejdeš!"
+        d.classList = "reddishinfo";
+        _walkables.appendChild(d);
         return;
     }
     let stationiwd = timetable.stations[stationID].iwd;
+    console.log(stationiwd);
     if (stationiwd.length == 0){
-        row = _walkables.insertRow(-1);
-        row.className = "walkable";
-        let c1 = row.insertCell(0);
-        c1.colSpan = 3;
-        c1.innerText = "Nikam odtud nelze dojít";
+        let d = document.createElement("div");
+        d.innerText = "Nikam odtud nelze dojít"
+        d.classList = "reddishinfo";
+        _walkables.appendChild(d);
         return;
     }
     stationiwd.forEach(iwd => {
-        row = _walkables.insertRow(-1);
-        row.className = "walkable";
-        let c1 = row.insertCell(0);
-        let c2 = row.insertCell(1);
-        let c3 = row.insertCell(2);
-        let c1t = timetable.stations[iwd.id].name;
-        if (c1t.length >= 12){
-            c1.innerHTML = `<div class="scroll-container"><div class="scroll-text">${c1t}</div>`;
-        }
-        else{
-            c1.innerText = c1t;
-        }
-        c2.innerText = String(Math.round(iwd.dist*80)/10)+" min";
-        c3.innerHTML = `<div class="selected">JÍT</div>`;
+        let options = document.createElement("div");
+        options.classList = "whiteheader";
 
-        c3.onclick = function() {
+        let name = document.createElement("div");
+        name.innerText = timetable.stations[iwd.id].name;
+
+        let time = document.createElement("div");
+        time.innerText = String(Math.round(iwd.dist*8))+" min";
+
+        let go = document.createElement("div");
+        go.innerText = "JÍT";
+        go.className = "selected";
+
+        go.onclick = function() {
             currentposition.transporttype = 2;
             currentposition.goalStatID = iwd.id;
             currentposition.time = getCurrentTimeInMs();
@@ -1391,27 +1430,17 @@ function printwalkable(stationID){
             currentsection = 0;
             printcurrentsection();
         }
-
-        let tablerow = _walkables.insertRow(-1);
-        tablerow.className = "innertablerow";
-        let tablecell = tablerow.insertCell(0);
-        tablecell.colSpan = 3;
-        tablecell.innerHTML = `<table></table>`;
-        tablecell.className = "innertable";
-        c1.onclick = function(){
+        name.onclick = function(){
             section1id = iwd.id;
             currentsection = 1;
             printcurrentsection();
         }
-        c2.onclick = function(){
-            pesoopeneddetail = pesoopeneddetail == iwd.id ? -1 : iwd.id;
-            printtimetable(iwd.id, false, tablecell.querySelector('table'), false, 8, iwd.dist*8*60);
-            printcurrentsection();
-        }
+        options.appendChild(name);
+        options.appendChild(time);
+        options.appendChild(go);
 
-        if (iwd.id == pesoopeneddetail){
-            printtimetable(iwd.id, false, tablecell.querySelector('table'), false, 8, iwd.dist*8*60);
-        }
+        options.style.padding = "0.5rem";
+        _walkables.appendChild(options);
     });
 }
 
@@ -1547,12 +1576,10 @@ window.addEventListener('scroll', () => {
     }
 });
 
-//width: 70% !important;
-
 //generateTimeTables();
 let openeddetail = "";
-let pesoopeneddetail = -1;
 let connstruct = {};
+let idostime = 0;
 let filters = {"departures": true, "types": [true, true, true, true, true, true], "statid": -1};
 // 0 - in station, 1 - on train, 2 - walking
 let currentposition = JSON.parse(localStorage.getItem("_currentposition"));
@@ -1566,5 +1593,5 @@ let startid = -1;
 let section2data = {"lineID": 1, "tripID": 1, "day": 0, "hidesinfront": true};
 printcurrentsection();
 setInterval(updateclock, 1000);
-//setInterval(printcurrentsection, 5000);
+setInterval(printcurrentsection, 5000);
 let m = timetable.stations.length;
