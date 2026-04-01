@@ -1623,5 +1623,5 @@ let startid = -1;
 let section2data = {"lineID": 1, "tripID": 1, "day": 0, "hidesinfront": true};
 printcurrentsection();
 setInterval(updateclock, 1000);
-//setInterval(printcurrentsection, 5000);
+setInterval(printcurrentsection, 5000);
 let m = timetable.stations.length;
