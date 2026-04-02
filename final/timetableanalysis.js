@@ -427,6 +427,37 @@ function getontrain(lineID, tripID, day){
     updatepositionlocalstorage();
 }
 
+function getwifichance(type){
+    if (type == 0){
+        return 0.9;
+    }
+    if (type == 1){
+        return 0.75;
+    }
+    if (type == 2){
+        return 0.4;
+    }
+    if (type == 3){
+        return 0.2;
+    }
+    if (type == 4){
+        return 0.6;
+    }
+    if (type == 5){
+        return 0.1;
+    }
+}
+
+function havewifi(lineID, tripID, day, type){
+    let seed = tripID+lineID*201+day*81573;
+    let r = mulberry32(seed);
+    let newr = (r*123)-Math.floor(r*123);
+    if (getwifichance(type) >= newr){
+        return true;
+    }
+    return false;
+}
+
 function getdelayreason(lineID, tripID, day){
     // reasons[0] je duvod, reasons[1] je weight
     let total = 0;
@@ -823,15 +854,28 @@ function findpath(startstationID, endstationID, time=-1){
                 }
                 let startStop = line.stops.find(s => s.sid === data.from);
                 let endStop = line.stops.find(s => s.sid === currentId);
-
+                let dist = 0;
+                let start = false;
+                line.stops.forEach(stop => {
+                    if (stop.sid == data.from){
+                        start = true;
+                    }
+                    else if (start){
+                        dist += stop.dist;
+                    }
+                    if (stop.sid == currentId){
+                        start = false;
+                    }
+                });
                 path.push({
                     fromName: timetable.stations[data.from].name,
                     fromID: data.from,
                     toName: timetable.stations[currentId].name,
                     toID: currentId,
-                    dep: formatTime(tripStartTime + startStop.dep),
-                    arr: formatTime(tripStartTime + endStop.arr),
-                    train: getTrainName(line, true, true)
+                    dep: tripStartTime + startStop.dep,
+                    arr: tripStartTime + endStop.arr,
+                    train: getTrainName(line, true, true),
+                    dist: dist
                 });
 
                 currentId = data.from;
@@ -1239,6 +1283,13 @@ function searchstations(search, firstid=null){
 }
 
 function printidos(){
+    _idosstats.style.display = "none";
+    if (!currentposition.iswifi){
+        _idosresults.innerHTML = "Žádné připojení k Wi-Fi<br>Spojení nebylo možné nalézt!";
+        _idosresults.className = "nowifiinfo";
+        return;
+    }
+    _idosstats.style.display = "flex";
     let res = findpath(section4ids[0], section4ids[1], idostime);
     console.log(res);
     _idosresults.innerHTML = "";
@@ -1246,8 +1297,12 @@ function printidos(){
     console.log("printing idos");
 
     //_idosresults
+    let totaldist = 0;
+    let starttime = null;
+    let endtime = null;
 
     res.forEach(result => {
+        totaldist += result.dist;
         let row = _idosresults.insertRow(-1);
         let parts = result.train.split(" ");
         let lc = null;
@@ -1272,7 +1327,10 @@ function printidos(){
         let sc1 = srow.insertCell(-1);
         let sc2 = srow.insertCell(-1);
         sc0.innerText = "●"
-        sc1.innerText = result.dep;
+        sc1.innerText = formatTime(result.dep);
+        if (starttime == null){
+            starttime = result.dep;
+        }
         sc2.innerText = timetable.stations[result.fromID].name;
         sc2.style.textAlign = "left";
         sc2.style.textWrap = "wrap";
@@ -1282,12 +1340,25 @@ function printidos(){
         let ec1 = erow.insertCell(-1);
         let ec2 = erow.insertCell(-1);
         ec0.innerText = "●"
-        ec1.innerText = result.arr;
+        ec1.innerText = formatTime(result.arr);
+        endtime = result.arr;
         ec2.innerText = timetable.stations[result.toID].name;
         ec2.style.textAlign = "left";
         ec2.style.textWrap = "wrap";
         erow.className = "lastSectionRow";
     });
+
+    _idosstatsdist.innerText = String(Math.round(totaldist))+"km";
+    let timeelapsed = endtime-starttime;
+    let hours = Math.floor(timeelapsed/3600);
+    let minutes = Math.floor((timeelapsed-hours*3600)/60);
+    _idosstatstime.innerText = String(minutes)+"m";
+    if (hours > 0){
+        _idosstatstime.innerText = String(hours)+"h"+String(minutes)+"m";
+    }
+    let speed = totaldist/(timeelapsed/3600);
+    console.log(speed);
+    _idosstatsspeed.innerText = String(Math.round(speed))+"km/h";
 }
 
 function startgame(){
@@ -1575,14 +1646,45 @@ function printcurrentsection(force = false){
     if (currentsection == 5){
         printwalkable(currentposition.transporttype == 2 ? -1 : currentposition.statID);
     }
+
+    currentposition.iswifi = false;
+    if (currentposition.transporttype == 1){
+        currentposition.iswifi = havewifi(currentposition.lineID, currentposition.tripID, currentposition.day, timetable.lines[currentposition.lineID].type);
+    }
+    if (currentposition.iswifi){
+        _wifi.className = "wifi";
+    }
+    else{
+        _wifi.className = "nowifi";
+    }
 }
 
 function loadfromlocalstorage(){
     currentposition = JSON.parse(localStorage.getItem("_currentposition"));
-    console.log("loaded", currentposition);
-    currentposition.statID = lonlattoid[currentposition.statID];
-    if (currentposition.statID == null){
+    if (currentposition == null){
+        return;
+    }
+    currentposition.iswifi = false;
+    if (!Object.keys(currentposition).includes("statID")){
+        console.log("statID not found");
         currentposition = null;
+        return;
+    }
+    if (!Object.keys(currentposition).includes("transporttype")){
+        currentposition.transporttype = 0;
+    }
+    if (!(parseInt(currentposition.statID) <= 10000)){
+        currentposition.statID = lonlattoid[currentposition.statID];
+        if (currentposition.statID == null){
+            console.log("statID");
+            currentposition = null;
+            return;
+        }
+    }
+    if (!Object.keys(currentposition).includes("goalStatID")){
+        if (currentposition.transporttype == 2){
+            currentposition.transporttype = 0;
+        }
         return;
     }
     currentposition.goalStatID = lonlattoid[currentposition.goalStatID];

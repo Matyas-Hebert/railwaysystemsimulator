@@ -15,6 +15,10 @@
         <button class="idossearchs" id="_startsearch" onclick="startgame()">ZAČÍT</button>
     </div>
     <div id="_tables" class="tables">
+        <div class="toppanel">
+            <div id="_clock" class="unchosen">??:??:??</div>
+            <div id="_wifi" class="wifi"></div>
+        </div>
         <div>
             <table class="tabs">
                 <td id="_tab0" class="chosen" onclick="selectsection(0)">Aktuálně</td>
@@ -23,7 +27,7 @@
             </table>
             <table class="tabs">
                 <td id="_tab2" class="unchosen" onclick="selectsection(2)">Vlaky</td>
-                <td id="_clock" class="unchosen" onclick="selectsection(3)">??:??:??</td>
+                <td id="_tab3" class="unchosen" onclick="selectsection(3)">Statistiky</td>
                 <td id="_tab4" class="unchosen" onclick="selectsection(4)">IDOS</td>
             </table>
             <table id="_information">
@@ -134,12 +138,11 @@
             </div>
             <div id="_section4options"></div>
             <button class="idossearchs" onclick="printidos()">HLEDAT</button>
-            <table>
-                <tr>
-                    <td>ČAS</td>
-                    <td>VZDÁLENOST</td>
-                </tr>
-            </table>
+            <div id="_idosstats">
+                <div id="_idosstatstime">1h51m</div>
+                <div id="_idosstatsdist">54km</div>
+                <div id="_idosstatsspeed">54km/h</div>
+            </div>
             <table id="_idosresults">
 
             </table>
