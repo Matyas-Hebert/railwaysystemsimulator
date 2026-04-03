@@ -205,34 +205,13 @@ function getdelaymult(seed, currentdelayperc, type){
 function getstartdelay(seed, type){
     let rand = mulberry32(seed);
     if (type == 5){
-        if (rand > 0.96){
-            //0 - 30
-            return (rand-0.96)*25*30*60;
-        }
-        if (rand > 0.8){
-            //0 - 8
-            return (rand-0.8)*5*10*60;
-        }
+        return -Math.log(1-rand)*100;
     }
     if (type >= 2){
-        if (rand > 0.98){
-            //0 - 15
-            return (rand-0.98)*50*15*60;
-        }
-        if (rand > 0.86){
-            //0 - 8
-            return (rand-0.86)*10*10*60;
-        }
+        return -Math.log(1-rand)*90;
     }
     else{
-        if (rand > 0.98){
-            //0 - 15
-            return (rand-0.98)*50*15*60;
-        }
-        if (rand > 0.8){
-            //0 - 4
-            return (rand-0.8)*5*5*60;
-        }
+        return -Math.log(1-rand)*50;
     }
     return 0;
 }
@@ -244,7 +223,7 @@ function getCurrentTimeInMs(){
 
 function getDelay(lineID, tripNumber, time, stationID, daynumber){
     const line = timetable.lines[lineID];
-    let delay = 0;//getstartdelay((tripNumber+1) * 100 + lineID * 100000 + daynumber, line.type);
+    let delay = getstartdelay((tripNumber+1) * 100 + lineID * 100000 + daynumber, line.type);
     const starttime = line.starttime + line.interval*tripNumber + daynumber*86400;
     const stops =  line.stops;
     let previousdeptime = starttime + stops[0].dep + delay;
@@ -401,17 +380,32 @@ function toggleSchedule(clickedrow, stopsdata){
 
         c1.onclick = function() {
             section1id = stopdata.id;
-            currentsection = 1;
-            printcurrentsection();
+            changecurrentsection(1);
         };
         i++;
     });
 }
 
+function getboost(){
+    wifiluckboost = 0.1;
+}
+
+function changecurrentsection(n){
+    currentsection = n;
+    printcurrentsection();
+}
+
+function changetransporttype(n){
+    if (n != currentposition.transporttype){
+        wifiluckboost = 0;
+        currentposition.transporttype = n;
+    }
+}
+
 // Novy majer chce velke m
 
 function getontrain(lineID, tripID, day){
-    currentposition.transporttype = 1;
+    changetransporttype(1);
     currentposition.lineID = lineID;
     currentposition.tripID = tripID;
     if (day <= 1000){
@@ -452,7 +446,16 @@ function havewifi(lineID, tripID, day, type){
     let seed = tripID+lineID*201+day*81573;
     let r = mulberry32(seed);
     let newr = (r*123)-Math.floor(r*123);
-    if (getwifichance(type) >= newr){
+    if (getwifichance(type)+wifiluckboost >= newr){
+        return true;
+    }
+    return false;
+}
+
+function havewifistation(statID, day){
+    let seed = statID+day*5001;
+    let r = mulberry32(seed);
+    if (r+wifiluckboost >= 0.7){
         return true;
     }
     return false;
@@ -489,9 +492,8 @@ function addrow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibl
     }
     if (includetrainlink){
         c1.onclick = function(){
-            currentsection = 2;
             section2data = conn;
-            printcurrentsection();
+            changecurrentsection(2);
         }
     }
     if (!onlythreecols || !firstcolspan){
@@ -566,8 +568,7 @@ function addrow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibl
         c2.onclick = function(){
             console.log(stopsdata);
             section1id = goalstationid;
-            currentsection = 1;
-            printcurrentsection();
+            changecurrentsection(1);
         }
         if (!includegetonbutton){
             c3.onclick = function(){
@@ -588,18 +589,34 @@ function updatetrackprogress(status, progress, station1, station2){
     if (status == -1 || status == 7){
         _singlestop.className = "active";
         _sss1.innerText = timetable.stations[station1].name;
+        _sss1.onclick = function(){
+            section1id = station1;
+            changecurrentsection(1);
+        };
     }
     if (status == 0){
         _firststop.className = "active";
         _fss1.innerText = timetable.stations[station1].name;
+        _fss1.onclick = function(){
+            section1id = station1;
+            changecurrentsection(1);
+        };
     }
     if (status == 6){
         _laststop.className = "active";
         _lss1.innerText = timetable.stations[station1].name;
+        _lss1.onclick = function(){
+            section1id = station1;
+            changecurrentsection(1);
+        };
     }
     if (status == 1 || status == 3 || status == 5){
         _singlestop.className = "active";
         _sss1.innerText = timetable.stations[station1].name;
+        _sss1.onclick = function(){
+            section1id = station1;
+            changecurrentsection(1);
+        };
     }
     if (status == 2 || status == 4){
         _doublestop.className = "active";
@@ -608,6 +625,14 @@ function updatetrackprogress(status, progress, station1, station2){
         console.log(timetable.stations[station1].name, timetable.stations[station2].name)
         _dss1.innerText = timetable.stations[station2].name;
         _dss2.innerText = timetable.stations[station1].name;
+        _dss1.onclick = function(){
+            section1id = station2;
+            changecurrentsection(1);
+        };
+        _dss2.onclick = function(){
+            section1id = station1;
+            changecurrentsection(1);
+        };
     }
 }
 
@@ -637,13 +662,13 @@ function printschedule(table=_information, conns=connstruct, checkifkick=false, 
     let delay = getDelay(lineID, tripID, time, stops[stops.length-1], day);
     if (checkifkick){
         if (delay.status == 6){
-            currentposition.transporttype = 0;
+            changetransporttype(0);
             currentposition.statID = stops[stops.length-1].sid;
             updatepositionlocalstorage();
             printcurrentsection();
         }
         if (delay.status == -1 || delay.status == 7){
-            currentposition.transporttype = 0;
+            changetransporttype(0);
             currentposition.statID = delay.station;
             updatepositionlocalstorage();
             printcurrentsection();
@@ -694,9 +719,8 @@ function printschedule(table=_information, conns=connstruct, checkifkick=false, 
         "onlythreecols": true});
 
     row.cells[0].onclick = function(){
-        currentsection = 2;
         section2data = conns;
-        printcurrentsection();
+        changecurrentsection(2);
     }
 
     row.deleteCell(2);
@@ -706,7 +730,7 @@ function printschedule(table=_information, conns=connstruct, checkifkick=false, 
         row.cells[1].style.backgroundColor = "#861313";
         row.cells[1].onclick = function(){
             currentposition.statID = delay.station;
-            currentposition.transporttype = 0;
+            changetransporttype(0);
             updatepositionlocalstorage();
             printcurrentsection();
         };
@@ -777,9 +801,8 @@ function printschedule(table=_information, conns=connstruct, checkifkick=false, 
                 "visibleoverflow": true
             });
             row.cells[0].onclick = function(){
-                currentsection = 1;
                 section1id = stop.sid;
-                printcurrentsection();
+                changecurrentsection(1);
             }
             row.cells[0].style.textWrap = "nowrap";
             row = addrow({
@@ -875,6 +898,12 @@ function findpath(startstationID, endstationID, time=-1){
                     dep: tripStartTime + startStop.dep,
                     arr: tripStartTime + endStop.arr,
                     train: getTrainName(line, true, true),
+                    traindata: {
+                        "lineID": data.line,
+                        "tripID": data.trip,
+                        "day": data.time.day,
+                        "hidesinfront": false
+                    },
                     dist: dist
                 });
 
@@ -1021,8 +1050,7 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
                 newdiv.innerHTML = "📌 "+timetable.stations[pinnedstation].name;
                 newdiv.onclick = function(){
                     section1id = pinnedstation;
-                    currentsection = 1;
-                    printcurrentsection();
+                    changecurrentsection(1);
                 };
                 _pinnedlist.appendChild(newdiv);
             });
@@ -1322,6 +1350,11 @@ function printidos(){
             }
         });
 
+        row.onclick = function(){
+            section2data = result.traindata;
+            changecurrentsection(2);
+        };
+
         let srow = _idosresults.insertRow(-1);
         let sc0 = srow.insertCell(-1);
         let sc1 = srow.insertCell(-1);
@@ -1334,6 +1367,10 @@ function printidos(){
         sc2.innerText = timetable.stations[result.fromID].name;
         sc2.style.textAlign = "left";
         sc2.style.textWrap = "wrap";
+        sc2.onclick = function(){
+            section1id = result.fromID;
+            changecurrentsection(1);
+        };
 
         let erow = _idosresults.insertRow(-1);
         let ec0 = erow.insertCell(-1);
@@ -1345,6 +1382,10 @@ function printidos(){
         ec2.innerText = timetable.stations[result.toID].name;
         ec2.style.textAlign = "left";
         ec2.style.textWrap = "wrap";
+        ec2.onclick = function(){
+            section1id = result.toID;
+            changecurrentsection(1);
+        };
         erow.className = "lastSectionRow";
     });
 
@@ -1367,9 +1408,7 @@ function startgame(){
         statID: startid,
         goalStatID: startid
     };
-    currentsection = 0;
-    console.log(currentposition, currentsection);
-    printcurrentsection();
+    changecurrentsection(0);
     updatepositionlocalstorage();
 };
 
@@ -1471,7 +1510,7 @@ function updateidostimeview(){
 
 function selectsection(section){
     if (section >= 0 && section < 6){
-        currentsection = section;
+        changecurrentsection(section);
     }
     if (currentsection == 4){
         const currentDate = new Date();
@@ -1523,17 +1562,15 @@ function printwalkable(stationID){
         go.className = "selected";
 
         go.onclick = function() {
-            currentposition.transporttype = 2;
+            changetransporttype(2);
             currentposition.goalStatID = iwd.id;
             currentposition.time = getCurrentTimeInMs();
             updatepositionlocalstorage();
-            currentsection = 0;
-            printcurrentsection();
+            changecurrentsection(0);
         }
         name.onclick = function(){
             section1id = iwd.id;
-            currentsection = 1;
-            printcurrentsection();
+            changecurrentsection(1);
         }
         options.appendChild(name);
         options.appendChild(time);
@@ -1548,12 +1585,7 @@ function printwalkable(stationID){
 function printwalkprogress(table){
     let startstat = timetable.stations[currentposition.statID];
     let endstat = timetable.stations[currentposition.goalStatID];
-    let dist = 0;
-    startstat.iwd.forEach(iw => {
-        if (iw.id == currentposition.goalStatID){
-            dist = iw.dist;
-        }
-    });
+    let dist = getiwddistance(currentposition.statID, currentposition.goalStatID);
     let mstime = dist*8*60*1000;
     let timeelapsed = getCurrentTimeInMs()-currentposition.time;
     let timetogo = mstime-timeelapsed;
@@ -1570,7 +1602,7 @@ function printwalkprogress(table){
     }
     _mintogoal.innerText += " do cíle";
     if (timeelapsed >= mstime){
-        currentposition.transporttype = 0;
+        changetransporttype(0);
         currentposition.statID = currentposition.goalStatID;
         updatepositionlocalstorage();
         printcurrentsection();
@@ -1596,6 +1628,16 @@ function updatepositionlocalstorage(){
     tmp.goalStatID = timetable.stations[currentposition.goalStatID].lonlat;
     console.log(tmp, "saved");
     localStorage.setItem("_currentposition", JSON.stringify(tmp));
+}
+
+function getiwddistance(fromID, toID){
+    let dist = 0;
+    timetable.stations[fromID].iwd.forEach(iw => {
+        if (iw.id == toID){
+            dist = iw.dist;
+        }
+    });
+    return dist;
 }
 
 function printcurrentsection(force = false){
@@ -1648,8 +1690,24 @@ function printcurrentsection(force = false){
     }
 
     currentposition.iswifi = false;
+    if (currentposition.transporttype == 0){
+        currentposition.iswifi = havewifistation(currentposition.statID, currentposition.day);
+    }
     if (currentposition.transporttype == 1){
         currentposition.iswifi = havewifi(currentposition.lineID, currentposition.tripID, currentposition.day, timetable.lines[currentposition.lineID].type);
+    }
+    if (currentposition.transporttype == 2){
+        let start = currentposition.time;
+        let dist = getiwddistance(currentposition.statID, currentposition.goalStatID);
+        let mstime = dist*8*60*1000;
+        let end = start+mstime;
+        let current = getCurrentTimeInMs();
+        if (Math.abs(current - start) < 60000){
+            currentposition.iswifi = havewifistation(currentposition.statID, currentposition.day);
+        }
+        if (Math.abs(current - end) < 60000){
+            currentposition.iswifi = havewifistation(currentposition.goalStatID, currentposition.day);
+        }
     }
     if (currentposition.iswifi){
         _wifi.className = "wifi";
@@ -1671,7 +1729,7 @@ function loadfromlocalstorage(){
         return;
     }
     if (!Object.keys(currentposition).includes("transporttype")){
-        currentposition.transporttype = 0;
+        changetransporttype(0);
     }
     if (!(parseInt(currentposition.statID) <= 10000)){
         currentposition.statID = lonlattoid[currentposition.statID];
@@ -1683,7 +1741,7 @@ function loadfromlocalstorage(){
     }
     if (!Object.keys(currentposition).includes("goalStatID")){
         if (currentposition.transporttype == 2){
-            currentposition.transporttype = 0;
+            changetransporttype(0);
         }
         return;
     }
@@ -1739,6 +1797,7 @@ let currentsection = 0;
 let section1id = 200;
 let section4ids = [69, 420];
 let startid = -1;
+let wifiluckboost = 0;
 let section2data = {"lineID": 1, "tripID": 1, "day": 0, "hidesinfront": true};
 printcurrentsection();
 setInterval(updateclock, 1000);
