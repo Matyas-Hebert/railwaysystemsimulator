@@ -402,8 +402,6 @@ function changetransporttype(n){
     }
 }
 
-// Novy majer chce velke m
-
 function getontrain(lineID, tripID, day){
     changetransporttype(1);
     currentposition.lineID = lineID;
