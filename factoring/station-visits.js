@@ -15,11 +15,10 @@ const stationVisits = (() => {
         }
     }
 
-    function markCurrentStationVisited() {
-        const position = gameState.getCurrentPosition();
-        if (position === null || position.transporttype !== TRANSPORT_TYPE.STATION) return false;
+    function markVisited(stationId) {
+        stationId = Number(stationId);
+        if (!Number.isInteger(stationId)) return false;
 
-        const stationId = Number(position.statID);
         const state = gameState.getStationVisitState();
         if (state.visitedStationIds.includes(stationId)) return false;
 
@@ -30,6 +29,12 @@ const stationVisits = (() => {
             detail: { stationId }
         }));
         return true;
+    }
+
+    function markCurrentStationVisited() {
+        const position = gameState.getCurrentPosition();
+        if (position === null || position.transporttype !== TRANSPORT_TYPE.STATION) return false;
+        return markVisited(position.statID);
     }
 
     function hasStayedLongEnough(now = getCurrentTimeInMilliseconds()) {
@@ -65,8 +70,12 @@ const stationVisits = (() => {
         });
     }
 
+    function getVisitedStationIds() {
+        return [...gameState.getStationVisitState().visitedStationIds];
+    }
+
     function isVisited(stationId) {
-        return gameState.getStationVisitState().visitedStationIds.includes(Number(stationId));
+        return getVisitedStationIds().includes(Number(stationId));
     }
 
     function reset() {
@@ -79,5 +88,5 @@ const stationVisits = (() => {
         });
     }
 
-    return { checkElapsedTime, checkBeforeBoarding, isVisited, reset };
+    return { checkElapsedTime, checkBeforeBoarding, getVisitedStationIds, isVisited, markVisited, reset };
 })();

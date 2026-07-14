@@ -40,6 +40,9 @@
 
 .collection-district-btn,
 .collection-station-btn,
+.collection-company-btn,
+.collection-type-btn,
+.collection-line-btn,
 .collection-back-btn {
     width: 100%;
     padding: 0.8rem 0.9rem;
@@ -62,12 +65,29 @@
     );
 }
 
+.collection-line-progress-btn {
+    --visited-percentage: 0%;
+    background-image: linear-gradient(
+        to right,
+        var(--color-success) 0%,
+        var(--color-success) var(--visited-percentage),
+        var(--color-primary) var(--visited-percentage),
+        var(--color-primary) 100%
+    );
+}
+
+.collection-line-btn.visited {
+    background-color: var(--color-success-muted);
+}
 .collection-station-btn.visited {
     background-color: var(--color-success-muted);
 }
 
 .collection-district-btn:hover,
 .collection-station-btn:hover,
+.collection-company-btn:hover,
+.collection-type-btn:hover,
+.collection-line-btn:hover,
 .collection-back-btn:hover {
     background-color: var(--color-primary-interactive);
 }
@@ -101,4 +121,19 @@
 
 .collection-sort-btn:hover {
     background-color: var(--color-primary-interactive);
+}
+
+.collection-line-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.collection-line-number {
+    font-weight: 700;
+}
+
+.collection-line-route {
+    color: var(--color-text-default);
+    font-size: 0.9rem;
 }

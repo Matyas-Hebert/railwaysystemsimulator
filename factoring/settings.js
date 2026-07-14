@@ -51,6 +51,8 @@ const settings = (() => {
         gameState.setMoney(0);
         gameState.setSettings({ developer: false, autoUpdatesPaused: false });
         gameState.setPinnedStations([]);
+        gameState.setVisitedLines([]);
+        gameState.setCollectedDelayReasons([]);
         foodora.reset();
         stationVisits.reset();
         gameState.setCurrentPosition(null);

@@ -322,4 +322,4 @@ table{
 
 
 .station-name-unvisited { color: var(--color-station-unvisited) !important; }
-.station-name-visited { color: var(--color-text-dark) !important; }
+.station-name-visited { color: var(--color-station-visited) !important; }

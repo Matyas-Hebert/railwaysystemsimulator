@@ -141,7 +141,8 @@ function findPath(startstationID, endstationID, time=-1){
 
 function print(){
     _idosstats.style.display = "none";
-    if (!gameState.getCurrentPosition().iswifi){
+    const developerMode = gameState.getSettings().developer === true;
+    if (!gameState.getCurrentPosition().iswifi && !developerMode){
         _idosresults.innerHTML = "Žádné připojení k Wi-Fi<br>Spojení nebylo možné nalézt!";
         _idosresults.className = "nowifiinfo";
         return;

@@ -5,6 +5,8 @@ class GameState {
     #money = 0;
     #deliveryOrders = [];
     #pinnedDeliveryIds = [];
+    #visitedLines = [];
+    #collectedDelayReasons = [];
     #stationVisitState = {
         stationId: null,
         enteredAt: null,
@@ -41,7 +43,10 @@ class GameState {
 
     setPinnedStations(stationIds) {
         this.#pinnedStations = [...stationIds];
-        localStorage.setItem("_pinnedstations", JSON.stringify(this.#pinnedStations));
+        const storedStations = this.#pinnedStations
+            .map(stationId => this.#toLonLatId(stationId))
+            .filter(lonLatId => lonLatId != null);
+        localStorage.setItem("_pinnedstations", JSON.stringify(storedStations));
     }
 
     addPinnedStation(stationId) {
@@ -85,7 +90,15 @@ class GameState {
 
     setDeliveryOrders(orders) {
         this.#deliveryOrders = structuredClone(orders);
-        localStorage.setItem("_objednavky", JSON.stringify(this.#deliveryOrders));
+        const storedOrders = this.#deliveryOrders.map(order => {
+            const storedOrder = structuredClone(order);
+            storedOrder.startStationLonLatId = this.#getOrderStationLonLatId(order.start);
+            storedOrder.endStationLonLatId = this.#getOrderStationLonLatId(order.end);
+            delete storedOrder.start;
+            delete storedOrder.end;
+            return storedOrder;
+        });
+        localStorage.setItem("_objednavky", JSON.stringify(storedOrders));
     }
 
     getPinnedDeliveryIds() {
@@ -97,13 +110,67 @@ class GameState {
         localStorage.setItem("_pinnedorders", JSON.stringify(this.#pinnedDeliveryIds));
     }
 
+    getCollectedDelayReasons() {
+        return [...this.#collectedDelayReasons];
+    }
+
+    setCollectedDelayReasons(delayReasons) {
+        this.#collectedDelayReasons = [...new Set(delayReasons
+            .filter(reason => typeof reason === "string" && reason.length > 0))];
+        localStorage.setItem("_collecteddelayreasons", JSON.stringify(this.#collectedDelayReasons));
+    }
+
+    addCollectedDelayReason(delayReason) {
+        if (typeof delayReason !== "string"
+            || delayReason.length === 0
+            || this.#collectedDelayReasons.includes(delayReason)) {
+            return false;
+        }
+        this.setCollectedDelayReasons([...this.#collectedDelayReasons, delayReason]);
+        return true;
+    }
+    getVisitedLines() {
+        return [...this.#visitedLines];
+    }
+
+    setVisitedLines(lineIds) {
+        this.#visitedLines = [...new Set(lineIds
+            .map(Number)
+            .filter(Number.isInteger))];
+        localStorage.setItem("_visitedlines", JSON.stringify(this.#visitedLines));
+    }
+
+    addVisitedLine(lineId) {
+        lineId = Number(lineId);
+        if (Number.isInteger(lineId) && !this.#visitedLines.includes(lineId)) {
+            this.setVisitedLines([...this.#visitedLines, lineId]);
+        }
+    }
     getStationVisitState() {
         return structuredClone(this.#stationVisitState);
     }
 
     setStationVisitState(visitState) {
-        this.#stationVisitState = structuredClone(visitState);
-        localStorage.setItem("_stationvisitstate", JSON.stringify(this.#stationVisitState));
+        const stationReference = visitState.stationId ?? visitState.stationLonLatId;
+        const visitedStationReferences = visitState.visitedStationIds
+            ?? visitState.visitedStationLonLatIds;
+        this.#stationVisitState = {
+            stationId: this.#toStationId(stationReference),
+            enteredAt: Number.isFinite(visitState.enteredAt) ? visitState.enteredAt : null,
+            previousLineId: visitState.previousLineId ?? null,
+            previousTripId: visitState.previousTripId ?? null,
+            visitedStationIds: this.#normalizeVisitedStationIds(visitedStationReferences)
+        };
+        const storedState = {
+            stationLonLatId: this.#toLonLatId(this.#stationVisitState.stationId),
+            enteredAt: this.#stationVisitState.enteredAt,
+            previousLineId: this.#stationVisitState.previousLineId,
+            previousTripId: this.#stationVisitState.previousTripId,
+            visitedStationLonLatIds: this.#stationVisitState.visitedStationIds
+                .map(stationId => this.#toLonLatId(stationId))
+                .filter(lonLatId => lonLatId != null)
+        };
+        localStorage.setItem("_stationvisitstate", JSON.stringify(storedState));
     }
 
     updateStationVisitState(changes) {
@@ -119,41 +186,53 @@ class GameState {
             return;
         }
         const stored = structuredClone(this.#currentPosition);
-        stored.statID = this.#stations[stored.statID].lonlat;
-        stored.goalStatID = this.#stations[stored.goalStatID].lonlat;
+        stored.stationLonLatId = this.#toLonLatId(stored.statID);
+        stored.goalStationLonLatId = this.#toLonLatId(stored.goalStatID);
+        delete stored.statID;
+        delete stored.goalStatID;
         localStorage.setItem("_currentposition", JSON.stringify(stored));
     }
 
     #load() {
-        const pinned = localStorage.getItem("_pinnedstations");
-        this.#pinnedStations = pinned === null ? [] : JSON.parse(pinned);
+        this.setPinnedStations(
+            this.#readArray("_pinnedstations")
+                .map(value => this.#toStationId(value))
+                .filter(stationId => stationId != null)
+        );
         this.#settings = this.#readSettings();
         this.#money = this.#readMoney();
-        this.#deliveryOrders = this.#readArray("_objednavky");
+        this.setDeliveryOrders(
+            this.#readArray("_objednavky")
+                .map(order => this.#deserializeDeliveryOrder(order))
+                .filter(order => order != null)
+        );
         this.#pinnedDeliveryIds = this.#readArray("_pinnedorders");
-        this.#stationVisitState = this.#readStationVisitState();
+        this.setVisitedLines(this.#readArray("_visitedlines"));
+        this.setCollectedDelayReasons(this.#readArray("_collecteddelayreasons"));
+        this.setStationVisitState(this.#readStationVisitState());
 
         const saved = localStorage.getItem("_currentposition");
         if (saved === null) return;
         const position = JSON.parse(saved);
         position.iswifi = false;
-        if (!("statID" in position)) return;
         if (!("transporttype" in position)) position.transporttype = TRANSPORT_TYPE.STATION;
-        if (!(parseInt(position.statID) <= 10000)) {
-            position.statID = this.#stationIdByLonLat[position.statID];
-            if (position.statID == null) return;
-        }
-        if (!("goalStatID" in position)) {
-            if (position.transporttype === TRANSPORT_TYPE.WALKING) position.transporttype = TRANSPORT_TYPE.STATION;
-            position.goalStatID = position.statID;
-        } else if (!(parseInt(position.goalStatID) <= 10000)) {
-            position.goalStatID = this.#stationIdByLonLat[position.goalStatID];
-        }
+
+        position.statID = this.#toStationId(position.stationLonLatId ?? position.statID);
+        if (position.statID == null) return;
+
+        const storedGoal = position.goalStationLonLatId ?? position.goalStatID;
+        position.goalStatID = storedGoal == null
+            ? position.statID
+            : this.#toStationId(storedGoal);
+
         if (position.goalStatID == null) {
             position.goalStatID = position.statID;
             position.transporttype = TRANSPORT_TYPE.STATION;
         }
-        this.#currentPosition = position;
+
+        delete position.stationLonLatId;
+        delete position.goalStationLonLatId;
+        this.setCurrentPosition(position);
     }
 
     #readSettings() {
@@ -166,18 +245,70 @@ class GameState {
         }
     }
 
+    #toLonLatId(stationReference) {
+        if (stationReference == null) return null;
+        const key = String(stationReference);
+        if (this.#stationIdByLonLat[key] != null) return key;
+
+        const stationId = Number(stationReference);
+        return Number.isInteger(stationId)
+            ? this.#stations[stationId]?.lonlat ?? null
+            : null;
+    }
+
+    #toStationId(stationReference) {
+        if (stationReference == null) return null;
+        const key = String(stationReference);
+        if (this.#stationIdByLonLat[key] != null) {
+            return Number(this.#stationIdByLonLat[key]);
+        }
+
+        const stationId = Number(stationReference);
+        return Number.isInteger(stationId) && this.#stations[stationId]
+            ? stationId
+            : null;
+    }
+
+    #getOrderStationLonLatId(station) {
+        if (station == null) return null;
+        return this.#toLonLatId(station.lonlat ?? station.id ?? station);
+    }
+
+    #deserializeDeliveryOrder(order) {
+        const startReference = order.startStationLonLatId
+            ?? order.start?.lonlat
+            ?? order.start?.id
+            ?? order.start;
+        const endReference = order.endStationLonLatId
+            ?? order.end?.lonlat
+            ?? order.end?.id
+            ?? order.end;
+        const startId = this.#toStationId(startReference);
+        const endId = this.#toStationId(endReference);
+        if (startId == null || endId == null) return null;
+
+        const runtimeOrder = structuredClone(order);
+        runtimeOrder.start = this.#stations[startId];
+        runtimeOrder.end = this.#stations[endId];
+        delete runtimeOrder.startStationLonLatId;
+        delete runtimeOrder.endStationLonLatId;
+        return runtimeOrder;
+    }
+
     #readStationVisitState() {
         try {
             const stored = JSON.parse(localStorage.getItem("_stationvisitstate"));
             if (stored && typeof stored === "object") {
+                const savedVisits = Array.isArray(stored.visitedStationLonLatIds)
+                    ? stored.visitedStationLonLatIds
+                    : stored.visitedStationIds;
+                const stationReference = stored.stationLonLatId ?? stored.stationId;
                 return {
-                    stationId: stored.stationId ?? null,
+                    stationId: this.#toStationId(stationReference),
                     enteredAt: stored.enteredAt ?? null,
                     previousLineId: stored.previousLineId ?? null,
                     previousTripId: stored.previousTripId ?? null,
-                    visitedStationIds: Array.isArray(stored.visitedStationIds)
-                        ? stored.visitedStationIds.map(Number)
-                        : []
+                    visitedStationIds: this.#normalizeVisitedStationIds(savedVisits)
                 };
             }
         }
@@ -190,8 +321,20 @@ class GameState {
             enteredAt: null,
             previousLineId: null,
             previousTripId: null,
-            visitedStationIds: this.#readArray("_visitedstations").map(Number)
+            visitedStationIds: this.#normalizeVisitedStationIds(
+                this.#readArray("_visitedstations")
+            )
         };
+    }
+
+    #normalizeVisitedStationIds(values) {
+        if (!Array.isArray(values)) return [];
+
+        const normalized = values
+            .map(value => this.#toStationId(value))
+            .filter(stationId => stationId != null);
+
+        return [...new Set(normalized)];
     }
 
     #readArray(storageKey) {

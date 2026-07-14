@@ -539,6 +539,7 @@ function startGame(){
         statID: startid,
         goalStatID: startid
     });
+    stationVisits.markVisited(startid);
     changeCurrentSection(0);
 };
 
@@ -686,5 +687,6 @@ setInterval(updateClock, 1000);
 setInterval(() => {
     if (!settings.areAutoUpdatesPaused()) {
         renderCurrentSection();
+        lineVisits.checkCurrentLine();
     }
 }, 5000);
