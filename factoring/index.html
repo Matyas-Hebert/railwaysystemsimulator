@@ -17,7 +17,6 @@
     <div id="_tables" class="tables">
         <div class="toppanel">
             <div id="_clock" class="unchosen">??:??:??</div>
-            <div id="_money">0,-</div>
             <div id="_wifi" class="wifi" onclick="getboost()"></div>
         </div>
         <div>
@@ -31,38 +30,9 @@
                 <td id="_tab3" class="unchosen" onclick="selectsection(3)">Statistiky</td>
                 <td id="_tab4" class="unchosen" onclick="selectsection(4)">IDOS</td>
             </table>
-            <table class="tabs">
-                <td id="_tab6" class="unchosen" onclick="selectsection(6)">Foodora</td>
-                <td id="_tab7" class="unchosen" onclick="selectsection(7)">Kolekce</td>
-                <td id="_tab8" class="unchosen" onclick="selectsection(8)">Nastavení</td>
-            </table>
             <table id="_information">
 
             </table>
-        </div>
-        <div id="_section8">
-            <div class="settingsrow">
-                <div>DEVELOPER MODE</div>
-                <div onclick="toggledeveloper()" id="_developer">VYPNUTO</div>
-            </div>
-            <div class="settingsrow">
-                <div>NOVÁ HRA</div>
-                <div onclick="newgame()" id="_newgame">RESET</div>
-            </div>
-            <div class="settingsrow" id="_teleportrow" style="display: none;">
-                <div>TELEPORT NA STANICI</div>
-                <div style="display: flex; gap: 0.5rem; align-items: center;">
-                    <input id="_teleportid" type="number" inputmode="numeric" placeholder="ID stanice" style="width: 7rem;">
-                    <button id="_teleportbtn" onclick="teleportToStation()">TELEPORT</button>
-                </div>
-            </div>
-            <div class="settingsrow" id="_moneyrow" style="display: none;">
-                <div>PŘIDAT PENÍZE</div>
-                <div style="display: flex; gap: 0.5rem; align-items: center;">
-                    <input id="_moneyamount" type="number" inputmode="numeric" placeholder="Částka" style="width: 7rem;">
-                    <button id="_moneybtn" onclick="addDeveloperMoney()">PŘIDAT</button>
-                </div>
-            </div>
         </div>
         <div id="_section1">
             <div id="_pinnedlist" class="pinnedlist">
@@ -104,12 +74,6 @@
             <table id="_timetable">
 
             </table>
-        </div>
-        <div id="_section6">
-            
-        </div>
-        <div id="_section7">
-            
         </div>
         <div id="_section2">
             <div id="_doublestop" class="active">
@@ -205,12 +169,7 @@
     <script src="json/delay_reasons.js"></script>
     <script src="json/lonlat.js"></script>
     <script src="game-state.js"></script>
-    <script src="search-utils.js"></script>
-    <script src="geo-utils.js"></script>
-    <script src="time-and-delay.js"></script>
-    <script src="timetable-helpers.js"></script>
-    <script src="collection-tab.js"></script>
-    <script src="timetable-app.js"></script>
+    <script src="timetableanalysis.js"></script>
     <script>
     </script>
 </body>
