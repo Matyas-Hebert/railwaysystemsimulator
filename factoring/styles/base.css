@@ -1,0 +1,325 @@
+:root {
+    --color-primary: #1a237e;
+    --color-primary-interactive: #4c56bd;
+    --color-primary-muted: #8b91d3;
+
+    --color-success: #269c26;
+    --color-success-muted: #78a378;
+    --color-danger: #7e0505;
+    --color-warning: #d87837;
+
+    --color-text-default: #e0e0e0;
+    --color-text-inverse: #fff;
+    --color-text-dark: #000;
+    --color-text-highlight: #efffb7;
+    --color-station-unvisited: var(--color-text-inverse);
+    --color-station-visited: #2add2a;
+
+    --color-border: #8d6f6f;
+    --color-border-subtle: #ccc;
+
+    --color-surface-overlay-subtle: rgba(255, 255, 255, 0.05);
+    --color-surface-overlay-light: rgba(255, 255, 255, 0.1);
+    --color-surface-overlay-medium: rgba(255, 255, 255, 0.15);
+    --color-surface-overlay-strong: rgba(255, 255, 255, 0.3);
+    --color-shadow: rgba(0, 0, 0, 0.3);
+
+    --color-settings-enabled: var(--color-success);
+    --color-settings-disabled: var(--color-danger);
+    --color-delay: var(--color-danger);
+    --color-track: var(--color-text-inverse);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+table {
+    border-collapse: collapse;
+    border: none;
+    text-align: left;
+    background-color: var(--color-primary);
+    color: var(--color-text-default);
+    width: 100%;
+    table-layout: auto;
+}
+
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: var(--color-primary-interactive);
+}
+
+tr {
+    border: 1px solid var(--color-text-dark);
+}
+
+td, th{
+    padding: 12px 8px;
+    text-wrap-mode: nowrap;
+    text-align: left;
+    font-size: 0.9rem;
+    overflow: hidden;
+}
+
+.scroll-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.scroll-text {
+    display: inline-block;
+    padding-left: 0%;
+    animation: slide-end 5s linear infinite;
+}
+
+@keyframes slide-end {
+    0% { transform: translateX(0); }
+    33% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+#_dss2 {
+    text-align: right;
+}
+
+#_mintogoal {
+    font-size: 2rem;
+}
+
+#_turnbtn {
+    background-color: var(--color-warning);
+    color: var(--color-text-dark);
+}
+
+.scroll-container .scroll-text {
+    animation-play-state: paused;
+}
+
+td:first-child, th:first-child {
+    font-weight: bold;
+}
+
+#_walkables {
+    display: flex;
+    flex-direction: column;
+}
+
+#_timetable, #_traintimetable, #_traintimetableheader {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+#_timetableheader {
+    width: 100%;
+    font-weight: bold;
+    font-size: 1.7em;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    color: var(--color-text-inverse);
+    background-color: var(--color-primary);
+    text-align: center;
+}
+
+.subtext{
+    font-size: 0.75rem;
+    text-wrap-mode: wrap;
+}
+
+.trainname{
+    font-weight: bold;
+    font-size: 1.7em;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.whiteheader {
+    font-weight: bold;
+    font-size: 1.7em;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    color: var(--color-text-inverse);
+    text-align: center;
+    background-color: var(--color-primary);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    div {
+        font-size: 1rem;
+    }
+
+    .selected {
+        width: 50%;
+        align-self: center;
+        margin-top: 1rem;
+        font-size: 1.5rem;
+    }
+}
+
+.whiteheaderlightbg {
+    background-color: var(--color-surface-overlay-light);
+}
+
+.reddishinfo {
+    font-weight: bold;
+    font-size: 1.5em;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    color: var(--color-danger);
+    text-align: center;
+    background-color:var(--color-primary-muted);
+    padding: 2rem;
+}
+
+.pinnedlist{
+    display: grid;
+    padding: 1rem;
+    color: var(--color-text-inverse);
+    align-items: stretch;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 0.5rem;
+    grid-row-gap: 0.5rem;
+
+    div{
+        height: "100%";
+        border: var(--color-text-dark) dashed 2px;
+        background-color: var(--color-primary-interactive);
+        color: var(--color-text-highlight);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0.5rem;
+    }
+}
+
+.pinnedlisttoggle{
+    height: 45px;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-align: center;
+    color: var(--color-text-inverse);
+    background-color: var(--color-warning);
+    
+    width: 45px !important;
+    border-radius: 50%;
+}
+
+.rightalign{
+    text-align: right;
+}
+
+tr:nth-child(even) {
+    background-color: var(--color-surface-overlay-subtle);
+}
+
+.delayed{
+    background-color: var(--color-danger);
+    position: relative;
+}
+
+.delayed::after{
+    position: absolute;
+    top: 2px;
+    font-weight: bold;
+    right: 8px;
+    font-size: 1.3rem;
+    content: '!';
+    color: var(--color-text-dark);
+    vertical-align: center;
+}
+
+.tables{
+    display: flex;
+    flex-direction: row;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}   
+
+#_start {
+    height: 100vh;
+    padding: 1rem;
+    box-sizing: border-box;
+
+    position: relative;
+}
+
+#_startoptions {
+    overflow-y: auto;
+}
+
+#_startsearch {
+    position: absolute;
+    bottom: 1rem;   
+    left: 1rem;  
+    right: 1rem; 
+    width: calc(100% - 2rem);
+}
+
+.tabs tr{
+    display: flex;
+    width: 100%;
+}
+
+.tabs td{
+    flex: 1;
+    text-align: center;
+    font-size: large;
+}
+
+td:last-child, th:last-child {
+    width: auto;
+    text-align: center;
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .tables {
+    flex-direction: column;
+  }
+  
+  .tables table, .tables div {
+    width: 100%;
+    font: large;
+  }
+
+  .scroll-container .scroll-text {
+    animation-play-state: running;
+  }
+}
+
+.tableheader{
+    background-color: var(--color-primary-interactive);
+}
+
+.var(--color-success){
+    background-color: var(--color-success);
+}
+
+.detail{
+    background-color: var(--color-primary-interactive);
+    border: var(--color-text-inverse) solid 5px;
+    box-sizing: border-box;
+}
+
+.unselected{
+    background-color: var(--color-success-muted);
+}
+
+.selected{
+    background-color: var(--color-success);
+}
+
+table{
+    padding: 0px;
+}
+
+
+.station-name-unvisited { color: var(--color-station-unvisited) !important; }
+.station-name-visited { color: var(--color-text-dark) !important; }

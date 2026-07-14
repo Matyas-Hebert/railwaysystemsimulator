@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const path = require('path');
 
 async function loadTestJson() {
-    const filePath = path.join(__dirname, '../json/metro.json');
+    const filePath = path.join(__dirname, '../../json/metro.json');
     const raw = await fs.readFile(filePath, 'utf8');
     return JSON.parse(raw);
 }
@@ -45,7 +45,7 @@ function getTrips(startTime, interval){
     return trips = Math.floor(availableTime / interval);
 }
 
-function getStopTimeFromType(type, uvrat=false){
+function getStopTimeForType(type, uvrat=false){
     if (uvrat){
         return 600;
     }
@@ -62,9 +62,9 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   const R = 6371; // Radius of the Earth in km
   const dLat = (lat2 - lat1) * Math.PI / 180;
   const dLon = (lon2 - lon1) * Math.PI / 180;
-  const a = 
+  const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
     Math.sin(dLon / 2) * Math.sin(dLon / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   //console.log(c, a, dLat, dLon, lat1, lat2, lon1, lon2);
@@ -124,7 +124,7 @@ async function generateTimeTables() {
 
     let i = 0;
 
-    const citydatapath = path.join(__dirname, "../json/capitalsdata.json");
+    const citydatapath = path.join(__dirname, "../../json/capitalsdata.json");
     const raw = await fs.readFile(citydatapath, 'utf8');
     const citydata = JSON.parse(raw);
 
@@ -138,7 +138,7 @@ async function generateTimeTables() {
             let lon = Math.round(station.lng*10000);
             let lat = Math.round(station.lat*10000);
             let lonlat = String(lon)+String(lat);
-            
+
             let closest = Infinity;
             let district = undefined;
 
@@ -164,7 +164,7 @@ async function generateTimeTables() {
                     district = name;
                 }
             });
-            
+
             name = name.replace(" - ", "-");
             name = name.replace("-", " - ");
             stations.push({
@@ -244,14 +244,14 @@ async function generateTimeTables() {
                 if (!isFirstStationOfLine){
                     totaltime += getTimeFromDistanceAndType(distanceacc, line.mode);
                     lines[i]["stops"].push({
-                        "sid": stationIDtonewID[stationID], "arr": Math.round(totaltime), "dep": Math.round(totaltime+=getStopTimeFromType(line.mode, isuvrat)), "dist": distanceacc
+                        "sid": stationIDtonewID[stationID], "arr": Math.round(totaltime), "dep": Math.round(totaltime+=getStopTimeForType(line.mode, isuvrat)), "dist": distanceacc
                     });
                     stations[stationIDtonewID[stationID]].arrivals.push(i);
                     stations[stationIDtonewID[stationID]].departures.push(i+1);
                     distanceacc = 0;
                 }
                 else{
-                    totaltime += getStopTimeFromType(line.mode, isuvrat);
+                    totaltime += getStopTimeForType(line.mode, isuvrat);
                     lines[i]["orig"] = stationIDtonewID[stationID];
                     lines[i]["stops"].push({
                         "sid": stationIDtonewID[stationID], "arr": 0, "dep": Math.round(totaltime), "dist": distanceacc
@@ -278,7 +278,7 @@ async function generateTimeTables() {
     });
 
     let timetable = {"lines": lines, "stations": stations};
-    
+
     //console.log(JSON.stringify(timetable, null, "\t"));
     fs.writeFile("final/json/timetable_data.js", "const timetable = " + JSON.stringify(timetable) + ";");
     fs.writeFile("final/json/lonlat.js", "const lonlattoid = " + JSON.stringify(lonlattoid) + ";");

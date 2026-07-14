@@ -1,14 +1,10 @@
-function getnexttripnumber(currtime, trainstarttime, interval, timeadj){
-    return Math.max(Math.ceil((currtime-(trainstarttime+timeadj))/interval),0)+1;
-}
-
 function formatTime(seconds, includeday = true, includeseconds = true) {
-    const d = Math.floor(seconds/86400);
-    let s = (Math.round(seconds) % 86400); 
+    const d = Math.floor(seconds/SECONDS_PER_DAY);
+    let s = (Math.round(seconds) % SECONDS_PER_DAY);
     if (s < 0){
-        s += 86400;
+        s += SECONDS_PER_DAY;
     }
-    
+
     const hh = Math.floor(s / 3600).toString().padStart(2, '0');
     const mm = Math.floor((s % 3600) / 60).toString().padStart(2, '0');
     const ss = (s % 60).toString().padStart(2, '0');
@@ -80,14 +76,14 @@ function getTrainName(line, getnickname=false, padding=true){
     return name.substring(0, 36).padEnd(36, " ");
 }
 
-function getCurrentTimeInMs(){
+function getCurrentTimeInMilliseconds(){
     const now = new Date();
     return now.getTime() - (now.getTimezoneOffset()*60000);
 }
 
-function gettripnumberbytime(line, stationID, time){
-    let extradays = Math.floor(time/86400);
-    time = (time+86400)%86400;
+function getTripNumberByTime(line, stationID, time){
+    let extradays = Math.floor(time/SECONDS_PER_DAY);
+    time = (time+SECONDS_PER_DAY)%SECONDS_PER_DAY;
     // find the first trip that departures from stationID after time
 
     const stop = line.stops.find(s => s.sid === stationID);
@@ -95,7 +91,7 @@ function gettripnumberbytime(line, stationID, time){
     let elapsed = time - firstdep;
 
     if (elapsed < 0){
-        let yesterdayelapsed = elapsed + 86400;
+        let yesterdayelapsed = elapsed + SECONDS_PER_DAY;
         let tripID = Math.ceil(yesterdayelapsed/line.interval);
         if (tripID < line.trips){
             return {"trip": tripID, "day": -1+extradays};
@@ -110,31 +106,28 @@ function gettripnumberbytime(line, stationID, time){
     return {"trip": tripID, "day": extradays};
 }
 
-function getboost(){
+function activateWifiBoost(){
     wifiluckboost = 0.1;
 }
 
-function changecurrentsection(n){
+function changeCurrentSection(n){
     currentsection = n;
-    printcurrentsection();
+    renderCurrentSection();
 }
 
-function changetransporttype(n){
+function changeTransportType(n){
     if (n != gameState.getCurrentPosition().transporttype){
         wifiluckboost = 0;
         gameState.updateCurrentPosition({transporttype: n});
     }
 }
 
-function getontrain(lineID, tripID, day){
-    changetransporttype(1);
+function boardTrain(lineID, tripID, day){
+    stationVisits.checkBeforeBoarding(lineID, tripID);
+    changeTransportType(TRANSPORT_TYPE.TRAIN);
     const positionChanges = {lineID, tripID};
     if (day <= 1000){
-        console.log(day, "!");
-        positionChanges.day = day+Math.floor(getCurrentTimeInMs() / 86400000);
-        console.log(getCurrentTimeInMs() / 86400000);
-        console.log(getCurrentTimeInMs())
-        console.log("newday:", positionChanges.day);
+        positionChanges.day = day+Math.floor(getCurrentTimeInMilliseconds() / MILLISECONDS_PER_DAY);
     }
     else{
         positionChanges.day = day;
@@ -142,7 +135,7 @@ function getontrain(lineID, tripID, day){
     gameState.updateCurrentPosition(positionChanges);
 }
 
-function addrow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibleoverflow=false, includered = true, includetrainnameclass = false, conn = {}, subtextdest = "", noclasssubtextdest = false, goalstationid = 0, includetrainlink = false, includegetonbutton = false, subtexttrain = "", firstcolspan = false, scrolling = false, scrollingfirstcol = false, onlythreecols = false, subtexttime = ""}){
+function addRow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibleoverflow=false, includered = true, includetrainnameclass = false, conn = {}, subtextdest = "", noclasssubtextdest = false, goalstationid = 0, includetrainlink = false, includegetonbutton = false, subtexttrain = "", firstcolspan = false, scrolling = false, scrollingfirstcol = false, onlythreecols = false, subtexttime = ""}){
     let row = table.insertRow(-1);
     let c1 = row.insertCell(0);
     let c2 = row.insertCell(1);
@@ -153,7 +146,7 @@ function addrow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibl
     if (includetrainlink){
         c1.onclick = function(){
             section2data = conn;
-            changecurrentsection(2);
+            changeCurrentSection(2);
         }
     }
     if (!onlythreecols || !firstcolspan){
@@ -161,8 +154,8 @@ function addrow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibl
             c3 = row.insertCell(2);
             c3.innerHTML = `<div>NASTOUPIT</div>`
             c3.onclick = function(){
-                getontrain(conn.lineID, conn.tripID, conn.day);
-                printcurrentsection();
+                boardTrain(conn.lineID, conn.tripID, conn.day);
+                renderCurrentSection();
             };
             c3.style.backgroundColor = "rgb(38, 156, 38)";
         }
@@ -226,28 +219,28 @@ function addrow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibl
 
     if (stopsdata){
         c2.onclick = function(){
-            console.log(stopsdata);
             section1id = goalstationid;
-            changecurrentsection(1);
+            changeCurrentSection(1);
         }
         if (!includegetonbutton){
             c3.onclick = function(){
                 openeddetail = (openeddetail == openeddetailstring) ? "" : openeddetailstring;
                 connstruct = conn;
-                printcurrentsection();
+                renderCurrentSection();
             };
         }
     }
     return row;
 }
 
-function updateclock(){
+function updateClock(){
+    stationVisits.checkElapsedTime();
     const currentDate = new Date();
     var time = currentDate.getHours()*3600 + currentDate.getMinutes()*60 + currentDate.getSeconds();
     _clock.innerText = formatTime(time);
 }
 
-function selectfilter(name){
+function selectFilter(name){
     if (name == "departures" || name == "arrivals"){
         filters["departures"] = !filters["departures"];
         let curr = filters["departures"];
@@ -263,28 +256,26 @@ function selectfilter(name){
             document.getElementById(name).classList = curr ? "selected" : "unselected";
         }
     }
-    printcurrentsection();
+    renderCurrentSection();
 }
 
-function selectdestination(id){
+function selectDestination(id){
     filters.statid = id;
     let departures = filters.departures;
-    printcurrentsection(true);
+    renderCurrentSection(true);
 }
 
-function togglepinnedlist(){
+function togglePinnedList(){
     pinnedstationsopened = !pinnedstationsopened;
-    console.log("toggled", pinnedstationsopened);
-    printcurrentsection();
+    renderCurrentSection();
 }
 
-async function printtimetable(stationID, includegetonbutton = true, table=_timetable, includeheader=true, linescnt=15, timeoffset=0, force=false){
+async function printTimetable(stationID, includegetonbutton = true, table=_timetable, includeheader=true, linescnt=15, timeoffset=0, force=false){
     if (isOpen && !force){
         return;
     }
 
     const currentDate = new Date();
-    console.log(currentDate);
     var time = currentDate.getHours()*3600 + currentDate.getMinutes()*60 + currentDate.getSeconds();
     time+=timeoffset;
 
@@ -295,7 +286,7 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
     table.innerHTML = "";
 
     const station = timetable.stations[stationID];
-    time %= 86400;
+    time %= SECONDS_PER_DAY;
 
     if (currentsection == 1){
         _pinnedlist.innerHTML = "";
@@ -312,10 +303,10 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
         else{
             gameState.getPinnedStations().forEach(pinnedstation => {
                 const newdiv = document.createElement("div");
-                newdiv.innerHTML = "📌 "+timetable.stations[pinnedstation].name;
+                newdiv.innerHTML = "&#128204; " + settings.getStationNameMarkup(timetable.stations[pinnedstation]);
                 newdiv.onclick = function(){
                     section1id = pinnedstation;
-                    changecurrentsection(1);
+                    changeCurrentSection(1);
                 };
                 _pinnedlist.appendChild(newdiv);
             });
@@ -325,9 +316,9 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
     if (includeheader){
         row = _timetableheader;
         row.classList = [];
-        row.innerText = station.name;
-        // addrow({
-        //     "table": table, 
+        settings.setStationName(row, station);
+        // addRow({
+        //     "table": table,
         //     "c1t": station.name,
         //     "firstcolspan": true,
         //     "onlythreecols": true,
@@ -347,11 +338,11 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
             row.onclick = function(){
                 if (!pinned){
                     gameState.addPinnedStation(stationID);
-                    printcurrentsection();
+                    renderCurrentSection();
                 }
                 else{
                     gameState.removePinnedStation(stationID);
-                    printcurrentsection();
+                    renderCurrentSection();
                 }
             };
         }
@@ -374,7 +365,7 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
         let allow = filters.statid == -1;
 
         line.stops.forEach(lstop => {
-            let name = timetable.stations[lstop.sid].name;
+            let name = settings.getStationName(timetable.stations[lstop.sid]);
             if (gather && !Object.keys(stationsset).includes(lstop.sid)){
                 stationsset[lstop.sid] = name;
             }
@@ -396,10 +387,10 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
         let timetosearchfrom = Math.max(time - stoparrdep - line.interval*3 - 30*60, time-43200); // no more than 12 hours
         if (timetosearchfrom < 0){
             day = -1;
-            timetosearchfrom += 86400;
+            timetosearchfrom += SECONDS_PER_DAY;
         }
-        
-        let tripobject = gettripnumberbytime(line, stationID, timetosearchfrom);
+
+        let tripobject = getTripNumberByTime(line, stationID, timetosearchfrom);
         let triptosearch = tripobject.trip;
         day += tripobject.day;
         let delay = 0;
@@ -414,8 +405,8 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
         };
         return {
             lineID: lineID,
-            journeystart: line.starttime + triptosearch * line.interval + day*86400,
-            time: line.starttime + triptosearch * line.interval + stoparrdep + day*86400,
+            journeystart: line.starttime + triptosearch * line.interval + day*SECONDS_PER_DAY,
+            time: line.starttime + triptosearch * line.interval + stoparrdep + day*SECONDS_PER_DAY,
             day: day,
             trip: triptosearch,
             delay: delay,
@@ -435,6 +426,9 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
         let opt = document.createElement('option');
         opt.value = parseInt(stat[0]);
         opt.textContent = stat[1];
+        opt.className = stationVisits.isVisited(opt.value)
+            ? "station-name-visited"
+            : "station-name-unvisited";
         _destinations.add(opt);
     });
 
@@ -444,23 +438,23 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
     }
     else{
         _destinations.value = -1;
-        selectdestination(-1);
+        selectDestination(-1);
     }
     _destheader.innerText = departures ? "Spoje do:" : "Spoje z:";
 
-    addrow({
-        "table": table, 
-        "c1t": "Vlak", 
-        "c2t": departures ? "Do" : "Z", 
-        "c3t": departures ? "Prav. Odjezd " : "Prav. Příjezd", 
+    addRow({
+        "table": table,
+        "c1t": "Vlak",
+        "c2t": departures ? "Do" : "Z",
+        "c3t": departures ? "Prav. Odjezd " : "Prav. Příjezd",
         "onlythreecols": true,
         "includered": false});
 
     if (nexttrains.length == 0){
-        addrow({"table": table, 
-        "c1t": "Spoje", 
-        "c2t": "nevyhovují", 
-        "c3t": "filtrům", 
+        addRow({"table": table,
+        "c1t": "Spoje",
+        "c2t": "nevyhovují",
+        "c3t": "filtrům",
         "onlythreecols": true});
     }
 
@@ -469,7 +463,7 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
             return;
         }
         nexttrains.sort((a, b) => a.time - b.time);
-        
+
         const current = nexttrains[0];
         const line = timetable.lines[current.lineID];
         const stop = line.stops.find(s => s.sid === stationID);
@@ -477,10 +471,10 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
 
         const trainname = getTrainName(line);
         const destinationID = departures ? line.stops[line.stops.length-1].sid : line.stops[0].sid;
-        const destinationname = timetable.stations[destinationID].name.substring(0, 35).padEnd(35, " ");
+        const destinationname = settings.getStationName(timetable.stations[destinationID]).substring(0, 35).padEnd(35, " ");
         const regionname = timetable.stations[destinationID].district;
 
-        let delaystr = current.delay.status == -1 ? "Zrušeno ve stanici " + timetable.stations[current.delay.station].name : 
+        let delaystr = current.delay.status === TRAIN_STATUS.CANCELLED_BEFORE_TARGET ? "Zrušeno ve stanici " + settings.getStationName(timetable.stations[current.delay.station]) :
             (current.delay.delay >= 60 ? "+"+String(Math.floor(current.delay.delay/60)) : "")+(current.delay.delay >= 300 ? "<br>"+delays.getReason(current.lineID, current.trip, current.day) : "");
 
         stopsdata = [];
@@ -494,7 +488,7 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
                 distacc += stop.dist;
                 stopsdata.push({
                     "id": stop.sid,
-                    "station": timetable.stations[stop.sid].name,
+                    "station": settings.getStationName(timetable.stations[stop.sid]),
                     "arr": formatTime(stop.arr+current.journeystart, false),
                     "dep": stop.sid == finalstopid ? "-" : formatTime(stoparrdep+current.journeystart, false),
                     "dist": String(Math.round(distacc))+"km"
@@ -506,20 +500,20 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
         });
 
         let conn = {"lineID": current.lineID, "tripID": current.trip, "day": current.day, "hidesinfront": true};
-        let row = addrow({
-            "table": table, 
-            "c1t": trainname, 
-            "c2t": destinationname, 
-            "c3t": formatTime(current.time), 
+        let row = addRow({
+            "table": table,
+            "c1t": trainname,
+            "c2t": settings.getStationNameMarkup(timetable.stations[destinationID]),
+            "c3t": formatTime(current.time),
             "scrolling": destinationname.trim().length >= 18,
-            "stopsdata": stopsdata, 
-            "includered": current.delay.delay >= 60 || current.delay.status == -1, 
-            "conn": conn, 
-            "subtextdest": regionname, 
+            "stopsdata": stopsdata,
+            "includered": current.delay.delay >= 60 || current.delay.status === TRAIN_STATUS.CANCELLED_BEFORE_TARGET,
+            "conn": conn,
+            "subtextdest": regionname,
             "subtexttrain": line.nickname,
             "subtexttime": delaystr,
             "onlythreecols": true,
-            "includegetonbutton": current.delay.status == 3 && includegetonbutton,
+            "includegetonbutton": current.delay.status === TRAIN_STATUS.STOPPED_AT_TARGET && includegetonbutton,
             "includetrainlink": true,
             "goalstationid": destinationID});
 
@@ -527,8 +521,8 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
             if (current.trip >= current.maxtrips-1) {
                 current.day++;
                 current.trip = 0;
-                current.time = line.starttime + current.day*86400 + stoparrdep;
-                current.journeystart = line.starttime + current.day*86400;
+                current.time = line.starttime + current.day*SECONDS_PER_DAY + stoparrdep;
+                current.journeystart = line.starttime + current.day*SECONDS_PER_DAY;
             } else {
                 current.trip++;
                 current.time += current.interval;
@@ -539,27 +533,26 @@ async function printtimetable(stationID, includegetonbutton = true, table=_timet
     }
 }
 
-function startgame(){
+function startGame(){
     gameState.setCurrentPosition({
-        transporttype: 0,
+        transporttype: TRANSPORT_TYPE.STATION,
         statID: startid,
         goalStatID: startid
     });
-    changecurrentsection(0);
+    changeCurrentSection(0);
 };
 
-function selectsection(section){
-    if (section >= 0 && section < 6){
-        changecurrentsection(section);
+function selectSection(section){
+    if (section >= 0 && section <= 8){
+        changeCurrentSection(section);
     }
     if (currentsection == 4){
         idos.initializeTime();
     }
-    printcurrentsection();
+    renderCurrentSection();
 }
 
-function printcurrentsection(force = false){
-    console.log(gameState.getCurrentPosition());
+function renderCurrentSection(force = false){
     _start.style.display = "none";
     _tables.style.display = "none";
     if (gameState.getCurrentPosition() == null){
@@ -573,24 +566,30 @@ function printcurrentsection(force = false){
     _section3.style.display = currentsection == 3 ? "block" : "none";
     _section4.style.display = currentsection == 4 ? "block" : "none";
     _section5.style.display = currentsection == 5 ? "block" : "none";
+    _section6.style.display = currentsection == 6 ? "block" : "none";
+    _section7.style.display = currentsection == 7 ? "block" : "none";
+    _section8.style.display = currentsection == 8 ? "block" : "none";
     _subsection5.style.display = "none";
     _tab0.className = currentsection == 0 ? "chosen" : "unchosen";
     _tab1.className = currentsection == 1 ? "chosen" : "unchosen";
     _tab2.className = currentsection == 2 ? "chosen" : "unchosen";
     _tab4.className = currentsection == 4 ? "chosen" : "unchosen";
     _tab5.className = currentsection == 5 ? "chosen" : "unchosen";
-    _tab5.style.display = gameState.getCurrentPosition().transporttype == 0 ? "block" : "none";
+    _tab6.className = currentsection == 6 ? "chosen" : "unchosen";
+    _tab7.className = currentsection == 7 ? "chosen" : "unchosen";
+    _tab8.className = currentsection == 8 ? "chosen" : "unchosen";
+    _tab5.style.display = gameState.getCurrentPosition().transporttype === TRANSPORT_TYPE.STATION ? "block" : "none";
     if (currentsection == 0){
-        if (gameState.getCurrentPosition().transporttype == 0){
-            printtimetable(gameState.getCurrentPosition().statID, true, _timetable, true, 15, 0, force);
+        if (gameState.getCurrentPosition().transporttype === TRANSPORT_TYPE.STATION){
+            printTimetable(gameState.getCurrentPosition().statID, true, _timetable, true, 15, 0, force);
         }
-        if (gameState.getCurrentPosition().transporttype == 1){
+        if (gameState.getCurrentPosition().transporttype === TRANSPORT_TYPE.TRAIN){
             _section0.style.display = "none";
             _section2.style.display = "block";
             gameState.updateCurrentPosition({hidesinfront: true});
             schedule.print(_traintimetable, gameState.getCurrentPosition(), true, true);
         }
-        if (gameState.getCurrentPosition().transporttype == 2){
+        if (gameState.getCurrentPosition().transporttype === TRANSPORT_TYPE.WALKING){
             _section0.style.display = "none";
             _section2.style.display = "block";
             _subsection5.style.display = "block";
@@ -598,28 +597,34 @@ function printcurrentsection(force = false){
         }
     }
     if (currentsection == 1){
-        printtimetable(section1id, false, _timetable, true, 15, 0, force);
+        printTimetable(section1id, false, _timetable, true, 15, 0, force);
     }
     if (currentsection == 2){
         schedule.print(_traintimetable, section2data);
     }
+    if (currentsection == 6){
+        foodora.render();
+    }
+    if (currentsection == 7){
+        collectionTab.render();
+    }
     if (currentsection == 5){
-        walking.printOptions(gameState.getCurrentPosition().transporttype == 2 ? -1 : gameState.getCurrentPosition().statID);
+        walking.printOptions(gameState.getCurrentPosition().transporttype === TRANSPORT_TYPE.WALKING ? -1 : gameState.getCurrentPosition().statID);
     }
 
     gameState.updateCurrentPosition({iswifi: false});
-    if (gameState.getCurrentPosition().transporttype == 0){
+    if (gameState.getCurrentPosition().transporttype === TRANSPORT_TYPE.STATION){
         gameState.updateCurrentPosition({iswifi: delays.hasStationWifi(gameState.getCurrentPosition().statID, gameState.getCurrentPosition().day)});
     }
-    if (gameState.getCurrentPosition().transporttype == 1){
+    if (gameState.getCurrentPosition().transporttype === TRANSPORT_TYPE.TRAIN){
         gameState.updateCurrentPosition({iswifi: delays.hasTrainWifi(gameState.getCurrentPosition().lineID, gameState.getCurrentPosition().tripID, gameState.getCurrentPosition().day, timetable.lines[gameState.getCurrentPosition().lineID].type)});
     }
-    if (gameState.getCurrentPosition().transporttype == 2){
+    if (gameState.getCurrentPosition().transporttype === TRANSPORT_TYPE.WALKING){
         let start = gameState.getCurrentPosition().time;
         let dist = walking.getDistance(gameState.getCurrentPosition().statID, gameState.getCurrentPosition().goalStatID);
         let mstime = dist*8*60*1000;
         let end = start+mstime;
-        let current = getCurrentTimeInMs();
+        let current = getCurrentTimeInMilliseconds();
         if (Math.abs(current - start) < 60000){
             gameState.updateCurrentPosition({iswifi: delays.hasStationWifi(gameState.getCurrentPosition().statID, gameState.getCurrentPosition().day)});
         }
@@ -643,18 +648,15 @@ _destinations.addEventListener('click', () => {
     if (justClosed){
         return;
     }
-    isOpen = !isOpen; 
-    console.log(isOpen ? "Opened" : "Closed");
+    isOpen = !isOpen;
 });
 
 _destinations.addEventListener('blur', () => {
     isOpen = false;
-    console.log("Closed (lost focus)");
 });
 
 _destinations.addEventListener('change', () => {
     isOpen = false;
-    console.log("Closed (item selected)");
     justClosed = true;
     setTimeout(() => { justClosed = false; }, 10);
 });
@@ -662,7 +664,6 @@ _destinations.addEventListener('change', () => {
 window.addEventListener('scroll', () => {
     if (isOpen){
         isOpen = false;
-        console.log("Closed (item scrolled)");
     }
 });
 
@@ -678,7 +679,12 @@ let section1id = 200;
 let startid = -1;
 let wifiluckboost = 0;
 let section2data = {"lineID": 1, "tripID": 1, "day": 0, "hidesinfront": true};
-printcurrentsection();
-setInterval(updateclock, 1000);
-setInterval(printcurrentsection, 5000);
-let m = timetable.stations.length;
+foodora.initialize();
+settings.render();
+renderCurrentSection();
+setInterval(updateClock, 1000);
+setInterval(() => {
+    if (!settings.areAutoUpdatesPaused()) {
+        renderCurrentSection();
+    }
+}, 5000);

@@ -8,7 +8,6 @@ function findPath(startstationID, endstationID, time=-1){
         time = currentDate.getHours()*3600 + currentDate.getMinutes()*60 + currentDate.getSeconds();
     }
     //time = 14*3600+40*60;
-    console.log("starttime", formatTime(time));
     const checkedstations = {};
     const uncheckedstations = {};
     const checkedlines = new Set();
@@ -20,7 +19,7 @@ function findPath(startstationID, endstationID, time=-1){
         let stationID = null;
 
         for (const id in uncheckedstations){
-            let time = uncheckedstations[id].time.time + uncheckedstations[id].time.day*86400;
+            let time = uncheckedstations[id].time.time + uncheckedstations[id].time.day*SECONDS_PER_DAY;
             if (time < mintime){
                 mintime = time;
                 stationID = id;
@@ -28,7 +27,7 @@ function findPath(startstationID, endstationID, time=-1){
         }
 
         stationID = parseInt(stationID);
-        
+
         checkedstations[stationID] = uncheckedstations[stationID];
         delete uncheckedstations[stationID];
 
@@ -40,9 +39,9 @@ function findPath(startstationID, endstationID, time=-1){
             // 1. Posbíráme trasu pozpátku
             while (data && data.from !== undefined) {
                 let line = timetable.lines[data.line];
-                let tripStartTime = line.starttime + data.trip * line.interval + data.time.day*86400;
-                if (tripStartTime > data.time.time + data.time.day*86400){
-                    tripStartTime -= 86400;
+                let tripStartTime = line.starttime + data.trip * line.interval + data.time.day*SECONDS_PER_DAY;
+                if (tripStartTime > data.time.time + data.time.day*SECONDS_PER_DAY){
+                    tripStartTime -= SECONDS_PER_DAY;
                 }
                 let startStop = line.stops.find(s => s.sid === data.from);
                 let endStop = line.stops.find(s => s.sid === currentId);
@@ -60,9 +59,9 @@ function findPath(startstationID, endstationID, time=-1){
                     }
                 });
                 path.push({
-                    fromName: timetable.stations[data.from].name,
+                    fromName: settings.getStationName(timetable.stations[data.from]),
                     fromID: data.from,
-                    toName: timetable.stations[currentId].name,
+                    toName: settings.getStationName(timetable.stations[currentId]),
                     toID: currentId,
                     dep: tripStartTime + startStop.dep,
                     arr: tripStartTime + endStop.arr,
@@ -84,12 +83,10 @@ function findPath(startstationID, endstationID, time=-1){
             path.reverse();
 
             // 3. Vykreslíme to hezky
-            console.log(`--- SPOJENÍ Z ${path[0].fromName.toUpperCase()} ---`);
             let p = "";
             path.forEach((step, index) => {
                 p += `${index + 1}. ${step.train}: ${step.fromName.padEnd(30, " ")} [${String(step.fromID).padStart(4, '0')}] (${step.dep}) -> ${step.toName.padEnd(30, " ")} [${String(step.toID).padStart(4, '0')}] (${step.arr})` + "\n";
             });
-            console.log(p);
 
             return path;
         }
@@ -106,10 +103,8 @@ function findPath(startstationID, endstationID, time=-1){
                     if (lstop.sid == stationID){
                         found = true;
                         const stop = lstop;
-                        let tripo = gettripnumberbytime(line, stationID, mintime);
-                        if (mintime > 86400 && tripo.day > 1){
-                            console.log(formatTime(mintime));
-                            console.log(tripo);
+                        let tripo = getTripNumberByTime(line, stationID, mintime);
+                        if (mintime > SECONDS_PER_DAY && tripo.day > 1){
                         }
                         day += tripo.day;
                         trip = tripo.trip;
@@ -117,25 +112,22 @@ function findPath(startstationID, endstationID, time=-1){
                     else if (found){
                         let newarrtime = lstop.arr + trip*line.interval + line.starttime;
                         let tmpday = day;
-                        if (newarrtime >= 86400){
-                            newarrtime -= 86400;
+                        if (newarrtime >= SECONDS_PER_DAY){
+                            newarrtime -= SECONDS_PER_DAY;
                             tmpday++;
                         }
                         if (tmpday > 1){
-                            console.log(line);
-                            console.log(formatTime(newarrtime), day, formatTime(line.starttime));
                         }
                         if (!Object.keys(checkedstations).includes(String(lstop.sid))){
                             let foundinunchecked = Object.keys(uncheckedstations).includes(String(lstop.sid));
                             if (!foundinunchecked){
                                 uncheckedstations[lstop.sid] = {"from": stationID, "line": lineID, "trip": trip, "time": {"time": newarrtime, "day": tmpday}};
                             }
-                            else if (uncheckedstations[lstop.sid].time.time + uncheckedstations[lstop.sid].time.day*86400 > newarrtime + tmpday*86400){
+                            else if (uncheckedstations[lstop.sid].time.time + uncheckedstations[lstop.sid].time.day*SECONDS_PER_DAY > newarrtime + tmpday*SECONDS_PER_DAY){
                                 uncheckedstations[lstop.sid] = {"from": stationID, "line": lineID, "trip": trip, "time": {"time": newarrtime, "day": tmpday}};
                             }
                         }
                         else{
-                            //console.log("found in checked stations");
                         }
                     }
                 });
@@ -156,10 +148,8 @@ function print(){
     }
     _idosstats.style.display = "flex";
     let res = findPath(locations[0], locations[1], departureTime);
-    console.log(res);
     _idosresults.innerHTML = "";
 
-    console.log("printing idos");
 
     //_idosresults
     let totaldist = 0;
@@ -189,7 +179,7 @@ function print(){
 
         row.onclick = function(){
             section2data = result.traindata;
-            changecurrentsection(2);
+            changeCurrentSection(2);
         };
 
         let srow = _idosresults.insertRow(-1);
@@ -201,12 +191,12 @@ function print(){
         if (starttime == null){
             starttime = result.dep;
         }
-        sc2.innerText = timetable.stations[result.fromID].name;
+        settings.setStationName(sc2, timetable.stations[result.fromID]);
         sc2.style.textAlign = "left";
         sc2.style.textWrap = "wrap";
         sc2.onclick = function(){
             section1id = result.fromID;
-            changecurrentsection(1);
+            changeCurrentSection(1);
         };
 
         let erow = _idosresults.insertRow(-1);
@@ -216,12 +206,12 @@ function print(){
         ec0.innerText = "●"
         ec1.innerText = formatTime(result.arr);
         endtime = result.arr;
-        ec2.innerText = timetable.stations[result.toID].name;
+        settings.setStationName(ec2, timetable.stations[result.toID]);
         ec2.style.textAlign = "left";
         ec2.style.textWrap = "wrap";
         ec2.onclick = function(){
             section1id = result.toID;
-            changecurrentsection(1);
+            changeCurrentSection(1);
         };
         erow.className = "lastSectionRow";
     });
@@ -235,12 +225,10 @@ function print(){
         _idosstatstime.innerText = String(hours)+"h"+String(minutes)+"m";
     }
     let speed = totaldist/(timeelapsed/3600);
-    console.log(speed);
     _idosstatsspeed.innerText = String(Math.round(speed))+"km/h";
 }
 
 function switchLocations(){
-    console.log("switching");
     let tmp = locations[0];
     locations[0] = locations[1];
     locations[1] = tmp;
@@ -250,41 +238,38 @@ function switchLocations(){
     _idosstart.innerHTML = _idosend.innerHTML;
     _idosend.value = tmpvalue;
     _idosend.innerHTML = tmphtml;
-    printcurrentsection();
+    renderCurrentSection();
 }
 
 function decreaseTime(){
     departureTime -= 60*30;
-    updatedepartureTimeview();
+    updateTimeView();
 }
 
 function increaseTime(){
     departureTime += 60*30;
-    updatedepartureTimeview();
+    updateTimeView();
 }
 
 function updateTime(){
-    let parts = _departureTime.value.split(":");
+    const timeInput = document.querySelector("#_idostime");
+    let parts = timeInput.value.split(":");
     if (parts.length < 2){
         return;
     }
     let hours = parseInt(parts[0]);
     let minutes = parseInt(parts[1]);
-    console.log(hours, minutes);
     if (minutes > 100){
         hours = Math.min((hours%10)*10, 20);
-        console.log(hours, minutes);
         hours += Math.floor(minutes/100);
-        console.log(hours, minutes);
         minutes %= 100;
     }
-    console.log(hours, minutes);
     departureTime = hours*3600+minutes*60;
-    updatedepartureTimeview();
+    updateTimeView();
 }
 
 function updateTimeView(){
-    _departureTime.value = formatTime(departureTime, false, false);
+    document.querySelector("#_idostime").value = formatTime(departureTime, false, false);
 }
 
     function setLocation(index, stationId) {

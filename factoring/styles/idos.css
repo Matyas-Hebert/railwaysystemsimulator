@@ -1,0 +1,178 @@
+.search-panel {
+    background-color: var(--color-primary);
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px var(--color-shadow);
+    margin: 20px auto;
+}
+
+.idossearchh {
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-text-inverse);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    padding: 0 5px;
+    position: relative;
+}
+
+.idossearchh::after {
+    content: '⇆';
+    font-size: 1.5rem;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -20%);
+}
+
+#_idosresults {
+    width: 100%;
+}
+
+.idossearch {
+    display: flex;
+    gap: 10px;
+}
+
+.timesetting {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0px;
+    height: 45px;
+    text-align: center;
+    color: var(--color-text-inverse);
+    font-size: 2rem;
+    display: flex !important;
+    width: 100%;
+}
+
+#_idostime {
+    text-align: center;
+    font-size: 2rem;
+    width: 100%;
+    min-width: 75%;
+    border: none;
+    display: block;
+}
+
+.s1optionsframe {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+
+#_s1optionsclose {
+    flex: 1;
+    right: 0;
+    height: 45px;
+    padding: 0 15px;
+    background-color: var(--color-danger);
+    font-size: 1rem;
+    color: var(--color-text-inverse);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.idossearch input {
+    flex: 1;
+    height: 45px;
+    padding: 0 15px;
+    min-width: 0;
+    background-color: var(--color-text-inverse);
+    font-size: 1rem;
+    color: var(--color-primary);
+}
+
+.toppanel {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: 0.75rem;
+    min-height: 4.25rem;
+    padding: 1rem;
+    background-color: var(--color-primary);
+}
+
+.wifi,
+.nowifi {
+    justify-self: end;
+    width: 2.25rem;
+    height: 2.25rem;
+    max-width: 100%;
+    box-sizing: border-box;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right center;
+    filter: invert(1);
+    cursor: pointer;
+}
+
+.wifi {
+    background-image: url("../img/wifi.png");
+}
+
+.nowifi {
+    background-image: url("../img/nowifi.png");
+}
+
+#_clock {
+    justify-self: start;
+    min-width: 0;
+    color: var(--color-text-inverse);
+    font-size: 2rem;
+    text-align: left;
+}
+
+#_money {
+    justify-self: center;
+    color: var(--color-text-inverse);
+    font-size: 2rem;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    white-space: nowrap;
+}
+
+#_idosstats {
+    display: none;
+    color: var(--color-text-inverse);
+    padding: 1rem;
+    text-align: center;
+
+    div {
+        font-size: 1.2rem;
+    }
+}
+
+.nowifiinfo {
+    text-align: center;
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+#_searchstation {
+    flex: 3;
+    height: 45px;
+    padding: 0 15px;
+    background-color: var(--color-text-inverse);
+    font-size: 1rem;
+    color: var(--color-primary);
+}
+
+.idossearchs {
+    display: block;
+    width: 100%;
+    height: 55px;
+    margin-top: 15px;
+    background-color: var(--color-success);
+    color: var(--color-text-inverse);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+select option {
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding: 10px;
+}

@@ -1,0 +1,104 @@
+.collection-tab {
+    padding: 1rem;
+    color: var(--color-text-inverse);
+}
+
+.collection-nav {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.collection-nav-btn {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.35rem;
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    cursor: pointer;
+}
+
+.collection-nav-btn.active {
+    background-color: var(--color-success);
+}
+
+.collection-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.35rem;
+    background-color: var(--color-surface-overlay-light);
+}
+
+.collection-empty {
+    color: var(--color-text-default);
+    font-size: 1rem;
+    text-align: center;
+}
+
+.collection-district-btn,
+.collection-station-btn,
+.collection-back-btn {
+    width: 100%;
+    padding: 0.8rem 0.9rem;
+    border: none;
+    border-radius: 0.35rem;
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    text-align: left;
+    cursor: pointer;
+}
+
+.collection-district-btn {
+    --visited-percentage: 0%;
+    background-image: linear-gradient(
+        to right,
+        var(--color-success) 0%,
+        var(--color-success) var(--visited-percentage),
+        var(--color-primary) var(--visited-percentage),
+        var(--color-primary) 100%
+    );
+}
+
+.collection-station-btn.visited {
+    background-color: var(--color-success-muted);
+}
+
+.collection-district-btn:hover,
+.collection-station-btn:hover,
+.collection-back-btn:hover {
+    background-color: var(--color-primary-interactive);
+}
+
+.collection-section-title {
+    margin: 0.25rem 0;
+    color: var(--color-text-inverse);
+    font-weight: 700;
+}
+
+.collection-sort {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.collection-sort-btn {
+    min-width: 0;
+    padding: 0.6rem 0.35rem;
+    border: none;
+    border-radius: 0.35rem;
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    cursor: pointer;
+}
+
+.collection-sort-btn.active {
+    background-color: var(--color-success);
+}
+
+.collection-sort-btn:hover {
+    background-color: var(--color-primary-interactive);
+}

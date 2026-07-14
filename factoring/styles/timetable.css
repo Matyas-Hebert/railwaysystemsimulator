@@ -1,0 +1,304 @@
+.filters{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background-color: var(--color-success);
+}
+
+.filters1, .filters2, .filters3{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    align-items: center;
+}
+
+.search-result{
+    padding-top: 5px;
+    font-size: 1rem;
+    background-color: var(--color-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: var(--color-text-inverse);
+    border-bottom: var(--color-border) solid 1px;
+}
+
+.colored-search-result{
+    padding-top: 5px;
+    font-size: 1rem;
+    background-color: var(--color-warning);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: var(--color-text-dark);
+    border-bottom: var(--color-border) solid 1px;
+}
+
+.main-text{
+    padding-left: 10px;
+}
+
+.alt-text{
+    text-align: right;
+    padding-right: 10px;
+    font-size: 0.8em;
+}
+
+#_destinations{
+    font-size: 0.8em;
+    text-align: left;
+    border: none;
+    margin-right: 5px;
+}
+
+#_destheader{
+    text-wrap-mode: nowrap;
+    padding: 10px;
+}
+
+.chosen{
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: var(--color-surface-overlay-medium);
+}
+
+.lastSectionRow{
+    border-bottom: var(--color-text-inverse) solid 5px;
+}
+
+.unchosen{
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.filters div{
+    font-size: large;
+    text-align: center;
+    border: var(--color-text-dark) solid 1px;
+    border-bottom: 0px;
+    box-sizing: border-box;
+}
+
+.filters1 div{
+    width: 100%;
+    padding-bottom: .5rem;
+    padding-top: .5rem;
+}
+
+.filters2 div{
+    width: 100%;
+    padding-bottom: .5rem;
+    padding-top: .5rem;
+}
+
+.filters3 div{
+    width: 100%;
+    background-color: var(--color-success);
+}
+
+#_walkables tr:first-child th, 
+#_walkables tr:first-child td
+{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--color-primary);
+}
+
+.walkable td{
+    font-size: 1.2em;
+    padding: 10px;
+}
+
+.innertablerow td{
+    background-color: var(--color-primary-interactive);
+}
+
+.innertable td{
+    font-size: 0.8em;
+}
+
+.innertable td .subtext{
+    font-size: 0.7em;
+}
+
+#_traintimetable td {
+    text-align: center;
+}
+
+#_traintimetableheader td{
+    text-align: center;
+}
+
+.border {
+    background-color: var(--color-text-dark);
+}
+
+.visibleoverflow td {
+    overflow: visible;
+}
+
+.overflowvisible {
+    overflow: visible;
+}
+
+.overflowvisiblelowerlayer {
+    display: block;
+}
+
+.progress-box {
+    width: 100%;
+    background-color: var(--color-primary);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.stations {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    color: var(--color-text-inverse);
+    font-weight: bold;
+}
+
+.station {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--color-text-inverse);
+    font-weight: bold;
+}
+
+.track, .singlestop-track {
+    position: relative;
+    width: 100%;
+    height: 4px;
+    background-color: var(--color-surface-overlay-strong);
+}
+
+.firststop-track {
+    position: relative;
+    width: 50% !important;
+    left: 50%;
+    height: 4px;
+    background-color: var(--color-surface-overlay-strong);
+}
+
+.laststop-track {
+    position: relative;
+    width: 50% !important;
+    height: 4px;
+    background-color: var(--color-surface-overlay-strong);
+}
+
+.progresstrack {
+    position: relative;
+    height: 4px;
+    bottom: 4px;
+    background-color: var(--color-text-inverse);
+}
+
+#singlestop {
+    width: 50% !important;
+}
+
+.singlestop-track::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-text-inverse);
+    left: 50%;
+    top: 2px;
+    transform: translate(-50%, -42%);
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.firststop-track::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-text-inverse);
+    top: 2px;
+    transform: translate(-50%, -42%);
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.laststop-track::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-text-inverse);
+    top: 2px;
+    left: 100%;
+    transform: translate(-50%, -42%);
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.track::before{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-text-inverse);
+    transform: translate(-50%, -42%);
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.notpinned {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24'><path fill='black' d='M16 9V4h1c.55 0 1-.45 1-1s-.45-1-1-1H7c-.55 0-1 .45-1 1s.45 1 1 1h1v5c0 1.66-1.34 3-3 3v2h5.97v7l1 1 1-1v-7H19v-2c-1.66 0-3-1.34-3-3z'/></svg>");
+    background-repeat: no-repeat;
+    
+    background-position: calc(100% - 5px) 5px; 
+    
+    background-size: 25px 25px;
+}
+
+.pinned {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24'><path fill='salmon' d='M16 9V4h1c.55 0 1-.45 1-1s-.45-1-1-1H7c-.55 0-1 .45-1 1s.45 1 1 1h1v5c0 1.66-1.34 3-3 3v2h5.97v7l1 1 1-1v-7H19v-2c-1.66 0-3-1.34-3-3z'/></svg>");
+    background-repeat: no-repeat;
+    
+    background-position: calc(100% - 5px) 5px; 
+    
+    background-size: 25px 25px;
+}
+
+.track::after{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-text-inverse);
+    transform: translate(50%, -42%);
+    border-radius: 50%;
+    z-index: 5;
+    right: 0%;
+}
+
+.train {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 30px !important;
+    height: 30px !important;
+    transform: translate(-50%, -50%) scaleX(-1);
+    line-height: 1;
+    white-space: nowrap;
+    font-size: 24px;
+    z-index: 10;
+    cursor: default;
+}
+
+.inactive {
+    display: none;
+}
+

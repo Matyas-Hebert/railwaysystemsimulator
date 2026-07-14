@@ -37,10 +37,10 @@ function toggle(clickedrow, stopsdata){
         //let c4 = detailrow.insertCell(3);
 
         if (stopdata.station.length >= 17){
-            c1.innerHTML = `<div class="scroll-container"><div class="scroll-text">${stopdata.station}</div></div><div class="subtext">${timetable.stations[stopdata.id].district}</div>`;
+            c1.innerHTML = `<div class="scroll-container"><div class="scroll-text">${settings.getStationNameMarkup(timetable.stations[stopdata.id])}</div></div><div class="subtext">${timetable.stations[stopdata.id].district}</div>`;
         }
         else{
-            c1.innerHTML = `<div>${stopdata.station}</div></div><div class="subtext">${timetable.stations[stopdata.id].district}</div>`;
+            c1.innerHTML = `<div>${settings.getStationNameMarkup(timetable.stations[stopdata.id])}</div></div><div class="subtext">${timetable.stations[stopdata.id].district}</div>`;
         }
         c2.innerText = stopdata.arr;
         c3.innerText = stopdata.dep;
@@ -52,63 +52,62 @@ function toggle(clickedrow, stopsdata){
 
         c1.onclick = function() {
             section1id = stopdata.id;
-            changecurrentsection(1);
+            changeCurrentSection(1);
         };
         i++;
     });
 }
 
-function updatetrackprogress(status, progress, station1, station2){
+function updateTrackProgress(status, progress, station1, station2){
     _doublestop.className = "inactive";
     _singlestop.className = "inactive";
     _firststop.className = "inactive";
     _laststop.className = "inactive";
-    if (status == -1 || status == 7){
+    if (status === TRAIN_STATUS.CANCELLED_BEFORE_TARGET || status === TRAIN_STATUS.CANCELLED_AFTER_TARGET){
         _singlestop.className = "active";
-        _sss1.innerText = timetable.stations[station1].name;
+        settings.setStationName(_sss1, timetable.stations[station1]);
         _sss1.onclick = function(){
             section1id = station1;
-            changecurrentsection(1);
+            changeCurrentSection(1);
         };
     }
-    if (status == 0){
+    if (status === TRAIN_STATUS.NOT_DEPARTED){
         _firststop.className = "active";
-        _fss1.innerText = timetable.stations[station1].name;
+        settings.setStationName(_fss1, timetable.stations[station1]);
         _fss1.onclick = function(){
             section1id = station1;
-            changecurrentsection(1);
+            changeCurrentSection(1);
         };
     }
-    if (status == 6){
+    if (status === TRAIN_STATUS.FINISHED){
         _laststop.className = "active";
-        _lss1.innerText = timetable.stations[station1].name;
+        settings.setStationName(_lss1, timetable.stations[station1]);
         _lss1.onclick = function(){
             section1id = station1;
-            changecurrentsection(1);
+            changeCurrentSection(1);
         };
     }
-    if (status == 1 || status == 3 || status == 5){
+    if (status === TRAIN_STATUS.STOPPED_BEFORE_TARGET || status === TRAIN_STATUS.STOPPED_AT_TARGET || status === TRAIN_STATUS.STOPPED_PAST_TARGET){
         _singlestop.className = "active";
-        _sss1.innerText = timetable.stations[station1].name;
+        settings.setStationName(_sss1, timetable.stations[station1]);
         _sss1.onclick = function(){
             section1id = station1;
-            changecurrentsection(1);
+            changeCurrentSection(1);
         };
     }
-    if (status == 2 || status == 4){
+    if (status === TRAIN_STATUS.TRAVELLING_TO_TARGET || status === TRAIN_STATUS.TRAVELLING_PAST_TARGET){
         _doublestop.className = "active";
         progress = Math.floor(progress*100);
         _dspt.style.setProperty("width", `${progress}%`, "important");
-        console.log(timetable.stations[station1].name, timetable.stations[station2].name)
-        _dss1.innerText = timetable.stations[station2].name;
-        _dss2.innerText = timetable.stations[station1].name;
+        settings.setStationName(_dss1, timetable.stations[station2]);
+        settings.setStationName(_dss2, timetable.stations[station1]);
         _dss1.onclick = function(){
             section1id = station2;
-            changecurrentsection(1);
+            changeCurrentSection(1);
         };
         _dss2.onclick = function(){
             section1id = station1;
-            changecurrentsection(1);
+            changeCurrentSection(1);
         };
     }
 }
@@ -119,12 +118,10 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
     }
     let lineID = conns.lineID;
     let tripID = conns.tripID;
-    console.log(tripID, timetable.lines[lineID].trips);
-    let dayssinceepoch = Math.floor(getCurrentTimeInMs() / 86400000);
+    let dayssinceepoch = Math.floor(getCurrentTimeInMilliseconds() / MILLISECONDS_PER_DAY);
     let day = conns.day;
     if (day >= 100){
         day = day-dayssinceepoch;
-        console.log("new day", day);
     }
     let hidesinfront = conns.hidesinfront;
     if (lineID == null || tripID == null){
@@ -138,15 +135,15 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
     let stops = line.stops;
     let delay = delays.get(lineID, tripID, time, stops[stops.length-1], day);
     if (checkifkick){
-        if (delay.status == 6){
-            changetransporttype(0);
+        if (delay.status === TRAIN_STATUS.FINISHED){
+            changeTransportType(0);
             gameState.updateCurrentPosition({statID: stops[stops.length-1].sid});
-            printcurrentsection();
+            renderCurrentSection();
         }
-        if (delay.status == -1 || delay.status == 7){
-            changetransporttype(0);
+        if (delay.status === TRAIN_STATUS.CANCELLED_BEFORE_TARGET || delay.status === TRAIN_STATUS.CANCELLED_AFTER_TARGET){
+            changeTransportType(0);
             gameState.updateCurrentPosition({statID: delay.station});
-            printcurrentsection();
+            renderCurrentSection();
         }
     }
     if (delay.station == null){
@@ -155,7 +152,7 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
     let hideuntil = delay.station;
     if (currentsection == 2 || currentsection == 0){
         let secst = stops[stops.length-1].sid;
-        if (delay.status == 2 || delay.status == 4){
+        if (delay.status === TRAIN_STATUS.TRAVELLING_TO_TARGET || delay.status === TRAIN_STATUS.TRAVELLING_PAST_TARGET){
             for(let i=0; i<stops.length; i++){
                 if (stops[i].sid == delay.station){
                     break;
@@ -165,56 +162,56 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
             }
         }
         if (delay.station == null){
-            updatetrackprogress(delay.status, delay.progress, secst, 1);
+            updateTrackProgress(delay.status, delay.progress, secst, 1);
         }
         else{
-            updatetrackprogress(delay.status, delay.progress, delay.station, secst);
+            updateTrackProgress(delay.status, delay.progress, delay.station, secst);
         }
     }
     let delaystring = "+"+String(Math.floor(delay.delay/60));
     let delayreason = (delay.delay >= 300 ? delays.getReason(lineID, tripID, day) : "");
 
-    let row = addrow({
-        "table": _traintimetableheader, 
-        "c1t": "Vlak", 
-        "c2t": "Z/DO", 
+    let row = addRow({
+        "table": _traintimetableheader,
+        "c1t": "Vlak",
+        "c2t": "Z/DO",
         "c3t": delaystring,
         "subtexttime": delayreason,
-        "includered": delay.delay>=60 || delay.status == -1,
+        "includered": delay.delay>=60 || delay.status === TRAIN_STATUS.CANCELLED_BEFORE_TARGET,
         "onlythreecols": true});
 
-    row = addrow({
-        "table": _traintimetableheader, 
-        "c1t": getTrainName(line), 
-        "c2t": "Z "+timetable.stations[stops[0].sid].name,
+    row = addRow({
+        "table": _traintimetableheader,
+        "c1t": getTrainName(line),
+        "c2t": "Z "+settings.getStationNameMarkup(timetable.stations[stops[0].sid]),
         "subtexttrain": line.nickname,
-        "subtextdest": "Do "+timetable.stations[stops[stops.length-1].sid].name,
+        "subtextdest": "Do "+settings.getStationNameMarkup(timetable.stations[stops[stops.length-1].sid]),
         "noclasssubtextdest": true,
         "includered": false,
         "onlythreecols": true});
 
     row.cells[0].onclick = function(){
         section2data = conns;
-        changecurrentsection(2);
+        changeCurrentSection(2);
     }
 
     row.deleteCell(2);
     row.cells[1].colSpan = 2;
-    if (getoffbutton && delay.status == 1 || delay.status == 3 || delay.status == 5){
+    if (getoffbutton && delay.status === TRAIN_STATUS.STOPPED_BEFORE_TARGET || delay.status === TRAIN_STATUS.STOPPED_AT_TARGET || delay.status === TRAIN_STATUS.STOPPED_PAST_TARGET){
         row.cells[1].innerHTML = "VYSTOUPIT";
         row.cells[1].style.backgroundColor = "#861313";
         row.cells[1].onclick = function(){
-            changetransporttype(0);
+            changeTransportType(0);
             gameState.updateCurrentPosition({statID: delay.station});
-            printcurrentsection();
+            renderCurrentSection();
         };
     }
 
     if (currentsection == 2){
-        row = addrow({
+        row = addRow({
             "table": _traintimetableheader,
-            "c1t": "< Předchozí", 
-            "c2t": hidesinfront ? "Zobrazit" : "Skrýt", 
+            "c1t": "< Předchozí",
+            "c2t": hidesinfront ? "Zobrazit" : "Skrýt",
             "c3t": "Následující >",
             "includered": false,
             "onlythreecols": true
@@ -226,35 +223,35 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
             let newtripid = tripID == 0 ? line.trips-1 : tripID-1;
             let newday = tripID == 0 ? day-1 : day;
             section2data = {"lineID": lineID, "tripID": newtripid, "day": newday, "hidesinfront": hidesinfront};
-            printcurrentsection();
+            renderCurrentSection();
         };
         row.cells[1].onclick = function(){
             section2data = {"lineID": lineID, "tripID": tripID, "day": day, "hidesinfront": !hidesinfront};
-            printcurrentsection();
+            renderCurrentSection();
         }
         row.cells[2].style.backgroundColor = "green";
         row.cells[2].onclick = function(){
             let newtripid = tripID == line.trips-1 ? 0 : tripID+1;
             let newday = tripID == line.trips-1 ? day+1 : day;
             section2data = {"lineID": lineID, "tripID": newtripid, "day": newday, "hidesinfront": hidesinfront};
-            printcurrentsection();
+            renderCurrentSection();
         };
     }
 
-    row = addrow({
+    row = addRow({
         "table": table
     });
     row.className = "border";
 
-    addrow({
-        "table": table, 
-        "c1t": "Stanice", 
-        "c2t": "Příjezd", 
-        "c3t": "Odjezd", 
+    addRow({
+        "table": table,
+        "c1t": "Stanice",
+        "c2t": "Příjezd",
+        "c3t": "Odjezd",
         "c4t": "Vzdálenost",
         "includered": false});
 
-    let starttime = line.starttime + day*86400 + tripID*line.interval;
+    let starttime = line.starttime + day*SECONDS_PER_DAY + tripID*line.interval;
 
     let distacc = 0;
     let i = 0;
@@ -268,26 +265,26 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
         if (toprint){
             let arrstr = i == 0 ? "-" : formatTime(stop.arr+starttime);
             let depstr = i == stops.length - 1 ? " - " : formatTime(stop.dep+starttime);
-            let stname = timetable.stations[stop.sid].name;
-            row = addrow({
+            let stname = settings.getStationName(timetable.stations[stop.sid]);
+            row = addRow({
                 "table": table,
-                "c1t": stname,
+                "c1t": settings.getStationNameMarkup(timetable.stations[stop.sid]),
                 "visibleoverflow": true
             });
             row.cells[0].onclick = function(){
                 section1id = stop.sid;
-                changecurrentsection(1);
+                changeCurrentSection(1);
             }
             row.cells[0].style.textWrap = "nowrap";
-            row = addrow({
-                "table": table, 
-                "c2t": arrstr, 
-                "c3t": depstr, 
+            row = addRow({
+                "table": table,
+                "c2t": arrstr,
+                "c3t": depstr,
                 "c4t": String(Math.round(distacc))+"km",
                 "scrollingfirstcol": stname.length>=12,
                 "includered": false});
             if (stop.sid == delay.station){
-                if (delay.status == 1){
+                if (delay.status === TRAIN_STATUS.STOPPED_BEFORE_TARGET){
                     row.cells[1].classList.add("lime");
                 }
                 tocolor = false;
@@ -301,5 +298,5 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
     });
 }
 
-    return { toggle, print, updateTrackProgress: updatetrackprogress };
+    return { toggle, print, updateTrackProgress: updateTrackProgress };
 })();

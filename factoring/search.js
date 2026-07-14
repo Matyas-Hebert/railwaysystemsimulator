@@ -3,22 +3,22 @@ function normalize(string){
     return string.normalize("NFD").replace(/-/g, '').replace(/\./g, '').replace(/[\u0300-\u036f]/g, "").replace(/ /g,'').toLowerCase();
 }
 
-function searchstations(search, firstid=null){
+function searchStations(search, firstid=null){
     let updatedsearch = normalize(search);
     let valid = [];
     let exact = [];
     let first = null;
     timetable.stations.forEach(station => {
-        let name = normalize(station.name);
+        let name = normalize(settings.getStationName(station));
         if (name == updatedsearch || name.replace("hln", "") == updatedsearch || name.replace("hls", "") == updatedsearch){
-            exact.push({"name":station.name, "district":station.district, "id": station.id, "color": false});
+            exact.push({"name":settings.getStationName(station), "district":station.district, "id": station.id, "color": false, "station": station});
         }
         else if (name.includes(updatedsearch)){
             if (station.id == firstid){
-                first = {"name":station.name, "district":station.district, "id": station.id, "color": true};
+                first = {"name":settings.getStationName(station), "district":station.district, "id": station.id, "color": true, "station": station};
             }
             else{
-                valid.push({"name":station.name, "district":station.district, "id": station.id, "color": false});
+                valid.push({"name":settings.getStationName(station), "district":station.district, "id": station.id, "color": false, "station": station});
             }
         }
     });
@@ -40,11 +40,11 @@ function show(search, options=_s1options, section4 = false, id=0, inputfield=nul
         search = inputfield.value;
     }
     let opts;
-    if (currentsection == 4 && gameState.getCurrentPosition().transporttype == 0){
-        opts = searchstations(search, gameState.getCurrentPosition().statID);
+    if (currentsection == 4 && gameState.getCurrentPosition().transporttype === TRANSPORT_TYPE.STATION){
+        opts = searchStations(search, gameState.getCurrentPosition().statID);
     }
     else{
-        opts = searchstations(search);
+        opts = searchStations(search);
     }
     opts.slice(0,20).forEach(opt => {
         let newdiv = document.createElement("div");
@@ -53,19 +53,21 @@ function show(search, options=_s1options, section4 = false, id=0, inputfield=nul
             if (section4){
                 idos.setLocation(id, opt.id);
                 inputfield.value = opt.name;
+                settings.setStationName(inputfield, opt.station);
             }
             if (start){
                 startid = opt.id;
                 inputfield.value = opt.name;
+                settings.setStationName(inputfield, opt.station);
             }
             else {
                 section1id = opt.id;
             }
             options.innerHTML = "";
-            printcurrentsection();
+            renderCurrentSection();
         };
         newdiv.innerHTML = `
-            <span class="main-text">${opt.name}</span>
+            <span class="main-text ${stationVisits.isVisited(opt.id) ? "station-name-visited" : "station-name-unvisited"}">${opt.name}</span>
             <span class="alt-text">${opt.district}</span>
         `;
         if (opt.color){
