@@ -7,6 +7,9 @@ class GameState {
     #pinnedDeliveryIds = [];
     #visitedLines = [];
     #collectedDelayReasons = [];
+    #autoBoardSelection = null;
+    #autoExitStationId = null;
+    #isLoading = false;
     #stationVisitState = {
         stationId: null,
         enteredAt: null,
@@ -20,7 +23,9 @@ class GameState {
     constructor(stations, stationIdByLonLat) {
         this.#stations = stations;
         this.#stationIdByLonLat = stationIdByLonLat;
+        this.#isLoading = true;
         this.#load();
+        this.#isLoading = false;
     }
 
     getCurrentPosition() {
@@ -28,7 +33,13 @@ class GameState {
     }
 
     setCurrentPosition(position) {
-        this.#currentPosition = position === null ? null : structuredClone(position);
+        const nextPosition = position === null ? null : structuredClone(position);
+        if (!this.#isLoading
+            && this.#hasPlayerPositionChanged(this.#currentPosition, nextPosition)) {
+            this.setAutoBoardSelection(null);
+            this.setAutoExitStationId(null);
+        }
+        this.#currentPosition = nextPosition;
         this.#saveCurrentPosition();
     }
 
@@ -110,6 +121,53 @@ class GameState {
         localStorage.setItem("_pinnedorders", JSON.stringify(this.#pinnedDeliveryIds));
     }
 
+    getAutoExitStationId() {
+        return this.#autoExitStationId;
+    }
+
+    setAutoExitStationId(stationId) {
+        if (stationId === null) {
+            this.#autoExitStationId = null;
+            localStorage.removeItem("_autoexitstation");
+            return;
+        }
+
+        const normalizedStationId = this.#toStationId(stationId);
+        if (normalizedStationId === null) {
+            throw new TypeError("Automatic exit must reference a valid station.");
+        }
+        this.#autoExitStationId = normalizedStationId;
+        localStorage.setItem(
+            "_autoexitstation",
+            JSON.stringify(this.#toLonLatId(normalizedStationId))
+        );
+    }
+    getAutoBoardSelection() {
+        return this.#autoBoardSelection === null
+            ? null
+            : structuredClone(this.#autoBoardSelection);
+    }
+
+    setAutoBoardSelection(selection) {
+        if (selection === null) {
+            this.#autoBoardSelection = null;
+            localStorage.removeItem("_autoboardselection");
+            return;
+        }
+
+        const normalized = {
+            lineID: Number(selection.lineID),
+            tripID: Number(selection.tripID),
+            day: Number(selection.day)
+        };
+        if (!Number.isInteger(normalized.lineID)
+            || !Number.isInteger(normalized.tripID)
+            || !Number.isInteger(normalized.day)) {
+            throw new TypeError("Automatic boarding selection must contain integer lineID, tripID and day values.");
+        }
+        this.#autoBoardSelection = normalized;
+        localStorage.setItem("_autoboardselection", JSON.stringify(normalized));
+    }
     getCollectedDelayReasons() {
         return [...this.#collectedDelayReasons];
     }
@@ -209,16 +267,25 @@ class GameState {
         this.#pinnedDeliveryIds = this.#readArray("_pinnedorders");
         this.setVisitedLines(this.#readArray("_visitedlines"));
         this.setCollectedDelayReasons(this.#readArray("_collecteddelayreasons"));
+        this.setAutoExitStationId(this.#readAutoExitStationId());
         this.setStationVisitState(this.#readStationVisitState());
 
         const saved = localStorage.getItem("_currentposition");
-        if (saved === null) return;
+        if (saved === null) {
+            this.setAutoBoardSelection(null);
+            this.setAutoExitStationId(null);
+            return;
+        }
         const position = JSON.parse(saved);
         position.iswifi = false;
         if (!("transporttype" in position)) position.transporttype = TRANSPORT_TYPE.STATION;
 
         position.statID = this.#toStationId(position.stationLonLatId ?? position.statID);
-        if (position.statID == null) return;
+        if (position.statID == null) {
+            this.setAutoBoardSelection(null);
+            this.setAutoExitStationId(null);
+            return;
+        }
 
         const storedGoal = position.goalStationLonLatId ?? position.goalStatID;
         position.goalStatID = storedGoal == null
@@ -233,6 +300,24 @@ class GameState {
         delete position.stationLonLatId;
         delete position.goalStationLonLatId;
         this.setCurrentPosition(position);
+        this.setAutoBoardSelection(this.#readAutoBoardSelection());
+    }
+
+    #hasPlayerPositionChanged(previousPosition, nextPosition) {
+        if (previousPosition === null || nextPosition === null) {
+            return previousPosition !== nextPosition;
+        }
+
+        const positionFields = [
+            "transporttype",
+            "statID",
+            "goalStatID",
+            "lineID",
+            "tripID",
+            "day",
+            "time"
+        ];
+        return positionFields.some(field => previousPosition[field] !== nextPosition[field]);
     }
 
     #readSettings() {
@@ -295,6 +380,37 @@ class GameState {
         return runtimeOrder;
     }
 
+    #readAutoExitStationId() {
+        try {
+            const stored = localStorage.getItem("_autoexitstation");
+            if (stored === null) return null;
+            return this.#toStationId(JSON.parse(stored));
+        }
+        catch {
+            return null;
+        }
+    }
+    #readAutoBoardSelection() {
+        try {
+            const selection = JSON.parse(localStorage.getItem("_autoboardselection"));
+            if (selection && typeof selection === "object") {
+                const normalized = {
+                    lineID: Number(selection.lineID),
+                    tripID: Number(selection.tripID),
+                    day: Number(selection.day)
+                };
+                if (Number.isInteger(normalized.lineID)
+                    && Number.isInteger(normalized.tripID)
+                    && Number.isInteger(normalized.day)) {
+                    return normalized;
+                }
+            }
+        }
+        catch {
+            // Ignore invalid saved selections.
+        }
+        return null;
+    }
     #readStationVisitState() {
         try {
             const stored = JSON.parse(localStorage.getItem("_stationvisitstate"));

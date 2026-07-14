@@ -125,6 +125,53 @@
 .innertable td .subtext{
     font-size: 0.7em;
 }
+.auto-board-detail-row td {
+    padding: 0.45rem;
+}
+
+.auto-board-btn {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.35rem;
+    background-color: var(--color-success-muted);
+    color: var(--color-text-inverse);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.auto-board-btn.selected {
+    background-color: var(--color-success);
+}
+
+.auto-board-selected-row td {
+    background-color: var(--color-success-muted);
+}
+.auto-exit-cell {
+    overflow: visible;
+    text-align: right !important;
+    vertical-align: top;
+}
+
+.auto-exit-btn {
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-size: 1.5rem;
+    line-height: 1;
+    opacity: 1;
+    
+    cursor: pointer;
+}
+
+.auto-exit-btn.selected {
+    opacity: 1;
+    filter: none;
+}
+
+.auto-exit-selected-row td {
+    background-color: var(--color-warning);
+}
 
 #_traintimetable td {
     text-align: center;

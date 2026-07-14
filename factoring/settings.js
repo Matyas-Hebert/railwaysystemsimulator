@@ -53,6 +53,8 @@ const settings = (() => {
         gameState.setPinnedStations([]);
         gameState.setVisitedLines([]);
         gameState.setCollectedDelayReasons([]);
+        gameState.setAutoBoardSelection(null);
+        gameState.setAutoExitStationId(null);
         foodora.reset();
         stationVisits.reset();
         gameState.setCurrentPosition(null);

@@ -135,7 +135,46 @@ function boardTrain(lineID, tripID, day){
     gameState.updateCurrentPosition(positionChanges);
 }
 
-function addRow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibleoverflow=false, includered = true, includetrainnameclass = false, conn = {}, subtextdest = "", noclasssubtextdest = false, goalstationid = 0, includetrainlink = false, includegetonbutton = false, subtexttrain = "", firstcolspan = false, scrolling = false, scrollingfirstcol = false, onlythreecols = false, subtexttime = ""}){
+function normalizeAutoBoardConnection(conn) {
+    const day = conn.day <= 1000
+        ? conn.day + Math.floor(getCurrentTimeInMilliseconds() / MILLISECONDS_PER_DAY)
+        : conn.day;
+    return {
+        lineID: Number(conn.lineID),
+        tripID: Number(conn.tripID),
+        day: Number(day)
+    };
+}
+
+function isAutoBoardSelection(conn) {
+    const selected = gameState.getAutoBoardSelection();
+    if (selected === null || conn == null) return false;
+    const normalized = normalizeAutoBoardConnection(conn);
+    return selected.lineID === normalized.lineID
+        && selected.tripID === normalized.tripID
+        && selected.day === normalized.day;
+}
+
+function toggleAutoBoardSelection(conn) {
+    if (isAutoBoardSelection(conn)) {
+        gameState.setAutoBoardSelection(null);
+    }
+    else {
+        gameState.setAutoBoardSelection(normalizeAutoBoardConnection(conn));
+    }
+    renderCurrentSection(true);
+}
+function isAutoExitSelection(stationId) {
+    return gameState.getAutoExitStationId() === Number(stationId);
+}
+
+function toggleAutoExitSelection(stationId) {
+    gameState.setAutoExitStationId(
+        isAutoExitSelection(stationId) ? null : Number(stationId)
+    );
+    renderCurrentSection(true);
+}
+function addRow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibleoverflow=false, includered = true, includetrainnameclass = false, conn = {}, subtextdest = "", noclasssubtextdest = false, goalstationid = 0, includetrainlink = false, includegetonbutton = false, allowautoboard = false, subtexttrain = "", firstcolspan = false, scrolling = false, scrollingfirstcol = false, onlythreecols = false, subtexttime = ""}){
     let row = table.insertRow(-1);
     let c1 = row.insertCell(0);
     let c2 = row.insertCell(1);
@@ -213,8 +252,12 @@ function addRow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibl
 
     let openeddetailstring = (c1t.trim()+c2t.trim()+c3t.trim().replace(/ /g, ''));
 
+    if (allowautoboard && isAutoBoardSelection(conn)) {
+        row.classList.add("auto-board-selected-row");
+    }
+
     if (openeddetail == openeddetailstring){
-        schedule.toggle(row, stopsdata);
+        schedule.toggle(row, stopsdata, conn, allowautoboard);
     }
 
     if (stopsdata){
@@ -514,6 +557,7 @@ async function printTimetable(stationID, includegetonbutton = true, table=_timet
             "subtexttime": delaystr,
             "onlythreecols": true,
             "includegetonbutton": current.delay.status === TRAIN_STATUS.STOPPED_AT_TARGET && includegetonbutton,
+            "allowautoboard": currentsection === 0 && includegetonbutton && departures,
             "includetrainlink": true,
             "goalstationid": destinationID});
 
@@ -554,6 +598,9 @@ function selectSection(section){
 }
 
 function renderCurrentSection(force = false){
+    autoBoarding.check();
+    lineVisits.checkCurrentLine();
+    autoExit.check();
     _start.style.display = "none";
     _tables.style.display = "none";
     if (gameState.getCurrentPosition() == null){
@@ -687,6 +734,5 @@ setInterval(updateClock, 1000);
 setInterval(() => {
     if (!settings.areAutoUpdatesPaused()) {
         renderCurrentSection();
-        lineVisits.checkCurrentLine();
     }
 }, 5000);

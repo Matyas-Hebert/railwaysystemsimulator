@@ -1,5 +1,5 @@
 const schedule = (() => {
-function toggle(clickedrow, stopsdata){
+function toggle(clickedrow, stopsdata, conn = null, allowAutoBoard = false){
     if (!stopsdata) return;
     const detail = document.querySelector(".detail");
 
@@ -26,7 +26,30 @@ function toggle(clickedrow, stopsdata){
     c3.innerText = "ODJEZD";
     //c4.innerText = "VZDÁLENOST";
 
-    let i = 1;
+    let detailOffset = 1;
+    if (allowAutoBoard && conn !== null) {
+        const actionRow = _timetable.insertRow(clickedrow.rowIndex + 1);
+        actionRow.className = "detail auto-board-detail-row";
+        const actionCell = actionRow.insertCell(0);
+        actionCell.colSpan = 3;
+
+        const selected = isAutoBoardSelection(conn);
+        const button = document.createElement("button");
+        button.className = selected
+            ? "auto-board-btn selected"
+            : "auto-board-btn";
+        button.textContent = selected
+            ? "S AUTOMATICKÝM NÁSTUPEM"
+            : "BEZ AUTOMATICKÉHO NÁSTUPU";
+        button.onclick = event => {
+            event.stopPropagation();
+            toggleAutoBoardSelection(conn);
+        };
+        actionCell.appendChild(button);
+        detailOffset++;
+    }
+
+    let i = detailOffset;
     stopsdata.forEach(stopdata => {
         let detailrow = _timetable.insertRow(clickedrow.rowIndex+1+i);
         detailrow.className = "detail";
@@ -255,6 +278,7 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
 
     let distacc = 0;
     let i = 0;
+    let visibleStopIndex = 0;
     let tocolor = true;
     let toprint = !hidesinfront;
     stops.forEach(stop => {
@@ -275,6 +299,30 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
                 section1id = stop.sid;
                 changeCurrentSection(1);
             }
+
+            if (getoffbutton && currentsection === 0 && visibleStopIndex > 0) {
+                const selected = isAutoExitSelection(stop.sid);
+                if (selected) row.classList.add("auto-exit-selected-row");
+
+                const actionCell = row.cells[3];
+                actionCell.classList.add("auto-exit-cell");
+                const button = document.createElement("button");
+                button.className = selected
+                    ? "auto-exit-btn selected"
+                    : "auto-exit-btn";
+                button.textContent = "🏁";
+                button.title = selected
+                    ? "Zrušit automatický výstup v této stanici"
+                    : "Automaticky vystoupit v této stanici";
+                button.setAttribute("aria-label", button.title);
+                button.setAttribute("aria-pressed", String(selected));
+                button.onclick = event => {
+                    event.stopPropagation();
+                    toggleAutoExitSelection(stop.sid);
+                };
+                actionCell.appendChild(button);
+            }
+
             row.cells[0].style.textWrap = "nowrap";
             row = addRow({
                 "table": table,
@@ -293,6 +341,7 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
                 row.cells[1].classList.add("lime");
                 row.cells[2].classList.add("lime");
             }
+            visibleStopIndex++;
         }
         i++;
     });
