@@ -33,14 +33,14 @@ Počet linek: 348 | Řazení: od nejdelší po nejkratší
       Délka: 310.07 km | Jízdní doba: 02:28:51
 
    7. R 0323u — Bansko Žije
-      Dopravce: ZSSK | ID linky: 1599
-      Trasa: Rimavská Sobota - Pokoradz → Brno - Maloměřice
-      Délka: 295.75 km | Jízdní doba: 02:11:06
-
-   8. R 0323u — Bansko Žije
       Dopravce: ZSSK | ID linky: 1598
       Trasa: Brno - Maloměřice → Rimavská Sobota - Pokoradz
-      Délka: 295.75 km | Jízdní doba: 02:11:06
+      Délka: 295.76 km | Jízdní doba: 02:11:07
+
+   8. R 0323u — Bansko Žije
+      Dopravce: ZSSK | ID linky: 1599
+      Trasa: Rimavská Sobota - Pokoradz → Brno - Maloměřice
+      Délka: 295.76 km | Jízdní doba: 02:11:07
 
    9. R 0206h — Obrat
       Dopravce: ZSSK | ID linky: 1652
@@ -285,12 +285,12 @@ Počet linek: 348 | Řazení: od nejdelší po nejkratší
   57. R 0131u — Katuše
       Dopravce: ČD | ID linky: 226
       Trasa: Vrchlabí - Hl.N. → Ústí nad Labem - Střekov
-      Délka: 167.52 km | Jízdní doba: 01:41:26
+      Délka: 167.52 km | Jízdní doba: 01:44:32
 
   58. R 0131u — Katuše
       Dopravce: ČD | ID linky: 227
       Trasa: Ústí nad Labem - Střekov → Vrchlabí - Hl.N.
-      Délka: 167.52 km | Jízdní doba: 01:41:26
+      Délka: 167.52 km | Jízdní doba: 01:44:32
 
   59. R 0257n — Zornička
       Dopravce: ZSSK | ID linky: 668
@@ -433,13 +433,13 @@ Počet linek: 348 | Řazení: od nejdelší po nejkratší
       Délka: 145.35 km | Jízdní doba: 01:11:36
 
   87. R 0160t — Bílá Paní
-      Dopravce: ZSSK | ID linky: 1098
-      Trasa: Brezno - Hl.S. → Ilava
+      Dopravce: ZSSK | ID linky: 1099
+      Trasa: Ilava → Brezno - Hl.S.
       Délka: 144.18 km | Jízdní doba: 01:17:22
 
   88. R 0160t — Bílá Paní
-      Dopravce: ZSSK | ID linky: 1099
-      Trasa: Ilava → Brezno - Hl.S.
+      Dopravce: ZSSK | ID linky: 1098
+      Trasa: Brezno - Hl.S. → Ilava
       Délka: 144.18 km | Jízdní doba: 01:17:22
 
   89. R 0235 — Palácový Pes
@@ -825,12 +825,12 @@ Počet linek: 348 | Řazení: od nejdelší po nejkratší
  165. R 0180m — Potenciál
       Dopravce: ČD | ID linky: 1654
       Trasa: Olomouc - Slavonín → Hodonín - Hl.N.
-      Délka: 107.75 km | Jízdní doba: 00:54:19
+      Délka: 107.77 km | Jízdní doba: 00:54:20
 
  166. R 0180m — Potenciál
       Dopravce: ČD | ID linky: 1655
       Trasa: Hodonín - Hl.N. → Olomouc - Slavonín
-      Délka: 107.75 km | Jízdní doba: 00:54:19
+      Délka: 107.77 km | Jízdní doba: 00:54:20
 
  167. R 0214v — Ogy
       Dopravce: ZSSK | ID linky: 2044
@@ -1455,12 +1455,12 @@ Počet linek: 348 | Řazení: od nejdelší po nejkratší
  291. R 0134 — Nita
       Dopravce: ČD | ID linky: 154
       Trasa: Uherské Hradiště - Míkovice → Brno - Maloměřice
-      Délka: 71.26 km | Jízdní doba: 00:46:51
+      Délka: 71.27 km | Jízdní doba: 00:46:51
 
  292. R 0134 — Nita
       Dopravce: ČD | ID linky: 155
       Trasa: Brno - Maloměřice → Uherské Hradiště - Míkovice
-      Délka: 71.26 km | Jízdní doba: 00:46:51
+      Délka: 71.27 km | Jízdní doba: 00:46:51
 
  293. R 0140o — Le Brumba
       Dopravce: ČD | ID linky: 1416
