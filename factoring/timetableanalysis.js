@@ -76,11 +76,6 @@ function getTrainName(line, getnickname=false, padding=true){
     return name.substring(0, 36).padEnd(36, " ");
 }
 
-function getCurrentTimeInMilliseconds(){
-    const now = new Date();
-    return now.getTime() - (now.getTimezoneOffset()*60000);
-}
-
 function getTripNumberByTime(line, stationID, time){
     let extradays = Math.floor(time/SECONDS_PER_DAY);
     time = (time+SECONDS_PER_DAY)%SECONDS_PER_DAY;
@@ -277,10 +272,67 @@ function addRow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibl
 }
 
 function updateClock(){
+    updateTime();
     stationVisits.checkElapsedTime();
-    const currentDate = new Date();
-    var time = currentDate.getHours()*3600 + currentDate.getMinutes()*60 + currentDate.getSeconds();
+    var time = getCurrentTimeInSeconds();
     _clock.innerText = formatTime(time);
+}
+
+const DILATATION_RETENTION_PER_SECOND = 0.9;
+const TIME_OFFSET_RETENTION_PER_SECOND = 0.98;
+const TIME_OFFSET_EPSILON = 0.001;
+const TIME_DILATATION_EPSILON = 0.000001;
+let lastTimeUpdateAt = performance.now();
+
+function updateTime() {
+    const updatedAt = performance.now();
+    const elapsedSeconds = Math.max(0, (updatedAt - lastTimeUpdateAt) / 1000);
+    lastTimeUpdateAt = updatedAt;
+    if (elapsedSeconds === 0) return;
+
+    const timeOffset = gameState.getTimeTravelled();
+    const timeDilatation = gameState.getTimeDilatation();
+    if (timeOffset === 0 && timeDilatation === 1) return;
+
+    // Dilation changes how much game time passes during this real-time interval.
+    const dilatationChange = (timeDilatation - 1) * elapsedSeconds;
+
+    // Both values then move exponentially toward their normal values. Using
+    // elapsedSeconds keeps the result independent of the update frequency.
+    const offsetRetention = Math.pow(
+        TIME_OFFSET_RETENTION_PER_SECOND,
+        elapsedSeconds
+    );
+    const dilatationRetention = Math.pow(
+        DILATATION_RETENTION_PER_SECOND,
+        elapsedSeconds
+    );
+    let nextTimeOffset = (timeOffset + dilatationChange) * offsetRetention;
+    let nextTimeDilatation = 1
+        + (timeDilatation - 1) * dilatationRetention;
+
+    if (Math.abs(nextTimeOffset) < TIME_OFFSET_EPSILON) {
+        nextTimeOffset = 0;
+    }
+    if (Math.abs(nextTimeDilatation - 1) < TIME_DILATATION_EPSILON) {
+        nextTimeDilatation = 1;
+    }
+
+    gameState.setTimeState(nextTimeOffset, nextTimeDilatation);
+}
+function getCurrentTimeInMilliseconds(){
+    const now = new Date();
+    return now.getTime() - (now.getTimezoneOffset()*60000) + gameState.getTimeTravelled()*1000;
+}
+
+function getCurrentTimeInSeconds(){
+    const currentDate = new Date();
+    return currentDate.getHours()*3600 + currentDate.getMinutes()*60 + currentDate.getSeconds() + gameState.getTimeTravelled();
+}
+
+function getCurrentTimeInMinutes(){
+    const currentDate = new Date();
+    return Math.floor((currentDate.getHours()*3600 + currentDate.getMinutes()*60 + currentDate.getSeconds() + gameState.getTimeTravelled())/60)*60;
 }
 
 function selectFilter(name){
@@ -318,8 +370,7 @@ async function printTimetable(stationID, includegetonbutton = true, table=_timet
         return;
     }
 
-    const currentDate = new Date();
-    var time = currentDate.getHours()*3600 + currentDate.getMinutes()*60 + currentDate.getSeconds();
+    var time = getCurrentTimeInSeconds();
     time+=timeoffset;
 
     if (!stationID){

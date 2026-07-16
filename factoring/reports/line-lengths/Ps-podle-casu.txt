@@ -1,0 +1,3263 @@
+========================================================================================
+LINKY TYPU Ps — PODLE JÍZDNÍ DOBY
+Počet linek: 652 | Řazení: od nejdelší po nejkratší
+========================================================================================
+   1. Ps 10007 — Babiš
+      Dopravce: PID | ID linky: 232
+      Trasa: Praha - Bubeneč → Praha - Zličín
+      Délka: 32.43 km | Jízdní doba: 00:27:57
+
+   2. Ps 10007 — Babiš
+      Dopravce: PID | ID linky: 233
+      Trasa: Praha - Zličín → Praha - Bubeneč
+      Délka: 32.43 km | Jízdní doba: 00:27:57
+
+   3. Ps 10015 — Plaga
+      Dopravce: PID | ID linky: 1206
+      Trasa: Praha - Koloděje → Praha - Černošice
+      Délka: 30.59 km | Jízdní doba: 00:27:51
+
+   4. Ps 10015 — Plaga
+      Dopravce: PID | ID linky: 1207
+      Trasa: Praha - Černošice → Praha - Koloděje
+      Délka: 30.59 km | Jízdní doba: 00:27:51
+
+   5. Ps 10007b — Rychlý Babiš
+      Dopravce: PID | ID linky: 2054
+      Trasa: Praha - Bubeneč → Praha - Zličín
+      Délka: 32.43 km | Jízdní doba: 00:24:57
+
+   6. Ps 10007b — Rychlý Babiš
+      Dopravce: PID | ID linky: 2055
+      Trasa: Praha - Zličín → Praha - Bubeneč
+      Délka: 32.43 km | Jízdní doba: 00:24:57
+
+   7. Ps 10001 — Havel
+      Dopravce: PID | ID linky: 350
+      Trasa: Praha - Újezd u Průhonic → Praha - Veleslavín
+      Délka: 27.56 km | Jízdní doba: 00:24:02
+
+   8. Ps 10001 — Havel
+      Dopravce: PID | ID linky: 351
+      Trasa: Praha - Veleslavín → Praha - Újezd u Průhonic
+      Délka: 27.56 km | Jízdní doba: 00:24:02
+
+   9. Ps 10003 — Pavel
+      Dopravce: PID | ID linky: 660
+      Trasa: Praha - Řeporyje → Praha - Bubeneč
+      Délka: 31.73 km | Jízdní doba: 00:23:32
+
+  10. Ps 10003 — Pavel
+      Dopravce: PID | ID linky: 661
+      Trasa: Praha - Bubeneč → Praha - Řeporyje
+      Délka: 31.73 km | Jízdní doba: 00:23:32
+
+  11. Ps 10003b — Rychlý Pavel
+      Dopravce: PID | ID linky: 2048
+      Trasa: Praha - Řeporyje → Praha - Bubeneč
+      Délka: 31.73 km | Jízdní doba: 00:23:32
+
+  12. Ps 10003b — Rychlý Pavel
+      Dopravce: PID | ID linky: 2049
+      Trasa: Praha - Bubeneč → Praha - Řeporyje
+      Délka: 31.73 km | Jízdní doba: 00:23:32
+
+  13. Ps 10015b — Rychlý Plaga
+      Dopravce: PID | ID linky: 2065
+      Trasa: Praha - Černošice → Praha - Koloděje
+      Délka: 30.59 km | Jízdní doba: 00:22:51
+
+  14. Ps 10015b — Rychlý Plaga
+      Dopravce: PID | ID linky: 2064
+      Trasa: Praha - Koloděje → Praha - Černošice
+      Délka: 30.59 km | Jízdní doba: 00:22:51
+
+  15. Ps 23168 — Strmeň
+      Dopravce: ZSSK | ID linky: 1364
+      Trasa: Šurany - Hl.S. → Nové Zámky - Hl.S:
+      Délka: 26.67 km | Jízdní doba: 00:21:30
+
+  16. Ps 23168 — Strmeň
+      Dopravce: ZSSK | ID linky: 1365
+      Trasa: Nové Zámky - Hl.S: → Šurany - Hl.S.
+      Délka: 26.67 km | Jízdní doba: 00:21:30
+
+  17. Ps 23168b — Druhý Strmeň
+      Dopravce: ZSSK | ID linky: 2022
+      Trasa: Šurany - Hl.S. → Nové Zámky - Terminál
+      Délka: 26.52 km | Jízdní doba: 00:21:25
+
+  18. Ps 23168b — Druhý Strmeň
+      Dopravce: ZSSK | ID linky: 2023
+      Trasa: Nové Zámky - Terminál → Šurany - Hl.S.
+      Délka: 26.52 km | Jízdní doba: 00:21:25
+
+  19. Ps 25125
+      Dopravce: ČD | ID linky: 1301
+      Trasa: Šumperk - Třemešek → Šumperk - Holubí Vrch
+      Délka: 10.35 km | Jízdní doba: 00:21:12
+
+  20. Ps 25125
+      Dopravce: ČD | ID linky: 1300
+      Trasa: Šumperk - Holubí Vrch → Šumperk - Třemešek
+      Délka: 10.35 km | Jízdní doba: 00:21:12
+
+  21. Ps 57896 — Uhelný Letoun
+      Dopravce: ČD | ID linky: 2346
+      Trasa: Mošnov - Letiště → Ostrava - Hl.N.
+      Délka: 22.70 km | Jízdní doba: 00:21:07
+
+  22. Ps 57896 — Uhelný Letoun
+      Dopravce: ČD | ID linky: 2347
+      Trasa: Ostrava - Hl.N. → Mošnov - Letiště
+      Délka: 22.70 km | Jízdní doba: 00:21:07
+
+  23. Ps 35005 — Hummel
+      Dopravce: DPB | ID linky: 1161
+      Trasa: Bratislava - Rusovce → Bratislava - Vajnory
+      Délka: 23.28 km | Jízdní doba: 00:20:28
+
+  24. Ps 35005 — Hummel
+      Dopravce: DPB | ID linky: 1160
+      Trasa: Bratislava - Vajnory → Bratislava - Rusovce
+      Délka: 23.28 km | Jízdní doba: 00:20:28
+
+  25. Ps 31573 — Moudrý Stařec
+      Dopravce: DPMFM | ID linky: 2362
+      Trasa: Mošnov - Letiště → Frýdek Místek - Sedliště
+      Délka: 22.00 km | Jízdní doba: 00:19:42
+
+  26. Ps 31573 — Moudrý Stařec
+      Dopravce: DPMFM | ID linky: 2363
+      Trasa: Frýdek Místek - Sedliště → Mošnov - Letiště
+      Délka: 22.00 km | Jízdní doba: 00:19:42
+
+  27. Ps 10012 — Svoboda
+      Dopravce: PID | ID linky: 846
+      Trasa: Praha - Uhříněves → Praha - Černošice
+      Délka: 22.97 km | Jízdní doba: 00:19:17
+
+  28. Ps 10012 — Svoboda
+      Dopravce: PID | ID linky: 847
+      Trasa: Praha - Černošice → Praha - Uhříněves
+      Délka: 22.97 km | Jízdní doba: 00:19:17
+
+  29. Ps 57890b — Dlouhý Janek
+      Dopravce: DPO | ID linky: 905
+      Trasa: Ostrava - Šenov → Ostrava - Krásné Pole
+      Délka: 20.88 km | Jízdní doba: 00:19:02
+
+  30. Ps 57890b — Dlouhý Janek
+      Dopravce: DPO | ID linky: 904
+      Trasa: Ostrava - Krásné Pole → Ostrava - Šenov
+      Délka: 20.88 km | Jízdní doba: 00:19:02
+
+  31. Ps 80401 — Škvor
+      Dopravce: ČD | ID linky: 2266
+      Trasa: Benešov - Hl.N. → Benešov - Václavice
+      Délka: 9.86 km | Jízdní doba: 00:18:55
+
+  32. Ps 80401 — Škvor
+      Dopravce: ČD | ID linky: 2267
+      Trasa: Benešov - Václavice → Benešov - Hl.N.
+      Délka: 9.86 km | Jízdní doba: 00:18:55
+
+  33. Ps 23168c — Rychlý Strmeň
+      Dopravce: ZSSK | ID linky: 2182
+      Trasa: Šurany - Hl.S. → Nové Zámky - Hl.S:
+      Délka: 26.67 km | Jízdní doba: 00:18:30
+
+  34. Ps 23168c — Rychlý Strmeň
+      Dopravce: ZSSK | ID linky: 2183
+      Trasa: Nové Zámky - Hl.S: → Šurany - Hl.S.
+      Délka: 26.67 km | Jízdní doba: 00:18:30
+
+  35. Ps 78400
+      Dopravce: DPMHK | ID linky: 382
+      Trasa: Hradec Králové - Kukleny → Hradec Králové - Hl.N.
+      Délka: 17.52 km | Jízdní doba: 00:18:01
+
+  36. Ps 78400
+      Dopravce: DPMHK | ID linky: 383
+      Trasa: Hradec Králové - Hl.N. → Hradec Králové - Kukleny
+      Délka: 17.52 km | Jízdní doba: 00:18:01
+
+  37. Ps 31294 — Sihoť
+      Dopravce: ZSSK | ID linky: 2482
+      Trasa: Trenčín - Zlatovce → Trenčín - Hl.S.
+      Délka: 9.71 km | Jízdní doba: 00:17:49
+
+  38. Ps 31294 — Sihoť
+      Dopravce: ZSSK | ID linky: 2483
+      Trasa: Trenčín - Hl.S. → Trenčín - Zlatovce
+      Délka: 9.71 km | Jízdní doba: 00:17:49
+
+  39. Ps 97707 — Felber
+      Dopravce: ČD | ID linky: 386
+      Trasa: Svitavy - Český Lačnov → Svitavy - Vendolí
+      Délka: 22.01 km | Jízdní doba: 00:17:42
+
+  40. Ps 97707 — Felber
+      Dopravce: ČD | ID linky: 387
+      Trasa: Svitavy - Vendolí → Svitavy - Český Lačnov
+      Délka: 22.01 km | Jízdní doba: 00:17:42
+
+  41. Ps 35002 — Gombit
+      Dopravce: DPB | ID linky: 690
+      Trasa: Bratislava - Petržalka → Bratislava - Rača
+      Délka: 18.62 km | Jízdní doba: 00:17:40
+
+  42. Ps 35002b — Krátký Gombit
+      Dopravce: DPB | ID linky: 2192
+      Trasa: Bratislava - Petržalka → Bratislava - Rača
+      Délka: 18.62 km | Jízdní doba: 00:17:40
+
+  43. Ps 35002 — Gombit
+      Dopravce: DPB | ID linky: 691
+      Trasa: Bratislava - Rača → Bratislava - Petržalka
+      Délka: 18.62 km | Jízdní doba: 00:17:40
+
+  44. Ps 35002b — Krátký Gombit
+      Dopravce: DPB | ID linky: 2193
+      Trasa: Bratislava - Rača → Bratislava - Petržalka
+      Délka: 18.62 km | Jízdní doba: 00:17:40
+
+  45. Ps 82262 — Janoušek
+      Dopravce: ČD | ID linky: 2374
+      Trasa: Mohelnice - Mírovka → Vyšehorky
+      Délka: 7.72 km | Jízdní doba: 00:17:38
+
+  46. Ps 82262 — Janoušek
+      Dopravce: ČD | ID linky: 2375
+      Trasa: Vyšehorky → Mohelnice - Mírovka
+      Délka: 7.72 km | Jízdní doba: 00:17:38
+
+  47. Ps 10013 — Petr
+      Dopravce: PID | ID linky: 848
+      Trasa: Praha - Uhříněves → Praha - Hl.N.
+      Délka: 21.76 km | Jízdní doba: 00:17:34
+
+  48. Ps 10013 — Petr
+      Dopravce: PID | ID linky: 849
+      Trasa: Praha - Hl.N. → Praha - Uhříněves
+      Délka: 21.76 km | Jízdní doba: 00:17:34
+
+  49. Ps 10012b — Rychlý Svoboda
+      Dopravce: PID | ID linky: 2060
+      Trasa: Praha - Uhříněves → Praha - Černošice
+      Délka: 22.97 km | Jízdní doba: 00:17:17
+
+  50. Ps 10012b — Rychlý Svoboda
+      Dopravce: PID | ID linky: 2061
+      Trasa: Praha - Černošice → Praha - Uhříněves
+      Délka: 22.97 km | Jízdní doba: 00:17:17
+
+  51. Ps 10008b — Dlouhý Masaryk
+      Dopravce: PID | ID linky: 2082
+      Trasa: Praha - Zdiby → Praha - Hl.N.
+      Délka: 21.24 km | Jízdní doba: 00:17:15
+
+  52. Ps 10008b — Dlouhý Masaryk
+      Dopravce: PID | ID linky: 2083
+      Trasa: Praha - Hl.N. → Praha - Zdiby
+      Délka: 21.24 km | Jízdní doba: 00:17:15
+
+  53. Ps 10001b — Rychlý Havel
+      Dopravce: PID | ID linky: 2046
+      Trasa: Praha - Chodov → Praha - Veleslavín
+      Délka: 22.83 km | Jízdní doba: 00:17:12
+
+  54. Ps 10001b — Rychlý Havel
+      Dopravce: PID | ID linky: 2047
+      Trasa: Praha - Veleslavín → Praha - Chodov
+      Délka: 22.83 km | Jízdní doba: 00:17:12
+
+  55. Ps 80401b — Rychlý Škvor
+      Dopravce: ČD | ID linky: 2264
+      Trasa: Benešov - Hl.N. → Benešov - Václavice
+      Délka: 9.86 km | Jízdní doba: 00:16:55
+
+  56. Ps 80401b — Rychlý Škvor
+      Dopravce: ČD | ID linky: 2265
+      Trasa: Benešov - Václavice → Benešov - Hl.N.
+      Délka: 9.86 km | Jízdní doba: 00:16:55
+
+  57. Ps 35007 — Terezie
+      Dopravce: DPB | ID linky: 1179
+      Trasa: Bratislava - Biskupice → Bratislava - Letiště
+      Délka: 18.71 km | Jízdní doba: 00:16:44
+
+  58. Ps 35007 — Terezie
+      Dopravce: DPB | ID linky: 1178
+      Trasa: Bratislava - Letiště → Bratislava - Biskupice
+      Délka: 18.71 km | Jízdní doba: 00:16:44
+
+  59. Ps 31573b — Moudřejší Stařec
+      Dopravce: DPMFM | ID linky: 2476
+      Trasa: Mošnov - Letiště → Frýdek Místek - Hl.N.
+      Délka: 18.53 km | Jízdní doba: 00:16:37
+
+  60. Ps 31573b — Moudřejší Stařec
+      Dopravce: DPMFM | ID linky: 2477
+      Trasa: Frýdek Místek - Hl.N. → Mošnov - Letiště
+      Délka: 18.53 km | Jízdní doba: 00:16:37
+
+  61. Ps 71004c — Modifikovaný Prinosil
+      Dopravce: DPMO | ID linky: 2119
+      Trasa: Olomouc - Hl.N. → Olomouc - Radíkov
+      Délka: 18.13 km | Jízdní doba: 00:16:23
+
+  62. Ps 71004c — Modifikovaný Prinosil
+      Dopravce: DPMO | ID linky: 2118
+      Trasa: Olomouc - Radíkov → Olomouc - Hl.N.
+      Délka: 18.13 km | Jízdní doba: 00:16:23
+
+  63. Ps 20001 — Bělohlav
+      Dopravce: DPMCB | ID linky: 402
+      Trasa: České Budějovice - Borek → České Budějovice - Roudné
+      Délka: 18.01 km | Jízdní doba: 00:16:18
+
+  64. Ps 20001 — Bělohlav
+      Dopravce: DPMCB | ID linky: 403
+      Trasa: České Budějovice - Roudné → České Budějovice - Borek
+      Délka: 18.01 km | Jízdní doba: 00:16:18
+
+  65. Ps 00109b — Dlouhá Leslie
+      Dopravce: DPMB | ID linky: 2295
+      Trasa: Brno - Maloměřice → Brno - Žebětín
+      Délka: 17.86 km | Jízdní doba: 00:16:13
+
+  66. Ps 00109b — Dlouhá Leslie
+      Dopravce: DPMB | ID linky: 2294
+      Trasa: Brno - Žebětín → Brno - Maloměřice
+      Délka: 17.86 km | Jízdní doba: 00:16:13
+
+  67. Ps 35004 — Tilgner
+      Dopravce: DPB | ID linky: 1159
+      Trasa: Bratislava - Devínská Nová Ves → Bratislava - Petržalka
+      Délka: 17.85 km | Jízdní doba: 00:16:13
+
+  68. Ps 35004 — Tilgner
+      Dopravce: DPB | ID linky: 1158
+      Trasa: Bratislava - Petržalka → Bratislava - Devínská Nová Ves
+      Délka: 17.85 km | Jízdní doba: 00:16:13
+
+  69. Ps 10010 — Husák
+      Dopravce: PID | ID linky: 818
+      Trasa: Praha - Čakovice → Praha - Veleslavín
+      Délka: 17.75 km | Jízdní doba: 00:16:09
+
+  70. Ps 10010 — Husák
+      Dopravce: PID | ID linky: 819
+      Trasa: Praha - Veleslavín → Praha - Čakovice
+      Délka: 17.75 km | Jízdní doba: 00:16:09
+
+  71. Ps 10014 — Nezávislá
+      Dopravce: PID | ID linky: 2078
+      Trasa: Praha - Čakovice → Praha - Suchdol
+      Délka: 17.56 km | Jízdní doba: 00:16:02
+
+  72. Ps 10014 — Nezávislá
+      Dopravce: PID | ID linky: 2079
+      Trasa: Praha - Suchdol → Praha - Čakovice
+      Délka: 17.56 km | Jízdní doba: 00:16:02
+
+  73. Ps 90004
+      Dopravce: DPMK | ID linky: 988
+      Trasa: Košice - Ťahanovce → Košice - Šaca
+      Délka: 17.54 km | Jízdní doba: 00:16:01
+
+  74. Ps 90004
+      Dopravce: DPMK | ID linky: 989
+      Trasa: Košice - Šaca → Košice - Ťahanovce
+      Délka: 17.54 km | Jízdní doba: 00:16:01
+
+  75. Ps 57894
+      Dopravce: DPO | ID linky: 924
+      Trasa: Ostrava - Plesná → Ostrava - Koblov
+      Délka: 17.39 km | Jízdní doba: 00:15:56
+
+  76. Ps 57894
+      Dopravce: DPO | ID linky: 925
+      Trasa: Ostrava - Koblov → Ostrava - Plesná
+      Délka: 17.39 km | Jízdní doba: 00:15:56
+
+  77. Ps 27554
+      Dopravce: DPMP | ID linky: 342
+      Trasa: Pardubice - Ohrazenice → Pardubice - Jesenčany
+      Délka: 15.70 km | Jízdní doba: 00:15:55
+
+  78. Ps 27554
+      Dopravce: DPMP | ID linky: 343
+      Trasa: Pardubice - Jesenčany → Pardubice - Ohrazenice
+      Délka: 15.70 km | Jízdní doba: 00:15:55
+
+  79. Ps 57890 — Janek
+      Dopravce: DPO | ID linky: 2467
+      Trasa: Ostrava - Šenov → Ostrava - Fakultní Nemocnice
+      Délka: 17.26 km | Jízdní doba: 00:15:51
+
+  80. Ps 57890 — Janek
+      Dopravce: DPO | ID linky: 2466
+      Trasa: Ostrava - Fakultní Nemocnice → Ostrava - Šenov
+      Délka: 17.26 km | Jízdní doba: 00:15:51
+
+  81. Ps 10005 — Mozkovna
+      Dopravce: PID | ID linky: 804
+      Trasa: Praha - Zbraslav → Praha - Řeporyje
+      Délka: 18.37 km | Jízdní doba: 00:15:31
+
+  82. Ps 10005 — Mozkovna
+      Dopravce: PID | ID linky: 805
+      Trasa: Praha - Řeporyje → Praha - Zbraslav
+      Délka: 18.37 km | Jízdní doba: 00:15:31
+
+  83. Ps 21240 — Martin Rusnák
+      Dopravce: ZSSK | ID linky: 1930
+      Trasa: Vrútky - Bagarov → Martin - Turčianská  Šťiavnička
+      Délka: 21.65 km | Jízdní doba: 00:15:29
+
+  84. Ps 21240 — Martin Rusnák
+      Dopravce: ZSSK | ID linky: 1931
+      Trasa: Martin - Turčianská  Šťiavnička → Vrútky - Bagarov
+      Délka: 21.65 km | Jízdní doba: 00:15:29
+
+  85. Ps 45889 — Winter
+      Dopravce: ČD | ID linky: 2460
+      Trasa: Opava - Potoční → Opava - Raduň
+      Délka: 16.34 km | Jízdní doba: 00:15:18
+
+  86. Ps 45889 — Winter
+      Dopravce: ČD | ID linky: 2461
+      Trasa: Opava - Raduň → Opava - Potoční
+      Délka: 16.34 km | Jízdní doba: 00:15:18
+
+  87. Ps 35005b — Krátký Hummel
+      Dopravce: DPB | ID linky: 2187
+      Trasa: Bratislava - Petržalka → Bratislava - Vajnory
+      Délka: 16.05 km | Jízdní doba: 00:15:08
+
+  88. Ps 35005b — Krátký Hummel
+      Dopravce: DPB | ID linky: 2186
+      Trasa: Bratislava - Vajnory → Bratislava - Petržalka
+      Délka: 16.05 km | Jízdní doba: 00:15:08
+
+  89. Ps 57896b — Uhelná Stíhačka
+      Dopravce: ČD | ID linky: 2364
+      Trasa: Mošnov - Letiště → Ostrava - Hl.N.
+      Délka: 22.70 km | Jízdní doba: 00:15:07
+
+  90. Ps 57896b — Uhelná Stíhačka
+      Dopravce: ČD | ID linky: 2365
+      Trasa: Ostrava - Hl.N. → Mošnov - Letiště
+      Délka: 22.70 km | Jízdní doba: 00:15:07
+
+  91. Ps 00107b — Modifikovaný Trenck
+      Dopravce: DPMB | ID linky: 2146
+      Trasa: Brno - Obřany → Brno - Chrlice
+      Délka: 15.98 km | Jízdní doba: 00:15:05
+
+  92. Ps 00107b — Modifikovaný Trenck
+      Dopravce: DPMB | ID linky: 2147
+      Trasa: Brno - Chrlice → Brno - Obřany
+      Délka: 15.98 km | Jízdní doba: 00:15:05
+
+  93. Ps 44444 — Masopust
+      Dopravce: DPNisa | ID linky: 1008
+      Trasa: Jablonec nad Nisou - Paseky → Liberec - Hl.N.
+      Délka: 13.86 km | Jízdní doba: 00:14:49
+
+  94. Ps 44444 — Masopust
+      Dopravce: DPNisa | ID linky: 1009
+      Trasa: Liberec - Hl.N. → Jablonec nad Nisou - Paseky
+      Délka: 13.86 km | Jízdní doba: 00:14:49
+
+  95. Ps 54509 — Benka
+      Dopravce: ZSSK | ID linky: 1768
+      Trasa: Malacky - Kostoliště → Malacky - Pernek-Letecká Základna
+      Délka: 20.43 km | Jízdní doba: 00:14:45
+
+  96. Ps 54509 — Benka
+      Dopravce: ZSSK | ID linky: 1769
+      Trasa: Malacky - Pernek-Letecká Základna → Malacky - Kostoliště
+      Délka: 20.43 km | Jízdní doba: 00:14:45
+
+  97. Ps 71004 — Prinosil
+      Dopravce: DPMO | ID linky: 1038
+      Trasa: Olomouc - Svatý Kopeček → Olomouc - Nemilany
+      Délka: 17.02 km | Jízdní doba: 00:14:43
+
+  98. Ps 71004 — Prinosil
+      Dopravce: DPMO | ID linky: 1039
+      Trasa: Olomouc - Nemilany → Olomouc - Svatý Kopeček
+      Délka: 17.02 km | Jízdní doba: 00:14:43
+
+  99. Ps 90003
+      Dopravce: DPMK | ID linky: 976
+      Trasa: Košice - Krásna → Košice - Letiště
+      Délka: 15.29 km | Jízdní doba: 00:14:41
+
+ 100. Ps 90003
+      Dopravce: DPMK | ID linky: 977
+      Trasa: Košice - Letiště → Košice - Krásna
+      Délka: 15.29 km | Jízdní doba: 00:14:41
+
+ 101. Ps 35003 — Lasica
+      Dopravce: DPB | ID linky: 1156
+      Trasa: Bratislava - Záhorská Bystrica → Bratislava - Nivy
+      Délka: 15.13 km | Jízdní doba: 00:14:35
+
+ 102. Ps 35003 — Lasica
+      Dopravce: DPB | ID linky: 1157
+      Trasa: Bratislava - Nivy → Bratislava - Záhorská Bystrica
+      Délka: 15.13 km | Jízdní doba: 00:14:35
+
+ 103. Ps 10013b — Rychlý Petr
+      Dopravce: PID | ID linky: 2062
+      Trasa: Praha - Uhříněves → Praha - Hl.N.
+      Délka: 21.76 km | Jízdní doba: 00:14:34
+
+ 104. Ps 10013b — Rychlý Petr
+      Dopravce: PID | ID linky: 2063
+      Trasa: Praha - Hl.N. → Praha - Uhříněves
+      Délka: 21.76 km | Jízdní doba: 00:14:34
+
+ 105. Ps 20317 — Dřevínek
+      Dopravce: ČD | ID linky: 477
+      Trasa: Pelhřimov - Kojčice → Pelhřimov - Hl.N.
+      Délka: 15.11 km | Jízdní doba: 00:14:34
+
+ 106. Ps 20317 — Dřevínek
+      Dopravce: ČD | ID linky: 476
+      Trasa: Pelhřimov - Hl.N. → Pelhřimov - Kojčice
+      Délka: 15.11 km | Jízdní doba: 00:14:34
+
+ 107. Ps 57891
+      Dopravce: DPO | ID linky: 908
+      Trasa: Ostrava - Stromořadí → Ostrava - Výškovice
+      Délka: 16.04 km | Jízdní doba: 00:14:07
+
+ 108. Ps 57891
+      Dopravce: DPO | ID linky: 909
+      Trasa: Ostrava - Výškovice → Ostrava - Stromořadí
+      Délka: 16.04 km | Jízdní doba: 00:14:07
+
+ 109. Ps 97237
+      Dopravce: PMDP | ID linky: 1072
+      Trasa: Plzeň - Bílá Hora → Plzeň - Černice
+      Délka: 17.43 km | Jízdní doba: 00:13:58
+
+ 110. Ps 97237
+      Dopravce: PMDP | ID linky: 1073
+      Trasa: Plzeň - Černice → Plzeň - Bílá Hora
+      Délka: 17.43 km | Jízdní doba: 00:13:58
+
+ 111. Ps 65172 — Apetauer
+      Dopravce: ČD | ID linky: 540
+      Trasa: Žďár nad Sázavou - Hl.N. → Nové Veselí
+      Délka: 17.16 km | Jízdní doba: 00:13:48
+
+ 112. Ps 65172 — Apetauer
+      Dopravce: ČD | ID linky: 541
+      Trasa: Nové Veselí → Žďár nad Sázavou - Hl.N.
+      Délka: 17.16 km | Jízdní doba: 00:13:48
+
+ 113. Ps 10011 — Fiala
+      Dopravce: PID | ID linky: 838
+      Trasa: Praha - Počernice → Praha - Hl.N.
+      Délka: 15.32 km | Jízdní doba: 00:13:42
+
+ 114. Ps 10011 — Fiala
+      Dopravce: PID | ID linky: 839
+      Trasa: Praha - Hl.N. → Praha - Počernice
+      Délka: 15.32 km | Jízdní doba: 00:13:42
+
+ 115. Ps 82262b — Krátký Janoušek
+      Dopravce: ČD | ID linky: 2490
+      Trasa: Mohelnice - Mírovka → Mohelnice - Podolí
+      Délka: 4.47 km | Jízdní doba: 00:13:41
+
+ 116. Ps 82262b — Krátký Janoušek
+      Dopravce: ČD | ID linky: 2491
+      Trasa: Mohelnice - Podolí → Mohelnice - Mírovka
+      Délka: 4.47 km | Jízdní doba: 00:13:41
+
+ 117. Ps 00107 — Trenck
+      Dopravce: DPMB | ID linky: 900
+      Trasa: Brno - Obřany → Brno - Brněnské Ivanovice
+      Délka: 15.23 km | Jízdní doba: 00:13:38
+
+ 118. Ps 00107 — Trenck
+      Dopravce: DPMB | ID linky: 901
+      Trasa: Brno - Brněnské Ivanovice → Brno - Obřany
+      Délka: 15.23 km | Jízdní doba: 00:13:38
+
+ 119. Ps 74403
+      Dopravce: DPMHK | ID linky: 957
+      Trasa: Hradec Králové - Plotiště → Hradec Králové - Piletice
+      Délka: 11.82 km | Jízdní doba: 00:13:35
+
+ 120. Ps 74403
+      Dopravce: DPMHK | ID linky: 956
+      Trasa: Hradec Králové - Piletice → Hradec Králové - Plotiště
+      Délka: 11.82 km | Jízdní doba: 00:13:35
+
+ 121. Ps 57893
+      Dopravce: DPO | ID linky: 923
+      Trasa: Ostrava - Svinov → Ostrava - Koblov
+      Délka: 13.02 km | Jízdní doba: 00:13:19
+
+ 122. Ps 57893
+      Dopravce: DPO | ID linky: 922
+      Trasa: Ostrava - Koblov → Ostrava - Svinov
+      Délka: 13.02 km | Jízdní doba: 00:13:19
+
+ 123. Ps 20001b — Rychlý Bělohlav
+      Dopravce: DPMCB | ID linky: 2134
+      Trasa: České Budějovice - Borek → České Budějovice - Roudné
+      Délka: 18.01 km | Jízdní doba: 00:13:18
+
+ 124. Ps 20001b — Rychlý Bělohlav
+      Dopravce: DPMCB | ID linky: 2135
+      Trasa: České Budějovice - Roudné → České Budějovice - Borek
+      Délka: 18.01 km | Jízdní doba: 00:13:18
+
+ 125. Ps 10008 — Masaryk
+      Dopravce: PID | ID linky: 810
+      Trasa: Praha - Čakovice → Praha - Hl.N.
+      Délka: 15.83 km | Jízdní doba: 00:13:00
+
+ 126. Ps 10008 — Masaryk
+      Dopravce: PID | ID linky: 811
+      Trasa: Praha - Hl.N. → Praha - Čakovice
+      Délka: 15.83 km | Jízdní doba: 00:13:00
+
+ 127. Ps 00105 — Mendl
+      Dopravce: DPMB | ID linky: 897
+      Trasa: Brno - Chrlice → Brno - Maloměřice
+      Délka: 13.71 km | Jízdní doba: 00:12:44
+
+ 128. Ps 00105 — Mendl
+      Dopravce: DPMB | ID linky: 896
+      Trasa: Brno - Maloměřice → Brno - Chrlice
+      Délka: 13.71 km | Jízdní doba: 00:12:44
+
+ 129. Ps 45888 — Seidl
+      Dopravce: ČD | ID linky: 494
+      Trasa: Opava - Vávrovice → Opava - Raduň
+      Délka: 15.18 km | Jízdní doba: 00:12:36
+
+ 130. Ps 45888 — Seidl
+      Dopravce: ČD | ID linky: 495
+      Trasa: Opava - Raduň → Opava - Vávrovice
+      Délka: 15.18 km | Jízdní doba: 00:12:36
+
+ 131. Ps 78401
+      Dopravce: DPMHK | ID linky: 952
+      Trasa: Hradec Králové - Piletice → Hradec Králové - Svinary
+      Délka: 11.73 km | Jízdní doba: 00:12:32
+
+ 132. Ps 78401
+      Dopravce: DPMHK | ID linky: 953
+      Trasa: Hradec Králové - Svinary → Hradec Králové - Piletice
+      Délka: 11.73 km | Jízdní doba: 00:12:32
+
+ 133. Ps 10005b — Rychlá Mozkovna
+      Dopravce: PID | ID linky: 2050
+      Trasa: Praha - Komořany → Praha - Řeporyje
+      Délka: 16.42 km | Jízdní doba: 00:12:21
+
+ 134. Ps 10005b — Rychlá Mozkovna
+      Dopravce: PID | ID linky: 2051
+      Trasa: Praha - Řeporyje → Praha - Komořany
+      Délka: 16.42 km | Jízdní doba: 00:12:21
+
+ 135. Ps 95060
+      Dopravce: ZSSK | ID linky: 883
+      Trasa: Prešov - Hl.S. → Prešov - Šidlovec
+      Délka: 13.06 km | Jízdní doba: 00:12:20
+
+ 136. Ps 95060
+      Dopravce: ZSSK | ID linky: 882
+      Trasa: Prešov - Šidlovec → Prešov - Hl.S.
+      Délka: 13.06 km | Jízdní doba: 00:12:20
+
+ 137. Ps 27556
+      Dopravce: DPMP | ID linky: 932
+      Trasa: Pardubice - Semtín → Pardubice - Krchleby
+      Délka: 13.05 km | Jízdní doba: 00:12:20
+
+ 138. Ps 27556
+      Dopravce: DPMP | ID linky: 933
+      Trasa: Pardubice - Krchleby → Pardubice - Semtín
+      Délka: 13.05 km | Jízdní doba: 00:12:20
+
+ 139. Ps 13500
+      Dopravce: ČD | ID linky: 652
+      Trasa: Třebíč - Ptáčov → Okřešice
+      Délka: 12.81 km | Jízdní doba: 00:12:11
+
+ 140. Ps 13500
+      Dopravce: ČD | ID linky: 653
+      Trasa: Okřešice → Třebíč - Ptáčov
+      Délka: 12.81 km | Jízdní doba: 00:12:11
+
+ 141. Ps 10010b — Rychlý Husák
+      Dopravce: PID | ID linky: 2056
+      Trasa: Praha - Čakovice → Praha - Veleslavín
+      Délka: 17.75 km | Jízdní doba: 00:12:09
+
+ 142. Ps 10010b — Rychlý Husák
+      Dopravce: PID | ID linky: 2057
+      Trasa: Praha - Veleslavín → Praha - Čakovice
+      Délka: 17.75 km | Jízdní doba: 00:12:09
+
+ 143. Ps 97236
+      Dopravce: PMDP | ID linky: 1070
+      Trasa: Plzeň - Božkov → Plzeň - Vinice
+      Délka: 12.68 km | Jízdní doba: 00:12:06
+
+ 144. Ps 97236
+      Dopravce: PMDP | ID linky: 1071
+      Trasa: Plzeň - Vinice → Plzeň - Božkov
+      Délka: 12.68 km | Jízdní doba: 00:12:06
+
+ 145. Ps 26608 — Zentner
+      Dopravce: ČD | ID linky: 346
+      Trasa: Podbořany - Krásný Dvůr → Podbořany - Hl.N.
+      Délka: 15.93 km | Jízdní doba: 00:12:03
+
+ 146. Ps 26608 — Zentner
+      Dopravce: ČD | ID linky: 347
+      Trasa: Podbořany - Hl.N. → Podbořany - Krásný Dvůr
+      Délka: 15.93 km | Jízdní doba: 00:12:03
+
+ 147. Ps 71001 — Render
+      Dopravce: DPMO | ID linky: 1033
+      Trasa: Olomouc - Hvězdárna → Olomouc - Hl.N.
+      Délka: 10.89 km | Jízdní doba: 00:12:02
+
+ 148. Ps 71001 — Render
+      Dopravce: DPMO | ID linky: 1032
+      Trasa: Olomouc - Hl.N. → Olomouc - Hvězdárna
+      Délka: 10.89 km | Jízdní doba: 00:12:02
+
+ 149. Ps 10002 — Zeman
+      Dopravce: PID | ID linky: 352
+      Trasa: Praha - Hl.N. → Praha - Řeporyje
+      Délka: 15.84 km | Jízdní doba: 00:12:00
+
+ 150. Ps 10002 — Zeman
+      Dopravce: PID | ID linky: 353
+      Trasa: Praha - Řeporyje → Praha - Hl.N.
+      Délka: 15.84 km | Jízdní doba: 00:12:00
+
+ 151. Ps 72100 — Lutka
+      Dopravce: ČD | ID linky: 396
+      Trasa: Hranice na Moravě - Hl.N. → Hranice na Moravě - Slavíč
+      Délka: 14.18 km | Jízdní doba: 00:12:00
+
+ 152. Ps 72100 — Lutka
+      Dopravce: ČD | ID linky: 397
+      Trasa: Hranice na Moravě - Slavíč → Hranice na Moravě - Hl.N.
+      Délka: 14.18 km | Jízdní doba: 00:12:00
+
+ 153. Ps 24243
+      Dopravce: ČD | ID linky: 358
+      Trasa: Vysoké Mýto - Domoradice → Vysoké Mýto - Zámrsk
+      Délka: 14.05 km | Jízdní doba: 00:11:56
+
+ 154. Ps 24243
+      Dopravce: ČD | ID linky: 359
+      Trasa: Vysoké Mýto - Zámrsk → Vysoké Mýto - Domoradice
+      Délka: 14.05 km | Jízdní doba: 00:11:56
+
+ 155. Ps 61635b — Dlouhý Malovec
+      Dopravce: ZSSK | ID linky: 2032
+      Trasa: Pribeta → Hurbanovo - Hl.S.
+      Délka: 17.35 km | Jízdní doba: 00:11:54
+
+ 156. Ps 61635b — Dlouhý Malovec
+      Dopravce: ZSSK | ID linky: 2033
+      Trasa: Hurbanovo - Hl.S. → Pribeta
+      Délka: 17.35 km | Jízdní doba: 00:11:54
+
+ 157. Ps 31571b — Posunutý Orel
+      Dopravce: ČD | ID linky: 2358
+      Trasa: Frýdek Místek - Panské Dvory → Frýdek Místek - Bahno
+      Délka: 13.86 km | Jízdní doba: 00:11:49
+
+ 158. Ps 31571b — Posunutý Orel
+      Dopravce: ČD | ID linky: 2359
+      Trasa: Frýdek Místek - Bahno → Frýdek Místek - Panské Dvory
+      Délka: 13.86 km | Jízdní doba: 00:11:49
+
+ 159. Ps 18632 — Josefmajor
+      Dopravce: ZSSK | ID linky: 1188
+      Trasa: Miloslavov → Šamorín - Hl.S.
+      Délka: 12.06 km | Jízdní doba: 00:11:44
+
+ 160. Ps 18632 — Josefmajor
+      Dopravce: ZSSK | ID linky: 1189
+      Trasa: Šamorín - Hl.S. → Miloslavov
+      Délka: 12.06 km | Jízdní doba: 00:11:44
+
+ 161. Ps 10011b — Rychlý Fiala
+      Dopravce: PID | ID linky: 2058
+      Trasa: Praha - Počernice → Praha - Hl.N.
+      Délka: 15.32 km | Jízdní doba: 00:11:42
+
+ 162. Ps 10011b — Rychlý Fiala
+      Dopravce: PID | ID linky: 2059
+      Trasa: Praha - Hl.N. → Praha - Počernice
+      Délka: 15.32 km | Jízdní doba: 00:11:42
+
+ 163. Ps 80400 — Mareš
+      Dopravce: ČD | ID linky: 426
+      Trasa: Benešov - Hl.N. → Benešov - Václavice
+      Délka: 11.90 km | Jízdní doba: 00:11:38
+
+ 164. Ps 80400 — Mareš
+      Dopravce: ČD | ID linky: 427
+      Trasa: Benešov - Václavice → Benešov - Hl.N.
+      Délka: 11.90 km | Jízdní doba: 00:11:38
+
+ 165. Ps 10009 — Hácha
+      Dopravce: PID | ID linky: 812
+      Trasa: Praha - Kopanina → Praha - Zličín
+      Délka: 15.19 km | Jízdní doba: 00:11:37
+
+ 166. Ps 10009 — Hácha
+      Dopravce: PID | ID linky: 813
+      Trasa: Praha - Zličín → Praha - Kopanina
+      Délka: 15.19 km | Jízdní doba: 00:11:37
+
+ 167. Ps 45001 — Suchánek
+      Dopravce: ČD | ID linky: 458
+      Trasa: Mutěnice → Hodonín - Hl.N.
+      Délka: 14.87 km | Jízdní doba: 00:11:25
+
+ 168. Ps 45001 — Suchánek
+      Dopravce: ČD | ID linky: 459
+      Trasa: Hodonín - Hl.N. → Mutěnice
+      Délka: 14.87 km | Jízdní doba: 00:11:25
+
+ 169. Ps 44442b — Dlouhý Hnělička
+      Dopravce: DPNisa | ID linky: 2122
+      Trasa: Liberec - Vratislavice → Liberec - Staré Pavlovice
+      Délka: 11.52 km | Jízdní doba: 00:11:25
+
+ 170. Ps 44442b — Dlouhý Hnělička
+      Dopravce: DPNisa | ID linky: 2123
+      Trasa: Liberec - Staré Pavlovice → Liberec - Vratislavice
+      Délka: 11.52 km | Jízdní doba: 00:11:25
+
+ 171. Ps 71003 — Langer
+      Dopravce: DPMO | ID linky: 1036
+      Trasa: Olomouc - Chomoutov → Olomouc - Kožušany-Tážaly
+      Délka: 13.04 km | Jízdní doba: 00:11:20
+
+ 172. Ps 71003 — Langer
+      Dopravce: DPMO | ID linky: 1037
+      Trasa: Olomouc - Kožušany-Tážaly → Olomouc - Chomoutov
+      Délka: 13.04 km | Jízdní doba: 00:11:20
+
+ 173. Ps 78402
+      Dopravce: DPMHK | ID linky: 955
+      Trasa: Hradec Králové - Vlčkovice → Hradec Králové - Svinary
+      Délka: 11.39 km | Jízdní doba: 00:11:20
+
+ 174. Ps 78402
+      Dopravce: DPMHK | ID linky: 954
+      Trasa: Hradec Králové - Svinary → Hradec Králové - Vlčkovice
+      Délka: 11.39 km | Jízdní doba: 00:11:20
+
+ 175. Ps 97897 — Šamberk
+      Dopravce: ČD | ID linky: 388
+      Trasa: Březová nad Svitavou - Hl.N. → Březová nad Svitavou - Chrastavec
+      Délka: 9.48 km | Jízdní doba: 00:11:10
+
+ 176. Ps 97897 — Šamberk
+      Dopravce: ČD | ID linky: 389
+      Trasa: Březová nad Svitavou - Chrastavec → Březová nad Svitavou - Hl.N.
+      Délka: 9.48 km | Jízdní doba: 00:11:10
+
+ 177. Ps 27557
+      Dopravce: DPMP | ID linky: 934
+      Trasa: Pardubice - Pardubičky → Pardubice - Semtín
+      Délka: 10.53 km | Jízdní doba: 00:10:49
+
+ 178. Ps 27557
+      Dopravce: DPMP | ID linky: 935
+      Trasa: Pardubice - Semtín → Pardubice - Pardubičky
+      Délka: 10.53 km | Jízdní doba: 00:10:49
+
+ 179. Ps 00101 — Polívka
+      Dopravce: DPMB | ID linky: 414
+      Trasa: Brno - Maloměřice → Brno - Hl.N.
+      Délka: 13.73 km | Jízdní doba: 00:10:44
+
+ 180. Ps 00101 — Polívka
+      Dopravce: DPMB | ID linky: 415
+      Trasa: Brno - Hl.N. → Brno - Maloměřice
+      Délka: 13.73 km | Jízdní doba: 00:10:44
+
+ 181. Ps 50881 — Martin
+      Dopravce: ZSSK | ID linky: 788
+      Trasa: Martin - Turčianská  Šťiavnička → Martin - Hl.S.
+      Délka: 11.94 km | Jízdní doba: 00:10:40
+
+ 182. Ps 50881 — Martin
+      Dopravce: ZSSK | ID linky: 789
+      Trasa: Martin - Hl.S. → Martin - Turčianská  Šťiavnička
+      Délka: 11.94 km | Jízdní doba: 00:10:40
+
+ 183. Ps 45888b — Rychlý Seidl
+      Dopravce: ČD | ID linky: 1822
+      Trasa: Opava - Vávrovice → Opava - Raduň
+      Délka: 15.18 km | Jízdní doba: 00:10:36
+
+ 184. Ps 45888b — Rychlý Seidl
+      Dopravce: ČD | ID linky: 1823
+      Trasa: Opava - Raduň → Opava - Vávrovice
+      Délka: 15.18 km | Jízdní doba: 00:10:36
+
+ 185. Ps 00100 — Šalina
+      Dopravce: DPMB | ID linky: 412
+      Trasa: Brno - Hl.N. → Brno - Žebětín
+      Délka: 11.82 km | Jízdní doba: 00:10:36
+
+ 186. Ps 00100 — Šalina
+      Dopravce: DPMB | ID linky: 413
+      Trasa: Brno - Žebětín → Brno - Hl.N.
+      Délka: 11.82 km | Jízdní doba: 00:10:36
+
+ 187. Ps 10004 — Klaus
+      Dopravce: PID | ID linky: 802
+      Trasa: Praha - Kunratice → Praha - Kamýk
+      Délka: 11.82 km | Jízdní doba: 00:10:35
+
+ 188. Ps 10004 — Klaus
+      Dopravce: PID | ID linky: 803
+      Trasa: Praha - Kamýk → Praha - Kunratice
+      Délka: 11.82 km | Jízdní doba: 00:10:35
+
+ 189. Ps 34583 — Patočka
+      Dopravce: MHDT | ID linky: 224
+      Trasa: Turnov - Hl.N. → Turnov - Bělá
+      Délka: 10.13 km | Jízdní doba: 00:10:35
+
+ 190. Ps 34583 — Patočka
+      Dopravce: MHDT | ID linky: 225
+      Trasa: Turnov - Bělá → Turnov - Hl.N.
+      Délka: 10.13 km | Jízdní doba: 00:10:35
+
+ 191. Ps 20317b — Rychlý Dřevínek
+      Dopravce: ČD | ID linky: 2252
+      Trasa: Pelhřimov - Hl.N. → Pelhřimov - Kojčice
+      Délka: 15.11 km | Jízdní doba: 00:10:34
+
+ 192. Ps 20317b — Rychlý Dřevínek
+      Dopravce: ČD | ID linky: 2253
+      Trasa: Pelhřimov - Kojčice → Pelhřimov - Hl.N.
+      Délka: 15.11 km | Jízdní doba: 00:10:34
+
+ 193. Ps 57888
+      Dopravce: DPO | ID linky: 364
+      Trasa: Ostrava - Hl.N. → Ostrava - Janov
+      Délka: 13.39 km | Jízdní doba: 00:10:32
+
+ 194. Ps 57888
+      Dopravce: DPO | ID linky: 365
+      Trasa: Ostrava - Janov → Ostrava - Hl.N.
+      Délka: 13.39 km | Jízdní doba: 00:10:32
+
+ 195. Ps 10523 — Siostrzonek
+      Dopravce: PKP | ID linky: 2426
+      Trasa: Cieszyn - Glowny → Český Těšín - Svibice
+      Délka: 10.00 km | Jízdní doba: 00:10:30
+
+ 196. Ps 10523 — Siostrzonek
+      Dopravce: PKP | ID linky: 2427
+      Trasa: Český Těšín - Svibice → Cieszyn - Glowny
+      Délka: 10.00 km | Jízdní doba: 00:10:30
+
+ 197. Ps 35006 — Cibulka
+      Dopravce: DPB | ID linky: 1162
+      Trasa: Bratislava - Karlova Ves → Bratislava - Vajnory
+      Délka: 13.30 km | Jízdní doba: 00:10:29
+
+ 198. Ps 35006 — Cibulka
+      Dopravce: DPB | ID linky: 1163
+      Trasa: Bratislava - Vajnory → Bratislava - Karlova Ves
+      Délka: 13.30 km | Jízdní doba: 00:10:29
+
+ 199. Ps 22000 — Patejdl
+      Dopravce: DPKV | ID linky: 405
+      Trasa: Karlovy Vary - Sedlec → Karlovy Vary - Doubí
+      Délka: 11.57 km | Jízdní doba: 00:10:26
+
+ 200. Ps 22000 — Patejdl
+      Dopravce: DPKV | ID linky: 404
+      Trasa: Karlovy Vary - Doubí → Karlovy Vary - Sedlec
+      Délka: 11.57 km | Jízdní doba: 00:10:26
+
+ 201. Ps 97235
+      Dopravce: PMDP | ID linky: 1068
+      Trasa: Plzeň - Doubravka → Plzeň - Bolevec
+      Délka: 11.48 km | Jízdní doba: 00:10:23
+
+ 202. Ps 97235
+      Dopravce: PMDP | ID linky: 1069
+      Trasa: Plzeň - Bolevec → Plzeň - Doubravka
+      Délka: 11.48 km | Jízdní doba: 00:10:23
+
+ 203. Ps 20319
+      Dopravce: ČD | ID linky: 1050
+      Trasa: Přerov - Hl.N. → Přerov - Penčice
+      Délka: 9.70 km | Jízdní doba: 00:10:19
+
+ 204. Ps 20319
+      Dopravce: ČD | ID linky: 1051
+      Trasa: Přerov - Penčice → Přerov - Hl.N.
+      Délka: 9.70 km | Jízdní doba: 00:10:19
+
+ 205. Ps 87002
+      Dopravce: ZSSK | ID linky: 964
+      Trasa: Rimavská Sobota - Pokoradz → Rimavská Sobota - Hl.N.
+      Délka: 11.32 km | Jízdní doba: 00:10:17
+
+ 206. Ps 87002
+      Dopravce: ZSSK | ID linky: 965
+      Trasa: Rimavská Sobota - Hl.N. → Rimavská Sobota - Pokoradz
+      Délka: 11.32 km | Jízdní doba: 00:10:17
+
+ 207. Ps 71002 — Latterman
+      Dopravce: DPMO | ID linky: 1034
+      Trasa: Olomouc - Hl.N. → Olomouc - Nedvězí
+      Délka: 9.63 km | Jízdní doba: 00:10:17
+
+ 208. Ps 71002 — Latterman
+      Dopravce: DPMO | ID linky: 1035
+      Trasa: Olomouc - Nedvězí → Olomouc - Hl.N.
+      Délka: 9.63 km | Jízdní doba: 00:10:17
+
+ 209. Ps 90002
+      Dopravce: DPMK | ID linky: 974
+      Trasa: Košice - Ťahanovce → Košice - Šebastovce
+      Délka: 11.27 km | Jízdní doba: 00:10:16
+
+ 210. Ps 90002
+      Dopravce: DPMK | ID linky: 975
+      Trasa: Košice - Šebastovce → Košice - Ťahanovce
+      Délka: 11.27 km | Jízdní doba: 00:10:16
+
+ 211. Ps 00107c — Rychlý Trenck
+      Dopravce: DPMB | ID linky: 2288
+      Trasa: Brno - Obřany → Brno - Chrlice
+      Délka: 11.26 km | Jízdní doba: 00:10:15
+
+ 212. Ps 00107c — Rychlý Trenck
+      Dopravce: DPMB | ID linky: 2289
+      Trasa: Brno - Chrlice → Brno - Obřany
+      Délka: 11.26 km | Jízdní doba: 00:10:15
+
+ 213. Ps 22500 — Unger
+      Dopravce: ČD | ID linky: 406
+      Trasa: Sokolov - Hl.N. → Sokolov - Dolní Rychnov
+      Délka: 12.85 km | Jízdní doba: 00:10:13
+
+ 214. Ps 22500 — Unger
+      Dopravce: ČD | ID linky: 407
+      Trasa: Sokolov - Dolní Rychnov → Sokolov - Hl.N.
+      Délka: 12.85 km | Jízdní doba: 00:10:13
+
+ 215. Ps 97503 — Cemerek
+      Dopravce: ČD | ID linky: 1656
+      Trasa: Třinec - Lyžbice → Třinec - Borek
+      Délka: 11.02 km | Jízdní doba: 00:10:07
+
+ 216. Ps 97503 — Cemerek
+      Dopravce: ČD | ID linky: 1657
+      Trasa: Třinec - Borek → Třinec - Lyžbice
+      Délka: 11.02 km | Jízdní doba: 00:10:07
+
+ 217. Ps 26608b — Rychlý Zentner
+      Dopravce: ČD | ID linky: 2104
+      Trasa: Podbořany - Krásný Dvůr → Podbořany - Hl.N.
+      Délka: 15.93 km | Jízdní doba: 00:10:03
+
+ 218. Ps 26608b — Rychlý Zentner
+      Dopravce: ČD | ID linky: 2105
+      Trasa: Podbořany - Hl.N. → Podbořany - Krásný Dvůr
+      Délka: 15.93 km | Jízdní doba: 00:10:03
+
+ 219. Ps 10014b — Krátká Nezávislá
+      Dopravce: PID | ID linky: 2080
+      Trasa: Praha - Čakovice → Roztoky
+      Délka: 10.92 km | Jízdní doba: 00:10:03
+
+ 220. Ps 10014b — Krátká Nezávislá
+      Dopravce: PID | ID linky: 2081
+      Trasa: Roztoky → Praha - Čakovice
+      Délka: 10.92 km | Jízdní doba: 00:10:03
+
+ 221. Ps 55170 — Baťa
+      Dopravce: ČD | ID linky: 526
+      Trasa: Zlín - Hl.N. → Zlín - Kudlov
+      Délka: 12.53 km | Jízdní doba: 00:10:01
+
+ 222. Ps 55170 — Baťa
+      Dopravce: ČD | ID linky: 527
+      Trasa: Zlín - Kudlov → Zlín - Hl.N.
+      Délka: 12.53 km | Jízdní doba: 00:10:01
+
+ 223. Ps 00106b — Dlouhá Šebestová
+      Dopravce: DPMB | ID linky: 2144
+      Trasa: Brno - Kohoutovice → Brno - Řečkovice
+      Délka: 10.74 km | Jízdní doba: 00:09:57
+
+ 224. Ps 00106b — Dlouhá Šebestová
+      Dopravce: DPMB | ID linky: 2145
+      Trasa: Brno - Řečkovice → Brno - Kohoutovice
+      Délka: 10.74 km | Jízdní doba: 00:09:57
+
+ 225. Ps 31570 — Vrána
+      Dopravce: ČD | ID linky: 368
+      Trasa: Frýdek Místek - Panské Dvory → Frýdek Místek - Bahno
+      Délka: 10.70 km | Jízdní doba: 00:09:55
+
+ 226. Ps 31570 — Vrána
+      Dopravce: ČD | ID linky: 369
+      Trasa: Frýdek Místek - Bahno → Frýdek Místek - Panské Dvory
+      Délka: 10.70 km | Jízdní doba: 00:09:55
+
+ 227. Ps 20321 — Ambros
+      Dopravce: ČD | ID linky: 522
+      Trasa: Prostějov - Krasice → Prostějov - Držovice
+      Délka: 12.29 km | Jízdní doba: 00:09:53
+
+ 228. Ps 20321 — Ambros
+      Dopravce: ČD | ID linky: 523
+      Trasa: Prostějov - Držovice → Prostějov - Krasice
+      Délka: 12.29 km | Jízdní doba: 00:09:53
+
+ 229. Ps 80499 — Hlučan
+      Dopravce: ČD | ID linky: 2472
+      Trasa: Hlučín - Hl.N. → Ostrava - Poruba
+      Délka: 10.63 km | Jízdní doba: 00:09:53
+
+ 230. Ps 80499 — Hlučan
+      Dopravce: ČD | ID linky: 2473
+      Trasa: Ostrava - Poruba → Hlučín - Hl.N.
+      Délka: 10.63 km | Jízdní doba: 00:09:53
+
+ 231. Ps 57890b — Rychlý Janek
+      Dopravce: DPO | ID linky: 1834
+      Trasa: Ostrava - Svinov → Ostrava - Šenov
+      Délka: 13.77 km | Jízdní doba: 00:09:46
+
+ 232. Ps 57890b — Rychlý Janek
+      Dopravce: DPO | ID linky: 1835
+      Trasa: Ostrava - Šenov → Ostrava - Svinov
+      Délka: 13.77 km | Jízdní doba: 00:09:46
+
+ 233. Ps 30500
+      Dopravce: ČD | ID linky: 724
+      Trasa: Jirkov - Hl.N. → Chomutov - Hl.N.
+      Délka: 10.43 km | Jízdní doba: 00:09:46
+
+ 234. Ps 30500
+      Dopravce: ČD | ID linky: 725
+      Trasa: Chomutov - Hl.N. → Jirkov - Hl.N.
+      Délka: 10.43 km | Jízdní doba: 00:09:46
+
+ 235. Ps 20315 — Michna
+      Dopravce: ČD | ID linky: 465
+      Trasa: Jindřichův Hradec - Otín → Jindřichův Hradec - Jindřiš
+      Délka: 10.43 km | Jízdní doba: 00:09:45
+
+ 236. Ps 20315 — Michna
+      Dopravce: ČD | ID linky: 464
+      Trasa: Jindřichův Hradec - Jindřiš → Jindřichův Hradec - Otín
+      Délka: 10.43 km | Jízdní doba: 00:09:45
+
+ 237. Ps 18634 — Lanna
+      Dopravce: ČD | ID linky: 1195
+      Trasa: Doksy → Kladno - Dubí
+      Délka: 10.43 km | Jízdní doba: 00:09:45
+
+ 238. Ps 18634 — Lanna
+      Dopravce: ČD | ID linky: 1194
+      Trasa: Kladno - Dubí → Doksy
+      Délka: 10.43 km | Jízdní doba: 00:09:45
+
+ 239. Ps 31572 — Růže
+      Dopravce: ČD | ID linky: 2354
+      Trasa: Frýdek Místek - Baška → Frýdek Místek - Horní Sviadnov
+      Délka: 10.07 km | Jízdní doba: 00:09:32
+
+ 240. Ps 31572 — Růže
+      Dopravce: ČD | ID linky: 2355
+      Trasa: Frýdek Místek - Horní Sviadnov → Frýdek Místek - Baška
+      Délka: 10.07 km | Jízdní doba: 00:09:32
+
+ 241. Ps 23870
+      Dopravce: ČD | ID linky: 370
+      Trasa: Staré Město u Uherského Hradiště → Uherské Hradiště - Míkovice
+      Délka: 10.04 km | Jízdní doba: 00:09:31
+
+ 242. Ps 23870
+      Dopravce: ČD | ID linky: 371
+      Trasa: Uherské Hradiště - Míkovice → Staré Město u Uherského Hradiště
+      Délka: 10.04 km | Jízdní doba: 00:09:31
+
+ 243. Ps 44444b — Rychlý Masopust
+      Dopravce: DPNisa | ID linky: 2126
+      Trasa: Jablonec nad Nisou - Hl.N. → Liberec - Hl.N.
+      Délka: 11.53 km | Jízdní doba: 00:09:25
+
+ 244. Ps 44444b — Rychlý Masopust
+      Dopravce: DPNisa | ID linky: 2127
+      Trasa: Liberec - Hl.N. → Jablonec nad Nisou - Hl.N.
+      Délka: 11.53 km | Jízdní doba: 00:09:25
+
+ 245. Ps 64064 — Lagler
+      Dopravce: ČD | ID linky: 748
+      Trasa: Teplice - Novosedlice → Teplice - Hl.N.
+      Délka: 8.13 km | Jízdní doba: 00:09:23
+
+ 246. Ps 64064 — Lagler
+      Dopravce: ČD | ID linky: 749
+      Trasa: Teplice - Hl.N. → Teplice - Novosedlice
+      Délka: 8.13 km | Jízdní doba: 00:09:23
+
+ 247. Ps 74269 — Stoklasa
+      Dopravce: ČD | ID linky: 384
+      Trasa: Litomyšl - Hl.N. → Litomyšl - Osík
+      Délka: 9.68 km | Jízdní doba: 00:09:18
+
+ 248. Ps 74269 — Stoklasa
+      Dopravce: ČD | ID linky: 385
+      Trasa: Litomyšl - Osík → Litomyšl - Hl.N.
+      Délka: 9.68 km | Jízdní doba: 00:09:18
+
+ 249. Ps 57892
+      Dopravce: DPO | ID linky: 920
+      Trasa: Ostrava - Hošťálkovice → Ostrava - Hl.N.
+      Délka: 9.57 km | Jízdní doba: 00:09:14
+
+ 250. Ps 57892
+      Dopravce: DPO | ID linky: 921
+      Trasa: Ostrava - Hl.N. → Ostrava - Hošťálkovice
+      Délka: 9.57 km | Jízdní doba: 00:09:14
+
+ 251. Ps 10004b — Rychlý Klaus
+      Dopravce: PID | ID linky: 2280
+      Trasa: Praha - Kunratice → Praha - Kamýk
+      Délka: 11.03 km | Jízdní doba: 00:09:07
+
+ 252. Ps 10004b — Rychlý Klaus
+      Dopravce: PID | ID linky: 2281
+      Trasa: Praha - Kamýk → Praha - Kunratice
+      Délka: 11.03 km | Jízdní doba: 00:09:07
+
+ 253. Ps 55169 — Odložil
+      Dopravce: ČD | ID linky: 372
+      Trasa: Otrokovice - Hl.N. → Otrokovice - Oldřichovice
+      Délka: 11.01 km | Jízdní doba: 00:09:06
+
+ 254. Ps 55169 — Odložil
+      Dopravce: ČD | ID linky: 373
+      Trasa: Otrokovice - Oldřichovice → Otrokovice - Hl.N.
+      Délka: 11.01 km | Jízdní doba: 00:09:06
+
+ 255. Ps 23144
+      Dopravce: DPMBB | ID linky: 1353
+      Trasa: Banská Bystrica - Hl.S. → Banská Bystrica - Rakytovce
+      Délka: 9.16 km | Jízdní doba: 00:09:00
+
+ 256. Ps 23144
+      Dopravce: DPMBB | ID linky: 1352
+      Trasa: Banská Bystrica - Rakytovce → Banská Bystrica - Hl.S.
+      Délka: 9.16 km | Jízdní doba: 00:09:00
+
+ 257. Ps 13000 — Jihlavská Berka
+      Dopravce: DPMJ | ID linky: 400
+      Trasa: Jihlava - Hl.N. → Luka nad Jihlavou
+      Délka: 10.75 km | Jízdní doba: 00:08:57
+
+ 258. Ps 13000 — Jihlavská Berka
+      Dopravce: DPMJ | ID linky: 401
+      Trasa: Luka nad Jihlavou → Jihlava - Hl.N.
+      Délka: 10.75 km | Jízdní doba: 00:08:57
+
+ 259. Ps 53169 — Otava
+      Dopravce: ČD | ID linky: 1237
+      Trasa: Horážďovice - Boubín → Horažďovice - Hl.N.
+      Délka: 8.85 km | Jízdní doba: 00:08:49
+
+ 260. Ps 53169 — Otava
+      Dopravce: ČD | ID linky: 1236
+      Trasa: Horažďovice - Hl.N. → Horážďovice - Boubín
+      Délka: 8.85 km | Jízdní doba: 00:08:49
+
+ 261. Ps 13002 — Krebs
+      Dopravce: DPMJ | ID linky: 1396
+      Trasa: Jihlava - Hruškové Dvory → Jihlava - Sasov
+      Délka: 8.85 km | Jízdní doba: 00:08:49
+
+ 262. Ps 13002 — Krebs
+      Dopravce: DPMJ | ID linky: 1397
+      Trasa: Jihlava - Sasov → Jihlava - Hruškové Dvory
+      Délka: 8.85 km | Jízdní doba: 00:08:49
+
+ 263. Ps 54613 — Baránek
+      Dopravce: ČD | ID linky: 776
+      Trasa: Valašské Klobouky - Hl.N. → Študlov
+      Délka: 10.40 km | Jízdní doba: 00:08:44
+
+ 264. Ps 54613 — Baránek
+      Dopravce: ČD | ID linky: 777
+      Trasa: Študlov → Valašské Klobouky - Hl.N.
+      Délka: 10.40 km | Jízdní doba: 00:08:44
+
+ 265. Ps 15513
+      Dopravce: ČD | ID linky: 1409
+      Trasa: Mistrovice - Rychlodráha → Česká Kamenice
+      Délka: 8.68 km | Jízdní doba: 00:08:43
+
+ 266. Ps 15513
+      Dopravce: ČD | ID linky: 1408
+      Trasa: Česká Kamenice → Mistrovice - Rychlodráha
+      Délka: 8.68 km | Jízdní doba: 00:08:43
+
+ 267. Ps 50149 — Nána
+      Dopravce: ZSSK | ID linky: 2479
+      Trasa: Štúrovo - Kamenný Most → Esztergom
+      Délka: 10.32 km | Jízdní doba: 00:08:42
+
+ 268. Ps 50149 — Nána
+      Dopravce: ZSSK | ID linky: 2478
+      Trasa: Esztergom → Štúrovo - Kamenný Most
+      Délka: 10.32 km | Jízdní doba: 00:08:42
+
+ 269. Ps 24124 — Němec
+      Dopravce: ČD | ID linky: 2006
+      Trasa: Nový Bydžov - Starý Bydžov → Nový Bydžov - Hl.N.
+      Délka: 8.65 km | Jízdní doba: 00:08:41
+
+ 270. Ps 24124 — Němec
+      Dopravce: ČD | ID linky: 2007
+      Trasa: Nový Bydžov - Hl.N. → Nový Bydžov - Starý Bydžov
+      Délka: 8.65 km | Jízdní doba: 00:08:41
+
+ 271. Ps 94000 — Balbín
+      Dopravce: ČD | ID linky: 420
+      Trasa: Přibram - Zdaboř → Příbram - Hl.N.
+      Délka: 10.29 km | Jízdní doba: 00:08:40
+
+ 272. Ps 94000 — Balbín
+      Dopravce: ČD | ID linky: 421
+      Trasa: Příbram - Hl.N. → Přibram - Zdaboř
+      Délka: 10.29 km | Jízdní doba: 00:08:40
+
+ 273. Ps 80400b — Rychlý Mareš
+      Dopravce: ČD | ID linky: 1410
+      Trasa: Benešov - Hl.N. → Benešov - Václavice
+      Délka: 11.90 km | Jízdní doba: 00:08:38
+
+ 274. Ps 80400b — Rychlý Mareš
+      Dopravce: ČD | ID linky: 1411
+      Trasa: Benešov - Václavice → Benešov - Hl.N.
+      Délka: 11.90 km | Jízdní doba: 00:08:38
+
+ 275. Ps 90005
+      Dopravce: DPMK | ID linky: 993
+      Trasa: Košice - Polov → Košice - Šebastovce
+      Délka: 10.21 km | Jízdní doba: 00:08:37
+
+ 276. Ps 90005
+      Dopravce: DPMK | ID linky: 992
+      Trasa: Košice - Šebastovce → Košice - Polov
+      Délka: 10.21 km | Jízdní doba: 00:08:37
+
+ 277. Ps 00100b — Rychlá Šalina
+      Dopravce: DPMB | ID linky: 2140
+      Trasa: Brno - Hl.N. → Brno - Žebětín
+      Délka: 11.82 km | Jízdní doba: 00:08:36
+
+ 278. Ps 00100b — Rychlá Šalina
+      Dopravce: DPMB | ID linky: 2141
+      Trasa: Brno - Žebětín → Brno - Hl.N.
+      Délka: 11.82 km | Jízdní doba: 00:08:36
+
+ 279. Ps 10006 — Beneš
+      Dopravce: PID | ID linky: 808
+      Trasa: Praha - Kamýk → Praha - Hl.N.
+      Délka: 10.13 km | Jízdní doba: 00:08:35
+
+ 280. Ps 10006 — Beneš
+      Dopravce: PID | ID linky: 809
+      Trasa: Praha - Hl.N. → Praha - Kamýk
+      Délka: 10.13 km | Jízdní doba: 00:08:35
+
+ 281. Ps 35004b — Krátký Tilgner
+      Dopravce: DPB | ID linky: 2188
+      Trasa: Bratislava - Petržalka → Bratislava - Karlova Ves
+      Délka: 8.43 km | Jízdní doba: 00:08:33
+
+ 282. Ps 35004b — Krátký Tilgner
+      Dopravce: DPB | ID linky: 2189
+      Trasa: Bratislava - Karlova Ves → Bratislava - Petržalka
+      Délka: 8.43 km | Jízdní doba: 00:08:33
+
+ 283. Ps 26708
+      Dopravce: ČD | ID linky: 438
+      Trasa: Žatec - Žiželice → Žatec - Hl.N.
+      Délka: 11.72 km | Jízdní doba: 00:08:32
+
+ 284. Ps 26708
+      Dopravce: ČD | ID linky: 439
+      Trasa: Žatec - Hl.N. → Žatec - Žiželice
+      Délka: 11.72 km | Jízdní doba: 00:08:32
+
+ 285. Ps 10013c — Krátký Petr
+      Dopravce: PID | ID linky: 2282
+      Trasa: Praha - Michle → Praha - Hl.N.
+      Délka: 10.02 km | Jízdní doba: 00:08:31
+
+ 286. Ps 10013c — Krátký Petr
+      Dopravce: PID | ID linky: 2283
+      Trasa: Praha - Hl.N. → Praha - Michle
+      Délka: 10.02 km | Jízdní doba: 00:08:31
+
+ 287. Ps 34584 — Durych
+      Dopravce: MHDT | ID linky: 1022
+      Trasa: Kadeřavec → Turnov - Hrachovice
+      Délka: 8.25 km | Jízdní doba: 00:08:27
+
+ 288. Ps 34584 — Durych
+      Dopravce: MHDT | ID linky: 1023
+      Trasa: Turnov - Hrachovice → Kadeřavec
+      Délka: 8.25 km | Jízdní doba: 00:08:27
+
+ 289. Ps 22000b — Rychlý Patejdl
+      Dopravce: DPKV | ID linky: 1894
+      Trasa: Karlovy Vary - Doubí → Karlovy Vary - Sedlec
+      Délka: 11.57 km | Jízdní doba: 00:08:26
+
+ 290. Ps 22000b — Rychlý Patejdl
+      Dopravce: DPKV | ID linky: 1895
+      Trasa: Karlovy Vary - Sedlec → Karlovy Vary - Doubí
+      Délka: 11.57 km | Jízdní doba: 00:08:26
+
+ 291. Ps 71003b — Krátký Langer
+      Dopravce: DPMO | ID linky: 2112
+      Trasa: Olomouc - Černovír → Olomouc - Kožušany-Tážaly
+      Délka: 9.73 km | Jízdní doba: 00:08:20
+
+ 292. Ps 71003b — Krátký Langer
+      Dopravce: DPMO | ID linky: 2113
+      Trasa: Olomouc - Kožušany-Tážaly → Olomouc - Černovír
+      Délka: 9.73 km | Jízdní doba: 00:08:20
+
+ 293. Ps 23145
+      Dopravce: DPMBB | ID linky: 1354
+      Trasa: Banská Bystrica - Šalková → Banská Bystrica - Podlavice
+      Délka: 9.72 km | Jízdní doba: 00:08:20
+
+ 294. Ps 23145
+      Dopravce: DPMBB | ID linky: 1355
+      Trasa: Banská Bystrica - Podlavice → Banská Bystrica - Šalková
+      Délka: 9.72 km | Jízdní doba: 00:08:20
+
+ 295. Ps 57889
+      Dopravce: DPO | ID linky: 606
+      Trasa: Ostrava - Michálkovice → Ostrava - Vítkovice
+      Délka: 9.71 km | Jízdní doba: 00:08:20
+
+ 296. Ps 57889
+      Dopravce: DPO | ID linky: 607
+      Trasa: Ostrava - Vítkovice → Ostrava - Michálkovice
+      Délka: 9.71 km | Jízdní doba: 00:08:20
+
+ 297. Ps 71002b — Rychlý Latterman
+      Dopravce: DPMO | ID linky: 2110
+      Trasa: Olomouc - Hl.N. → Olomouc - Nedvězí
+      Délka: 9.63 km | Jízdní doba: 00:08:17
+
+ 298. Ps 71002b — Rychlý Latterman
+      Dopravce: DPMO | ID linky: 2111
+      Trasa: Olomouc - Nedvězí → Olomouc - Hl.N.
+      Délka: 9.63 km | Jízdní doba: 00:08:17
+
+ 299. Ps 44442 — Hnělička
+      Dopravce: DPNisa | ID linky: 1004
+      Trasa: Liberec - Kunratice → Liberec - Staré Pavlovice
+      Délka: 7.88 km | Jízdní doba: 00:08:14
+
+ 300. Ps 44442 — Hnělička
+      Dopravce: DPNisa | ID linky: 1005
+      Trasa: Liberec - Staré Pavlovice → Liberec - Kunratice
+      Délka: 7.88 km | Jízdní doba: 00:08:14
+
+ 301. Ps 22500b — Rychlý Unger
+      Dopravce: ČD | ID linky: 1888
+      Trasa: Sokolov - Hl.N. → Sokolov - Dolní Rychnov
+      Délka: 12.85 km | Jízdní doba: 00:08:13
+
+ 302. Ps 22500b — Rychlý Unger
+      Dopravce: ČD | ID linky: 1889
+      Trasa: Sokolov - Dolní Rychnov → Sokolov - Hl.N.
+      Délka: 12.85 km | Jízdní doba: 00:08:13
+
+ 303. Ps 16061
+      Dopravce: ZSSK | ID linky: 1100
+      Trasa: Bojnice → Prievidza - Hl.S.
+      Délka: 9.50 km | Jízdní doba: 00:08:12
+
+ 304. Ps 16061
+      Dopravce: ZSSK | ID linky: 1101
+      Trasa: Prievidza - Hl.S. → Bojnice
+      Délka: 9.50 km | Jízdní doba: 00:08:12
+
+ 305. Ps 20318
+      Dopravce: ČD | ID linky: 502
+      Trasa: Přerov - Hl.N. → Přerov - Újezdec
+      Délka: 9.41 km | Jízdní doba: 00:08:09
+
+ 306. Ps 20318
+      Dopravce: ČD | ID linky: 503
+      Trasa: Přerov - Újezdec → Přerov - Hl.N.
+      Délka: 9.41 km | Jízdní doba: 00:08:09
+
+ 307. Ps 90001
+      Dopravce: DPMK | ID linky: 972
+      Trasa: Košice - Baška → Košice - Opatské
+      Délka: 7.58 km | Jízdní doba: 00:08:03
+
+ 308. Ps 90001
+      Dopravce: DPMK | ID linky: 973
+      Trasa: Košice - Opatské → Košice - Baška
+      Délka: 7.58 km | Jízdní doba: 00:08:03
+
+ 309. Ps 00106 — Šebestová
+      Dopravce: DPMB | ID linky: 898
+      Trasa: Brno - Řečkovice → Brno - Kohoutovice
+      Délka: 9.22 km | Jízdní doba: 00:08:02
+
+ 310. Ps 00106 — Šebestová
+      Dopravce: DPMB | ID linky: 899
+      Trasa: Brno - Kohoutovice → Brno - Řečkovice
+      Délka: 9.22 km | Jízdní doba: 00:08:02
+
+ 311. Ps 57895
+      Dopravce: DPO | ID linky: 1944
+      Trasa: Olomouc - Hl.N. → Olomouc - Holice
+      Délka: 9.21 km | Jízdní doba: 00:08:01
+
+ 312. Ps 57895
+      Dopravce: DPO | ID linky: 1945
+      Trasa: Olomouc - Holice → Olomouc - Hl.N.
+      Délka: 9.21 km | Jízdní doba: 00:08:01
+
+ 313. Ps 65811 — Macháček
+      Dopravce: ČD | ID linky: 430
+      Trasa: Litoměřice - Počaply → Litoměřice - Žitenice
+      Délka: 9.20 km | Jízdní doba: 00:08:01
+
+ 314. Ps 65811 — Macháček
+      Dopravce: ČD | ID linky: 431
+      Trasa: Litoměřice - Žitenice → Litoměřice - Počaply
+      Délka: 9.20 km | Jízdní doba: 00:08:01
+
+ 315. Ps 55701 — Hilmera
+      Dopravce: ČD | ID linky: 2086
+      Trasa: Veltrusy - Všestudy → Veltrusy - Hl.N.
+      Délka: 7.52 km | Jízdní doba: 00:08:01
+
+ 316. Ps 55701 — Hilmera
+      Dopravce: ČD | ID linky: 2087
+      Trasa: Veltrusy - Hl.N. → Veltrusy - Všestudy
+      Délka: 7.52 km | Jízdní doba: 00:08:01
+
+ 317. Ps 50170 — Vagač
+      Dopravce: ZSSK | ID linky: 2310
+      Trasa: Detva - Město → Stožeok
+      Délka: 9.14 km | Jízdní doba: 00:07:59
+
+ 318. Ps 50170 — Vagač
+      Dopravce: ZSSK | ID linky: 2311
+      Trasa: Stožeok → Detva - Město
+      Délka: 9.14 km | Jízdní doba: 00:07:59
+
+ 319. Ps 13000b — Rychlá Jihlavská Berka
+      Dopravce: DPMJ | ID linky: 2136
+      Trasa: Jihlava - Hl.N. → Luka nad Jihlavou
+      Délka: 10.75 km | Jízdní doba: 00:07:57
+
+ 320. Ps 13000b — Rychlá Jihlavská Berka
+      Dopravce: DPMJ | ID linky: 2137
+      Trasa: Luka nad Jihlavou → Jihlava - Hl.N.
+      Délka: 10.75 km | Jízdní doba: 00:07:57
+
+ 321. Ps 00102 — Hrabal
+      Dopravce: DPMB | ID linky: 508
+      Trasa: Brno - Kohoutovice → Brno - Hl.N.
+      Délka: 9.07 km | Jízdní doba: 00:07:57
+
+ 322. Ps 00102 — Hrabal
+      Dopravce: DPMB | ID linky: 509
+      Trasa: Brno - Hl.N. → Brno - Kohoutovice
+      Délka: 9.07 km | Jízdní doba: 00:07:57
+
+ 323. Ps 54163 — Hájos
+      Dopravce: ČD | ID linky: 2178
+      Trasa: Dunajská Streda - Velké Dvorníky → Dunajská Streda - Hl.S.
+      Délka: 9.04 km | Jízdní doba: 00:07:56
+
+ 324. Ps 54163 — Hájos
+      Dopravce: ČD | ID linky: 2179
+      Trasa: Dunajská Streda - Hl.S. → Dunajská Streda - Velké Dvorníky
+      Délka: 9.04 km | Jízdní doba: 00:07:56
+
+ 325. Ps 81401 — Zafouk
+      Dopravce: ČD | ID linky: 1087
+      Trasa: Králův Dvůr - Trubín → Beroun - Hl.N.
+      Délka: 7.39 km | Jízdní doba: 00:07:56
+
+ 326. Ps 81401 — Zafouk
+      Dopravce: ČD | ID linky: 1086
+      Trasa: Beroun - Hl.N. → Králův Dvůr - Trubín
+      Délka: 7.39 km | Jízdní doba: 00:07:56
+
+ 327. Ps 31570b — Rychlá Vrána
+      Dopravce: ČD | ID linky: 1828
+      Trasa: Frýdek Místek - Panské Dvory → Frýdek Místek - Bahno
+      Délka: 10.70 km | Jízdní doba: 00:07:55
+
+ 328. Ps 31570b — Rychlá Vrána
+      Dopravce: ČD | ID linky: 1829
+      Trasa: Frýdek Místek - Bahno → Frýdek Místek - Panské Dvory
+      Délka: 10.70 km | Jízdní doba: 00:07:55
+
+ 329. Ps 00104 — Mach
+      Dopravce: DPMB | ID linky: 888
+      Trasa: Brno - Ivanovice → Brno - Hl.N.
+      Délka: 9.02 km | Jízdní doba: 00:07:55
+
+ 330. Ps 00104 — Mach
+      Dopravce: DPMB | ID linky: 889
+      Trasa: Brno - Hl.N. → Brno - Ivanovice
+      Délka: 9.02 km | Jízdní doba: 00:07:55
+
+ 331. Ps 13418 — Sagan
+      Dopravce: DPMŽ | ID linky: 1444
+      Trasa: Žilina - Hl.S. → Žilina - Solinky
+      Délka: 8.86 km | Jízdní doba: 00:07:49
+
+ 332. Ps 13418 — Sagan
+      Dopravce: DPMŽ | ID linky: 1445
+      Trasa: Žilina - Solinky → Žilina - Hl.S.
+      Délka: 8.86 km | Jízdní doba: 00:07:49
+
+ 333. Ps 57888b
+      Dopravce: DPO | ID linky: 2348
+      Trasa: Ostrava - Hl.N. → Ostrava - Svinov
+      Délka: 10.50 km | Jízdní doba: 00:07:48
+
+ 334. Ps 57888b
+      Dopravce: DPO | ID linky: 2349
+      Trasa: Ostrava - Svinov → Ostrava - Hl.N.
+      Délka: 10.50 km | Jízdní doba: 00:07:48
+
+ 335. Ps 00103 — Letištní Express
+      Dopravce: DPMB | ID linky: 886
+      Trasa: Brno - Tuřany Letiště → Brno - Hl.N.
+      Délka: 8.75 km | Jízdní doba: 00:07:45
+
+ 336. Ps 00103 — Letištní Express
+      Dopravce: DPMB | ID linky: 887
+      Trasa: Brno - Hl.N. → Brno - Tuřany Letiště
+      Délka: 8.75 km | Jízdní doba: 00:07:45
+
+ 337. Ps 40299
+      Dopravce: ČD | ID linky: 344
+      Trasa: Chrudim - Bylany → Chrudim - Kočí
+      Délka: 8.71 km | Jízdní doba: 00:07:44
+
+ 338. Ps 40299
+      Dopravce: ČD | ID linky: 345
+      Trasa: Chrudim - Kočí → Chrudim - Bylany
+      Délka: 8.71 km | Jízdní doba: 00:07:44
+
+ 339. Ps 00109 — Leslie
+      Dopravce: DPMB | ID linky: 2292
+      Trasa: Brno - Řečkovice → Brno - Maloměřice
+      Délka: 8.70 km | Jízdní doba: 00:07:43
+
+ 340. Ps 00109 — Leslie
+      Dopravce: DPMB | ID linky: 2293
+      Trasa: Brno - Maloměřice → Brno - Řečkovice
+      Délka: 8.70 km | Jízdní doba: 00:07:43
+
+ 341. Ps 50149b — Rychlá Nána
+      Dopravce: ZSSK | ID linky: 2484
+      Trasa: Esztergom → Štúrovo - Kamenný Most
+      Délka: 10.32 km | Jízdní doba: 00:07:42
+
+ 342. Ps 50149b — Rychlá Nána
+      Dopravce: ZSSK | ID linky: 2485
+      Trasa: Štúrovo - Kamenný Most → Esztergom
+      Délka: 10.32 km | Jízdní doba: 00:07:42
+
+ 343. Ps 46811 — Krekáč
+      Dopravce: ZSSK | ID linky: 1801
+      Trasa: Považská Bystrica - Podmanín → Považská Bystrica - Hl.S.
+      Délka: 8.57 km | Jízdní doba: 00:07:38
+
+ 344. Ps 46811 — Krekáč
+      Dopravce: ZSSK | ID linky: 1800
+      Trasa: Považská Bystrica - Hl.S. → Považská Bystrica - Podmanín
+      Délka: 8.57 km | Jízdní doba: 00:07:38
+
+ 345. Ps 31288 — Figel
+      Dopravce: ZSSK | ID linky: 1538
+      Trasa: Vranov nad Toplou - Čemerné → Vranov nad Toplou - Hl.S.
+      Délka: 10.17 km | Jízdní doba: 00:07:36
+
+ 346. Ps 31288 — Figel
+      Dopravce: ZSSK | ID linky: 1539
+      Trasa: Vranov nad Toplou - Hl.S. → Vranov nad Toplou - Čemerné
+      Délka: 10.17 km | Jízdní doba: 00:07:36
+
+ 347. Ps 34583b — Rychlý Patočka
+      Dopravce: MHDT | ID linky: 2130
+      Trasa: Turnov - Hl.N. → Turnov - Bělá
+      Délka: 10.13 km | Jízdní doba: 00:07:35
+
+ 348. Ps 34583b — Rychlý Patočka
+      Dopravce: MHDT | ID linky: 2131
+      Trasa: Turnov - Bělá → Turnov - Hl.N.
+      Délka: 10.13 km | Jízdní doba: 00:07:35
+
+ 349. Ps 45889 — Lepší Winter
+      Dopravce: ČD | ID linky: 2462
+      Trasa: Opava - Hl.N. → Opava - Raduň
+      Délka: 10.02 km | Jízdní doba: 00:07:31
+
+ 350. Ps 45889 — Lepší Winter
+      Dopravce: ČD | ID linky: 2463
+      Trasa: Opava - Raduň → Opava - Hl.N.
+      Délka: 10.02 km | Jízdní doba: 00:07:31
+
+ 351. Ps 51714 — Adamczyk
+      Dopravce: ČD | ID linky: 644
+      Trasa: Vrchlabí - Dolní Braná → Vrchlabí - Hl.N.
+      Délka: 8.36 km | Jízdní doba: 00:07:31
+
+ 352. Ps 51714 — Adamczyk
+      Dopravce: ČD | ID linky: 645
+      Trasa: Vrchlabí - Hl.N. → Vrchlabí - Dolní Braná
+      Délka: 8.36 km | Jízdní doba: 00:07:31
+
+ 353. Ps 97715 — Poličan
+      Dopravce: ČD | ID linky: 2486
+      Trasa: Oldřiš → Polička - Hl.N.
+      Délka: 8.31 km | Jízdní doba: 00:07:29
+
+ 354. Ps 97715 — Poličan
+      Dopravce: ČD | ID linky: 2487
+      Trasa: Polička - Hl.N. → Oldřiš
+      Délka: 8.31 km | Jízdní doba: 00:07:29
+
+ 355. Ps 13420 — Mojš
+      Dopravce: DPMŽ | ID linky: 2199
+      Trasa: Žilina - Hl.S. → Žilina - Mojšova Lúčka
+      Délka: 6.55 km | Jízdní doba: 00:07:26
+
+ 356. Ps 13420 — Mojš
+      Dopravce: DPMŽ | ID linky: 2198
+      Trasa: Žilina - Mojšova Lúčka → Žilina - Hl.S.
+      Délka: 6.55 km | Jízdní doba: 00:07:26
+
+ 357. Ps 44440 — Herzig
+      Dopravce: DPNisa | ID linky: 1000
+      Trasa: Liberec - Radčice → Liberec - Karlinky
+      Délka: 6.52 km | Jízdní doba: 00:07:25
+
+ 358. Ps 44440 — Herzig
+      Dopravce: DPNisa | ID linky: 1001
+      Trasa: Liberec - Karlinky → Liberec - Radčice
+      Délka: 6.52 km | Jízdní doba: 00:07:25
+
+ 359. Ps 45001 — Krátký Suchánek
+      Dopravce: ČD | ID linky: 2152
+      Trasa: Hodonín - Dubňany → Hodonín - Hl.N.
+      Délka: 9.85 km | Jízdní doba: 00:07:24
+
+ 360. Ps 45001 — Krátký Suchánek
+      Dopravce: ČD | ID linky: 2153
+      Trasa: Hodonín - Hl.N. → Hodonín - Dubňany
+      Délka: 9.85 km | Jízdní doba: 00:07:24
+
+ 361. Ps 21240b — Krátký Martin Rusnák
+      Dopravce: ZSSK | ID linky: 1778
+      Trasa: Martin - Hl.S. → Vrútky - Bagarov
+      Délka: 9.71 km | Jízdní doba: 00:07:20
+
+ 362. Ps 21240b — Krátký Martin Rusnák
+      Dopravce: ZSSK | ID linky: 1779
+      Trasa: Vrútky - Bagarov → Martin - Hl.S.
+      Délka: 9.71 km | Jízdní doba: 00:07:20
+
+ 363. Ps 25243
+      Dopravce: ČD | ID linky: 592
+      Trasa: Bystřice pod Hostýnem - Hl.N. → Bystřice pod Hostýnem - Rychlov
+      Délka: 9.68 km | Jízdní doba: 00:07:18
+
+ 364. Ps 25243
+      Dopravce: ČD | ID linky: 593
+      Trasa: Bystřice pod Hostýnem - Rychlov → Bystřice pod Hostýnem - Hl.N.
+      Délka: 9.68 km | Jízdní doba: 00:07:18
+
+ 365. Ps 95059
+      Dopravce: ZSSK | ID linky: 874
+      Trasa: Sečovce - Hl.S. → Sečovce - Pišky
+      Délka: 7.93 km | Jízdní doba: 00:07:16
+
+ 366. Ps 95059
+      Dopravce: ZSSK | ID linky: 875
+      Trasa: Sečovce - Pišky → Sečovce - Hl.S.
+      Délka: 7.93 km | Jízdní doba: 00:07:16
+
+ 367. Ps 13001 — Jung
+      Dopravce: DPMJ | ID linky: 1394
+      Trasa: Jihlava - Hl.N. → Jihlava - Velký Beranov
+      Délka: 7.90 km | Jízdní doba: 00:07:14
+
+ 368. Ps 13001 — Jung
+      Dopravce: DPMJ | ID linky: 1395
+      Trasa: Jihlava - Velký Beranov → Jihlava - Hl.N.
+      Délka: 7.90 km | Jízdní doba: 00:07:14
+
+ 369. Ps 35007b — Krátká Terezie
+      Dopravce: DPB | ID linky: 2195
+      Trasa: Bratislava - Hrušov → Bratislava - Hl.S.
+      Délka: 7.80 km | Jízdní doba: 00:07:11
+
+ 370. Ps 35007b — Krátká Terezie
+      Dopravce: DPB | ID linky: 2194
+      Trasa: Bratislava - Hl.S. → Bratislava - Hrušov
+      Délka: 7.80 km | Jízdní doba: 00:07:11
+
+ 371. Ps 71000 — Schmidl
+      Dopravce: DPMO | ID linky: 394
+      Trasa: Olomouc - Nový Svět → Olomouc - Hejčín
+      Délka: 7.78 km | Jízdní doba: 00:07:10
+
+ 372. Ps 71000 — Schmidl
+      Dopravce: DPMO | ID linky: 395
+      Trasa: Olomouc - Hejčín → Olomouc - Nový Svět
+      Délka: 7.78 km | Jízdní doba: 00:07:10
+
+ 373. Ps 27555
+      Dopravce: DPMP | ID linky: 930
+      Trasa: Pardubice Letiště → Pardubice - Dubina
+      Délka: 7.64 km | Jízdní doba: 00:07:05
+
+ 374. Ps 27555
+      Dopravce: DPMP | ID linky: 931
+      Trasa: Pardubice - Dubina → Pardubice Letiště
+      Délka: 7.64 km | Jízdní doba: 00:07:05
+
+ 375. Ps 23871
+      Dopravce: ČD | ID linky: 1616
+      Trasa: Uherské Hradiště - Hl.N. → Uherské Hradiště - Stará Olšava
+      Délka: 7.58 km | Jízdní doba: 00:07:03
+
+ 376. Ps 23871
+      Dopravce: ČD | ID linky: 1617
+      Trasa: Uherské Hradiště - Stará Olšava → Uherské Hradiště - Hl.N.
+      Délka: 7.58 km | Jízdní doba: 00:07:03
+
+ 377. Ps 20253 — Bareš
+      Dopravce: ČD | ID linky: 348
+      Trasa: Louny - Hl.N. → Louny - Cítoliby
+      Délka: 9.23 km | Jízdní doba: 00:07:02
+
+ 378. Ps 20253 — Bareš
+      Dopravce: ČD | ID linky: 349
+      Trasa: Louny - Cítoliby → Louny - Hl.N.
+      Délka: 9.23 km | Jízdní doba: 00:07:02
+
+ 379. Ps 67168 — Cihlář
+      Dopravce: ČD | ID linky: 1476
+      Trasa: Znojmo - Nový Šaldorf → Znojmo - Hl.N.
+      Délka: 7.56 km | Jízdní doba: 00:07:02
+
+ 380. Ps 67168 — Cihlář
+      Dopravce: ČD | ID linky: 1477
+      Trasa: Znojmo - Hl.N. → Znojmo - Nový Šaldorf
+      Délka: 7.56 km | Jízdní doba: 00:07:02
+
+ 381. Ps 45392 — Brokoff
+      Dopravce: ZSSK | ID linky: 1699
+      Trasa: Poprad - Spišská Sobota → Poprad - Hl.S.
+      Délka: 7.51 km | Jízdní doba: 00:07:00
+
+ 382. Ps 45392 — Brokoff
+      Dopravce: ZSSK | ID linky: 1698
+      Trasa: Poprad - Hl.S. → Poprad - Spišská Sobota
+      Délka: 7.51 km | Jízdní doba: 00:07:00
+
+ 383. Ps 54481b — Rusnák
+      Dopravce: ZSSK | ID linky: 1932
+      Trasa: Vrútky - Hl.S. → Vrútky - Martinské Hole
+      Délka: 9.10 km | Jízdní doba: 00:06:58
+
+ 384. Ps 54481b — Rusnák
+      Dopravce: ZSSK | ID linky: 1933
+      Trasa: Vrútky - Martinské Hole → Vrútky - Hl.S.
+      Délka: 9.10 km | Jízdní doba: 00:06:58
+
+ 385. Ps 10535 — Burket
+      Dopravce: ZSSK | ID linky: 1904
+      Trasa: Nová Lubovna - Stará Lubovna → Stará Lubovna - Hl.S.
+      Délka: 8.91 km | Jízdní doba: 00:06:51
+
+ 386. Ps 10535 — Burket
+      Dopravce: ZSSK | ID linky: 1905
+      Trasa: Stará Lubovna - Hl.S. → Nová Lubovna - Stará Lubovna
+      Délka: 8.91 km | Jízdní doba: 00:06:51
+
+ 387. Ps 44445 — Hanvald
+      Dopravce: DPNisa | ID linky: 1011
+      Trasa: Jablonec nad Nisou - Paseky → Liberec - Vratislavice
+      Délka: 7.25 km | Jízdní doba: 00:06:51
+
+ 388. Ps 44445 — Hanvald
+      Dopravce: DPNisa | ID linky: 1010
+      Trasa: Liberec - Vratislavice → Jablonec nad Nisou - Paseky
+      Délka: 7.25 km | Jízdní doba: 00:06:51
+
+ 389. Ps 57887 — Holeksa
+      Dopravce: ČD | ID linky: 376
+      Trasa: Strakonice - Hl.N. → Strakonice - Přední Ptákovice
+      Délka: 8.90 km | Jízdní doba: 00:06:50
+
+ 390. Ps 57887 — Holeksa
+      Dopravce: ČD | ID linky: 377
+      Trasa: Strakonice - Přední Ptákovice → Strakonice - Hl.N.
+      Délka: 8.90 km | Jízdní doba: 00:06:50
+
+ 391. Ps 97716 — Zábřežská Žirafa
+      Dopravce: ČD | ID linky: 2492
+      Trasa: Zábřeh - Raj → Zábřeh - Nemile
+      Délka: 7.04 km | Jízdní doba: 00:06:44
+
+ 392. Ps 97716 — Zábřežská Žirafa
+      Dopravce: ČD | ID linky: 2493
+      Trasa: Zábřeh - Nemile → Zábřeh - Raj
+      Délka: 7.04 km | Jízdní doba: 00:06:44
+
+ 393. Ps 10006b — Rychlý Beneš
+      Dopravce: PID | ID linky: 2052
+      Trasa: Praha - Kamýk → Praha - Hl.N.
+      Délka: 10.13 km | Jízdní doba: 00:06:35
+
+ 394. Ps 10006b — Rychlý Beneš
+      Dopravce: PID | ID linky: 2053
+      Trasa: Praha - Hl.N. → Praha - Kamýk
+      Délka: 10.13 km | Jízdní doba: 00:06:35
+
+ 395. Ps 71005
+      Dopravce: DPMO | ID linky: 1040
+      Trasa: Olomouc - Holice → Olomouc - Černovír
+      Délka: 6.56 km | Jízdní doba: 00:06:26
+
+ 396. Ps 71005
+      Dopravce: DPMO | ID linky: 1041
+      Trasa: Olomouc - Černovír → Olomouc - Holice
+      Délka: 6.56 km | Jízdní doba: 00:06:26
+
+ 397. Ps 20002 — Jirsík
+      Dopravce: DPMCB | ID linky: 1486
+      Trasa: České Budějovice - Dobrá Voda → České Budějovice - Čtyři Dvory
+      Délka: 6.42 km | Jízdní doba: 00:06:21
+
+ 398. Ps 20002 — Jirsík
+      Dopravce: DPMCB | ID linky: 1487
+      Trasa: České Budějovice - Čtyři Dvory → České Budějovice - Dobrá Voda
+      Délka: 6.42 km | Jízdní doba: 00:06:21
+
+ 399. Ps 22001b — Dlouhý Baxant
+      Dopravce: DPKV | ID linky: 2094
+      Trasa: Karlovy Vary - Stará Role → Karlovy Vary - Hl.N.
+      Délka: 8.07 km | Jízdní doba: 00:06:20
+
+ 400. Ps 22001b — Dlouhý Baxant
+      Dopravce: DPKV | ID linky: 2095
+      Trasa: Karlovy Vary - Hl.N. → Karlovy Vary - Stará Role
+      Délka: 8.07 km | Jízdní doba: 00:06:20
+
+ 401. Ps 18634b — Rychlá Lanna
+      Dopravce: ČD | ID linky: 2076
+      Trasa: Kladno - Dubí → Kladno - Rozdělov
+      Délka: 8.06 km | Jízdní doba: 00:06:20
+
+ 402. Ps 18634b — Rychlá Lanna
+      Dopravce: ČD | ID linky: 2077
+      Trasa: Kladno - Rozdělov → Kladno - Dubí
+      Délka: 8.06 km | Jízdní doba: 00:06:20
+
+ 403. Ps 71004b — Krátký Prinosil
+      Dopravce: DPMO | ID linky: 2116
+      Trasa: Olomouc - Hodolany → Olomouc - Slavonín
+      Délka: 8.06 km | Jízdní doba: 00:06:20
+
+ 404. Ps 71004b — Krátký Prinosil
+      Dopravce: DPMO | ID linky: 2117
+      Trasa: Olomouc - Slavonín → Olomouc - Hodolany
+      Délka: 8.06 km | Jízdní doba: 00:06:20
+
+ 405. Ps 71001b — Rychlý Render
+      Dopravce: DPMO | ID linky: 2108
+      Trasa: Olomouc - Hl.N. → Olomouc - Svatý Kopeček
+      Délka: 8.02 km | Jízdní doba: 00:06:19
+
+ 406. Ps 71001b — Rychlý Render
+      Dopravce: DPMO | ID linky: 2109
+      Trasa: Olomouc - Svatý Kopeček → Olomouc - Hl.N.
+      Délka: 8.02 km | Jízdní doba: 00:06:19
+
+ 407. Ps 18632b — Krátký Josefmajor
+      Dopravce: ZSSK | ID linky: 2184
+      Trasa: Hviezdoslavov - HlS. → Šamorín - Hl.S.
+      Délka: 6.32 km | Jízdní doba: 00:06:17
+
+ 408. Ps 18632b — Krátký Josefmajor
+      Dopravce: ZSSK | ID linky: 2185
+      Trasa: Šamorín - Hl.S. → Hviezdoslavov - HlS.
+      Délka: 6.32 km | Jízdní doba: 00:06:17
+
+ 409. Ps 44441 — Vršťala
+      Dopravce: DPNisa | ID linky: 1002
+      Trasa: Liberec - Staré Pavlovice → Liberec - Vratislavice
+      Délka: 6.28 km | Jízdní doba: 00:06:16
+
+ 410. Ps 44441 — Vršťala
+      Dopravce: DPNisa | ID linky: 1003
+      Trasa: Liberec - Vratislavice → Liberec - Staré Pavlovice
+      Délka: 6.28 km | Jízdní doba: 00:06:16
+
+ 411. Ps 45391 — Herman
+      Dopravce: ZSSK | ID linky: 1696
+      Trasa: Brezno - Hl.S. → Brezno - Mazorníkovo
+      Délka: 7.90 km | Jízdní doba: 00:06:14
+
+ 412. Ps 45391 — Herman
+      Dopravce: ZSSK | ID linky: 1697
+      Trasa: Brezno - Mazorníkovo → Brezno - Hl.S.
+      Délka: 7.90 km | Jízdní doba: 00:06:14
+
+ 413. Ps 13001b — Rychlý Jung
+      Dopravce: DPMJ | ID linky: 2138
+      Trasa: Jihlava - Hl.N. → Jihlava - Velký Beranov
+      Délka: 7.90 km | Jízdní doba: 00:06:14
+
+ 414. Ps 13001b — Rychlý Jung
+      Dopravce: DPMJ | ID linky: 2139
+      Trasa: Jihlava - Velký Beranov → Jihlava - Hl.N.
+      Délka: 7.90 km | Jízdní doba: 00:06:14
+
+ 415. Ps 50505 — Zelinka
+      Dopravce: ČD | ID linky: 453
+      Trasa: Vyškov - Lhota → Vyškov - Hl.N.
+      Délka: 6.19 km | Jízdní doba: 00:06:13
+
+ 416. Ps 50505 — Zelinka
+      Dopravce: ČD | ID linky: 452
+      Trasa: Vyškov - Hl.N. → Vyškov - Lhota
+      Délka: 6.19 km | Jízdní doba: 00:06:13
+
+ 417. Ps 11927 — Rázus
+      Dopravce: DPLM | ID linky: 1966
+      Trasa: Liptovský Mikuláš - Škorupovo → Liptovský Mikuláš - Bodice
+      Délka: 6.10 km | Jízdní doba: 00:06:10
+
+ 418. Ps 11927 — Rázus
+      Dopravce: DPLM | ID linky: 1967
+      Trasa: Liptovský Mikuláš - Bodice → Liptovský Mikuláš - Škorupovo
+      Délka: 6.10 km | Jízdní doba: 00:06:10
+
+ 419. Ps 31571 — Orel
+      Dopravce: ČD | ID linky: 2356
+      Trasa: Frýdek Místek - Sedliště → Frýdek Místek - Skalice
+      Délka: 7.76 km | Jízdní doba: 00:06:09
+
+ 420. Ps 31571 — Orel
+      Dopravce: ČD | ID linky: 2357
+      Trasa: Frýdek Místek - Skalice → Frýdek Místek - Sedliště
+      Délka: 7.76 km | Jízdní doba: 00:06:09
+
+ 421. Ps 00101b — Rychlý Polívka
+      Dopravce: DPMB | ID linky: 2286
+      Trasa: Brno - Maloměřice → Brno - Hl.N.
+      Délka: 7.75 km | Jízdní doba: 00:06:09
+
+ 422. Ps 00101b — Rychlý Polívka
+      Dopravce: DPMB | ID linky: 2287
+      Trasa: Brno - Hl.N. → Brno - Maloměřice
+      Délka: 7.75 km | Jízdní doba: 00:06:09
+
+ 423. Ps 00108 — Gauner
+      Dopravce: DPMB | ID linky: 2290
+      Trasa: Brno - Maloměřice → Brno - Brněnské Ivanovice
+      Délka: 7.74 km | Jízdní doba: 00:06:09
+
+ 424. Ps 00108 — Gauner
+      Dopravce: DPMB | ID linky: 2291
+      Trasa: Brno - Brněnské Ivanovice → Brno - Maloměřice
+      Délka: 7.74 km | Jízdní doba: 00:06:09
+
+ 425. Ps 61362 — Baran
+      Dopravce: ZSSK | ID linky: 2016
+      Trasa: Šala - Dlhá nad Váhom → Šala - Hl.S.
+      Délka: 7.46 km | Jízdní doba: 00:05:59
+
+ 426. Ps 61362 — Baran
+      Dopravce: ZSSK | ID linky: 2017
+      Trasa: Šala - Hl.S. → Šala - Dlhá nad Váhom
+      Délka: 7.46 km | Jízdní doba: 00:05:59
+
+ 427. Ps 97234
+      Dopravce: PMDP | ID linky: 378
+      Trasa: Plzeň - Skvrňany → Plzeň - Doudlevce
+      Délka: 7.45 km | Jízdní doba: 00:05:58
+
+ 428. Ps 97234
+      Dopravce: PMDP | ID linky: 379
+      Trasa: Plzeň - Doudlevce → Plzeň - Skvrňany
+      Délka: 7.45 km | Jízdní doba: 00:05:58
+
+ 429. Ps 34585 — Šídlo
+      Dopravce: MHDT | ID linky: 1025
+      Trasa: Kadeřavec → Turnov - Károvsko
+      Délka: 5.76 km | Jízdní doba: 00:05:57
+
+ 430. Ps 34585 — Šídlo
+      Dopravce: MHDT | ID linky: 1024
+      Trasa: Turnov - Károvsko → Kadeřavec
+      Délka: 5.76 km | Jízdní doba: 00:05:57
+
+ 431. Ps 54163b — Rychlý Hájos
+      Dopravce: ČD | ID linky: 2180
+      Trasa: Dunajská Streda - Velké Dvorníky → Dunajská Streda - Hl.S.
+      Délka: 9.04 km | Jízdní doba: 00:05:56
+
+ 432. Ps 54163b — Rychlý Hájos
+      Dopravce: ČD | ID linky: 2181
+      Trasa: Dunajská Streda - Hl.S. → Dunajská Streda - Velké Dvorníky
+      Délka: 9.04 km | Jízdní doba: 00:05:56
+
+ 433. Ps 10535b — Rychlý Burket
+      Dopravce: ZSSK | ID linky: 1910
+      Trasa: Nová Lubovna - Stará Lubovna → Stará Lubovna - Hl.S.
+      Délka: 8.91 km | Jízdní doba: 00:05:51
+
+ 434. Ps 10535b — Rychlý Burket
+      Dopravce: ZSSK | ID linky: 1911
+      Trasa: Stará Lubovna - Hl.S. → Nová Lubovna - Stará Lubovna
+      Délka: 8.91 km | Jízdní doba: 00:05:51
+
+ 435. Ps 24121 — Poláček
+      Dopravce: ČD | ID linky: 1996
+      Trasa: Rychnov nad Kněžnou - Lipovka → Rychnov nad Kněžnou - Hl.N.
+      Délka: 5.51 km | Jízdní doba: 00:05:48
+
+ 436. Ps 24121 — Poláček
+      Dopravce: ČD | ID linky: 1997
+      Trasa: Rychnov nad Kněžnou - Hl.N. → Rychnov nad Kněžnou - Lipovka
+      Délka: 5.51 km | Jízdní doba: 00:05:48
+
+ 437. Ps 24124b — Rychlý Němec
+      Dopravce: ČD | ID linky: 2008
+      Trasa: Nový Bydžov - Starý Bydžov → Nový Bydžov - Hl.N.
+      Délka: 8.65 km | Jízdní doba: 00:05:41
+
+ 438. Ps 24124b — Rychlý Němec
+      Dopravce: ČD | ID linky: 2009
+      Trasa: Nový Bydžov - Hl.N. → Nový Bydžov - Starý Bydžov
+      Délka: 8.65 km | Jízdní doba: 00:05:41
+
+ 439. Ps 22002 — Riedl
+      Dopravce: DPKV | ID linky: 1892
+      Trasa: Karlovy Vary - Stará Role → Karlovy Vary - Doubí
+      Délka: 6.98 km | Jízdní doba: 00:05:41
+
+ 440. Ps 22002 — Riedl
+      Dopravce: DPKV | ID linky: 1893
+      Trasa: Karlovy Vary - Doubí → Karlovy Vary - Stará Role
+      Délka: 6.98 km | Jízdní doba: 00:05:41
+
+ 441. Ps 15325 — Berka
+      Dopravce: ČD | ID linky: 446
+      Trasa: Břeclav - Hl.N. → Břeclav - Hrušák
+      Délka: 8.58 km | Jízdní doba: 00:05:39
+
+ 442. Ps 15325 — Berka
+      Dopravce: ČD | ID linky: 447
+      Trasa: Břeclav - Hrušák → Břeclav - Hl.N.
+      Délka: 8.58 km | Jízdní doba: 00:05:39
+
+ 443. Ps 29250 — Karvaš
+      Dopravce: ZSSK | ID linky: 1574
+      Trasa: Levice - Hl.S. → Levice - Géňa
+      Délka: 6.78 km | Jízdní doba: 00:05:34
+
+ 444. Ps 29250 — Karvaš
+      Dopravce: ZSSK | ID linky: 1575
+      Trasa: Levice - Géňa → Levice - Hl.S.
+      Délka: 6.78 km | Jízdní doba: 00:05:34
+
+ 445. Ps 51714b — Rychlý Adamczyk
+      Dopravce: ČD | ID linky: 1978
+      Trasa: Vrchlabí - Dolní Braná → Vrchlabí - Hl.N.
+      Délka: 8.36 km | Jízdní doba: 00:05:31
+
+ 446. Ps 51714b — Rychlý Adamczyk
+      Dopravce: ČD | ID linky: 1979
+      Trasa: Vrchlabí - Hl.N. → Vrchlabí - Dolní Braná
+      Délka: 8.36 km | Jízdní doba: 00:05:31
+
+ 447. Ps 31261 — Drulák
+      Dopravce: ČD | ID linky: 1724
+      Trasa: Uničov - Hl.N. → Uničov - Brníčko
+      Délka: 6.57 km | Jízdní doba: 00:05:26
+
+ 448. Ps 31261 — Drulák
+      Dopravce: ČD | ID linky: 1725
+      Trasa: Uničov - Brníčko → Uničov - Hl.N.
+      Délka: 6.57 km | Jízdní doba: 00:05:26
+
+ 449. Ps 13420b — Rychlý Mojš
+      Dopravce: DPMŽ | ID linky: 2202
+      Trasa: Žilina - Mojšova Lúčka → Žilina - Hl.S.
+      Délka: 6.55 km | Jízdní doba: 00:05:26
+
+ 450. Ps 13420b — Rychlý Mojš
+      Dopravce: DPMŽ | ID linky: 2203
+      Trasa: Žilina - Hl.S. → Žilina - Mojšova Lúčka
+      Délka: 6.55 km | Jízdní doba: 00:05:26
+
+ 451. Ps 44443 — Břeň
+      Dopravce: DPNisa | ID linky: 1006
+      Trasa: Jablonec nad Nisou - Kokonín → Jablonec nad Nisou - Břízky
+      Délka: 4.87 km | Jízdní doba: 00:05:25
+
+ 452. Ps 44443 — Břeň
+      Dopravce: DPNisa | ID linky: 1007
+      Trasa: Jablonec nad Nisou - Břízky → Jablonec nad Nisou - Kokonín
+      Délka: 4.87 km | Jízdní doba: 00:05:25
+
+ 453. Ps 18261 — Krman
+      Dopravce: ZSSK | ID linky: 1730
+      Trasa: Nové Město nad Váhom - Rakoluby → Nové Mesto nad Váhom - Hl.S.
+      Délka: 6.49 km | Jízdní doba: 00:05:24
+
+ 454. Ps 18261 — Krman
+      Dopravce: ZSSK | ID linky: 1731
+      Trasa: Nové Mesto nad Váhom - Hl.S. → Nové Město nad Váhom - Rakoluby
+      Délka: 6.49 km | Jízdní doba: 00:05:24
+
+ 455. Ps 64064b — Rychlý Lagler
+      Dopravce: ČD | ID linky: 2096
+      Trasa: Teplice - Novosedlice → Teplice - Hl.N.
+      Délka: 8.13 km | Jízdní doba: 00:05:23
+
+ 456. Ps 64064b — Rychlý Lagler
+      Dopravce: ČD | ID linky: 2097
+      Trasa: Teplice - Hl.N. → Teplice - Novosedlice
+      Délka: 8.13 km | Jízdní doba: 00:05:23
+
+ 457. Ps 17071
+      Dopravce: ZSSK | ID linky: 1102
+      Trasa: Turčianske Teplice - Hl.S. → Turčianske Teplice - Horská Šťubna
+      Délka: 6.43 km | Jízdní doba: 00:05:22
+
+ 458. Ps 17071
+      Dopravce: ZSSK | ID linky: 1103
+      Trasa: Turčianske Teplice - Horská Šťubna → Turčianske Teplice - Hl.S.
+      Délka: 6.43 km | Jízdní doba: 00:05:22
+
+ 459. Ps 55172 — Jasenský Babula
+      Dopravce: ČD | ID linky: 1810
+      Trasa: Vsetín - Hl.N. → Vsetín - Rokytnice
+      Délka: 6.43 km | Jízdní doba: 00:05:22
+
+ 460. Ps 55172 — Jasenský Babula
+      Dopravce: ČD | ID linky: 1811
+      Trasa: Vsetín - Rokytnice → Vsetín - Hl.N.
+      Délka: 6.43 km | Jízdní doba: 00:05:22
+
+ 461. Ps 84163 — Hevera
+      Dopravce: ČD | ID linky: 354
+      Trasa: Kolín - Hl.N. → Kolín - Veltruby
+      Délka: 6.33 km | Jízdní doba: 00:05:18
+
+ 462. Ps 84163 — Hevera
+      Dopravce: ČD | ID linky: 355
+      Trasa: Kolín - Veltruby → Kolín - Hl.N.
+      Délka: 6.33 km | Jízdní doba: 00:05:18
+
+ 463. Ps 15324
+      Dopravce: ČD | ID linky: 392
+      Trasa: Blansko - Hl.N. → Blansko - Hořice
+      Délka: 6.31 km | Jízdní doba: 00:05:17
+
+ 464. Ps 15324
+      Dopravce: ČD | ID linky: 393
+      Trasa: Blansko - Hořice → Blansko - Hl.N.
+      Délka: 6.31 km | Jízdní doba: 00:05:17
+
+ 465. Ps 31291 — Burjan
+      Dopravce: ZSSK | ID linky: 1550
+      Trasa: Ružomberok - Baničné → Ružomberok - Hl.S.
+      Délka: 6.22 km | Jízdní doba: 00:05:14
+
+ 466. Ps 31291 — Burjan
+      Dopravce: ZSSK | ID linky: 1551
+      Trasa: Ružomberok - Hl.S. → Ružomberok - Baničné
+      Délka: 6.22 km | Jízdní doba: 00:05:14
+
+ 467. Ps 33341 — Bělobrádek
+      Dopravce: ČD | ID linky: 1710
+      Trasa: Náchod - Babí → Náchod - Hl.N.
+      Délka: 4.54 km | Jízdní doba: 00:05:14
+
+ 468. Ps 33341 — Bělobrádek
+      Dopravce: ČD | ID linky: 1711
+      Trasa: Náchod - Hl.N. → Náchod - Babí
+      Délka: 4.54 km | Jízdní doba: 00:05:14
+
+ 469. Ps 00105b — Krátký Mendl
+      Dopravce: DPMB | ID linky: 2142
+      Trasa: Brno - Maloměřice → Brno - Hl.N.
+      Délka: 6.14 km | Jízdní doba: 00:05:11
+
+ 470. Ps 00105b — Krátký Mendl
+      Dopravce: DPMB | ID linky: 2143
+      Trasa: Brno - Hl.N. → Brno - Maloměřice
+      Délka: 6.14 km | Jízdní doba: 00:05:11
+
+ 471. Ps 34584b — Krátký Durych
+      Dopravce: MHDT | ID linky: 2132
+      Trasa: Kadeřavec → Turnov - Károvsko
+      Délka: 6.11 km | Jízdní doba: 00:05:10
+
+ 472. Ps 34584b — Krátký Durych
+      Dopravce: MHDT | ID linky: 2133
+      Trasa: Turnov - Károvsko → Kadeřavec
+      Délka: 6.11 km | Jízdní doba: 00:05:10
+
+ 473. Ps 87599 — Libchava
+      Dopravce: ČD | ID linky: 2496
+      Trasa: Česká Lípa - Horní Libchava → Česká Lípa - Hl.N.
+      Délka: 5.92 km | Jízdní doba: 00:05:03
+
+ 474. Ps 87599 — Libchava
+      Dopravce: ČD | ID linky: 2497
+      Trasa: Česká Lípa - Hl.N. → Česká Lípa - Horní Libchava
+      Délka: 5.92 km | Jízdní doba: 00:05:03
+
+ 475. Ps 65711 — Jarošík
+      Dopravce: ČD | ID linky: 380
+      Trasa: Ústí nad Labem - Střekov → Ústí nad Labem - Hl.N.
+      Délka: 5.88 km | Jízdní doba: 00:05:02
+
+ 476. Ps 65711 — Jarošík
+      Dopravce: ČD | ID linky: 381
+      Trasa: Ústí nad Labem - Hl.N. → Ústí nad Labem - Střekov
+      Délka: 5.88 km | Jízdní doba: 00:05:02
+
+ 477. Ps 55701b — Rychlý Hilmera
+      Dopravce: ČD | ID linky: 2088
+      Trasa: Veltrusy - Všestudy → Veltrusy - Hl.N.
+      Délka: 7.52 km | Jízdní doba: 00:05:01
+
+ 478. Ps 55701b — Rychlý Hilmera
+      Dopravce: ČD | ID linky: 2089
+      Trasa: Veltrusy - Hl.N. → Veltrusy - Všestudy
+      Délka: 7.52 km | Jízdní doba: 00:05:01
+
+ 479. Ps 71003c — Kratší Langer
+      Dopravce: DPMO | ID linky: 2114
+      Trasa: Olomouc - Chomoutov → Olomouc - Hl.N.
+      Délka: 5.86 km | Jízdní doba: 00:05:01
+
+ 480. Ps 71003c — Kratší Langer
+      Dopravce: DPMO | ID linky: 2115
+      Trasa: Olomouc - Hl.N. → Olomouc - Chomoutov
+      Délka: 5.86 km | Jízdní doba: 00:05:01
+
+ 481. Ps 19325 — Koželuha
+      Dopravce: ČD | ID linky: 570
+      Trasa: Bojkovice - Krhov → Pitín
+      Délka: 5.80 km | Jízdní doba: 00:04:59
+
+ 482. Ps 19325 — Koželuha
+      Dopravce: ČD | ID linky: 571
+      Trasa: Pitín → Bojkovice - Krhov
+      Délka: 5.80 km | Jízdní doba: 00:04:59
+
+ 483. Ps 55171 — Bubela
+      Dopravce: ČD | ID linky: 532
+      Trasa: Vsetín - Hl.N. → Vsetín - Janov
+      Délka: 7.38 km | Jízdní doba: 00:04:56
+
+ 484. Ps 55171 — Bubela
+      Dopravce: ČD | ID linky: 533
+      Trasa: Vsetín - Janov → Vsetín - Hl.N.
+      Délka: 7.38 km | Jízdní doba: 00:04:56
+
+ 485. Ps 86203 — Sikora
+      Dopravce: ČD | ID linky: 1874
+      Trasa: Jablunkov - Radvanov → Jablunkov - Bocanovice
+      Délka: 5.71 km | Jízdní doba: 00:04:55
+
+ 486. Ps 86203 — Sikora
+      Dopravce: ČD | ID linky: 1875
+      Trasa: Jablunkov - Bocanovice → Jablunkov - Radvanov
+      Délka: 5.71 km | Jízdní doba: 00:04:55
+
+ 487. Ps 36570 — Beníšek
+      Dopravce: ČD | ID linky: 2098
+      Trasa: Rakovník - Hl.N. → Rakovník - Senomaty
+      Délka: 5.61 km | Jízdní doba: 00:04:52
+
+ 488. Ps 36570 — Beníšek
+      Dopravce: ČD | ID linky: 2099
+      Trasa: Rakovník - Senomaty → Rakovník - Hl.N.
+      Délka: 5.61 km | Jízdní doba: 00:04:52
+
+ 489. Ps 56284 — Andreska
+      Dopravce: ČD | ID linky: 1518
+      Trasa: Hluboká nad Vltavou - Hl.N. → Hluboká nad Vltavou - Dasný
+      Délka: 5.60 km | Jízdní doba: 00:04:52
+
+ 490. Ps 56284 — Andreska
+      Dopravce: ČD | ID linky: 1519
+      Trasa: Hluboká nad Vltavou - Dasný → Hluboká nad Vltavou - Hl.N.
+      Délka: 5.60 km | Jízdní doba: 00:04:52
+
+ 491. Ps 44445b — Rychlý Hanvald
+      Dopravce: DPNisa | ID linky: 2128
+      Trasa: Liberec - Vratislavice → Jablonec nad Nisou - Paseky
+      Délka: 7.25 km | Jízdní doba: 00:04:51
+
+ 492. Ps 44445b — Rychlý Hanvald
+      Dopravce: DPNisa | ID linky: 2129
+      Trasa: Jablonec nad Nisou - Paseky → Liberec - Vratislavice
+      Délka: 7.25 km | Jízdní doba: 00:04:51
+
+ 493. Ps 61635 — Malovec
+      Dopravce: ZSSK | ID linky: 2030
+      Trasa: Hurbanovo - Bajč → Hurbanovo - Hl.S.
+      Délka: 7.19 km | Jízdní doba: 00:04:49
+
+ 494. Ps 61635 — Malovec
+      Dopravce: ZSSK | ID linky: 2031
+      Trasa: Hurbanovo - Hl.S. → Hurbanovo - Bajč
+      Délka: 7.19 km | Jízdní doba: 00:04:49
+
+ 495. Ps 84816 — Fiscali
+      Dopravce: ČD | ID linky: 620
+      Trasa: Třeboň - Holičky → Třeboň - Dvorce
+      Délka: 5.53 km | Jízdní doba: 00:04:49
+
+ 496. Ps 84816 — Fiscali
+      Dopravce: ČD | ID linky: 621
+      Trasa: Třeboň - Dvorce → Třeboň - Holičky
+      Délka: 5.53 km | Jízdní doba: 00:04:49
+
+ 497. Ps 23701
+      Dopravce: ČD | ID linky: 340
+      Trasa: Nymburk - Hl.N. → Nymburk - Drahelice
+      Délka: 5.51 km | Jízdní doba: 00:04:48
+
+ 498. Ps 23701
+      Dopravce: ČD | ID linky: 341
+      Trasa: Nymburk - Drahelice → Nymburk - Hl.N.
+      Délka: 5.51 km | Jízdní doba: 00:04:48
+
+ 499. Ps 40300
+      Dopravce: ČD | ID linky: 944
+      Trasa: Chrudim - Hl.N. → Chrudim - Slatiňany
+      Délka: 5.45 km | Jízdní doba: 00:04:46
+
+ 500. Ps 40300
+      Dopravce: ČD | ID linky: 945
+      Trasa: Chrudim - Slatiňany → Chrudim - Hl.N.
+      Délka: 5.45 km | Jízdní doba: 00:04:46
+
+ 501. Ps 87000 — Kačo
+      Dopravce: ČD | ID linky: 490
+      Trasa: Nový Jičín - Hl.N. → Nový Jičín - Kunín
+      Délka: 5.44 km | Jízdní doba: 00:04:46
+
+ 502. Ps 87000 — Kačo
+      Dopravce: ČD | ID linky: 491
+      Trasa: Nový Jičín - Kunín → Nový Jičín - Hl.N.
+      Délka: 5.44 km | Jízdní doba: 00:04:46
+
+ 503. Ps 13419 — Martikán
+      Dopravce: DPMŽ | ID linky: 1952
+      Trasa: Žilina - Hl.S. → Žilina - Solinky
+      Délka: 5.43 km | Jízdní doba: 00:04:45
+
+ 504. Ps 13419 — Martikán
+      Dopravce: DPMŽ | ID linky: 1953
+      Trasa: Žilina - Solinky → Žilina - Hl.S.
+      Délka: 5.43 km | Jízdní doba: 00:04:45
+
+ 505. Ps 84164 — Kostka
+      Dopravce: ČD | ID linky: 1018
+      Trasa: Mimoň - Hl.N. → Mimoň - Vranov
+      Délka: 5.31 km | Jízdní doba: 00:04:41
+
+ 506. Ps 84164 — Kostka
+      Dopravce: ČD | ID linky: 1019
+      Trasa: Mimoň - Vranov → Mimoň - Hl.N.
+      Délka: 5.31 km | Jízdní doba: 00:04:41
+
+ 507. Ps 11825 — Netopil
+      Dopravce: ČD | ID linky: 2226
+      Trasa: Kroměříž - Vážany → Kroměříž - Hl.N.
+      Délka: 5.28 km | Jízdní doba: 00:04:40
+
+ 508. Ps 11825 — Netopil
+      Dopravce: ČD | ID linky: 2227
+      Trasa: Kroměříž - Hl.N. → Kroměříž - Vážany
+      Délka: 5.28 km | Jízdní doba: 00:04:40
+
+ 509. Ps 35001
+      Dopravce: ZSSK | ID linky: 678
+      Trasa: Nitra - Kynek → Nitra - Hl.S.
+      Délka: 5.12 km | Jízdní doba: 00:04:34
+
+ 510. Ps 35001
+      Dopravce: ZSSK | ID linky: 679
+      Trasa: Nitra - Hl.S. → Nitra - Kynek
+      Délka: 5.12 km | Jízdní doba: 00:04:34
+
+ 511. Ps 27558
+      Dopravce: DPMP | ID linky: 2278
+      Trasa: Pardubice - Rosice → Pardubice - Pardubičky
+      Délka: 5.05 km | Jízdní doba: 00:04:32
+
+ 512. Ps 27558
+      Dopravce: DPMP | ID linky: 2279
+      Trasa: Pardubice - Pardubičky → Pardubice - Rosice
+      Délka: 5.05 km | Jízdní doba: 00:04:32
+
+ 513. Ps 44440b — Rychlý Herzig
+      Dopravce: DPNisa | ID linky: 2120
+      Trasa: Liberec - Ruprechtice → Liberec - Karlinky
+      Délka: 5.03 km | Jízdní doba: 00:04:31
+
+ 514. Ps 44440b — Rychlý Herzig
+      Dopravce: DPNisa | ID linky: 2121
+      Trasa: Liberec - Karlinky → Liberec - Ruprechtice
+      Délka: 5.03 km | Jízdní doba: 00:04:31
+
+ 515. Ps 35003b — Krátký Lasica
+      Dopravce: DPB | ID linky: 2190
+      Trasa: Bratislava - Machnáč → Bratislava - Nivy
+      Délka: 4.98 km | Jízdní doba: 00:04:29
+
+ 516. Ps 35003b — Krátký Lasica
+      Dopravce: DPB | ID linky: 2191
+      Trasa: Bratislava - Nivy → Bratislava - Machnáč
+      Délka: 4.98 km | Jízdní doba: 00:04:29
+
+ 517. Ps 20314 — Dynda
+      Dopravce: ČD | ID linky: 2270
+      Trasa: Jindřichův Hradec - Jindřiš → Jindřichův Hradec - Otín
+      Délka: 4.87 km | Jízdní doba: 00:04:25
+
+ 518. Ps 20314 — Dynda
+      Dopravce: ČD | ID linky: 2271
+      Trasa: Jindřichův Hradec - Otín → Jindřichův Hradec - Jindřiš
+      Délka: 4.87 km | Jízdní doba: 00:04:25
+
+ 519. Ps 11926 — Kaplan
+      Dopravce: DPLM | ID linky: 1964
+      Trasa: Liptovský Mikuláš - Hl.S. → Liptovský Mikuláš - Bodice
+      Délka: 4.69 km | Jízdní doba: 00:04:19
+
+ 520. Ps 11926 — Kaplan
+      Dopravce: DPLM | ID linky: 1965
+      Trasa: Liptovský Mikuláš - Bodice → Liptovský Mikuláš - Hl.S.
+      Délka: 4.69 km | Jízdní doba: 00:04:19
+
+ 521. Ps 20315b — Krátký Michna
+      Dopravce: ČD | ID linky: 2268
+      Trasa: Jindřichův Hradec - Jindřiš → Jindřichův Hradec - Hl.N.
+      Délka: 4.63 km | Jízdní doba: 00:04:17
+
+ 522. Ps 20315b — Krátký Michna
+      Dopravce: ČD | ID linky: 2269
+      Trasa: Jindřichův Hradec - Hl.N. → Jindřichův Hradec - Jindřiš
+      Délka: 4.63 km | Jízdní doba: 00:04:17
+
+ 523. Ps 22001 — Baxant
+      Dopravce: DPKV | ID linky: 1890
+      Trasa: Karlovy Vary - Počerny → Karlovy Vary - Hl.N.
+      Délka: 4.49 km | Jízdní doba: 00:04:12
+
+ 524. Ps 22001 — Baxant
+      Dopravce: DPKV | ID linky: 1891
+      Trasa: Karlovy Vary - Hl.N. → Karlovy Vary - Počerny
+      Délka: 4.49 km | Jízdní doba: 00:04:12
+
+ 525. Ps 45398 — Kováč
+      Dopravce: ZSSK | ID linky: 1726
+      Trasa: Stará Myjava - Hl.S. → Stará Myjava - Dúbravovci
+      Délka: 4.47 km | Jízdní doba: 00:04:11
+
+ 526. Ps 45398 — Kováč
+      Dopravce: ZSSK | ID linky: 1727
+      Trasa: Stará Myjava - Dúbravovci → Stará Myjava - Hl.S.
+      Délka: 4.47 km | Jízdní doba: 00:04:11
+
+ 527. Ps 48449
+      Dopravce: ZSSK | ID linky: 1110
+      Trasa: Zvolen - Hl.S. → Zvolen - Moťová
+      Délka: 4.22 km | Jízdní doba: 00:04:02
+
+ 528. Ps 48449
+      Dopravce: ZSSK | ID linky: 1111
+      Trasa: Zvolen - Moťová → Zvolen - Hl.S.
+      Délka: 4.22 km | Jízdní doba: 00:04:02
+
+ 529. Ps 65912 — Hrudka
+      Dopravce: ČD | ID linky: 2454
+      Trasa: Velké Opatovice - Hl.N. → Velké Opatovice - Uhřice
+      Délka: 5.86 km | Jízdní doba: 00:04:01
+
+ 530. Ps 65912 — Hrudka
+      Dopravce: ČD | ID linky: 2455
+      Trasa: Velké Opatovice - Uhřice → Velké Opatovice - Hl.N.
+      Délka: 5.86 km | Jízdní doba: 00:04:01
+
+ 531. Ps 17157 — Klemeš
+      Dopravce: ZSSK | ID linky: 1634
+      Trasa: Čadca - Hl.S. → Čadca - Rieka
+      Délka: 4.13 km | Jízdní doba: 00:03:59
+
+ 532. Ps 17157 — Klemeš
+      Dopravce: ZSSK | ID linky: 1635
+      Trasa: Čadca - Rieka → Čadca - Hl.S.
+      Délka: 4.13 km | Jízdní doba: 00:03:59
+
+ 533. Ps 54161b — Dlouhý Grbavčič
+      Dopravce: ZSSK | ID linky: 2172
+      Trasa: Hlohovec - Hl.S. → Leopoldov
+      Délka: 4.10 km | Jízdní doba: 00:03:57
+
+ 534. Ps 54161b — Dlouhý Grbavčič
+      Dopravce: ZSSK | ID linky: 2173
+      Trasa: Leopoldov → Hlohovec - Hl.S.
+      Délka: 4.10 km | Jízdní doba: 00:03:57
+
+ 535. Ps 97122 — Harant
+      Dopravce: ČD | ID linky: 1852
+      Trasa: Janovice nad Úhlavou - Hl.N. → Janovice nad Úhlavou - Jelenka
+      Délka: 3.94 km | Jízdní doba: 00:03:52
+
+ 536. Ps 97122 — Harant
+      Dopravce: ČD | ID linky: 1853
+      Trasa: Janovice nad Úhlavou - Jelenka → Janovice nad Úhlavou - Hl.N.
+      Délka: 3.94 km | Jízdní doba: 00:03:52
+
+ 537. Ps 57132 — Dusík
+      Dopravce: ČD | ID linky: 356
+      Trasa: Čáslav - Filipov → Čáslav - Hl.N.
+      Délka: 3.88 km | Jízdní doba: 00:03:50
+
+ 538. Ps 57132 — Dusík
+      Dopravce: ČD | ID linky: 357
+      Trasa: Čáslav - Hl.N. → Čáslav - Filipov
+      Délka: 3.88 km | Jízdní doba: 00:03:50
+
+ 539. Ps 24121b — Rychlý Poláček
+      Dopravce: ČD | ID linky: 1998
+      Trasa: Rychnov nad Kněžnou - Lipovka → Rychnov nad Kněžnou - Hl.N.
+      Délka: 5.51 km | Jízdní doba: 00:03:48
+
+ 540. Ps 24121b — Rychlý Poláček
+      Dopravce: ČD | ID linky: 1999
+      Trasa: Rychnov nad Kněžnou - Hl.N. → Rychnov nad Kněžnou - Lipovka
+      Délka: 5.51 km | Jízdní doba: 00:03:48
+
+ 541. Ps 97897b — Rychlý Šamberk
+      Dopravce: ČD | ID linky: 2206
+      Trasa: Březová nad Svitavou - Hl.N. → Březová nad Svitavou - Chrastavec
+      Délka: 3.83 km | Jízdní doba: 00:03:48
+
+ 542. Ps 97897b — Rychlý Šamberk
+      Dopravce: ČD | ID linky: 2207
+      Trasa: Březová nad Svitavou - Chrastavec → Březová nad Svitavou - Hl.N.
+      Délka: 3.83 km | Jízdní doba: 00:03:48
+
+ 543. Ps 67167 — Pardus
+      Dopravce: ČD | ID linky: 1468
+      Trasa: Přelouč - Hl.N. → Přelouč - Klenovka
+      Délka: 3.83 km | Jízdní doba: 00:03:48
+
+ 544. Ps 67167 — Pardus
+      Dopravce: ČD | ID linky: 1469
+      Trasa: Přelouč - Klenovka → Přelouč - Hl.N.
+      Délka: 3.83 km | Jízdní doba: 00:03:48
+
+ 545. Ps 11925 — Koloman
+      Dopravce: DPLM | ID linky: 1918
+      Trasa: Liptovský Mikuláš - Hl.S. → Liptovský Mikuláš - Škorupovo
+      Délka: 3.81 km | Jízdní doba: 00:03:47
+
+ 546. Ps 11925 — Koloman
+      Dopravce: DPLM | ID linky: 1919
+      Trasa: Liptovský Mikuláš - Škorupovo → Liptovský Mikuláš - Hl.S.
+      Délka: 3.81 km | Jízdní doba: 00:03:47
+
+ 547. Ps 44443b — Krátká Břeň
+      Dopravce: DPNisa | ID linky: 2124
+      Trasa: Jablonec nad Nisou - Oslavice → Jablonec nad Nisou - Břízky
+      Délka: 3.72 km | Jízdní doba: 00:03:44
+
+ 548. Ps 44443b — Krátká Břeň
+      Dopravce: DPNisa | ID linky: 2125
+      Trasa: Jablonec nad Nisou - Břízky → Jablonec nad Nisou - Oslavice
+      Délka: 3.72 km | Jízdní doba: 00:03:44
+
+ 549. Ps 13427 — Dragoun
+      Dopravce: ČD | ID linky: 1462
+      Trasa: Písek - Hl.N. → Písek - Semice
+      Délka: 5.29 km | Jízdní doba: 00:03:40
+
+ 550. Ps 13427 — Dragoun
+      Dopravce: ČD | ID linky: 1463
+      Trasa: Písek - Semice → Písek - Hl.N.
+      Délka: 5.29 km | Jízdní doba: 00:03:40
+
+ 551. Ps 61638 — Spišiak
+      Dopravce: ZSSK | ID linky: 2040
+      Trasa: Želiezovce - Hronovce → Želiezovce - Hl.S.
+      Délka: 5.26 km | Jízdní doba: 00:03:39
+
+ 552. Ps 61638 — Spišiak
+      Dopravce: ZSSK | ID linky: 2041
+      Trasa: Želiezovce - Hl.S. → Želiezovce - Hronovce
+      Délka: 5.26 km | Jízdní doba: 00:03:39
+
+ 553. Ps 31293 — Engler
+      Dopravce: ZSSK | ID linky: 1564
+      Trasa: Trenčín - Zlatovce → Trenčín - Hl.S.
+      Délka: 3.58 km | Jízdní doba: 00:03:39
+
+ 554. Ps 31293 — Engler
+      Dopravce: ZSSK | ID linky: 1565
+      Trasa: Trenčín - Hl.S. → Trenčín - Zlatovce
+      Délka: 3.58 km | Jízdní doba: 00:03:39
+
+ 555. Ps 18261b — Rychlý Krman
+      Dopravce: ZSSK | ID linky: 2196
+      Trasa: Nové Město nad Váhom - Rakoluby → Nové Mesto nad Váhom - Hl.S.
+      Délka: 5.01 km | Jízdní doba: 00:03:31
+
+ 556. Ps 18261b — Rychlý Krman
+      Dopravce: ZSSK | ID linky: 2197
+      Trasa: Nové Mesto nad Váhom - Hl.S. → Nové Město nad Váhom - Rakoluby
+      Délka: 5.01 km | Jízdní doba: 00:03:31
+
+ 557. Ps 26735 — Kapusta
+      Dopravce: ČD | ID linky: 1292
+      Trasa: Česká Třebová - Hl.N. → Česká Třebová - Rybník
+      Délka: 4.94 km | Jízdní doba: 00:03:28
+
+ 558. Ps 26735 — Kapusta
+      Dopravce: ČD | ID linky: 1293
+      Trasa: Česká Třebová - Rybník → Česká Třebová - Hl.N.
+      Délka: 4.94 km | Jízdní doba: 00:03:28
+
+ 559. Ps 97123 — Ludevít
+      Dopravce: ČD | ID linky: 1854
+      Trasa: Klatovy - Hůrka → Klatovy - Hl.N.
+      Délka: 3.26 km | Jízdní doba: 00:03:27
+
+ 560. Ps 97123 — Ludevít
+      Dopravce: ČD | ID linky: 1855
+      Trasa: Klatovy - Hl.N. → Klatovy - Hůrka
+      Délka: 3.26 km | Jízdní doba: 00:03:27
+
+ 561. Ps 81400 — Leraus
+      Dopravce: ČD | ID linky: 1084
+      Trasa: Beroun - Závodí → Beroun - Vodojem
+      Délka: 3.20 km | Jízdní doba: 00:03:25
+
+ 562. Ps 81400 — Leraus
+      Dopravce: ČD | ID linky: 1085
+      Trasa: Beroun - Vodojem → Beroun - Závodí
+      Délka: 3.20 km | Jízdní doba: 00:03:25
+
+ 563. Ps 11823 — Hruška
+      Dopravce: ČD | ID linky: 1882
+      Trasa: Domažlice - Hl.N. → Domažlice - Bezděkov
+      Délka: 3.16 km | Jízdní doba: 00:03:24
+
+ 564. Ps 11823 — Hruška
+      Dopravce: ČD | ID linky: 1883
+      Trasa: Domažlice - Bezděkov → Domažlice - Hl.N.
+      Délka: 3.16 km | Jízdní doba: 00:03:24
+
+ 565. Ps 15291
+      Dopravce: ČD | ID linky: 1388
+      Trasa: Velká Bíteš - Hl.N. → Velká Bíteš - Bezděkov
+      Délka: 4.78 km | Jízdní doba: 00:03:22
+
+ 566. Ps 15291
+      Dopravce: ČD | ID linky: 1389
+      Trasa: Velká Bíteš - Bezděkov → Velká Bíteš - Hl.N.
+      Délka: 4.78 km | Jízdní doba: 00:03:22
+
+ 567. Ps 66854 — Boček
+      Dopravce: ČD | ID linky: 666
+      Trasa: Kutná Hora - Grunta → Kutná Hora - Hl.N.
+      Délka: 2.99 km | Jízdní doba: 00:03:18
+
+ 568. Ps 66854 — Boček
+      Dopravce: ČD | ID linky: 667
+      Trasa: Kutná Hora - Hl.N. → Kutná Hora - Grunta
+      Délka: 2.99 km | Jízdní doba: 00:03:18
+
+ 569. Ps 45395 — Ruffíni
+      Dopravce: ZSSK | ID linky: 1704
+      Trasa: Lučenec - Malá Ves → Lučenec - Hl.S.
+      Délka: 2.94 km | Jízdní doba: 00:03:16
+
+ 570. Ps 45395 — Ruffíni
+      Dopravce: ZSSK | ID linky: 1705
+      Trasa: Lučenec - Hl.S. → Lučenec - Malá Ves
+      Délka: 2.94 km | Jízdní doba: 00:03:16
+
+ 571. Ps 50170b — Rychlý Vagač
+      Dopravce: ZSSK | ID linky: 2308
+      Trasa: Detva - Město → Detva - Vrchy
+      Délka: 4.54 km | Jízdní doba: 00:03:14
+
+ 572. Ps 50170b — Rychlý Vagač
+      Dopravce: ZSSK | ID linky: 2309
+      Trasa: Detva - Vrchy → Detva - Město
+      Délka: 4.54 km | Jízdní doba: 00:03:14
+
+ 573. Ps 11441 — Drápala
+      Dopravce: ČD | ID linky: 1818
+      Trasa: Rožnov pod Radhoštěm - Hl.N. → Rožnov pod Radhoštěm - Tilovice
+      Délka: 4.45 km | Jízdní doba: 00:03:10
+
+ 574. Ps 11441 — Drápala
+      Dopravce: ČD | ID linky: 1819
+      Trasa: Rožnov pod Radhoštěm - Tilovice → Rožnov pod Radhoštěm - Hl.N.
+      Délka: 4.45 km | Jízdní doba: 00:03:10
+
+ 575. Ps 92081 — Littrow
+      Dopravce: ČD | ID linky: 2396
+      Trasa: Horšovský Týn → Horšovský Týn - Horšov
+      Délka: 2.78 km | Jízdní doba: 00:03:10
+
+ 576. Ps 92081 — Littrow
+      Dopravce: ČD | ID linky: 2397
+      Trasa: Horšovský Týn - Horšov → Horšovský Týn
+      Délka: 2.78 km | Jízdní doba: 00:03:10
+
+ 577. Ps 13413 — Fibiger
+      Dopravce: ČD | ID linky: 1438
+      Trasa: Mladá Boleslav - Debř → Mladá Boleslav - Hl.N.
+      Délka: 4.36 km | Jízdní doba: 00:03:07
+
+ 578. Ps 13413 — Fibiger
+      Dopravce: ČD | ID linky: 1439
+      Trasa: Mladá Boleslav - Hl.N. → Mladá Boleslav - Debř
+      Délka: 4.36 km | Jízdní doba: 00:03:07
+
+ 579. Ps 15290
+      Dopravce: ČD | ID linky: 1384
+      Trasa: Velké Meziříčí - Kaštany → Velké Meziříčí - Hl.N.
+      Délka: 2.67 km | Jízdní doba: 00:03:06
+
+ 580. Ps 15290
+      Dopravce: ČD | ID linky: 1385
+      Trasa: Velké Meziříčí - Hl.N. → Velké Meziříčí - Kaštany
+      Délka: 2.67 km | Jízdní doba: 00:03:06
+
+ 581. Ps 97716b — Zábřežský Žirafák
+      Dopravce: ČD | ID linky: 2494
+      Trasa: Zábřeh - Hl.N. → Zábřeh - Nemile
+      Délka: 4.30 km | Jízdní doba: 00:03:05
+
+ 582. Ps 97716b — Zábřežský Žirafák
+      Dopravce: ČD | ID linky: 2495
+      Trasa: Zábřeh - Nemile → Zábřeh - Hl.N.
+      Délka: 4.30 km | Jízdní doba: 00:03:05
+
+ 583. Ps 50432 — Rosenberg
+      Dopravce: ZSSK | ID linky: 1588
+      Trasa: Topoľčany - Továrníky → Topoľčany
+      Délka: 4.30 km | Jízdní doba: 00:03:05
+
+ 584. Ps 50432 — Rosenberg
+      Dopravce: ZSSK | ID linky: 1589
+      Trasa: Topoľčany → Topoľčany - Továrníky
+      Délka: 4.30 km | Jízdní doba: 00:03:05
+
+ 585. Ps 12128 — Rumcajs
+      Dopravce: ČD | ID linky: 1972
+      Trasa: Jičín - Soudná → Jičín - Hl.N.
+      Délka: 2.51 km | Jízdní doba: 00:03:00
+
+ 586. Ps 12128 — Rumcajs
+      Dopravce: ČD | ID linky: 1973
+      Trasa: Jičín - Hl.N. → Jičín - Soudná
+      Délka: 2.51 km | Jízdní doba: 00:03:00
+
+ 587. Ps 50170c — Krátký Vagač
+      Dopravce: ZSSK | ID linky: 2312
+      Trasa: Detva - Sídlisko → Detva - Vrchy
+      Délka: 4.11 km | Jízdní doba: 00:02:58
+
+ 588. Ps 50170c — Krátký Vagač
+      Dopravce: ZSSK | ID linky: 2313
+      Trasa: Detva - Vrchy → Detva - Sídlisko
+      Délka: 4.11 km | Jízdní doba: 00:02:58
+
+ 589. Ps 11824 — Austerlitz
+      Dopravce: ČD | ID linky: 2220
+      Trasa: Slavkov u Brna - Němčany → Slavkov u Brna - Hl.N.
+      Délka: 4.05 km | Jízdní doba: 00:02:56
+
+ 590. Ps 11824 — Austerlitz
+      Dopravce: ČD | ID linky: 2221
+      Trasa: Slavkov u Brna - Hl.N. → Slavkov u Brna - Němčany
+      Délka: 4.05 km | Jízdní doba: 00:02:56
+
+ 591. Ps 18262 — Rodák
+      Dopravce: ZSSK | ID linky: 1746
+      Trasa: Trnava - Štreka → Trnava - Hl.S.
+      Délka: 3.97 km | Jízdní doba: 00:02:53
+
+ 592. Ps 18262 — Rodák
+      Dopravce: ZSSK | ID linky: 1747
+      Trasa: Trnava - Hl.S. → Trnava - Štreka
+      Délka: 3.97 km | Jízdní doba: 00:02:53
+
+ 593. Ps 20316
+      Dopravce: ČD | ID linky: 470
+      Trasa: Prachatice - Hl.N. → Prachatice - Ostrov
+      Délka: 3.86 km | Jízdní doba: 00:02:49
+
+ 594. Ps 20316
+      Dopravce: ČD | ID linky: 471
+      Trasa: Prachatice - Ostrov → Prachatice - Hl.N.
+      Délka: 3.86 km | Jízdní doba: 00:02:49
+
+ 595. Ps 18260 — Rubik
+      Dopravce: ZSSK | ID linky: 1748
+      Trasa: Piešťany - Hl.S. → Piešťany - Banka
+      Délka: 2.14 km | Jízdní doba: 00:02:47
+
+ 596. Ps 18260 — Rubik
+      Dopravce: ZSSK | ID linky: 1749
+      Trasa: Piešťany - Banka → Piešťany - Hl.S.
+      Délka: 2.14 km | Jízdní doba: 00:02:47
+
+ 597. Ps 65911 — Odkolka
+      Dopravce: ČD | ID linky: 432
+      Trasa: Roudnice nad Labem - Dobříň → Roudnice nad Labem - Hl.N.
+      Délka: 3.60 km | Jízdní doba: 00:02:39
+
+ 598. Ps 65911 — Odkolka
+      Dopravce: ČD | ID linky: 433
+      Trasa: Roudnice nad Labem - Hl.N. → Roudnice nad Labem - Dobříň
+      Délka: 3.60 km | Jízdní doba: 00:02:39
+
+ 599. Ps 97715b — Krátký Poličan
+      Dopravce: ČD | ID linky: 2488
+      Trasa: Polička - Kamenec → Polička - Hl.N.
+      Délka: 3.59 km | Jízdní doba: 00:02:39
+
+ 600. Ps 97715b — Krátký Poličan
+      Dopravce: ČD | ID linky: 2489
+      Trasa: Polička - Hl.N. → Polička - Kamenec
+      Délka: 3.59 km | Jízdní doba: 00:02:39
+
+ 601. Ps 15515 — Bonk
+      Dopravce: ČD | ID linky: 1418
+      Trasa: Krnov - Kostelec → Krnov - Hl.N.
+      Délka: 3.45 km | Jízdní doba: 00:02:34
+
+ 602. Ps 15515 — Bonk
+      Dopravce: ČD | ID linky: 1419
+      Trasa: Krnov - Hl.N. → Krnov - Kostelec
+      Délka: 3.45 km | Jízdní doba: 00:02:34
+
+ 603. Ps 61633 — Dobos
+      Dopravce: ZSSK | ID linky: 2020
+      Trasa: Nové Zámky - Hl.S: → Nové Zámky - Terminál
+      Délka: 3.35 km | Jízdní doba: 00:02:31
+
+ 604. Ps 61633 — Dobos
+      Dopravce: ZSSK | ID linky: 2021
+      Trasa: Nové Zámky - Terminál → Nové Zámky - Hl.S:
+      Délka: 3.35 km | Jízdní doba: 00:02:31
+
+ 605. Ps 52287 — Traxler
+      Dopravce: ČD | ID linky: 1528
+      Trasa: Veselí nad Lužnicí - Hl.N. → Veselí nad Lužnicí - Horusice
+      Délka: 3.28 km | Jízdní doba: 00:02:28
+
+ 606. Ps 52287 — Traxler
+      Dopravce: ČD | ID linky: 1529
+      Trasa: Veselí nad Lužnicí - Horusice → Veselí nad Lužnicí - Hl.N.
+      Délka: 3.28 km | Jízdní doba: 00:02:28
+
+ 607. Ps 19325b — Krátký Koželuha
+      Dopravce: ČD | ID linky: 2224
+      Trasa: Bojkovice - Krhov → Bojkovice - Hl.N.
+      Délka: 3.08 km | Jízdní doba: 00:02:21
+
+ 608. Ps 19325b — Krátký Koželuha
+      Dopravce: ČD | ID linky: 2225
+      Trasa: Bojkovice - Hl.N. → Bojkovice - Krhov
+      Délka: 3.08 km | Jízdní doba: 00:02:21
+
+ 609. Ps 57132b — Rychlý Dusík
+      Dopravce: ČD | ID linky: 1864
+      Trasa: Čáslav - Filipov → Čáslav - Hl.N.
+      Délka: 2.93 km | Jízdní doba: 00:02:16
+
+ 610. Ps 57132b — Rychlý Dusík
+      Dopravce: ČD | ID linky: 1865
+      Trasa: Čáslav - Hl.N. → Čáslav - Filipov
+      Délka: 2.93 km | Jízdní doba: 00:02:16
+
+ 611. Ps 65171 — Koukal
+      Dopravce: ČD | ID linky: 538
+      Trasa: Rosice - Hl.N. → Rosice - Tetčice
+      Délka: 2.81 km | Jízdní doba: 00:02:11
+
+ 612. Ps 65171 — Koukal
+      Dopravce: ČD | ID linky: 539
+      Trasa: Rosice - Tetčice → Rosice - Hl.N.
+      Délka: 2.81 km | Jízdní doba: 00:02:11
+
+ 613. Ps 20243 — Kratochvíl
+      Dopravce: ČD | ID linky: 732
+      Trasa: Lovosice → Lovosice - Vchynice
+      Délka: 2.78 km | Jízdní doba: 00:02:10
+
+ 614. Ps 20243 — Kratochvíl
+      Dopravce: ČD | ID linky: 733
+      Trasa: Lovosice - Vchynice → Lovosice
+      Délka: 2.78 km | Jízdní doba: 00:02:10
+
+ 615. Ps 11927 — Habrovec
+      Dopravce: ČD | ID linky: 2234
+      Trasa: Kuřim - Podlesí → Kuřim - Hl.N.
+      Délka: 2.78 km | Jízdní doba: 00:02:10
+
+ 616. Ps 11927 — Habrovec
+      Dopravce: ČD | ID linky: 2235
+      Trasa: Kuřim - Hl.N. → Kuřim - Podlesí
+      Délka: 2.78 km | Jízdní doba: 00:02:10
+
+ 617. Ps 54613b — Krátký Baránek
+      Dopravce: ČD | ID linky: 2246
+      Trasa: Valašské Klobouky - Hl.N. → Valašské Klobouky - Smolina
+      Délka: 2.76 km | Jízdní doba: 00:02:09
+
+ 618. Ps 54613b — Krátký Baránek
+      Dopravce: ČD | ID linky: 2247
+      Trasa: Valašské Klobouky - Smolina → Valašské Klobouky - Hl.N.
+      Délka: 2.76 km | Jízdní doba: 00:02:09
+
+ 619. Ps 18633
+      Dopravce: ZSSK | ID linky: 1192
+      Trasa: Senec - Hl.S. → Senec - Velký Biel
+      Délka: 2.66 km | Jízdní doba: 00:02:06
+
+ 620. Ps 18633
+      Dopravce: ZSSK | ID linky: 1193
+      Trasa: Senec - Velký Biel → Senec - Hl.S.
+      Délka: 2.66 km | Jízdní doba: 00:02:06
+
+ 621. Ps 54161 — Javor
+      Dopravce: ZSSK | ID linky: 2168
+      Trasa: Rišňovce - Andač → Rišňovce - Hl.S.
+      Délka: 2.63 km | Jízdní doba: 00:02:05
+
+ 622. Ps 54161 — Javor
+      Dopravce: ZSSK | ID linky: 2169
+      Trasa: Rišňovce - Hl.S. → Rišňovce - Andač
+      Délka: 2.63 km | Jízdní doba: 00:02:05
+
+ 623. Ps 11933 — Kamnitz
+      Dopravce: ČD | ID linky: 2256
+      Trasa: Kamenice nad Lipou - Johanka → Kamenice nad Lipou - Hl.N.
+      Délka: 2.59 km | Jízdní doba: 00:02:03
+
+ 624. Ps 11933 — Kamnitz
+      Dopravce: ČD | ID linky: 2257
+      Trasa: Kamenice nad Lipou - Hl.N. → Kamenice nad Lipou - Johanka
+      Délka: 2.59 km | Jízdní doba: 00:02:03
+
+ 625. Ps 13149
+      Dopravce: ČD | ID linky: 740
+      Trasa: Klášterec nad Ohří - Ciboušov → Klášterec nad Ohří - Hl.N.
+      Délka: 2.58 km | Jízdní doba: 00:02:03
+
+ 626. Ps 13149
+      Dopravce: ČD | ID linky: 741
+      Trasa: Klášterec nad Ohří - Hl.N. → Klášterec nad Ohří - Ciboušov
+      Délka: 2.58 km | Jízdní doba: 00:02:03
+
+ 627. Ps 31270 — Valdauf
+      Dopravce: ČD | ID linky: 2326
+      Trasa: Trhové Sviny - Rejta → Trhové Sviny - Hl.N.
+      Délka: 2.57 km | Jízdní doba: 00:02:03
+
+ 628. Ps 31270 — Valdauf
+      Dopravce: ČD | ID linky: 2327
+      Trasa: Trhové Sviny - Hl.N. → Trhové Sviny - Rejta
+      Délka: 2.57 km | Jízdní doba: 00:02:03
+
+ 629. Ps 26736 — Kubát
+      Dopravce: ČD | ID linky: 2274
+      Trasa: Česká Třebová - Parník → Česká Třebová - Hl.N.
+      Délka: 2.56 km | Jízdní doba: 00:02:02
+
+ 630. Ps 26736 — Kubát
+      Dopravce: ČD | ID linky: 2275
+      Trasa: Česká Třebová - Hl.N. → Česká Třebová - Parník
+      Délka: 2.56 km | Jízdní doba: 00:02:02
+
+ 631. Ps 82630 — Brzorád
+      Dopravce: ČD | ID linky: 398
+      Trasa: Havlíčkův Brod - Hl.N. → Havlíčkův Brod - Vršovice
+      Délka: 2.50 km | Jízdní doba: 00:02:00
+
+ 632. Ps 82630 — Brzorád
+      Dopravce: ČD | ID linky: 399
+      Trasa: Havlíčkův Brod - Vršovice → Havlíčkův Brod - Hl.N.
+      Délka: 2.50 km | Jízdní doba: 00:02:00
+
+ 633. Ps 30629 — Wehrle
+      Dopravce: ZSSK | ID linky: 1600
+      Trasa: Banská Štiavnica → Banská Štiavnice - Štefultov
+      Délka: 2.49 km | Jízdní doba: 00:02:00
+
+ 634. Ps 30629 — Wehrle
+      Dopravce: ZSSK | ID linky: 1601
+      Trasa: Banská Štiavnice - Štefultov → Banská Štiavnica
+      Délka: 2.49 km | Jízdní doba: 00:02:00
+
+ 635. Ps 14419 — Malohont
+      Dopravce: ZSSK | ID linky: 1448
+      Trasa: Plešivec → Plešivec - Gemerská Horka
+      Délka: 2.46 km | Jízdní doba: 00:01:58
+
+ 636. Ps 14419 — Malohont
+      Dopravce: ZSSK | ID linky: 1449
+      Trasa: Plešivec - Gemerská Horka → Plešivec
+      Délka: 2.46 km | Jízdní doba: 00:01:58
+
+ 637. Ps 11925b — Krátký Koloman
+      Dopravce: DPLM | ID linky: 1924
+      Trasa: Liptovský Mikuláš - Hl.S. → Liptovský Mikuláš - Ondrášová
+      Délka: 2.24 km | Jízdní doba: 00:01:51
+
+ 638. Ps 11925b — Krátký Koloman
+      Dopravce: DPLM | ID linky: 1925
+      Trasa: Liptovský Mikuláš - Ondrášová → Liptovský Mikuláš - Hl.S.
+      Délka: 2.24 km | Jízdní doba: 00:01:51
+
+ 639. Ps 21321
+      Dopravce: ČD | ID linky: 1318
+      Trasa: Dobříš - Stará Huť → Dobříš - Hl.N.
+      Délka: 2.20 km | Jízdní doba: 00:01:49
+
+ 640. Ps 21321
+      Dopravce: ČD | ID linky: 1319
+      Trasa: Dobříš - Hl.N. → Dobříš - Stará Huť
+      Délka: 2.20 km | Jízdní doba: 00:01:49
+
+ 641. Ps 54161 — Grbavčič
+      Dopravce: ZSSK | ID linky: 2170
+      Trasa: Hlohovec - Hl.S. → Hlohovec - Šulekovo
+      Délka: 2.11 km | Jízdní doba: 00:01:46
+
+ 642. Ps 54161 — Grbavčič
+      Dopravce: ZSSK | ID linky: 2171
+      Trasa: Hlohovec - Šulekovo → Hlohovec - Hl.S.
+      Délka: 2.11 km | Jízdní doba: 00:01:46
+
+ 643. Ps 10016 — Nebíl
+      Dopravce: PID | ID linky: 2276
+      Trasa: Praha - Nová Libeň → Praha - Libeň
+      Délka: 1.80 km | Jízdní doba: 00:01:35
+
+ 644. Ps 10016 — Nebíl
+      Dopravce: PID | ID linky: 2277
+      Trasa: Praha - Libeň → Praha - Nová Libeň
+      Délka: 1.80 km | Jízdní doba: 00:01:35
+
+ 645. Ps 10523b — Rychlý Siostrzonek
+      Dopravce: PKP | ID linky: 2428
+      Trasa: Cieszyn - Glowny → Český Těšín - Hl.N.
+      Délka: 1.66 km | Jízdní doba: 00:01:30
+
+ 646. Ps 10523b — Rychlý Siostrzonek
+      Dopravce: PKP | ID linky: 2429
+      Trasa: Český Těšín - Hl.N. → Cieszyn - Glowny
+      Délka: 1.66 km | Jízdní doba: 00:01:30
+
+ 647. Ps 24120 — Holubář
+      Dopravce: ČD | ID linky: 1994
+      Trasa: Ústí nad Orlicí - Pláně → Ústí nad Orlicí - Hl.N.
+      Délka: 1.40 km | Jízdní doba: 00:01:20
+
+ 648. Ps 24120 — Holubář
+      Dopravce: ČD | ID linky: 1995
+      Trasa: Ústí nad Orlicí - Hl.N. → Ústí nad Orlicí - Pláně
+      Délka: 1.40 km | Jízdní doba: 00:01:20
+
+ 649. Ps 43385 — Petruška
+      Dopravce: ZSSK | ID linky: 1686
+      Trasa: Gelnica - Bognár → Gelnica - Hl.S.
+      Délka: 1.35 km | Jízdní doba: 00:01:19
+
+ 650. Ps 43385 — Petruška
+      Dopravce: ZSSK | ID linky: 1687
+      Trasa: Gelnica - Hl.S. → Gelnica - Bognár
+      Délka: 1.35 km | Jízdní doba: 00:01:19
+
+ 651. Ps 21320
+      Dopravce: ČD | ID linky: 1308
+      Trasa: Šternberk - Hl.N. → Šternberk - Světlov
+      Délka: 1.29 km | Jízdní doba: 00:01:16
+
+ 652. Ps 21320
+      Dopravce: ČD | ID linky: 1309
+      Trasa: Šternberk - Světlov → Šternberk - Hl.N.
+      Délka: 1.29 km | Jízdní doba: 00:01:16

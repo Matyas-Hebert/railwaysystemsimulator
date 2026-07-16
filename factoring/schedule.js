@@ -150,8 +150,7 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
     if (lineID == null || tripID == null){
         return;
     }
-    const currentDate = new Date();
-    let time = currentDate.getHours()*3600 + currentDate.getMinutes()*60 + currentDate.getSeconds();
+    let time = getCurrentTimeInSeconds();
     table.innerHTML = "";
     _traintimetableheader.innerHTML = "";
     let line = timetable.lines[lineID];

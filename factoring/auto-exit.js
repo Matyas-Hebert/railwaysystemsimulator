@@ -22,8 +22,7 @@ const autoExit = (() => {
             return false;
         }
 
-        const now = new Date();
-        const time = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+        const time = getCurrentTimeInSeconds();
         const daysSinceEpoch = Math.floor(getCurrentTimeInMilliseconds() / MILLISECONDS_PER_DAY);
         const relativeDay = position.day >= 100
             ? position.day - daysSinceEpoch

@@ -6,6 +6,7 @@ const settings = (() => {
         const teleportRow = document.querySelector("#_teleportrow");
         const teleportInput = document.querySelector("#_teleportid");
         const teleportButton = document.querySelector("#_teleportbtn");
+        const timeTravelRow = document.querySelector("#_timetravelrow");
         const moneyRow = document.querySelector("#_moneyrow");
         const moneyInput = document.querySelector("#_moneyamount");
         const moneyButton = document.querySelector("#_moneybtn");
@@ -19,6 +20,7 @@ const settings = (() => {
         autoUpdateButton.className = gameState.getSettings().autoUpdatesPaused === true ? "off" : "on";
         teleportRow.style.display = developerEnabled ? "flex" : "none";
         teleportInput.disabled = !developerEnabled;
+        timeTravelRow.style.display = developerEnabled ? "flex" : "none";
         teleportButton.disabled = !developerEnabled;
         moneyRow.style.display = developerEnabled ? "flex" : "none";
         moneyInput.disabled = !developerEnabled;
@@ -49,6 +51,7 @@ const settings = (() => {
 
     function resetGame() {
         gameState.setMoney(0);
+        gameState.setTimeState(0, 1);
         gameState.setSettings({ developer: false, autoUpdatesPaused: false });
         gameState.setPinnedStations([]);
         gameState.setVisitedLines([]);
@@ -93,6 +96,16 @@ const settings = (() => {
         renderCurrentSection();
     }
 
+    function timeTravel(){
+        if (gameState.getSettings().developer !== true) return;
+        const input = document.querySelector("#_timetravelduration");
+        const seconds = parseInt(input.value, 10);
+        if (Number.isNaN(seconds)) return;
+
+        gameState.timeTravel(seconds);
+        updateClock();
+    }
+
     function getStationName(station) {
         return gameState.getSettings().developer === true
             ? station.name + " (" + String(station.id) + ")"
@@ -126,6 +139,7 @@ const settings = (() => {
         teleportToStation,
         getStationName,
         getStationNameMarkup,
-        setStationName
+        setStationName,
+        timeTravel
     };
 })();

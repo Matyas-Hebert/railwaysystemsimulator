@@ -3,9 +3,8 @@ const idos = (() => {
     let departureTime = 0;
 
 function findPath(startstationID, endstationID, time=-1){
-    const currentDate = new Date();
     if (time == -1){
-        time = currentDate.getHours()*3600 + currentDate.getMinutes()*60 + currentDate.getSeconds();
+        time = getCurrentTimeInSeconds();
     }
     //time = 14*3600+40*60;
     const checkedstations = {};
@@ -278,8 +277,7 @@ function updateTimeView(){
     }
 
     function initializeTime() {
-        const currentDate = new Date();
-        departureTime = currentDate.getHours()*3600 + currentDate.getMinutes()*60;
+        departureTime = getCurrentTimeInMinutes();
         updateTimeView();
     }
 

@@ -132,8 +132,7 @@ const collectionTab = (() => {
         return lines;
     }
     function openLine(line) {
-        const now = new Date();
-        const currentTime = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+        const currentTime = getCurrentTimeInSeconds();
         const firstStationId = line.stops[0].sid;
         const nextTrip = getTripNumberByTime(line, firstStationId, currentTime);
         section2data = {
@@ -272,8 +271,7 @@ const collectionTab = (() => {
     }
 
     function getCurrentTrainsWithReason(delayReason) {
-        const now = new Date();
-        const time = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+        const time = getCurrentTimeInSeconds();
         const matchingTrains = [];
 
         timetable.lines.forEach(line => {

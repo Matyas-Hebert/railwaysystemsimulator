@@ -74,6 +74,13 @@
                     <button id="_moneybtn" onclick="settings.addDeveloperMoney()">PŘIDAT</button>
                 </div>
             </div>
+            <div class="settingsrow" id="_timetravelrow" style="display: none;">
+                <div>CESTOVÁNÍ ČASEM</div>
+                <div class="settingscontrol">
+                    <input id="_timetravelduration" type="number" inputmode="numeric" placeholder="Počet sekund (zápor pro minulost)">
+                    <button id="_timetravelbtn" onclick="settings.timeTravel()">TELEPORT</button>
+                </div>
+            </div>
         </div>
         <div id="_section1">
             <div id="_pinnedlist" class="pinnedlist">

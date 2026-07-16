@@ -1,0 +1,133 @@
+========================================================================================
+LINKY TYPU EC — PODLE JÍZDNÍ DOBY
+Počet linek: 26 | Řazení: od nejdelší po nejkratší
+========================================================================================
+   1. EC 9 — Pardál
+      Dopravce: ČD | ID linky: 600
+      Trasa: Praha - Hl.N. → Bratislava - Hl.S.
+      Délka: 383.40 km | Jízdní doba: 02:33:22
+
+   2. EC 9 — Pardál
+      Dopravce: ČD | ID linky: 601
+      Trasa: Bratislava - Hl.S. → Praha - Hl.N.
+      Délka: 383.40 km | Jízdní doba: 02:33:22
+
+   3. EC 6 — Spartan
+      Dopravce: ČD | ID linky: 436
+      Trasa: Ostrava - Hl.N. → Praha - Hl.N.
+      Délka: 319.65 km | Jízdní doba: 02:07:55
+
+   4. EC 6 — Spartan
+      Dopravce: ČD | ID linky: 437
+      Trasa: Praha - Hl.N. → Ostrava - Hl.N.
+      Délka: 319.65 km | Jízdní doba: 02:07:55
+
+   5. EC 13 — Žiravina
+      Dopravce: ZSSK | ID linky: 1362
+      Trasa: Košice - Hl.S. → Bratislava - Hl.S.
+      Délka: 343.33 km | Jízdní doba: 02:07:38
+
+   6. EC 13 — Žiravina
+      Dopravce: ZSSK | ID linky: 1363
+      Trasa: Bratislava - Hl.S. → Košice - Hl.S.
+      Délka: 343.33 km | Jízdní doba: 02:07:38
+
+   7. EC 12 — Velbloud
+      Dopravce: ZSSK | ID linky: 1120
+      Trasa: Prešov - Hl.S. → Ostrava - Hl.N.
+      Délka: 274.39 km | Jízdní doba: 01:56:05
+
+   8. EC 12 — Velbloud
+      Dopravce: ZSSK | ID linky: 1121
+      Trasa: Ostrava - Hl.N. → Prešov - Hl.S.
+      Délka: 274.39 km | Jízdní doba: 01:56:05
+
+   9. EC 1 — Praotec
+      Dopravce: ČD | ID linky: 124
+      Trasa: Praha - Veleslavín → Brno - Hl.N.
+      Délka: 248.44 km | Jízdní doba: 01:48:09
+
+  10. EC 1 — Praotec
+      Dopravce: ČD | ID linky: 125
+      Trasa: Brno - Hl.N. → Praha - Veleslavín
+      Délka: 248.44 km | Jízdní doba: 01:48:09
+
+  11. EC 5 — Kačer
+      Dopravce: ČD | ID linky: 302
+      Trasa: České Budějovice - Hl.N. → Karlovy Vary - Hl.N.
+      Délka: 217.39 km | Jízdní doba: 01:18:29
+
+  12. EC 5 — Kačer
+      Dopravce: ČD | ID linky: 303
+      Trasa: Karlovy Vary - Hl.N. → České Budějovice - Hl.N.
+      Délka: 217.39 km | Jízdní doba: 01:18:29
+
+  13. EC 4 — Brouk
+      Dopravce: ČD | ID linky: 300
+      Trasa: Liberec - Hl.N. → Karlovy Vary - Hl.N.
+      Délka: 185.61 km | Jízdní doba: 01:17:13
+
+  14. EC 4 — Brouk
+      Dopravce: ČD | ID linky: 301
+      Trasa: Karlovy Vary - Hl.N. → Liberec - Hl.N.
+      Délka: 185.61 km | Jízdní doba: 01:17:13
+
+  15. EC 8 — Nostra
+      Dopravce: ČD | ID linky: 500
+      Trasa: Ostrava - Hl.N. → Brno - Hl.N.
+      Délka: 159.62 km | Jízdní doba: 01:17:02
+
+  16. EC 8 — Nostra
+      Dopravce: ČD | ID linky: 501
+      Trasa: Brno - Hl.N. → Ostrava - Hl.N.
+      Délka: 159.62 km | Jízdní doba: 01:17:02
+
+  17. EC 11 — Vodník
+      Dopravce: ZSSK | ID linky: 677
+      Trasa: Bratislava - Hl.S. → Žilina - Hl.S.
+      Délka: 199.65 km | Jízdní doba: 01:13:39
+
+  18. EC 11 — Vodník
+      Dopravce: ZSSK | ID linky: 676
+      Trasa: Žilina - Hl.S. → Bratislava - Hl.S.
+      Délka: 199.65 km | Jízdní doba: 01:13:39
+
+  19. EC 3 — Práče
+      Dopravce: ČD | ID linky: 212
+      Trasa: České Budějovice - Čtyři Dvory → Praha - Hl.N.
+      Délka: 150.63 km | Jízdní doba: 01:13:20
+
+  20. EC 3 — Práče
+      Dopravce: ČD | ID linky: 213
+      Trasa: Praha - Hl.N. → České Budějovice - Čtyři Dvory
+      Délka: 150.63 km | Jízdní doba: 01:13:20
+
+  21. EC 2 — Moravan
+      Dopravce: ČD | ID linky: 140
+      Trasa: Ostrava - Hl.N. → Olomouc - Hl.N.
+      Délka: 127.31 km | Jízdní doba: 01:07:43
+
+  22. EC 2 — Moravan
+      Dopravce: ČD | ID linky: 141
+      Trasa: Olomouc - Hl.N. → Ostrava - Hl.N.
+      Délka: 127.31 km | Jízdní doba: 01:07:43
+
+  23. EC 7 — Bobr
+      Dopravce: ČD | ID linky: 478
+      Trasa: Brno - Hl.N. → České Budějovice - Hl.N.
+      Délka: 171.93 km | Jízdní doba: 01:06:05
+
+  24. EC 7 — Bobr
+      Dopravce: ČD | ID linky: 479
+      Trasa: České Budějovice - Hl.N. → Brno - Hl.N.
+      Délka: 171.93 km | Jízdní doba: 01:06:05
+
+  25. EC 10 — Pralinka
+      Dopravce: ČD | ID linky: 642
+      Trasa: Praha - Hl.N. → Liberec - Hl.N.
+      Délka: 121.77 km | Jízdní doba: 00:52:25
+
+  26. EC 10 — Pralinka
+      Dopravce: ČD | ID linky: 643
+      Trasa: Liberec - Hl.N. → Praha - Hl.N.
+      Délka: 121.77 km | Jízdní doba: 00:52:25

@@ -6,8 +6,7 @@ const lineVisits = (() => {
         const line = timetable.lines[position.lineID];
         if (!line || position.tripID == null || position.day == null) return;
 
-        const now = new Date();
-        const time = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+        const time = getCurrentTimeInSeconds();
         const daysSinceEpoch = Math.floor(getCurrentTimeInMilliseconds() / MILLISECONDS_PER_DAY);
         const day = position.day >= 100 ? position.day - daysSinceEpoch : position.day;
         const currentDelay = delays.get(

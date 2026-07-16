@@ -19,6 +19,8 @@ class GameState {
     };
     #stations;
     #stationIdByLonLat;
+    #timeTravelled = 0;
+    #timeDilatation = 1;
 
     constructor(stations, stationIdByLonLat) {
         this.#stations = stations;
@@ -123,6 +125,49 @@ class GameState {
 
     getAutoExitStationId() {
         return this.#autoExitStationId;
+    }
+
+    getTimeTravelled() {
+        return this.#timeTravelled;
+    }
+
+    getTimeDilatation() {
+        return this.#timeDilatation;
+    }
+
+    setTimeState(timeTravelled, timeDilatation) {
+        if (!Number.isFinite(timeTravelled)) {
+            throw new TypeError("Time travelled must be a finite number.");
+        }
+        if (!Number.isFinite(timeDilatation) || timeDilatation <= 0) {
+            throw new TypeError("Time dilatation must be a positive finite number.");
+        }
+        this.#timeTravelled = timeTravelled;
+        this.#timeDilatation = timeDilatation;
+        localStorage.setItem("_timetraveldelta", String(timeTravelled));
+        localStorage.setItem("_timedilatation", String(timeDilatation));
+    }
+
+    setTimeTravelled(timeTravelled) {
+        this.setTimeState(timeTravelled, this.#timeDilatation);
+    }
+
+    setTimeDilatation(timeDilatation) {
+        this.setTimeState(this.#timeTravelled, timeDilatation);
+    }
+
+    timeTravel(timeTravelledSeconds) {
+        if (!Number.isFinite(timeTravelledSeconds)) {
+            throw new TypeError("Time travel change must be a finite number.");
+        }
+        this.setTimeTravelled(this.#timeTravelled + timeTravelledSeconds);
+    }
+
+    timeDilatate(timeDilatationMultiplier) {
+        if (!Number.isFinite(timeDilatationMultiplier) || timeDilatationMultiplier <= 0) {
+            throw new TypeError("Time dilatation multiplier must be positive and finite.");
+        }
+        this.setTimeDilatation(this.#timeDilatation * timeDilatationMultiplier);
     }
 
     setAutoExitStationId(stationId) {
@@ -259,6 +304,8 @@ class GameState {
         );
         this.#settings = this.#readSettings();
         this.#money = this.#readMoney();
+        this.#timeTravelled = this.#readTimeTravel();
+        this.#timeDilatation = this.#readTimeDilatation();
         this.setDeliveryOrders(
             this.#readArray("_objednavky")
                 .map(order => this.#deserializeDeliveryOrder(order))
@@ -328,6 +375,18 @@ class GameState {
         catch {
             return { developer: false };
         }
+    }
+
+    #readTimeTravel() {
+        const stored = Number.parseFloat(localStorage.getItem("_timetraveldelta"));
+        return Number.isFinite(stored) ? stored : 0;
+    }
+
+    #readTimeDilatation() {
+        const storedValue = localStorage.getItem("_timedilatation")
+            ?? localStorage.getItem("_timeDilatation");
+        const stored = Number.parseFloat(storedValue);
+        return Number.isFinite(stored) && stored > 0 ? stored : 1;
     }
 
     #toLonLatId(stationReference) {

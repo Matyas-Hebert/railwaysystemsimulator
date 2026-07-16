@@ -7,6 +7,13 @@ const autoBoarding = (() => {
             || status === TRAIN_STATUS.CANCELLED_AFTER_TARGET;
     }
 
+    function shouldBeMarkedAsVisited(status) {
+        return status === TRAIN_STATUS.TRAVELLING_PAST_TARGET
+            || status === TRAIN_STATUS.STOPPED_PAST_TARGET
+            || status === TRAIN_STATUS.FINISHED
+            || status === TRAIN_STATUS.CANCELLED_AFTER_TARGET;
+    }
+
     function check() {
         const selection = gameState.getAutoBoardSelection();
         const position = gameState.getCurrentPosition();
@@ -24,8 +31,7 @@ const autoBoarding = (() => {
             return false;
         }
 
-        const now = new Date();
-        const time = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+        const time = getCurrentTimeInSeconds();
         const daysSinceEpoch = Math.floor(getCurrentTimeInMilliseconds() / MILLISECONDS_PER_DAY);
         const relativeDay = selection.day - daysSinceEpoch;
         const currentDelay = delays.get(
@@ -39,6 +45,11 @@ const autoBoarding = (() => {
 
         gameState.setAutoBoardSelection(null);
         boardTrain(selection.lineID, selection.tripID, selection.day);
+
+        if (shouldBeMarkedAsVisited(currentDelay.status)) {
+            gameState.addVisitedLine(selection.lineID);
+        }
+
         return true;
     }
 

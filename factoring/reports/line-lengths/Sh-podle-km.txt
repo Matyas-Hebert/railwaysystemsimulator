@@ -1,0 +1,43 @@
+========================================================================================
+LINKY TYPU Sh — PODLE VZDÁLENOSTI
+Počet linek: 8 | Řazení: od nejdelší po nejkratší
+========================================================================================
+   1. Sh 152 — Rosa
+      Dopravce: ČD | ID linky: 948
+      Trasa: Hradec Králové - Hl.N. → Pardubice - Hl.N.
+      Délka: 27.16 km | Jízdní doba: 00:14:52
+
+   2. Sh 152 — Rosa
+      Dopravce: ČD | ID linky: 949
+      Trasa: Pardubice - Hl.N. → Hradec Králové - Hl.N.
+      Délka: 27.16 km | Jízdní doba: 00:14:52
+
+   3. Sh 165 — Sachr
+      Dopravce: ČD | ID linky: 1054
+      Trasa: Vysoké Mýto - Rychlodráha → Litomyšl - Hl.N.
+      Délka: 21.98 km | Jízdní doba: 00:12:57
+
+   4. Sh 165 — Sachr
+      Dopravce: ČD | ID linky: 1055
+      Trasa: Litomyšl - Hl.N. → Vysoké Mýto - Rychlodráha
+      Délka: 21.98 km | Jízdní doba: 00:12:57
+
+   5. Sh 154 — Řekla
+      Dopravce: ČD | ID linky: 1668
+      Trasa: Kopřivnice → Nový Jičín - Hl.N.
+      Délka: 21.83 km | Jízdní doba: 00:15:36
+
+   6. Sh 154 — Řekla
+      Dopravce: ČD | ID linky: 1669
+      Trasa: Nový Jičín - Hl.N. → Kopřivnice
+      Délka: 21.83 km | Jízdní doba: 00:15:36
+
+   7. Sh 153 — Hustá Sára
+      Dopravce: ČD | ID linky: 1432
+      Trasa: Kolín - Hl.N. → Kutná Hora - Hl.N.
+      Délka: 12.21 km | Jízdní doba: 00:09:17
+
+   8. Sh 153 — Hustá Sára
+      Dopravce: ČD | ID linky: 1433
+      Trasa: Kutná Hora - Hl.N. → Kolín - Hl.N.
+      Délka: 12.21 km | Jízdní doba: 00:09:17

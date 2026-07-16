@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const path = require('path');
 
 async function loadTestJson() {
-    const filePath = path.join(__dirname, '../../json/metro.json');
+    const filePath = path.join(__dirname, '../../json/metronew.json');
     const raw = await fs.readFile(filePath, 'utf8');
     return JSON.parse(raw);
 }
@@ -280,8 +280,8 @@ async function generateTimeTables() {
     let timetable = {"lines": lines, "stations": stations};
 
     //console.log(JSON.stringify(timetable, null, "\t"));
-    fs.writeFile("final/json/timetable_data.js", "const timetable = " + JSON.stringify(timetable) + ";");
-    fs.writeFile("final/json/lonlat.js", "const lonlattoid = " + JSON.stringify(lonlattoid) + ";");
+    fs.writeFile("factoring/json/timetable_data.js", "const timetable = " + JSON.stringify(timetable) + ";");
+    fs.writeFile("factoring/json/lonlat.js", "const lonlattoid = " + JSON.stringify(lonlattoid) + ";");
     return timetable;
 }
 
