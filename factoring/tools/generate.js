@@ -17,8 +17,7 @@ function parseLineName(name){
         "company": part1parts[0].substring(1, part1parts[0].length-1),
         "type": getTypeID(part1parts[1]),
         "number": part1parts[2],
-        "interval": parseInt(parts[2])*60,
-        "uvrat": parseInt(parts[3])
+        "interval": parseInt(parts[2])*60
     }
 
     if (part1parts.length >= 4){
@@ -113,6 +112,33 @@ function getTypeID(type){
     return -1;
 }
 
+function getUvratStopIndices(line, map, stationIDtonewID){
+    const overrides = line.waypointOverrides || [];
+    const found = new Set();
+    const uvrat = [];
+    let stopIndex = 0;
+
+    line.stationIds.forEach((stationID, stationIndex) => {
+        const station = map.stations[stationID];
+        const timetableStationID = stationIDtonewID[stationID];
+        const repeat = timetableStationID == undefined || found.has(timetableStationID);
+
+        if (!overrides.includes(stationID) && !station.isWaypoint && !repeat){
+            const previousStationID = line.stationIds[stationIndex - 1];
+            const nextStationID = line.stationIds[stationIndex + 1];
+
+            if (previousStationID != undefined && previousStationID === nextStationID){
+                uvrat.push(stopIndex);
+            }
+
+            found.add(timetableStationID);
+            stopIndex++;
+        }
+    });
+
+    return { uvrat, stopCount: stopIndex };
+}
+
 async function generateTimeTables() {
     const map = await loadTestJson();
 
@@ -198,9 +224,13 @@ async function generateTimeTables() {
     let stationssections = {};
     Object.values(map.lines).forEach((line, lineID) => {
         const lineinfo = parseLineName(line.name);
+        const { uvrat, stopCount } = getUvratStopIndices(line, map, stationIDtonewID);
+        const reverseUvrat = uvrat
+            .map(stopIndex => stopCount - 1 - stopIndex)
+            .sort((a, b) => a - b);
 
-        lines.push({...lineinfo});
-        lines.push({...lineinfo});
+        lines.push({...lineinfo, uvrat});
+        lines.push({...lineinfo, uvrat: reverseUvrat});
         let starttime = getStartTime();
         lines[i]["id"] = i;
         lines[i+1]["id"] = i+1;
@@ -233,7 +263,7 @@ async function generateTimeTables() {
             lastlon = station.lng;
             let repeat = stationIDtonewID[stationID] == undefined || found.has(stationIDtonewID[stationID]);
             if (!overrides.includes(stationID) && !station.isWaypoint && !repeat){
-                let isuvrat = lineinfo.uvrat == j;
+                let isuvrat = uvrat.includes(j);
                 if (isuvrat){
                     console.log(station.name, "is uvrat");
                 }

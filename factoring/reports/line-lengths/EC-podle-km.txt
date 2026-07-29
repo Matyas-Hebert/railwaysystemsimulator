@@ -55,32 +55,32 @@ Počet linek: 26 | Řazení: od nejdelší po nejkratší
   11. EC 5 — Kačer
       Dopravce: ČD | ID linky: 302
       Trasa: České Budějovice - Hl.N. → Karlovy Vary - Hl.N.
-      Délka: 217.39 km | Jízdní doba: 01:18:29
+      Délka: 217.40 km | Jízdní doba: 01:18:29
 
   12. EC 5 — Kačer
       Dopravce: ČD | ID linky: 303
       Trasa: Karlovy Vary - Hl.N. → České Budějovice - Hl.N.
-      Délka: 217.39 km | Jízdní doba: 01:18:29
+      Délka: 217.40 km | Jízdní doba: 01:18:29
 
   13. EC 11 — Vodník
       Dopravce: ZSSK | ID linky: 676
       Trasa: Žilina - Hl.S. → Bratislava - Hl.S.
-      Délka: 199.65 km | Jízdní doba: 01:13:39
+      Délka: 199.33 km | Jízdní doba: 01:13:34
 
   14. EC 11 — Vodník
       Dopravce: ZSSK | ID linky: 677
       Trasa: Bratislava - Hl.S. → Žilina - Hl.S.
-      Délka: 199.65 km | Jízdní doba: 01:13:39
+      Délka: 199.33 km | Jízdní doba: 01:13:34
 
   15. EC 4 — Brouk
       Dopravce: ČD | ID linky: 300
       Trasa: Liberec - Hl.N. → Karlovy Vary - Hl.N.
-      Délka: 186.16 km | Jízdní doba: 01:23:35
+      Délka: 186.16 km | Jízdní doba: 01:30:59
 
   16. EC 4 — Brouk
       Dopravce: ČD | ID linky: 301
       Trasa: Karlovy Vary - Hl.N. → Liberec - Hl.N.
-      Délka: 186.16 km | Jízdní doba: 01:23:35
+      Délka: 186.16 km | Jízdní doba: 01:30:59
 
   17. EC 7 — Bobr
       Dopravce: ČD | ID linky: 478
