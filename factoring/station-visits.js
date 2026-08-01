@@ -75,7 +75,7 @@ const stationVisits = (() => {
     }
 
     function isVisited(stationId) {
-        return getVisitedStationIds().includes(Number(stationId));
+        return gameState.hasVisitedStation(stationId);
     }
 
     function reset() {

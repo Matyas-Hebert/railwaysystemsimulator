@@ -5,15 +5,21 @@ const vm = require("node:vm");
 const ITERATIONS = 10;
 const ITERATION_INFLUENCE = 0.35;
 const STOP_DECAY = 0.9;
+const SCORE_SPREAD_POWER = 3;
 const BASE_IMPORTANCE = 1;
-const UNKNOWN_TYPE_IMPORTANCE = 0;
-const TRAIN_TYPE_NAMES = Object.freeze(["Ps", "Os", "Sp", "R", "Sh", "EC"]);
-const TRAIN_TYPE_IMPORTANCE = Object.freeze([0.2, 0.5, 1.2, 1.4, 1.7, 1.7]);
-const IMPORTANCE_WITHOUT_PS_OS = Object.freeze([0, 0, 1.2, 1.4, 1.7, 1.7]);
-
 const APP_DIRECTORY = path.resolve(__dirname, "..");
 const TIMETABLE_PATH = path.join(APP_DIRECTORY, "json", "timetable_data.js");
 const OUTPUT_PATH = path.join(APP_DIRECTORY, "reports", "station-importance.txt");
+const LINE_TYPE_CONFIG_PATH = path.join(APP_DIRECTORY, "config", "line-types.json");
+const LINE_TYPE_CONFIG = JSON.parse(fs.readFileSync(LINE_TYPE_CONFIG_PATH, "utf8"));
+const LINE_TYPES = Object.freeze([...LINE_TYPE_CONFIG.types].sort((a, b) => a.id - b.id));
+const UNKNOWN_TYPE_IMPORTANCE = LINE_TYPE_CONFIG.unknownType.stationImportance;
+const TRAIN_TYPE_IMPORTANCE = Object.freeze(
+    LINE_TYPES.map(type => type.stationImportance)
+);
+const IMPORTANCE_WITHOUT_PS_OS = Object.freeze(
+    LINE_TYPES.map(type => type.id <= 1 ? 0 : type.stationImportance)
+);
 
 function loadTimetable() {
     const source = fs.readFileSync(TIMETABLE_PATH, "utf8");
@@ -61,17 +67,27 @@ function getRanks(importance) {
     return ranks;
 }
 
+function spreadImportanceScores(importance) {
+    const spreadScores = importance.map(value => value ** SCORE_SPREAD_POWER);
+    const averageScore = spreadScores.reduce((total, value) => total + value, 0)
+        / spreadScores.length;
+    return spreadScores.map(value => value / averageScore);
+}
+
 function createReport(timetable, allImportance, importanceWithoutPsOs) {
     const allRanks = getRanks(allImportance);
     const withoutRanks = getRanks(importanceWithoutPsOs);
     const rankedStations = timetable.stations.map((station, stationID) => ({ station, stationID })).sort((a, b) => allImportance[b.stationID] - allImportance[a.stationID] || a.station.name.localeCompare(b.station.name, "cs") || a.stationID - b.stationID);
-    const weights = TRAIN_TYPE_NAMES.map((name, type) => `${name}=${TRAIN_TYPE_IMPORTANCE[type]}`).join(", ");
+    const weights = LINE_TYPES
+        .map(type => `${type.code}=${type.stationImportance}`)
+        .join(", ");
     const separator = "=".repeat(130);
     const header = [
         separator,
         "STATION IMPORTANCE - WEIGHTED, DAMPED AND STOP-DECAYED",
         `Stations: ${rankedStations.length} | Iterations: ${ITERATIONS}`,
         `Iteration influence: ${ITERATION_INFLUENCE} | Stop decay: ${STOP_DECAY}`,
+        `Final score spread power: ${SCORE_SPREAD_POWER}`,
         `Weights: ${weights}`,
         "The no-Ps/Os score is a separately normalized run. Compare its rank and score, but do not treat the score difference as a literal contribution percentage.",
         separator,
@@ -95,8 +111,12 @@ function createReport(timetable, allImportance, importanceWithoutPsOs) {
 function generateReport() {
     const timetable = loadTimetable();
     validateTimetable(timetable);
-    const allImportance = calculateStationImportance(timetable, TRAIN_TYPE_IMPORTANCE);
-    const importanceWithoutPsOs = calculateStationImportance(timetable, IMPORTANCE_WITHOUT_PS_OS);
+    const allImportance = spreadImportanceScores(
+        calculateStationImportance(timetable, TRAIN_TYPE_IMPORTANCE)
+    );
+    const importanceWithoutPsOs = spreadImportanceScores(
+        calculateStationImportance(timetable, IMPORTANCE_WITHOUT_PS_OS)
+    );
     fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
     fs.writeFileSync(OUTPUT_PATH, createReport(timetable, allImportance, importanceWithoutPsOs), "utf8");
     console.log(`Written ${OUTPUT_PATH}`);

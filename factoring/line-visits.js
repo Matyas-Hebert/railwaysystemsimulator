@@ -19,8 +19,7 @@ const lineVisits = (() => {
 
         if (currentDelay.status === TRAIN_STATUS.TRAVELLING_TO_TARGET
             || currentDelay.status === TRAIN_STATUS.TRAVELLING_PAST_TARGET) {
-            if (!isVisited(position.lineID)) {
-                gameState.addVisitedLine(position.lineID);
+            if (gameState.addVisitedLine(position.lineID)) {
                 document.dispatchEvent(new CustomEvent("line-visited", {
                     detail: { lineId: Number(position.lineID) }
                 }));
@@ -38,7 +37,7 @@ const lineVisits = (() => {
     }
 
     function isVisited(lineId) {
-        return gameState.getVisitedLines().includes(Number(lineId));
+        return gameState.hasVisitedLine(lineId);
     }
 
     return { checkCurrentLine, isVisited };

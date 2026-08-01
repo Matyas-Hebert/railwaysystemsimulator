@@ -1,5 +1,8 @@
 const fs = require('fs').promises;
 const path = require('path');
+const { generateDistrictBorders } = require('./generate-district-borders');
+
+let lineTypeConfig;
 
 async function loadTestJson() {
     const filePath = path.join(__dirname, '../../json/metronew.json');
@@ -44,17 +47,12 @@ function getTrips(startTime, interval){
     return trips = Math.floor(availableTime / interval);
 }
 
-function getStopTimeForType(type, uvrat=false){
-    if (uvrat){
-        return 600;
-    }
-    if (type == "HSR"){
-        return 180;
-    }
-    if (type == "MLDISTANCE"){
-        return 90;
-    }
-    return 30; // in seconds
+function getStopTimeForType(typeId, uvrat=false){
+    const typeConfig = lineTypeConfig.types.find(type => type.id === typeId)
+        ?? lineTypeConfig.unknownType;
+    return uvrat
+        ? typeConfig.uvratStopTimeSeconds
+        : typeConfig.stopTimeSeconds;
 }
 
 function calculateDistance(lat1, lon1, lat2, lon2) {
@@ -91,25 +89,9 @@ function getTimeFromDistanceAndType(distance, type){
 }
 
 function getTypeID(type){
-    if (type.toLowerCase() == "ps"){
-        return 0;
-    }
-    if (type.toLowerCase() == "os"){
-        return 1;
-    }
-    if (type.toLowerCase() == "sp"){
-        return 2;
-    }
-    if (type.toLowerCase() == "r"){
-        return 3;
-    }
-    if (type.toLowerCase() == "sh"){
-        return 4;
-    }
-    if (type.toLowerCase() == "ec"){
-        return 5;
-    }
-    return -1;
+    return lineTypeConfig.types.find(
+        lineType => lineType.code.toLowerCase() === type.toLowerCase()
+    )?.id ?? -1;
 }
 
 function getUvratStopIndices(line, map, stationIDtonewID){
@@ -140,6 +122,8 @@ function getUvratStopIndices(line, map, stationIDtonewID){
 }
 
 async function generateTimeTables() {
+    const lineTypeConfigPath = path.join(__dirname, "../config/line-types.json");
+    lineTypeConfig = JSON.parse(await fs.readFile(lineTypeConfigPath, "utf8"));
     const map = await loadTestJson();
 
     stationIDtonewID = {};
@@ -150,7 +134,7 @@ async function generateTimeTables() {
 
     let i = 0;
 
-    const citydatapath = path.join(__dirname, "../../json/capitalsdata.json");
+    const citydatapath = path.join(__dirname, "../json/capitalsdata.json");
     const raw = await fs.readFile(citydatapath, 'utf8');
     const citydata = JSON.parse(raw);
 
@@ -198,6 +182,8 @@ async function generateTimeTables() {
                 "iwd": iwd,
                 "name": name,
                 "district": district,
+                "lat": station.lat,
+                "lon": station.lng,
                 "lonlat": lonlat,
                 "departures": [],
                 "arrivals": []
@@ -212,6 +198,8 @@ async function generateTimeTables() {
             i++;
         }
     });
+
+    const districtBorders = generateDistrictBorders(stations, citydata);
 
     let sortedEntries = Object.entries(districtcount).sort((a, b) => b[1] - a[1]);
     i = 0;
@@ -274,14 +262,14 @@ async function generateTimeTables() {
                 if (!isFirstStationOfLine){
                     totaltime += getTimeFromDistanceAndType(distanceacc, line.mode);
                     lines[i]["stops"].push({
-                        "sid": stationIDtonewID[stationID], "arr": Math.round(totaltime), "dep": Math.round(totaltime+=getStopTimeForType(line.mode, isuvrat)), "dist": distanceacc
+                        "sid": stationIDtonewID[stationID], "arr": Math.round(totaltime), "dep": Math.round(totaltime+=getStopTimeForType(lineinfo.type, isuvrat)), "dist": distanceacc
                     });
                     stations[stationIDtonewID[stationID]].arrivals.push(i);
                     stations[stationIDtonewID[stationID]].departures.push(i+1);
                     distanceacc = 0;
                 }
                 else{
-                    totaltime += getStopTimeForType(line.mode, isuvrat);
+                    totaltime += getStopTimeForType(lineinfo.type, isuvrat);
                     lines[i]["orig"] = stationIDtonewID[stationID];
                     lines[i]["stops"].push({
                         "sid": stationIDtonewID[stationID], "arr": 0, "dep": Math.round(totaltime), "dist": distanceacc
@@ -310,31 +298,30 @@ async function generateTimeTables() {
     let timetable = {"lines": lines, "stations": stations};
 
     //console.log(JSON.stringify(timetable, null, "\t"));
-    fs.writeFile("factoring/json/timetable_data.js", "const timetable = " + JSON.stringify(timetable) + ";");
-    fs.writeFile("factoring/json/lonlat.js", "const lonlattoid = " + JSON.stringify(lonlattoid) + ";");
+    await Promise.all([
+        fs.writeFile(
+            "factoring/json/timetable_data.js",
+            "const timetable = " + JSON.stringify(timetable) + ";"
+        ),
+        fs.writeFile(
+            "factoring/json/lonlat.js",
+            "const lonlattoid = " + JSON.stringify(lonlattoid) + ";"
+        ),
+        fs.writeFile(
+            "factoring/json/district-borders.json",
+            JSON.stringify(districtBorders, null, 2)
+        ),
+        fs.writeFile(
+            "factoring/json/district-borders.js",
+            "const districtBorders = " + JSON.stringify(districtBorders) + ";"
+        )
+    ]);
     return timetable;
 }
 
 function getTypeString(type){
-    if (type == 0){
-        return "Ps".padEnd(2, " ");
-    }
-    if (type == 1){
-        return "Os".padEnd(2, " ");
-    }
-    if (type == 2){
-        return "Sp".padEnd(2, " ");
-    }
-    if (type == 3){
-        return "R".padEnd(2, " ");
-    }
-    if (type == 4){
-        return "Sh".padEnd(2, " ");
-    }
-    if (type == 5){
-        return "EC".padEnd(2, " ");
-    }
-    return "";
+    const code = lineTypeConfig.types.find(lineType => lineType.id === type)?.code ?? "";
+    return code.padEnd(2, " ");
 }
 
 async function checktimetable(){

@@ -6,6 +6,13 @@ class GameState {
     #deliveryOrders = [];
     #pinnedDeliveryIds = [];
     #visitedLines = [];
+    #visitedLineIds = new Set();
+    #visitedStationIds = new Set();
+    #collectionProgress = {
+        stationsByDistrict: {},
+        linesByCompany: {},
+        linesByCompanyAndType: {}
+    };
     #collectedDelayReasons = [];
     #autoBoardSelection = null;
     #autoExitStationId = null;
@@ -18,12 +25,14 @@ class GameState {
         visitedStationIds: []
     };
     #stations;
+    #lines;
     #stationIdByLonLat;
     #timeTravelled = 0;
     #timeDilatation = 1;
 
-    constructor(stations, stationIdByLonLat) {
+    constructor(stations, stationIdByLonLat, lines = []) {
         this.#stations = stations;
+        this.#lines = lines;
         this.#stationIdByLonLat = stationIdByLonLat;
         this.#isLoading = true;
         this.#load();
@@ -236,18 +245,47 @@ class GameState {
         return [...this.#visitedLines];
     }
 
+    hasVisitedLine(lineId) {
+        return this.#visitedLineIds.has(Number(lineId));
+    }
+
+    getCollectionProgress() {
+        return structuredClone(this.#collectionProgress);
+    }
+
+    getVisitedStationCountForDistrict(district) {
+        return this.#collectionProgress.stationsByDistrict[district] ?? 0;
+    }
+
+    getVisitedLineCountForCompany(company) {
+        return this.#collectionProgress.linesByCompany[company] ?? 0;
+    }
+
+    getVisitedLineCountForCompanyAndType(company, type) {
+        return this.#collectionProgress.linesByCompanyAndType[company]?.[type] ?? 0;
+    }
+
     setVisitedLines(lineIds) {
         this.#visitedLines = [...new Set(lineIds
             .map(Number)
             .filter(Number.isInteger))];
+        this.#visitedLineIds = new Set(this.#visitedLines);
+        this.#rebuildLineCollectionProgress();
         localStorage.setItem("_visitedlines", JSON.stringify(this.#visitedLines));
+        this.#saveCollectionProgress();
     }
 
     addVisitedLine(lineId) {
         lineId = Number(lineId);
-        if (Number.isInteger(lineId) && !this.#visitedLines.includes(lineId)) {
+        if (Number.isInteger(lineId) && !this.#visitedLineIds.has(lineId)) {
             this.setVisitedLines([...this.#visitedLines, lineId]);
+            return true;
         }
+        return false;
+    }
+
+    hasVisitedStation(stationId) {
+        return this.#visitedStationIds.has(Number(stationId));
     }
     getStationVisitState() {
         return structuredClone(this.#stationVisitState);
@@ -257,13 +295,21 @@ class GameState {
         const stationReference = visitState.stationId ?? visitState.stationLonLatId;
         const visitedStationReferences = visitState.visitedStationIds
             ?? visitState.visitedStationLonLatIds;
+        const visitedStationIds = this.#normalizeVisitedStationIds(visitedStationReferences);
+        const visitsChanged = visitedStationIds.length !== this.#stationVisitState.visitedStationIds.length
+            || visitedStationIds.some(stationId => !this.#visitedStationIds.has(stationId));
         this.#stationVisitState = {
             stationId: this.#toStationId(stationReference),
             enteredAt: Number.isFinite(visitState.enteredAt) ? visitState.enteredAt : null,
             previousLineId: visitState.previousLineId ?? null,
             previousTripId: visitState.previousTripId ?? null,
-            visitedStationIds: this.#normalizeVisitedStationIds(visitedStationReferences)
+            visitedStationIds
         };
+        if (visitsChanged) {
+            this.#visitedStationIds = new Set(visitedStationIds);
+            this.#rebuildStationCollectionProgress();
+            this.#saveCollectionProgress();
+        }
         const storedState = {
             stationLonLatId: this.#toLonLatId(this.#stationVisitState.stationId),
             enteredAt: this.#stationVisitState.enteredAt,
@@ -510,6 +556,37 @@ class GameState {
             .filter(stationId => stationId != null);
 
         return [...new Set(normalized)];
+    }
+
+    #rebuildStationCollectionProgress() {
+        const stationsByDistrict = {};
+        this.#visitedStationIds.forEach(stationId => {
+            const district = this.#stations[stationId]?.district;
+            if (!district) return;
+            stationsByDistrict[district] = (stationsByDistrict[district] ?? 0) + 1;
+        });
+        this.#collectionProgress.stationsByDistrict = stationsByDistrict;
+    }
+
+    #rebuildLineCollectionProgress() {
+        const linesByCompany = {};
+        const linesByCompanyAndType = {};
+        this.#visitedLineIds.forEach(lineId => {
+            const line = this.#lines[lineId];
+            if (!line?.company) return;
+            linesByCompany[line.company] = (linesByCompany[line.company] ?? 0) + 1;
+            if (!linesByCompanyAndType[line.company]) {
+                linesByCompanyAndType[line.company] = {};
+            }
+            linesByCompanyAndType[line.company][line.type]
+                = (linesByCompanyAndType[line.company][line.type] ?? 0) + 1;
+        });
+        this.#collectionProgress.linesByCompany = linesByCompany;
+        this.#collectionProgress.linesByCompanyAndType = linesByCompanyAndType;
+    }
+
+    #saveCollectionProgress() {
+        localStorage.setItem("_collectionprogress", JSON.stringify(this.#collectionProgress));
     }
 
     #readArray(storageKey) {

@@ -14,6 +14,40 @@ const collectionTab = (() => {
 
     const TRAIN_TYPE_NAMES = Object.freeze(["Ps", "Os", "Sp", "R", "Sh", "EC"]);
     const DELAY_TYPE_NAMES = Object.freeze(["Běžné", "Vtipné", "Závažné"]);
+    const stationsByDistrict = new Map();
+    const linesByCompany = new Map();
+    const linesByCompanyAndType = new Map();
+
+    timetable.stations.forEach(station => {
+        if (!station?.district) return;
+        if (!stationsByDistrict.has(station.district)) {
+            stationsByDistrict.set(station.district, []);
+        }
+        stationsByDistrict.get(station.district).push(station);
+    });
+    stationsByDistrict.forEach(stations => {
+        stations.sort((a, b) => a.name.localeCompare(b.name, "cs"));
+    });
+
+    timetable.lines.forEach(line => {
+        if (!line?.company) return;
+        if (!linesByCompany.has(line.company)) {
+            linesByCompany.set(line.company, []);
+            linesByCompanyAndType.set(line.company, new Map());
+        }
+        linesByCompany.get(line.company).push(line);
+        const typeGroups = linesByCompanyAndType.get(line.company);
+        if (!typeGroups.has(line.type)) typeGroups.set(line.type, []);
+        typeGroups.get(line.type).push(line);
+    });
+    linesByCompanyAndType.forEach(typeGroups => {
+        typeGroups.forEach(lines => {
+            lines.sort((a, b) => String(a.number).localeCompare(String(b.number), "cs", {
+                numeric: true,
+                sensitivity: "base"
+            }));
+        });
+    });
 
     function selectCompany(company) {
         state.selectedCompany = company;
@@ -29,28 +63,18 @@ const collectionTab = (() => {
     }
 
     function getLinesForCompany(company) {
-        return timetable.lines.filter(line => line?.company === company);
+        return linesByCompany.get(company) ?? [];
     }
 
     function getLinesForCompanyAndType(company, type) {
-        return getLinesForCompany(company)
-            .filter(line => line.type === type)
-            .sort((a, b) => String(a.number).localeCompare(String(b.number), "cs", {
-                numeric: true,
-                sensitivity: "base"
-            }));
+        return linesByCompanyAndType.get(company)?.get(type) ?? [];
     }
 
-    function getVisitedLineCount(lines) {
-        return lines.filter(line => lineVisits.isVisited(line.id)).length;
-    }
-
-    function setLineProgress(button, lines) {
-        const visitedCount = getVisitedLineCount(lines);
+    function setLineProgress(button, lines, visitedCount) {
         const percentage = lines.length === 0 ? 0 : visitedCount / lines.length * 100;
         button.style.setProperty("--visited-percentage", String(percentage) + "%");
-        return visitedCount;
     }
+
     function createBackButton(label, onClick) {
         const button = document.createElement("button");
         button.className = "collection-back-btn";
@@ -60,14 +84,15 @@ const collectionTab = (() => {
     }
 
     function renderCompanyList(content) {
-        const companies = [...new Set(timetable.lines.map(line => line.company).filter(Boolean))]
+        const companies = [...linesByCompany.keys()]
             .sort((a, b) => a.localeCompare(b, "cs"));
 
         companies.forEach(company => {
             const button = document.createElement("button");
             const lines = getLinesForCompany(company);
             button.className = "collection-company-btn collection-line-progress-btn";
-            const visitedCount = setLineProgress(button, lines);
+            const visitedCount = gameState.getVisitedLineCountForCompany(company);
+            setLineProgress(button, lines, visitedCount);
             button.textContent = company + " (" + String(visitedCount) + "/" + String(lines.length) + ")";
             button.onclick = () => selectCompany(company);
             content.appendChild(button);
@@ -88,7 +113,11 @@ const collectionTab = (() => {
 
             const button = document.createElement("button");
             button.className = "collection-type-btn collection-line-progress-btn";
-            const visitedCount = setLineProgress(button, lines);
+            const visitedCount = gameState.getVisitedLineCountForCompanyAndType(
+                state.selectedCompany,
+                type
+            );
+            setLineProgress(button, lines, visitedCount);
             button.textContent = typeName + " (" + String(visitedCount) + "/" + String(lines.length) + ")";
             button.onclick = () => selectTrainType(type);
             content.appendChild(button);
@@ -462,21 +491,15 @@ const collectionTab = (() => {
     }
 
     function getDistricts() {
-        const districts = new Set();
-        timetable.stations.forEach(station => {
-            if (station?.district) districts.add(station.district);
-        });
-        return [...districts].sort((a, b) => a.localeCompare(b, "cs"));
+        return [...stationsByDistrict.keys()].sort((a, b) => a.localeCompare(b, "cs"));
     }
 
     function getStationsForDistrict(district) {
-        return timetable.stations
-            .filter(station => station?.district === district)
-            .sort((a, b) => a.name.localeCompare(b.name, "cs"));
+        return stationsByDistrict.get(district) ?? [];
     }
 
     function getVisitedCount(district) {
-        return getStationsForDistrict(district).filter(station => stationVisits.isVisited(station.id)).length;
+        return gameState.getVisitedStationCountForDistrict(district);
     }
 
     function createNavigation() {

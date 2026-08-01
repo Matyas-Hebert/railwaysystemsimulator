@@ -9,6 +9,7 @@
     <link href="styles/settings.css" rel="stylesheet" />
     <link href="styles/foodora.css" rel="stylesheet" />
     <link href="styles/collection.css" rel="stylesheet" />
+    <link href="styles/map.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -40,6 +41,7 @@
                 <td id="_tab6" class="unchosen" onclick="selectSection(6)">Foodora</td>
                 <td id="_tab7" class="unchosen" onclick="selectSection(7)">Kolekce</td>
                 <td id="_tab8" class="unchosen" onclick="selectSection(8)">Nastavení</td>
+                <td id="_tab9" class="unchosen" onclick="selectSection(9)">Mapa</td>
             </table>
             <table id="_information">
 
@@ -47,6 +49,21 @@
         </div>
         <div id="_section6"></div>
         <div id="_section7"></div>
+        <div id="_section9">
+            <div class="map-toolbar">
+                <div class="map-district-info">
+                    <div id="_mapdistrictname">Mapa okresů</div>
+                    <div id="_mapdistrictdetails">Vyberte okres</div>
+                    <div id="_mapstationsummary">Načítání přímých spojení…</div>
+                </div>
+                <button type="button" id="_mapreset">Obnovit pohled</button>
+            </div>
+            <div class="map-stage">
+                <svg id="_districtmap" viewBox="0 0 1000 680" role="img" aria-label="Mapa okresů a jejich hlavních měst">
+                    <g id="_districtmaplayer"></g>
+                </svg>
+            </div>
+        </div>
         <div id="_section8">
             <div class="settingsrow">
                 <div>DEVELOPER MODE</div>
@@ -118,6 +135,9 @@
             </div>
             <div id="_timetableheader">
                 Ostrava-Přívoz
+            </div>
+            <div id="_stationinformation" class="station-information" hidden>
+                <div class="station-information-content"></div>
             </div>
             <table id="_timetable">
 
@@ -215,6 +235,7 @@
     <script src="json/timetable_data.js"></script>
     <script src="json/delay_reasons.js"></script>
     <script src="json/lonlat.js"></script>
+    <script src="json/district-borders.js"></script>
     <script src="constants.js"></script>
     <script src="game-state.js"></script>
     <script src="delays.js"></script>
@@ -228,6 +249,8 @@
     <script src="auto-exit.js"></script>
     <script src="foodora.js"></script>
     <script src="collection-tab.js"></script>
+    <script src="station-information.js"></script>
+    <script src="map-tab.js"></script>
     <script src="settings.js"></script>
     <script src="timetableanalysis.js"></script>
 </body>

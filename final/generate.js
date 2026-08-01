@@ -124,7 +124,7 @@ async function generateTimeTables() {
 
     let i = 0;
 
-    const citydatapath = path.join(__dirname, "../json/capitalsdata.json");
+    const citydatapath = path.join(__dirname, "../factoring/json/capitalsdata.json");
     const raw = await fs.readFile(citydatapath, 'utf8');
     const citydata = JSON.parse(raw);
 

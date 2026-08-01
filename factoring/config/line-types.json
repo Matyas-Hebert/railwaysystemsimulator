@@ -1,0 +1,15 @@
+{
+  "types": [
+    { "id": 0, "code": "Ps", "stopTimeSeconds": 30, "uvratStopTimeSeconds": 600, "stationImportance": 0.2 },
+    { "id": 1, "code": "Os", "stopTimeSeconds": 30, "uvratStopTimeSeconds": 600, "stationImportance": 0.5 },
+    { "id": 2, "code": "Sp", "stopTimeSeconds": 90, "uvratStopTimeSeconds": 600, "stationImportance": 1.2 },
+    { "id": 3, "code": "R",  "stopTimeSeconds": 90, "uvratStopTimeSeconds": 600, "stationImportance": 1.4 },
+    { "id": 4, "code": "Sh", "stopTimeSeconds": 180, "uvratStopTimeSeconds": 600, "stationImportance": 1.7 },
+    { "id": 5, "code": "EC", "stopTimeSeconds": 180, "uvratStopTimeSeconds": 600, "stationImportance": 1.7 }
+  ],
+  "unknownType": {
+    "stopTimeSeconds": 30,
+    "uvratStopTimeSeconds": 600,
+    "stationImportance": 0
+  }
+}

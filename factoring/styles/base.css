@@ -113,6 +113,7 @@ td:first-child, th:first-child {
 }
 
 #_timetableheader {
+    position: relative;
     width: 100%;
     font-weight: bold;
     font-size: 1.7em;
@@ -323,3 +324,26 @@ table{
 
 .station-name-unvisited { color: var(--color-station-unvisited) !important; }
 .station-name-visited { color: var(--color-station-visited) !important; }
+
+.station-information-button {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    border: 0;
+    padding: 0.5rem;
+    color: var(--color-text-inverse);
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+}
+
+.station-information {
+    min-height: 8rem;
+    padding: 1rem;
+}
+
+
+.station-information-content {
+    min-height: 4rem;
+}

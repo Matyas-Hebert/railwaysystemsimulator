@@ -411,6 +411,7 @@ async function printTimetable(stationID, includegetonbutton = true, table=_timet
         row = _timetableheader;
         row.classList = [];
         settings.setStationName(row, station);
+        stationInformation.addButton(row, stationID);
         // addRow({
         //     "table": table,
         //     "c1t": station.name,
@@ -639,7 +640,7 @@ function startGame(){
 };
 
 function selectSection(section){
-    if (section >= 0 && section <= 8){
+    if (section >= 0 && section <= 9){
         changeCurrentSection(section);
     }
     if (currentsection == 4){
@@ -668,6 +669,7 @@ function renderCurrentSection(force = false){
     _section6.style.display = currentsection == 6 ? "block" : "none";
     _section7.style.display = currentsection == 7 ? "block" : "none";
     _section8.style.display = currentsection == 8 ? "block" : "none";
+    _section9.style.display = currentsection == 9 ? "block" : "none";
     _subsection5.style.display = "none";
     _tab0.className = currentsection == 0 ? "chosen" : "unchosen";
     _tab1.className = currentsection == 1 ? "chosen" : "unchosen";
@@ -677,6 +679,7 @@ function renderCurrentSection(force = false){
     _tab6.className = currentsection == 6 ? "chosen" : "unchosen";
     _tab7.className = currentsection == 7 ? "chosen" : "unchosen";
     _tab8.className = currentsection == 8 ? "chosen" : "unchosen";
+    _tab9.className = currentsection == 9 ? "chosen" : "unchosen";
     _tab5.style.display = gameState.getCurrentPosition().transporttype === TRANSPORT_TYPE.STATION ? "block" : "none";
     if (currentsection == 0){
         if (gameState.getCurrentPosition().transporttype === TRANSPORT_TYPE.STATION){
@@ -707,9 +710,14 @@ function renderCurrentSection(force = false){
     if (currentsection == 7){
         collectionTab.render();
     }
+    if (currentsection == 9){
+        mapTab.render();
+    }
     if (currentsection == 5){
         walking.printOptions(gameState.getCurrentPosition().transporttype === TRANSPORT_TYPE.WALKING ? -1 : gameState.getCurrentPosition().statID);
     }
+
+    stationInformation.render();
 
     gameState.updateCurrentPosition({iswifi: false});
     if (gameState.getCurrentPosition().transporttype === TRANSPORT_TYPE.STATION){
@@ -771,7 +779,7 @@ let openeddetail = "";
 let connstruct = {};
 let filters = {"departures": true, "types": [true, true, true, true, true, true], "statid": -1};
 // 0 - in station, 1 - on train, 2 - walking
-const gameState = new GameState(timetable.stations, lonlattoid);
+const gameState = new GameState(timetable.stations, lonlattoid, timetable.lines);
 let pinnedstationsopened = false;
 let currentsection = 0;
 let section1id = 200;
