@@ -176,6 +176,12 @@ function getStraightLineDistance(fromStationID, toStationID) {
     return radius * 2 * Math.atan2(Math.sqrt(value), Math.sqrt(1 - value));
 }
 
+function formatDuration(duration) {
+    const hours = Math.floor(duration / 3600);
+    const minutes = Math.floor((duration % 3600) / 60);
+    return hours > 0 ? String(hours)+"h"+String(minutes)+"m" : String(minutes)+"m";
+}
+
 function print(){
     _idosstats.style.display = "none";
     const developerMode = gameState.getSettings().developer === true;
@@ -191,11 +197,13 @@ function print(){
 
     //_idosresults
     let totaldist = 0;
+    let travelTime = 0;
     let starttime = null;
     let endtime = null;
 
     res.forEach(result => {
         totaldist += result.dist;
+        travelTime += result.arr - result.dep;
         let row = _idosresults.insertRow(-1);
         let parts = result.train.split(" ");
         let lc = null;
@@ -256,12 +264,14 @@ function print(){
 
     _idosstatsdist.innerText = String(Math.round(totaldist))+"km";
     let timeelapsed = endtime-starttime;
-    let hours = Math.floor(timeelapsed/3600);
-    let minutes = Math.floor((timeelapsed-hours*3600)/60);
-    _idosstatstime.innerText = String(minutes)+"m";
-    if (hours > 0){
-        _idosstatstime.innerText = String(hours)+"h"+String(minutes)+"m";
-    }
+    _idosstatstime.innerText = formatDuration(timeelapsed);
+    const travelPercentage = timeelapsed > 0 ? Math.round(travelTime/timeelapsed*100) : 0;
+    const waitPercentage = 100-travelPercentage;
+    _idosstatstraveltime.innerText = "Ve vlacích: "+formatDuration(travelTime)
+        + " ("+String(travelPercentage)+"%)";
+    _idosstatswaittime.innerText = "Čekání: "
+        + formatDuration(Math.max(0, timeelapsed-travelTime))
+        + " ("+String(waitPercentage)+"%)";
     let speed = totaldist/(timeelapsed/3600);
     _idosstatsspeed.innerText = String(Math.round(speed))+"km/h";
     const straightLineDistance = getStraightLineDistance(locations[0], locations[1]);
