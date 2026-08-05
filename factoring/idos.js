@@ -2,140 +2,178 @@ const idos = (() => {
     let locations = [69, 420];
     let departureTime = 0;
 
-function findPath(startstationID, endstationID, time=-1){
-    if (time == -1){
-        time = getCurrentTimeInSeconds();
+let raptorIndex = null;
+
+function getRaptorIndex() {
+    if (raptorIndex !== null) return raptorIndex;
+
+    const routesByStation = timetable.stations.map(station =>
+        [...new Set(station.departures || [])]
+    );
+    const isTransferStation = routesByStation.map(routes => routes.length > 1);
+    const distancesByLine = timetable.lines.map(line => {
+        const distances = new Float64Array(line.stops.length);
+        for (let index = 1; index < line.stops.length; index++) {
+            distances[index] = distances[index - 1] + line.stops[index].dist;
+        }
+        return distances;
+    });
+    raptorIndex = { routesByStation, isTransferStation, distancesByLine };
+    return raptorIndex;
+}
+
+function getNextRaptorTrip(line, stop, earliestTime) {
+    const firstDeparture = line.starttime + stop.dep;
+    const approximateDay = Math.floor((earliestTime - firstDeparture) / SECONDS_PER_DAY);
+    let best = null;
+
+    for (let day = approximateDay - 1; day <= approximateDay + 1; day++) {
+        const firstDepartureOnDay = firstDeparture + day * SECONDS_PER_DAY;
+        const trip = Math.max(0, Math.ceil((earliestTime - firstDepartureOnDay) / line.interval));
+        if (trip >= line.trips) continue;
+
+        const departure = firstDepartureOnDay + trip * line.interval;
+        if (departure >= earliestTime && (best === null || departure < best.departure)) {
+            best = {
+                trip,
+                departure,
+                tripStart: line.starttime + trip * line.interval + day * SECONDS_PER_DAY
+            };
+        }
     }
-    //time = 14*3600+40*60;
-    const checkedstations = {};
-    const uncheckedstations = {};
-    const checkedlines = new Set();
 
-    uncheckedstations[startstationID] = {"from": undefined, "line": null, "trip": null, "day": null, "time": {"time": time, "day": 0}};
+    return best;
+}
 
-    while(Object.keys(uncheckedstations).length > 0){
-        let mintime = Infinity;
-        let stationID = null;
 
-        for (const id in uncheckedstations){
-            let time = uncheckedstations[id].time.time + uncheckedstations[id].time.day*SECONDS_PER_DAY;
-            if (time < mintime){
-                mintime = time;
-                stationID = id;
-            }
-        }
+function buildRaptorPath(journey) {
+    const path = [];
+    while (journey !== null) {
+        const leg = journey.leg;
+        const line = timetable.lines[leg.lineID];
+        path.push({
+            fromName: settings.getStationName(timetable.stations[leg.fromID]),
+            fromID: leg.fromID,
+            toName: settings.getStationName(timetable.stations[leg.toID]),
+            toID: leg.toID,
+            dep: leg.dep,
+            arr: leg.arr,
+            train: getTrainName(line, true, true),
+            traindata: {
+                lineID: leg.lineID,
+                tripID: leg.tripID,
+                day: Math.floor(leg.arr / SECONDS_PER_DAY),
+                hidesinfront: false
+            },
+            dist: leg.dist
+        });
+        journey = journey.previous;
+    }
+    path.reverse();
+    return path;
+}
 
-        stationID = parseInt(stationID);
+function findPath(startstationID, endstationID, time=-1) {
+    if (time === -1) time = getCurrentTimeInSeconds();
 
-        checkedstations[stationID] = uncheckedstations[stationID];
-        delete uncheckedstations[stationID];
+    startstationID = Number(startstationID);
+    endstationID = Number(endstationID);
+    if (startstationID === endstationID) return [];
+    if (!timetable.stations[startstationID] || !timetable.stations[endstationID]) return;
 
-        if (stationID == endstationID) {
-            let path = [];
-            let currentId = endstationID;
-            let data = checkedstations[endstationID];
+    const { routesByStation, isTransferStation, distancesByLine } = getRaptorIndex();
+    const stationCount = timetable.stations.length;
+    let previousArrival = new Float64Array(stationCount);
+    previousArrival.fill(Infinity);
+    previousArrival[startstationID] = time;
 
-            // 1. Posbíráme trasu pozpátku
-            while (data && data.from !== undefined) {
-                let line = timetable.lines[data.line];
-                let tripStartTime = line.starttime + data.trip * line.interval + data.time.day*SECONDS_PER_DAY;
-                if (tripStartTime > data.time.time + data.time.day*SECONDS_PER_DAY){
-                    tripStartTime -= SECONDS_PER_DAY;
-                }
-                let startStop = line.stops.find(s => s.sid === data.from);
-                let endStop = line.stops.find(s => s.sid === currentId);
-                let dist = 0;
-                let start = false;
-                line.stops.forEach(stop => {
-                    if (stop.sid == data.from){
-                        start = true;
-                    }
-                    else if (start){
-                        dist += stop.dist;
-                    }
-                    if (stop.sid == currentId){
-                        start = false;
-                    }
-                });
-                path.push({
-                    fromName: settings.getStationName(timetable.stations[data.from]),
-                    fromID: data.from,
-                    toName: settings.getStationName(timetable.stations[currentId]),
-                    toID: currentId,
-                    dep: tripStartTime + startStop.dep,
-                    arr: tripStartTime + endStop.arr,
-                    train: getTrainName(line, true, true),
-                    traindata: {
-                        "lineID": data.line,
-                        "tripID": data.trip,
-                        "day": data.time.day,
-                        "hidesinfront": false
-                    },
-                    dist: dist
-                });
+    let previousJourney = new Array(stationCount).fill(null);
+    let markedStations = new Set([startstationID]);
 
-                currentId = data.from;
-                data = checkedstations[currentId];
-            }
-
-            // 2. Obrátíme ji, aby byla od startu do cíle
-            path.reverse();
-
-            // 3. Vykreslíme to hezky
-            let p = "";
-            path.forEach((step, index) => {
-                p += `${index + 1}. ${step.train}: ${step.fromName.padEnd(30, " ")} [${String(step.fromID).padStart(4, '0')}] (${step.dep}) -> ${step.toName.padEnd(30, " ")} [${String(step.toID).padStart(4, '0')}] (${step.arr})` + "\n";
-            });
-
-            return path;
-        }
-
-        let station = timetable.stations[stationID];
-
-        station.departures.forEach(lineID => {
-            if (!checkedlines.has(lineID)){
-                let line = timetable.lines[lineID];
-                let found = false;
-                let trip = null;
-                let day = 0;
-                line.stops.forEach(lstop => {
-                    if (lstop.sid == stationID){
-                        found = true;
-                        const stop = lstop;
-                        let tripo = getTripNumberByTime(line, stationID, mintime);
-                        if (mintime > SECONDS_PER_DAY && tripo.day > 1){
-                        }
-                        day += tripo.day;
-                        trip = tripo.trip;
-                    }
-                    else if (found){
-                        let newarrtime = lstop.arr + trip*line.interval + line.starttime;
-                        let tmpday = day;
-                        if (newarrtime >= SECONDS_PER_DAY){
-                            newarrtime -= SECONDS_PER_DAY;
-                            tmpday++;
-                        }
-                        if (tmpday > 1){
-                        }
-                        if (!Object.keys(checkedstations).includes(String(lstop.sid))){
-                            let foundinunchecked = Object.keys(uncheckedstations).includes(String(lstop.sid));
-                            if (!foundinunchecked){
-                                uncheckedstations[lstop.sid] = {"from": stationID, "line": lineID, "trip": trip, "time": {"time": newarrtime, "day": tmpday}};
-                            }
-                            else if (uncheckedstations[lstop.sid].time.time + uncheckedstations[lstop.sid].time.day*SECONDS_PER_DAY > newarrtime + tmpday*SECONDS_PER_DAY){
-                                uncheckedstations[lstop.sid] = {"from": stationID, "line": lineID, "trip": trip, "time": {"time": newarrtime, "day": tmpday}};
-                            }
-                        }
-                        else{
-                        }
-                    }
-                });
-                checkedlines.add(lineID);
-            }
+    for (let round = 0; round < stationCount && markedStations.size > 0; round++) {
+        const routesToScan = new Set();
+        markedStations.forEach(stationID => {
+            routesByStation[stationID].forEach(lineID => routesToScan.add(lineID));
         });
 
-        //return;
+        const currentArrival = previousArrival.slice();
+        const currentJourney = previousJourney.slice();
+        const improvedStations = new Set();
+
+        routesToScan.forEach(lineID => {
+            const line = timetable.lines[lineID];
+            let boardedTrip = null;
+            let boardingStationID = null;
+            let boardingStopIndex = null;
+            let boardingJourney = null;
+
+            line.stops.forEach((stop, stopIndex) => {
+                if (boardedTrip !== null && stopIndex > boardingStopIndex) {
+                    const arrival = boardedTrip.tripStart + stop.arr;
+                    if (arrival < currentArrival[stop.sid]) {
+                        currentArrival[stop.sid] = arrival;
+                        currentJourney[stop.sid] = {
+                            previous: boardingJourney,
+                            leg: {
+                                fromID: boardingStationID,
+                                toID: stop.sid,
+                                lineID,
+                                tripID: boardedTrip.trip,
+                                dep: boardedTrip.departure,
+                                arr: arrival,
+                                dist: distancesByLine[lineID][stopIndex]
+                                    - distancesByLine[lineID][boardingStopIndex]
+                            }
+                        };
+                        improvedStations.add(stop.sid);
+                    }
+                }
+
+                if (!Number.isFinite(previousArrival[stop.sid])) return;
+                const candidateTrip = getNextRaptorTrip(line, stop, previousArrival[stop.sid]);
+                if (candidateTrip !== null
+                    && (boardedTrip === null || candidateTrip.tripStart < boardedTrip.tripStart)) {
+                    boardedTrip = candidateTrip;
+                    boardingStationID = stop.sid;
+                    boardingStopIndex = stopIndex;
+                    boardingJourney = previousJourney[stop.sid];
+                }
+            });
+        });
+
+        const nextMarkedStations = new Set();
+        improvedStations.forEach(stationID => {
+            if (stationID !== endstationID
+                && isTransferStation[stationID]
+                && currentArrival[stationID] < currentArrival[endstationID]) {
+                nextMarkedStations.add(stationID);
+            }
+        });
+        if (currentArrival[endstationID] < previousArrival[endstationID]
+            && nextMarkedStations.size === 0) {
+            return buildRaptorPath(currentJourney[endstationID]);
+        }
+
+        previousArrival = currentArrival;
+        previousJourney = currentJourney;
+        markedStations = nextMarkedStations;
     }
+
+    if (Number.isFinite(previousArrival[endstationID])) {
+        return buildRaptorPath(previousJourney[endstationID]);
+    }
+}
+
+function getStraightLineDistance(fromStationID, toStationID) {
+    const from = timetable.stations[fromStationID];
+    const to = timetable.stations[toStationID];
+    const radius = 6371;
+    const latitudeDifference = (to.lat - from.lat) * Math.PI / 180;
+    const longitudeDifference = (to.lon - from.lon) * Math.PI / 180;
+    const value = Math.sin(latitudeDifference / 2) ** 2
+        + Math.cos(from.lat * Math.PI / 180) * Math.cos(to.lat * Math.PI / 180)
+        * Math.sin(longitudeDifference / 2) ** 2;
+    return radius * 2 * Math.atan2(Math.sqrt(value), Math.sqrt(1 - value));
 }
 
 function print(){
@@ -226,6 +264,10 @@ function print(){
     }
     let speed = totaldist/(timeelapsed/3600);
     _idosstatsspeed.innerText = String(Math.round(speed))+"km/h";
+    const straightLineDistance = getStraightLineDistance(locations[0], locations[1]);
+    _idosstatstruedist.innerText = "Přímo: "+String(Math.round(straightLineDistance))+"km";
+    const straightLineSpeed = straightLineDistance/(timeelapsed/3600);
+    _idosstatstruespeed.innerText = "Přímo: "+String(Math.round(straightLineSpeed))+"km/h";
 }
 
 function switchLocations(){

@@ -83,6 +83,10 @@
     color: var(--color-primary);
 }
 
+.idossearch input.station-name-unvisited {
+    color: var(--color-text-dark) !important;
+}
+
 .toppanel {
     position: sticky;
     top: 0;
@@ -144,6 +148,17 @@
     div {
         font-size: 1.2rem;
     }
+}
+
+#_idosstats > div,
+.idos-stat-column {
+    flex: 1;
+}
+
+#_idosstats .idos-stat-secondary {
+    margin-top: 0.2rem;
+    color: var(--color-text-highlight);
+    font-size: 0.8rem;
 }
 
 .nowifiinfo {
