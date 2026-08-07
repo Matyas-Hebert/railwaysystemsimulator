@@ -15,6 +15,8 @@ const mapTab = (() => {
     let selectedDistrict = null;
     let transform = { x: 0, y: 0, scale: 1 };
     let dragStart = null;
+    const activePointers = new Map();
+    let pinchStart = null;
 
     function projectCoordinate(lon, lat) {
         const latitude = Math.max(-85, Math.min(85, lat)) * Math.PI / 180;
@@ -57,6 +59,30 @@ const mapTab = (() => {
             x: (event.clientX - bounds.left) / bounds.width * VIEW_WIDTH,
             y: (event.clientY - bounds.top) / bounds.height * VIEW_HEIGHT
         };
+    }
+
+    function getPinchData() {
+        const pointers = [...activePointers.values()];
+        const deltaX = pointers[1].x - pointers[0].x;
+        const deltaY = pointers[1].y - pointers[0].y;
+        return {
+            center: {
+                x: (pointers[0].x + pointers[1].x) / 2,
+                y: (pointers[0].y + pointers[1].y) / 2
+            },
+            distance: Math.hypot(deltaX, deltaY)
+        };
+    }
+
+    function beginPinch() {
+        const pinch = getPinchData();
+        pinchStart = {
+            distance: Math.max(1, pinch.distance),
+            scale: transform.scale,
+            mapX: (pinch.center.x - transform.x) / transform.scale,
+            mapY: (pinch.center.y - transform.y) / transform.scale
+        };
+        dragStart = null;
     }
 
     function applyTransform() {
@@ -182,24 +208,55 @@ const mapTab = (() => {
         }, { passive: false });
 
         svg.addEventListener("pointerdown", event => {
+            if (event.pointerType === "mouse" && event.button !== 0) return;
+            if (activePointers.size >= 2) return;
+
+            const pointer = getPointerPosition(event);
+            activePointers.set(event.pointerId, pointer);
+            svg.setPointerCapture(event.pointerId);
+            svg.classList.add("dragging");
+
+            if (activePointers.size === 2) {
+                beginPinch();
+                return;
+            }
+
             dragStart = {
-                pointer: getPointerPosition(event),
+                pointer,
                 x: transform.x,
                 y: transform.y
             };
-            svg.setPointerCapture(event.pointerId);
-            svg.classList.add("dragging");
         });
         svg.addEventListener("pointermove", event => {
-            if (dragStart === null) return;
+            if (!activePointers.has(event.pointerId)) return;
+
             const pointer = getPointerPosition(event);
+            activePointers.set(event.pointerId, pointer);
+
+            if (activePointers.size === 2 && pinchStart !== null) {
+                const pinch = getPinchData();
+                const nextScale = Math.min(
+                    MAX_SCALE,
+                    Math.max(MIN_SCALE, pinchStart.scale * pinch.distance / pinchStart.distance)
+                );
+                transform.x = pinch.center.x - pinchStart.mapX * nextScale;
+                transform.y = pinch.center.y - pinchStart.mapY * nextScale;
+                transform.scale = nextScale;
+                applyTransform();
+                return;
+            }
+
+            if (dragStart === null) return;
             transform.x = dragStart.x + pointer.x - dragStart.pointer.x;
             transform.y = dragStart.y + pointer.y - dragStart.pointer.y;
             applyTransform();
         });
         const stopDragging = event => {
+            const wasPinching = pinchStart !== null;
+            activePointers.delete(event.pointerId);
             dragStart = null;
-            svg.classList.remove("dragging");
+            pinchStart = null;
+            if (activePointers.size === 0 || wasPinching) svg.classList.remove("dragging");
             if (svg.hasPointerCapture(event.pointerId)) svg.releasePointerCapture(event.pointerId);
         };
         svg.addEventListener("pointerup", stopDragging);
