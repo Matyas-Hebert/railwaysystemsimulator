@@ -25,12 +25,12 @@ Počet linek: 352 | Řazení: od nejdelší po nejkratší
    5. R 0153s — Poňahla
       Dopravce: ZSSK | ID linky: 1560
       Trasa: Praha - Koloděje → Žilina - Solinky
-      Délka: 390.68 km | Jízdní doba: 03:32:23
+      Délka: 390.69 km | Jízdní doba: 03:32:23
 
    6. R 0153s — Poňahla
       Dopravce: ZSSK | ID linky: 1561
       Trasa: Žilina - Solinky → Praha - Koloděje
-      Délka: 390.68 km | Jízdní doba: 03:32:23
+      Délka: 390.69 km | Jízdní doba: 03:32:23
 
    7. R 0314 — Rýchlik Šíp
       Dopravce: ZSSK | ID linky: 608
@@ -85,12 +85,12 @@ Počet linek: 352 | Řazení: od nejdelší po nejkratší
   17. R 0330 — Rekordman
       Dopravce: ČD | ID linky: 1490
       Trasa: Bratislava - Petržalka → České Budějovice - Roudné
-      Délka: 294.12 km | Jízdní doba: 02:22:06
+      Délka: 294.12 km | Jízdní doba: 02:25:06
 
   18. R 0330 — Rekordman
       Dopravce: ČD | ID linky: 1491
       Trasa: České Budějovice - Roudné → Bratislava - Petržalka
-      Délka: 294.12 km | Jízdní doba: 02:22:06
+      Délka: 294.12 km | Jízdní doba: 02:25:06
 
   19. R 0206h — Obrat
       Dopravce: ZSSK | ID linky: 1652
@@ -133,24 +133,24 @@ Počet linek: 352 | Řazení: od nejdelší po nejkratší
       Délka: 250.02 km | Jízdní doba: 02:17:57
 
   27. R 0182 — Letá
-      Dopravce: ČD | ID linky: 51
-      Trasa: Praha - Vinohrady → Brno - Žebětín
-      Délka: 243.77 km | Jízdní doba: 02:04:01
-
-  28. R 0182 — Letá
       Dopravce: ČD | ID linky: 50
       Trasa: Brno - Žebětín → Praha - Vinohrady
-      Délka: 243.77 km | Jízdní doba: 02:04:01
+      Délka: 242.94 km | Jízdní doba: 02:03:42
+
+  28. R 0182 — Letá
+      Dopravce: ČD | ID linky: 51
+      Trasa: Praha - Vinohrady → Brno - Žebětín
+      Délka: 242.94 km | Jízdní doba: 02:03:42
 
   29. R 0169h — Broskvová Spojka
-      Dopravce: ČD | ID linky: 2272
-      Trasa: Praha - Nová Libeň → Olomouc - Nový Svět
-      Délka: 237.10 km | Jízdní doba: 02:10:49
-
-  30. R 0169h — Broskvová Spojka
       Dopravce: ČD | ID linky: 2273
       Trasa: Olomouc - Nový Svět → Praha - Nová Libeň
-      Délka: 237.10 km | Jízdní doba: 02:10:49
+      Délka: 237.45 km | Jízdní doba: 02:10:57
+
+  30. R 0169h — Broskvová Spojka
+      Dopravce: ČD | ID linky: 2272
+      Trasa: Praha - Nová Libeň → Olomouc - Nový Svět
+      Délka: 237.45 km | Jízdní doba: 02:10:57
 
   31. R 0135b — Blud
       Dopravce: ČD | ID linky: 2
@@ -183,13 +183,13 @@ Počet linek: 352 | Řazení: od nejdelší po nejkratší
       Délka: 221.85 km | Jízdní doba: 01:40:18
 
   37. R 0160ž — Vlak
-      Dopravce: ČD | ID linky: 1666
-      Trasa: Žilina - Hl.S. → Brno - Hl.N.
+      Dopravce: ČD | ID linky: 1667
+      Trasa: Brno - Hl.N. → Žilina - Hl.S.
       Délka: 212.10 km | Jízdní doba: 01:55:07
 
   38. R 0160ž — Vlak
-      Dopravce: ČD | ID linky: 1667
-      Trasa: Brno - Hl.N. → Žilina - Hl.S.
+      Dopravce: ČD | ID linky: 1666
+      Trasa: Žilina - Hl.S. → Brno - Hl.N.
       Délka: 212.10 km | Jízdní doba: 01:55:07
 
   39. R 0264r — Šourák
@@ -265,12 +265,12 @@ Počet linek: 352 | Řazení: od nejdelší po nejkratší
   53. R 0169 — Lakomec
       Dopravce: ČD | ID linky: 128
       Trasa: Karlovy Vary - Doubí → Liberec - Hl.N.
-      Délka: 187.66 km | Jízdní doba: 01:39:51
+      Délka: 187.67 km | Jízdní doba: 01:39:51
 
   54. R 0169 — Lakomec
       Dopravce: ČD | ID linky: 129
       Trasa: Liberec - Hl.N. → Karlovy Vary - Doubí
-      Délka: 187.66 km | Jízdní doba: 01:39:51
+      Délka: 187.67 km | Jízdní doba: 01:39:51
 
   55. R 0149p — Hliník
       Dopravce: ČD | ID linky: 1610
@@ -293,13 +293,13 @@ Počet linek: 352 | Řazení: od nejdelší po nejkratší
       Délka: 185.77 km | Jízdní doba: 01:48:15
 
   59. R 0251j — Nikki
-      Dopravce: ČD | ID linky: 1298
-      Trasa: Jeseník → Ostrava - Svinov
+      Dopravce: ČD | ID linky: 1299
+      Trasa: Ostrava - Svinov → Jeseník
       Délka: 178.47 km | Jízdní doba: 01:24:01
 
   60. R 0251j — Nikki
-      Dopravce: ČD | ID linky: 1299
-      Trasa: Ostrava - Svinov → Jeseník
+      Dopravce: ČD | ID linky: 1298
+      Trasa: Jeseník → Ostrava - Svinov
       Délka: 178.47 km | Jízdní doba: 01:24:01
 
   61. R 0143u — Rozežranec
@@ -493,13 +493,13 @@ Počet linek: 352 | Řazení: od nejdelší po nejkratší
       Délka: 147.70 km | Jízdní doba: 01:09:23
 
   99. R 0144k — Kukuč
-      Dopravce: ČD | ID linky: 96
-      Trasa: Jihlava - Velký Beranov → Praha - Vinohrady
+      Dopravce: ČD | ID linky: 97
+      Trasa: Praha - Vinohrady → Jihlava - Velký Beranov
       Délka: 147.28 km | Jízdní doba: 01:24:44
 
  100. R 0144k — Kukuč
-      Dopravce: ČD | ID linky: 97
-      Trasa: Praha - Vinohrady → Jihlava - Velký Beranov
+      Dopravce: ČD | ID linky: 96
+      Trasa: Jihlava - Velký Beranov → Praha - Vinohrady
       Délka: 147.28 km | Jízdní doba: 01:24:44
 
  101. R 0161ň — Žluva
@@ -625,42 +625,42 @@ Počet linek: 352 | Řazení: od nejdelší po nejkratší
  125. R 0173o — Mindaro
       Dopravce: ČD | ID linky: 1246
       Trasa: Olomouc - Hl.N. → Brno - Maloměřice
-      Délka: 138.96 km | Jízdní doba: 01:12:19
+      Délka: 138.97 km | Jízdní doba: 01:12:19
 
  126. R 0173o — Mindaro
       Dopravce: ČD | ID linky: 1247
       Trasa: Brno - Maloměřice → Olomouc - Hl.N.
-      Délka: 138.96 km | Jízdní doba: 01:12:19
+      Délka: 138.97 km | Jízdní doba: 01:12:19
 
- 127. R 0197b — Božský Trpaslík
+ 127. R 0193p — Hasič
+      Dopravce: ČD | ID linky: 42
+      Trasa: Sedlčany - Cihelný Vrch → Tachov
+      Délka: 138.95 km | Jízdní doba: 01:12:18
+
+ 128. R 0193p — Hasič
+      Dopravce: ČD | ID linky: 43
+      Trasa: Tachov → Sedlčany - Cihelný Vrch
+      Délka: 138.95 km | Jízdní doba: 01:12:18
+
+ 129. R 0197b — Božský Trpaslík
       Dopravce: ZSSK | ID linky: 1238
       Trasa: Bojnice → Rimavská Sobota - Hl.N.
       Délka: 138.85 km | Jízdní doba: 01:09:10
 
- 128. R 0197b — Božský Trpaslík
+ 130. R 0197b — Božský Trpaslík
       Dopravce: ZSSK | ID linky: 1239
       Trasa: Rimavská Sobota - Hl.N. → Bojnice
       Délka: 138.85 km | Jízdní doba: 01:09:10
 
- 129. R 0196 — Polárka
+ 131. R 0196 — Polárka
       Dopravce: ZSSK | ID linky: 864
       Trasa: Michalovce → Poprad - Hl.S.
       Délka: 138.59 km | Jízdní doba: 01:09:04
 
- 130. R 0196 — Polárka
+ 132. R 0196 — Polárka
       Dopravce: ZSSK | ID linky: 865
       Trasa: Poprad - Hl.S. → Michalovce
       Délka: 138.59 km | Jízdní doba: 01:09:04
-
- 131. R 0193p — Hasič
-      Dopravce: ČD | ID linky: 42
-      Trasa: Sedlčany → Tachov
-      Délka: 137.95 km | Jízdní doba: 01:11:56
-
- 132. R 0193p — Hasič
-      Dopravce: ČD | ID linky: 43
-      Trasa: Tachov → Sedlčany
-      Délka: 137.95 km | Jízdní doba: 01:11:56
 
  133. R 0194b — Latinka
       Dopravce: ČD | ID linky: 1456
@@ -925,12 +925,12 @@ Počet linek: 352 | Řazení: od nejdelší po nejkratší
  185. R 0180m — Potenciál
       Dopravce: ČD | ID linky: 1654
       Trasa: Olomouc - Slavonín → Hodonín - Hl.N.
-      Délka: 107.78 km | Jízdní doba: 00:54:20
+      Délka: 107.78 km | Jízdní doba: 00:51:19
 
  186. R 0180m — Potenciál
       Dopravce: ČD | ID linky: 1655
       Trasa: Hodonín - Hl.N. → Olomouc - Slavonín
-      Délka: 107.78 km | Jízdní doba: 00:54:20
+      Délka: 107.78 km | Jízdní doba: 00:51:19
 
  187. R 0214v — Ogy
       Dopravce: ZSSK | ID linky: 2044
@@ -1113,13 +1113,13 @@ Počet linek: 352 | Řazení: od nejdelší po nejkratší
       Délka: 96.95 km | Jízdní doba: 00:53:26
 
  223. R 0243 — Představan
-      Dopravce: ČD | ID linky: 30
-      Trasa: Otrokovice - Oldřichovice → Mikulov
+      Dopravce: ČD | ID linky: 31
+      Trasa: Mikulov → Otrokovice - Oldřichovice
       Délka: 96.80 km | Jízdní doba: 00:56:30
 
  224. R 0243 — Představan
-      Dopravce: ČD | ID linky: 31
-      Trasa: Mikulov → Otrokovice - Oldřichovice
+      Dopravce: ČD | ID linky: 30
+      Trasa: Otrokovice - Oldřichovice → Mikulov
       Délka: 96.80 km | Jízdní doba: 00:56:30
 
  225. R 0192 — Giralt
@@ -1535,12 +1535,12 @@ Počet linek: 352 | Řazení: od nejdelší po nejkratší
  307. R 0138 — Tovač
       Dopravce: ČD | ID linky: 262
       Trasa: Karlovy Vary - Sedlec → Litvínov
-      Délka: 70.04 km | Jízdní doba: 00:39:43
+      Délka: 70.06 km | Jízdní doba: 00:39:44
 
  308. R 0138 — Tovač
       Dopravce: ČD | ID linky: 263
       Trasa: Litvínov → Karlovy Vary - Sedlec
-      Délka: 70.04 km | Jízdní doba: 00:39:43
+      Délka: 70.06 km | Jízdní doba: 00:39:44
 
  309. R 0173k — Gerald
       Dopravce: ČD | ID linky: 2332
@@ -1645,12 +1645,12 @@ Počet linek: 352 | Řazení: od nejdelší po nejkratší
  329. R 0130m — Lopaťák
       Dopravce: ČD | ID linky: 1278
       Trasa: Brno - Žebětín → Laa an der Thaya
-      Délka: 65.46 km | Jízdní doba: 00:35:27
+      Délka: 65.47 km | Jízdní doba: 00:35:27
 
  330. R 0130m — Lopaťák
       Dopravce: ČD | ID linky: 1279
       Trasa: Laa an der Thaya → Brno - Žebětín
-      Délka: 65.46 km | Jízdní doba: 00:35:27
+      Délka: 65.47 km | Jízdní doba: 00:35:27
 
  331. R 0130e — Traťotřas
       Dopravce: ČD | ID linky: 338

@@ -1,6 +1,7 @@
 const fs = require('fs').promises;
 const path = require('path');
 const { generateDistrictBorders } = require('./generate-district-borders');
+const { assignPsSystemIDs, generatePsSystems } = require('./generate-ps-systems');
 
 let lineTypeConfig;
 
@@ -296,6 +297,12 @@ async function generateTimeTables() {
     });
 
     let timetable = {"lines": lines, "stations": stations};
+    const psTypeID = lineTypeConfig.types.find(type => type.code === "Ps")?.id;
+    if (psTypeID === undefined) {
+        throw new Error("The line type configuration does not contain Ps.");
+    }
+    const psSystems = generatePsSystems(timetable, psTypeID);
+    assignPsSystemIDs(timetable, psSystems);
 
     //console.log(JSON.stringify(timetable, null, "\t"));
     await Promise.all([
@@ -314,6 +321,14 @@ async function generateTimeTables() {
         fs.writeFile(
             "factoring/json/district-borders.js",
             "const districtBorders = " + JSON.stringify(districtBorders) + ";"
+        ),
+        fs.writeFile(
+            "factoring/json/ps-systems.json",
+            JSON.stringify(psSystems, null, 2) + String.fromCharCode(10)
+        ),
+        fs.writeFile(
+            "factoring/json/ps-systems.js",
+            "const psSystems = " + JSON.stringify(psSystems) + ";"
         )
     ]);
     return timetable;

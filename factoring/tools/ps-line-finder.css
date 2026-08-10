@@ -1,0 +1,161 @@
+:root {
+    color-scheme: dark;
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: #eee;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+main {
+    width: min(70rem, 100%);
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+h1 {
+    margin-bottom: 0.35rem;
+    font-size: clamp(1.4rem, 5vw, 2rem);
+}
+
+.description {
+    margin-top: 0;
+    color: #bbb;
+}
+
+.selection-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: end;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: #252525;
+}
+
+.endpoint {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.5rem;
+}
+
+.endpoint label {
+    grid-column: 1 / -1;
+    font-weight: bold;
+}
+
+select,
+input,
+button {
+    min-height: 2.75rem;
+    border: 1px solid #777;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.7rem;
+    font: inherit;
+}
+
+select,
+input {
+    min-width: 0;
+    background: #fff;
+    color: #111;
+}
+
+button {
+    border-color: #226b22;
+    background: #2a9d2a;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #238523;
+}
+
+#_linefinderstatus {
+    min-height: 2.75rem;
+    padding: 1rem 0;
+    font-weight: bold;
+}
+
+#_linefinderstatus.error {
+    color: #ff8d8d;
+}
+
+#_linefinderresults {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.line-result {
+    border-left: 0.4rem solid #2a9d2a;
+    padding: 0.85rem 1rem;
+    background: #252525;
+}
+
+.line-result h2 {
+    margin: 0 0 0.65rem;
+    font-size: 1.15rem;
+}
+
+.line-details {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 0.25rem 0.8rem;
+    margin: 0;
+}
+
+.line-details dt {
+    color: #bbb;
+}
+
+.line-details dd {
+    margin: 0;
+}
+
+.system-stops {
+    margin: 0.65rem 0 0;
+    color: #cfffad;
+}
+
+.intermediate-stops {
+    margin: 0.65rem 0 0;
+    line-height: 1.5;
+}
+
+.interval-summary {
+    border: 1px solid #3f7f3f;
+    padding: 0.8rem 1rem;
+    background: #1b311b;
+}
+
+.interval-summary p {
+    margin: 0;
+}
+
+.interval-summary p + p {
+    margin-top: 0.5rem;
+    color: #cfffad;
+    font-weight: bold;
+}
+
+@media (max-width: 48rem) {
+    .selection-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .line-details {
+        grid-template-columns: 1fr;
+    }
+
+    .line-details dd:not(:last-child) {
+        margin-bottom: 0.35rem;
+    }
+}

@@ -1,4 +1,6 @@
 const settings = (() => {
+    const APP_VERSION = "1.3.6";
+
     function render() {
         const developerButton = document.querySelector("#_developer");
         const autoUpdateRow = document.querySelector("#_autoupdaterow");
@@ -11,6 +13,7 @@ const settings = (() => {
         const moneyInput = document.querySelector("#_moneyamount");
         const moneyButton = document.querySelector("#_moneybtn");
         const moneyDisplay = document.querySelector("#_money");
+        const versionDisplay = document.querySelector("#_appversion");
         const developerEnabled = gameState.getSettings().developer === true;
 
         developerButton.innerText = developerEnabled ? "ZAPNUTO" : "VYPNUTO";
@@ -26,6 +29,7 @@ const settings = (() => {
         moneyInput.disabled = !developerEnabled;
         moneyButton.disabled = !developerEnabled;
         moneyDisplay.innerText = String(Math.floor(gameState.getMoney())) + ",-";
+        versionDisplay.innerText = "Verze " + APP_VERSION;
     }
 
     function toggleDeveloper() {

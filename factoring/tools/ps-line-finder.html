@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyhledávač linek mezi stanicemi a Ps systémy</title>
+    <link rel="stylesheet" href="ps-line-finder.css">
+    <script src="../json/timetable_data.js" defer></script>
+    <script src="../json/ps-systems.js" defer></script>
+    <script src="ps-line-finder.js" defer></script>
+</head>
+<body>
+    <main>
+        <h1>Linky mezi stanicemi a Ps systémy</h1>
+        <p class="description">
+            Vyberte dvě stanice, stanici a Ps systém nebo dva Ps systémy.
+        </p>
+
+        <section class="selection-panel">
+            <div class="endpoint">
+                <label for="_firsttype">První bod</label>
+                <select id="_firsttype">
+                    <option value="station">Stanice</option>
+                    <option value="system">Ps systém</option>
+                </select>
+                <input id="_firstvalue" list="_firstoptions" autocomplete="off"
+                    placeholder="Začněte psát název stanice">
+                <datalist id="_firstoptions"></datalist>
+            </div>
+
+            <div class="endpoint">
+                <label for="_secondtype">Druhý bod</label>
+                <select id="_secondtype">
+                    <option value="station">Stanice</option>
+                    <option value="system">Ps systém</option>
+                </select>
+                <input id="_secondvalue" list="_secondoptions" autocomplete="off"
+                    placeholder="Začněte psát název stanice">
+                <datalist id="_secondoptions"></datalist>
+            </div>
+
+            <button id="_findlines" type="button">VYHLEDAT LINKY</button>
+        </section>
+
+        <div id="_linefinderstatus" role="status"></div>
+        <section id="_linefinderresults" aria-live="polite"></section>
+    </main>
+</body>
+</html>

@@ -31,3 +31,10 @@
 }
 
 .settingscontrol button { min-width: fit-content; }
+
+.settings-version {
+    margin: 1.5rem 1rem 0.75rem;
+    color: var(--color-text-default);
+    font-size: 0.75rem;
+    text-align: center;
+}
