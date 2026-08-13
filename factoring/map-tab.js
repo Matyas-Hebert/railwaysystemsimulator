@@ -161,10 +161,16 @@ const mapTab = (() => {
         });
     }
 
+    function mapClick() {
+        console.log("clicked on a map");
+    }
+
     function initialize() {
         project = getProjection();
         svg = document.querySelector("#_districtmap");
         mapLayer = document.querySelector("#_districtmaplayer");
+
+        mapLayer.onclick = () => mapClick();
 
         districtBorders.forEach(district => {
             const points = district.borderVertices.map(([lon, lat]) => project(lon, lat));
@@ -208,6 +214,8 @@ const mapTab = (() => {
         }, { passive: false });
 
         svg.addEventListener("pointerdown", event => {
+            console.log(event.x, event.y);
+            console.log(mapLayer);
             if (event.pointerType === "mouse" && event.button !== 0) return;
             if (activePointers.size >= 2) return;
 

@@ -12,7 +12,7 @@ const collectionTab = (() => {
         delayFilter: "all"
     };
 
-    const TRAIN_TYPE_NAMES = Object.freeze(["Ps", "Os", "Sp", "R", "Sh", "EC"]);
+    const TRAIN_TYPE_NAMES = Object.freeze(lineTypeConfig.map(type => type.code));
     const DELAY_TYPE_NAMES = Object.freeze(["Běžné", "Vtipné", "Závažné"]);
     const stationsByDistrict = new Map();
     const linesByCompany = new Map();

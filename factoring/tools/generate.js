@@ -2,8 +2,11 @@ const fs = require('fs').promises;
 const path = require('path');
 const { generateDistrictBorders } = require('./generate-district-borders');
 const { assignPsSystemIDs, generatePsSystems } = require('./generate-ps-systems');
+const { PS, PX, OS, OX, SP, R, SH, IC, EC, NJ } = require('../config/line-type-constants');
 
 let lineTypeConfig;
+let journeyPricingConfig;
+
 
 async function loadTestJson() {
     const filePath = path.join(__dirname, '../../json/metronew.json');
@@ -19,7 +22,7 @@ function parseLineName(name){
 
     let data = {
         "company": part1parts[0].substring(1, part1parts[0].length-1),
-        "type": getTypeID(part1parts[1]),
+        "type": part1parts[1],
         "number": part1parts[2],
         "interval": parseInt(parts[2])*60
     }
@@ -49,8 +52,7 @@ function getTrips(startTime, interval){
 }
 
 function getStopTimeForType(typeId, uvrat=false){
-    const typeConfig = lineTypeConfig.types.find(type => type.id === typeId)
-        ?? lineTypeConfig.unknownType;
+    const typeConfig = lineTypeConfig[typeId];
     return uvrat
         ? typeConfig.uvratStopTimeSeconds
         : typeConfig.stopTimeSeconds;
@@ -69,32 +71,17 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   return R * c; // Distance in km
 }
 
-function getTimeFromDistanceAndType(distance, type){
-    // distance [km], distance/acc [hr]
-    var maxspeed = 100, acc = 12000;
-    if (type == "HSR"){
-        maxspeed = 220;
-        acc = 3000;
-    }
-    if (type == "MLDISTANCE"){
-        maxspeed = 160;
-        acc = 6000;
-    }
-
-    var criticaldistance = maxspeed*maxspeed/acc;
-    //console.log(distance, maxspeed, acc);
+function getTimeFromDistanceAndType(distance, typeID){
+    // distance [km], distance/acceleration [hours]
+    const typeConfig = lineTypeConfig[typeID];
+    const maxspeed = typeConfig.maxSpeedKmh;
+    const acc = typeConfig.accelerationKmhPerHourSquared;
+    const criticaldistance = maxspeed*maxspeed/acc;
     if (distance <= criticaldistance){
         return (2*Math.sqrt(distance/acc))*3600; // in seconds
     }
     return (distance/maxspeed + maxspeed/acc)*3600; // in seconds
 }
-
-function getTypeID(type){
-    return lineTypeConfig.types.find(
-        lineType => lineType.code.toLowerCase() === type.toLowerCase()
-    )?.id ?? -1;
-}
-
 function getUvratStopIndices(line, map, stationIDtonewID){
     const overrides = line.waypointOverrides || [];
     const found = new Set();
@@ -122,9 +109,91 @@ function getUvratStopIndices(line, map, stationIDtonewID){
     return { uvrat, stopCount: stopIndex };
 }
 
+
+function getLineMetrics(line, map, stationIDtonewID){
+    const overrides = line.waypointOverrides || [];
+    const found = new Set();
+    const segmentDistances = [];
+    let totalDistance = 0;
+    let distanceSinceLastStop = 0;
+    let previousStation;
+    let stopCount = 0;
+
+    line.stationIds.forEach(stationID => {
+        const station = map.stations[stationID];
+        if (previousStation){
+            const distance = calculateDistance(
+                previousStation.lat,
+                previousStation.lng,
+                station.lat,
+                station.lng
+            );
+            totalDistance += distance;
+            distanceSinceLastStop += distance;
+        }
+
+        const timetableStationID = stationIDtonewID[stationID];
+        const repeat = timetableStationID === undefined || found.has(timetableStationID);
+        if (!overrides.includes(stationID) && !station.isWaypoint && !repeat){
+            if (stopCount > 0){
+                segmentDistances.push(distanceSinceLastStop);
+            }
+            distanceSinceLastStop = 0;
+            found.add(timetableStationID);
+            stopCount++;
+        }
+        previousStation = station;
+    });
+
+    return { totalDistance, stopCount, segmentDistances };
+}
+
+function getJourneyTimeForType(metrics, uvrat, type){
+    let totalTime = 0;
+    for (let stopIndex = 0; stopIndex < metrics.stopCount; stopIndex++){
+        if (stopIndex > 0){
+            totalTime += getTimeFromDistanceAndType(
+                metrics.segmentDistances[stopIndex - 1],
+                type
+            );
+        }
+        if (stopIndex < metrics.stopCount - 1){
+            totalTime += getStopTimeForType(type, uvrat.includes(stopIndex));
+        }
+    }
+    return totalTime;
+}
+
+function selectLineType(writtenType, line, metrics, uvrat){
+    const type = writtenType.toUpperCase();
+    const hasWaypointOverrides = (line.waypointOverrides || []).length > 0;
+
+    if (type === "PS") return hasWaypointOverrides ? PX : PS;
+    if (type === "PX") return PX;
+    if (type === "OS") return hasWaypointOverrides ? OX : OS;
+    if (type === "OX") return OX;
+    if (type === "SP" || type === "R"){
+        const averageStopDistance = metrics.stopCount > 1
+            ? metrics.totalDistance / (metrics.stopCount - 1)
+            : 0;
+        return averageStopDistance > 15 ? R : SP;
+    }
+    if (type === "SH") return SH;
+    if (type === "IC" || type === "EC"){
+        const icTime = getJourneyTimeForType(metrics, uvrat, IC);
+        const ecTime = getJourneyTimeForType(metrics, uvrat, EC);
+        return icTime <= ecTime ? IC : EC;
+    }
+    if (type === "NJ") return NJ;
+
+    throw new Error("Unknown train type " + writtenType + " on line " + line.name);
+}
+
 async function generateTimeTables() {
     const lineTypeConfigPath = path.join(__dirname, "../config/line-types.json");
+    const journeyPricingConfigPath = path.join(__dirname, "../config/journey-pricing.json");
     lineTypeConfig = JSON.parse(await fs.readFile(lineTypeConfigPath, "utf8"));
+    journeyPricingConfig = JSON.parse(await fs.readFile(journeyPricingConfigPath, "utf8"));
     const map = await loadTestJson();
 
     stationIDtonewID = {};
@@ -213,7 +282,12 @@ async function generateTimeTables() {
     let stationssections = {};
     Object.values(map.lines).forEach((line, lineID) => {
         const lineinfo = parseLineName(line.name);
+        if (!(lineinfo.company in journeyPricingConfig.companies)) {
+            throw new Error("Missing journey pricing configuration for company " + lineinfo.company + ".");
+        }
         const { uvrat, stopCount } = getUvratStopIndices(line, map, stationIDtonewID);
+        const metrics = getLineMetrics(line, map, stationIDtonewID);
+        lineinfo.type = selectLineType(lineinfo.type, line, metrics, uvrat);
         const reverseUvrat = uvrat
             .map(stopIndex => stopCount - 1 - stopIndex)
             .sort((a, b) => a - b);
@@ -261,7 +335,7 @@ async function generateTimeTables() {
                     stations[stationIDtonewID[previousStation]].arrivals.push(i+1);
                 }
                 if (!isFirstStationOfLine){
-                    totaltime += getTimeFromDistanceAndType(distanceacc, line.mode);
+                    totaltime += getTimeFromDistanceAndType(distanceacc, lineinfo.type);
                     lines[i]["stops"].push({
                         "sid": stationIDtonewID[stationID], "arr": Math.round(totaltime), "dep": Math.round(totaltime+=getStopTimeForType(lineinfo.type, isuvrat)), "dist": distanceacc
                     });
@@ -297,11 +371,7 @@ async function generateTimeTables() {
     });
 
     let timetable = {"lines": lines, "stations": stations};
-    const psTypeID = lineTypeConfig.types.find(type => type.code === "Ps")?.id;
-    if (psTypeID === undefined) {
-        throw new Error("The line type configuration does not contain Ps.");
-    }
-    const psSystems = generatePsSystems(timetable, psTypeID);
+    const psSystems = generatePsSystems(timetable);
     assignPsSystemIDs(timetable, psSystems);
 
     //console.log(JSON.stringify(timetable, null, "\t"));
@@ -329,14 +399,21 @@ async function generateTimeTables() {
         fs.writeFile(
             "factoring/json/ps-systems.js",
             "const psSystems = " + JSON.stringify(psSystems) + ";"
+        ),
+        fs.writeFile(
+            "factoring/config/line-types.js",
+            "const lineTypeConfig = " + JSON.stringify(lineTypeConfig) + ";\n"
+        ),
+        fs.writeFile(
+            "factoring/config/journey-pricing.js",
+            "const journeyPricingConfig = " + JSON.stringify(journeyPricingConfig) + ";\n"
         )
     ]);
     return timetable;
 }
 
 function getTypeString(type){
-    const code = lineTypeConfig.types.find(lineType => lineType.id === type)?.code ?? "";
-    return code.padEnd(2, " ");
+    return lineTypeConfig[type].code.padEnd(2, " ");
 }
 
 async function checktimetable(){

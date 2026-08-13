@@ -1,5 +1,5 @@
 const psLineFinder = (() => {
-    const LINE_TYPE_CODES = ["Ps", "Os", "Sp", "R", "Sh", "EC"];
+    const LINE_TYPE_CODES = Object.freeze(lineTypeConfig.map(type => type.code));
     const endpointOptions = new Map();
 
     function formatInterval(seconds) {
@@ -26,7 +26,8 @@ const psLineFinder = (() => {
     }
 
     function getSystemLabel(system, systemID) {
-        return system.name + " (#" + String(systemID) + ")";
+        return lineTypeConfig[system.type].code + " | "
+            + system.name + " (#" + String(systemID) + ")";
     }
 
     function getOptions(type) {
@@ -121,6 +122,8 @@ const psLineFinder = (() => {
                     line,
                     firstStops: getMatchingStops(line, first),
                     secondStops: getMatchingStops(line, second),
+                    travelTimeSeconds: line.stops[segmentEnd].ar
+                        - line.stops[segmentStart].dep,
                     intermediateStationIDs: line.stops
                         .slice(segmentStart + 1, segmentEnd)
                         .map(stop => stop.sid)
@@ -171,6 +174,11 @@ const psLineFinder = (() => {
         appendDetail(details, "ID linky", String(line.id));
         appendDetail(details, "Společnost", line.company);
         appendDetail(details, "Interval", formatInterval(line.interval));
+        appendDetail(
+            details,
+            "Doba jízdy mezi body",
+            formatInterval(result.travelTimeSeconds)
+        );
         appendDetail(details, "Výchozí stanice", timetable.stations[line.stops[0].sid].name);
         appendDetail(
             details,

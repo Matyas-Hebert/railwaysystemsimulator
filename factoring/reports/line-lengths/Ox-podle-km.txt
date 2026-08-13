@@ -1,0 +1,63 @@
+========================================================================================
+LINKY TYPU Ox — PODLE VZDÁLENOSTI
+Počet linek: 12 | Řazení: od nejdelší po nejkratší
+========================================================================================
+   1. Ox 82105
+      Dopravce: ZSSK | ID linky: 984
+      Trasa: Košice - Polov → Sečovce - Hl.S.
+      Délka: 76.70 km | Jízdní doba: 00:58:45
+
+   2. Ox 82105
+      Dopravce: ZSSK | ID linky: 985
+      Trasa: Sečovce - Hl.S. → Košice - Polov
+      Délka: 76.70 km | Jízdní doba: 00:58:45
+
+   3. Ox 84215 — Kriton
+      Dopravce: ČD | ID linky: 1258
+      Trasa: Varnsdorf - Hl.N. → Roudnice nad Labem - Dobříň
+      Délka: 67.54 km | Jízdní doba: 01:01:48
+
+   4. Ox 84215 — Kriton
+      Dopravce: ČD | ID linky: 1259
+      Trasa: Roudnice nad Labem - Dobříň → Varnsdorf - Hl.N.
+      Délka: 67.54 km | Jízdní doba: 01:01:48
+
+   5. Ox 20246
+      Dopravce: ČD | ID linky: 755
+      Trasa: Děčín - Nové Město → Most
+      Délka: 63.43 km | Jízdní doba: 00:58:42
+
+   6. Ox 20246
+      Dopravce: ČD | ID linky: 754
+      Trasa: Most → Děčín - Nové Město
+      Délka: 63.43 km | Jízdní doba: 00:58:42
+
+   7. Ox 20244
+      Dopravce: ČD | ID linky: 450
+      Trasa: Prostějov - Držovice → Blansko - Hořice
+      Délka: 55.06 km | Jízdní doba: 00:45:44
+
+   8. Ox 20244
+      Dopravce: ČD | ID linky: 451
+      Trasa: Blansko - Hořice → Prostějov - Držovice
+      Délka: 55.06 km | Jízdní doba: 00:45:44
+
+   9. Ox 75563 — Jinovar
+      Dopravce: ČD | ID linky: 1262
+      Trasa: Lomnice nad Popelkou → Nový Bydžov - Hl.N.
+      Délka: 38.58 km | Jízdní doba: 00:40:46
+
+  10. Ox 75563 — Jinovar
+      Dopravce: ČD | ID linky: 1263
+      Trasa: Nový Bydžov - Hl.N. → Lomnice nad Popelkou
+      Délka: 38.58 km | Jízdní doba: 00:40:46
+
+  11. Ox 18763
+      Dopravce: ČD | ID linky: 250
+      Trasa: Ostrava - Přívoz → Karviná - Hl.N.
+      Délka: 29.14 km | Jízdní doba: 00:20:40
+
+  12. Ox 18763
+      Dopravce: ČD | ID linky: 251
+      Trasa: Karviná - Hl.N. → Ostrava - Přívoz
+      Délka: 29.14 km | Jízdní doba: 00:20:40

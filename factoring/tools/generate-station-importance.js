@@ -7,18 +7,20 @@ const ITERATION_INFLUENCE = 0.35;
 const STOP_DECAY = 0.9;
 const SCORE_SPREAD_POWER = 3;
 const BASE_IMPORTANCE = 1;
+const { PS, OS } = require("../config/line-type-constants");
 const APP_DIRECTORY = path.resolve(__dirname, "..");
 const TIMETABLE_PATH = path.join(APP_DIRECTORY, "json", "timetable_data.js");
 const OUTPUT_PATH = path.join(APP_DIRECTORY, "reports", "station-importance.txt");
 const LINE_TYPE_CONFIG_PATH = path.join(APP_DIRECTORY, "config", "line-types.json");
 const LINE_TYPE_CONFIG = JSON.parse(fs.readFileSync(LINE_TYPE_CONFIG_PATH, "utf8"));
-const LINE_TYPES = Object.freeze([...LINE_TYPE_CONFIG.types].sort((a, b) => a.id - b.id));
-const UNKNOWN_TYPE_IMPORTANCE = LINE_TYPE_CONFIG.unknownType.stationImportance;
+const LINE_TYPES = Object.freeze(LINE_TYPE_CONFIG);
 const TRAIN_TYPE_IMPORTANCE = Object.freeze(
     LINE_TYPES.map(type => type.stationImportance)
 );
 const IMPORTANCE_WITHOUT_PS_OS = Object.freeze(
-    LINE_TYPES.map(type => type.id <= 1 ? 0 : type.stationImportance)
+    LINE_TYPES.map(type => type.id === PS || type.id === OS
+        ? 0
+        : type.stationImportance)
 );
 
 function loadTimetable() {
@@ -43,7 +45,7 @@ function calculateStationImportance(timetable, typeWeights) {
         const propagated = timetable.stations.map(() => 0);
         timetable.lines.forEach(line => {
             const frequency = 3600 / line.interval;
-            const typeImportance = typeWeights[line.type] ?? UNKNOWN_TYPE_IMPORTANCE;
+            const typeImportance = typeWeights[line.type] ?? 0;
             const lineWeight = typeImportance * frequency;
             let upcomingImportance = 0;
             for (let stopIndex = line.stops.length - 1; stopIndex >= 0; stopIndex--) {

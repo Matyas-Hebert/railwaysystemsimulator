@@ -1,0 +1,123 @@
+========================================================================================
+LINKY TYPU IC — PODLE JÍZDNÍ DOBY
+Počet linek: 24 | Řazení: od nejdelší po nejkratší
+========================================================================================
+   1. IC 83410 — Moravská Kometa
+      Dopravce: pBEX | ID linky: 2625
+      Trasa: Bratislava - Nivy → Praha - Bubeneč
+      Délka: 410.39 km | Jízdní doba: 02:46:33
+
+   2. IC 83410 — Moravská Kometa
+      Dopravce: pBEX | ID linky: 2624
+      Trasa: Praha - Bubeneč → Bratislava - Nivy
+      Délka: 410.39 km | Jízdní doba: 02:46:33
+
+   3. IC 9 — Pardál
+      Dopravce: ČD | ID linky: 600
+      Trasa: Praha - Hl.N. → Bratislava - Hl.S.
+      Délka: 384.19 km | Jízdní doba: 02:33:35
+
+   4. IC 9 — Pardál
+      Dopravce: ČD | ID linky: 601
+      Trasa: Bratislava - Hl.S. → Praha - Hl.N.
+      Délka: 384.19 km | Jízdní doba: 02:33:35
+
+   5. IC 6 — Spartan
+      Dopravce: ČD | ID linky: 436
+      Trasa: Ostrava - Hl.N. → Praha - Hl.N.
+      Délka: 319.66 km | Jízdní doba: 02:07:55
+
+   6. IC 6 — Spartan
+      Dopravce: ČD | ID linky: 437
+      Trasa: Praha - Hl.N. → Ostrava - Hl.N.
+      Délka: 319.66 km | Jízdní doba: 02:07:55
+
+   7. IC 83415 — Moravský Express
+      Dopravce: pBEX | ID linky: 2629
+      Trasa: Břeclav - Sever → Ostrava - Přívoz
+      Délka: 236.24 km | Jízdní doba: 01:59:42
+
+   8. IC 83415 — Moravský Express
+      Dopravce: pBEX | ID linky: 2628
+      Trasa: Ostrava - Přívoz → Břeclav - Sever
+      Délka: 236.24 km | Jízdní doba: 01:59:42
+
+   9. IC 12 — Velbloud
+      Dopravce: ZSSK | ID linky: 1120
+      Trasa: Prešov - Hl.S. → Ostrava - Hl.N.
+      Délka: 274.39 km | Jízdní doba: 01:56:05
+
+  10. IC 12 — Velbloud
+      Dopravce: ZSSK | ID linky: 1121
+      Trasa: Ostrava - Hl.N. → Prešov - Hl.S.
+      Délka: 274.39 km | Jízdní doba: 01:56:05
+
+  11. IC 1 — Praotec
+      Dopravce: ČD | ID linky: 124
+      Trasa: Praha - Veleslavín → Brno - Hl.N.
+      Délka: 248.54 km | Jízdní doba: 01:55:34
+
+  12. IC 1 — Praotec
+      Dopravce: ČD | ID linky: 125
+      Trasa: Brno - Hl.N. → Praha - Veleslavín
+      Délka: 248.54 km | Jízdní doba: 01:55:34
+
+  13. IC 4 — Brouk
+      Dopravce: ČD | ID linky: 301
+      Trasa: Karlovy Vary - Hl.N. → Liberec - Hl.N.
+      Délka: 186.17 km | Jízdní doba: 01:23:35
+
+  14. IC 4 — Brouk
+      Dopravce: ČD | ID linky: 300
+      Trasa: Liberec - Hl.N. → Karlovy Vary - Hl.N.
+      Délka: 186.17 km | Jízdní doba: 01:23:35
+
+  15. IC 8 — Nostra
+      Dopravce: ČD | ID linky: 500
+      Trasa: Ostrava - Hl.N. → Brno - Hl.N.
+      Délka: 159.62 km | Jízdní doba: 01:17:02
+
+  16. IC 8 — Nostra
+      Dopravce: ČD | ID linky: 501
+      Trasa: Brno - Hl.N. → Ostrava - Hl.N.
+      Délka: 159.62 km | Jízdní doba: 01:17:02
+
+  17. IC 3 — Práče
+      Dopravce: ČD | ID linky: 212
+      Trasa: České Budějovice - Čtyři Dvory → Praha - Hl.N.
+      Délka: 150.63 km | Jízdní doba: 01:13:20
+
+  18. IC 3 — Práče
+      Dopravce: ČD | ID linky: 213
+      Trasa: Praha - Hl.N. → České Budějovice - Čtyři Dvory
+      Délka: 150.63 km | Jízdní doba: 01:13:20
+
+  19. IC 7 — Bobr
+      Dopravce: ČD | ID linky: 478
+      Trasa: Brno - Hl.N. → České Budějovice - Hl.N.
+      Délka: 171.93 km | Jízdní doba: 01:06:05
+
+  20. IC 7 — Bobr
+      Dopravce: ČD | ID linky: 479
+      Trasa: České Budějovice - Hl.N. → Brno - Hl.N.
+      Délka: 171.93 km | Jízdní doba: 01:06:05
+
+  21. IC 2 — Moravan
+      Dopravce: ČD | ID linky: 141
+      Trasa: Olomouc - Hl.N. → Ostrava - Hl.N.
+      Délka: 127.46 km | Jízdní doba: 01:01:12
+
+  22. IC 2 — Moravan
+      Dopravce: ČD | ID linky: 140
+      Trasa: Ostrava - Hl.N. → Olomouc - Hl.N.
+      Délka: 127.46 km | Jízdní doba: 01:01:12
+
+  23. IC 10 — Pralinka
+      Dopravce: ČD | ID linky: 642
+      Trasa: Praha - Hl.N. → Liberec - Hl.N.
+      Délka: 121.81 km | Jízdní doba: 00:52:25
+
+  24. IC 10 — Pralinka
+      Dopravce: ČD | ID linky: 643
+      Trasa: Liberec - Hl.N. → Praha - Hl.N.
+      Délka: 121.81 km | Jízdní doba: 00:52:25

@@ -44,25 +44,7 @@ function getTrainName(line, getnickname=false, padding=true){
     else{
         name = line.company + " ";
     }
-    let type = line.type;
-    if (type == 0){
-        name += "Ps";
-    }
-    if (type == 1){
-        name += "Os";
-    }
-    if (type == 2){
-        name += "Sp";
-    }
-    if (type == 3){
-        name += "R";
-    }
-    if (type == 4){
-        name += "Sh";
-    }
-    if (type == 5){
-        name += "EC";
-    }
+    name += lineTypeConfig[line.type].code;
     if (padding){
         name = name.padEnd(9, " ");
     }
@@ -342,14 +324,14 @@ function selectFilter(name){
         _arrivals.classList = curr ? "unselected" : "selected";
         _departures.classList = curr ? "selected" : "unselected";
     }
-    let types = ["ps", "os", "sp", "r", "sh", "ec"];
-    if (types.includes(name)){
-        let type = types.indexOf(name);
-        if (type >= 0 && type < 6){
-            filters["types"][type] = !filters["types"][type];
-            let curr = filters["types"][type];
-            document.getElementById(name).classList = curr ? "selected" : "unselected";
-        }
+    const type = ({
+        ps: PS, px: PX, os: OS, ox: OX, sp: SP,
+        r: R, sh: SH, ic: IC, ec: EC, nj: NJ
+    })[name];
+    if (type !== undefined){
+        filters["types"][type] = !filters["types"][type];
+        const curr = filters["types"][type];
+        document.getElementById(name).classList = curr ? "selected" : "unselected";
     }
     renderCurrentSection();
 }
@@ -777,7 +759,7 @@ window.addEventListener('scroll', () => {
 //generateTimeTables();
 let openeddetail = "";
 let connstruct = {};
-let filters = {"departures": true, "types": [true, true, true, true, true, true], "statid": -1};
+let filters = {"departures": true, "types": lineTypeConfig.map(() => true), "statid": -1};
 // 0 - in station, 1 - on train, 2 - walking
 const gameState = new GameState(timetable.stations, lonlattoid, timetable.lines);
 let pinnedstationsopened = false;

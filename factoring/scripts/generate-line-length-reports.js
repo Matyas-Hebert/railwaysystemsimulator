@@ -5,7 +5,10 @@ const vm = require("node:vm");
 const APP_DIRECTORY = path.resolve(__dirname, "..");
 const TIMETABLE_PATH = path.join(APP_DIRECTORY, "json", "timetable_data.js");
 const OUTPUT_DIRECTORY = path.join(APP_DIRECTORY, "reports", "line-lengths");
-const TRAIN_TYPE_NAMES = Object.freeze(["Ps", "Os", "Sp", "R", "Sh", "EC"]);
+const LINE_TYPE_CONFIG_PATH = path.join(APP_DIRECTORY, "config", "line-types.json");
+const TRAIN_TYPE_NAMES = Object.freeze(
+    JSON.parse(fs.readFileSync(LINE_TYPE_CONFIG_PATH, "utf8")).map(type => type.code)
+);
 
 function loadTimetable() {
     const source = fs.readFileSync(TIMETABLE_PATH, "utf8");

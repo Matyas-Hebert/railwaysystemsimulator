@@ -1,12 +1,6 @@
 const delays = (() => {
-function getStopTimeForType(type){
-    if (type <= 1){
-        return 30;
-    }
-    if (type <= 4){
-        return 90;
-    }
-    return 180; // in seconds
+function getLineTypeConfig(type){
+    return lineTypeConfig[type];
 }
 
 function seededRandom(a){
@@ -19,120 +13,24 @@ function seededRandom(a){
 
 function getNewDelayMultiplier(seed, currentdelayperc, type){
     currentdelayperc *= -1;
-    let x = seededRandom(seed);
-    if (type == 0){
-        let delay = Math.max(-0.1,
-            Math.min(2,
-                -Math.log(1-(5/2)*(x-(3/5)))/2
-            )
-        )
-        if (delay < currentdelayperc){
-            return currentdelayperc;
-        }
-        return delay;
+    const random = seededRandom(seed);
+    const model = getLineTypeConfig(type).delayModel;
+    let delay = -Math.log(
+        1-(random+model.randomOffset)*model.randomScale
+    )/model.logarithmDivisor;
+    delay = Math.min(model.maximumMultiplier, delay)-model.baseOffset;
+    if (model.minimumMultiplier !== null){
+        delay = Math.max(model.minimumMultiplier, delay);
     }
-    if (type == 1){
-        let delay = Math.min(2,
-            -Math.log(1-(x+(3/20))*(20/23))/6
-        )-0.05;
-        if (delay < 0){
-            return Math.max(delay*4, currentdelayperc);
-        }
-        return delay;
+    if (model.respectCurrentDelayMinimum || delay < 0){
+        return Math.max(delay*model.recoveryMultiplier, currentdelayperc);
     }
-    if (type == 2){
-        let delay = Math.min(2,
-            -Math.log(1-(x+(1/10))*(10/11))/3.5
-        )-0.05;
-        if (delay < 0){
-            return Math.max(delay*3, currentdelayperc);
-        }
-        return delay;
-    }
-    if (type == 3){
-        let delay = Math.min(2,
-            -Math.log(1-(x+(1/10))*(10/11))/3
-        )-0.07;
-        if (delay < 0){
-            return Math.max(delay*3, currentdelayperc);
-        }
-        return delay;
-    }
-    if (type == 4){
-        let delay = Math.max(0,
-            Math.min(2,
-                -Math.log(1-x)/8.3
-            )
-        );
-        if (delay < 0){
-            return Math.max(delay, currentdelayperc);
-        }
-        return delay;
-    }
-    if (type == 5){
-        let delay = Math.min(2,
-            -Math.log(1-(x+(1/10))*(10/11))/2.5
-        )-0.07;
-        if (delay < 0){
-            return Math.max(delay*3, currentdelayperc);
-        }
-        return delay;
-    }
-    return 0;
-}
-
-function getDelayMultiplier(seed, currentdelayperc, type){
-    let rand = seededRandom(seed);
-
-    if(type == 5){
-        if (rand > 0.9) {
-            return (1 - rand) * 30;
-        }
-        else if (rand > 0.2) {
-            return (rand - 0.3) * 0.6;
-        }
-        else if (rand < 0.2) {
-            let maxCatch = 0.1;
-            return -Math.min(maxCatch, currentdelayperc);
-        }
-    }
-    if(type >= 2){
-        if (rand > 0.9) {
-            return (1 - rand) * 20;
-        }
-        else if (rand > 0.3) {
-            return (rand - 0.3) * 0.6;
-        }
-        else if (rand < 0.1) {
-            let maxCatch = 0.1;
-            return -Math.min(maxCatch, currentdelayperc);
-        }
-    }
-    if (rand > 0.96) {
-        return (1 - rand) * 30;
-    }
-    else if (rand > 0.3) {
-        return (rand - 0.3) * 0.5;
-    }
-    else if (rand < 0.1) {
-        let maxCatch = 0.1;
-        return -Math.min(maxCatch, currentdelayperc);
-    }
-    return 0;
+    return delay;
 }
 
 function getStartingDelay(seed, type){
-    let rand = seededRandom(seed);
-    if (type == 5){
-        return -Math.log(1-rand)*100;
-    }
-    if (type >= 2){
-        return -Math.log(1-rand)*90;
-    }
-    else{
-        return -Math.log(1-rand)*50;
-    }
-    return 0;
+    const random = seededRandom(seed);
+    return -Math.log(1-random)*getLineTypeConfig(type).startingDelayMeanSeconds;
 }
 
 function getDelay(lineID, tripNumber, time, stationID, daynumber){
@@ -180,7 +78,8 @@ function getDelay(lineID, tripNumber, time, stationID, daynumber){
                     "arrtime": Math.round(arrtime), "deptime": Math.round(previousDepartureTime), "progress": progress};
         }
 
-        if (i < line.stops.length-1 && seededRandom(seed*2+1) <= 0.0023){
+        if (i < line.stops.length-1
+            && seededRandom(seed*2+1) <= getLineTypeConfig(line.type).cancellationProbabilityPerStop){
             const status = expectedDepartureAtTarget + delay + newdelay < time ? 7 : -1;
             return {"delay": Math.round(delay+newdelay), "status": status, "station": stops[i].sid,
                     "arrtime": Math.round(arrtime), "deptime": null, "progress": 1};
@@ -217,24 +116,7 @@ function getStatusText(status){
 }
 
 function getWifiChance(type){
-    if (type == 0){
-        return 0.9;
-    }
-    if (type == 1){
-        return 0.75;
-    }
-    if (type == 2){
-        return 0.4;
-    }
-    if (type == 3){
-        return 0.2;
-    }
-    if (type == 4){
-        return 0.6;
-    }
-    if (type == 5){
-        return 0.1;
-    }
+    return getLineTypeConfig(type).workingWifiProbability;
 }
 
 function hasTrainWifi(lineID, tripID, day, type){

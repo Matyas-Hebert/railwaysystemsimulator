@@ -4,9 +4,10 @@ const vm = require("node:vm");
 
 const APP_DIRECTORY = path.resolve(__dirname, "..");
 const TIMETABLE_PATH = path.join(APP_DIRECTORY, "json", "timetable_data.js");
-const LINE_TYPE_CONFIG_PATH = path.join(APP_DIRECTORY, "config", "line-types.json");
 const JSON_OUTPUT_PATH = path.join(APP_DIRECTORY, "json", "ps-systems.json");
 const JS_OUTPUT_PATH = path.join(APP_DIRECTORY, "json", "ps-systems.js");
+
+const { PS, PX } = require("../config/line-type-constants");
 
 function loadTimetable() {
     const source = fs.readFileSync(TIMETABLE_PATH, "utf8");
@@ -14,13 +15,6 @@ function loadTimetable() {
     vm.createContext(context);
     vm.runInContext(source + ";globalThis.__timetable = timetable;", context);
     return context.__timetable;
-}
-
-function getPsTypeID() {
-    const config = JSON.parse(fs.readFileSync(LINE_TYPE_CONFIG_PATH, "utf8"));
-    const psType = config.types.find(type => type.code === "Ps");
-    if (!psType) throw new Error("The line type configuration does not contain Ps.");
-    return psType.id;
 }
 
 function validateTimetable(timetable) {
@@ -92,75 +86,98 @@ function getSystemName(stationIDs, stations) {
     return fallbackStation + " System";
 }
 
-function generatePsSystems(timetable, psTypeID) {
-    validateTimetable(timetable);
-    const psLines = timetable.lines.filter(line => line.type === psTypeID);
+function generateConnectedSystems(timetable, allowedTypes, systemType, requiredType) {
+    const lines = timetable.lines.filter(line => allowedTypes.has(line.type));
     const disjointSet = createDisjointSet(timetable.stations.length);
-    const psStationIDs = new Set();
+    const stationIDs = new Set();
 
-    psLines.forEach(line => {
+    lines.forEach(line => {
         line.stops.forEach((stop, index) => {
-            psStationIDs.add(stop.sid);
+            stationIDs.add(stop.sid);
             if (index > 0) disjointSet.union(line.stops[index - 1].sid, stop.sid);
         });
     });
 
     const systemsByRoot = new Map();
-    psStationIDs.forEach(stationID => {
+    stationIDs.forEach(stationID => {
         const root = disjointSet.find(stationID);
         if (!systemsByRoot.has(root)) {
-            systemsByRoot.set(root, { stationIDs: [], lineIDs: [] });
+            systemsByRoot.set(root, { stationIDs: [], lineIDs: [], hasRequiredType: false });
         }
         systemsByRoot.get(root).stationIDs.push(stationID);
     });
 
-    psLines.forEach((line, lineIndex) => {
+    lines.forEach((line, lineIndex) => {
         const root = disjointSet.find(line.stops[0].sid);
-        systemsByRoot.get(root).lineIDs.push(line.id ?? lineIndex);
+        const system = systemsByRoot.get(root);
+        system.lineIDs.push(line.id ?? lineIndex);
+        if (line.type === requiredType) system.hasRequiredType = true;
     });
 
     return [...systemsByRoot.values()]
+        .filter(system => system.hasRequiredType)
         .map(system => {
             system.stationIDs.sort((first, second) => first - second);
             system.lineIDs.sort((first, second) => first - second);
             return {
+                type: systemType,
                 name: getSystemName(system.stationIDs, timetable.stations),
                 stationIDs: system.stationIDs,
                 lineIDs: system.lineIDs
             };
-        })
-        .sort((first, second) => first.name.localeCompare(second.name, "cs")
-            || first.stationIDs[0] - second.stationIDs[0]);
+        });
+}
+
+function generatePsSystems(timetable) {
+    validateTimetable(timetable);
+    const systems = [
+        ...generateConnectedSystems(timetable, new Set([PS]), PS, PS),
+        ...generateConnectedSystems(timetable, new Set([PS, PX]), PX, PX)
+    ];
+    return systems.sort((first, second) => first.type - second.type
+        || first.name.localeCompare(second.name, "cs")
+        || first.stationIDs[0] - second.stationIDs[0]);
 }
 
 function assignPsSystemIDs(timetable, systems) {
-    timetable.stations.forEach(station => delete station.psSystemID);
+    timetable.stations.forEach(station => {
+        delete station.psSystemID;
+        delete station.pxSystemID;
+    });
     systems.forEach((system, systemID) => {
+        const property = system.type === PS ? "psSystemID" : "pxSystemID";
         system.stationIDs.forEach(stationID => {
             const station = timetable.stations[stationID];
             if (!station) {
                 throw new Error(
-                    "Ps system "+String(systemID)+" contains station "
+                    "System "+String(systemID)+" contains station "
                         +String(stationID)+", which does not exist."
                 );
             }
-            if (station.psSystemID !== undefined) {
+            if (station[property] !== undefined) {
                 throw new Error(
-                    "Station "+String(stationID)+" belongs to more than one Ps system."
+                    "Station "+String(stationID)+" belongs to more than one "
+                        +(system.type === PS ? "Ps" : "Px")+" system."
                 );
             }
-            station.psSystemID = systemID;
+            station[property] = systemID;
         });
     });
 }
 
 function writePsSystems() {
     const timetable = loadTimetable();
-    const systems = generatePsSystems(timetable, getPsTypeID());
+    const systems = generatePsSystems(timetable);
     const json = JSON.stringify(systems, null, 2);
     fs.writeFileSync(JSON_OUTPUT_PATH, json + "\n", "utf8");
-    fs.writeFileSync(JS_OUTPUT_PATH, "const psSystems = " + json + ";\n", "utf8");
-    console.log(`Written ${systems.length} Ps systems to ${JSON_OUTPUT_PATH}`);
+    fs.writeFileSync(
+        JS_OUTPUT_PATH,
+        "const psSystems = " + JSON.stringify(systems) + ";\n",
+        "utf8"
+    );
+    const psCount = systems.filter(system => system.type === PS).length;
+    const pxCount = systems.filter(system => system.type === PX).length;
+    console.log(`Written ${psCount} Ps systems and ${pxCount} Px systems to ${JSON_OUTPUT_PATH}`);
     return systems;
 }
 
