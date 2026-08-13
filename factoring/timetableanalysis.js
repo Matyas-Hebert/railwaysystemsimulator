@@ -317,6 +317,39 @@ function getCurrentTimeInMinutes(){
     return Math.floor((currentDate.getHours()*3600 + currentDate.getMinutes()*60 + currentDate.getSeconds() + gameState.getTimeTravelled())/60)*60;
 }
 
+function getLineTypeCode(typeId){
+    return lineTypeConfig[typeId]?.code ?? "?";
+}
+
+function getTrainTypes(statID, direction){
+    const station = timetable.stations[statID];
+    if (!station || (direction !== 0 && direction !== 1)) return [];
+
+    const lineIDs = direction === 1
+        ? station.departures
+        : station.arrivals;
+
+    return [...new Set(lineIDs.map(lineID => timetable.lines[lineID]?.type))]
+        .filter(Number.isInteger);
+}
+
+function createTrainTypeFilters(statID){
+    _typefilters.innerHTML = "";
+    const direction = filters.departures ? 1 : 0;
+    const availableTypes = getTrainTypes(statID, direction);
+
+    lineTypeConfig.forEach((typeConfig, typeId) => {
+        if (!availableTypes.includes(typeId)) return;
+
+        const button = document.createElement("div");
+        button.id = "type-filter-" + typeId;
+        button.className = filters.types[typeId] ? "selected" : "unselected";
+        button.textContent = getLineTypeCode(typeId);
+        button.onclick = () => selectFilter(typeId);
+        _typefilters.appendChild(button);
+    });
+}
+
 function selectFilter(name){
     if (name == "departures" || name == "arrivals"){
         filters["departures"] = !filters["departures"];
@@ -324,14 +357,12 @@ function selectFilter(name){
         _arrivals.classList = curr ? "unselected" : "selected";
         _departures.classList = curr ? "selected" : "unselected";
     }
-    const type = ({
-        ps: PS, px: PX, os: OS, ox: OX, sp: SP,
-        r: R, sh: SH, ic: IC, ec: EC, nj: NJ
-    })[name];
-    if (type !== undefined){
-        filters["types"][type] = !filters["types"][type];
-        const curr = filters["types"][type];
-        document.getElementById(name).classList = curr ? "selected" : "unselected";
+    const type = Number(name);
+    if (Number.isInteger(type) && filters.types[type] !== undefined){
+        filters.types[type] = !filters.types[type];
+        const curr = filters.types[type];
+        document.getElementById("type-filter-" + type).className
+            = curr ? "selected" : "unselected";
     }
     renderCurrentSection();
 }
@@ -342,13 +373,18 @@ function selectDestination(id){
     renderCurrentSection(true);
 }
 
+function selectTicketDestination(id){
+    filters.ticketDestinationStatId = id;
+    renderCurrentSection(true);
+}
+
 function togglePinnedList(){
     pinnedstationsopened = !pinnedstationsopened;
     renderCurrentSection();
 }
 
 async function printTimetable(stationID, includegetonbutton = true, table=_timetable, includeheader=true, linescnt=15, timeoffset=0, force=false){
-    if (isOpen && !force){
+    if ((isOpen || isOpenTicket) && !force){
         return;
     }
 
@@ -426,6 +462,7 @@ async function printTimetable(stationID, includegetonbutton = true, table=_timet
     }
 
     let departures = filters["departures"];
+    createTrainTypeFilters(stationID);
 
     let linelist = departures ? station.departures : station.arrivals;
 
@@ -731,6 +768,7 @@ function renderCurrentSection(force = false){
 
 
 let isOpen = false;
+let isOpenTicket = false;
 let justClosed = false;
 
 _destinations.addEventListener('click', () => {
@@ -759,7 +797,12 @@ window.addEventListener('scroll', () => {
 //generateTimeTables();
 let openeddetail = "";
 let connstruct = {};
-let filters = {"departures": true, "types": lineTypeConfig.map(() => true), "statid": -1};
+let filters = {
+    "departures": true,
+    "types": lineTypeConfig.map(() => true),
+    "statid": -1,
+    "ticketDestinationStatId": -1
+};
 // 0 - in station, 1 - on train, 2 - walking
 const gameState = new GameState(timetable.stations, lonlattoid, timetable.lines);
 let pinnedstationsopened = false;

@@ -1,4 +1,13 @@
 const schedule = (() => {
+function getAutoBoardPrice(line) {
+    const typeCode = lineTypeConfig[line.type].code;
+    const companyConfig = journeyPricingConfig.companies[line.company] ?? {};
+    return companyConfig.train_types?.[typeCode]?.auto_board_price
+        ?? companyConfig.auto_board_price
+        ?? journeyPricingConfig.train_types[line.type]?.auto_board_price
+        ?? journeyPricingConfig.default.auto_board_price;
+}
+
 function toggle(clickedrow, stopsdata, conn = null, allowAutoBoard = false){
     if (!stopsdata) return;
     const detail = document.querySelector(".detail");
@@ -46,7 +55,63 @@ function toggle(clickedrow, stopsdata, conn = null, allowAutoBoard = false){
             toggleAutoBoardSelection(conn);
         };
         actionCell.appendChild(button);
-        detailOffset++;
+
+        const destinationSelect = document.createElement("select");
+        destinationSelect.className = "ticket-destination-select";
+        destinationSelect.setAttribute("aria-label", "Cílová stanice jízdenky");
+
+        const placeholder = document.createElement("option");
+        placeholder.value = "-1";
+        placeholder.textContent = "VYBERTE CÍLOVOU STANICI";
+        destinationSelect.appendChild(placeholder);
+
+        stopsdata.forEach(stopdata => {
+            const option = document.createElement("option");
+            option.value = String(stopdata.id);
+            option.textContent = stopdata.station;
+            destinationSelect.appendChild(option);
+        });
+
+        const selectedDestinationExists = stopsdata.some(
+            stopdata => stopdata.id == filters.ticketDestinationStatId
+        );
+        destinationSelect.value = selectedDestinationExists
+            ? String(filters.ticketDestinationStatId)
+            : "-1";
+        destinationSelect.addEventListener("click", event => {
+            event.stopPropagation();
+            isOpenTicket = true;
+        });
+        destinationSelect.addEventListener("blur", () => {
+            isOpenTicket = false;
+        });
+        destinationSelect.addEventListener("change", event => {
+            event.stopPropagation();
+            isOpenTicket = false;
+            selectTicketDestination(event.target.value);
+        });
+        const destinationRow = _timetable.insertRow(clickedrow.rowIndex + 2);
+        destinationRow.className = "detail ticket-destination-detail-row";
+        const destinationCell = destinationRow.insertCell(0);
+        destinationCell.colSpan = 3;
+        destinationCell.appendChild(destinationSelect);
+
+        const autoBoardPrice = getAutoBoardPrice(timetable.lines[conn.lineID]);
+        const purchaseRow = addRow({
+            table: _timetable,
+            c1t: "AUTOMATICKÝ NÁSTUP",
+            c2t: `<button class="ticket-purchase-button">KOUPIT<br>${autoBoardPrice},-</button>`,
+            firstcolspan: true,
+            onlythreecols: true,
+            includered: false
+        });
+        purchaseRow.className = "detail ticket-purchase-detail-row";
+        purchaseRow.cells[0].classList.add("ticket-purchase-label");
+        purchaseRow.querySelector(".ticket-purchase-button").onclick = event => {
+            event.stopPropagation();
+        };
+        purchaseRow.parentNode.insertBefore(purchaseRow, detailrow);
+        detailOffset += 3;
     }
 
     let i = detailOffset;

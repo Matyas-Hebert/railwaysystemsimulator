@@ -144,6 +144,37 @@
     background-color: var(--color-success);
 }
 
+.ticket-destination-detail-row td {
+    padding: 0.45rem;
+}
+
+
+.ticket-purchase-label {
+    color: var(--color-text-inverse);
+    font-weight: 700;
+}
+
+.ticket-purchase-button {
+    min-width: 6rem;
+    padding: 0.55rem 0.8rem;
+    border: none;
+    border-radius: 0.35rem;
+    background-color: var(--color-success-muted);
+    color: var(--color-text-inverse);
+    font-weight: 700;
+    white-space: pre-line;
+    cursor: pointer;
+}
+
+.ticket-destination-select {
+    width: 100%;
+    padding: 0.65rem;
+    border: none;
+    border-radius: 0.35rem;
+    background-color: var(--color-text-inverse);
+    color: var(--color-text-dark);
+}
+
 .auto-board-selected-row td {
     background-color: var(--color-success-muted);
 }

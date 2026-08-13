@@ -48,7 +48,11 @@ class GameState {
         if (!this.#isLoading
             && this.#hasPlayerPositionChanged(this.#currentPosition, nextPosition)) {
             this.setAutoBoardSelection(null);
-            this.setAutoExitStationId(null);
+            const isBoardingTrain = nextPosition?.transporttype === TRANSPORT_TYPE.TRAIN
+                && this.#currentPosition?.transporttype !== TRANSPORT_TYPE.TRAIN;
+            if (!isBoardingTrain) {
+                this.setAutoExitStationId(null);
+            }
         }
         this.#currentPosition = nextPosition;
         this.#saveCurrentPosition();
