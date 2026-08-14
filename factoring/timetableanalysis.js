@@ -101,8 +101,12 @@ function changeTransportType(n){
 
 function boardTrain(lineID, tripID, day){
     stationVisits.checkBeforeBoarding(lineID, tripID);
-    changeTransportType(TRANSPORT_TYPE.TRAIN);
-    const positionChanges = {lineID, tripID};
+    wifiluckboost = 0;
+    const positionChanges = {
+        transporttype: TRANSPORT_TYPE.TRAIN,
+        lineID,
+        tripID
+    };
     if (day <= 1000){
         positionChanges.day = day+Math.floor(getCurrentTimeInMilliseconds() / MILLISECONDS_PER_DAY);
     }
@@ -111,7 +115,6 @@ function boardTrain(lineID, tripID, day){
     }
     gameState.updateCurrentPosition(positionChanges);
 }
-
 function normalizeAutoBoardConnection(conn) {
     const day = conn.day <= 1000
         ? conn.day + Math.floor(getCurrentTimeInMilliseconds() / MILLISECONDS_PER_DAY)
@@ -132,25 +135,12 @@ function isAutoBoardSelection(conn) {
         && selected.day === normalized.day;
 }
 
-function toggleAutoBoardSelection(conn) {
-    if (isAutoBoardSelection(conn)) {
-        gameState.setAutoBoardSelection(null);
-    }
-    else {
-        gameState.setAutoBoardSelection(normalizeAutoBoardConnection(conn));
-    }
-    renderCurrentSection(true);
-}
+
 function isAutoExitSelection(stationId) {
     return gameState.getAutoExitStationId() === Number(stationId);
 }
 
-function toggleAutoExitSelection(stationId) {
-    gameState.setAutoExitStationId(
-        isAutoExitSelection(stationId) ? null : Number(stationId)
-    );
-    renderCurrentSection(true);
-}
+
 function addRow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibleoverflow=false, includered = true, includetrainnameclass = false, conn = {}, subtextdest = "", noclasssubtextdest = false, goalstationid = 0, includetrainlink = false, includegetonbutton = false, allowautoboard = false, subtexttrain = "", firstcolspan = false, scrolling = false, scrollingfirstcol = false, onlythreecols = false, subtexttime = ""}){
     let row = table.insertRow(-1);
     let c1 = row.insertCell(0);
@@ -168,11 +158,44 @@ function addRow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibl
     if (!onlythreecols || !firstcolspan){
         if (includegetonbutton){
             c3 = row.insertCell(2);
-            c3.innerHTML = `<div>NASTOUPIT</div>`
-            c3.onclick = function(){
-                boardTrain(conn.lineID, conn.tripID, conn.day);
-                renderCurrentSection();
-            };
+            const line = timetable.lines[conn.lineID];
+            const pricing = journeyPricing.getLineConfig(line);
+            if (pricing.must_auto_ride) {
+                const terminalStationId = line.stops[line.stops.length - 1].sid;
+                const journeyLength = journeyPricing.getDistanceBetweenStops(
+                    line,
+                    gameState.getCurrentPosition().statID,
+                    terminalStationId
+                );
+                const mandatoryJourneyPrice = Math.ceil(
+                    pricing.price_per_km * journeyLength + pricing.auto_leave_price
+                );
+                c3.innerHTML = `<div>NASTOUPIT<br>KOUPIT ${mandatoryJourneyPrice},-</div>`;
+                c3.onclick = function(){
+                    const purchased = gameState.purchaseManualAutoJourney(
+                        terminalStationId,
+                        mandatoryJourneyPrice
+                    );
+                    console.log(gameState.getAutoExitStationId());
+                    if (!purchased) {
+                        return;
+                    }
+                    console.log(gameState.getAutoExitStationId());
+                    boardTrain(conn.lineID, conn.tripID, conn.day);
+                    console.log(gameState.getAutoExitStationId());
+                    settings.render();
+                    console.log(gameState.getAutoExitStationId());
+                    renderCurrentSection();
+                    console.log(gameState.getAutoExitStationId());
+                };
+            }
+            else {
+                c3.innerHTML = `<div>NASTOUPIT</div>`;
+                c3.onclick = function(){
+                    boardTrain(conn.lineID, conn.tripID, conn.day);
+                    renderCurrentSection();
+                };
+            }
             c3.style.backgroundColor = "rgb(38, 156, 38)";
         }
         else{

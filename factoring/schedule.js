@@ -1,11 +1,65 @@
 const schedule = (() => {
-function getAutoBoardPrice(line) {
-    const typeCode = lineTypeConfig[line.type].code;
-    const companyConfig = journeyPricingConfig.companies[line.company] ?? {};
-    return companyConfig.train_types?.[typeCode]?.auto_board_price
-        ?? companyConfig.auto_board_price
-        ?? journeyPricingConfig.train_types[line.type]?.auto_board_price
-        ?? journeyPricingConfig.default.auto_board_price;
+function getAutoTravelStatus() {
+    const autoBoardSelection = gameState.getAutoBoardSelection();
+    const autoExitStationId = gameState.getAutoExitStationId();
+    if (autoBoardSelection !== null && autoExitStationId !== null) {
+        return "S AUTOMATICKÝM NÁSTUPEM +<br>S AUTOMATICKÝM VÝSTUPEM V "
+            + settings.getStationName(timetable.stations[autoExitStationId]);
+    }
+    if (autoBoardSelection !== null) return "S AUTOMATICKÝM NÁSTUPEM";
+    if (autoExitStationId !== null) {
+        return "S AUTOMATICKÝM VÝSTUPEM V "
+            + settings.getStationName(timetable.stations[autoExitStationId]);
+    }
+    return "BEZ AUTOMATICKÉHO NÁSTUPU";
+}
+
+function roundSignedPrice(price) {
+    return price < 0
+        ? -Math.round(Math.abs(price))
+        : Math.round(price);
+}
+
+function getAutoExitRebooking(line, stationId, currentStationId) {
+    const pricing = journeyPricing.getLineConfig(line);
+    const bookedStationId = gameState.getAutoExitStationId();
+    if (bookedStationId === stationId) {
+        return { selected: true, priceDifference: 0, label: "VYBRÁNO" };
+    }
+
+    let priceDifference;
+    if (!pricing.must_auto_ride) {
+        priceDifference = bookedStationId === null
+            ? Math.ceil(pricing.auto_leave_price)
+            : 0;
+    }
+    else if (bookedStationId !== null) {
+        const distanceDifference = journeyPricing.getDistanceDifferenceBetweenStops(
+            line,
+            bookedStationId,
+            stationId
+        );
+        if (distanceDifference === null) return null;
+        priceDifference = roundSignedPrice(distanceDifference * pricing.price_per_km);
+    }
+    else {
+        const distance = journeyPricing.getDistanceBetweenStops(
+            line,
+            currentStationId,
+            stationId
+        );
+        if (distance === null) return null;
+        priceDifference = Math.ceil(
+            pricing.auto_leave_price + distance * pricing.price_per_km
+        );
+    }
+
+    const label = priceDifference === 0
+        ? "ZDARMA"
+        : priceDifference < 0
+            ? "+" + String(Math.abs(priceDifference)) + ",-"
+            : String(priceDifference) + ",-";
+    return { selected: false, priceDifference, label };
 }
 
 function toggle(clickedrow, stopsdata, conn = null, allowAutoBoard = false){
@@ -37,24 +91,34 @@ function toggle(clickedrow, stopsdata, conn = null, allowAutoBoard = false){
 
     let detailOffset = 1;
     if (allowAutoBoard && conn !== null) {
-        const actionRow = _timetable.insertRow(clickedrow.rowIndex + 1);
-        actionRow.className = "detail auto-board-detail-row";
-        const actionCell = actionRow.insertCell(0);
-        actionCell.colSpan = 3;
-
-        const selected = isAutoBoardSelection(conn);
-        const button = document.createElement("button");
-        button.className = selected
-            ? "auto-board-btn selected"
-            : "auto-board-btn";
-        button.textContent = selected
-            ? "S AUTOMATICKÝM NÁSTUPEM"
-            : "BEZ AUTOMATICKÉHO NÁSTUPU";
-        button.onclick = event => {
-            event.stopPropagation();
-            toggleAutoBoardSelection(conn);
-        };
-        actionCell.appendChild(button);
+        const line = timetable.lines[conn.lineID];
+        const pricing = journeyPricing.getLineConfig(line);
+        const normalizedConnection = normalizeAutoBoardConnection(conn);
+        const refundable = gameState.getSpentOnAutoBoard() + gameState.getSpentOnAutoExit();
+        const returnButton = refundable > 0
+            ? `<button class="ticket-purchase-button ticket-return-button">VRÁTIT</button>`
+            : "";
+        const statusRow = addRow({
+            table: _timetable,
+            c1t: getAutoTravelStatus(),
+            c2t: returnButton,
+            firstcolspan: true,
+            onlythreecols: true,
+            includered: false
+        });
+        statusRow.className = "detail auto-travel-status-row";
+        statusRow.cells[0].classList.add("ticket-purchase-label");
+        const returnButtonElement = statusRow.querySelector(".ticket-return-button");
+        if (returnButtonElement !== null) {
+            returnButtonElement.onclick = event => {
+                event.stopPropagation();
+                gameState.returnAutoTravel();
+                settings.render();
+                renderCurrentSection(true);
+            };
+        }
+        statusRow.parentNode.insertBefore(statusRow, detailrow);
+        detailOffset++;
 
         const destinationSelect = document.createElement("select");
         destinationSelect.className = "ticket-destination-select";
@@ -90,28 +154,89 @@ function toggle(clickedrow, stopsdata, conn = null, allowAutoBoard = false){
             isOpenTicket = false;
             selectTicketDestination(event.target.value);
         });
-        const destinationRow = _timetable.insertRow(clickedrow.rowIndex + 2);
+        const destinationRow = _timetable.insertRow(-1);
         destinationRow.className = "detail ticket-destination-detail-row";
         const destinationCell = destinationRow.insertCell(0);
         destinationCell.colSpan = 3;
         destinationCell.appendChild(destinationSelect);
+        destinationRow.parentNode.insertBefore(destinationRow, detailrow);
+        detailOffset++;
 
-        const autoBoardPrice = getAutoBoardPrice(timetable.lines[conn.lineID]);
-        const purchaseRow = addRow({
-            table: _timetable,
-            c1t: "AUTOMATICKÝ NÁSTUP",
-            c2t: `<button class="ticket-purchase-button">KOUPIT<br>${autoBoardPrice},-</button>`,
-            firstcolspan: true,
-            onlythreecols: true,
-            includered: false
-        });
-        purchaseRow.className = "detail ticket-purchase-detail-row";
-        purchaseRow.cells[0].classList.add("ticket-purchase-label");
-        purchaseRow.querySelector(".ticket-purchase-button").onclick = event => {
-            event.stopPropagation();
-        };
-        purchaseRow.parentNode.insertBefore(purchaseRow, detailrow);
-        detailOffset += 3;
+        if (!pricing.must_auto_ride) {
+            const autoBoardPrice = pricing.auto_board_price;
+            const purchaseRow = addRow({
+                table: _timetable,
+                c1t: "AUTOMATICKÝ NÁSTUP",
+                c2t: `<button class="ticket-purchase-button">KOUPIT<br>${autoBoardPrice},-</button>`,
+                firstcolspan: true,
+                onlythreecols: true,
+                includered: false
+            });
+            purchaseRow.className = "detail ticket-purchase-detail-row";
+            purchaseRow.cells[0].classList.add("ticket-purchase-label");
+            const purchaseButton = purchaseRow.querySelector(".ticket-purchase-button");
+            purchaseButton.onclick = event => {
+                event.stopPropagation();
+                const purchased = gameState.purchaseAutoTravel({
+                    autoBoardSelection: normalizedConnection,
+                    spentOnAutoBoard: autoBoardPrice
+                });
+                if (!purchased) {
+                    purchaseButton.innerHTML = "NEDOSTATEK<br>PENĚZ";
+                    return;
+                }
+                settings.render();
+                renderCurrentSection(true);
+            };
+            purchaseRow.parentNode.insertBefore(purchaseRow, detailrow);
+            detailOffset++;
+        }
+
+        if (selectedDestinationExists) {
+            const exitStationId = Number(filters.ticketDestinationStatId);
+            const journeyLength = journeyPricing.getDistanceBetweenStops(
+                line,
+                gameState.getCurrentPosition().statID,
+                exitStationId
+            );
+            if (journeyLength !== null) {
+                const spentOnAutoBoard = pricing.auto_board_price;
+                const spentOnAutoExit = Math.ceil(
+                    pricing.auto_leave_price
+                    + pricing.price_per_km * journeyLength
+                );
+                const autoJourneyPrice = spentOnAutoBoard + spentOnAutoExit;
+                const stationName = settings.getStationName(timetable.stations[exitStationId]);
+                const journeyRow = addRow({
+                    table: _timetable,
+                    c1t: "AUTOMATICKÝ NÁSTUP +<br>AUTOMATICKÝ VÝSTUP V " + stationName,
+                    c2t: `<button class="ticket-purchase-button">KOUPIT<br>${autoJourneyPrice},-</button>`,
+                    firstcolspan: true,
+                    onlythreecols: true,
+                    includered: false
+                });
+                journeyRow.className = "detail ticket-purchase-detail-row";
+                journeyRow.cells[0].classList.add("ticket-purchase-label");
+                const journeyButton = journeyRow.querySelector(".ticket-purchase-button");
+                journeyButton.onclick = event => {
+                    event.stopPropagation();
+                    const purchased = gameState.purchaseAutoTravel({
+                        autoBoardSelection: normalizedConnection,
+                        autoExitStationId: exitStationId,
+                        spentOnAutoBoard,
+                        spentOnAutoExit
+                    });
+                    if (!purchased) {
+                        journeyButton.innerHTML = "NEDOSTATEK<br>PENĚZ";
+                        return;
+                    }
+                    settings.render();
+                    renderCurrentSection(true);
+                };
+                journeyRow.parentNode.insertBefore(journeyRow, detailrow);
+                detailOffset++;
+            }
+        }
     }
 
     let i = detailOffset;
@@ -365,26 +490,43 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
             }
 
             if (getoffbutton && currentsection === 0 && visibleStopIndex > 0) {
-                const selected = isAutoExitSelection(stop.sid);
-                if (selected) row.classList.add("auto-exit-selected-row");
+                const currentStationId = delay.station
+                    ?? gameState.getCurrentPosition().statID;
+                const rebooking = getAutoExitRebooking(line, stop.sid, currentStationId);
+                if (rebooking !== null) {
+                    if (rebooking.selected) row.classList.add("auto-exit-selected-row");
 
-                const actionCell = row.cells[3];
-                actionCell.classList.add("auto-exit-cell");
-                const button = document.createElement("button");
-                button.className = selected
-                    ? "auto-exit-btn selected"
-                    : "auto-exit-btn";
-                button.textContent = "🏁";
-                button.title = selected
-                    ? "Zrušit automatický výstup v této stanici"
-                    : "Automaticky vystoupit v této stanici";
-                button.setAttribute("aria-label", button.title);
-                button.setAttribute("aria-pressed", String(selected));
-                button.onclick = event => {
-                    event.stopPropagation();
-                    toggleAutoExitSelection(stop.sid);
-                };
-                actionCell.appendChild(button);
+                    const actionCell = row.cells[3];
+                    actionCell.classList.add("auto-exit-cell");
+                    const button = document.createElement("button");
+                    button.className = rebooking.selected
+                        ? "auto-exit-btn selected"
+                        : "auto-exit-btn";
+                    button.innerHTML = `<span class="auto-exit-icon">🏁</span>`
+                        + `<span class="auto-exit-price">${rebooking.label}</span>`;
+                    button.title = rebooking.selected
+                        ? "Aktuálně zvolená stanice automatického výstupu"
+                        : "Přebookovat automatický výstup do této stanice";
+                    button.setAttribute("aria-label", button.title);
+                    button.setAttribute("aria-pressed", String(rebooking.selected));
+                    if (!rebooking.selected) {
+                        button.onclick = event => {
+                            event.stopPropagation();
+                            const rebooked = gameState.rebookAutoExit(
+                                stop.sid,
+                                rebooking.priceDifference
+                            );
+                            if (!rebooked) {
+                                button.querySelector(".auto-exit-price").textContent
+                                    = "NEDOSTATEK";
+                                return;
+                            }
+                            settings.render();
+                            renderCurrentSection(true);
+                        };
+                    }
+                    actionCell.appendChild(button);
+                }
             }
 
             row.cells[0].style.textWrap = "nowrap";

@@ -16,6 +16,8 @@ class GameState {
     #collectedDelayReasons = [];
     #autoBoardSelection = null;
     #autoExitStationId = null;
+    #spentOnAutoBoard = 0;
+    #spentOnAutoExit = 0;
     #isLoading = false;
     #stationVisitState = {
         stationId: null,
@@ -48,9 +50,9 @@ class GameState {
         if (!this.#isLoading
             && this.#hasPlayerPositionChanged(this.#currentPosition, nextPosition)) {
             this.setAutoBoardSelection(null);
-            const isBoardingTrain = nextPosition?.transporttype === TRANSPORT_TYPE.TRAIN
-                && this.#currentPosition?.transporttype !== TRANSPORT_TYPE.TRAIN;
+            const isBoardingTrain = nextPosition?.transporttype === TRANSPORT_TYPE.TRAIN;
             if (!isBoardingTrain) {
+                console.log(nextPosition?.transporttype, this.#currentPosition?.transporttype);
                 this.setAutoExitStationId(null);
             }
         }
@@ -140,6 +142,32 @@ class GameState {
         return this.#autoExitStationId;
     }
 
+    getSpentOnAutoBoard() {
+        return this.#spentOnAutoBoard;
+    }
+
+    setSpentOnAutoBoard(amount) {
+        if (!Number.isFinite(amount) || amount < 0) {
+            throw new TypeError("Spent auto-board amount must be a non-negative finite number.");
+        }
+        this.#spentOnAutoBoard = amount;
+        if (amount === 0) localStorage.removeItem("_spentonautoboard");
+        else localStorage.setItem("_spentonautoboard", String(amount));
+    }
+
+    getSpentOnAutoExit() {
+        return this.#spentOnAutoExit;
+    }
+
+    setSpentOnAutoExit(amount) {
+        if (!Number.isFinite(amount) || amount < 0) {
+            throw new TypeError("Spent auto-exit amount must be a non-negative finite number.");
+        }
+        this.#spentOnAutoExit = amount;
+        if (amount === 0) localStorage.removeItem("_spentonautoexit");
+        else localStorage.setItem("_spentonautoexit", String(amount));
+    }
+
     getTimeTravelled() {
         return this.#timeTravelled;
     }
@@ -186,6 +214,7 @@ class GameState {
     setAutoExitStationId(stationId) {
         if (stationId === null) {
             this.#autoExitStationId = null;
+            this.setSpentOnAutoExit(0);
             localStorage.removeItem("_autoexitstation");
             return;
         }
@@ -209,6 +238,7 @@ class GameState {
     setAutoBoardSelection(selection) {
         if (selection === null) {
             this.#autoBoardSelection = null;
+            this.setSpentOnAutoBoard(0);
             localStorage.removeItem("_autoboardselection");
             return;
         }
@@ -225,6 +255,86 @@ class GameState {
         }
         this.#autoBoardSelection = normalized;
         localStorage.setItem("_autoboardselection", JSON.stringify(normalized));
+    }
+
+    purchaseAutoTravel({
+        autoBoardSelection,
+        autoExitStationId = null,
+        spentOnAutoBoard,
+        spentOnAutoExit = 0
+    }) {
+        const normalizedSelection = {
+            lineID: Number(autoBoardSelection?.lineID),
+            tripID: Number(autoBoardSelection?.tripID),
+            day: Number(autoBoardSelection?.day)
+        };
+        const normalizedExitStationId = autoExitStationId === null
+            ? null
+            : this.#toStationId(autoExitStationId);
+        if (!Number.isInteger(normalizedSelection.lineID)
+            || !Number.isInteger(normalizedSelection.tripID)
+            || !Number.isInteger(normalizedSelection.day)
+            || (autoExitStationId !== null && normalizedExitStationId === null)
+            || !Number.isFinite(spentOnAutoBoard)
+            || spentOnAutoBoard < 0
+            || !Number.isFinite(spentOnAutoExit)
+            || spentOnAutoExit < 0) {
+            throw new TypeError("Automatic travel purchase contains invalid values.");
+        }
+
+        const price = spentOnAutoBoard + spentOnAutoExit;
+        const refundable = this.#spentOnAutoBoard + this.#spentOnAutoExit;
+        if (this.#money + refundable < price) return false;
+
+        this.setMoney(this.#money + refundable - price);
+        this.setAutoBoardSelection(normalizedSelection);
+        this.setAutoExitStationId(normalizedExitStationId);
+        this.setSpentOnAutoBoard(spentOnAutoBoard);
+        this.setSpentOnAutoExit(spentOnAutoExit);
+        return true;
+    }
+
+    purchaseManualAutoJourney(autoExitStationId, spentOnAutoExit) {
+        const normalizedExitStationId = this.#toStationId(autoExitStationId);
+        if (normalizedExitStationId === null
+            || !Number.isFinite(spentOnAutoExit)
+            || spentOnAutoExit < 0) {
+            throw new TypeError("Manual automatic journey purchase contains invalid values.");
+        }
+
+        const refundable = this.#spentOnAutoBoard + this.#spentOnAutoExit;
+        if (this.#money + refundable < spentOnAutoExit) return false;
+
+        this.setMoney(this.#money + refundable - spentOnAutoExit);
+        this.setAutoBoardSelection(null);
+        this.setAutoExitStationId(normalizedExitStationId);
+        this.setSpentOnAutoExit(spentOnAutoExit);
+        return true;
+    }
+
+    rebookAutoExit(autoExitStationId, priceDifference) {
+        const normalizedExitStationId = this.#toStationId(autoExitStationId);
+        if (normalizedExitStationId === null || !Number.isFinite(priceDifference)) {
+            throw new TypeError("Automatic exit rebooking contains invalid values.");
+        }
+
+        const nextSpentOnAutoExit = this.#spentOnAutoExit + priceDifference;
+        if (nextSpentOnAutoExit < 0 || this.#money < priceDifference) return false;
+
+        this.setMoney(this.#money - priceDifference);
+        this.setAutoExitStationId(normalizedExitStationId);
+        this.setSpentOnAutoExit(nextSpentOnAutoExit);
+        return true;
+    }
+
+    returnAutoTravel() {
+        const refundable = this.#spentOnAutoBoard + this.#spentOnAutoExit;
+        if (refundable === 0) return 0;
+
+        this.setMoney(this.#money + refundable);
+        this.setAutoBoardSelection(null);
+        this.setAutoExitStationId(null);
+        return refundable;
     }
     getCollectedDelayReasons() {
         return [...this.#collectedDelayReasons];
@@ -354,6 +464,8 @@ class GameState {
         );
         this.#settings = this.#readSettings();
         this.#money = this.#readMoney();
+        this.#spentOnAutoBoard = this.#readNonNegativeNumber("_spentonautoboard");
+        this.#spentOnAutoExit = this.#readNonNegativeNumber("_spentonautoexit");
         this.#timeTravelled = this.#readTimeTravel();
         this.#timeDilatation = this.#readTimeDilatation();
         this.setDeliveryOrders(
@@ -601,6 +713,11 @@ class GameState {
         catch {
             return [];
         }
+    }
+
+    #readNonNegativeNumber(storageKey) {
+        const stored = Number.parseFloat(localStorage.getItem(storageKey));
+        return Number.isFinite(stored) && stored >= 0 ? stored : 0;
     }
 
     #readMoney() {
