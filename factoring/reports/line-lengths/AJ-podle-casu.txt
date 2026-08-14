@@ -1,0 +1,23 @@
+========================================================================================
+LINKY TYPU AJ — PODLE JÍZDNÍ DOBY
+Počet linek: 4 | Řazení: od nejdelší po nejkratší
+========================================================================================
+   1. AJ 2 — Slovenský Vrabec
+      Dopravce: CSA | ID linky: 2648
+      Trasa: Praha - Terminál → Bratislava - Terminál
+      Délka: 309.98 km | Jízdní doba: 00:27:52
+
+   2. AJ 2 — Slovenský Vrabec
+      Dopravce: CSA | ID linky: 2649
+      Trasa: Bratislava - Terminál → Praha - Terminál
+      Délka: 309.98 km | Jízdní doba: 00:27:52
+
+   3. AJ 1 — Českomoravský Ptáček
+      Dopravce: CSA | ID linky: 2644
+      Trasa: Praha - Terminál → Brno - Tuřany Terminál
+      Délka: 213.81 km | Jízdní doba: 00:21:27
+
+   4. AJ 1 — Českomoravský Ptáček
+      Dopravce: CSA | ID linky: 2645
+      Trasa: Brno - Tuřany Terminál → Praha - Terminál
+      Délka: 213.81 km | Jízdní doba: 00:21:27

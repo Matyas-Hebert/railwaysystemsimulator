@@ -1,7 +1,7 @@
 const schedule = (() => {
-function getAutoTravelStatus() {
+function getAutoTravelStatus(lineID) {
     const autoBoardSelection = gameState.getAutoBoardSelection();
-    const autoExitStationId = gameState.getAutoExitStationId();
+    const autoExitStationId = gameState.getAutoExitStationId(lineID);
     if (autoBoardSelection !== null && autoExitStationId !== null) {
         return "S AUTOMATICKÝM NÁSTUPEM +<br>S AUTOMATICKÝM VÝSTUPEM V "
             + settings.getStationName(timetable.stations[autoExitStationId]);
@@ -20,9 +20,9 @@ function roundSignedPrice(price) {
         : Math.round(price);
 }
 
-function getAutoExitRebooking(line, stationId, currentStationId) {
-    const pricing = journeyPricing.getLineConfig(line);
-    const bookedStationId = gameState.getAutoExitStationId();
+function getAutoExitRebooking(lineID, stationId, currentStationId) {
+    const pricing = journeyPricing.getLineConfig(lineID);
+    const bookedStationId = gameState.getAutoExitStationId(lineID);
     if (bookedStationId === stationId) {
         return { selected: true, priceDifference: 0, label: "VYBRÁNO" };
     }
@@ -35,7 +35,7 @@ function getAutoExitRebooking(line, stationId, currentStationId) {
     }
     else if (bookedStationId !== null) {
         const distanceDifference = journeyPricing.getDistanceDifferenceBetweenStops(
-            line,
+            lineID,
             bookedStationId,
             stationId
         );
@@ -44,7 +44,7 @@ function getAutoExitRebooking(line, stationId, currentStationId) {
     }
     else {
         const distance = journeyPricing.getDistanceBetweenStops(
-            line,
+            lineID,
             currentStationId,
             stationId
         );
@@ -92,7 +92,7 @@ function toggle(clickedrow, stopsdata, conn = null, allowAutoBoard = false){
     let detailOffset = 1;
     if (allowAutoBoard && conn !== null) {
         const line = timetable.lines[conn.lineID];
-        const pricing = journeyPricing.getLineConfig(line);
+        const pricing = journeyPricing.getLineConfig(conn.lineID);
         const normalizedConnection = normalizeAutoBoardConnection(conn);
         const refundable = gameState.getSpentOnAutoBoard() + gameState.getSpentOnAutoExit();
         const returnButton = refundable > 0
@@ -100,7 +100,7 @@ function toggle(clickedrow, stopsdata, conn = null, allowAutoBoard = false){
             : "";
         const statusRow = addRow({
             table: _timetable,
-            c1t: getAutoTravelStatus(),
+            c1t: getAutoTravelStatus(conn.lineID),
             c2t: returnButton,
             firstcolspan: true,
             onlythreecols: true,
@@ -195,7 +195,7 @@ function toggle(clickedrow, stopsdata, conn = null, allowAutoBoard = false){
         if (selectedDestinationExists) {
             const exitStationId = Number(filters.ticketDestinationStatId);
             const journeyLength = journeyPricing.getDistanceBetweenStops(
-                line,
+                conn.lineID,
                 gameState.getCurrentPosition().statID,
                 exitStationId
             );
@@ -492,7 +492,7 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
             if (getoffbutton && currentsection === 0 && visibleStopIndex > 0) {
                 const currentStationId = delay.station
                     ?? gameState.getCurrentPosition().statID;
-                const rebooking = getAutoExitRebooking(line, stop.sid, currentStationId);
+                const rebooking = getAutoExitRebooking(lineID, stop.sid, currentStationId);
                 if (rebooking !== null) {
                     if (rebooking.selected) row.classList.add("auto-exit-selected-row");
 

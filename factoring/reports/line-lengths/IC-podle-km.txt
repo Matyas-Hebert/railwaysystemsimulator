@@ -1,6 +1,6 @@
 ========================================================================================
 LINKY TYPU IC — PODLE VZDÁLENOSTI
-Počet linek: 24 | Řazení: od nejdelší po nejkratší
+Počet linek: 26 | Řazení: od nejdelší po nejkratší
 ========================================================================================
    1. IC 83410 — Moravská Kometa
       Dopravce: pBEX | ID linky: 2625
@@ -52,72 +52,82 @@ Počet linek: 24 | Řazení: od nejdelší po nejkratší
       Trasa: Brno - Hl.N. → Praha - Veleslavín
       Délka: 248.54 km | Jízdní doba: 01:55:34
 
-  11. IC 83415 — Moravský Express
+  11. IC 83411 — Západní Šíp
+      Dopravce: pBEX | ID linky: 2632
+      Trasa: Karlovy Vary - Hl.N. → Praha - Nová Libeň
+      Délka: 239.38 km | Jízdní doba: 02:15:23
+
+  12. IC 83411 — Západní Šíp
+      Dopravce: pBEX | ID linky: 2633
+      Trasa: Praha - Nová Libeň → Karlovy Vary - Hl.N.
+      Délka: 239.38 km | Jízdní doba: 02:15:23
+
+  13. IC 83415 — Moravský Express
       Dopravce: pBEX | ID linky: 2629
       Trasa: Břeclav - Sever → Ostrava - Přívoz
       Délka: 236.24 km | Jízdní doba: 01:59:42
 
-  12. IC 83415 — Moravský Express
+  14. IC 83415 — Moravský Express
       Dopravce: pBEX | ID linky: 2628
       Trasa: Ostrava - Přívoz → Břeclav - Sever
       Délka: 236.24 km | Jízdní doba: 01:59:42
 
-  13. IC 4 — Brouk
+  15. IC 4 — Brouk
       Dopravce: ČD | ID linky: 301
       Trasa: Karlovy Vary - Hl.N. → Liberec - Hl.N.
-      Délka: 186.17 km | Jízdní doba: 01:23:35
+      Délka: 186.17 km | Jízdní doba: 01:17:22
 
-  14. IC 4 — Brouk
+  16. IC 4 — Brouk
       Dopravce: ČD | ID linky: 300
       Trasa: Liberec - Hl.N. → Karlovy Vary - Hl.N.
-      Délka: 186.17 km | Jízdní doba: 01:23:35
+      Délka: 186.17 km | Jízdní doba: 01:17:22
 
-  15. IC 7 — Bobr
+  17. IC 7 — Bobr
       Dopravce: ČD | ID linky: 478
       Trasa: Brno - Hl.N. → České Budějovice - Hl.N.
       Délka: 171.93 km | Jízdní doba: 01:06:05
 
-  16. IC 7 — Bobr
+  18. IC 7 — Bobr
       Dopravce: ČD | ID linky: 479
       Trasa: České Budějovice - Hl.N. → Brno - Hl.N.
       Délka: 171.93 km | Jízdní doba: 01:06:05
 
-  17. IC 8 — Nostra
+  19. IC 8 — Nostra
       Dopravce: ČD | ID linky: 500
       Trasa: Ostrava - Hl.N. → Brno - Hl.N.
       Délka: 159.62 km | Jízdní doba: 01:17:02
 
-  18. IC 8 — Nostra
+  20. IC 8 — Nostra
       Dopravce: ČD | ID linky: 501
       Trasa: Brno - Hl.N. → Ostrava - Hl.N.
       Délka: 159.62 km | Jízdní doba: 01:17:02
 
-  19. IC 3 — Práče
+  21. IC 3 — Práče
       Dopravce: ČD | ID linky: 212
       Trasa: České Budějovice - Čtyři Dvory → Praha - Hl.N.
-      Délka: 150.63 km | Jízdní doba: 01:13:20
+      Délka: 154.83 km | Jízdní doba: 01:14:28
 
-  20. IC 3 — Práče
+  22. IC 3 — Práče
       Dopravce: ČD | ID linky: 213
       Trasa: Praha - Hl.N. → České Budějovice - Čtyři Dvory
-      Délka: 150.63 km | Jízdní doba: 01:13:20
+      Délka: 154.83 km | Jízdní doba: 01:14:28
 
-  21. IC 2 — Moravan
+  23. IC 2 — Moravan
       Dopravce: ČD | ID linky: 141
       Trasa: Olomouc - Hl.N. → Ostrava - Hl.N.
       Délka: 127.46 km | Jízdní doba: 01:01:12
 
-  22. IC 2 — Moravan
+  24. IC 2 — Moravan
       Dopravce: ČD | ID linky: 140
       Trasa: Ostrava - Hl.N. → Olomouc - Hl.N.
       Délka: 127.46 km | Jízdní doba: 01:01:12
 
-  23. IC 10 — Pralinka
+  25. IC 10 — Pralinka
       Dopravce: ČD | ID linky: 642
       Trasa: Praha - Hl.N. → Liberec - Hl.N.
       Délka: 121.81 km | Jízdní doba: 00:52:25
 
-  24. IC 10 — Pralinka
+  26. IC 10 — Pralinka
       Dopravce: ČD | ID linky: 643
       Trasa: Liberec - Hl.N. → Praha - Hl.N.
       Délka: 121.81 km | Jízdní doba: 00:52:25

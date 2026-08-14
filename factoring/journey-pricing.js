@@ -1,7 +1,9 @@
 const journeyPricing = (() => {
-    function getLineConfig(line) {
-        if (!line || !Number.isInteger(line.type)) {
-            throw new TypeError("A valid timetable line is required.");
+    function getLineConfig(lineID) {
+        const normalizedLineID = Number(lineID);
+        const line = timetable.lines[normalizedLineID];
+        if (!Number.isInteger(normalizedLineID) || !line) {
+            throw new TypeError("A valid timetable lineID is required.");
         }
 
         const typeCode = lineTypeConfig[line.type]?.code;
@@ -18,7 +20,8 @@ const journeyPricing = (() => {
         };
     }
 
-    function getDistanceBetweenStops(line, startStationId, endStationId) {
+    function getDistanceBetweenStops(lineID, startStationId, endStationId) {
+        const line = timetable.lines[Number(lineID)];
         if (!line || !Array.isArray(line.stops)) return null;
 
         const startIndex = line.stops.findIndex(stop => stop.sid === Number(startStationId));
@@ -37,7 +40,8 @@ const journeyPricing = (() => {
         return distanceToDestination - distanceToCurrentStation;
     }
 
-    function getDistanceDifferenceBetweenStops(line, fromStationId, toStationId) {
+    function getDistanceDifferenceBetweenStops(lineID, fromStationId, toStationId) {
+        const line = timetable.lines[Number(lineID)];
         if (!line || !Array.isArray(line.stops)) return null;
 
         const fromIndex = line.stops.findIndex(stop => stop.sid === Number(fromStationId));

@@ -8,11 +8,13 @@ const autoExit = (() => {
     }
 
     function check() {
-        const stationId = gameState.getAutoExitStationId();
         const position = gameState.getCurrentPosition();
-        if (stationId === null
-            || position === null
-            || position.transporttype !== TRANSPORT_TYPE.TRAIN) {
+        if (position === null || position.transporttype !== TRANSPORT_TYPE.TRAIN) {
+            return false;
+        }
+
+        const stationId = gameState.getAutoExitStationId(position.lineID);
+        if (stationId === null) {
             return false;
         }
 

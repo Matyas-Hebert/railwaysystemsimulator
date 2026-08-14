@@ -8,7 +8,9 @@ const TRAIN_TYPES = Object.freeze({
     SH: 6,
     IC: 7,
     EC: 8,
-    NJ: 9
+    NJ: 9,
+    AR: 10,
+    AJ: 11
 });
 
 const { PS, PX, OS, OX, SP, R, SH, IC, EC, NJ } = TRAIN_TYPES;

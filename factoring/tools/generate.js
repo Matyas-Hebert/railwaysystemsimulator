@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const { generateDistrictBorders } = require('./generate-district-borders');
 const { assignPsSystemIDs, generatePsSystems } = require('./generate-ps-systems');
-const { PS, PX, OS, OX, SP, R, SH, IC, EC, NJ } = require('../config/line-type-constants');
+const { PS, PX, OS, OX, SP, R, SH, IC, EC, NJ, AR, AJ } = require('../config/line-type-constants');
 
 let lineTypeConfig;
 let journeyPricingConfig;
@@ -41,14 +41,17 @@ function getStartTime() {
     return 13200 + Math.round(Math.random()*6600);
 }
 
-function getTrips(startTime, interval){
+function getTrips(startTime, interval, traintype){
     let randomEnd = 75600 + Math.floor(Math.random() * (86400-75600));
     if (interval > 40*60){
         randomEnd += Math.floor(Math.random() * (12600));
     }
+    if (traintype == AR || traintype == AJ) {
+        randomEnd = 86400;
+    }
 
     const availableTime = randomEnd - startTime;
-    return trips = Math.floor(availableTime / interval);
+    return trips = Math.ceil(availableTime / interval);
 }
 
 function getStopTimeForType(typeId, uvrat=false){
@@ -76,11 +79,12 @@ function getTimeFromDistanceAndType(distance, typeID){
     const typeConfig = lineTypeConfig[typeID];
     const maxspeed = typeConfig.maxSpeedKmh;
     const acc = typeConfig.accelerationKmhPerHourSquared;
+    const travelTimeOverhead = typeConfig.travelTimeOverheadSeconds ?? 0;
     const criticaldistance = maxspeed*maxspeed/acc;
     if (distance <= criticaldistance){
-        return (2*Math.sqrt(distance/acc))*3600; // in seconds
+        return (2*Math.sqrt(distance/acc))*3600 + travelTimeOverhead; // in seconds
     }
-    return (distance/maxspeed + maxspeed/acc)*3600; // in seconds
+    return (distance/maxspeed + maxspeed/acc)*3600 + travelTimeOverhead; // in seconds
 }
 function getUvratStopIndices(line, map, stationIDtonewID){
     const overrides = line.waypointOverrides || [];
@@ -185,6 +189,8 @@ function selectLineType(writtenType, line, metrics, uvrat){
         return icTime <= ecTime ? IC : EC;
     }
     if (type === "NJ") return NJ;
+    if (type === "AR") return AR;
+    if (type === "AJ") return AJ;
 
     throw new Error("Unknown train type " + writtenType + " on line " + line.name);
 }
@@ -299,7 +305,7 @@ async function generateTimeTables() {
         lines[i+1]["id"] = i+1;
         lines[i]["starttime"] = starttime;
         lines[i+1]["starttime"] = starttime;
-        let trips = getTrips(starttime, lineinfo.interval);
+        let trips = getTrips(starttime, lineinfo.interval, lineinfo.type);
         if (trips <= 2){
             console.log("low trips", trips, "for", line.name, lineinfo);
         }

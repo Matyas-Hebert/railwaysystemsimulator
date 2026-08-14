@@ -55,11 +55,24 @@
       "price_per_km": 1,
       "auto_board_price": 10,
       "auto_leave_price": 10
+    },
+    {
+      "must_auto_ride": true,
+      "price_per_km": 4,
+      "auto_board_price": 80,
+      "auto_leave_price": 80
+    },
+    {
+      "must_auto_ride": true,
+      "price_per_km": 6,
+      "auto_board_price": 150,
+      "auto_leave_price": 150
     }
   ],
   "companies": {
     "ZSSK": {},
     "CRPD": {},
+    "CSA": {},
     "ČD": {},
     "DPB": {},
     "DPKV": {},

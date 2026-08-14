@@ -138,8 +138,17 @@ class GameState {
         localStorage.setItem("_pinnedorders", JSON.stringify(this.#pinnedDeliveryIds));
     }
 
-    getAutoExitStationId() {
-        return this.#autoExitStationId;
+    getAutoExitStationId(lineID) {
+        const normalizedLineID = Number(lineID);
+        const line = timetable.lines[normalizedLineID];
+        if (!Number.isInteger(normalizedLineID) || !line) {
+            throw new TypeError("A valid timetable lineID is required.");
+        }
+        if (this.#autoExitStationId === null) return null;
+
+        return line.stops.some(stop => stop.sid === this.#autoExitStationId)
+            ? this.#autoExitStationId
+            : null;
     }
 
     getSpentOnAutoBoard() {

@@ -136,8 +136,8 @@ function isAutoBoardSelection(conn) {
 }
 
 
-function isAutoExitSelection(stationId) {
-    return gameState.getAutoExitStationId() === Number(stationId);
+function isAutoExitSelection(lineID, stationId) {
+    return gameState.getAutoExitStationId(lineID) === Number(stationId);
 }
 
 
@@ -159,11 +159,11 @@ function addRow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibl
         if (includegetonbutton){
             c3 = row.insertCell(2);
             const line = timetable.lines[conn.lineID];
-            const pricing = journeyPricing.getLineConfig(line);
+            const pricing = journeyPricing.getLineConfig(conn.lineID);
             if (pricing.must_auto_ride) {
                 const terminalStationId = line.stops[line.stops.length - 1].sid;
                 const journeyLength = journeyPricing.getDistanceBetweenStops(
-                    line,
+                    conn.lineID,
                     gameState.getCurrentPosition().statID,
                     terminalStationId
                 );
@@ -176,17 +176,12 @@ function addRow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibl
                         terminalStationId,
                         mandatoryJourneyPrice
                     );
-                    console.log(gameState.getAutoExitStationId());
                     if (!purchased) {
                         return;
                     }
-                    console.log(gameState.getAutoExitStationId());
                     boardTrain(conn.lineID, conn.tripID, conn.day);
-                    console.log(gameState.getAutoExitStationId());
                     settings.render();
-                    console.log(gameState.getAutoExitStationId());
                     renderCurrentSection();
-                    console.log(gameState.getAutoExitStationId());
                 };
             }
             else {

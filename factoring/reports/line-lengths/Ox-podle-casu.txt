@@ -4,13 +4,13 @@ Počet linek: 12 | Řazení: od nejdelší po nejkratší
 ========================================================================================
    1. Ox 84215 — Kriton
       Dopravce: ČD | ID linky: 1258
-      Trasa: Varnsdorf - Hl.N. → Roudnice nad Labem - Dobříň
-      Délka: 67.54 km | Jízdní doba: 01:01:48
+      Trasa: Varnsdorf - Hl.N. → Roudnice nad Labem - Kozlovice
+      Délka: 66.68 km | Jízdní doba: 01:01:22
 
    2. Ox 84215 — Kriton
       Dopravce: ČD | ID linky: 1259
-      Trasa: Roudnice nad Labem - Dobříň → Varnsdorf - Hl.N.
-      Délka: 67.54 km | Jízdní doba: 01:01:48
+      Trasa: Roudnice nad Labem - Kozlovice → Varnsdorf - Hl.N.
+      Délka: 66.68 km | Jízdní doba: 01:01:22
 
    3. Ox 82105
       Dopravce: ZSSK | ID linky: 984

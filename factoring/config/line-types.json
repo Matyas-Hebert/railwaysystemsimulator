@@ -218,5 +218,51 @@
       "recoveryMultiplier": 3,
       "respectCurrentDelayMinimum": false
     }
+  },
+  {
+    "id": 10,
+    "code": "AR",
+    "stopTimeSeconds": 1800,
+    "uvratStopTimeSeconds": 900,
+    "stationImportance": 8,
+    "workingWifiProbability": 0.2,
+    "startingDelayMeanSeconds": 700,
+    "cancellationProbabilityPerStop": 0,
+    "maxSpeedKmh": 550,
+    "accelerationKmhPerHourSquared": 18000,
+    "delayModel": {
+      "randomOffset": 0,
+      "randomScale": 0,
+      "logarithmDivisor": 1,
+      "baseOffset": 0,
+      "minimumMultiplier": 0,
+      "maximumMultiplier": 0,
+      "recoveryMultiplier": 1,
+      "respectCurrentDelayMinimum": false
+    },
+    "travelTimeOverheadSeconds": 900
+  },
+  {
+    "id": 11,
+    "code": "AJ",
+    "stopTimeSeconds": 1800,
+    "uvratStopTimeSeconds": 900,
+    "stationImportance": 8,
+    "workingWifiProbability": 0.2,
+    "startingDelayMeanSeconds": 1200,
+    "cancellationProbabilityPerStop": 0,
+    "maxSpeedKmh": 900,
+    "accelerationKmhPerHourSquared": 15000,
+    "delayModel": {
+      "randomOffset": 0,
+      "randomScale": 0,
+      "logarithmDivisor": 1,
+      "baseOffset": 0,
+      "minimumMultiplier": 0,
+      "maximumMultiplier": 0,
+      "recoveryMultiplier": 1,
+      "respectCurrentDelayMinimum": false
+    },
+    "travelTimeOverheadSeconds": 1200
   }
 ]
