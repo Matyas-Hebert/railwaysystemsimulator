@@ -1,5 +1,5 @@
 const settings = (() => {
-    const APP_VERSION = "1.3.6";
+    const APP_VERSION = "1.3.6.1";
 
     function render() {
         const developerButton = document.querySelector("#_developer");
