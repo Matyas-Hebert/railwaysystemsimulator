@@ -392,6 +392,7 @@ function selectDestination(id){
 }
 
 function selectTicketDestination(id){
+    isOpenTicket = false;
     filters.ticketDestinationStatId = id;
     renderCurrentSection(true);
 }

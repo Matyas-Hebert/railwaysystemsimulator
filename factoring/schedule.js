@@ -142,8 +142,7 @@ function toggle(clickedrow, stopsdata, conn = null, allowAutoBoard = false){
         destinationSelect.value = selectedDestinationExists
             ? String(filters.ticketDestinationStatId)
             : "-1";
-        destinationSelect.addEventListener("click", event => {
-            event.stopPropagation();
+        destinationSelect.addEventListener("focus", () => {
             isOpenTicket = true;
         });
         destinationSelect.addEventListener("blur", () => {
