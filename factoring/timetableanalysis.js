@@ -180,7 +180,6 @@ function addRow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibl
                         return;
                     }
                     boardTrain(conn.lineID, conn.tripID, conn.day);
-                    settings.render();
                     renderCurrentSection();
                 };
             }

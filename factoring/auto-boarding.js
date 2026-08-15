@@ -43,7 +43,6 @@ const autoBoarding = (() => {
         );
         if (!shouldBoard(currentDelay.status)) return false;
 
-        gameState.setAutoBoardSelection(null);
         boardTrain(selection.lineID, selection.tripID, selection.day);
 
         if (shouldBeMarkedAsVisited(currentDelay.status)) {

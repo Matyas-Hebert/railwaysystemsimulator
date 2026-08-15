@@ -135,7 +135,6 @@ const foodora = (() => {
                     gameState.setMoney(gameState.getMoney() + order.reward);
                     removeOrder(order.id);
                     addOrders(1);
-                    settings.render();
                     render();
                 };
             }
@@ -145,7 +144,6 @@ const foodora = (() => {
                 gameState.setMoney(gameState.getMoney() - CANCELLATION_COST);
                 removeOrder(order.id);
                 addOrders(1);
-                settings.render();
                 render();
             };
             card.querySelector(".route-start").onclick = () => showRoute(order.start.id);
@@ -164,7 +162,6 @@ const foodora = (() => {
             if (gameState.getMoney() < cost) return;
             gameState.setMoney(gameState.getMoney() - cost);
             addOrders(1);
-            settings.render();
             render();
         };
         container.appendChild(slot);

@@ -113,7 +113,6 @@ function toggle(clickedrow, stopsdata, conn = null, allowAutoBoard = false){
             returnButtonElement.onclick = event => {
                 event.stopPropagation();
                 gameState.returnAutoTravel();
-                settings.render();
                 renderCurrentSection(true);
             };
         }
@@ -184,7 +183,6 @@ function toggle(clickedrow, stopsdata, conn = null, allowAutoBoard = false){
                     purchaseButton.innerHTML = "NEDOSTATEK<br>PENĚZ";
                     return;
                 }
-                settings.render();
                 renderCurrentSection(true);
             };
             purchaseRow.parentNode.insertBefore(purchaseRow, detailrow);
@@ -229,7 +227,6 @@ function toggle(clickedrow, stopsdata, conn = null, allowAutoBoard = false){
                         journeyButton.innerHTML = "NEDOSTATEK<br>PENĚZ";
                         return;
                     }
-                    settings.render();
                     renderCurrentSection(true);
                 };
                 journeyRow.parentNode.insertBefore(journeyRow, detailrow);
@@ -520,7 +517,6 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
                                     = "NEDOSTATEK";
                                 return;
                             }
-                            settings.render();
                             renderCurrentSection(true);
                         };
                     }

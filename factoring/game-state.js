@@ -45,14 +45,37 @@ class GameState {
         return this.#currentPosition === null ? null : structuredClone(this.#currentPosition);
     }
 
+    compareTrains(train1, train2){
+        if (train1?.transporttype !== TRANSPORT_TYPE.TRAIN || train2 === null){
+            return false;
+        }
+        if (train1.day != train2.day){
+            return false;
+        }
+        if (train1.lineID != train2.lineID){
+            return false;
+        }
+        if (train1.tripID != train2.tripID){
+            return false;
+        }
+        return true;
+    }
+
     setCurrentPosition(position) {
         const nextPosition = position === null ? null : structuredClone(position);
         if (!this.#isLoading
             && this.#hasPlayerPositionChanged(this.#currentPosition, nextPosition)) {
-            this.setAutoBoardSelection(null);
+            const plannedAutoBoardTrain = this.getAutoBoardSelection();
+            if (plannedAutoBoardTrain !== null
+                && !this.compareTrains(nextPosition, plannedAutoBoardTrain)) {
+                this.returnAutoTravel();
+            }
+            else if (plannedAutoBoardTrain !== null) {
+                this.setAutoBoardSelection(null);
+            }
+
             const isBoardingTrain = nextPosition?.transporttype === TRANSPORT_TYPE.TRAIN;
             if (!isBoardingTrain) {
-                console.log(nextPosition?.transporttype, this.#currentPosition?.transporttype);
                 this.setAutoExitStationId(null);
             }
         }
@@ -110,6 +133,7 @@ class GameState {
         }
         this.#money = money;
         localStorage.setItem("_money", String(this.#money));
+        settings.renderMoney();
     }
 
     getDeliveryOrders() {

@@ -1,5 +1,11 @@
 const settings = (() => {
-    const APP_VERSION = "1.3.6.1";
+    const APP_VERSION = "1.3.6.2";
+
+    function renderMoney() {
+        const moneyDisplay = document.querySelector("#_money");
+        if (moneyDisplay === null) return;
+        moneyDisplay.innerText = String(Math.floor(gameState.getMoney())) + ",-";
+    }
 
     function render() {
         const developerButton = document.querySelector("#_developer");
@@ -12,7 +18,6 @@ const settings = (() => {
         const moneyRow = document.querySelector("#_moneyrow");
         const moneyInput = document.querySelector("#_moneyamount");
         const moneyButton = document.querySelector("#_moneybtn");
-        const moneyDisplay = document.querySelector("#_money");
         const versionDisplay = document.querySelector("#_appversion");
         const developerEnabled = gameState.getSettings().developer === true;
 
@@ -28,7 +33,7 @@ const settings = (() => {
         moneyRow.style.display = developerEnabled ? "flex" : "none";
         moneyInput.disabled = !developerEnabled;
         moneyButton.disabled = !developerEnabled;
-        moneyDisplay.innerText = String(Math.floor(gameState.getMoney())) + ",-";
+        renderMoney();
         versionDisplay.innerText = "Verze " + APP_VERSION;
     }
 
@@ -79,7 +84,6 @@ const settings = (() => {
         if (Number.isNaN(amount)) return;
         gameState.setMoney(gameState.getMoney() + amount);
         input.value = "";
-        render();
     }
 
     function teleportToStation() {
@@ -135,6 +139,7 @@ const settings = (() => {
 
     return {
         render,
+        renderMoney,
         toggleDeveloper,
         toggleAutoUpdates,
         areAutoUpdatesPaused,
