@@ -574,6 +574,10 @@ async function printTimetable(stationID, includegetonbutton = true, table=_timet
     }
     _destheader.innerText = departures ? "Spoje do:" : "Spoje z:";
 
+    if (currentsection === 0) {
+        schedule.addAutoTravelStatusRow(table);
+    }
+
     addRow({
         "table": table,
         "c1t": "Vlak",

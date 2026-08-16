@@ -13,7 +13,56 @@ function getAutoTravelStatus(lineID) {
     }
     return "BEZ AUTOMATICKÉHO NÁSTUPU";
 }
+function addAutoTravelStatusRow(table) {
+    const autoBoardSelection = gameState.getAutoBoardSelection();
+    if (autoBoardSelection === null) return null;
 
+    const line = timetable.lines[autoBoardSelection.lineID];
+    const autoExitStationId = gameState.getAutoExitStationId(autoBoardSelection.lineID);
+    const refundable = Math.round(
+        gameState.getSpentOnAutoBoard() + gameState.getSpentOnAutoExit()
+    );
+    const ticketAction = autoExitStationId === null
+        ? "NÁSTUP"
+        : "CESTA DO<br>" + settings.getStationNameMarkup(
+            timetable.stations[autoExitStationId]
+        );
+
+    const headerRow = addRow({
+        table,
+        c1t: "JÍZDENKY",
+        firstcolspan: true,
+        onlythreecols: true,
+        includered: false
+    });
+    headerRow.cells[0].colSpan = 3;
+    headerRow.deleteCell(1);
+
+    const ticketRow = addRow({
+        table,
+        c1t: getTrainName(line),
+        c2t: ticketAction,
+        c3t: `<button class="ticket-purchase-button ticket-return-button">VRÁTIT ${refundable},-</button>`,
+        subtexttrain: line.nickname,
+        onlythreecols: true,
+        includered: false
+    });
+
+    [headerRow, ticketRow].forEach(row => {
+        row.className = "auto-travel-status-row";
+        Array.from(row.cells).forEach(cell => {
+            cell.style.backgroundColor = "var(--color-warning)";
+            cell.style.color = "var(--color-text-dark)";
+        });
+    });
+
+    ticketRow.querySelector(".ticket-return-button").onclick = event => {
+        event.stopPropagation();
+        gameState.returnAutoTravel();
+        renderCurrentSection(true);
+    };
+    return ticketRow;
+}
 function roundSignedPrice(price) {
     return price < 0
         ? -Math.round(Math.abs(price))
@@ -94,31 +143,6 @@ function toggle(clickedrow, stopsdata, conn = null, allowAutoBoard = false){
         const line = timetable.lines[conn.lineID];
         const pricing = journeyPricing.getLineConfig(conn.lineID);
         const normalizedConnection = normalizeAutoBoardConnection(conn);
-        const refundable = gameState.getSpentOnAutoBoard() + gameState.getSpentOnAutoExit();
-        const returnButton = refundable > 0
-            ? `<button class="ticket-purchase-button ticket-return-button">VRÁTIT</button>`
-            : "";
-        const statusRow = addRow({
-            table: _timetable,
-            c1t: getAutoTravelStatus(conn.lineID),
-            c2t: returnButton,
-            firstcolspan: true,
-            onlythreecols: true,
-            includered: false
-        });
-        statusRow.className = "detail auto-travel-status-row";
-        statusRow.cells[0].classList.add("ticket-purchase-label");
-        const returnButtonElement = statusRow.querySelector(".ticket-return-button");
-        if (returnButtonElement !== null) {
-            returnButtonElement.onclick = event => {
-                event.stopPropagation();
-                gameState.returnAutoTravel();
-                renderCurrentSection(true);
-            };
-        }
-        statusRow.parentNode.insertBefore(statusRow, detailrow);
-        detailOffset++;
-
         const destinationSelect = document.createElement("select");
         destinationSelect.className = "ticket-destination-select";
         destinationSelect.setAttribute("aria-label", "Cílová stanice jízdenky");
@@ -548,5 +572,5 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
     });
 }
 
-    return { toggle, print, updateTrackProgress: updateTrackProgress };
+    return { toggle, print, addAutoTravelStatusRow, updateTrackProgress: updateTrackProgress };
 })();

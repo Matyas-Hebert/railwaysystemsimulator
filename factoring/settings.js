@@ -1,5 +1,5 @@
 const settings = (() => {
-    const APP_VERSION = "1.3.6.2";
+    const APP_VERSION = "1.3.6.3";
 
     function renderMoney() {
         const moneyDisplay = document.querySelector("#_money");

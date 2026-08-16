@@ -77,10 +77,10 @@
 }
 
 .collection-line-btn.visited {
-    background-color: var(--color-success-muted);
+    background-color: var(--color-success-darkened);
 }
 .collection-station-btn.visited {
-    background-color: var(--color-success-muted);
+    background-color: var(--color-success-darkened);
 }
 
 .collection-district-btn:hover,

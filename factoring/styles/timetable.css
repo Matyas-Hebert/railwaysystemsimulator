@@ -131,6 +131,16 @@
 }
 
 
+.auto-travel-status-row {
+    background-color: var(--color-primary-interactive);
+    border: var(--color-text-inverse) solid 5px;
+    box-sizing: border-box;
+}
+
+.auto-travel-status-row td {
+    background-color: var(--color-primary-interactive);
+}
+
 .ticket-purchase-label {
     color: var(--color-text-inverse);
     font-weight: 700;

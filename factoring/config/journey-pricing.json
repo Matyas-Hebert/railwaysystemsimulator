@@ -3,70 +3,83 @@
     "must_auto_ride": false,
     "price_per_km": 1.5,
     "auto_board_price": 10,
-    "auto_leave_price": 10
+    "auto_leave_price": 10,
+    "bike_price": 40
   },
   "train_types": [
     {
       "price_per_km": 1,
       "auto_board_price": 10,
-      "auto_leave_price": 10
+      "auto_leave_price": 10,
+      "bike_price": 10
     },
     {
       "price_per_km": 1,
       "auto_board_price": 10,
-      "auto_leave_price": 10
+      "auto_leave_price": 10,
+      "bike_price": 10
     },
     {
       "price_per_km": 1,
       "auto_board_price": 10,
-      "auto_leave_price": 10
+      "auto_leave_price": 10,
+      "bike_price": 20
     },
     {
       "price_per_km": 1,
       "auto_board_price": 10,
-      "auto_leave_price": 10
+      "auto_leave_price": 10,
+      "bike_price": 20
     },
     {
       "price_per_km": 1,
       "auto_board_price": 10,
-      "auto_leave_price": 10
+      "auto_leave_price": 10,
+      "bike_price": 30
     },
     {
       "price_per_km": 1,
       "auto_board_price": 10,
-      "auto_leave_price": 10
+      "auto_leave_price": 10,
+      "bike_price": 40
     },
     {
       "price_per_km": 1,
       "auto_board_price": 10,
-      "auto_leave_price": 10
+      "auto_leave_price": 10,
+      "bike_price": 40
     },
     {
       "price_per_km": 1,
       "auto_board_price": 10,
-      "auto_leave_price": 10
+      "auto_leave_price": 10,
+      "bike_price": 60
     },
     {
       "price_per_km": 1,
       "auto_board_price": 10,
-      "auto_leave_price": 10
+      "auto_leave_price": 10,
+      "bike_price": 60
     },
     {
       "price_per_km": 1,
       "auto_board_price": 10,
-      "auto_leave_price": 10
+      "auto_leave_price": 10,
+      "bike_price": 80
     },
     {
       "must_auto_ride": true,
       "price_per_km": 4,
       "auto_board_price": 80,
-      "auto_leave_price": 80
+      "auto_leave_price": 80,
+      "bike_price": 250
     },
     {
       "must_auto_ride": true,
       "price_per_km": 6,
       "auto_board_price": 150,
-      "auto_leave_price": 150
+      "auto_leave_price": 150,
+      "bike_price": 300
     }
   ],
   "companies": {
