@@ -2,6 +2,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const { generateDistrictBorders } = require('./generate-district-borders');
 const { assignPsSystemIDs, generatePsSystems } = require('./generate-ps-systems');
+const { assignStationImportance } = require('./generate-station-importance');
 const { PS, PX, OS, OX, SP, R, SH, IC, EC, NJ, AR, AJ } = require('../config/line-type-constants');
 
 let lineTypeConfig;
@@ -195,6 +196,134 @@ function selectLineType(writtenType, line, metrics, uvrat){
     throw new Error("Unknown train type " + writtenType + " on line " + line.name);
 }
 
+function getStationLineIDs(station) {
+    return new Set([
+        ...station.arrivals,
+        ...station.departures
+    ]);
+}
+
+function getAdjacentStationIDs(station, lines) {
+    const adjacentStationIDs = new Set();
+
+    getStationLineIDs(station).forEach(lineID => {
+        const stops = lines[lineID]?.stops;
+        if (!Array.isArray(stops)) return;
+
+        stops.forEach((stop, stopIndex) => {
+            if (stop.sid !== station.id) return;
+
+            if (stopIndex > 0) {
+                adjacentStationIDs.add(stops[stopIndex - 1].sid);
+            }
+            if (stopIndex < stops.length - 1) {
+                adjacentStationIDs.add(stops[stopIndex + 1].sid);
+            }
+        });
+    });
+
+    return adjacentStationIDs;
+}
+
+function isTransfer(station, stations, lines) {
+    const stationLineIDs = getStationLineIDs(station);
+    if (stationLineIDs.size <= 2) return false;
+
+    const adjacentStationIDs = getAdjacentStationIDs(station, lines);
+    for (const adjacentStationID of adjacentStationIDs) {
+        const adjacentStation = stations[adjacentStationID];
+        if (!adjacentStation) continue;
+
+        const adjacentLineIDs = getStationLineIDs(adjacentStation);
+        const sharedLineCount = [...adjacentLineIDs]
+            .filter(lineID => stationLineIDs.has(lineID))
+            .length;
+
+        if (sharedLineCount < stationLineIDs.size) return true;
+    }
+
+    return false;
+}
+
+function getPossibleRoutes(line, stations) {
+    const lastStopIndex = line.stops.length - 1;
+    const fullRoute = [[0, lastStopIndex]];
+    const typeConfig = lineTypeConfig[line.type];
+
+    const distanceFromStart = [0];
+    for (let stopIndex = 1; stopIndex <= lastStopIndex; stopIndex++) {
+        distanceFromStart[stopIndex] = distanceFromStart[stopIndex - 1]
+            + line.stops[stopIndex].dist;
+    }
+
+    if (!typeConfig.canBeShortened
+        || distanceFromStart[lastStopIndex] < typeConfig.minimalLength) {
+        return fullRoute;
+    }
+
+    const endpointIndices = line.stops
+        .map((stop, stopIndex) => ({ stop, stopIndex }))
+        .filter(({ stop, stopIndex }) => stopIndex === 0
+            || stopIndex === lastStopIndex
+            || stations[stop.sid].isTransfer)
+        .map(({ stopIndex }) => stopIndex);
+
+    const possibleRoutes = [];
+    for (let start = 0; start < endpointIndices.length - 1; start++) {
+        for (let end = start + 1; end < endpointIndices.length; end++) {
+            const startIndex = endpointIndices[start];
+            const endIndex = endpointIndices[end];
+            const routeLength = distanceFromStart[endIndex] - distanceFromStart[startIndex];
+            if (routeLength >= typeConfig.minimalLength) {
+                possibleRoutes.push([startIndex, endIndex]);
+            }
+        }
+    }
+
+    return possibleRoutes;
+}
+
+function generateRoutesForTrips(timetable) {
+    timetable.lines.forEach(line => {
+        const lineStationIDs = line.stops.map(stop => stop.sid);
+        line.routes = [];
+
+        if (line.possibleRoutes.length === 0) return;
+
+        const routeImportances = line.possibleRoutes.map(route => {
+            let importance = 0;
+            for (let stopIndex = route[0]; stopIndex <= route[1]; stopIndex++) {
+                importance += timetable.stations[lineStationIDs[stopIndex]].importance;
+            }
+            return importance*Math.pow(route[1]-route[0],2);
+        });
+        const totalImportance = routeImportances.reduce(
+            (total, importance) => total + importance,
+            0
+        );
+
+        for (let trip = 0; trip < line.trips; trip++) {
+            let selectedRoute = 0;
+            if (line.possibleRoutes.length > 1) {
+                if (totalImportance > 0) {
+                    let selection = Math.random() * totalImportance;
+                    for (let routeIndex = 0; routeIndex < routeImportances.length; routeIndex++) {
+                        selection -= routeImportances[routeIndex];
+                        if (selection < 0) {
+                            selectedRoute = routeIndex;
+                            break;
+                        }
+                    }
+                }
+                else {
+                    selectedRoute = Math.floor(Math.random() * line.possibleRoutes.length);
+                }
+            }
+            line.routes.push(selectedRoute);
+        }
+    });
+}
+
 async function generateTimeTables() {
     const lineTypeConfigPath = path.join(__dirname, "../config/line-types.json");
     const journeyPricingConfigPath = path.join(__dirname, "../config/journey-pricing.json");
@@ -376,7 +505,17 @@ async function generateTimeTables() {
         i+=2;
     });
 
+    stations.forEach(station => {
+        station.isTransfer = isTransfer(station, stations, lines);
+    });
+    lines.forEach(line => {
+        line.possibleRoutes = getPossibleRoutes(line, stations);
+    });
+
     let timetable = {"lines": lines, "stations": stations};
+    assignStationImportance(timetable);
+
+    generateRoutesForTrips(timetable);
     const psSystems = generatePsSystems(timetable);
     assignPsSystemIDs(timetable, psSystems);
 

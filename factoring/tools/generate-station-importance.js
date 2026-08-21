@@ -110,12 +110,20 @@ function createReport(timetable, allImportance, importanceWithoutPsOs) {
     return [...header, ...rows, ""].join("\n");
 }
 
-function generateReport() {
-    const timetable = loadTimetable();
+function assignStationImportance(timetable) {
     validateTimetable(timetable);
     const allImportance = spreadImportanceScores(
         calculateStationImportance(timetable, TRAIN_TYPE_IMPORTANCE)
     );
+    timetable.stations.forEach((station, stationID) => {
+        station.importance = allImportance[stationID];
+    });
+    return allImportance;
+}
+
+function generateReport() {
+    const timetable = loadTimetable();
+    const allImportance = assignStationImportance(timetable);
     const importanceWithoutPsOs = spreadImportanceScores(
         calculateStationImportance(timetable, IMPORTANCE_WITHOUT_PS_OS)
     );
@@ -124,4 +132,8 @@ function generateReport() {
     console.log(`Written ${OUTPUT_PATH}`);
 }
 
-generateReport();
+module.exports = { assignStationImportance, generateReport };
+
+if (require.main === module) {
+    generateReport();
+}

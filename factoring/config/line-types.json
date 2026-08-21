@@ -19,7 +19,9 @@
       "maximumMultiplier": 2,
       "recoveryMultiplier": 1,
       "respectCurrentDelayMinimum": true
-    }
+    },
+    "minimalLength": 10,
+    "canBeShortened": true
   },
   {
     "id": 1,
@@ -41,7 +43,9 @@
       "maximumMultiplier": 2,
       "recoveryMultiplier": 1,
       "respectCurrentDelayMinimum": true
-    }
+    },
+    "minimalLength": 15,
+    "canBeShortened": true
   },
   {
     "id": 2,
@@ -63,7 +67,9 @@
       "maximumMultiplier": 2,
       "recoveryMultiplier": 4,
       "respectCurrentDelayMinimum": false
-    }
+    },
+    "minimalLength": 30,
+    "canBeShortened": true
   },
   {
     "id": 3,
@@ -85,7 +91,9 @@
       "maximumMultiplier": 2,
       "recoveryMultiplier": 4,
       "respectCurrentDelayMinimum": false
-    }
+    },
+    "minimalLength": 30,
+    "canBeShortened": true
   },
   {
     "id": 4,
@@ -107,7 +115,9 @@
       "maximumMultiplier": 2,
       "recoveryMultiplier": 3,
       "respectCurrentDelayMinimum": false
-    }
+    },
+    "minimalLength": 50,
+    "canBeShortened": true
   },
   {
     "id": 5,
@@ -129,7 +139,9 @@
       "maximumMultiplier": 2,
       "recoveryMultiplier": 3,
       "respectCurrentDelayMinimum": false
-    }
+    },
+    "minimalLength": 70,
+    "canBeShortened": true
   },
   {
     "id": 6,
@@ -151,7 +163,9 @@
       "maximumMultiplier": 2,
       "recoveryMultiplier": 1,
       "respectCurrentDelayMinimum": false
-    }
+    },
+    "minimalLength": 0,
+    "canBeShortened": false
   },
   {
     "id": 7,
@@ -173,7 +187,9 @@
       "maximumMultiplier": 2,
       "recoveryMultiplier": 3,
       "respectCurrentDelayMinimum": false
-    }
+    },
+    "minimalLength": 120,
+    "canBeShortened": true
   },
   {
     "id": 8,
@@ -195,7 +211,9 @@
       "maximumMultiplier": 2,
       "recoveryMultiplier": 3,
       "respectCurrentDelayMinimum": false
-    }
+    },
+    "minimalLength": 150,
+    "canBeShortened": true
   },
   {
     "id": 9,
@@ -217,7 +235,9 @@
       "maximumMultiplier": 2,
       "recoveryMultiplier": 3,
       "respectCurrentDelayMinimum": false
-    }
+    },
+    "minimalLength": 0,
+    "canBeShortened": false
   },
   {
     "id": 10,
@@ -240,7 +260,9 @@
       "recoveryMultiplier": 1,
       "respectCurrentDelayMinimum": false
     },
-    "travelTimeOverheadSeconds": 900
+    "travelTimeOverheadSeconds": 900,
+    "minimalLength": 0,
+    "canBeShortened": false
   },
   {
     "id": 11,
@@ -263,6 +285,8 @@
       "recoveryMultiplier": 1,
       "respectCurrentDelayMinimum": false
     },
-    "travelTimeOverheadSeconds": 1200
+    "travelTimeOverheadSeconds": 1200,
+    "minimalLength": 0,
+    "canBeShortened": false
   }
 ]
