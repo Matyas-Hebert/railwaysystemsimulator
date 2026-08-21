@@ -19,7 +19,11 @@ const autoExit = (() => {
         }
 
         const line = timetable.lines[position.lineID];
-        if (!line || !line.stops.some(stop => stop.sid === stationId)) {
+        if (!line || !tripRoutes.tripServesStop(
+            position.lineID,
+            position.tripID,
+            stationId
+        )) {
             gameState.setAutoExitStationId(null);
             return false;
         }

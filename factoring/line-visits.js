@@ -9,11 +9,15 @@ const lineVisits = (() => {
         const time = getCurrentTimeInSeconds();
         const daysSinceEpoch = Math.floor(getCurrentTimeInMilliseconds() / MILLISECONDS_PER_DAY);
         const day = position.day >= 100 ? position.day - daysSinceEpoch : position.day;
+        const destinationStationId = tripRoutes.getTripDestinationStationId(
+            position.lineID,
+            position.tripID
+        );
         const currentDelay = delays.get(
             position.lineID,
             position.tripID,
             time,
-            line.stops[line.stops.length - 1],
+            destinationStationId,
             day
         );
 

@@ -39,20 +39,70 @@ function validateTimetable(timetable) {
     });
 }
 
-function calculateStationImportance(timetable, typeWeights) {
+function getLineRouteServices(line, routeAware) {
+    const fullRoute = {
+        startIndex: 0,
+        endIndex: line.stops.length - 1,
+        frequency: 3600 / line.interval
+    };
+    if (!routeAware
+        || !Array.isArray(line.routes)
+        || line.routes.length === 0
+        || !Array.isArray(line.possibleRoutes)) {
+        return [fullRoute];
+    }
+
+    const routeCounts = new Map();
+    line.routes.forEach(routeIndex => {
+        const route = line.possibleRoutes[routeIndex];
+        const validRoute = Array.isArray(route)
+            && route.length === 2
+            && Number.isInteger(route[0])
+            && Number.isInteger(route[1])
+            && route[0] >= 0
+            && route[1] >= route[0]
+            && route[1] < line.stops.length;
+        const [startIndex, endIndex] = validRoute
+            ? route
+            : [fullRoute.startIndex, fullRoute.endIndex];
+        const routeKey = startIndex + ":" + endIndex;
+        const routeCount = routeCounts.get(routeKey) ?? {
+            startIndex,
+            endIndex,
+            count: 0
+        };
+        routeCount.count++;
+        routeCounts.set(routeKey, routeCount);
+    });
+
+    const completeLineFrequency = 3600 / line.interval;
+    return [...routeCounts.values()].map(route => ({
+        startIndex: route.startIndex,
+        endIndex: route.endIndex,
+        frequency: route.count / line.routes.length * completeLineFrequency
+    }));
+}
+
+function calculateStationImportance(timetable, typeWeights, routeAware = true) {
     let importance = timetable.stations.map(() => BASE_IMPORTANCE);
     for (let iteration = 0; iteration < ITERATIONS; iteration++) {
         const propagated = timetable.stations.map(() => 0);
         timetable.lines.forEach(line => {
-            const frequency = 3600 / line.interval;
             const typeImportance = typeWeights[line.type] ?? 0;
-            const lineWeight = typeImportance * frequency;
-            let upcomingImportance = 0;
-            for (let stopIndex = line.stops.length - 1; stopIndex >= 0; stopIndex--) {
-                const stationID = line.stops[stopIndex].sid;
-                propagated[stationID] += upcomingImportance * lineWeight;
-                upcomingImportance = importance[stationID] + STOP_DECAY * upcomingImportance;
-            }
+            getLineRouteServices(line, routeAware).forEach(route => {
+                const lineWeight = typeImportance * route.frequency;
+                let upcomingImportance = 0;
+                for (
+                    let stopIndex = route.endIndex;
+                    stopIndex >= route.startIndex;
+                    stopIndex--
+                ) {
+                    const stationID = line.stops[stopIndex].sid;
+                    propagated[stationID] += upcomingImportance * lineWeight;
+                    upcomingImportance = importance[stationID]
+                        + STOP_DECAY * upcomingImportance;
+                }
+            });
         });
         const averagePropagated = propagated.reduce((total, value) => total + value, 0) / propagated.length;
         const normalizedPropagated = averagePropagated === 0 ? propagated.map(() => BASE_IMPORTANCE) : propagated.map(value => value / averagePropagated);
@@ -110,13 +160,20 @@ function createReport(timetable, allImportance, importanceWithoutPsOs) {
     return [...header, ...rows, ""].join("\n");
 }
 
-function assignStationImportance(timetable) {
+function assignStationImportance(
+    timetable,
+    { routeAware = true, property = "importance" } = {}
+) {
     validateTimetable(timetable);
     const allImportance = spreadImportanceScores(
-        calculateStationImportance(timetable, TRAIN_TYPE_IMPORTANCE)
+        calculateStationImportance(
+            timetable,
+            TRAIN_TYPE_IMPORTANCE,
+            routeAware
+        )
     );
     timetable.stations.forEach((station, stationID) => {
-        station.importance = allImportance[stationID];
+        station[property] = allImportance[stationID];
     });
     return allImportance;
 }
@@ -125,7 +182,11 @@ function generateReport() {
     const timetable = loadTimetable();
     const allImportance = assignStationImportance(timetable);
     const importanceWithoutPsOs = spreadImportanceScores(
-        calculateStationImportance(timetable, IMPORTANCE_WITHOUT_PS_OS)
+        calculateStationImportance(
+            timetable,
+            IMPORTANCE_WITHOUT_PS_OS,
+            true
+        )
     );
     fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
     fs.writeFileSync(OUTPUT_PATH, createReport(timetable, allImportance, importanceWithoutPsOs), "utf8");

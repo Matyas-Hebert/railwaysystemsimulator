@@ -57,10 +57,74 @@ const journeyPricing = (() => {
 
         return distanceToToStation - distanceToFromStation;
     }
+    function getTripDistanceBetweenStops(lineID, tripID, startStationId, endStationId) {
+        const line = timetable.lines[Number(lineID)];
+        const route = tripRoutes.getTripRoute(lineID, tripID);
+        if (!line || route === null) return null;
+
+        const startIndex = tripRoutes.getTripStopIndex(
+            lineID,
+            tripID,
+            startStationId
+        );
+        const endIndex = tripRoutes.getTripStopIndex(
+            lineID,
+            tripID,
+            endStationId
+        );
+        if (startIndex < route.startIndex
+            || endIndex > route.endIndex
+            || endIndex <= startIndex) {
+            return null;
+        }
+
+        return line.stops
+            .slice(startIndex + 1, endIndex + 1)
+            .reduce((distance, stop) => distance + Number(stop.dist), 0);
+    }
+
+    function getTripDistanceDifferenceBetweenStops(
+        lineID,
+        tripID,
+        fromStationId,
+        toStationId
+    ) {
+        const line = timetable.lines[Number(lineID)];
+        const route = tripRoutes.getTripRoute(lineID, tripID);
+        if (!line || route === null) return null;
+
+        const fromIndex = tripRoutes.getTripStopIndex(
+            lineID,
+            tripID,
+            fromStationId
+        );
+        const toIndex = tripRoutes.getTripStopIndex(
+            lineID,
+            tripID,
+            toStationId
+        );
+        if (fromIndex < route.startIndex
+            || fromIndex > route.endIndex
+            || toIndex < route.startIndex
+            || toIndex > route.endIndex) {
+            return null;
+        }
+
+        const distanceToFromStation = line.stops
+            .slice(route.startIndex + 1, fromIndex + 1)
+            .reduce((distance, stop) => distance + Number(stop.dist), 0);
+        const distanceToToStation = line.stops
+            .slice(route.startIndex + 1, toIndex + 1)
+            .reduce((distance, stop) => distance + Number(stop.dist), 0);
+        return distanceToToStation - distanceToFromStation;
+    }
+
 
     return {
         getLineConfig,
         getDistanceBetweenStops,
-        getDistanceDifferenceBetweenStops
+        getDistanceDifferenceBetweenStops,
+        getTripDistanceBetweenStops,
+        getTripDistanceDifferenceBetweenStops
     };
 })();

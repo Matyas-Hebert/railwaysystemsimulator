@@ -306,11 +306,13 @@ const collectionTab = (() => {
         timetable.lines.forEach(line => {
             for (let day = -1; day <= 0; day++) {
                 for (let tripID = 0; tripID < line.trips; tripID++) {
+                    const route = tripRoutes.getTripRoute(line.id, tripID);
+                    if (route === null) continue;
                     const currentDelay = delays.get(
                         line.id,
                         tripID,
                         time,
-                        line.stops[line.stops.length - 1].sid,
+                        route.destinationStationId,
                         day
                     );
                     if (!isActiveTrainStatus(currentDelay.status)
@@ -319,8 +321,8 @@ const collectionTab = (() => {
                         continue;
                     }
                     const tripStart = line.starttime + day * SECONDS_PER_DAY + tripID * line.interval;
-                    const plannedDeparture = tripStart + line.stops[0].dep;
-                    const plannedArrival = tripStart + line.stops[line.stops.length - 1].arr;
+                    const plannedDeparture = tripStart + route.stops[0].dep;
+                    const plannedArrival = tripStart + route.stops[route.stops.length - 1].arr;
                     const delayedJourneyDuration = currentDelay.delay + plannedArrival - plannedDeparture;
                     const progressPercentage = delayedJourneyDuration <= 0
                         ? 0
@@ -333,7 +335,8 @@ const collectionTab = (() => {
                         tripID,
                         day,
                         currentDelay,
-                        progressPercentage
+                        progressPercentage,
+                        route
                     });
                 }
             }
@@ -368,8 +371,8 @@ const collectionTab = (() => {
 
         matchingTrains.forEach(train => {
             const line = train.line;
-            const start = timetable.stations[line.stops[0].sid];
-            const destination = timetable.stations[line.stops[line.stops.length - 1].sid];
+            const start = timetable.stations[train.route.originStationId];
+            const destination = timetable.stations[train.route.destinationStationId];
             const button = document.createElement("button");
             button.className = "collection-line-btn collection-line-progress-btn";
             button.style.setProperty(

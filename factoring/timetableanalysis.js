@@ -82,6 +82,46 @@ function getTripNumberByTime(line, stationID, time){
     }
     return {"trip": tripID, "day": extradays};
 }
+function getNextTripServingStation(line, stationID, time){
+    const normalizedStationID = Number(stationID);
+    const stop = line.stops.find(s => s.sid === normalizedStationID);
+    if (!stop) return null;
+
+    const firstCandidate = getTripNumberByTime(line, normalizedStationID, time);
+    let trip = firstCandidate.trip;
+    let day = firstCandidate.day;
+
+    for (let checkedTrips = 0; checkedTrips < line.trips; checkedTrips++) {
+        if (tripRoutes.tripServesStop(line.id, trip, normalizedStationID)) {
+            return { trip, day };
+        }
+        trip++;
+        if (trip >= line.trips) {
+            trip = 0;
+            day++;
+        }
+    }
+
+    return null;
+}
+function tripMatchesTimetableSelection(lineID, tripID, stationID, selectedStationID, departures){
+    const route = tripRoutes.getTripRoute(lineID, tripID);
+    const stationStopIndex = tripRoutes.getTripStopIndex(lineID, tripID, stationID);
+    if (route === null || stationStopIndex === -1) return false;
+    if (departures && stationStopIndex >= route.endIndex) return false;
+    if (!departures && stationStopIndex <= route.startIndex) return false;
+    if (selectedStationID == -1) return true;
+
+    const selectedStopIndex = tripRoutes.getTripStopIndex(
+        lineID,
+        tripID,
+        selectedStationID
+    );
+    if (selectedStopIndex === -1) return false;
+    return departures
+        ? selectedStopIndex > stationStopIndex
+        : selectedStopIndex < stationStopIndex;
+}
 
 function activateWifiBoost(){
     wifiluckboost = 0.1;
@@ -158,12 +198,15 @@ function addRow({table, c1t="", c2t="", c3t="", c4t="", stopsdata = null, visibl
     if (!onlythreecols || !firstcolspan){
         if (includegetonbutton){
             c3 = row.insertCell(2);
-            const line = timetable.lines[conn.lineID];
             const pricing = journeyPricing.getLineConfig(conn.lineID);
             if (pricing.must_auto_ride) {
-                const terminalStationId = line.stops[line.stops.length - 1].sid;
-                const journeyLength = journeyPricing.getDistanceBetweenStops(
+                const terminalStationId = tripRoutes.getTripDestinationStationId(
                     conn.lineID,
+                    conn.tripID
+                );
+                const journeyLength = journeyPricing.getTripDistanceBetweenStops(
+                    conn.lineID,
+                    conn.tripID,
                     gameState.getCurrentPosition().statID,
                     terminalStationId
                 );
@@ -511,7 +554,7 @@ async function printTimetable(stationID, includegetonbutton = true, table=_timet
         });
 
         if (!allow){
-            return;
+            return [];
         }
 
         let stoparrdep = departures ? stop.dep : stop.arr;
@@ -522,19 +565,46 @@ async function printTimetable(stationID, includegetonbutton = true, table=_timet
             timetosearchfrom += SECONDS_PER_DAY;
         }
 
-        let tripobject = getTripNumberByTime(line, stationID, timetosearchfrom);
+        const tripobject = getNextTripServingStation(
+            line,
+            stationID,
+            timetosearchfrom
+        );
+        if (tripobject === null) return [];
+
         let triptosearch = tripobject.trip;
         day += tripobject.day;
-        let delay = 0;
+        let delay = null;
 
-        while(delays.get(lineID, triptosearch, time, stationID, day).status > 3){
+        for (let checkedTrips = 0; checkedTrips < line.trips * 2; checkedTrips++) {
+            if (tripMatchesTimetableSelection(
+                lineID,
+                triptosearch,
+                stationID,
+                filters.statid,
+                departures
+            )) {
+                const candidateDelay = delays.get(
+                    lineID,
+                    triptosearch,
+                    time,
+                    stationID,
+                    day
+                );
+                if (candidateDelay.status <= TRAIN_STATUS.STOPPED_AT_TARGET) {
+                    delay = candidateDelay;
+                    break;
+                }
+            }
+
             triptosearch++;
             if (triptosearch >= line.trips){
                 triptosearch = 0;
                 day++;
             }
-            delay = delays.get(lineID, triptosearch, time, stationID, day);
-        };
+        }
+        if (delay === null) return [];
+
         return {
             lineID: lineID,
             journeystart: line.starttime + triptosearch * line.interval + day*SECONDS_PER_DAY,
@@ -606,7 +676,10 @@ async function printTimetable(stationID, includegetonbutton = true, table=_timet
         let stoparrdep = departures ? stop.dep : stop.arr;
 
         const trainname = getTrainName(line);
-        const destinationID = departures ? line.stops[line.stops.length-1].sid : line.stops[0].sid;
+        const route = tripRoutes.getTripRoute(current.lineID, current.trip);
+        const destinationID = departures
+            ? route.destinationStationId
+            : route.originStationId;
         const destinationname = settings.getStationName(timetable.stations[destinationID]).substring(0, 35).padEnd(35, " ");
         const regionname = timetable.stations[destinationID].district;
 
@@ -616,9 +689,9 @@ async function printTimetable(stationID, includegetonbutton = true, table=_timet
         stopsdata = [];
 
         found = false;
-        finalstopid = line.stops[line.stops.length-1].sid;
+        finalstopid = route.destinationStationId;
         distacc = 0;
-        line.stops.forEach(stop => {
+        route.stops.forEach(stop => {
             let stoparrdep = departures ? stop.dep : stop.arr;
             if (found){
                 distacc += stop.dist;
@@ -654,19 +727,43 @@ async function printTimetable(stationID, includegetonbutton = true, table=_timet
             "includetrainlink": true,
             "goalstationid": destinationID});
 
-        do{
+        let nextTripFound = false;
+        for (let checkedTrips = 0; checkedTrips < current.maxtrips * 2; checkedTrips++) {
             if (current.trip >= current.maxtrips-1) {
                 current.day++;
                 current.trip = 0;
-                current.time = line.starttime + current.day*SECONDS_PER_DAY + stoparrdep;
-                current.journeystart = line.starttime + current.day*SECONDS_PER_DAY;
             } else {
                 current.trip++;
-                current.time += current.interval;
-                current.journeystart += current.interval;
             }
-            current.delay = delays.get(current.lineID, current.trip, time, stationID, current.day);
-        } while(current.delay.status > 3);
+            current.journeystart = line.starttime
+                + current.trip * current.interval
+                + current.day * SECONDS_PER_DAY;
+            current.time = current.journeystart + stoparrdep;
+
+            if (!tripMatchesTimetableSelection(
+                current.lineID,
+                current.trip,
+                stationID,
+                filters.statid,
+                departures
+            )) {
+                continue;
+            }
+
+            const candidateDelay = delays.get(
+                current.lineID,
+                current.trip,
+                time,
+                stationID,
+                current.day
+            );
+            if (candidateDelay.status <= TRAIN_STATUS.STOPPED_AT_TARGET) {
+                current.delay = candidateDelay;
+                nextTripFound = true;
+                break;
+            }
+        }
+        if (!nextTripFound) nexttrains.shift();
     }
 }
 

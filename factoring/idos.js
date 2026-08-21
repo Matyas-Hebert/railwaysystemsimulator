@@ -18,31 +18,116 @@ function getRaptorIndex() {
         }
         return distances;
     });
-    raptorIndex = { routesByStation, isTransferStation, distancesByLine };
+    const tripServicesByLine = timetable.lines.map(line => {
+        const servicesByStop = Array.from(
+            { length: line.stops.length },
+            () => new Map()
+        );
+        for (let tripID = 0; tripID < line.trips; tripID++) {
+            const route = tripRoutes.getTripRoute(line.id, tripID);
+            if (route === null) continue;
+            for (
+                let stopIndex = route.startIndex;
+                stopIndex < route.endIndex;
+                stopIndex++
+            ) {
+                const servicesByTerminus = servicesByStop[stopIndex];
+                if (!servicesByTerminus.has(route.endIndex)) {
+                    servicesByTerminus.set(route.endIndex, []);
+                }
+                servicesByTerminus.get(route.endIndex).push(tripID);
+            }
+        }
+        return servicesByStop.map(servicesByTerminus =>
+            [...servicesByTerminus.entries()].map(([endIndex, tripIDs]) => ({
+                endIndex,
+                tripIDs
+            }))
+        );
+    });
+    raptorIndex = {
+        routesByStation,
+        isTransferStation,
+        distancesByLine,
+        tripServicesByLine
+    };
     return raptorIndex;
 }
 
-function getNextRaptorTrip(line, stop, earliestTime) {
+function getNextTripFromServicePattern(
+    line,
+    stop,
+    tripIDs,
+    earliestTime
+) {
     const firstDeparture = line.starttime + stop.dep;
-    const approximateDay = Math.floor((earliestTime - firstDeparture) / SECONDS_PER_DAY);
-    let best = null;
+    let day = Math.floor(
+        (earliestTime - firstDeparture) / SECONDS_PER_DAY
+    );
+    const firstTripOnDay = Math.max(
+        0,
+        Math.ceil(
+            (earliestTime - firstDeparture - day * SECONDS_PER_DAY)
+            / line.interval
+        )
+    );
 
-    for (let day = approximateDay - 1; day <= approximateDay + 1; day++) {
-        const firstDepartureOnDay = firstDeparture + day * SECONDS_PER_DAY;
-        const trip = Math.max(0, Math.ceil((earliestTime - firstDepartureOnDay) / line.interval));
-        if (trip >= line.trips) continue;
-
-        const departure = firstDepartureOnDay + trip * line.interval;
-        if (departure >= earliestTime && (best === null || departure < best.departure)) {
-            best = {
-                trip,
-                departure,
-                tripStart: line.starttime + trip * line.interval + day * SECONDS_PER_DAY
-            };
+    let low = 0;
+    let high = tripIDs.length;
+    while (low < high) {
+        const middle = Math.floor((low + high) / 2);
+        if (tripIDs[middle] < firstTripOnDay) {
+            low = middle + 1;
+        }
+        else {
+            high = middle;
         }
     }
+    if (low >= tripIDs.length) {
+        low = 0;
+        day++;
+    }
 
-    return best;
+    const trip = tripIDs[low];
+    const tripStart = line.starttime
+        + trip * line.interval
+        + day * SECONDS_PER_DAY;
+    return {
+        trip,
+        day,
+        departure: tripStart + stop.dep,
+        tripStart
+    };
+}
+
+function getNextRaptorTrips(
+    line,
+    stopIndex,
+    earliestTime,
+    serviceGroups
+) {
+    const stop = line.stops[stopIndex];
+    const candidates = serviceGroups.map(serviceGroup => ({
+        ...getNextTripFromServicePattern(
+            line,
+            stop,
+            serviceGroup.tripIDs,
+            earliestTime
+        ),
+        endIndex: serviceGroup.endIndex
+    })).sort((first, second) =>
+        first.departure - second.departure
+        || second.endIndex - first.endIndex
+    );
+
+    const usefulCandidates = [];
+    let furthestEndIndex = -1;
+    candidates.forEach(candidate => {
+        if (candidate.endIndex <= furthestEndIndex) return;
+        usefulCandidates.push(candidate);
+        furthestEndIndex = candidate.endIndex;
+    });
+    return usefulCandidates;
 }
 
 
@@ -81,7 +166,12 @@ function findPath(startstationID, endstationID, time=-1) {
     if (startstationID === endstationID) return [];
     if (!timetable.stations[startstationID] || !timetable.stations[endstationID]) return;
 
-    const { routesByStation, isTransferStation, distancesByLine } = getRaptorIndex();
+    const {
+        routesByStation,
+        isTransferStation,
+        distancesByLine,
+        tripServicesByLine
+    } = getRaptorIndex();
     const stationCount = timetable.stations.length;
     let previousArrival = new Float64Array(stationCount);
     previousArrival.fill(Infinity);
@@ -102,42 +192,61 @@ function findPath(startstationID, endstationID, time=-1) {
 
         routesToScan.forEach(lineID => {
             const line = timetable.lines[lineID];
-            let boardedTrip = null;
-            let boardingStationID = null;
-            let boardingStopIndex = null;
-            let boardingJourney = null;
+            let boardedTrips = [];
 
             line.stops.forEach((stop, stopIndex) => {
-                if (boardedTrip !== null && stopIndex > boardingStopIndex) {
+                boardedTrips = boardedTrips.filter(
+                    boardedTrip => boardedTrip.endIndex >= stopIndex
+                );
+                boardedTrips.forEach(boardedTrip => {
+                    if (stopIndex <= boardedTrip.boardingStopIndex) return;
+
                     const arrival = boardedTrip.tripStart + stop.arr;
                     if (arrival < currentArrival[stop.sid]) {
                         currentArrival[stop.sid] = arrival;
                         currentJourney[stop.sid] = {
-                            previous: boardingJourney,
+                            previous: boardedTrip.boardingJourney,
                             leg: {
-                                fromID: boardingStationID,
+                                fromID: boardedTrip.boardingStationID,
                                 toID: stop.sid,
                                 lineID,
                                 tripID: boardedTrip.trip,
                                 dep: boardedTrip.departure,
                                 arr: arrival,
                                 dist: distancesByLine[lineID][stopIndex]
-                                    - distancesByLine[lineID][boardingStopIndex]
+                                    - distancesByLine[lineID][boardedTrip.boardingStopIndex]
                             }
                         };
                         improvedStations.add(stop.sid);
                     }
-                }
+                });
 
                 if (!Number.isFinite(previousArrival[stop.sid])) return;
-                const candidateTrip = getNextRaptorTrip(line, stop, previousArrival[stop.sid]);
-                if (candidateTrip !== null
-                    && (boardedTrip === null || candidateTrip.tripStart < boardedTrip.tripStart)) {
-                    boardedTrip = candidateTrip;
-                    boardingStationID = stop.sid;
-                    boardingStopIndex = stopIndex;
-                    boardingJourney = previousJourney[stop.sid];
-                }
+                const candidateTrips = getNextRaptorTrips(
+                    line,
+                    stopIndex,
+                    previousArrival[stop.sid],
+                    tripServicesByLine[lineID][stopIndex]
+                );
+                candidateTrips.forEach(candidateTrip => {
+                    boardedTrips.push({
+                        ...candidateTrip,
+                        boardingStationID: stop.sid,
+                        boardingStopIndex: stopIndex,
+                        boardingJourney: previousJourney[stop.sid]
+                    });
+                });
+
+                boardedTrips.sort((first, second) =>
+                    first.tripStart - second.tripStart
+                    || second.endIndex - first.endIndex
+                );
+                let furthestEndIndex = -1;
+                boardedTrips = boardedTrips.filter(boardedTrip => {
+                    if (boardedTrip.endIndex <= furthestEndIndex) return false;
+                    furthestEndIndex = boardedTrip.endIndex;
+                    return true;
+                });
             });
         });
 

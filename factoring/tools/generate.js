@@ -288,19 +288,55 @@ function generateRoutesForTrips(timetable) {
         const lineStationIDs = line.stops.map(stop => stop.sid);
         line.routes = [];
 
-        if (line.possibleRoutes.length === 0) return;
+        if (line.possibleRoutes.length === 0) {
+            line.averageShorteningFactor = 1;
+            return;
+        }
 
         const routeImportances = line.possibleRoutes.map(route => {
             let importance = 0;
             for (let stopIndex = route[0]; stopIndex <= route[1]; stopIndex++) {
-                importance += timetable.stations[lineStationIDs[stopIndex]].importance;
+                const endpointMultiplier = stopIndex === 0
+                    || stopIndex === lineStationIDs.length - 1
+                    ? 5
+                    : 1;
+                importance += timetable.stations[
+                    lineStationIDs[stopIndex]
+                ].routeSelectionImportance * endpointMultiplier;
             }
-            return importance*Math.pow(route[1]-route[0],2);
+            return importance;
         });
         const totalImportance = routeImportances.reduce(
             (total, importance) => total + importance,
             0
         );
+
+        const distanceFromStart = [0];
+        for (let stopIndex = 1; stopIndex < line.stops.length; stopIndex++) {
+            distanceFromStart[stopIndex] = distanceFromStart[stopIndex - 1]
+                + Number(line.stops[stopIndex].dist);
+        }
+        const routeDistances = line.possibleRoutes.map(route =>
+            distanceFromStart[route[1]] - distanceFromStart[route[0]]
+        );
+        const routeProbability = routeIndex => totalImportance > 0
+            ? routeImportances[routeIndex] / totalImportance
+            : 1 / line.possibleRoutes.length;
+        const expectedRouteDistance = routeDistances.reduce(
+            (expectedDistance, routeDistance, routeIndex) =>
+                expectedDistance
+                + routeDistance * routeProbability(routeIndex),
+            0
+        );
+        const fullRouteDistance = distanceFromStart[line.stops.length - 1] ?? 0;
+        line.averageShorteningFactor = fullRouteDistance > 0
+            && expectedRouteDistance > 0
+            ? fullRouteDistance / expectedRouteDistance
+            : 1;
+
+        const originalServiceDuration = line.interval * line.trips;
+        line.interval /= line.averageShorteningFactor;
+        line.trips = Math.ceil(originalServiceDuration / line.interval);
 
         for (let trip = 0; trip < line.trips; trip++) {
             let selectedRoute = 0;
@@ -321,6 +357,21 @@ function generateRoutesForTrips(timetable) {
             }
             line.routes.push(selectedRoute);
         }
+
+        if (line.trips > 0) {
+            const fullRoute = [0, line.stops.length - 1];
+            let fullRouteIndex = line.possibleRoutes.findIndex(route =>
+                route[0] === fullRoute[0] && route[1] === fullRoute[1]
+            );
+            if (fullRouteIndex === -1) {
+                line.possibleRoutes.push(fullRoute);
+                fullRouteIndex = line.possibleRoutes.length - 1;
+            }
+
+            const fullRouteTrip = Math.floor(Math.random() * line.trips);
+            line.routes[fullRouteTrip] = fullRouteIndex;
+        }
+
     });
 }
 
@@ -513,9 +564,17 @@ async function generateTimeTables() {
     });
 
     let timetable = {"lines": lines, "stations": stations};
-    assignStationImportance(timetable);
+    assignStationImportance(timetable, {
+        routeAware: false,
+        property: "routeSelectionImportance"
+    });
 
     generateRoutesForTrips(timetable);
+    assignStationImportance(timetable);
+    timetable.stations.forEach(station => {
+        delete station.routeSelectionImportance;
+    });
+
     const psSystems = generatePsSystems(timetable);
     assignPsSystemIDs(timetable, psSystems);
 

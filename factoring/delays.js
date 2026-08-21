@@ -35,36 +35,37 @@ function getStartingDelay(seed, type){
 
 function getDelay(lineID, tripNumber, time, stationID, daynumber){
     const line = timetable.lines[lineID];
+    const route = tripRoutes.getTripRoute(lineID, tripNumber);
+    if (route === null) return null;
     let delay = getStartingDelay((tripNumber+1) * 100 + lineID * 100000 + daynumber, line.type);
     const starttime = line.starttime + line.interval*tripNumber + daynumber*SECONDS_PER_DAY;
-    const stops =  line.stops;
-    let previousDepartureTime = starttime + stops[0].dep + delay;
+    const stops = line.stops;
+    const routeStartStop = stops[route.startIndex];
+    const routeEndStop = stops[route.endIndex];
+    const routeStartTime = starttime + routeStartStop.arr;
+    let previousDepartureTime = starttime + routeStartStop.dep + delay;
     let expectedDepartureTime = previousDepartureTime-delay;
 
-    if (starttime-delay > time){
-        return {"delay": 0, "status": TRAIN_STATUS.NOT_DEPARTED, "station": stops[0].sid, "arrtime": Math.round(starttime), "deptime": null, "progress": 1};
+    if (routeStartTime-delay > time){
+        return {"delay": 0, "status": TRAIN_STATUS.NOT_DEPARTED, "station": routeStartStop.sid, "arrtime": Math.round(routeStartTime), "deptime": null, "progress": 1};
     }
 
     if (previousDepartureTime >= time){
-        let status = stops[0].sid == stationID ? 3 : 1;
-        return {"delay": Math.max(0, time-expectedDepartureTime), "status": status, "station": stops[0].sid, "arrtime": Math.round(starttime), "deptime": Math.round(previousDepartureTime), "progress": 1};
+        let status = routeStartStop.sid == stationID ? 3 : 1;
+        return {"delay": Math.max(0, time-expectedDepartureTime), "status": status, "station": routeStartStop.sid, "arrtime": Math.round(routeStartTime), "deptime": Math.round(previousDepartureTime), "progress": 1};
     }
 
-    let passedTargetStation = false;
-
-    if (stops[0].sid == stationID){
-        passedTargetStation = true;
-    }
+    let passedTargetStation = routeStartStop.sid == stationID;
 
     let expectedDepartureAtTarget;
-    stops.forEach(stop => {
+    route.stops.forEach(stop => {
         if (stop.sid == stationID){
             expectedDepartureAtTarget = stop.dep + starttime;
             return;
         }
     });
 
-    for (let i = 1; i < line.stops.length; i++){
+    for (let i = route.startIndex + 1; i <= route.endIndex; i++){
         const stoptime = line.stops[i].dep - line.stops[i].arr;
         const stop = line.stops[i];
         const standardTravelTime = stop.arr - line.stops[i-1].dep
@@ -78,7 +79,7 @@ function getDelay(lineID, tripNumber, time, stationID, daynumber){
                     "arrtime": Math.round(arrtime), "deptime": Math.round(previousDepartureTime), "progress": progress};
         }
 
-        if (i < line.stops.length-1
+        if (i < route.endIndex
             && seededRandom(seed*2+1) <= getLineTypeConfig(line.type).cancellationProbabilityPerStop){
             const status = expectedDepartureAtTarget + delay + newdelay < time ? 7 : -1;
             return {"delay": Math.round(delay+newdelay), "status": status, "station": stops[i].sid,
@@ -101,7 +102,7 @@ function getDelay(lineID, tripNumber, time, stationID, daynumber){
     }
 
     return {"delay": Math.round(delay), "status": TRAIN_STATUS.FINISHED, "station": null,
-                    "arrtime": null, "deptime": Math.round(previousDepartureTime), "progress": 1};
+                    "arrtime": null, "deptime": Math.round(starttime + routeEndStop.arr + delay), "progress": 1};
 }
 
 function getStatusText(status){

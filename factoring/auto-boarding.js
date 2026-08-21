@@ -30,6 +30,15 @@ const autoBoarding = (() => {
             gameState.setAutoBoardSelection(null);
             return false;
         }
+        if (!tripRoutes.tripServesStop(
+            selection.lineID,
+            selection.tripID,
+            position.statID
+        )) {
+            gameState.setAutoBoardSelection(null);
+            gameState.setAutoExitStationId(null);
+            return false;
+        }
 
         const time = getCurrentTimeInSeconds();
         const daysSinceEpoch = Math.floor(getCurrentTimeInMilliseconds() / MILLISECONDS_PER_DAY);

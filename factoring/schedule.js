@@ -69,7 +69,7 @@ function roundSignedPrice(price) {
         : Math.round(price);
 }
 
-function getAutoExitRebooking(lineID, stationId, currentStationId) {
+function getAutoExitRebooking(lineID, tripID, stationId, currentStationId) {
     const pricing = journeyPricing.getLineConfig(lineID);
     const bookedStationId = gameState.getAutoExitStationId(lineID);
     if (bookedStationId === stationId) {
@@ -83,8 +83,9 @@ function getAutoExitRebooking(lineID, stationId, currentStationId) {
             : 0;
     }
     else if (bookedStationId !== null) {
-        const distanceDifference = journeyPricing.getDistanceDifferenceBetweenStops(
+        const distanceDifference = journeyPricing.getTripDistanceDifferenceBetweenStops(
             lineID,
+            tripID,
             bookedStationId,
             stationId
         );
@@ -92,8 +93,9 @@ function getAutoExitRebooking(lineID, stationId, currentStationId) {
         priceDifference = roundSignedPrice(distanceDifference * pricing.price_per_km);
     }
     else {
-        const distance = journeyPricing.getDistanceBetweenStops(
+        const distance = journeyPricing.getTripDistanceBetweenStops(
             lineID,
+            tripID,
             currentStationId,
             stationId
         );
@@ -215,8 +217,9 @@ function toggle(clickedrow, stopsdata, conn = null, allowAutoBoard = false){
 
         if (selectedDestinationExists) {
             const exitStationId = Number(filters.ticketDestinationStatId);
-            const journeyLength = journeyPricing.getDistanceBetweenStops(
+            const journeyLength = journeyPricing.getTripDistanceBetweenStops(
                 conn.lineID,
+                conn.tripID,
                 gameState.getCurrentPosition().statID,
                 exitStationId
             );
@@ -364,16 +367,18 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
     table.innerHTML = "";
     _traintimetableheader.innerHTML = "";
     let line = timetable.lines[lineID];
-    let stops = line.stops;
-    let delay = delays.get(lineID, tripID, time, stops[stops.length-1], day);
+    const route = tripRoutes.getTripRoute(lineID, tripID);
+    if (route === null) return;
+    let stops = route.stops;
+    let delay = delays.get(lineID, tripID, time, route.destinationStationId, day);
     if (checkifkick){
         if (delay.status === TRAIN_STATUS.FINISHED){
-            changeTransportType(0);
-            gameState.updateCurrentPosition({statID: stops[stops.length-1].sid});
+            changeTransportType(TRANSPORT_TYPE.STATION);
+            gameState.updateCurrentPosition({statID: route.destinationStationId});
             renderCurrentSection();
         }
         if (delay.status === TRAIN_STATUS.CANCELLED_BEFORE_TARGET || delay.status === TRAIN_STATUS.CANCELLED_AFTER_TARGET){
-            changeTransportType(0);
+            changeTransportType(TRANSPORT_TYPE.STATION);
             gameState.updateCurrentPosition({statID: delay.station});
             renderCurrentSection();
         }
@@ -429,7 +434,10 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
 
     row.deleteCell(2);
     row.cells[1].colSpan = 2;
-    if (getoffbutton && delay.status === TRAIN_STATUS.STOPPED_BEFORE_TARGET || delay.status === TRAIN_STATUS.STOPPED_AT_TARGET || delay.status === TRAIN_STATUS.STOPPED_PAST_TARGET){
+    if (getoffbutton && (
+        delay.status === TRAIN_STATUS.STOPPED_BEFORE_TARGET
+        || delay.status === TRAIN_STATUS.STOPPED_AT_TARGET
+        || delay.status === TRAIN_STATUS.STOPPED_PAST_TARGET)){
         row.cells[1].innerHTML = "VYSTOUPIT";
         row.cells[1].style.backgroundColor = "#861313";
         row.cells[1].onclick = function(){
@@ -494,7 +502,9 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
         if (hideuntil == stop.sid){
             toprint = true;
         }
-        distacc += stop.dist;
+        if (i > 0) {
+            distacc += stop.dist;
+        }
         if (toprint){
             let arrstr = i == 0 ? "-" : formatTime(stop.arr+starttime);
             let depstr = i == stops.length - 1 ? " - " : formatTime(stop.dep+starttime);
@@ -512,7 +522,12 @@ function print(table=_information, conns=connstruct, checkifkick=false, getoffbu
             if (getoffbutton && currentsection === 0 && visibleStopIndex > 0) {
                 const currentStationId = delay.station
                     ?? gameState.getCurrentPosition().statID;
-                const rebooking = getAutoExitRebooking(lineID, stop.sid, currentStationId);
+                const rebooking = getAutoExitRebooking(
+                    lineID,
+                    tripID,
+                    stop.sid,
+                    currentStationId
+                );
                 if (rebooking !== null) {
                     if (rebooking.selected) row.classList.add("auto-exit-selected-row");
 
