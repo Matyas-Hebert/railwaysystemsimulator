@@ -78,24 +78,21 @@ const psLineFinder = (() => {
         };
     }
 
-    function getMatchingStops(line, endpoint) {
-        const seen = new Set();
-        return line.stops
-            .filter(stop => {
-                if (!endpoint.stationIDs.has(stop.sid) || seen.has(stop.sid)) return false;
-                seen.add(stop.sid);
-                return true;
-            })
-            .map(stop => stop.sid);
-    }
-
-    function getClosestEndpointPair(line, first, second) {
+    function getClosestEndpointPair(
+        line,
+        first,
+        second,
+        startIndex = 0,
+        endIndex = line.stops.length - 1
+    ) {
         const firstIndices = [];
         const secondIndices = [];
-        line.stops.forEach((stop, index) => {
-            if (first.stationIDs.has(stop.sid)) firstIndices.push(index);
-            if (second.stationIDs.has(stop.sid)) secondIndices.push(index);
-        });
+        for (let stopIndex = startIndex; stopIndex <= endIndex; stopIndex++) {
+            const stationID = line.stops[stopIndex].sid;
+            if (first.stationIDs.has(stationID)) firstIndices.push(stopIndex);
+            if (second.stationIDs.has(stationID)) secondIndices.push(stopIndex);
+        }
+
         let closestPair = null;
         firstIndices.forEach(firstIndex => {
             secondIndices.forEach(secondIndex => {
@@ -109,26 +106,91 @@ const psLineFinder = (() => {
         return closestPair;
     }
 
+    function orderMatchingStationIDs(line, stationIDs) {
+        const orderedStationIDs = [];
+        const seen = new Set();
+        line.stops.forEach(stop => {
+            if (stationIDs.has(stop.sid) && !seen.has(stop.sid)) {
+                seen.add(stop.sid);
+                orderedStationIDs.push(stop.sid);
+            }
+        });
+        return orderedStationIDs;
+    }
+
+    function analyzeDirectConnections(line, first, second) {
+        let directConnectionsPerDay = 0;
+        let representativePair = null;
+        const firstStationIDs = new Set();
+        const secondStationIDs = new Set();
+
+        for (let tripID = 0; tripID < line.trips; tripID++) {
+            const route = tripRoutes.getTripRoute(line.id, tripID);
+            if (route === null) continue;
+            const endpointPair = getClosestEndpointPair(
+                line,
+                first,
+                second,
+                route.startIndex,
+                route.endIndex
+            );
+            if (endpointPair === null) continue;
+
+            directConnectionsPerDay++;
+            if (representativePair === null
+                || endpointPair.distance < representativePair.distance) {
+                representativePair = endpointPair;
+            }
+            for (
+                let stopIndex = route.startIndex;
+                stopIndex <= route.endIndex;
+                stopIndex++
+            ) {
+                const stationID = line.stops[stopIndex].sid;
+                if (first.stationIDs.has(stationID)) {
+                    firstStationIDs.add(stationID);
+                }
+                if (second.stationIDs.has(stationID)) {
+                    secondStationIDs.add(stationID);
+                }
+            }
+        }
+
+        if (directConnectionsPerDay === 0 || representativePair === null) {
+            return null;
+        }
+        const segmentStart = Math.min(
+            representativePair.firstIndex,
+            representativePair.secondIndex
+        );
+        const segmentEnd = Math.max(
+            representativePair.firstIndex,
+            representativePair.secondIndex
+        );
+        return {
+            endpointPair: representativePair,
+            directConnectionsPerDay,
+            effectiveIntervalSeconds:
+                line.interval * line.trips / directConnectionsPerDay,
+            firstStops: orderMatchingStationIDs(line, firstStationIDs),
+            secondStops: orderMatchingStationIDs(line, secondStationIDs),
+            travelTimeSeconds: line.stops[segmentEnd].arr
+                - line.stops[segmentStart].dep,
+            intermediateStationIDs: line.stops
+                .slice(segmentStart + 1, segmentEnd)
+                .map(stop => stop.sid)
+        };
+    }
+
     function findConnectingLines(first, second) {
         return timetable.lines
             .filter(line => line.id % 2 === 1)
-            .map(line => ({ line, endpointPair: getClosestEndpointPair(line, first, second) }))
-            .filter(result => result.endpointPair !== null)
-            .map(result => {
-                const { line, endpointPair } = result;
-                const segmentStart = Math.min(endpointPair.firstIndex, endpointPair.secondIndex);
-                const segmentEnd = Math.max(endpointPair.firstIndex, endpointPair.secondIndex);
-                return {
-                    line,
-                    firstStops: getMatchingStops(line, first),
-                    secondStops: getMatchingStops(line, second),
-                    travelTimeSeconds: line.stops[segmentEnd].ar
-                        - line.stops[segmentStart].dep,
-                    intermediateStationIDs: line.stops
-                        .slice(segmentStart + 1, segmentEnd)
-                        .map(stop => stop.sid)
-                };
-            })
+            .map(line => ({
+                line,
+                analysis: analyzeDirectConnections(line, first, second)
+            }))
+            .filter(result => result.analysis !== null)
+            .map(result => ({ line: result.line, ...result.analysis }))
             .sort((firstResult, secondResult) => {
                 const firstLine = firstResult.line;
                 const secondLine = secondResult.line;
@@ -173,7 +235,17 @@ const psLineFinder = (() => {
         details.className = "line-details";
         appendDetail(details, "ID linky", String(line.id));
         appendDetail(details, "Společnost", line.company);
-        appendDetail(details, "Interval", formatInterval(line.interval));
+        appendDetail(details, "Interval linky", formatInterval(line.interval));
+        appendDetail(
+            details,
+            "Efektivní interval přímých spojů",
+            formatInterval(result.effectiveIntervalSeconds)
+        );
+        appendDetail(
+            details,
+            "Přímých spojů za den",
+            String(result.directConnectionsPerDay)
+        );
         appendDetail(
             details,
             "Doba jízdy mezi body",
@@ -203,18 +275,27 @@ const psLineFinder = (() => {
         const summary = document.createElement("section");
         summary.className = "interval-summary";
         const intervals = document.createElement("p");
-        intervals.textContent = "Intervaly: " + results
+        intervals.textContent = "Efektivní intervaly: " + results
             .map(result => getLineName(result.line) + " — "
-                + formatInterval(result.line.interval))
+                + formatInterval(result.effectiveIntervalSeconds)
+                + " (" + String(result.directConnectionsPerDay) + " spojů/den)")
             .join("; ");
         const combinedFrequency = results.reduce(
-            (frequency, result) => frequency + 1 / result.line.interval,
+            (frequency, result) =>
+                frequency + 1 / result.effectiveIntervalSeconds,
+            0
+        );
+        const totalConnections = results.reduce(
+            (total, result) => total + result.directConnectionsPerDay,
             0
         );
         const average = document.createElement("p");
-        average.textContent = "Průměrný interval mezi vlaky: "
+        average.textContent = "Průměrný interval mezi přímými vlaky: "
             + formatInterval(1 / combinedFrequency);
-        summary.append(intervals, average);
+        const dailyTotal = document.createElement("p");
+        dailyTotal.textContent = "Přímých spojů celkem za den: "
+            + String(totalConnections);
+        summary.append(intervals, average, dailyTotal);
         return summary;
     }
 

@@ -105,6 +105,12 @@
     "DPPr": {},
     "DPSaS": {},
     "MHDT": {},
+    "MÁV": {
+      "must_auto_ride": true,
+      "price_per_km": 0.1,
+      "auto_board_price": 5,
+      "auto_leave_price": 5
+    },
     "pA2Z": {
       "must_auto_ride": false,
       "price_per_km": 0.25,
