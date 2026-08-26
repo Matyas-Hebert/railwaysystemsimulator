@@ -19,13 +19,19 @@ function parseLineName(name){
     //"[ZSSK] R 0160b (2) | Bílá Paní | 72 |  | Brezno-Ilava |"
     const parts = name.split('|').map(item => item.trim());
     const part1parts = parts[0].split(' ').map(item => item.trim());
+    const writtenType = part1parts[1];
+    const shorteningDisabled = writtenType.startsWith("u");
     let companynumber = "";
 
     let data = {
         "company": part1parts[0].substring(1, part1parts[0].length-1),
-        "type": part1parts[1],
+        "type": shorteningDisabled ? writtenType.slice(1) : writtenType,
         "number": part1parts[2],
         "interval": parseInt(parts[2])*60
+    }
+
+    if (shorteningDisabled) {
+        data.shorteningDisabled = true;
     }
 
     if (part1parts.length >= 4){
@@ -256,7 +262,8 @@ function getPossibleRoutes(line, stations) {
             + line.stops[stopIndex].dist;
     }
 
-    if (!typeConfig.canBeShortened
+    if (line.shorteningDisabled
+        || !typeConfig.canBeShortened
         || distanceFromStart[lastStopIndex] < typeConfig.minimalLength) {
         return fullRoute;
     }
@@ -286,6 +293,9 @@ function getPossibleRoutes(line, stations) {
 function generateRoutesForTrips(timetable) {
     timetable.lines.forEach(line => {
         const lineStationIDs = line.stops.map(stop => stop.sid);
+        const routeSelectionImportanceProperty = line.type === PS || line.type === PX
+            ? "localRouteSelectionImportance"
+            : "routeSelectionImportance";
         line.routes = [];
 
         if (line.possibleRoutes.length === 0) {
@@ -306,10 +316,10 @@ function generateRoutesForTrips(timetable) {
         const routeImportances = line.possibleRoutes.map((route, routeIndex) => {
             const startImportance = timetable.stations[
                 lineStationIDs[route[0]]
-            ].routeSelectionImportance;
+            ][routeSelectionImportanceProperty];
             const endImportance = timetable.stations[
                 lineStationIDs[route[1]]
-            ].routeSelectionImportance;
+            ][routeSelectionImportanceProperty];
             const endpointImportanceSum = startImportance + endImportance;
             const endpointScore = endpointImportanceSum > 0
                 ? 2 * startImportance * endImportance / endpointImportanceSum
@@ -320,7 +330,7 @@ function generateRoutesForTrips(timetable) {
             for (let stopIndex = route[0] + 1; stopIndex < route[1]; stopIndex++) {
                 interiorImportance += timetable.stations[
                     lineStationIDs[stopIndex]
-                ].routeSelectionImportance;
+                ][routeSelectionImportanceProperty];
                 interiorStopCount++;
             }
             const averageInteriorImportance = interiorStopCount > 0
@@ -488,6 +498,7 @@ async function generateTimeTables() {
     Object.values(map.lines).forEach((line, lineID) => {
         const lineinfo = parseLineName(line.name);
         if (!(lineinfo.company in journeyPricingConfig.companies)) {
+            console.log(line.name);
             throw new Error("Missing journey pricing configuration for company " + lineinfo.company + ".");
         }
         const { uvrat, stopCount } = getUvratStopIndices(line, map, stationIDtonewID);
@@ -580,6 +591,7 @@ async function generateTimeTables() {
     });
     lines.forEach(line => {
         line.possibleRoutes = getPossibleRoutes(line, stations);
+        delete line.shorteningDisabled;
     });
 
     let timetable = {"lines": lines, "stations": stations};
@@ -587,11 +599,17 @@ async function generateTimeTables() {
         routeAware: false,
         property: "routeSelectionImportance"
     });
+    assignStationImportance(timetable, {
+        routeAware: false,
+        property: "localRouteSelectionImportance",
+        typeImportanceProperty: "localRouteImportance"
+    });
 
     generateRoutesForTrips(timetable);
     assignStationImportance(timetable);
     timetable.stations.forEach(station => {
         delete station.routeSelectionImportance;
+        delete station.localRouteSelectionImportance;
     });
 
     const psSystems = generatePsSystems(timetable);

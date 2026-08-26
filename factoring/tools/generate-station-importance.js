@@ -14,9 +14,6 @@ const OUTPUT_PATH = path.join(APP_DIRECTORY, "reports", "station-importance.txt"
 const LINE_TYPE_CONFIG_PATH = path.join(APP_DIRECTORY, "config", "line-types.json");
 const LINE_TYPE_CONFIG = JSON.parse(fs.readFileSync(LINE_TYPE_CONFIG_PATH, "utf8"));
 const LINE_TYPES = Object.freeze(LINE_TYPE_CONFIG);
-const TRAIN_TYPE_IMPORTANCE = Object.freeze(
-    LINE_TYPES.map(type => type.stationImportance)
-);
 const IMPORTANCE_WITHOUT_PS_OS = Object.freeze(
     LINE_TYPES.map(type => type.id === PS || type.id === OS
         ? 0
@@ -162,13 +159,20 @@ function createReport(timetable, allImportance, importanceWithoutPsOs) {
 
 function assignStationImportance(
     timetable,
-    { routeAware = true, property = "importance" } = {}
+    {
+        routeAware = true,
+        property = "importance",
+        typeImportanceProperty = "stationImportance"
+    } = {}
 ) {
     validateTimetable(timetable);
+    const typeImportance = LINE_TYPES.map(type =>
+        type[typeImportanceProperty] ?? type.stationImportance
+    );
     const allImportance = spreadImportanceScores(
         calculateStationImportance(
             timetable,
-            TRAIN_TYPE_IMPORTANCE,
+            typeImportance,
             routeAware
         )
     );
