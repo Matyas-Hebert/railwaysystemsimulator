@@ -325,6 +325,7 @@ table{
 
 .station-name-unvisited { color: var(--color-station-unvisited) !important; }
 .station-name-visited { color: var(--color-station-visited) !important; }
+.station-name-prefix, .station-name-value { display: block; }
 
 .station-information-button {
     position: absolute;

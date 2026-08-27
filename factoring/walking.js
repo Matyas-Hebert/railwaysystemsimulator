@@ -1,9 +1,39 @@
 const walking = (() => {
+function getTimeString(minutes){
+    if (minutes < 59.5){
+        return String(Math.round(minutes)) + " min";
+    }
+    let hours = Math.floor(minutes/60);
+    minutes -= hours*60;
+    return String(hours) + " hod " + String(Math.floor(minutes)) + " min";
+}
+
+function getClosestStationIds(coords, limit = 5) {
+    return timetable.stations
+        .map(station => ({
+            stationId: station.id,
+            distance: getDistance(coords, station)
+        }))
+        .sort((first, second) =>
+            first.distance - second.distance
+            || first.stationId - second.stationId
+        )
+        .slice(0, limit)
+        .map(result => result.stationId);
+}
+
 function printOptions(stationID){
     _walkables.innerHTML = "";
+    const position = gameState.getCurrentPosition();
+    const isField = position.transporttype === TRANSPORT_TYPE.FIELD;
+    const startCoords = isField ? position.coords : timetable.stations[stationID];
 
     let div = document.createElement("div");
-    settings.setStationName(div, timetable.stations[stationID]);
+    settings.setStationName(
+        div,
+        isField ? timetable.stations[position.iwd[0]] : timetable.stations[stationID],
+        isField ? "Pole u stanice " : ""
+    );
     div.classList = "whiteheader";
     _walkables.appendChild(div);
     if (stationID == -1){
@@ -13,8 +43,16 @@ function printOptions(stationID){
         _walkables.appendChild(d);
         return;
     }
-    let stationiwd = timetable.stations[stationID].iwd;
-    if (stationiwd.length == 0){
+    const walkableStationIds = isField
+        ? [...position.iwd]
+        : [...timetable.stations[stationID].iwd];
+    const openedStationId = Number(section1id);
+    if (timetable.stations[openedStationId]
+        && openedStationId !== Number(stationID)
+        && !walkableStationIds.includes(openedStationId)) {
+        walkableStationIds.push(openedStationId);
+    }
+    if (walkableStationIds.length == 0){
         let d = document.createElement("div");
         d.innerText = "Nikam odtud nelze dojít"
         d.classList = "reddishinfo";
@@ -22,7 +60,7 @@ function printOptions(stationID){
         return;
     }
     let i = 0;
-    stationiwd.forEach(iwd => {
+    walkableStationIds.forEach(walkableStationId => {
         let options = document.createElement("div");
         options.classList = "whiteheader";
         if (i%2 == 0){
@@ -30,22 +68,33 @@ function printOptions(stationID){
         }
 
         let name = document.createElement("div");
-        settings.setStationName(name, timetable.stations[iwd.id]);
+        settings.setStationName(name, timetable.stations[walkableStationId]);
 
         let time = document.createElement("div");
-        time.innerText = String(Math.round(iwd.dist*8))+" min";
+        const distance = getDistance(
+            startCoords,
+            timetable.stations[walkableStationId]
+        );
+        time.innerText = getTimeString(distance*8);
 
         let go = document.createElement("div");
         go.innerText = "JÍT";
         go.className = "selected";
 
         go.onclick = function() {
-            changeTransportType(2);
-            gameState.updateCurrentPosition({goalStatID: iwd.id, time: getCurrentTimeInMilliseconds()});
+            const goalStation = timetable.stations[walkableStationId];
+            gameState.updateCurrentPosition({
+                transporttype: TRANSPORT_TYPE.WALKING,
+                coords: { lat: startCoords.lat, lon: startCoords.lon },
+                statID: isField ? null : Number(stationID),
+                goalCoords: { lat: goalStation.lat, lon: goalStation.lon },
+                goalStatID: walkableStationId,
+                time: getCurrentTimeInMilliseconds()
+            });
             changeCurrentSection(0);
         }
         name.onclick = function(){
-            section1id = iwd.id;
+            section1id = walkableStationId;
             changeCurrentSection(1);
         }
         options.appendChild(name);
@@ -59,9 +108,10 @@ function printOptions(stationID){
 }
 
 function printProgress(table){
-    let startstat = timetable.stations[gameState.getCurrentPosition().statID];
-    let endstat = timetable.stations[gameState.getCurrentPosition().goalStatID];
-    let dist = getDistance(gameState.getCurrentPosition().statID, gameState.getCurrentPosition().goalStatID);
+    const position = gameState.getCurrentPosition();
+    _traintimetableheader.innerHTML = "";
+    table.innerHTML = "";
+    let dist = getDistance(position.coords, position.goalCoords);
     let mstime = dist*8*60*1000;
     let timeelapsed = getCurrentTimeInMilliseconds()-gameState.getCurrentPosition().time;
     let timetogo = mstime-timeelapsed;
@@ -78,30 +128,76 @@ function printProgress(table){
     }
     _mintogoal.innerText += " do cíle";
     if (timeelapsed >= mstime){
-        changeTransportType(0);
-        gameState.updateCurrentPosition({statID: gameState.getCurrentPosition().goalStatID});
+        gameState.updateCurrentPosition({
+            transporttype: TRANSPORT_TYPE.STATION,
+            coords: position.goalCoords,
+            statID: position.goalStatID,
+            goalCoords: null,
+            goalStatID: null
+        });
         renderCurrentSection();
         return;
     }
-    schedule.updateTrackProgress(2, timeelapsed/mstime, gameState.getCurrentPosition().goalStatID, gameState.getCurrentPosition().statID);
+    const displayedStartStationId = position.statID ?? position.iwd[0];
+    const displayedGoalStationId = position.goalStatID
+        ?? getClosestStationIds(position.goalCoords, 1)[0];
+    schedule.updateTrackProgress(
+        2,
+        timeelapsed/mstime,
+        displayedGoalStationId,
+        displayedStartStationId,
+        position.goalStatID === null ? "Pole u stanice " : "Stanice",
+        position.statID === null ? "Pole u stanice " : "Stanice"
+    );
     _turnbtn.onclick = function(){
         const position = gameState.getCurrentPosition();
         const newTime = getCurrentTimeInMilliseconds()-timetogo;
-        gameState.updateCurrentPosition({time: newTime, statID: position.goalStatID, goalStatID: position.statID});
+        const newStartStationId = position.goalStatID;
+        const newIwd = newStartStationId === null
+            ? getClosestStationIds(position.goalCoords)
+            : [...timetable.stations[newStartStationId].iwd];
+        gameState.updateCurrentPosition({
+            time: newTime,
+            coords: position.goalCoords,
+            statID: newStartStationId,
+            iwd: newIwd,
+            goalCoords: position.coords,
+            goalStatID: position.statID
+        });
         renderCurrentSection();
     }
     table.innerHTML = "";
+    _stopbtn.onclick = function(){
+        const progress = Math.min(1, Math.max(0, timeelapsed / mstime));
+        const currentCoords = {
+            lat: position.coords.lat
+                + (position.goalCoords.lat - position.coords.lat) * progress,
+            lon: position.coords.lon
+                + (position.goalCoords.lon - position.coords.lon) * progress
+        };
+        gameState.updateCurrentPosition({
+            transporttype: TRANSPORT_TYPE.FIELD,
+            coords: currentCoords,
+            statID: null,
+            goalCoords: null,
+            goalStatID: null,
+            time: getCurrentTimeInMilliseconds()
+        });
+        changeCurrentSection(5);
+    }
 }
 
-function getDistance(fromID, toID){
-    let dist = 0;
-    timetable.stations[fromID].iwd.forEach(iw => {
-        if (iw.id == toID){
-            dist = iw.dist;
-        }
-    });
-    return dist;
+function getDistance(fromCoords, toCoords){
+    const earthRadius = 6371;
+    const latitudeDifference = (toCoords.lat - fromCoords.lat) * Math.PI / 180;
+    const longitudeDifference = (toCoords.lon - fromCoords.lon) * Math.PI / 180;
+    const value = Math.sin(latitudeDifference / 2) ** 2
+        + Math.cos(fromCoords.lat * Math.PI / 180)
+        * Math.cos(toCoords.lat * Math.PI / 180)
+        * Math.sin(longitudeDifference / 2) ** 2;
+
+    return earthRadius * 2 * Math.atan2(Math.sqrt(value), Math.sqrt(1 - value));
 }
 
-    return { printOptions, printProgress, getDistance };
+    return { printOptions, printProgress, getDistance, getClosestStationIds };
 })();

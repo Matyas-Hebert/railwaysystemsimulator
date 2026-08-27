@@ -1,5 +1,5 @@
 const settings = (() => {
-    const APP_VERSION = "1.3.7.2";
+    const APP_VERSION = "1.3.8";
 
     function renderMoney() {
         const moneyDisplay = document.querySelector("#_money");
@@ -131,10 +131,20 @@ const settings = (() => {
 
     function setStationName(element, station, prefix = "", suffix = "") {
         const visited = stationVisits.isVisited(station.id);
-        element.textContent = prefix + getStationName(station) + suffix;
-        element.classList.add("station-name");
-        element.classList.toggle("station-name-visited", visited);
-        element.classList.toggle("station-name-unvisited", !visited);
+        element.innerHTML = "";
+
+        const prefixElement = document.createElement("span");
+        prefixElement.className = "station-name-prefix";
+        prefixElement.textContent = prefix;
+        element.appendChild(prefixElement);
+
+        const stationNameElement = document.createElement("span");
+        stationNameElement.classList.add("station-name-value");
+        stationNameElement.textContent = getStationName(station) + suffix;
+        stationNameElement.classList.add("station-name");
+        stationNameElement.classList.toggle("station-name-visited", visited);
+        stationNameElement.classList.toggle("station-name-unvisited", !visited);
+        element.appendChild(stationNameElement);
     }
 
     return {

@@ -2,6 +2,7 @@ const SECONDS_PER_DAY = 86400;
 const MILLISECONDS_PER_DAY = 86400000;
 
 const TRANSPORT_TYPE = Object.freeze({
+    FIELD: -1,
     STATION: 0,
     TRAIN: 1,
     WALKING: 2

@@ -81,6 +81,58 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   return R * c; // Distance in km
 }
 
+function addClosestStation(closestStations, stationId, distance, limit) {
+    const candidate = { stationId, distance };
+    const insertIndex = closestStations.findIndex(closest =>
+        distance < closest.distance
+        || distance === closest.distance && stationId < closest.stationId
+    );
+
+    if (insertIndex === -1) {
+        closestStations.push(candidate);
+    }
+    else {
+        closestStations.splice(insertIndex, 0, candidate);
+    }
+    if (closestStations.length > limit) closestStations.pop();
+}
+
+function assignClosestStations(stations, limit = 5) {
+    const closestStations = stations.map(() => []);
+    for (let firstStationId = 0; firstStationId < stations.length; firstStationId++) {
+        const firstStation = stations[firstStationId];
+        for (
+            let secondStationId = firstStationId + 1;
+            secondStationId < stations.length;
+            secondStationId++
+        ) {
+            const secondStation = stations[secondStationId];
+            const distance = calculateDistance(
+                firstStation.lat,
+                firstStation.lon,
+                secondStation.lat,
+                secondStation.lon
+            );
+            addClosestStation(
+                closestStations[firstStationId],
+                secondStationId,
+                distance,
+                limit
+            );
+            addClosestStation(
+                closestStations[secondStationId],
+                firstStationId,
+                distance,
+                limit
+            );
+        }
+    }
+
+    stations.forEach((station, stationId) => {
+        station.iwd = closestStations[stationId].map(closest => closest.stationId);
+    });
+}
+
 function getTimeFromDistanceAndType(distance, typeID){
     // distance [km], distance/acceleration [hours]
     const typeConfig = lineTypeConfig[typeID];
@@ -415,7 +467,6 @@ async function generateTimeTables() {
 
     const stations = [];
     const lines = [];
-    const coords = [];
 
     let i = 0;
 
@@ -437,18 +488,6 @@ async function generateTimeTables() {
             let closest = Infinity;
             let district = undefined;
 
-            let cnt = 0;
-            let iwd = [];
-            coords.forEach(coord => {
-                let distance = calculateDistance(station.lat, station.lng, coord.lat, coord.lng);
-                if (distance <= 3){
-                    stations[cnt].iwd.push({"id": i, "dist": distance});
-                    iwd.push({"id": cnt, "dist": distance});
-                }
-                cnt++;
-            });
-
-            coords.push({"lat": station.lat, "lng": station.lng});
             citydata.features.forEach(cd => {
                 let name = cd.properties.name;
                 let coords = cd.geometry.coordinates;
@@ -464,7 +503,7 @@ async function generateTimeTables() {
             name = name.replace("-", " - ");
             stations.push({
                 "id": i,
-                "iwd": iwd,
+                "iwd": [],
                 "name": name,
                 "district": district,
                 "lat": station.lat,
@@ -483,6 +522,8 @@ async function generateTimeTables() {
             i++;
         }
     });
+
+    assignClosestStations(stations);
 
     const districtBorders = generateDistrictBorders(stations, citydata);
 

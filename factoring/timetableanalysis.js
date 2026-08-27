@@ -797,6 +797,10 @@ function renderCurrentSection(force = false){
         _start.style.display = "block";
         return;
     }
+    const currentTransportType = gameState.getCurrentPosition().transporttype;
+    if (currentTransportType === TRANSPORT_TYPE.FIELD && currentsection === 0) {
+        currentsection = 5;
+    }
     _tables.style.display = "flex";
     _section0.style.display = currentsection <= 1 ? "block" : "none";
     _section1.style.display = currentsection == 1 ? "block" : "none";
@@ -818,7 +822,11 @@ function renderCurrentSection(force = false){
     _tab7.className = currentsection == 7 ? "chosen" : "unchosen";
     _tab8.className = currentsection == 8 ? "chosen" : "unchosen";
     _tab9.className = currentsection == 9 ? "chosen" : "unchosen";
-    _tab5.style.display = gameState.getCurrentPosition().transporttype === TRANSPORT_TYPE.STATION ? "block" : "none";
+    _tab0.style.display = currentTransportType === TRANSPORT_TYPE.FIELD ? "none" : "block";
+    _tab5.style.display = (
+        currentTransportType === TRANSPORT_TYPE.STATION
+        || currentTransportType === TRANSPORT_TYPE.FIELD
+    ) ? "block" : "none";
     if (currentsection == 0){
         if (gameState.getCurrentPosition().transporttype === TRANSPORT_TYPE.STATION){
             printTimetable(gameState.getCurrentPosition().statID, true, _timetable, true, 15, 0, force);
@@ -866,14 +874,15 @@ function renderCurrentSection(force = false){
     }
     if (gameState.getCurrentPosition().transporttype === TRANSPORT_TYPE.WALKING){
         let start = gameState.getCurrentPosition().time;
-        let dist = walking.getDistance(gameState.getCurrentPosition().statID, gameState.getCurrentPosition().goalStatID);
+        const walkingPosition = gameState.getCurrentPosition();
+        let dist = walking.getDistance(walkingPosition.coords, walkingPosition.goalCoords);
         let mstime = dist*8*60*1000;
         let end = start+mstime;
         let current = getCurrentTimeInMilliseconds();
-        if (Math.abs(current - start) < 60000){
+        if (walkingPosition.statID !== null && Math.abs(current - start) < 60000){
             gameState.updateCurrentPosition({iswifi: delays.hasStationWifi(gameState.getCurrentPosition().statID, gameState.getCurrentPosition().day)});
         }
-        if (Math.abs(current - end) < 60000){
+        if (walkingPosition.goalStatID !== null && Math.abs(current - end) < 60000){
             gameState.updateCurrentPosition({iswifi: delays.hasStationWifi(gameState.getCurrentPosition().goalStatID, gameState.getCurrentPosition().day)});
         }
     }

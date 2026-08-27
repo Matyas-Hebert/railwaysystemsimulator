@@ -41,6 +41,27 @@ class GameState {
         this.#isLoading = false;
     }
 
+    getDateOfCreation(stationId) {
+        const normalizedStationId = Number(stationId);
+        if (!Number.isInteger(normalizedStationId)
+            || !this.#stations[normalizedStationId]) {
+            throw new TypeError("A valid stationId is required.");
+        }
+
+        const daysBetweenStations = 186 * 365 / this.#stations.length;
+        const millisecondsPerDay = 24 * 60 * 60 * 1000;
+        const creationDate = new Date(
+            Date.UTC(1840, 0, 1)
+            + normalizedStationId * daysBetweenStations * millisecondsPerDay
+        );
+        const monthNames = [
+            "ledna", "února", "března", "dubna", "května", "června",
+            "července", "srpna", "září", "října", "listopadu", "prosince"
+        ];
+
+        return `${creationDate.getUTCDate()}. ${monthNames[creationDate.getUTCMonth()]} ${creationDate.getUTCFullYear()}`;
+    }
+
     getCurrentPosition() {
         return this.#currentPosition === null ? null : structuredClone(this.#currentPosition);
     }
@@ -85,6 +106,12 @@ class GameState {
 
     updateCurrentPosition(changes) {
         if (this.#currentPosition === null) throw new Error("Game has not started.");
+        changes = structuredClone(changes);
+        if ("coords" in changes
+            && Number.isFinite(changes.coords?.lat)
+            && Number.isFinite(changes.coords?.lon)) {
+            changes.iwd = walking.getClosestStationIds(changes.coords);
+        }
         this.setCurrentPosition({ ...this.#currentPosition, ...structuredClone(changes) });
     }
 
@@ -523,7 +550,22 @@ class GameState {
         if (!("transporttype" in position)) position.transporttype = TRANSPORT_TYPE.STATION;
 
         position.statID = this.#toStationId(position.stationLonLatId ?? position.statID);
-        if (position.statID == null) {
+        position.iwd = Array.isArray(position.iwd)
+            ? position.iwd
+                .map(Number)
+                .filter(stationId =>
+                    Number.isInteger(stationId) && this.#stations[stationId]
+                )
+                .slice(0, 5)
+            : [];
+        const hasCoordinateOrigin = (
+            position.transporttype === TRANSPORT_TYPE.WALKING
+            || position.transporttype === TRANSPORT_TYPE.FIELD
+        )
+            && Number.isFinite(position.coords?.lat)
+            && Number.isFinite(position.coords?.lon)
+            && position.iwd.length > 0;
+        if (position.statID == null && !hasCoordinateOrigin) {
             this.setAutoBoardSelection(null);
             this.setAutoExitStationId(null);
             return;
@@ -534,7 +576,12 @@ class GameState {
             ? position.statID
             : this.#toStationId(storedGoal);
 
-        if (position.goalStatID == null) {
+        const hasWalkingGoal = position.transporttype === TRANSPORT_TYPE.WALKING
+            && Number.isFinite(position.goalCoords?.lat)
+            && Number.isFinite(position.goalCoords?.lon);
+        if (position.goalStatID == null
+            && !hasWalkingGoal
+            && position.transporttype !== TRANSPORT_TYPE.FIELD) {
             position.goalStatID = position.statID;
             position.transporttype = TRANSPORT_TYPE.STATION;
         }

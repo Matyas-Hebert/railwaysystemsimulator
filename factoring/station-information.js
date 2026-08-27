@@ -43,6 +43,18 @@ const stationInformation = (() => {
         return null;
     }
 
+    function printInfo(infoStationId) {
+        const content = document.querySelector(
+            "#_stationinformation .station-information-content"
+        );
+        content.replaceChildren();
+
+        const paragraph = document.createElement("p");
+        paragraph.textContent = "Stanice byla postavena "
+            + gameState.getDateOfCreation(infoStationId);
+        content.appendChild(paragraph);
+    }
+
     function render() {
         const displayedStationId = getDisplayedStationId();
         if (stationId !== null && stationId !== displayedStationId) {
@@ -56,6 +68,9 @@ const stationInformation = (() => {
         const stationControls = document.querySelector("#_section1");
 
         panel.hidden = !isOpen;
+        if (isOpen) {
+            printInfo(stationId);
+        }
         filters.hidden = isOpen;
         timetableElement.hidden = isOpen;
         if (currentsection === 1) {
@@ -63,5 +78,5 @@ const stationInformation = (() => {
         }
     }
 
-    return { addButton, render };
+    return { addButton, printInfo, render };
 })();

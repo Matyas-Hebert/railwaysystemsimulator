@@ -53,12 +53,16 @@ function show(search, options=_s1options, section4 = false, id=0, inputfield=nul
             if (section4){
                 idos.setLocation(id, opt.id);
                 inputfield.value = opt.name;
-                settings.setStationName(inputfield, opt.station);
+                const visited = stationVisits.isVisited(opt.id);
+                inputfield.classList.toggle("station-name-visited", visited);
+                inputfield.classList.toggle("station-name-unvisited", !visited);
             }
             if (start){
                 startid = opt.id;
                 inputfield.value = opt.name;
-                settings.setStationName(inputfield, opt.station);
+                const visited = stationVisits.isVisited(opt.id);
+                inputfield.classList.toggle("station-name-visited", visited);
+                inputfield.classList.toggle("station-name-unvisited", !visited);
             }
             else {
                 section1id = opt.id;

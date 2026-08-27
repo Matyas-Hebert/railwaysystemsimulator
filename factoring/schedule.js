@@ -294,7 +294,14 @@ function toggle(clickedrow, stopsdata, conn = null, allowAutoBoard = false){
     });
 }
 
-function updateTrackProgress(status, progress, station1, station2){
+function updateTrackProgress(
+    status,
+    progress,
+    station1,
+    station2,
+    station1Prefix = "",
+    station2Prefix = ""
+){
     _doublestop.className = "inactive";
     _singlestop.className = "inactive";
     _firststop.className = "inactive";
@@ -335,8 +342,8 @@ function updateTrackProgress(status, progress, station1, station2){
         _doublestop.className = "active";
         progress = Math.floor(progress*100);
         _dspt.style.setProperty("width", `${progress}%`, "important");
-        settings.setStationName(_dss1, timetable.stations[station2]);
-        settings.setStationName(_dss2, timetable.stations[station1]);
+        settings.setStationName(_dss1, timetable.stations[station2], station2Prefix);
+        settings.setStationName(_dss2, timetable.stations[station1], station1Prefix);
         _dss1.onclick = function(){
             section1id = station2;
             changeCurrentSection(1);
