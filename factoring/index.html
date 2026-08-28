@@ -31,6 +31,7 @@
                 <td id="_tab0" class="chosen" onclick="selectSection(0)">Aktuálně</td>
                 <td id="_tab5" class="unchosen" onclick="selectSection(5)">Pěšo</td>
                 <td id="_tab1" class="unchosen" onclick="selectSection(1)">Stanice</td>
+                <td id="_tab10" class="unchosen" onclick="selectSection(10)">Trh</td>
             </table>
             <table class="tabs">
                 <td id="_tab2" class="unchosen" onclick="selectSection(2)">Vlaky</td>
@@ -47,6 +48,7 @@
 
             </table>
         </div>
+        <div id="_section10"></div>
         <div id="_section6"></div>
         <div id="_section7"></div>
         <div id="_section9">
@@ -198,6 +200,10 @@
                 <input id="_idostime" oninput="idos.updateTime()">
                 <div onclick="idos.increaseTime()">&gt;</div>
             </div>
+            <label class="idos-air-routes">
+                <input type="checkbox" id="_idosairroutes" checked onchange="idos.setIncludeAirRoutes(this.checked)">
+                <span>ZAHRNOUT LETECKÉ SPOJE (AR/AJ)</span>
+            </label>
             <div id="_section4options"></div>
             <button class="idossearchs" onclick="idos.print()">HLEDAT</button>
             <div id="_idosstats">
@@ -255,6 +261,7 @@
     <script src="idos.js"></script>
     <script src="search.js"></script>
     <script src="walking.js"></script>
+    <script src="player-location.js"></script>
     <script src="station-visits.js"></script>
     <script src="line-visits.js"></script>
     <script src="auto-boarding.js"></script>

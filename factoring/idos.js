@@ -1,6 +1,7 @@
 const idos = (() => {
     let locations = [69, 420];
     let departureTime = 0;
+    let includeAirRoutes = true;
 
 let raptorIndex = null;
 
@@ -192,6 +193,10 @@ function findPath(startstationID, endstationID, time=-1) {
 
         routesToScan.forEach(lineID => {
             const line = timetable.lines[lineID];
+            if (!includeAirRoutes
+                && (line.type === TRAIN_TYPES.AR || line.type === TRAIN_TYPES.AJ)) {
+                return;
+            }
             let boardedTrips = [];
 
             line.stops.forEach((stop, stopIndex) => {
@@ -302,6 +307,14 @@ function print(){
     _idosstats.style.display = "flex";
     let res = findPath(locations[0], locations[1], departureTime);
     _idosresults.innerHTML = "";
+
+    if (!Array.isArray(res) || res.length === 0) {
+        _idosstats.style.display = "none";
+        _idosresults.innerText = "Spojení nebylo nalezeno.";
+        _idosresults.className = "nowifiinfo";
+        return;
+    }
+    _idosresults.className = "";
 
 
     //_idosresults
@@ -437,6 +450,10 @@ function updateTimeView(){
         locations[index] = stationId;
     }
 
+    function setIncludeAirRoutes(include) {
+        includeAirRoutes = Boolean(include);
+    }
+
     function initializeTime() {
         departureTime = getCurrentTimeInMinutes();
         updateTimeView();
@@ -449,6 +466,7 @@ function updateTimeView(){
         increaseTime,
         updateTime,
         setLocation,
+        setIncludeAirRoutes,
         initializeTime
     };
 })();

@@ -456,6 +456,29 @@ function generateRoutesForTrips(timetable) {
     });
 }
 
+function assignStationCountries(stations, districtBorders) {
+    const countryByDistrict = new Map(
+        districtBorders.map(district => [district.name, district.country])
+    );
+
+    stations.forEach(station => {
+        const countryPrefix = /^\[([a-z]{2})\]/i.exec(station.name);
+        if (countryPrefix !== null) {
+            station.country = countryPrefix[1].toUpperCase();
+            return;
+        }
+
+        const districtCountry = countryByDistrict.get(station.district);
+        if (!districtCountry) {
+            throw new Error(
+                `Cannot assign a country to station ${station.name}: `
+                + `district ${station.district} has no country.`
+            );
+        }
+        station.country = districtCountry;
+    });
+}
+
 async function generateTimeTables() {
     const lineTypeConfigPath = path.join(__dirname, "../config/line-types.json");
     const journeyPricingConfigPath = path.join(__dirname, "../config/journey-pricing.json");
@@ -526,6 +549,7 @@ async function generateTimeTables() {
     assignClosestStations(stations);
 
     const districtBorders = generateDistrictBorders(stations, citydata);
+    assignStationCountries(stations, districtBorders);
 
     let sortedEntries = Object.entries(districtcount).sort((a, b) => b[1] - a[1]);
     i = 0;

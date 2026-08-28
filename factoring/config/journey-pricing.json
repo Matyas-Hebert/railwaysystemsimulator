@@ -210,6 +210,24 @@
       "auto_board_price": 4,
       "auto_leave_price": 4
     },
+    "pPR": {
+      "must_auto_ride": false,
+      "price_per_km": 0.3,
+      "train_types": {
+        "IC": {
+          "price_per_km": 0.3,
+          "auto_board_price": 20,
+          "auto_leave_price": 10
+        },
+        "EC": {
+          "price_per_km": 0.3,
+          "auto_board_price": 20,
+          "auto_leave_price": 10
+        }
+      },
+      "auto_board_price": 20,
+      "auto_leave_price": 10
+    },
     "PID": {},
     "PKP": {},
     "PMDP": {},

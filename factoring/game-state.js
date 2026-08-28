@@ -31,6 +31,7 @@ class GameState {
     #stationIdByLonLat;
     #timeTravelled = 0;
     #timeDilatation = 1;
+    #positionChangeHandler = null;
 
     constructor(stations, stationIdByLonLat, lines = []) {
         this.#stations = stations;
@@ -65,6 +66,13 @@ class GameState {
     getCurrentPosition() {
         return this.#currentPosition === null ? null : structuredClone(this.#currentPosition);
     }
+    setPositionChangeHandler(handler) {
+        if (handler !== null && typeof handler !== "function") {
+            throw new TypeError("Position change handler must be a function or null.");
+        }
+        this.#positionChangeHandler = handler;
+    }
+
 
     compareTrains(train1, train2){
         if (train1?.transporttype !== TRANSPORT_TYPE.TRAIN || train2 === null){
@@ -84,8 +92,9 @@ class GameState {
 
     setCurrentPosition(position) {
         const nextPosition = position === null ? null : structuredClone(position);
-        if (!this.#isLoading
-            && this.#hasPlayerPositionChanged(this.#currentPosition, nextPosition)) {
+        const positionChanged = !this.#isLoading
+            && this.#hasPlayerPositionChanged(this.#currentPosition, nextPosition);
+        if (positionChanged) {
             const plannedAutoBoardTrain = this.getAutoBoardSelection();
             if (plannedAutoBoardTrain !== null
                 && !this.compareTrains(nextPosition, plannedAutoBoardTrain)) {
@@ -102,6 +111,9 @@ class GameState {
         }
         this.#currentPosition = nextPosition;
         this.#saveCurrentPosition();
+        if (positionChanged && this.#positionChangeHandler !== null) {
+            this.#positionChangeHandler(this.getCurrentPosition());
+        }
     }
 
     updateCurrentPosition(changes) {

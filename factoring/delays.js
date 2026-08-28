@@ -47,12 +47,12 @@ function getDelay(lineID, tripNumber, time, stationID, daynumber){
     let expectedDepartureTime = previousDepartureTime-delay;
 
     if (routeStartTime-delay > time){
-        return {"delay": 0, "status": TRAIN_STATUS.NOT_DEPARTED, "station": routeStartStop.sid, "arrtime": Math.round(routeStartTime), "deptime": null, "progress": 1};
+        return {"delay": 0, "status": TRAIN_STATUS.NOT_DEPARTED, "station": routeStartStop.sid, "arrtime": Math.round(routeStartTime), "deptime": null, "progress": 1, "stopIndex": route.startIndex};
     }
 
     if (previousDepartureTime >= time){
         let status = routeStartStop.sid == stationID ? 3 : 1;
-        return {"delay": Math.max(0, time-expectedDepartureTime), "status": status, "station": routeStartStop.sid, "arrtime": Math.round(routeStartTime), "deptime": Math.round(previousDepartureTime), "progress": 1};
+        return {"delay": Math.max(0, time-expectedDepartureTime), "status": status, "station": routeStartStop.sid, "arrtime": Math.round(routeStartTime), "deptime": Math.round(previousDepartureTime), "progress": 1, "stopIndex": route.startIndex};
     }
 
     let passedTargetStation = routeStartStop.sid == stationID;
@@ -76,14 +76,14 @@ function getDelay(lineID, tripNumber, time, stationID, daynumber){
         if (arrtime > time){
             const progress = (time-previousDepartureTime)/(arrtime-previousDepartureTime);
             return {"delay": Math.round(delay+newdelay*progress), "status": passedTargetStation ? 4 : 2, "station": stops[i].sid,
-                    "arrtime": Math.round(arrtime), "deptime": Math.round(previousDepartureTime), "progress": progress};
+                    "arrtime": Math.round(arrtime), "deptime": Math.round(previousDepartureTime), "progress": progress, "stopIndex": i};
         }
 
         if (i < route.endIndex
             && seededRandom(seed*2+1) <= getLineTypeConfig(line.type).cancellationProbabilityPerStop){
             const status = expectedDepartureAtTarget + delay + newdelay < time ? 7 : -1;
             return {"delay": Math.round(delay+newdelay), "status": status, "station": stops[i].sid,
-                    "arrtime": Math.round(arrtime), "deptime": null, "progress": 1};
+                    "arrtime": Math.round(arrtime), "deptime": null, "progress": 1, "stopIndex": i};
         }
 
         if (stop.sid == stationID){
@@ -97,12 +97,12 @@ function getDelay(lineID, tripNumber, time, stationID, daynumber){
         if (previousDepartureTime >= time){
             let status = passedTargetStation ? (stop.sid == stationID ? 3 : 5) : 1;
             return {"delay": Math.round(delay), "status": status, "station": stops[i].sid,
-                    "arrtime": Math.round(arrtime), "deptime": Math.round(previousDepartureTime), "progress": 1};
+                    "arrtime": Math.round(arrtime), "deptime": Math.round(previousDepartureTime), "progress": 1, "stopIndex": i};
         }
     }
 
     return {"delay": Math.round(delay), "status": TRAIN_STATUS.FINISHED, "station": null,
-                    "arrtime": null, "deptime": Math.round(starttime + routeEndStop.arr + delay), "progress": 1};
+                    "arrtime": null, "deptime": Math.round(starttime + routeEndStop.arr + delay), "progress": 1, "stopIndex": route.endIndex};
 }
 
 function getStatusText(status){

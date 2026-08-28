@@ -19,14 +19,18 @@ function getCapitalEntries(capitalsData, project) {
 
     return capitalsData.features.map(feature => {
         const name = feature?.properties?.name;
+        const country = feature?.properties?.country;
         const coordinates = feature?.geometry?.coordinates;
         const lon = Number(coordinates?.[0]);
         const lat = Number(coordinates?.[1]);
-        if (!name || feature?.geometry?.type !== "Point"
+        if (!name || !["CZ", "SK"].includes(country)
+            || feature?.geometry?.type !== "Point"
             || !Number.isFinite(lon) || !Number.isFinite(lat)) {
-            throw new TypeError("Every district capital must be a named GeoJSON Point.");
+            throw new TypeError(
+                "Every district capital must be a named CZ/SK GeoJSON Point."
+            );
         }
-        return { name, lon, lat, point: project(lon, lat) };
+        return { name, country, lon, lat, point: project(lon, lat) };
     });
 }
 
@@ -202,6 +206,7 @@ function generateDistrictBorders(stations, capitalsData) {
 
         return {
             name: selected.name,
+            country: selected.country,
             capital: { lon: selected.lon, lat: selected.lat },
             borderVertices: border.map(unproject)
         };

@@ -778,7 +778,7 @@ function startGame(){
 };
 
 function selectSection(section){
-    if (section >= 0 && section <= 9){
+    if (section >= 0 && section <= 10){
         changeCurrentSection(section);
     }
     if (currentsection == 4){
@@ -812,6 +812,7 @@ function renderCurrentSection(force = false){
     _section7.style.display = currentsection == 7 ? "block" : "none";
     _section8.style.display = currentsection == 8 ? "block" : "none";
     _section9.style.display = currentsection == 9 ? "block" : "none";
+    _section10.style.display = currentsection == 10 ? "block" : "none";
     _subsection5.style.display = "none";
     _tab0.className = currentsection == 0 ? "chosen" : "unchosen";
     _tab1.className = currentsection == 1 ? "chosen" : "unchosen";
@@ -822,6 +823,8 @@ function renderCurrentSection(force = false){
     _tab7.className = currentsection == 7 ? "chosen" : "unchosen";
     _tab8.className = currentsection == 8 ? "chosen" : "unchosen";
     _tab9.className = currentsection == 9 ? "chosen" : "unchosen";
+    _tab10.style.display = currentTransportType === TRANSPORT_TYPE.STATION ? "block" : "none";
+    _tab10.className = currentsection == 10 ? "chosen" : "unchosen";
     _tab0.style.display = currentTransportType === TRANSPORT_TYPE.FIELD ? "none" : "block";
     _tab5.style.display = (
         currentTransportType === TRANSPORT_TYPE.STATION
@@ -936,6 +939,9 @@ const gameState = new GameState(timetable.stations, lonlattoid, timetable.lines)
 let pinnedstationsopened = false;
 let currentsection = 0;
 let section1id = 200;
+gameState.setPositionChangeHandler(() => {
+    currentsection = 0;
+});
 let startid = -1;
 let wifiluckboost = 0;
 let section2data = {"lineID": 1, "tripID": 1, "day": 0, "hidesinfront": true};

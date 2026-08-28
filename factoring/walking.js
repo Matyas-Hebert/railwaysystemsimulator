@@ -168,13 +168,7 @@ function printProgress(table){
     }
     table.innerHTML = "";
     _stopbtn.onclick = function(){
-        const progress = Math.min(1, Math.max(0, timeelapsed / mstime));
-        const currentCoords = {
-            lat: position.coords.lat
-                + (position.goalCoords.lat - position.coords.lat) * progress,
-            lon: position.coords.lon
-                + (position.goalCoords.lon - position.coords.lon) * progress
-        };
+        const currentCoords = playerLocation.getCurrentPlayerCoords();
         gameState.updateCurrentPosition({
             transporttype: TRANSPORT_TYPE.FIELD,
             coords: currentCoords,

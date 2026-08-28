@@ -44,6 +44,25 @@
     width: 100%;
 }
 
+.idos-air-routes {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 44px;
+    margin-top: 0.75rem;
+    color: var(--color-text-inverse);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.idos-air-routes input {
+    width: 1.4rem;
+    height: 1.4rem;
+    margin: 0;
+    accent-color: var(--color-success);
+    cursor: pointer;
+}
+
 #_idostime {
     text-align: center;
     font-size: 2rem;

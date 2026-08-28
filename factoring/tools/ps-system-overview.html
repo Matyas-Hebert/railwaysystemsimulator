@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Přehled spojení Ps/Px systémů</title>
+    <link rel="stylesheet" href="ps-system-overview.css">
+    <script src="../config/line-types.js" defer></script>
+    <script src="../json/timetable_data.js" defer></script>
+    <script src="../json/ps-systems.js" defer></script>
+    <script src="../trip-routes.js" defer></script>
+    <script src="ps-system-overview.js" defer></script>
+</head>
+<body>
+    <main>
+        <h1>Přehled spojení Ps/Px systémů</h1>
+        <p class="description">
+            Vyberte výchozí systém. Ostatní systémy budou seřazeny podle
+            vzdálenosti nejbližších stanic.
+        </p>
+
+        <section class="selection-panel">
+            <label for="_sourcesystem">Výchozí Ps/Px systém</label>
+            <input id="_sourcesystem" list="_systemoptions" autocomplete="off"
+                placeholder="Začněte psát název systému">
+            <datalist id="_systemoptions"></datalist>
+            <button id="_createoverview" type="button">VYTVOŘIT PŘEHLED</button>
+        </section>
+
+        <section class="filter-panel">
+            <div class="filter-field">
+                <label for="_minconnections">Vlaků/den – nejméně</label>
+                <input id="_minconnections" type="number" min="0" step="1" placeholder="Bez minima">
+            </div>
+            <div class="filter-field">
+                <label for="_maxconnections">Vlaků/den – nejvýše</label>
+                <input id="_maxconnections" type="number" min="0" step="1" placeholder="Bez maxima">
+            </div>
+            <div class="filter-field">
+                <label for="_mindistance">Vzdálenost – nejméně (km)</label>
+                <input id="_mindistance" type="number" min="0" step="0.1" placeholder="Bez minima">
+            </div>
+            <div class="filter-field">
+                <label for="_maxdistance">Vzdálenost – nejvýše (km)</label>
+                <input id="_maxdistance" type="number" min="0" step="0.1" placeholder="Bez maxima">
+            </div>
+            <div class="filter-field">
+                <label for="_minimportance">Důležitost – nejméně</label>
+                <input id="_minimportance" type="number" min="0" step="0.01" placeholder="Bez minima">
+            </div>
+            <div class="filter-field">
+                <label for="_maximportance">Důležitost – nejvýše</label>
+                <input id="_maximportance" type="number" min="0" step="0.01" placeholder="Bez maxima">
+            </div>
+            <div class="filter-field">
+                <label for="_sortby">Seřadit podle</label>
+                <select id="_sortby">
+                    <option value="distance">Vzdálenosti</option>
+                    <option value="connections">Počtu vlaků</option>
+                    <option value="fastestTime">Nejrychlejší doby jízdy</option>
+                    <option value="averageTime">Průměrné doby jízdy</option>
+                    <option value="importance">Důležitosti</option>
+                    <option value="importancePerDistance">Důležitosti / vzdálenosti</option>
+                </select>
+            </div>
+            <div class="filter-field">
+                <label for="_sortdirection">Směr řazení</label>
+                <select id="_sortdirection">
+                    <option value="ascending">Od nejnižšího</option>
+                    <option value="descending">Od nejvyššího</option>
+                </select>
+            </div>
+            <fieldset class="train-type-filter">
+                <legend>Započítané typy vlaků</legend>
+                <div id="_traintypeoptions" class="train-type-options"></div>
+            </fieldset>
+        </section>
+
+        <div id="_overviewstatus" role="status"></div>
+        <section id="_overviewresults" aria-live="polite"></section>
+    </main>
+</body>
+</html>
