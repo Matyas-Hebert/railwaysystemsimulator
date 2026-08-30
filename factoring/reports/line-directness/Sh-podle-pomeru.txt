@@ -1,0 +1,51 @@
+================================================================================================
+LINKY TYPU Sh — POMĚR PŘÍMÉ VZDÁLENOSTI K DÉLCE LINKY
+Počet linek: 8 | Řazení: od nejvyššího poměru po nejnižší
+================================================================================================
+   1. Sh 153 — Hustá Sára
+      Dopravce: ČD | ID linky: 1432
+      Trasa: Kolín - Hl.N. → Kutná Hora - Hl.N.
+      Délka linky: 12.21 km | Přímá vzdálenost: 10.00 km
+      Poměr přímé vzdálenosti k délce: 0.8193 (81.93 %)
+
+   2. Sh 153 — Hustá Sára
+      Dopravce: ČD | ID linky: 1433
+      Trasa: Kutná Hora - Hl.N. → Kolín - Hl.N.
+      Délka linky: 12.21 km | Přímá vzdálenost: 10.00 km
+      Poměr přímé vzdálenosti k délce: 0.8193 (81.93 %)
+
+   3. Sh 152 — Rosa
+      Dopravce: ČD | ID linky: 948
+      Trasa: Hradec Králové - Hl.N. → Pardubice - Hl.N.
+      Délka linky: 27.16 km | Přímá vzdálenost: 19.73 km
+      Poměr přímé vzdálenosti k délce: 0.7262 (72.62 %)
+
+   4. Sh 152 — Rosa
+      Dopravce: ČD | ID linky: 949
+      Trasa: Pardubice - Hl.N. → Hradec Králové - Hl.N.
+      Délka linky: 27.16 km | Přímá vzdálenost: 19.73 km
+      Poměr přímé vzdálenosti k délce: 0.7262 (72.62 %)
+
+   5. Sh 165 — Sachr
+      Dopravce: ČD | ID linky: 1054
+      Trasa: Vysoké Mýto - Rychlodráha → Litomyšl - Hl.N.
+      Délka linky: 21.98 km | Přímá vzdálenost: 14.85 km
+      Poměr přímé vzdálenosti k délce: 0.6753 (67.53 %)
+
+   6. Sh 165 — Sachr
+      Dopravce: ČD | ID linky: 1055
+      Trasa: Litomyšl - Hl.N. → Vysoké Mýto - Rychlodráha
+      Délka linky: 21.98 km | Přímá vzdálenost: 14.85 km
+      Poměr přímé vzdálenosti k délce: 0.6753 (67.53 %)
+
+   7. Sh 154 — Řekla
+      Dopravce: ČD | ID linky: 1668
+      Trasa: Kopřivnice → Nový Jičín - Hl.N.
+      Délka linky: 21.83 km | Přímá vzdálenost: 9.40 km
+      Poměr přímé vzdálenosti k délce: 0.4305 (43.05 %)
+
+   8. Sh 154 — Řekla
+      Dopravce: ČD | ID linky: 1669
+      Trasa: Nový Jičín - Hl.N. → Kopřivnice
+      Délka linky: 21.83 km | Přímá vzdálenost: 9.40 km
+      Poměr přímé vzdálenosti k délce: 0.4305 (43.05 %)

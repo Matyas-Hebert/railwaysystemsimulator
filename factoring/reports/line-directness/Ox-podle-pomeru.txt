@@ -1,0 +1,159 @@
+================================================================================================
+LINKY TYPU Ox — POMĚR PŘÍMÉ VZDÁLENOSTI K DÉLCE LINKY
+Počet linek: 26 | Řazení: od nejvyššího poměru po nejnižší
+================================================================================================
+   1. Ox 45393 — Rákošský Express
+      Dopravce: ZSSK | ID linky: 1700
+      Trasa: Plešivec - Gemerská Horka → Detva - Stožeok
+      Délka linky: 84.73 km | Přímá vzdálenost: 75.43 km
+      Poměr přímé vzdálenosti k délce: 0.8903 (89.03 %)
+
+   2. Ox 45393 — Rákošský Express
+      Dopravce: ZSSK | ID linky: 1701
+      Trasa: Detva - Stožeok → Plešivec - Gemerská Horka
+      Délka linky: 84.73 km | Přímá vzdálenost: 75.43 km
+      Poměr přímé vzdálenosti k délce: 0.8903 (89.03 %)
+
+   3. Ox 84215 — Kriton
+      Dopravce: ČD | ID linky: 1259
+      Trasa: Roudnice nad Labem - Kozlovice → Varnsdorf - Hl.N.
+      Délka linky: 66.68 km | Přímá vzdálenost: 57.02 km
+      Poměr přímé vzdálenosti k délce: 0.8551 (85.51 %)
+
+   4. Ox 84215 — Kriton
+      Dopravce: ČD | ID linky: 1258
+      Trasa: Varnsdorf - Hl.N. → Roudnice nad Labem - Kozlovice
+      Délka linky: 66.68 km | Přímá vzdálenost: 57.02 km
+      Poměr přímé vzdálenosti k délce: 0.8551 (85.51 %)
+
+   5. Ox 20246
+      Dopravce: ČD | ID linky: 754
+      Trasa: Most → Děčín - Nové Město
+      Délka linky: 63.43 km | Přímá vzdálenost: 52.40 km
+      Poměr přímé vzdálenosti k délce: 0.8262 (82.62 %)
+
+   6. Ox 20246
+      Dopravce: ČD | ID linky: 755
+      Trasa: Děčín - Nové Město → Most
+      Délka linky: 63.43 km | Přímá vzdálenost: 52.40 km
+      Poměr přímé vzdálenosti k délce: 0.8262 (82.62 %)
+
+   7. Ox 54161 — Bojník
+      Dopravce: ZSSK | ID linky: 2166
+      Trasa: Hodonín - Hranice → Nitra - Horné Mesto
+      Délka linky: 110.95 km | Přímá vzdálenost: 91.34 km
+      Poměr přímé vzdálenosti k délce: 0.8232 (82.32 %)
+
+   8. Ox 54161 — Bojník
+      Dopravce: ZSSK | ID linky: 2167
+      Trasa: Nitra - Horné Mesto → Hodonín - Hranice
+      Délka linky: 110.95 km | Přímá vzdálenost: 91.34 km
+      Poměr přímé vzdálenosti k délce: 0.8232 (82.32 %)
+
+   9. Ox 12419b — Rychlá Chrtka
+      Dopravce: ČD | ID linky: 2663
+      Trasa: Humpolec → Habry
+      Délka linky: 31.46 km | Přímá vzdálenost: 25.59 km
+      Poměr přímé vzdálenosti k délce: 0.8134 (81.34 %)
+
+  10. Ox 12419b — Rychlá Chrtka
+      Dopravce: ČD | ID linky: 2662
+      Trasa: Habry → Humpolec
+      Délka linky: 31.46 km | Přímá vzdálenost: 25.59 km
+      Poměr přímé vzdálenosti k délce: 0.8134 (81.34 %)
+
+  11. Ox 2 — Kazincsalgo
+      Dopravce: MÁV | ID linky: 2727
+      Trasa: [HU] Kazincbarcika → [HU] Salgótarján
+      Délka linky: 77.65 km | Přímá vzdálenost: 63.04 km
+      Poměr přímé vzdálenosti k délce: 0.8118 (81.18 %)
+
+  12. Ox 2 — Kazincsalgo
+      Dopravce: MÁV | ID linky: 2726
+      Trasa: [HU] Salgótarján → [HU] Kazincbarcika
+      Délka linky: 77.65 km | Přímá vzdálenost: 63.04 km
+      Poměr přímé vzdálenosti k délce: 0.8118 (81.18 %)
+
+  13. Ox 75563 — Jinovar
+      Dopravce: ČD | ID linky: 1263
+      Trasa: Nový Bydžov - Hl.N. → Semily - Hl.N.
+      Délka linky: 51.39 km | Přímá vzdálenost: 41.70 km
+      Poměr přímé vzdálenosti k délce: 0.8114 (81.14 %)
+
+  14. Ox 75563 — Jinovar
+      Dopravce: ČD | ID linky: 1262
+      Trasa: Semily - Hl.N. → Nový Bydžov - Hl.N.
+      Délka linky: 51.39 km | Přímá vzdálenost: 41.70 km
+      Poměr přímé vzdálenosti k délce: 0.8114 (81.14 %)
+
+  15. Ox 2b — Rudasalgo
+      Dopravce: MÁV | ID linky: 2729
+      Trasa: [HU] Rudabánya → [HU] Salgótarján
+      Délka linky: 84.75 km | Přímá vzdálenost: 66.86 km
+      Poměr přímé vzdálenosti k délce: 0.7889 (78.89 %)
+
+  16. Ox 2b — Rudasalgo
+      Dopravce: MÁV | ID linky: 2728
+      Trasa: [HU] Salgótarján → [HU] Rudabánya
+      Délka linky: 84.75 km | Přímá vzdálenost: 66.86 km
+      Poměr přímé vzdálenosti k délce: 0.7889 (78.89 %)
+
+  17. Ox 18258 — Koronula
+      Dopravce: ZSSK | ID linky: 1744
+      Trasa: Sereď - Dolná Streda → Brezová pod Bradlom
+      Délka linky: 63.11 km | Přímá vzdálenost: 46.72 km
+      Poměr přímé vzdálenosti k délce: 0.7404 (74.04 %)
+
+  18. Ox 18258 — Koronula
+      Dopravce: ZSSK | ID linky: 1745
+      Trasa: Brezová pod Bradlom → Sereď - Dolná Streda
+      Délka linky: 63.11 km | Přímá vzdálenost: 46.72 km
+      Poměr přímé vzdálenosti k délce: 0.7404 (74.04 %)
+
+  19. Ox 20244
+      Dopravce: ČD | ID linky: 451
+      Trasa: Blansko - Hořice → Prostějov - Držovice
+      Délka linky: 55.06 km | Přímá vzdálenost: 40.34 km
+      Poměr přímé vzdálenosti k délce: 0.7326 (73.26 %)
+
+  20. Ox 20244
+      Dopravce: ČD | ID linky: 450
+      Trasa: Prostějov - Držovice → Blansko - Hořice
+      Délka linky: 55.06 km | Přímá vzdálenost: 40.34 km
+      Poměr přímé vzdálenosti k délce: 0.7326 (73.26 %)
+
+  21. Ox 18763
+      Dopravce: ČD | ID linky: 251
+      Trasa: Karviná - Hl.N. → Ostrava - Přívoz
+      Délka linky: 29.14 km | Přímá vzdálenost: 20.23 km
+      Poměr přímé vzdálenosti k délce: 0.6943 (69.43 %)
+
+  22. Ox 18763
+      Dopravce: ČD | ID linky: 250
+      Trasa: Ostrava - Přívoz → Karviná - Hl.N.
+      Délka linky: 29.14 km | Přímá vzdálenost: 20.23 km
+      Poměr přímé vzdálenosti k délce: 0.6943 (69.43 %)
+
+  23. Ox 84219 — Chorvát
+      Dopravce: ZSSK | ID linky: 1273
+      Trasa: Sabinov - Orkucany → Spišské Vlachy
+      Délka linky: 53.14 km | Přímá vzdálenost: 28.02 km
+      Poměr přímé vzdálenosti k délce: 0.5273 (52.73 %)
+
+  24. Ox 84219 — Chorvát
+      Dopravce: ZSSK | ID linky: 1272
+      Trasa: Spišské Vlachy → Sabinov - Orkucany
+      Délka linky: 53.14 km | Přímá vzdálenost: 28.02 km
+      Poměr přímé vzdálenosti k délce: 0.5273 (52.73 %)
+
+  25. Ox 82105
+      Dopravce: ZSSK | ID linky: 984
+      Trasa: Košice - Polov → Sečovce - Hl.S.
+      Délka linky: 76.70 km | Přímá vzdálenost: 33.91 km
+      Poměr přímé vzdálenosti k délce: 0.4421 (44.21 %)
+
+  26. Ox 82105
+      Dopravce: ZSSK | ID linky: 985
+      Trasa: Sečovce - Hl.S. → Košice - Polov
+      Délka linky: 76.70 km | Přímá vzdálenost: 33.91 km
+      Poměr přímé vzdálenosti k délce: 0.4421 (44.21 %)

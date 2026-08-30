@@ -1,0 +1,51 @@
+================================================================================================
+LINKY TYPU EC — POMĚR PŘÍMÉ VZDÁLENOSTI K DÉLCE LINKY
+Počet linek: 8 | Řazení: od nejvyššího poměru po nejnižší
+================================================================================================
+   1. EC 13 — Žiravina
+      Dopravce: ZSSK | ID linky: 1362
+      Trasa: Košice - Hl.S. → Bratislava - Hl.S.
+      Délka linky: 343.33 km | Přímá vzdálenost: 311.89 km
+      Poměr přímé vzdálenosti k délce: 0.9084 (90.84 %)
+
+   2. EC 13 — Žiravina
+      Dopravce: ZSSK | ID linky: 1363
+      Trasa: Bratislava - Hl.S. → Košice - Hl.S.
+      Délka linky: 343.33 km | Přímá vzdálenost: 311.89 km
+      Poměr přímé vzdálenosti k délce: 0.9084 (90.84 %)
+
+   3. EC 11 — Vodník
+      Dopravce: ZSSK | ID linky: 676
+      Trasa: Žilina - Hl.S. → Bratislava - Hl.S.
+      Délka linky: 199.33 km | Přímá vzdálenost: 168.82 km
+      Poměr přímé vzdálenosti k délce: 0.8470 (84.70 %)
+
+   4. EC 11 — Vodník
+      Dopravce: ZSSK | ID linky: 677
+      Trasa: Bratislava - Hl.S. → Žilina - Hl.S.
+      Délka linky: 199.33 km | Přímá vzdálenost: 168.82 km
+      Poměr přímé vzdálenosti k délce: 0.8470 (84.70 %)
+
+   5. EC 5 — Kačer
+      Dopravce: ČD | ID linky: 302
+      Trasa: České Budějovice - Hl.N. → Karlovy Vary - Hl.N.
+      Délka linky: 217.40 km | Přímá vzdálenost: 181.52 km
+      Poměr přímé vzdálenosti k délce: 0.8350 (83.50 %)
+
+   6. EC 5 — Kačer
+      Dopravce: ČD | ID linky: 303
+      Trasa: Karlovy Vary - Hl.N. → České Budějovice - Hl.N.
+      Délka linky: 217.40 km | Přímá vzdálenost: 181.52 km
+      Poměr přímé vzdálenosti k délce: 0.8350 (83.50 %)
+
+   7. EC 83410 — Moravská Kometa
+      Dopravce: pBEX | ID linky: 2624
+      Trasa: Praha - Bubeneč → Bratislava - Nivy
+      Délka linky: 414.86 km | Přímá vzdálenost: 295.30 km
+      Poměr přímé vzdálenosti k délce: 0.7118 (71.18 %)
+
+   8. EC 83410 — Moravská Kometa
+      Dopravce: pBEX | ID linky: 2625
+      Trasa: Bratislava - Nivy → Praha - Bubeneč
+      Délka linky: 414.86 km | Přímá vzdálenost: 295.30 km
+      Poměr přímé vzdálenosti k délce: 0.7118 (71.18 %)

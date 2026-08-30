@@ -1,6 +1,6 @@
 const psSystemOverview = (() => {
     const LINE_TYPE_CODES = Object.freeze(lineTypeConfig.map(type => type.code));
-    const systemOptions = new Map();
+    const sourceOptions = new Map();
 
     function formatDuration(seconds) {
         if (!Number.isFinite(seconds)) return "—";
@@ -33,6 +33,39 @@ const psSystemOverview = (() => {
     function getSystemLabel(system, systemID) {
         return LINE_TYPE_CODES[system.type] + " | "
             + system.name + " (#" + String(systemID) + ")";
+    }
+
+    function getStationLabel(station) {
+        const district = station.district ? " · " + station.district : "";
+        return station.name + district + " (#" + String(station.id) + ")";
+    }
+
+    function renderSourceOptions() {
+        const sourceType = document.querySelector("#_sourcetype").value;
+        const input = document.querySelector("#_sourcevalue");
+        const datalist = document.querySelector("#_sourceoptions");
+        const options = sourceType === "system"
+            ? psSystems.map((system, systemID) => ({
+                id: systemID,
+                label: getSystemLabel(system, systemID)
+            }))
+            : timetable.stations.map(station => ({
+                id: station.id,
+                label: getStationLabel(station)
+            }));
+
+        sourceOptions.clear();
+        datalist.replaceChildren();
+        options.forEach(option => {
+            const element = document.createElement("option");
+            element.value = option.label;
+            datalist.appendChild(element);
+            sourceOptions.set(option.label, option.id);
+        });
+        input.value = "";
+        input.placeholder = sourceType === "system"
+            ? "Začněte psát název systému"
+            : "Začněte psát název stanice";
     }
 
     function getClosestEndpointPair(
@@ -372,29 +405,33 @@ const psSystemOverview = (() => {
     }
 
     function createOverview() {
-        const input = document.querySelector("#_sourcesystem");
+        const input = document.querySelector("#_sourcevalue");
         const status = document.querySelector("#_overviewstatus");
         const resultsElement = document.querySelector("#_overviewresults");
-        const selectedSystemID = systemOptions.get(input.value);
+        const sourceType = document.querySelector("#_sourcetype").value;
+        const sourceID = sourceOptions.get(input.value);
 
         status.className = "";
         resultsElement.replaceChildren();
-        if (selectedSystemID === undefined) {
+        if (sourceID === undefined) {
             status.className = "error";
-            status.textContent = "Vyberte systém ze seznamu nabízených možností.";
+            status.textContent = "Vyberte výchozí bod ze seznamu nabízených možností.";
             return;
         }
 
-        const selectedSystem = psSystems[selectedSystemID];
+        const source = sourceType === "system"
+            ? psSystems[sourceID]
+            : { stationIDs: [sourceID] };
         const allowedLineTypes = new Set(
             [...document.querySelectorAll("#_traintypeoptions input:checked")]
                 .map(input => Number(input.value))
         );
         const allReports = psSystems
             .map((system, systemID) => ({ system, systemID }))
-            .filter(result => result.systemID !== selectedSystemID)
+            .filter(result => sourceType !== "system"
+                || result.systemID !== sourceID)
             .map(result => analyzeSystem(
-                selectedSystem,
+                source,
                 result.system,
                 result.systemID,
                 allowedLineTypes
@@ -460,7 +497,10 @@ const psSystemOverview = (() => {
         const connectedSystems = reports.filter(
             report => report.directConnectionsPerDay > 0
         ).length;
-        status.textContent = getSystemLabel(selectedSystem, selectedSystemID)
+        const sourceLabel = sourceType === "system"
+            ? getSystemLabel(psSystems[sourceID], sourceID)
+            : getStationLabel(timetable.stations[sourceID]);
+        status.textContent = sourceLabel
             + ": zobrazeno " + String(reports.length) + " z "
             + String(allReports.length) + " ostatních systémů; "
             + String(connectedSystems)
@@ -471,14 +511,11 @@ const psSystemOverview = (() => {
     }
 
     function initialize() {
-        const datalist = document.querySelector("#_systemoptions");
-        psSystems.forEach((system, systemID) => {
-            const label = getSystemLabel(system, systemID);
-            const option = document.createElement("option");
-            option.value = label;
-            datalist.appendChild(option);
-            systemOptions.set(label, systemID);
-        });
+        document.querySelector("#_sourcetype").addEventListener(
+            "change",
+            renderSourceOptions
+        );
+        renderSourceOptions();
 
         const typeOptions = document.querySelector("#_traintypeoptions");
         lineTypeConfig.forEach((type, typeID) => {

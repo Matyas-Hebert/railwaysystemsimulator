@@ -1,0 +1,123 @@
+================================================================================================
+LINKY TYPU AJ — POMĚR PŘÍMÉ VZDÁLENOSTI K DÉLCE LINKY
+Počet linek: 20 | Řazení: od nejvyššího poměru po nejnižší
+================================================================================================
+   1. AJ 8 — Lázeňský Albatros
+      Dopravce: CSA | ID linky: 2732
+      Trasa: Karlovy Vary - Terminál [CSA] → Košice - Terminál [CSA]
+      Délka linky: 629.17 km | Přímá vzdálenost: 626.54 km
+      Poměr přímé vzdálenosti k délce: 0.9958 (99.58 %)
+
+   2. AJ 8 — Lázeňský Albatros
+      Dopravce: CSA | ID linky: 2733
+      Trasa: Košice - Terminál [CSA] → Karlovy Vary - Terminál [CSA]
+      Délka linky: 629.17 km | Přímá vzdálenost: 626.54 km
+      Poměr přímé vzdálenosti k délce: 0.9958 (99.58 %)
+
+   3. AJ 9 — Jihočeský Havran
+      Dopravce: CSA | ID linky: 2786
+      Trasa: Košice - Terminál [CSA] → České Budějovice - Terminál
+      Délka linky: 503.58 km | Přímá vzdálenost: 499.87 km
+      Poměr přímé vzdálenosti k délce: 0.9926 (99.26 %)
+
+   4. AJ 9 — Jihočeský Havran
+      Dopravce: CSA | ID linky: 2787
+      Trasa: České Budějovice - Terminál → Košice - Terminál [CSA]
+      Délka linky: 503.58 km | Přímá vzdálenost: 499.87 km
+      Poměr přímé vzdálenosti k délce: 0.9926 (99.26 %)
+
+   5. AJ 3 — Košický Sokol
+      Dopravce: CSA | ID linky: 2708
+      Trasa: Praha - Terminál [CSA] → Košice - Terminál [CSA]
+      Délka linky: 535.04 km | Přímá vzdálenost: 529.40 km
+      Poměr přímé vzdálenosti k délce: 0.9895 (98.95 %)
+
+   6. AJ 3 — Košický Sokol
+      Dopravce: CSA | ID linky: 2709
+      Trasa: Košice - Terminál [CSA] → Praha - Terminál [CSA]
+      Délka linky: 535.04 km | Přímá vzdálenost: 529.40 km
+      Poměr přímé vzdálenosti k délce: 0.9895 (98.95 %)
+
+   7. AJ 4 — Moravská Laštovička
+      Dopravce: CSA | ID linky: 2710
+      Trasa: Košice - Terminál [CSA] → Brno - Tuřany Terminál [CSA]
+      Délka linky: 340.68 km | Přímá vzdálenost: 337.00 km
+      Poměr přímé vzdálenosti k délce: 0.9892 (98.92 %)
+
+   8. AJ 4 — Moravská Laštovička
+      Dopravce: CSA | ID linky: 2711
+      Trasa: Brno - Tuřany Terminál [CSA] → Košice - Terminál [CSA]
+      Délka linky: 340.68 km | Přímá vzdálenost: 337.00 km
+      Poměr přímé vzdálenosti k délce: 0.9892 (98.92 %)
+
+   9. AJ 5 — Tatranský Orel
+      Dopravce: CSA | ID linky: 2712
+      Trasa: Poprad - Terminál [CSA] → Praha - Terminál [CSA]
+      Délka linky: 452.35 km | Přímá vzdálenost: 445.87 km
+      Poměr přímé vzdálenosti k délce: 0.9857 (98.57 %)
+
+  10. AJ 5 — Tatranský Orel
+      Dopravce: CSA | ID linky: 2713
+      Trasa: Praha - Terminál [CSA] → Poprad - Terminál [CSA]
+      Délka linky: 452.35 km | Přímá vzdálenost: 445.87 km
+      Poměr přímé vzdálenosti k délce: 0.9857 (98.57 %)
+
+  11. AJ 2 — Slovenský Vrabec
+      Dopravce: CSA | ID linky: 2648
+      Trasa: Praha - Terminál [CSA] → Bratislava - Terminál [CSA]
+      Délka linky: 309.98 km | Přímá vzdálenost: 304.36 km
+      Poměr přímé vzdálenosti k délce: 0.9819 (98.19 %)
+
+  12. AJ 2 — Slovenský Vrabec
+      Dopravce: CSA | ID linky: 2649
+      Trasa: Bratislava - Terminál [CSA] → Praha - Terminál [CSA]
+      Délka linky: 309.98 km | Přímá vzdálenost: 304.36 km
+      Poměr přímé vzdálenosti k délce: 0.9819 (98.19 %)
+
+  13. AJ 10 — Pivovarský Orel
+      Dopravce: CSA | ID linky: 2790
+      Trasa: Bratislava - Terminál [CSA] → Plzeň - Terminál [CSA]
+      Délka linky: 340.30 km | Přímá vzdálenost: 333.77 km
+      Poměr přímé vzdálenosti k délce: 0.9808 (98.08 %)
+
+  14. AJ 10 — Pivovarský Orel
+      Dopravce: CSA | ID linky: 2791
+      Trasa: Plzeň - Terminál [CSA] → Bratislava - Terminál [CSA]
+      Délka linky: 340.30 km | Přímá vzdálenost: 333.77 km
+      Poměr přímé vzdálenosti k délce: 0.9808 (98.08 %)
+
+  15. AJ 7 — Moravský Kamzík
+      Dopravce: CSA | ID linky: 2724
+      Trasa: Poprad - Terminál [CSA] → Brno - Tuřany Terminál [CSA]
+      Délka linky: 264.13 km | Přímá vzdálenost: 258.88 km
+      Poměr přímé vzdálenosti k délce: 0.9802 (98.02 %)
+
+  16. AJ 7 — Moravský Kamzík
+      Dopravce: CSA | ID linky: 2725
+      Trasa: Brno - Tuřany Terminál [CSA] → Poprad - Terminál [CSA]
+      Délka linky: 264.13 km | Přímá vzdálenost: 258.88 km
+      Poměr přímé vzdálenosti k délce: 0.9802 (98.02 %)
+
+  17. AJ 6 — Lázeňský Skřivan
+      Dopravce: CSA | ID linky: 2722
+      Trasa: Brno - Tuřany Terminál [CSA] → Karlovy Vary - Terminál [CSA]
+      Délka linky: 304.26 km | Přímá vzdálenost: 296.30 km
+      Poměr přímé vzdálenosti k délce: 0.9738 (97.38 %)
+
+  18. AJ 6 — Lázeňský Skřivan
+      Dopravce: CSA | ID linky: 2723
+      Trasa: Karlovy Vary - Terminál [CSA] → Brno - Tuřany Terminál [CSA]
+      Délka linky: 304.26 km | Přímá vzdálenost: 296.30 km
+      Poměr přímé vzdálenosti k délce: 0.9738 (97.38 %)
+
+  19. AJ 1 — Českomoravský Ptáček
+      Dopravce: CSA | ID linky: 2644
+      Trasa: Praha - Terminál [CSA] → Brno - Tuřany Terminál [CSA]
+      Délka linky: 213.81 km | Přímá vzdálenost: 203.84 km
+      Poměr přímé vzdálenosti k délce: 0.9533 (95.33 %)
+
+  20. AJ 1 — Českomoravský Ptáček
+      Dopravce: CSA | ID linky: 2645
+      Trasa: Brno - Tuřany Terminál [CSA] → Praha - Terminál [CSA]
+      Délka linky: 213.81 km | Přímá vzdálenost: 203.84 km
+      Poměr přímé vzdálenosti k délce: 0.9533 (95.33 %)

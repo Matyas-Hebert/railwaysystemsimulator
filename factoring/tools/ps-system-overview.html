@@ -15,15 +15,19 @@
     <main>
         <h1>Přehled spojení Ps/Px systémů</h1>
         <p class="description">
-            Vyberte výchozí systém. Ostatní systémy budou seřazeny podle
-            vzdálenosti nejbližších stanic.
+            Vyberte výchozí Ps/Px systém nebo samostatnou stanici.
+            Ostatní systémy budou seřazeny podle zvolených pravidel.
         </p>
 
         <section class="selection-panel">
-            <label for="_sourcesystem">Výchozí Ps/Px systém</label>
-            <input id="_sourcesystem" list="_systemoptions" autocomplete="off"
+            <label for="_sourcevalue">Výchozí bod</label>
+            <select id="_sourcetype">
+                <option value="system">Ps/Px systém</option>
+                <option value="station">Stanice</option>
+            </select>
+            <input id="_sourcevalue" list="_sourceoptions" autocomplete="off"
                 placeholder="Začněte psát název systému">
-            <datalist id="_systemoptions"></datalist>
+            <datalist id="_sourceoptions"></datalist>
             <button id="_createoverview" type="button">VYTVOŘIT PŘEHLED</button>
         </section>
 

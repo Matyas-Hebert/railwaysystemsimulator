@@ -1,0 +1,1935 @@
+================================================================================================
+LINKY TYPU R — POMĚR PŘÍMÉ VZDÁLENOSTI K DÉLCE LINKY
+Počet linek: 322 | Řazení: od nejvyššího poměru po nejnižší
+================================================================================================
+   1. R 0162d — Pomocník
+      Dopravce: ZSSK | ID linky: 1343
+      Trasa: Brezno - Hl.S. → Gelnica - Hl.S.
+      Délka linky: 98.06 km | Přímá vzdálenost: 95.60 km
+      Poměr přímé vzdálenosti k délce: 0.9750 (97.50 %)
+
+   2. R 0162d — Pomocník
+      Dopravce: ZSSK | ID linky: 1342
+      Trasa: Gelnica - Hl.S. → Brezno - Hl.S.
+      Délka linky: 98.06 km | Přímá vzdálenost: 95.60 km
+      Poměr přímé vzdálenosti k délce: 0.9750 (97.50 %)
+
+   3. R 0148g — Samotář
+      Dopravce: ZSSK | ID linky: 1338
+      Trasa: Humenné - Hl.S. → Gelnica - Hl.S.
+      Délka linky: 73.13 km | Přímá vzdálenost: 70.67 km
+      Poměr přímé vzdálenosti k délce: 0.9663 (96.63 %)
+
+   4. R 0148g — Samotář
+      Dopravce: ZSSK | ID linky: 1339
+      Trasa: Gelnica - Hl.S. → Humenné - Hl.S.
+      Délka linky: 73.13 km | Přímá vzdálenost: 70.67 km
+      Poměr přímé vzdálenosti k délce: 0.9663 (96.63 %)
+
+   5. R 0174g — Hlásič
+      Dopravce: ZSSK | ID linky: 1780
+      Trasa: Liptovský Mikuláš - Nábřežie → Považská Bystrica - Hl.S.
+      Délka linky: 89.36 km | Přímá vzdálenost: 85.93 km
+      Poměr přímé vzdálenosti k délce: 0.9617 (96.17 %)
+
+   6. R 0174g — Hlásič
+      Dopravce: ZSSK | ID linky: 1781
+      Trasa: Považská Bystrica - Hl.S. → Liptovský Mikuláš - Nábřežie
+      Délka linky: 89.36 km | Přímá vzdálenost: 85.93 km
+      Poměr přímé vzdálenosti k délce: 0.9617 (96.17 %)
+
+   7. R 0128 — Čeladín
+      Dopravce: ČD | ID linky: 164
+      Trasa: Pardubice - Pardubičky → Lanškroun - Hl.N.
+      Délka linky: 63.51 km | Přímá vzdálenost: 59.95 km
+      Poměr přímé vzdálenosti k délce: 0.9440 (94.40 %)
+
+   8. R 0128 — Čeladín
+      Dopravce: ČD | ID linky: 165
+      Trasa: Lanškroun - Hl.N. → Pardubice - Pardubičky
+      Délka linky: 63.51 km | Přímá vzdálenost: 59.95 km
+      Poměr přímé vzdálenosti k délce: 0.9440 (94.40 %)
+
+   9. R 0122f — Lučenský Vlk
+      Dopravce: ZSSK | ID linky: 1108
+      Trasa: [HU] Kazincbarcika → Lučenec - Hl.S.
+      Délka linky: 76.29 km | Přímá vzdálenost: 71.73 km
+      Poměr přímé vzdálenosti k délce: 0.9403 (94.03 %)
+
+  10. R 0122f — Lučenský Vlk
+      Dopravce: ZSSK | ID linky: 1109
+      Trasa: Lučenec - Hl.S. → [HU] Kazincbarcika
+      Délka linky: 76.29 km | Přímá vzdálenost: 71.73 km
+      Poměr přímé vzdálenosti k délce: 0.9403 (94.03 %)
+
+  11. R 0144v — Matička
+      Dopravce: ZSSK | ID linky: 1536
+      Trasa: Drienov - Centrum → Remetské Hámre
+      Délka linky: 71.96 km | Přímá vzdálenost: 67.10 km
+      Poměr přímé vzdálenosti k délce: 0.9324 (93.24 %)
+
+  12. R 0144v — Matička
+      Dopravce: ZSSK | ID linky: 1537
+      Trasa: Remetské Hámre → Drienov - Centrum
+      Délka linky: 71.96 km | Přímá vzdálenost: 67.10 km
+      Poměr přímé vzdálenosti k délce: 0.9324 (93.24 %)
+
+  13. R 0175p — Nána
+      Dopravce: ČD | ID linky: 1423
+      Trasa: Ostrava - Hl.N. → Pardubice - Pardubičky
+      Délka linky: 192.78 km | Přímá vzdálenost: 179.21 km
+      Poměr přímé vzdálenosti k délce: 0.9296 (92.96 %)
+
+  14. R 0175p — Nána
+      Dopravce: ČD | ID linky: 1422
+      Trasa: Pardubice - Pardubičky → Ostrava - Hl.N.
+      Délka linky: 192.78 km | Přímá vzdálenost: 179.21 km
+      Poměr přímé vzdálenosti k délce: 0.9296 (92.96 %)
+
+  15. R 0193p — Hasič
+      Dopravce: ČD | ID linky: 42
+      Trasa: Sedlčany - Cihelný Vrch → Tachov
+      Délka linky: 138.95 km | Přímá vzdálenost: 128.62 km
+      Poměr přímé vzdálenosti k délce: 0.9257 (92.57 %)
+
+  16. R 0193p — Hasič
+      Dopravce: ČD | ID linky: 43
+      Trasa: Tachov → Sedlčany - Cihelný Vrch
+      Délka linky: 138.95 km | Přímá vzdálenost: 128.62 km
+      Poměr přímé vzdálenosti k délce: 0.9257 (92.57 %)
+
+  17. R 0207 — Modrý Horizont
+      Dopravce: ZSSK | ID linky: 962
+      Trasa: Rožňava - Hl.S. → Šahy
+      Délka linky: 145.35 km | Přímá vzdálenost: 134.32 km
+      Poměr přímé vzdálenosti k délce: 0.9242 (92.42 %)
+
+  18. R 0207 — Modrý Horizont
+      Dopravce: ZSSK | ID linky: 963
+      Trasa: Šahy → Rožňava - Hl.S.
+      Délka linky: 145.35 km | Přímá vzdálenost: 134.32 km
+      Poměr přímé vzdálenosti k délce: 0.9242 (92.42 %)
+
+  19. R 0111k — Krtkov
+      Dopravce: ZSSK | ID linky: 986
+      Trasa: Košice - Polov → Rimavská Sobota - Hl.N.
+      Délka linky: 100.24 km | Přímá vzdálenost: 92.31 km
+      Poměr přímé vzdálenosti k délce: 0.9209 (92.09 %)
+
+  20. R 0111k — Krtkov
+      Dopravce: ZSSK | ID linky: 987
+      Trasa: Rimavská Sobota - Hl.N. → Košice - Polov
+      Délka linky: 100.24 km | Přímá vzdálenost: 92.31 km
+      Poměr přímé vzdálenosti k délce: 0.9209 (92.09 %)
+
+  21. R 0153d — Perilviso
+      Dopravce: ZSSK | ID linky: 2304
+      Trasa: Veľký Krtíš → Levice - Géňa
+      Délka linky: 60.87 km | Přímá vzdálenost: 56.01 km
+      Poměr přímé vzdálenosti k délce: 0.9202 (92.02 %)
+
+  22. R 0153d — Perilviso
+      Dopravce: ZSSK | ID linky: 2305
+      Trasa: Levice - Géňa → Veľký Krtíš
+      Délka linky: 60.87 km | Přímá vzdálenost: 56.01 km
+      Poměr přímé vzdálenosti k délce: 0.9202 (92.02 %)
+
+  23. R 0115s — Říďa
+      Dopravce: ČD | ID linky: 288
+      Trasa: Krnov - Hl.N. → Olomouc - Černovír
+      Délka linky: 66.92 km | Přímá vzdálenost: 61.55 km
+      Poměr přímé vzdálenosti k délce: 0.9198 (91.98 %)
+
+  24. R 0115s — Říďa
+      Dopravce: ČD | ID linky: 289
+      Trasa: Olomouc - Černovír → Krnov - Hl.N.
+      Délka linky: 66.92 km | Přímá vzdálenost: 61.55 km
+      Poměr přímé vzdálenosti k délce: 0.9198 (91.98 %)
+
+  25. R 0130č — Zuzka
+      Dopravce: ZSSK | ID linky: 1626
+      Trasa: Čadca - Hl.S. → Olomouc - Černovír
+      Délka linky: 122.90 km | Přímá vzdálenost: 112.38 km
+      Poměr přímé vzdálenosti k délce: 0.9144 (91.44 %)
+
+  26. R 0130č — Zuzka
+      Dopravce: ZSSK | ID linky: 1627
+      Trasa: Olomouc - Černovír → Čadca - Hl.S.
+      Délka linky: 122.90 km | Přímá vzdálenost: 112.38 km
+      Poměr přímé vzdálenosti k délce: 0.9144 (91.44 %)
+
+  27. R 0257n — Zornička
+      Dopravce: ZSSK | ID linky: 668
+      Trasa: Nové Zámky - Hl.S: → Rimavská Sobota - Hl.N.
+      Délka linky: 158.24 km | Přímá vzdálenost: 144.35 km
+      Poměr přímé vzdálenosti k délce: 0.9122 (91.22 %)
+
+  28. R 0257n — Zornička
+      Dopravce: ZSSK | ID linky: 669
+      Trasa: Rimavská Sobota - Hl.N. → Nové Zámky - Hl.S:
+      Délka linky: 158.24 km | Přímá vzdálenost: 144.35 km
+      Poměr přímé vzdálenosti k délce: 0.9122 (91.22 %)
+
+  29. R 0167k — Rubera
+      Dopravce: ČD | ID linky: 1466
+      Trasa: Pardubice - Pardubičky → Praha - Michle
+      Délka linky: 103.97 km | Přímá vzdálenost: 94.55 km
+      Poměr přímé vzdálenosti k délce: 0.9095 (90.95 %)
+
+  30. R 0167k — Rubera
+      Dopravce: ČD | ID linky: 1467
+      Trasa: Praha - Michle → Pardubice - Pardubičky
+      Délka linky: 103.97 km | Přímá vzdálenost: 94.55 km
+      Poměr přímé vzdálenosti k délce: 0.9095 (90.95 %)
+
+  31. R 0169 — Lakomec
+      Dopravce: ČD | ID linky: 128
+      Trasa: Karlovy Vary - Doubí → Liberec - Hl.N.
+      Délka linky: 187.67 km | Přímá vzdálenost: 169.55 km
+      Poměr přímé vzdálenosti k délce: 0.9035 (90.35 %)
+
+  32. R 0169 — Lakomec
+      Dopravce: ČD | ID linky: 129
+      Trasa: Liberec - Hl.N. → Karlovy Vary - Doubí
+      Délka linky: 187.67 km | Přímá vzdálenost: 169.55 km
+      Poměr přímé vzdálenosti k délce: 0.9035 (90.35 %)
+
+  33. R 0314 — Rýchlik Šíp
+      Dopravce: ZSSK | ID linky: 608
+      Trasa: Košice - Hl.S. → Bratislava - Hl.S.
+      Délka linky: 346.23 km | Přímá vzdálenost: 311.89 km
+      Poměr přímé vzdálenosti k délce: 0.9008 (90.08 %)
+
+  34. R 0314 — Rýchlik Šíp
+      Dopravce: ZSSK | ID linky: 609
+      Trasa: Bratislava - Hl.S. → Košice - Hl.S.
+      Délka linky: 346.23 km | Přímá vzdálenost: 311.89 km
+      Poměr přímé vzdálenosti k délce: 0.9008 (90.08 %)
+
+  35. R 0157 — Mezi Štáty
+      Dopravce: ZSSK | ID linky: 709
+      Trasa: [HU] Komárom → Bratislava - Petržalka
+      Délka linky: 95.32 km | Přímá vzdálenost: 85.75 km
+      Poměr přímé vzdálenosti k délce: 0.8996 (89.96 %)
+
+  36. R 0157 — Mezi Štáty
+      Dopravce: ZSSK | ID linky: 708
+      Trasa: Bratislava - Petržalka → [HU] Komárom
+      Délka linky: 95.32 km | Přímá vzdálenost: 85.75 km
+      Poměr přímé vzdálenosti k délce: 0.8996 (89.96 %)
+
+  37. R 0128u — Trepkan
+      Dopravce: ČD | ID linky: 1566
+      Trasa: Trenčín - Zlatovce → Staré Město u Uherského Hradiště
+      Délka linky: 50.59 km | Přímá vzdálenost: 45.43 km
+      Poměr přímé vzdálenosti k délce: 0.8979 (89.79 %)
+
+  38. R 0128u — Trepkan
+      Dopravce: ČD | ID linky: 1567
+      Trasa: Staré Město u Uherského Hradiště → Trenčín - Zlatovce
+      Délka linky: 50.59 km | Přímá vzdálenost: 45.43 km
+      Poměr přímé vzdálenosti k délce: 0.8979 (89.79 %)
+
+  39. R 0196 — Polárka
+      Dopravce: ZSSK | ID linky: 865
+      Trasa: Poprad - Hl.S. → Michalovce
+      Délka linky: 138.60 km | Přímá vzdálenost: 124.34 km
+      Poměr přímé vzdálenosti k délce: 0.8971 (89.71 %)
+
+  40. R 0196 — Polárka
+      Dopravce: ZSSK | ID linky: 864
+      Trasa: Michalovce → Poprad - Hl.S.
+      Délka linky: 138.60 km | Přímá vzdálenost: 124.34 km
+      Poměr přímé vzdálenosti k délce: 0.8971 (89.71 %)
+
+  41. R 0154K — Drban
+      Dopravce: ČD | ID linky: 265
+      Trasa: Karlovy Vary - Sedlec → Louny - Zahradní Město
+      Délka linky: 76.94 km | Přímá vzdálenost: 69.02 km
+      Poměr přímé vzdálenosti k délce: 0.8971 (89.71 %)
+
+  42. R 0154K — Drban
+      Dopravce: ČD | ID linky: 264
+      Trasa: Louny - Zahradní Město → Karlovy Vary - Sedlec
+      Délka linky: 76.94 km | Přímá vzdálenost: 69.02 km
+      Poměr přímé vzdálenosti k délce: 0.8971 (89.71 %)
+
+  43. R 0134e — Rotor
+      Dopravce: ZSSK | ID linky: 1176
+      Trasa: Bratislava - Nivy → [HU] Esztergom
+      Délka linky: 139.99 km | Přímá vzdálenost: 125.07 km
+      Poměr přímé vzdálenosti k délce: 0.8934 (89.34 %)
+
+  44. R 0134e — Rotor
+      Dopravce: ZSSK | ID linky: 1177
+      Trasa: [HU] Esztergom → Bratislava - Nivy
+      Délka linky: 139.99 km | Přímá vzdálenost: 125.07 km
+      Poměr přímé vzdálenosti k délce: 0.8934 (89.34 %)
+
+  45. R 0131t — Národná
+      Dopravce: ZSSK | ID linky: 1647
+      Trasa: Stará Lubovna - Hl.S. → Tvrdošín
+      Délka linky: 92.38 km | Přímá vzdálenost: 82.52 km
+      Poměr přímé vzdálenosti k délce: 0.8933 (89.33 %)
+
+  46. R 0131t — Národná
+      Dopravce: ZSSK | ID linky: 1646
+      Trasa: Tvrdošín → Stará Lubovna - Hl.S.
+      Délka linky: 92.38 km | Přímá vzdálenost: 82.52 km
+      Poměr přímé vzdálenosti k délce: 0.8933 (89.33 %)
+
+  47. R 0164 — Aš-Jablunkov Express
+      Dopravce: pA2Z | ID linky: 306
+      Trasa: Jablunkov - Hl.N. → Aš
+      Délka linky: 533.62 km | Přímá vzdálenost: 476.18 km
+      Poměr přímé vzdálenosti k délce: 0.8924 (89.24 %)
+
+  48. R 0164 — Aš-Jablunkov Express
+      Dopravce: pA2Z | ID linky: 307
+      Trasa: Aš → Jablunkov - Hl.N.
+      Délka linky: 533.62 km | Přímá vzdálenost: 476.18 km
+      Poměr přímé vzdálenosti k délce: 0.8924 (89.24 %)
+
+  49. R 0160z — Žurnalista
+      Dopravce: ZSSK | ID linky: 1348
+      Trasa: Zvolen - Moťová → Filakovo
+      Délka linky: 67.21 km | Přímá vzdálenost: 59.66 km
+      Poměr přímé vzdálenosti k délce: 0.8878 (88.78 %)
+
+  50. R 0160z — Žurnalista
+      Dopravce: ZSSK | ID linky: 1349
+      Trasa: Filakovo → Zvolen - Moťová
+      Délka linky: 67.21 km | Přímá vzdálenost: 59.66 km
+      Poměr přímé vzdálenosti k délce: 0.8878 (88.78 %)
+
+  51. R 0176 — Ranná Rosa
+      Dopravce: ZSSK | ID linky: 866
+      Trasa: [UA] Uzhhorod → Košice - Hl.S.
+      Délka linky: 88.14 km | Přímá vzdálenost: 78.15 km
+      Poměr přímé vzdálenosti k délce: 0.8867 (88.67 %)
+
+  52. R 0176 — Ranná Rosa
+      Dopravce: ZSSK | ID linky: 867
+      Trasa: Košice - Hl.S. → [UA] Uzhhorod
+      Délka linky: 88.14 km | Přímá vzdálenost: 78.15 km
+      Poměr přímé vzdálenosti k délce: 0.8867 (88.67 %)
+
+  53. R 0143 — Vašák
+      Dopravce: ČD | ID linky: 560
+      Trasa: Ostrava - Přívoz → Žilina - Hl.S.
+      Délka linky: 88.31 km | Přímá vzdálenost: 78.09 km
+      Poměr přímé vzdálenosti k délce: 0.8842 (88.42 %)
+
+  54. R 0143 — Vašák
+      Dopravce: ČD | ID linky: 561
+      Trasa: Žilina - Hl.S. → Ostrava - Přívoz
+      Délka linky: 88.31 km | Přímá vzdálenost: 78.09 km
+      Poměr přímé vzdálenosti k délce: 0.8842 (88.42 %)
+
+  55. R 0165j — Ludva
+      Dopravce: ČD | ID linky: 72
+      Trasa: Ostrava - Hl.N. → Jeseník
+      Délka linky: 99.90 km | Přímá vzdálenost: 88.20 km
+      Poměr přímé vzdálenosti k délce: 0.8829 (88.29 %)
+
+  56. R 0165j — Ludva
+      Dopravce: ČD | ID linky: 73
+      Trasa: Jeseník → Ostrava - Hl.N.
+      Délka linky: 99.90 km | Přímá vzdálenost: 88.20 km
+      Poměr přímé vzdálenosti k délce: 0.8829 (88.29 %)
+
+  57. R 0169h — Broskvová Spojka
+      Dopravce: ČD | ID linky: 2272
+      Trasa: Praha - Nová Libeň → Olomouc - Nový Svět
+      Délka linky: 237.46 km | Přímá vzdálenost: 209.65 km
+      Poměr přímé vzdálenosti k délce: 0.8829 (88.29 %)
+
+  58. R 0169h — Broskvová Spojka
+      Dopravce: ČD | ID linky: 2273
+      Trasa: Olomouc - Nový Svět → Praha - Nová Libeň
+      Délka linky: 237.46 km | Přímá vzdálenost: 209.65 km
+      Poměr přímé vzdálenosti k délce: 0.8829 (88.29 %)
+
+  59. R 0141č — Nové Slovensko
+      Dopravce: ZSSK | ID linky: 1582
+      Trasa: Prievidza - Hl.S. → Trnava - Hl.S.
+      Délka linky: 99.39 km | Přímá vzdálenost: 87.67 km
+      Poměr přímé vzdálenosti k délce: 0.8821 (88.21 %)
+
+  60. R 0141č — Nové Slovensko
+      Dopravce: ZSSK | ID linky: 1583
+      Trasa: Trnava - Hl.S. → Prievidza - Hl.S.
+      Délka linky: 99.39 km | Přímá vzdálenost: 87.67 km
+      Poměr přímé vzdálenosti k délce: 0.8821 (88.21 %)
+
+  61. R 0323u — Bansko Žije
+      Dopravce: ZSSK | ID linky: 1598
+      Trasa: Brno - Maloměřice → Rimavská Sobota - Pokoradz
+      Délka linky: 298.32 km | Přímá vzdálenost: 262.72 km
+      Poměr přímé vzdálenosti k délce: 0.8807 (88.07 %)
+
+  62. R 0323u — Bansko Žije
+      Dopravce: ZSSK | ID linky: 1599
+      Trasa: Rimavská Sobota - Pokoradz → Brno - Maloměřice
+      Délka linky: 298.32 km | Přímá vzdálenost: 262.72 km
+      Poměr přímé vzdálenosti k délce: 0.8807 (88.07 %)
+
+  63. R 0185 — Prúd
+      Dopravce: ZSSK | ID linky: 675
+      Trasa: Prievidza - Hl.S. → Nitra - Hl.S.
+      Délka linky: 74.38 km | Přímá vzdálenost: 65.11 km
+      Poměr přímé vzdálenosti k délce: 0.8753 (87.53 %)
+
+  64. R 0185 — Prúd
+      Dopravce: ZSSK | ID linky: 674
+      Trasa: Nitra - Hl.S. → Prievidza - Hl.S.
+      Délka linky: 74.38 km | Přímá vzdálenost: 65.11 km
+      Poměr přímé vzdálenosti k délce: 0.8753 (87.53 %)
+
+  65. R 0141 — Starý Kominík
+      Dopravce: ZSSK | ID linky: 1332
+      Trasa: [PL] Komancza → Spišská Stará Ves
+      Délka linky: 141.68 km | Přímá vzdálenost: 123.96 km
+      Poměr přímé vzdálenosti k délce: 0.8750 (87.50 %)
+
+  66. R 0141 — Starý Kominík
+      Dopravce: ZSSK | ID linky: 1333
+      Trasa: Spišská Stará Ves → [PL] Komancza
+      Délka linky: 141.68 km | Přímá vzdálenost: 123.96 km
+      Poměr přímé vzdálenosti k délce: 0.8750 (87.50 %)
+
+  67. R 0234 — Kliďas
+      Dopravce: ČD | ID linky: 148
+      Trasa: Karlovy Vary - Hl.N. → Praha - Veleslavín
+      Délka linky: 123.03 km | Přímá vzdálenost: 106.71 km
+      Poměr přímé vzdálenosti k délce: 0.8674 (86.74 %)
+
+  68. R 0234 — Kliďas
+      Dopravce: ČD | ID linky: 149
+      Trasa: Praha - Veleslavín → Karlovy Vary - Hl.N.
+      Délka linky: 123.03 km | Přímá vzdálenost: 106.71 km
+      Poměr přímé vzdálenosti k délce: 0.8674 (86.74 %)
+
+  69. R 0173 — Vlasec
+      Dopravce: ČD | ID linky: 98
+      Trasa: Jihlava - Hl.N. → Plzeň - Skvrňany
+      Délka linky: 191.50 km | Přímá vzdálenost: 166.08 km
+      Poměr přímé vzdálenosti k délce: 0.8672 (86.72 %)
+
+  70. R 0173 — Vlasec
+      Dopravce: ČD | ID linky: 99
+      Trasa: Plzeň - Skvrňany → Jihlava - Hl.N.
+      Délka linky: 191.50 km | Přímá vzdálenost: 166.08 km
+      Poměr přímé vzdálenosti k délce: 0.8672 (86.72 %)
+
+  71. R 0236 — Zálužský Expres
+      Dopravce: ZSSK | ID linky: 582
+      Trasa: Banská Bystrica - Hl.S. → Bratislava - Hl.S.
+      Délka linky: 190.08 km | Přímá vzdálenost: 164.38 km
+      Poměr přímé vzdálenosti k délce: 0.8648 (86.48 %)
+
+  72. R 0236 — Zálužský Expres
+      Dopravce: ZSSK | ID linky: 583
+      Trasa: Bratislava - Hl.S. → Banská Bystrica - Hl.S.
+      Délka linky: 190.08 km | Přímá vzdálenost: 164.38 km
+      Poměr přímé vzdálenosti k délce: 0.8648 (86.48 %)
+
+  73. R 0179 — Namydlenec
+      Dopravce: ČD | ID linky: 84
+      Trasa: Praha - Nová Libeň → České Budějovice - Borek
+      Délka linky: 140.43 km | Přímá vzdálenost: 120.93 km
+      Poměr přímé vzdálenosti k délce: 0.8611 (86.11 %)
+
+  74. R 0179 — Namydlenec
+      Dopravce: ČD | ID linky: 85
+      Trasa: České Budějovice - Borek → Praha - Nová Libeň
+      Délka linky: 140.43 km | Přímá vzdálenost: 120.93 km
+      Poměr přímé vzdálenosti k délce: 0.8611 (86.11 %)
+
+  75. R 0180l — Vtáčník
+      Dopravce: ZSSK | ID linky: 1594
+      Trasa: Bojnice → Lučenec - Hl.S.
+      Délka linky: 109.26 km | Přímá vzdálenost: 93.77 km
+      Poměr přímé vzdálenosti k délce: 0.8582 (85.82 %)
+
+  76. R 0180l — Vtáčník
+      Dopravce: ZSSK | ID linky: 1595
+      Trasa: Lučenec - Hl.S. → Bojnice
+      Délka linky: 109.26 km | Přímá vzdálenost: 93.77 km
+      Poměr přímé vzdálenosti k délce: 0.8582 (85.82 %)
+
+  77. R 0165t — Teta Marie
+      Dopravce: ČD | ID linky: 536
+      Trasa: Havlíčkův Brod - Vršovice → Brno - Kohoutovice
+      Délka linky: 98.78 km | Přímá vzdálenost: 84.04 km
+      Poměr přímé vzdálenosti k délce: 0.8509 (85.09 %)
+
+  78. R 0165t — Teta Marie
+      Dopravce: ČD | ID linky: 537
+      Trasa: Brno - Kohoutovice → Havlíčkův Brod - Vršovice
+      Délka linky: 98.78 km | Přímá vzdálenost: 84.04 km
+      Poměr přímé vzdálenosti k délce: 0.8509 (85.09 %)
+
+  79. R 0243h — Teplická Muška
+      Dopravce: ZSSK | ID linky: 1562
+      Trasa: Turčianske Teplice - Hl.S. → Hodonín - Pánov
+      Délka linky: 147.70 km | Přímá vzdálenost: 125.66 km
+      Poměr přímé vzdálenosti k délce: 0.8508 (85.08 %)
+
+  80. R 0243h — Teplická Muška
+      Dopravce: ZSSK | ID linky: 1563
+      Trasa: Hodonín - Pánov → Turčianske Teplice - Hl.S.
+      Délka linky: 147.70 km | Přímá vzdálenost: 125.66 km
+      Poměr přímé vzdálenosti k délce: 0.8508 (85.08 %)
+
+  81. R 0124h — Strašný Parchant
+      Dopravce: ZSSK | ID linky: 873
+      Trasa: Košice - Predmestie → Humenné - Hl.S.
+      Délka linky: 62.58 km | Přímá vzdálenost: 53.18 km
+      Poměr přímé vzdálenosti k délce: 0.8497 (84.97 %)
+
+  82. R 0124h — Strašný Parchant
+      Dopravce: ZSSK | ID linky: 872
+      Trasa: Humenné - Hl.S. → Košice - Predmestie
+      Délka linky: 62.58 km | Přímá vzdálenost: 53.18 km
+      Poměr přímé vzdálenosti k délce: 0.8497 (84.97 %)
+
+  83. R 0141š — Šprýmař
+      Dopravce: ČD | ID linky: 1840
+      Trasa: Žďár nad Sázavou - Budeč → Vyškov - Hl.N.
+      Délka linky: 98.96 km | Přímá vzdálenost: 84.03 km
+      Poměr přímé vzdálenosti k délce: 0.8492 (84.92 %)
+
+  84. R 0141š — Šprýmař
+      Dopravce: ČD | ID linky: 1841
+      Trasa: Vyškov - Hl.N. → Žďár nad Sázavou - Budeč
+      Délka linky: 98.96 km | Přímá vzdálenost: 84.03 km
+      Poměr přímé vzdálenosti k délce: 0.8492 (84.92 %)
+
+  85. R 0148 — Vosa
+      Dopravce: ČD | ID linky: 317
+      Trasa: Strakonice - Přední Ptákovice → Benešov - Václavice
+      Délka linky: 92.40 km | Přímá vzdálenost: 78.30 km
+      Poměr přímé vzdálenosti k délce: 0.8474 (84.74 %)
+
+  86. R 0148 — Vosa
+      Dopravce: ČD | ID linky: 316
+      Trasa: Benešov - Václavice → Strakonice - Přední Ptákovice
+      Délka linky: 92.40 km | Přímá vzdálenost: 78.30 km
+      Poměr přímé vzdálenosti k délce: 0.8474 (84.74 %)
+
+  87. R 0235 — Palácový Pes
+      Dopravce: ČD | ID linky: 552
+      Trasa: Bratislava - Hl.S. → Brno - Hl.N.
+      Délka linky: 143.13 km | Přímá vzdálenost: 121.17 km
+      Poměr přímé vzdálenosti k délce: 0.8465 (84.65 %)
+
+  88. R 0235 — Palácový Pes
+      Dopravce: ČD | ID linky: 553
+      Trasa: Brno - Hl.N. → Bratislava - Hl.S.
+      Délka linky: 143.13 km | Přímá vzdálenost: 121.17 km
+      Poměr přímé vzdálenosti k délce: 0.8465 (84.65 %)
+
+  89. R 0219 — Horal
+      Dopravce: ZSSK | ID linky: 604
+      Trasa: Ostrava - Michálkovice → Košice - Hl.S.
+      Délka linky: 288.88 km | Přímá vzdálenost: 244.39 km
+      Poměr přímé vzdálenosti k délce: 0.8460 (84.60 %)
+
+  90. R 0219 — Horal
+      Dopravce: ZSSK | ID linky: 605
+      Trasa: Košice - Hl.S. → Ostrava - Michálkovice
+      Délka linky: 288.88 km | Přímá vzdálenost: 244.39 km
+      Poměr přímé vzdálenosti k délce: 0.8460 (84.60 %)
+
+  91. R 0143c — Frymbuřan
+      Dopravce: ČD | ID linky: 11
+      Trasa: Frymburk → Praha - Michle
+      Délka linky: 183.37 km | Přímá vzdálenost: 155.07 km
+      Poměr přímé vzdálenosti k délce: 0.8457 (84.57 %)
+
+  92. R 0143c — Frymbuřan
+      Dopravce: ČD | ID linky: 10
+      Trasa: Praha - Michle → Frymburk
+      Délka linky: 183.37 km | Přímá vzdálenost: 155.07 km
+      Poměr přímé vzdálenosti k délce: 0.8457 (84.57 %)
+
+  93. R 0144b — Nový Bavorák
+      Dopravce: ZSSK | ID linky: 598
+      Trasa: Bratislava - Petržalka → Nové Zámky - Hl.S:
+      Délka linky: 94.03 km | Přímá vzdálenost: 79.50 km
+      Poměr přímé vzdálenosti k délce: 0.8454 (84.54 %)
+
+  94. R 0144b — Nový Bavorák
+      Dopravce: ZSSK | ID linky: 599
+      Trasa: Nové Zámky - Hl.S: → Bratislava - Petržalka
+      Délka linky: 94.03 km | Přímá vzdálenost: 79.50 km
+      Poměr přímé vzdálenosti k délce: 0.8454 (84.54 %)
+
+  95. R 0193c — Moloto
+      Dopravce: ČD | ID linky: 324
+      Trasa: České Budějovice - Roudné → Znojmo - Hl.N.
+      Délka linky: 135.64 km | Přímá vzdálenost: 114.59 km
+      Poměr přímé vzdálenosti k délce: 0.8448 (84.48 %)
+
+  96. R 0193c — Moloto
+      Dopravce: ČD | ID linky: 325
+      Trasa: Znojmo - Hl.N. → České Budějovice - Roudné
+      Délka linky: 135.64 km | Přímá vzdálenost: 114.59 km
+      Poměr přímé vzdálenosti k délce: 0.8448 (84.48 %)
+
+  97. R 0208-1 — Zdrój
+      Dopravce: PKP | ID linky: 1137
+      Trasa: Náchod - Hl.N. → Jeseník
+      Délka linky: 91.10 km | Přímá vzdálenost: 76.95 km
+      Poměr přímé vzdálenosti k délce: 0.8446 (84.46 %)
+
+  98. R 0208-1 — Zdrój
+      Dopravce: PKP | ID linky: 1136
+      Trasa: Jeseník → Náchod - Hl.N.
+      Délka linky: 91.10 km | Přímá vzdálenost: 76.95 km
+      Poměr přímé vzdálenosti k délce: 0.8446 (84.46 %)
+
+  99. R 0152a — Klubovka
+      Dopravce: ČD | ID linky: 1373
+      Trasa: [PL] Głubczyce → Šumperk - Třemešek
+      Délka linky: 77.18 km | Přímá vzdálenost: 65.17 km
+      Poměr přímé vzdálenosti k délce: 0.8444 (84.44 %)
+
+ 100. R 0152a — Klubovka
+      Dopravce: ČD | ID linky: 1372
+      Trasa: Šumperk - Třemešek → [PL] Głubczyce
+      Délka linky: 77.18 km | Přímá vzdálenost: 65.17 km
+      Poměr přímé vzdálenosti k délce: 0.8444 (84.44 %)
+
+ 101. R 0177a — Jenda
+      Dopravce: ČD | ID linky: 38
+      Trasa: Liberec - Kristiánov → Plzeň - Doudlevce
+      Délka linky: 198.62 km | Přímá vzdálenost: 166.36 km
+      Poměr přímé vzdálenosti k délce: 0.8376 (83.76 %)
+
+ 102. R 0177a — Jenda
+      Dopravce: ČD | ID linky: 39
+      Trasa: Plzeň - Doudlevce → Liberec - Kristiánov
+      Délka linky: 198.62 km | Přímá vzdálenost: 166.36 km
+      Poměr přímé vzdálenosti k délce: 0.8376 (83.76 %)
+
+ 103. R 0161ň — Žluva
+      Dopravce: ČD | ID linky: 1848
+      Trasa: České Budějovice - Čtyři Dvory → Domažlice - Na Bábě
+      Délka linky: 147.03 km | Přímá vzdálenost: 123.14 km
+      Poměr přímé vzdálenosti k délce: 0.8375 (83.75 %)
+
+ 104. R 0161ň — Žluva
+      Dopravce: ČD | ID linky: 1849
+      Trasa: Domažlice - Na Bábě → České Budějovice - Čtyři Dvory
+      Délka linky: 147.03 km | Přímá vzdálenost: 123.14 km
+      Poměr přímé vzdálenosti k délce: 0.8375 (83.75 %)
+
+ 105. R 0152c — Čutálista
+      Dopravce: ČD | ID linky: 1493
+      Trasa: Klatovy - Hl.N. → Cheb - Hl.N.
+      Délka linky: 120.56 km | Přímá vzdálenost: 100.85 km
+      Poměr přímé vzdálenosti k délce: 0.8365 (83.65 %)
+
+ 106. R 0152c — Čutálista
+      Dopravce: ČD | ID linky: 1492
+      Trasa: Cheb - Hl.N. → Klatovy - Hl.N.
+      Délka linky: 120.56 km | Přímá vzdálenost: 100.85 km
+      Poměr přímé vzdálenosti k délce: 0.8365 (83.65 %)
+
+ 107. R 0160b — Decim
+      Dopravce: ČD | ID linky: 1288
+      Trasa: Třebíč - Hl.N. → Benešov - Hl.N.
+      Délka linky: 127.96 km | Přímá vzdálenost: 106.94 km
+      Poměr přímé vzdálenosti k délce: 0.8357 (83.57 %)
+
+ 108. R 0160b — Decim
+      Dopravce: ČD | ID linky: 1289
+      Trasa: Benešov - Hl.N. → Třebíč - Hl.N.
+      Délka linky: 127.96 km | Přímá vzdálenost: 106.94 km
+      Poměr přímé vzdálenosti k délce: 0.8357 (83.57 %)
+
+ 109. R 0106k — Rujný Jelen
+      Dopravce: ZSSK | ID linky: 610
+      Trasa: Trenčín - Hl.S. → [HU] Komárom
+      Délka linky: 153.79 km | Přímá vzdálenost: 128.10 km
+      Poměr přímé vzdálenosti k délce: 0.8330 (83.30 %)
+
+ 110. R 0106k — Rujný Jelen
+      Dopravce: ZSSK | ID linky: 611
+      Trasa: [HU] Komárom → Trenčín - Hl.S.
+      Délka linky: 153.79 km | Přímá vzdálenost: 128.10 km
+      Poměr přímé vzdálenosti k délce: 0.8330 (83.30 %)
+
+ 111. R 0142b — Španělka
+      Dopravce: ZSSK | ID linky: 1556
+      Trasa: Námestovo → Prievidza - Hl.S.
+      Délka linky: 113.42 km | Přímá vzdálenost: 94.30 km
+      Poměr přímé vzdálenosti k délce: 0.8314 (83.14 %)
+
+ 112. R 0142b — Španělka
+      Dopravce: ZSSK | ID linky: 1557
+      Trasa: Prievidza - Hl.S. → Námestovo
+      Délka linky: 113.42 km | Přímá vzdálenost: 94.30 km
+      Poměr přímé vzdálenosti k délce: 0.8314 (83.14 %)
+
+ 113. R 0120v — Škovránok
+      Dopravce: ZSSK | ID linky: 868
+      Trasa: Nižná Polianka → [HU] Sátoraljaújhely
+      Délka linky: 136.64 km | Přímá vzdálenost: 113.55 km
+      Poměr přímé vzdálenosti k délce: 0.8311 (83.11 %)
+
+ 114. R 0120v — Škovránok
+      Dopravce: ZSSK | ID linky: 869
+      Trasa: [HU] Sátoraljaújhely → Nižná Polianka
+      Délka linky: 136.64 km | Přímá vzdálenost: 113.55 km
+      Poměr přímé vzdálenosti k délce: 0.8311 (83.11 %)
+
+ 115. R 0153o — Aktimel
+      Dopravce: ZSSK | ID linky: 961
+      Trasa: [HU] Ózd - pu. → Brezno - Mazorníkovo
+      Délka linky: 94.68 km | Přímá vzdálenost: 78.55 km
+      Poměr přímé vzdálenosti k délce: 0.8297 (82.97 %)
+
+ 116. R 0153o — Aktimel
+      Dopravce: ZSSK | ID linky: 960
+      Trasa: Brezno - Mazorníkovo → [HU] Ózd - pu.
+      Délka linky: 94.68 km | Přímá vzdálenost: 78.55 km
+      Poměr přímé vzdálenosti k délce: 0.8297 (82.97 %)
+
+ 117. R 0195p — Rarášek
+      Dopravce: ČD | ID linky: 1570
+      Trasa: [DE] Schoneck → Plzeň - Doubravka
+      Délka linky: 127.43 km | Přímá vzdálenost: 105.34 km
+      Poměr přímé vzdálenosti k délce: 0.8266 (82.66 %)
+
+ 118. R 0195p — Rarášek
+      Dopravce: ČD | ID linky: 1571
+      Trasa: Plzeň - Doubravka → [DE] Schoneck
+      Délka linky: 127.43 km | Přímá vzdálenost: 105.34 km
+      Poměr přímé vzdálenosti k délce: 0.8266 (82.66 %)
+
+ 119. R 0142ř — Revoluce
+      Dopravce: ČD | ID linky: 2262
+      Trasa: Praha - Kunratice → Jindřichův Hradec - Otín
+      Délka linky: 128.34 km | Přímá vzdálenost: 105.72 km
+      Poměr přímé vzdálenosti k délce: 0.8237 (82.37 %)
+
+ 120. R 0142ř — Revoluce
+      Dopravce: ČD | ID linky: 2263
+      Trasa: Jindřichův Hradec - Otín → Praha - Kunratice
+      Délka linky: 128.34 km | Přímá vzdálenost: 105.72 km
+      Poměr přímé vzdálenosti k délce: 0.8237 (82.37 %)
+
+ 121. R 0197b — Božský Trpaslík
+      Dopravce: ZSSK | ID linky: 1238
+      Trasa: Bojnice → Rimavská Sobota - Hl.N.
+      Délka linky: 138.85 km | Přímá vzdálenost: 114.33 km
+      Poměr přímé vzdálenosti k délce: 0.8234 (82.34 %)
+
+ 122. R 0197b — Božský Trpaslík
+      Dopravce: ZSSK | ID linky: 1239
+      Trasa: Rimavská Sobota - Hl.N. → Bojnice
+      Délka linky: 138.85 km | Přímá vzdálenost: 114.33 km
+      Poměr přímé vzdálenosti k délce: 0.8234 (82.34 %)
+
+ 123. R 0134a — Brok
+      Dopravce: ČD | ID linky: 1224
+      Trasa: Cheb - Hl.N. → Plzeň - Hl.N.
+      Délka linky: 98.37 km | Přímá vzdálenost: 80.70 km
+      Poměr přímé vzdálenosti k délce: 0.8203 (82.03 %)
+
+ 124. R 0134a — Brok
+      Dopravce: ČD | ID linky: 1225
+      Trasa: Plzeň - Hl.N. → Cheb - Hl.N.
+      Délka linky: 98.37 km | Přímá vzdálenost: 80.70 km
+      Poměr přímé vzdálenosti k délce: 0.8203 (82.03 %)
+
+ 125. R 0192 — Giralt
+      Dopravce: ZSSK | ID linky: 876
+      Trasa: Košice - Terasa → Medzilaborce
+      Délka linky: 96.75 km | Přímá vzdálenost: 79.24 km
+      Poměr přímé vzdálenosti k délce: 0.8190 (81.90 %)
+
+ 126. R 0192 — Giralt
+      Dopravce: ZSSK | ID linky: 877
+      Trasa: Medzilaborce → Košice - Terasa
+      Délka linky: 96.75 km | Přímá vzdálenost: 79.24 km
+      Poměr přímé vzdálenosti k délce: 0.8190 (81.90 %)
+
+ 127. R 0130m — Lopaťák
+      Dopravce: ČD | ID linky: 1278
+      Trasa: Brno - Žebětín → [AT] Laa an der Thaya
+      Délka linky: 65.47 km | Přímá vzdálenost: 53.56 km
+      Poměr přímé vzdálenosti k délce: 0.8181 (81.81 %)
+
+ 128. R 0130m — Lopaťák
+      Dopravce: ČD | ID linky: 1279
+      Trasa: [AT] Laa an der Thaya → Brno - Žebětín
+      Délka linky: 65.47 km | Přímá vzdálenost: 53.56 km
+      Poměr přímé vzdálenosti k délce: 0.8181 (81.81 %)
+
+ 129. R 0208-2 — Kaktus
+      Dopravce: PKP | ID linky: 1858
+      Trasa: [PL] Kłodzko → Šumperk - Hl.N.
+      Délka linky: 71.92 km | Přímá vzdálenost: 58.40 km
+      Poměr přímé vzdálenosti k délce: 0.8120 (81.20 %)
+
+ 130. R 0208-2 — Kaktus
+      Dopravce: PKP | ID linky: 1859
+      Trasa: Šumperk - Hl.N. → [PL] Kłodzko
+      Délka linky: 71.92 km | Přímá vzdálenost: 58.40 km
+      Poměr přímé vzdálenosti k délce: 0.8120 (81.20 %)
+
+ 131. R 0158b — Antigua
+      Dopravce: ČD | ID linky: 1500
+      Trasa: Karlovy Vary - Doubí → Plzeň - Skvrňany
+      Délka linky: 78.52 km | Přímá vzdálenost: 63.67 km
+      Poměr přímé vzdálenosti k délce: 0.8109 (81.09 %)
+
+ 132. R 0158b — Antigua
+      Dopravce: ČD | ID linky: 1501
+      Trasa: Plzeň - Skvrňany → Karlovy Vary - Doubí
+      Délka linky: 78.52 km | Přímá vzdálenost: 63.67 km
+      Poměr přímé vzdálenosti k délce: 0.8109 (81.09 %)
+
+ 133. R 0186 — Abel
+      Dopravce: ČD | ID linky: 474
+      Trasa: Jihlava - Hl.N. → Strakonice - Přední Ptákovice
+      Délka linky: 150.95 km | Přímá vzdálenost: 121.85 km
+      Poměr přímé vzdálenosti k délce: 0.8073 (80.73 %)
+
+ 134. R 0186 — Abel
+      Dopravce: ČD | ID linky: 475
+      Trasa: Strakonice - Přední Ptákovice → Jihlava - Hl.N.
+      Délka linky: 150.95 km | Přímá vzdálenost: 121.85 km
+      Poměr přímé vzdálenosti k délce: 0.8073 (80.73 %)
+
+ 135. R 0160g — Dunajská Žena
+      Dopravce: ZSSK | ID linky: 1185
+      Trasa: [HU] Gyor → Bratislava - Hl.S.
+      Délka linky: 81.03 km | Přímá vzdálenost: 65.37 km
+      Poměr přímé vzdálenosti k délce: 0.8068 (80.68 %)
+
+ 136. R 0160g — Dunajská Žena
+      Dopravce: ZSSK | ID linky: 1184
+      Trasa: Bratislava - Hl.S. → [HU] Gyor
+      Délka linky: 81.03 km | Přímá vzdálenost: 65.37 km
+      Poměr přímé vzdálenosti k délce: 0.8068 (80.68 %)
+
+ 137. R 0137c — Sekanica
+      Dopravce: ZSSK | ID linky: 1242
+      Trasa: [UA] Chop → Košice - Hl.S.
+      Délka linky: 95.87 km | Přímá vzdálenost: 77.28 km
+      Poměr přímé vzdálenosti k délce: 0.8061 (80.61 %)
+
+ 138. R 0137c — Sekanica
+      Dopravce: ZSSK | ID linky: 1243
+      Trasa: Košice - Hl.S. → [UA] Chop
+      Délka linky: 95.87 km | Přímá vzdálenost: 77.28 km
+      Poměr přímé vzdálenosti k délce: 0.8061 (80.61 %)
+
+ 139. R 0125 — Kolejovrt
+      Dopravce: ČD | ID linky: 581
+      Trasa: Zlín - Hl.N. → Praha - Nová Libeň
+      Délka linky: 311.09 km | Přímá vzdálenost: 250.35 km
+      Poměr přímé vzdálenosti k délce: 0.8047 (80.47 %)
+
+ 140. R 0125 — Kolejovrt
+      Dopravce: ČD | ID linky: 580
+      Trasa: Praha - Nová Libeň → Zlín - Hl.N.
+      Délka linky: 311.09 km | Přímá vzdálenost: 250.35 km
+      Poměr přímé vzdálenosti k délce: 0.8047 (80.47 %)
+
+ 141. R 0160 — Nitsoby
+      Dopravce: ČD | ID linky: 634
+      Trasa: Vrchlabí - Hl.N. → Hradec Králové - Kukleny
+      Délka linky: 60.83 km | Přímá vzdálenost: 48.75 km
+      Poměr přímé vzdálenosti k délce: 0.8013 (80.13 %)
+
+ 142. R 0160 — Nitsoby
+      Dopravce: ČD | ID linky: 635
+      Trasa: Hradec Králové - Kukleny → Vrchlabí - Hl.N.
+      Délka linky: 60.83 km | Přímá vzdálenost: 48.75 km
+      Poměr přímé vzdálenosti k délce: 0.8013 (80.13 %)
+
+ 143. R 503 — Panská Cesta
+      Dopravce: pPR | ID linky: 2778
+      Trasa: Český Krumlov - Hl.N. → Brno - Žebětín
+      Délka linky: 206.01 km | Přímá vzdálenost: 165.07 km
+      Poměr přímé vzdálenosti k délce: 0.8013 (80.13 %)
+
+ 144. R 503 — Panská Cesta
+      Dopravce: pPR | ID linky: 2779
+      Trasa: Brno - Žebětín → Český Krumlov - Hl.N.
+      Délka linky: 206.01 km | Přímá vzdálenost: 165.07 km
+      Poměr přímé vzdálenosti k délce: 0.8013 (80.13 %)
+
+ 145. R 0167b — Kovošrůtek
+      Dopravce: ČD | ID linky: 1590
+      Trasa: Chomutov - Hl.N. → Domažlice - Hl.N.
+      Délka linky: 148.16 km | Přímá vzdálenost: 118.66 km
+      Poměr přímé vzdálenosti k délce: 0.8009 (80.09 %)
+
+ 146. R 0167b — Kovošrůtek
+      Dopravce: ČD | ID linky: 1591
+      Trasa: Domažlice - Hl.N. → Chomutov - Hl.N.
+      Délka linky: 148.16 km | Přímá vzdálenost: 118.66 km
+      Poměr přímé vzdálenosti k délce: 0.8009 (80.09 %)
+
+ 147. R 0129z — Nerez
+      Dopravce: ZSSK | ID linky: 1150
+      Trasa: Revúca → Zvolen - Moťová
+      Délka linky: 90.39 km | Přímá vzdálenost: 72.25 km
+      Poměr přímé vzdálenosti k délce: 0.7993 (79.93 %)
+
+ 148. R 0129z — Nerez
+      Dopravce: ZSSK | ID linky: 1151
+      Trasa: Zvolen - Moťová → Revúca
+      Délka linky: 90.39 km | Přímá vzdálenost: 72.25 km
+      Poměr přímé vzdálenosti k délce: 0.7993 (79.93 %)
+
+ 149. R 97az — Lužicko-Šumavský Express
+      Dopravce: pA2Z | ID linky: 2638
+      Trasa: Pohoří na Šumavě → Šluknov
+      Délka linky: 334.85 km | Přímá vzdálenost: 267.42 km
+      Poměr přímé vzdálenosti k délce: 0.7986 (79.86 %)
+
+ 150. R 97az — Lužicko-Šumavský Express
+      Dopravce: pA2Z | ID linky: 2639
+      Trasa: Šluknov → Pohoří na Šumavě
+      Délka linky: 334.85 km | Přímá vzdálenost: 267.42 km
+      Poměr přímé vzdálenosti k délce: 0.7986 (79.86 %)
+
+ 151. R 0176r — Pomocná Síla
+      Dopravce: ČD | ID linky: 1936
+      Trasa: Olomouc - Nový Svět → Považská Bystrica - Hl.S.
+      Délka linky: 124.24 km | Přímá vzdálenost: 99.17 km
+      Poměr přímé vzdálenosti k délce: 0.7982 (79.82 %)
+
+ 152. R 0176r — Pomocná Síla
+      Dopravce: ČD | ID linky: 1937
+      Trasa: Považská Bystrica - Hl.S. → Olomouc - Nový Svět
+      Délka linky: 124.24 km | Přímá vzdálenost: 99.17 km
+      Poměr přímé vzdálenosti k délce: 0.7982 (79.82 %)
+
+ 153. R 0165r — Ratata
+      Dopravce: ČD | ID linky: 1315
+      Trasa: [AT] Heidenreichstein → Chomutov - Domovinka
+      Délka linky: 273.11 km | Přímá vzdálenost: 217.47 km
+      Poměr přímé vzdálenosti k délce: 0.7963 (79.63 %)
+
+ 154. R 0165r — Ratata
+      Dopravce: ČD | ID linky: 1314
+      Trasa: Chomutov - Domovinka → [AT] Heidenreichstein
+      Délka linky: 273.11 km | Přímá vzdálenost: 217.47 km
+      Poměr přímé vzdálenosti k délce: 0.7963 (79.63 %)
+
+ 155. R 0126u — Zabřehlík
+      Dopravce: ČD | ID linky: 290
+      Trasa: Česká Třebová - Hl.N. → Uničov - Brníčko
+      Délka linky: 64.98 km | Přímá vzdálenost: 51.72 km
+      Poměr přímé vzdálenosti k délce: 0.7958 (79.58 %)
+
+ 156. R 0126u — Zabřehlík
+      Dopravce: ČD | ID linky: 291
+      Trasa: Uničov - Brníčko → Česká Třebová - Hl.N.
+      Délka linky: 64.98 km | Přímá vzdálenost: 51.72 km
+      Poměr přímé vzdálenosti k délce: 0.7958 (79.58 %)
+
+ 157. R 0162l — Trubka
+      Dopravce: ZSSK | ID linky: 1782
+      Trasa: Banská Bystrica - Majer → Humenné - Gaštanová
+      Délka linky: 250.02 km | Přímá vzdálenost: 198.88 km
+      Poměr přímé vzdálenosti k délce: 0.7955 (79.55 %)
+
+ 158. R 0162l — Trubka
+      Dopravce: ZSSK | ID linky: 1783
+      Trasa: Humenné - Gaštanová → Banská Bystrica - Majer
+      Délka linky: 250.02 km | Přímá vzdálenost: 198.88 km
+      Poměr přímé vzdálenosti k délce: 0.7955 (79.55 %)
+
+ 159. R 0149p — Hliník
+      Dopravce: ČD | ID linky: 1610
+      Trasa: Pardubice - Semtín → České Budějovice - Nové Vráto
+      Délka linky: 187.18 km | Přímá vzdálenost: 148.88 km
+      Poměr přímé vzdálenosti k délce: 0.7954 (79.54 %)
+
+ 160. R 0149p — Hliník
+      Dopravce: ČD | ID linky: 1611
+      Trasa: České Budějovice - Nové Vráto → Pardubice - Semtín
+      Délka linky: 187.18 km | Přímá vzdálenost: 148.88 km
+      Poměr přímé vzdálenosti k délce: 0.7954 (79.54 %)
+
+ 161. R 0153s — Poňahla
+      Dopravce: ZSSK | ID linky: 1561
+      Trasa: Žilina - Solinky → Praha - Koloděje
+      Délka linky: 390.60 km | Přímá vzdálenost: 310.53 km
+      Poměr přímé vzdálenosti k délce: 0.7950 (79.50 %)
+
+ 162. R 0153s — Poňahla
+      Dopravce: ZSSK | ID linky: 1560
+      Trasa: Praha - Koloděje → Žilina - Solinky
+      Délka linky: 390.60 km | Přímá vzdálenost: 310.53 km
+      Poměr přímé vzdálenosti k délce: 0.7950 (79.50 %)
+
+ 163. R 83413 — Severní Oblouk
+      Dopravce: pBEX | ID linky: 2746
+      Trasa: Karlovy Vary - Hl.N. → Olomouc - Blatec
+      Délka linky: 406.01 km | Přímá vzdálenost: 322.76 km
+      Poměr přímé vzdálenosti k délce: 0.7950 (79.50 %)
+
+ 164. R 83413 — Severní Oblouk
+      Dopravce: pBEX | ID linky: 2747
+      Trasa: Olomouc - Blatec → Karlovy Vary - Hl.N.
+      Délka linky: 406.01 km | Přímá vzdálenost: 322.76 km
+      Poměr přímé vzdálenosti k délce: 0.7950 (79.50 %)
+
+ 165. R 0170s — Abrošt
+      Dopravce: ZSSK | ID linky: 1324
+      Trasa: Poprad - Hl.S. → Námestovo
+      Délka linky: 90.24 km | Přímá vzdálenost: 71.32 km
+      Poměr přímé vzdálenosti k délce: 0.7903 (79.03 %)
+
+ 166. R 0170s — Abrošt
+      Dopravce: ZSSK | ID linky: 1325
+      Trasa: Námestovo → Poprad - Hl.S.
+      Délka linky: 90.24 km | Přímá vzdálenost: 71.32 km
+      Poměr přímé vzdálenosti k délce: 0.7903 (79.03 %)
+
+ 167. R 0153m — Trepák
+      Dopravce: ČD | ID linky: 228
+      Trasa: Brno - Maloměřice → Jihlava - Velký Beranov
+      Délka linky: 93.54 km | Přímá vzdálenost: 73.74 km
+      Poměr přímé vzdálenosti k délce: 0.7884 (78.84 %)
+
+ 168. R 0153m — Trepák
+      Dopravce: ČD | ID linky: 229
+      Trasa: Jihlava - Velký Beranov → Brno - Maloměřice
+      Délka linky: 93.54 km | Přímá vzdálenost: 73.74 km
+      Poměr přímé vzdálenosti k délce: 0.7884 (78.84 %)
+
+ 169. R 0127v — Veselá Kopa
+      Dopravce: ČD | ID linky: 1525
+      Trasa: Jindřichův Hradec - Jindřiš → Plzeň - Černice
+      Délka linky: 169.34 km | Přímá vzdálenost: 133.37 km
+      Poměr přímé vzdálenosti k délce: 0.7876 (78.76 %)
+
+ 170. R 0127v — Veselá Kopa
+      Dopravce: ČD | ID linky: 1524
+      Trasa: Plzeň - Černice → Jindřichův Hradec - Jindřiš
+      Délka linky: 169.34 km | Přímá vzdálenost: 133.37 km
+      Poměr přímé vzdálenosti k délce: 0.7876 (78.76 %)
+
+ 171. R 0150 — Opravář
+      Dopravce: ČD | ID linky: 336
+      Trasa: Pardubice - Semtín → Náchod - Hl.N.
+      Délka linky: 63.82 km | Přímá vzdálenost: 50.19 km
+      Poměr přímé vzdálenosti k délce: 0.7864 (78.64 %)
+
+ 172. R 0150 — Opravář
+      Dopravce: ČD | ID linky: 337
+      Trasa: Náchod - Hl.N. → Pardubice - Semtín
+      Délka linky: 63.82 km | Přímá vzdálenost: 50.19 km
+      Poměr přímé vzdálenosti k délce: 0.7864 (78.64 %)
+
+ 173. R 0187o — Plíhal
+      Dopravce: ZSSK | ID linky: 1692
+      Trasa: [PL] Piwniczna - Zdroj → Banská Bystrica - Hl.S.
+      Délka linky: 175.96 km | Přímá vzdálenost: 138.13 km
+      Poměr přímé vzdálenosti k délce: 0.7850 (78.50 %)
+
+ 174. R 0187o — Plíhal
+      Dopravce: ZSSK | ID linky: 1693
+      Trasa: Banská Bystrica - Hl.S. → [PL] Piwniczna - Zdroj
+      Délka linky: 175.96 km | Přímá vzdálenost: 138.13 km
+      Poměr přímé vzdálenosti k délce: 0.7850 (78.50 %)
+
+ 175. R 0177m — Vrabčák
+      Dopravce: ČD | ID linky: 168
+      Trasa: Vranov nad Dyjí → Hodonín - Pánov
+      Délka linky: 124.35 km | Přímá vzdálenost: 97.55 km
+      Poměr přímé vzdálenosti k délce: 0.7845 (78.45 %)
+
+ 176. R 0177m — Vrabčák
+      Dopravce: ČD | ID linky: 169
+      Trasa: Hodonín - Pánov → Vranov nad Dyjí
+      Délka linky: 124.35 km | Přímá vzdálenost: 97.55 km
+      Poměr přímé vzdálenosti k délce: 0.7845 (78.45 %)
+
+ 177. R 0144z — Stařec
+      Dopravce: ČD | ID linky: 1887
+      Trasa: Domažlice - Bezděkov → Karlovy Vary - Sedlec
+      Délka linky: 114.90 km | Přímá vzdálenost: 90.08 km
+      Poměr přímé vzdálenosti k délce: 0.7840 (78.40 %)
+
+ 178. R 0144z — Stařec
+      Dopravce: ČD | ID linky: 1886
+      Trasa: Karlovy Vary - Sedlec → Domažlice - Bezděkov
+      Délka linky: 114.90 km | Přímá vzdálenost: 90.08 km
+      Poměr přímé vzdálenosti k délce: 0.7840 (78.40 %)
+
+ 179. R 0132s — Jemná Panna
+      Dopravce: ČD | ID linky: 1474
+      Trasa: Jindřichův Hradec - Jindřiš → Vranov nad Dyjí
+      Délka linky: 78.78 km | Přímá vzdálenost: 61.71 km
+      Poměr přímé vzdálenosti k délce: 0.7834 (78.34 %)
+
+ 180. R 0132s — Jemná Panna
+      Dopravce: ČD | ID linky: 1475
+      Trasa: Vranov nad Dyjí → Jindřichův Hradec - Jindřiš
+      Délka linky: 78.78 km | Přímá vzdálenost: 61.71 km
+      Poměr přímé vzdálenosti k délce: 0.7834 (78.34 %)
+
+ 181. R 0197 — Záhorský Express
+      Dopravce: pA2Z | ID linky: 2574
+      Trasa: Nová Sedlica → Angern an der March - Záhorská Ves
+      Délka linky: 542.00 km | Přímá vzdálenost: 423.04 km
+      Poměr přímé vzdálenosti k délce: 0.7805 (78.05 %)
+
+ 182. R 0197 — Záhorský Express
+      Dopravce: pA2Z | ID linky: 2575
+      Trasa: Angern an der March - Záhorská Ves → Nová Sedlica
+      Délka linky: 542.00 km | Přímá vzdálenost: 423.04 km
+      Poměr přímé vzdálenosti k délce: 0.7805 (78.05 %)
+
+ 183. R 0167 — Strejček Vít
+      Dopravce: ČD | ID linky: 217
+      Trasa: Jihlava - Hl.N. → Benešov - Hl.N.
+      Délka linky: 99.85 km | Přímá vzdálenost: 77.81 km
+      Poměr přímé vzdálenosti k délce: 0.7793 (77.93 %)
+
+ 184. R 0167 — Strejček Vít
+      Dopravce: ČD | ID linky: 216
+      Trasa: Benešov - Hl.N. → Jihlava - Hl.N.
+      Délka linky: 99.85 km | Přímá vzdálenost: 77.81 km
+      Poměr přímé vzdálenosti k délce: 0.7793 (77.93 %)
+
+ 185. R 0166h — Ica-Ica
+      Dopravce: ZSSK | ID linky: 1750
+      Trasa: Hodonín - Hl.N. → Nitra - Hl.S.
+      Délka linky: 120.20 km | Přímá vzdálenost: 93.21 km
+      Poměr přímé vzdálenosti k délce: 0.7754 (77.54 %)
+
+ 186. R 0166h — Ica-Ica
+      Dopravce: ZSSK | ID linky: 1751
+      Trasa: Nitra - Hl.S. → Hodonín - Hl.N.
+      Délka linky: 120.20 km | Přímá vzdálenost: 93.21 km
+      Poměr přímé vzdálenosti k délce: 0.7754 (77.54 %)
+
+ 187. R 0257 — Moravská Rosa
+      Dopravce: ČD | ID linky: 13
+      Trasa: Plzeň - Doudlevce → Brno - Hl.N.
+      Délka linky: 310.09 km | Přímá vzdálenost: 240.41 km
+      Poměr přímé vzdálenosti k délce: 0.7753 (77.53 %)
+
+ 188. R 0257 — Moravská Rosa
+      Dopravce: ČD | ID linky: 12
+      Trasa: Brno - Hl.N. → Plzeň - Doudlevce
+      Délka linky: 310.09 km | Přímá vzdálenost: 240.41 km
+      Poměr přímé vzdálenosti k délce: 0.7753 (77.53 %)
+
+ 189. R 0158o — Batín
+      Dopravce: ZSSK | ID linky: 1808
+      Trasa: Vsetín - Hl.N. → Banská Bystrica - Majer
+      Délka linky: 141.56 km | Přímá vzdálenost: 109.65 km
+      Poměr přímé vzdálenosti k délce: 0.7746 (77.46 %)
+
+ 190. R 0158o — Batín
+      Dopravce: ZSSK | ID linky: 1809
+      Trasa: Banská Bystrica - Majer → Vsetín - Hl.N.
+      Délka linky: 141.56 km | Přímá vzdálenost: 109.65 km
+      Poměr přímé vzdálenosti k délce: 0.7746 (77.46 %)
+
+ 191. R 0158 — Batát
+      Dopravce: ČD | ID linky: 492
+      Trasa: Opava - Vávrovice → Olomouc - Hejčín
+      Délka linky: 79.16 km | Přímá vzdálenost: 61.23 km
+      Poměr přímé vzdálenosti k délce: 0.7735 (77.35 %)
+
+ 192. R 0158 — Batát
+      Dopravce: ČD | ID linky: 493
+      Trasa: Olomouc - Hejčín → Opava - Vávrovice
+      Délka linky: 79.16 km | Přímá vzdálenost: 61.23 km
+      Poměr přímé vzdálenosti k délce: 0.7735 (77.35 %)
+
+ 193. R 0208-5 — Proszek
+      Dopravce: PKP | ID linky: 2416
+      Trasa: [PL] Kłodzko → Ostrava - Svinov
+      Délka linky: 168.83 km | Přímá vzdálenost: 130.12 km
+      Poměr přímé vzdálenosti k délce: 0.7707 (77.07 %)
+
+ 194. R 0208-5 — Proszek
+      Dopravce: PKP | ID linky: 2417
+      Trasa: Ostrava - Svinov → [PL] Kłodzko
+      Délka linky: 168.83 km | Přímá vzdálenost: 130.12 km
+      Poměr přímé vzdálenosti k délce: 0.7707 (77.07 %)
+
+ 195. R 0214v — Ogy
+      Dopravce: ZSSK | ID linky: 2044
+      Trasa: Šurany - Hl.S. → [HU] Balassagyarmat
+      Délka linky: 107.38 km | Přímá vzdálenost: 82.49 km
+      Poměr přímé vzdálenosti k délce: 0.7683 (76.83 %)
+
+ 196. R 0214v — Ogy
+      Dopravce: ZSSK | ID linky: 2045
+      Trasa: [HU] Balassagyarmat → Šurany - Hl.S.
+      Délka linky: 107.38 km | Přímá vzdálenost: 82.49 km
+      Poměr přímé vzdálenosti k délce: 0.7683 (76.83 %)
+
+ 197. R 0160e — Prdlan
+      Dopravce: ČD | ID linky: 1498
+      Trasa: Příbram - Hl.N. → Klatovy - Hl.N.
+      Délka linky: 79.96 km | Přímá vzdálenost: 61.36 km
+      Poměr přímé vzdálenosti k délce: 0.7673 (76.73 %)
+
+ 198. R 0160e — Prdlan
+      Dopravce: ČD | ID linky: 1499
+      Trasa: Klatovy - Hl.N. → Příbram - Hl.N.
+      Délka linky: 79.96 km | Přímá vzdálenost: 61.36 km
+      Poměr přímé vzdálenosti k délce: 0.7673 (76.73 %)
+
+ 199. R 0154C — Strach
+      Dopravce: ČD | ID linky: 468
+      Trasa: Suchdol nad Lužnicí → Strakonice - Přední Ptákovice
+      Délka linky: 105.29 km | Přímá vzdálenost: 80.46 km
+      Poměr přímé vzdálenosti k délce: 0.7642 (76.42 %)
+
+ 200. R 0154C — Strach
+      Dopravce: ČD | ID linky: 469
+      Trasa: Strakonice - Přední Ptákovice → Suchdol nad Lužnicí
+      Délka linky: 105.29 km | Přímá vzdálenost: 80.46 km
+      Poměr přímé vzdálenosti k délce: 0.7642 (76.42 %)
+
+ 201. R 0134k — Karel IV
+      Dopravce: ČD | ID linky: 1313
+      Trasa: Benešov - Hl.N. → Králův Dvůr - Trubín
+      Délka linky: 68.58 km | Přímá vzdálenost: 52.24 km
+      Poměr přímé vzdálenosti k délce: 0.7618 (76.18 %)
+
+ 202. R 0134k — Karel IV
+      Dopravce: ČD | ID linky: 1312
+      Trasa: Králův Dvůr - Trubín → Benešov - Hl.N.
+      Délka linky: 68.58 km | Přímá vzdálenost: 52.24 km
+      Poměr přímé vzdálenosti k délce: 0.7618 (76.18 %)
+
+ 203. R 0152 — Buchlovec
+      Dopravce: ZSSK | ID linky: 704
+      Trasa: Zvolen - Hl.S. → Šahy
+      Délka linky: 76.46 km | Přímá vzdálenost: 58.18 km
+      Poměr přímé vzdálenosti k délce: 0.7608 (76.08 %)
+
+ 204. R 0152 — Buchlovec
+      Dopravce: ZSSK | ID linky: 705
+      Trasa: Šahy → Zvolen - Hl.S.
+      Délka linky: 76.46 km | Přímá vzdálenost: 58.18 km
+      Poměr přímé vzdálenosti k délce: 0.7608 (76.08 %)
+
+ 205. R 0175z — Topoly
+      Dopravce: ZSSK | ID linky: 1576
+      Trasa: Nové Město nad Váhom - Rakoluby → Levice - Géňa
+      Délka linky: 107.81 km | Přímá vzdálenost: 81.72 km
+      Poměr přímé vzdálenosti k délce: 0.7580 (75.80 %)
+
+ 206. R 0175z — Topoly
+      Dopravce: ZSSK | ID linky: 1577
+      Trasa: Levice - Géňa → Nové Město nad Váhom - Rakoluby
+      Délka linky: 107.81 km | Přímá vzdálenost: 81.72 km
+      Poměr přímé vzdálenosti k délce: 0.7580 (75.80 %)
+
+ 207. R 0217k — Vražda
+      Dopravce: ČD | ID linky: 1609
+      Trasa: Košice - Terasa → Liptovský Hrádek
+      Délka linky: 152.79 km | Přímá vzdálenost: 115.54 km
+      Poměr přímé vzdálenosti k délce: 0.7562 (75.62 %)
+
+ 208. R 0217k — Vražda
+      Dopravce: ČD | ID linky: 1608
+      Trasa: Liptovský Hrádek → Košice - Terasa
+      Délka linky: 152.79 km | Přímá vzdálenost: 115.54 km
+      Poměr přímé vzdálenosti k délce: 0.7562 (75.62 %)
+
+ 209. R 205g — Pragerlach
+      Dopravce: ZSSK | ID linky: 2523
+      Trasa: Praděd → Gerlachovský Štít
+      Délka linky: 308.18 km | Přímá vzdálenost: 232.83 km
+      Poměr přímé vzdálenosti k délce: 0.7555 (75.55 %)
+
+ 210. R 205g — Pragerlach
+      Dopravce: ZSSK | ID linky: 2522
+      Trasa: Gerlachovský Štít → Praděd
+      Délka linky: 308.18 km | Přímá vzdálenost: 232.83 km
+      Poměr přímé vzdálenosti k délce: 0.7555 (75.55 %)
+
+ 211. R 0146b — Aha
+      Dopravce: ZSSK | ID linky: 1762
+      Trasa: Stará Myjava - Dúbravovci → [AT] Ganserndorf
+      Délka linky: 105.33 km | Přímá vzdálenost: 79.41 km
+      Poměr přímé vzdálenosti k délce: 0.7539 (75.39 %)
+
+ 212. R 0146b — Aha
+      Dopravce: ZSSK | ID linky: 1763
+      Trasa: [AT] Ganserndorf → Stará Myjava - Dúbravovci
+      Délka linky: 105.33 km | Přímá vzdálenost: 79.41 km
+      Poměr přímé vzdálenosti k délce: 0.7539 (75.39 %)
+
+ 213. R 0168 — Kiki
+      Dopravce: ČD | ID linky: 115
+      Trasa: Svitavy - Český Lačnov → České Budějovice - Čtyři Dvory
+      Délka linky: 229.54 km | Přímá vzdálenost: 172.67 km
+      Poměr přímé vzdálenosti k délce: 0.7523 (75.23 %)
+
+ 214. R 0168 — Kiki
+      Dopravce: ČD | ID linky: 114
+      Trasa: České Budějovice - Čtyři Dvory → Svitavy - Český Lačnov
+      Délka linky: 229.54 km | Přímá vzdálenost: 172.67 km
+      Poměr přímé vzdálenosti k délce: 0.7523 (75.23 %)
+
+ 215. R 0152b — Trol
+      Dopravce: ČD | ID linky: 1716
+      Trasa: Trutnov - Hl.N. → Pardubice - Semtín
+      Délka linky: 76.19 km | Přímá vzdálenost: 57.01 km
+      Poměr přímé vzdálenosti k délce: 0.7482 (74.82 %)
+
+ 216. R 0152b — Trol
+      Dopravce: ČD | ID linky: 1717
+      Trasa: Pardubice - Semtín → Trutnov - Hl.N.
+      Délka linky: 76.19 km | Přímá vzdálenost: 57.01 km
+      Poměr přímé vzdálenosti k délce: 0.7482 (74.82 %)
+
+ 217. R 0126v — Siberius
+      Dopravce: ČD | ID linky: 1323
+      Trasa: Jihlava - Hl.N. → Veselí nad Lužnicí - Hl.N.
+      Délka linky: 92.29 km | Přímá vzdálenost: 68.47 km
+      Poměr přímé vzdálenosti k délce: 0.7418 (74.18 %)
+
+ 218. R 0126v — Siberius
+      Dopravce: ČD | ID linky: 1322
+      Trasa: Veselí nad Lužnicí - Hl.N. → Jihlava - Hl.N.
+      Délka linky: 92.29 km | Přímá vzdálenost: 68.47 km
+      Poměr přímé vzdálenosti k délce: 0.7418 (74.18 %)
+
+ 219. R 0173z — Ludmír
+      Dopravce: ČD | ID linky: 2458
+      Trasa: Opava - Hl.N. → Brno - Kohoutovice
+      Délka linky: 173.22 km | Přímá vzdálenost: 128.13 km
+      Poměr přímé vzdálenosti k délce: 0.7397 (73.97 %)
+
+ 220. R 0173z — Ludmír
+      Dopravce: ČD | ID linky: 2459
+      Trasa: Brno - Kohoutovice → Opava - Hl.N.
+      Délka linky: 173.22 km | Přímá vzdálenost: 128.13 km
+      Poměr přímé vzdálenosti k délce: 0.7397 (73.97 %)
+
+ 221. R 0180m — Potenciál
+      Dopravce: ČD | ID linky: 1654
+      Trasa: Olomouc - Slavonín → Hodonín - Hl.N.
+      Délka linky: 107.78 km | Přímá vzdálenost: 79.69 km
+      Poměr přímé vzdálenosti k délce: 0.7394 (73.94 %)
+
+ 222. R 0180m — Potenciál
+      Dopravce: ČD | ID linky: 1655
+      Trasa: Hodonín - Hl.N. → Olomouc - Slavonín
+      Délka linky: 107.78 km | Přímá vzdálenost: 79.69 km
+      Poměr přímé vzdálenosti k délce: 0.7394 (73.94 %)
+
+ 223. R 0120p — Manžel
+      Dopravce: ČD | ID linky: 254
+      Trasa: Praha - Řeporyje → Plzeň - Bolevec
+      Délka linky: 98.23 km | Přímá vzdálenost: 72.48 km
+      Poměr přímé vzdálenosti k délce: 0.7379 (73.79 %)
+
+ 224. R 0120p — Manžel
+      Dopravce: ČD | ID linky: 255
+      Trasa: Plzeň - Bolevec → Praha - Řeporyje
+      Délka linky: 98.23 km | Přímá vzdálenost: 72.48 km
+      Poměr přímé vzdálenosti k délce: 0.7379 (73.79 %)
+
+ 225. R 0136v — Líný Vlk
+      Dopravce: ZSSK | ID linky: 1948
+      Trasa: Liptovský Mikuláš - Ondrášová → Banská Bystrica - Majer
+      Délka linky: 67.91 km | Přímá vzdálenost: 50.09 km
+      Poměr přímé vzdálenosti k délce: 0.7376 (73.76 %)
+
+ 226. R 0136v — Líný Vlk
+      Dopravce: ZSSK | ID linky: 1949
+      Trasa: Banská Bystrica - Majer → Liptovský Mikuláš - Ondrášová
+      Délka linky: 67.91 km | Přímá vzdálenost: 50.09 km
+      Poměr přímé vzdálenosti k délce: 0.7376 (73.76 %)
+
+ 227. R 0139 — RegioJet
+      Dopravce: ČD | ID linky: 20
+      Trasa: Bohumín - Hl.N. → Brno - Maloměřice
+      Délka linky: 196.91 km | Přímá vzdálenost: 145.06 km
+      Poměr přímé vzdálenosti k délce: 0.7367 (73.67 %)
+
+ 228. R 0139 — RegioJet
+      Dopravce: ČD | ID linky: 21
+      Trasa: Brno - Maloměřice → Bohumín - Hl.N.
+      Délka linky: 196.91 km | Přímá vzdálenost: 145.06 km
+      Poměr přímé vzdálenosti k délce: 0.7367 (73.67 %)
+
+ 229. R 0164k — Adam
+      Dopravce: ČD | ID linky: 1429
+      Trasa: Pelhřimov - Hl.N. → Kutná Hora - Grunta
+      Délka linky: 82.50 km | Přímá vzdálenost: 60.55 km
+      Poměr přímé vzdálenosti k délce: 0.7339 (73.39 %)
+
+ 230. R 0164k — Adam
+      Dopravce: ČD | ID linky: 1428
+      Trasa: Kutná Hora - Grunta → Pelhřimov - Hl.N.
+      Délka linky: 82.50 km | Přímá vzdálenost: 60.55 km
+      Poměr přímé vzdálenosti k délce: 0.7339 (73.39 %)
+
+ 231. R 0160ž — Vlak
+      Dopravce: ČD | ID linky: 1667
+      Trasa: Brno - Hl.N. → Žilina - Hl.S.
+      Délka linky: 212.12 km | Přímá vzdálenost: 154.63 km
+      Poměr přímé vzdálenosti k délce: 0.7290 (72.90 %)
+
+ 232. R 0160ž — Vlak
+      Dopravce: ČD | ID linky: 1666
+      Trasa: Žilina - Hl.S. → Brno - Hl.N.
+      Délka linky: 212.12 km | Přímá vzdálenost: 154.63 km
+      Poměr přímé vzdálenosti k délce: 0.7290 (72.90 %)
+
+ 233. R 0129e — Olomoucký Kejklíř
+      Dopravce: ČD | ID linky: 1718
+      Trasa: Olomouc - Hl.N. → Tábor - Klokoty
+      Délka linky: 260.35 km | Přímá vzdálenost: 189.53 km
+      Poměr přímé vzdálenosti k délce: 0.7280 (72.80 %)
+
+ 234. R 0129e — Olomoucký Kejklíř
+      Dopravce: ČD | ID linky: 1719
+      Trasa: Tábor - Klokoty → Olomouc - Hl.N.
+      Délka linky: 260.35 km | Přímá vzdálenost: 189.53 km
+      Poměr přímé vzdálenosti k délce: 0.7280 (72.80 %)
+
+ 235. R 0330 — Rekordman
+      Dopravce: ČD | ID linky: 1490
+      Trasa: Bratislava - Petržalka → České Budějovice - Roudné
+      Délka linky: 294.97 km | Přímá vzdálenost: 213.66 km
+      Poměr přímé vzdálenosti k délce: 0.7243 (72.43 %)
+
+ 236. R 0330 — Rekordman
+      Dopravce: ČD | ID linky: 1491
+      Trasa: České Budějovice - Roudné → Bratislava - Petržalka
+      Délka linky: 294.97 km | Přímá vzdálenost: 213.66 km
+      Poměr přímé vzdálenosti k délce: 0.7243 (72.43 %)
+
+ 237. R 0182 — Letá
+      Dopravce: ČD | ID linky: 50
+      Trasa: Brno - Žebětín → Praha - Vinohrady
+      Délka linky: 242.94 km | Přímá vzdálenost: 175.30 km
+      Poměr přímé vzdálenosti k délce: 0.7216 (72.16 %)
+
+ 238. R 0182 — Letá
+      Dopravce: ČD | ID linky: 51
+      Trasa: Praha - Vinohrady → Brno - Žebětín
+      Délka linky: 242.94 km | Přímá vzdálenost: 175.30 km
+      Poměr přímé vzdálenosti k délce: 0.7216 (72.16 %)
+
+ 239. R 0135ň — Rozkoš
+      Dopravce: ČD | ID linky: 1712
+      Trasa: Vysoké Mýto - Hl.N. → Turnov - Rakousy
+      Délka linky: 139.89 km | Přímá vzdálenost: 100.74 km
+      Poměr přímé vzdálenosti k délce: 0.7202 (72.02 %)
+
+ 240. R 0135ň — Rozkoš
+      Dopravce: ČD | ID linky: 1713
+      Trasa: Turnov - Rakousy → Vysoké Mýto - Hl.N.
+      Délka linky: 139.89 km | Přímá vzdálenost: 100.74 km
+      Poměr přímé vzdálenosti k délce: 0.7202 (72.02 %)
+
+ 241. R 0218 — Vltavín
+      Dopravce: ČD | ID linky: 214
+      Trasa: Praha - Veleslavín → Český Krumlov - Hl.N.
+      Délka linky: 201.31 km | Přímá vzdálenost: 142.52 km
+      Poměr přímé vzdálenosti k délce: 0.7080 (70.80 %)
+
+ 242. R 0218 — Vltavín
+      Dopravce: ČD | ID linky: 215
+      Trasa: Český Krumlov - Hl.N. → Praha - Veleslavín
+      Délka linky: 201.31 km | Přímá vzdálenost: 142.52 km
+      Poměr přímé vzdálenosti k délce: 0.7080 (70.80 %)
+
+ 243. R 0206h — Obrat
+      Dopravce: ZSSK | ID linky: 1652
+      Trasa: Ostrava - Přívoz → Bratislava - Hl.S.
+      Délka linky: 292.64 km | Přímá vzdálenost: 207.06 km
+      Poměr přímé vzdálenosti k délce: 0.7076 (70.76 %)
+
+ 244. R 0206h — Obrat
+      Dopravce: ZSSK | ID linky: 1653
+      Trasa: Bratislava - Hl.S. → Ostrava - Přívoz
+      Délka linky: 292.64 km | Přímá vzdálenost: 207.06 km
+      Poměr přímé vzdálenosti k délce: 0.7076 (70.76 %)
+
+ 245. R 1 — Sátor
+      Dopravce: MÁV | ID linky: 2692
+      Trasa: [HU] Encs → [HU] Sátoraljaújhely
+      Délka linky: 57.31 km | Přímá vzdálenost: 40.45 km
+      Poměr přímé vzdálenosti k délce: 0.7057 (70.57 %)
+
+ 246. R 1 — Sátor
+      Dopravce: MÁV | ID linky: 2693
+      Trasa: [HU] Sátoraljaújhely → [HU] Encs
+      Délka linky: 57.31 km | Přímá vzdálenost: 40.45 km
+      Poměr přímé vzdálenosti k délce: 0.7057 (70.57 %)
+
+ 247. R 0160t — Bílá Paní
+      Dopravce: ZSSK | ID linky: 1098
+      Trasa: Brezno - Hl.S. → Ilava - Pruské
+      Délka linky: 152.32 km | Přímá vzdálenost: 107.46 km
+      Poměr přímé vzdálenosti k délce: 0.7055 (70.55 %)
+
+ 248. R 0160t — Bílá Paní
+      Dopravce: ZSSK | ID linky: 1099
+      Trasa: Ilava - Pruské → Brezno - Hl.S.
+      Délka linky: 152.32 km | Přímá vzdálenost: 107.46 km
+      Poměr přímé vzdálenosti k délce: 0.7055 (70.55 %)
+
+ 249. R 0134m — Vravel
+      Dopravce: ZSSK | ID linky: 878
+      Trasa: [PL] Komancza → Košice - Hl.S.
+      Délka linky: 129.96 km | Přímá vzdálenost: 91.26 km
+      Poměr přímé vzdálenosti k délce: 0.7022 (70.22 %)
+
+ 250. R 0134m — Vravel
+      Dopravce: ZSSK | ID linky: 879
+      Trasa: Košice - Hl.S. → [PL] Komancza
+      Délka linky: 129.96 km | Přímá vzdálenost: 91.26 km
+      Poměr přímé vzdálenosti k délce: 0.7022 (70.22 %)
+
+ 251. R 0124v — Bankéř
+      Dopravce: ZSSK | ID linky: 1735
+      Trasa: Topoľčany - Továrníky → Břeclav - Lanžhot
+      Délka linky: 126.25 km | Přímá vzdálenost: 88.14 km
+      Poměr přímé vzdálenosti k délce: 0.6982 (69.82 %)
+
+ 252. R 0124v — Bankéř
+      Dopravce: ZSSK | ID linky: 1734
+      Trasa: Břeclav - Lanžhot → Topoľčany - Továrníky
+      Délka linky: 126.25 km | Přímá vzdálenost: 88.14 km
+      Poměr přímé vzdálenosti k délce: 0.6982 (69.82 %)
+
+ 253. R 0128k — Mystik
+      Dopravce: ČD | ID linky: 2074
+      Trasa: Žatec - Hl.N. → Kladno - Hl.N.
+      Délka linky: 63.69 km | Přímá vzdálenost: 44.45 km
+      Poměr přímé vzdálenosti k délce: 0.6980 (69.80 %)
+
+ 254. R 0128k — Mystik
+      Dopravce: ČD | ID linky: 2075
+      Trasa: Kladno - Hl.N. → Žatec - Hl.N.
+      Délka linky: 63.69 km | Přímá vzdálenost: 44.45 km
+      Poměr přímé vzdálenosti k délce: 0.6980 (69.80 %)
+
+ 255. R 0127d — Chvátal
+      Dopravce: ČD | ID linky: 1514
+      Trasa: Písek - Semice → Český Krumlov - Hl.N.
+      Délka linky: 76.33 km | Přímá vzdálenost: 53.24 km
+      Poměr přímé vzdálenosti k délce: 0.6975 (69.75 %)
+
+ 256. R 0127d — Chvátal
+      Dopravce: ČD | ID linky: 1515
+      Trasa: Český Krumlov - Hl.N. → Písek - Semice
+      Délka linky: 76.33 km | Přímá vzdálenost: 53.24 km
+      Poměr přímé vzdálenosti k délce: 0.6975 (69.75 %)
+
+ 257. R 0153b — Franta
+      Dopravce: ČD | ID linky: 362
+      Trasa: Zlín - Hl.N. → Bílovec
+      Délka linky: 92.02 km | Přímá vzdálenost: 64.13 km
+      Poměr přímé vzdálenosti k délce: 0.6970 (69.70 %)
+
+ 258. R 0153b — Franta
+      Dopravce: ČD | ID linky: 363
+      Trasa: Bílovec → Zlín - Hl.N.
+      Délka linky: 92.02 km | Přímá vzdálenost: 64.13 km
+      Poměr přímé vzdálenosti k délce: 0.6970 (69.70 %)
+
+ 259. R 0132ť — Dar Popu
+      Dopravce: ZSSK | ID linky: 1792
+      Trasa: Poprad - Velká → Rimavská Sobota - Hl.N.
+      Délka linky: 113.76 km | Přímá vzdálenost: 78.53 km
+      Poměr přímé vzdálenosti k délce: 0.6903 (69.03 %)
+
+ 260. R 0132ť — Dar Popu
+      Dopravce: ZSSK | ID linky: 1793
+      Trasa: Rimavská Sobota - Hl.N. → Poprad - Velká
+      Délka linky: 113.76 km | Přímá vzdálenost: 78.53 km
+      Poměr přímé vzdálenosti k délce: 0.6903 (69.03 %)
+
+ 261. R 0319n — Bebravský Sprinter
+      Dopravce: ZSSK | ID linky: 2480
+      Trasa: Olomouc - Slavonín → Nitra - Hl.S.
+      Délka linky: 221.85 km | Přímá vzdálenost: 153.10 km
+      Poměr přímé vzdálenosti k délce: 0.6901 (69.01 %)
+
+ 262. R 0319n — Bebravský Sprinter
+      Dopravce: ZSSK | ID linky: 2481
+      Trasa: Nitra - Hl.S. → Olomouc - Slavonín
+      Délka linky: 221.85 km | Přímá vzdálenost: 153.10 km
+      Poměr přímé vzdálenosti k délce: 0.6901 (69.01 %)
+
+ 263. R 0156 — Beran
+      Dopravce: ČD | ID linky: 461
+      Trasa: Jindřichův Hradec - Otín → Benešov - Hl.N.
+      Délka linky: 111.80 km | Přímá vzdálenost: 76.62 km
+      Poměr přímé vzdálenosti k délce: 0.6854 (68.54 %)
+
+ 264. R 0156 — Beran
+      Dopravce: ČD | ID linky: 460
+      Trasa: Benešov - Hl.N. → Jindřichův Hradec - Otín
+      Délka linky: 111.80 km | Přímá vzdálenost: 76.62 km
+      Poměr přímé vzdálenosti k délce: 0.6854 (68.54 %)
+
+ 265. R 0178 — Kladkostroj
+      Dopravce: ČD | ID linky: 328
+      Trasa: České Budějovice - Čtyři Dvory → Klatovy - Hl.N.
+      Délka linky: 139.97 km | Přímá vzdálenost: 95.60 km
+      Poměr přímé vzdálenosti k délce: 0.6830 (68.30 %)
+
+ 266. R 0178 — Kladkostroj
+      Dopravce: ČD | ID linky: 329
+      Trasa: Klatovy - Hl.N. → České Budějovice - Čtyři Dvory
+      Délka linky: 139.97 km | Přímá vzdálenost: 95.60 km
+      Poměr přímé vzdálenosti k délce: 0.6830 (68.30 %)
+
+ 267. R 0123u — Čína
+      Dopravce: ZSSK | ID linky: 1532
+      Trasa: Svidnik → [UA] Uzhhorod
+      Délka linky: 135.23 km | Přímá vzdálenost: 92.33 km
+      Poměr přímé vzdálenosti k délce: 0.6828 (68.28 %)
+
+ 268. R 0123u — Čína
+      Dopravce: ZSSK | ID linky: 1533
+      Trasa: [UA] Uzhhorod → Svidnik
+      Délka linky: 135.23 km | Přímá vzdálenost: 92.33 km
+      Poměr přímé vzdálenosti k délce: 0.6828 (68.28 %)
+
+ 269. R 0139ř — Viniční Blud
+      Dopravce: ČD | ID linky: 1846
+      Trasa: Plzeň - Bolevec → [DE] Waldmunchen
+      Délka linky: 96.73 km | Přímá vzdálenost: 65.99 km
+      Poměr přímé vzdálenosti k délce: 0.6822 (68.22 %)
+
+ 270. R 0139ř — Viniční Blud
+      Dopravce: ČD | ID linky: 1847
+      Trasa: [DE] Waldmunchen → Plzeň - Bolevec
+      Délka linky: 96.73 km | Přímá vzdálenost: 65.99 km
+      Poměr přímé vzdálenosti k délce: 0.6822 (68.22 %)
+
+ 271. R 0181 — Vpred
+      Dopravce: ZSSK | ID linky: 672
+      Trasa: Trenčín - Hl.S. → Zvolen - Hl.S.
+      Délka linky: 128.73 km | Přímá vzdálenost: 86.78 km
+      Poměr přímé vzdálenosti k délce: 0.6741 (67.41 %)
+
+ 272. R 0181 — Vpred
+      Dopravce: ZSSK | ID linky: 673
+      Trasa: Zvolen - Hl.S. → Trenčín - Hl.S.
+      Délka linky: 128.73 km | Přímá vzdálenost: 86.78 km
+      Poměr přímé vzdálenosti k délce: 0.6741 (67.41 %)
+
+ 273. R 0135z — Začátečník
+      Dopravce: ČD | ID linky: 651
+      Trasa: Slavonice → Žďár nad Sázavou - Budeč
+      Délka linky: 106.99 km | Přímá vzdálenost: 72.04 km
+      Poměr přímé vzdálenosti k délce: 0.6734 (67.34 %)
+
+ 274. R 0135z — Začátečník
+      Dopravce: ČD | ID linky: 650
+      Trasa: Žďár nad Sázavou - Budeč → Slavonice
+      Délka linky: 106.99 km | Přímá vzdálenost: 72.04 km
+      Poměr přímé vzdálenosti k délce: 0.6734 (67.34 %)
+
+ 275. R 0150z — Fuška
+      Dopravce: ZSSK | ID linky: 782
+      Trasa: Žilina - Hl.S. → Turčianske Teplice - Horská Šťubna
+      Délka linky: 67.75 km | Přímá vzdálenost: 45.12 km
+      Poměr přímé vzdálenosti k délce: 0.6659 (66.59 %)
+
+ 276. R 0150z — Fuška
+      Dopravce: ZSSK | ID linky: 783
+      Trasa: Turčianske Teplice - Horská Šťubna → Žilina - Hl.S.
+      Délka linky: 67.75 km | Přímá vzdálenost: 45.12 km
+      Poměr přímé vzdálenosti k délce: 0.6659 (66.59 %)
+
+ 277. R 0122ž — Igo
+      Dopravce: ZSSK | ID linky: 1960
+      Trasa: Brezno - Mazorníkovo → Ružomberok - Baničné
+      Délka linky: 61.16 km | Přímá vzdálenost: 40.21 km
+      Poměr přímé vzdálenosti k délce: 0.6574 (65.74 %)
+
+ 278. R 0122ž — Igo
+      Dopravce: ZSSK | ID linky: 1961
+      Trasa: Ružomberok - Baničné → Brezno - Mazorníkovo
+      Délka linky: 61.16 km | Přímá vzdálenost: 40.21 km
+      Poměr přímé vzdálenosti k délce: 0.6574 (65.74 %)
+
+ 279. R 0194b — Latinka
+      Dopravce: ČD | ID linky: 1456
+      Trasa: Benešov - Václavice → Plzeň - Hl.N.
+      Délka linky: 136.05 km | Přímá vzdálenost: 89.04 km
+      Poměr přímé vzdálenosti k délce: 0.6545 (65.45 %)
+
+ 280. R 0194b — Latinka
+      Dopravce: ČD | ID linky: 1457
+      Trasa: Plzeň - Hl.N. → Benešov - Václavice
+      Délka linky: 136.05 km | Přímá vzdálenost: 89.04 km
+      Poměr přímé vzdálenosti k délce: 0.6545 (65.45 %)
+
+ 281. R 0176v — Senovlak
+      Dopravce: ZSSK | ID linky: 1772
+      Trasa: Banská Bystrica - Majer → Lučenec - Hl.S.
+      Délka linky: 88.33 km | Přímá vzdálenost: 57.29 km
+      Poměr přímé vzdálenosti k délce: 0.6486 (64.86 %)
+
+ 282. R 0176v — Senovlak
+      Dopravce: ZSSK | ID linky: 1773
+      Trasa: Lučenec - Hl.S. → Banská Bystrica - Majer
+      Délka linky: 88.33 km | Přímá vzdálenost: 57.29 km
+      Poměr přímé vzdálenosti k délce: 0.6486 (64.86 %)
+
+ 283. R 0264r — Šourák
+      Dopravce: ZSSK | ID linky: 1441
+      Trasa: Žilina - Hl.S. → Nové Zámky - Šurany-Rychlodráha
+      Délka linky: 206.48 km | Přímá vzdálenost: 133.80 km
+      Poměr přímé vzdálenosti k délce: 0.6480 (64.80 %)
+
+ 284. R 0264r — Šourák
+      Dopravce: ZSSK | ID linky: 1440
+      Trasa: Nové Zámky - Šurany-Rychlodráha → Žilina - Hl.S.
+      Délka linky: 206.48 km | Přímá vzdálenost: 133.80 km
+      Poměr přímé vzdálenosti k délce: 0.6480 (64.80 %)
+
+ 285. R 0090í — Tchoř z Loun
+      Dopravce: ČD | ID linky: 2090
+      Trasa: Louny - Zahradní Město → Plzeň - Doubravka
+      Délka linky: 112.67 km | Přímá vzdálenost: 71.72 km
+      Poměr přímé vzdálenosti k délce: 0.6365 (63.65 %)
+
+ 286. R 0090í — Tchoř z Loun
+      Dopravce: ČD | ID linky: 2091
+      Trasa: Plzeň - Doubravka → Louny - Zahradní Město
+      Délka linky: 112.67 km | Přímá vzdálenost: 71.72 km
+      Poměr přímé vzdálenosti k délce: 0.6365 (63.65 %)
+
+ 287. R 502 — Moravská Zahrada
+      Dopravce: pPR | ID linky: 2766
+      Trasa: Bratislava - Nivy → Moravský Kras - Skalní Mlýn [pPR]
+      Délka linky: 221.37 km | Přímá vzdálenost: 139.72 km
+      Poměr přímé vzdálenosti k délce: 0.6312 (63.12 %)
+
+ 288. R 502 — Moravská Zahrada
+      Dopravce: pPR | ID linky: 2767
+      Trasa: Moravský Kras - Skalní Mlýn [pPR] → Bratislava - Nivy
+      Délka linky: 221.37 km | Přímá vzdálenost: 139.72 km
+      Poměr přímé vzdálenosti k délce: 0.6312 (63.12 %)
+
+ 289. R 0173k — Gerald
+      Dopravce: ČD | ID linky: 2332
+      Trasa: České Budějovice - Roudné → Volary
+      Délka linky: 69.97 km | Přímá vzdálenost: 43.67 km
+      Poměr přímé vzdálenosti k délce: 0.6242 (62.42 %)
+
+ 290. R 0173k — Gerald
+      Dopravce: ČD | ID linky: 2333
+      Trasa: Volary → České Budějovice - Roudné
+      Délka linky: 69.97 km | Přímá vzdálenost: 43.67 km
+      Poměr přímé vzdálenosti k délce: 0.6242 (62.42 %)
+
+ 291. R 0170 — Starý Brejlovec
+      Dopravce: ČD | ID linky: 568
+      Trasa: Trenčín - Záblatie → Olomouc - Hl.N.
+      Délka linky: 155.41 km | Přímá vzdálenost: 94.68 km
+      Poměr přímé vzdálenosti k délce: 0.6092 (60.92 %)
+
+ 292. R 0170 — Starý Brejlovec
+      Dopravce: ČD | ID linky: 569
+      Trasa: Olomouc - Hl.N. → Trenčín - Záblatie
+      Délka linky: 155.41 km | Přímá vzdálenost: 94.68 km
+      Poměr přímé vzdálenosti k délce: 0.6092 (60.92 %)
+
+ 293. R 0131m — Nýt
+      Dopravce: ČD | ID linky: 138
+      Trasa: Olomouc - Nový Svět → Rožnov pod Radhoštěm - Hl.N.
+      Délka linky: 105.71 km | Přímá vzdálenost: 64.00 km
+      Poměr přímé vzdálenosti k délce: 0.6054 (60.54 %)
+
+ 294. R 0131m — Nýt
+      Dopravce: ČD | ID linky: 139
+      Trasa: Rožnov pod Radhoštěm - Hl.N. → Olomouc - Nový Svět
+      Délka linky: 105.71 km | Přímá vzdálenost: 64.00 km
+      Poměr přímé vzdálenosti k délce: 0.6054 (60.54 %)
+
+ 295. R 0132t — Straka
+      Dopravce: ZSSK | ID linky: 870
+      Trasa: Prešov - Táborisko → [UA] Uzhhorod
+      Délka linky: 144.95 km | Přímá vzdálenost: 87.15 km
+      Poměr přímé vzdálenosti k délce: 0.6013 (60.13 %)
+
+ 296. R 0132t — Straka
+      Dopravce: ZSSK | ID linky: 871
+      Trasa: [UA] Uzhhorod → Prešov - Táborisko
+      Délka linky: 144.95 km | Přímá vzdálenost: 87.15 km
+      Poměr přímé vzdálenosti k délce: 0.6013 (60.13 %)
+
+ 297. R 0161 — Střapec
+      Dopravce: ČD | ID linky: 183
+      Trasa: Plzeň - Hl.N. → Karlovy Vary - Dvory
+      Délka linky: 111.57 km | Přímá vzdálenost: 65.86 km
+      Poměr přímé vzdálenosti k délce: 0.5903 (59.03 %)
+
+ 298. R 0161 — Střapec
+      Dopravce: ČD | ID linky: 182
+      Trasa: Karlovy Vary - Dvory → Plzeň - Hl.N.
+      Délka linky: 111.57 km | Přímá vzdálenost: 65.86 km
+      Poměr přímé vzdálenosti k délce: 0.5903 (59.03 %)
+
+ 299. R 0135p — Opako
+      Dopravce: ČD | ID linky: 480
+      Trasa: Strakonice - Přední Ptákovice → Přibram - Zdaboř
+      Délka linky: 81.66 km | Přímá vzdálenost: 47.46 km
+      Poměr přímé vzdálenosti k délce: 0.5813 (58.13 %)
+
+ 300. R 0135p — Opako
+      Dopravce: ČD | ID linky: 481
+      Trasa: Přibram - Zdaboř → Strakonice - Přední Ptákovice
+      Délka linky: 81.66 km | Přímá vzdálenost: 47.46 km
+      Poměr přímé vzdálenosti k délce: 0.5813 (58.13 %)
+
+ 301. R 0130k — Vražedná Bota
+      Dopravce: ČD | ID linky: 308
+      Trasa: Karlovy Vary - Doubí → [DE] Georgenberg
+      Délka linky: 110.51 km | Přímá vzdálenost: 63.53 km
+      Poměr přímé vzdálenosti k délce: 0.5749 (57.49 %)
+
+ 302. R 0130k — Vražedná Bota
+      Dopravce: ČD | ID linky: 309
+      Trasa: [DE] Georgenberg → Karlovy Vary - Doubí
+      Délka linky: 110.51 km | Přímá vzdálenost: 63.53 km
+      Poměr přímé vzdálenosti k délce: 0.5749 (57.49 %)
+
+ 303. R 0160š — Robertek
+      Dopravce: ČD | ID linky: 1884
+      Trasa: Bor → [DE] Furth im Wald
+      Délka linky: 79.83 km | Přímá vzdálenost: 45.30 km
+      Poměr přímé vzdálenosti k délce: 0.5674 (56.74 %)
+
+ 304. R 0160š — Robertek
+      Dopravce: ČD | ID linky: 1885
+      Trasa: [DE] Furth im Wald → Bor
+      Délka linky: 79.83 km | Přímá vzdálenost: 45.30 km
+      Poměr přímé vzdálenosti k délce: 0.5674 (56.74 %)
+
+ 305. R 0090 — Leden
+      Dopravce: ČD | ID linky: 192
+      Trasa: Most → Podbořany - Krásný Dvůr
+      Délka linky: 60.84 km | Přímá vzdálenost: 33.71 km
+      Poměr přímé vzdálenosti k délce: 0.5540 (55.40 %)
+
+ 306. R 0090 — Leden
+      Dopravce: ČD | ID linky: 193
+      Trasa: Podbořany - Krásný Dvůr → Most
+      Délka linky: 60.84 km | Přímá vzdálenost: 33.71 km
+      Poměr přímé vzdálenosti k délce: 0.5540 (55.40 %)
+
+ 307. R 0126 — Zimník
+      Dopravce: ZSSK | ID linky: 714
+      Trasa: Trnava - Hl.S. → Šala - Hl.S.
+      Délka linky: 62.86 km | Přímá vzdálenost: 31.56 km
+      Poměr přímé vzdálenosti k délce: 0.5021 (50.21 %)
+
+ 308. R 0126 — Zimník
+      Dopravce: ZSSK | ID linky: 715
+      Trasa: Šala - Hl.S. → Trnava - Hl.S.
+      Délka linky: 62.86 km | Přímá vzdálenost: 31.56 km
+      Poměr přímé vzdálenosti k délce: 0.5021 (50.21 %)
+
+ 309. R 0251j — Nikki
+      Dopravce: ČD | ID linky: 1298
+      Trasa: Jeseník → Ostrava - Svinov
+      Délka linky: 177.92 km | Přímá vzdálenost: 84.05 km
+      Poměr přímé vzdálenosti k délce: 0.4724 (47.24 %)
+
+ 310. R 0251j — Nikki
+      Dopravce: ČD | ID linky: 1299
+      Trasa: Ostrava - Svinov → Jeseník
+      Délka linky: 177.92 km | Přímá vzdálenost: 84.05 km
+      Poměr přímé vzdálenosti k délce: 0.4724 (47.24 %)
+
+ 311. R 0165 — Čremka
+      Dopravce: ZSSK | ID linky: 760
+      Trasa: Prievidza - Hl.S. → Levice - Hl.S.
+      Délka linky: 130.58 km | Přímá vzdálenost: 60.93 km
+      Poměr přímé vzdálenosti k délce: 0.4666 (46.66 %)
+
+ 312. R 0165 — Čremka
+      Dopravce: ZSSK | ID linky: 761
+      Trasa: Levice - Hl.S. → Prievidza - Hl.S.
+      Délka linky: 130.58 km | Přímá vzdálenost: 60.93 km
+      Poměr přímé vzdálenosti k délce: 0.4666 (46.66 %)
+
+ 313. R 0173o — Mindaro
+      Dopravce: ČD | ID linky: 1246
+      Trasa: Olomouc - Hl.N. → Brno - Maloměřice
+      Délka linky: 138.97 km | Přímá vzdálenost: 60.56 km
+      Poměr přímé vzdálenosti k délce: 0.4358 (43.58 %)
+
+ 314. R 0173o — Mindaro
+      Dopravce: ČD | ID linky: 1247
+      Trasa: Brno - Maloměřice → Olomouc - Hl.N.
+      Délka linky: 138.97 km | Přímá vzdálenost: 60.56 km
+      Poměr přímé vzdálenosti k délce: 0.4358 (43.58 %)
+
+ 315. R 0216 — Nemoc
+      Dopravce: ČD | ID linky: 123
+      Trasa: Brno - Žebětín → Jihlava - Hl.N.
+      Délka linky: 175.17 km | Přímá vzdálenost: 68.60 km
+      Poměr přímé vzdálenosti k délce: 0.3916 (39.16 %)
+
+ 316. R 0216 — Nemoc
+      Dopravce: ČD | ID linky: 122
+      Trasa: Jihlava - Hl.N. → Brno - Žebětín
+      Délka linky: 175.17 km | Přímá vzdálenost: 68.60 km
+      Poměr přímé vzdálenosti k délce: 0.3916 (39.16 %)
+
+ 317. R 0142 — Zlaťák
+      Dopravce: ČD | ID linky: 202
+      Trasa: Plzeň - Doudlevce → Strakonice - Přední Ptákovice
+      Délka linky: 186.24 km | Přímá vzdálenost: 65.41 km
+      Poměr přímé vzdálenosti k délce: 0.3512 (35.12 %)
+
+ 318. R 0142 — Zlaťák
+      Dopravce: ČD | ID linky: 203
+      Trasa: Strakonice - Přední Ptákovice → Plzeň - Doudlevce
+      Délka linky: 186.24 km | Přímá vzdálenost: 65.41 km
+      Poměr přímé vzdálenosti k délce: 0.3512 (35.12 %)
+
+ 319. R 0140v — Senian
+      Dopravce: ZSSK | ID linky: 1240
+      Trasa: Vranov nad Toplou - Hl.S. → Košice - Predmestie
+      Délka linky: 145.52 km | Přímá vzdálenost: 37.19 km
+      Poměr přímé vzdálenosti k délce: 0.2555 (25.55 %)
+
+ 320. R 0140v — Senian
+      Dopravce: ZSSK | ID linky: 1241
+      Trasa: Košice - Predmestie → Vranov nad Toplou - Hl.S.
+      Délka linky: 145.52 km | Přímá vzdálenost: 37.19 km
+      Poměr přímé vzdálenosti k délce: 0.2555 (25.55 %)
+
+ 321. R 0123b — Mol
+      Dopravce: ČD | ID linky: 514
+      Trasa: Kyjov - Hl.N. → Buchlovice
+      Délka linky: 73.64 km | Přímá vzdálenost: 17.98 km
+      Poměr přímé vzdálenosti k délce: 0.2441 (24.41 %)
+
+ 322. R 0123b — Mol
+      Dopravce: ČD | ID linky: 515
+      Trasa: Buchlovice → Kyjov - Hl.N.
+      Délka linky: 73.64 km | Přímá vzdálenost: 17.98 km
+      Poměr přímé vzdálenosti k délce: 0.2441 (24.41 %)

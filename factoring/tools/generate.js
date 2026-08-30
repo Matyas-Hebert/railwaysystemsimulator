@@ -21,13 +21,18 @@ function parseLineName(name){
     const part1parts = parts[0].split(' ').map(item => item.trim());
     const writtenType = part1parts[1];
     const shorteningDisabled = writtenType.startsWith("u");
+    const intervalParts = parts[2].split("+");
     let companynumber = "";
 
     let data = {
         "company": part1parts[0].substring(1, part1parts[0].length-1),
         "type": shorteningDisabled ? writtenType.slice(1) : writtenType,
         "number": part1parts[2],
-        "interval": parseInt(parts[2])*60
+        "interval": parseInt(intervalParts[0])*60
+    }
+
+    if (intervalParts.length > 1) {
+        data.offset = parseInt(intervalParts[1]) * 60;
     }
 
     if (shorteningDisabled) {
@@ -480,6 +485,7 @@ function assignStationCountries(stations, districtBorders) {
 }
 
 async function generateTimeTables() {
+    const universalStartTime = getStartTime();
     const lineTypeConfigPath = path.join(__dirname, "../config/line-types.json");
     const journeyPricingConfigPath = path.join(__dirname, "../config/journey-pricing.json");
     lineTypeConfig = JSON.parse(await fs.readFile(lineTypeConfigPath, "utf8"));
@@ -575,7 +581,9 @@ async function generateTimeTables() {
 
         lines.push({...lineinfo, uvrat});
         lines.push({...lineinfo, uvrat: reverseUvrat});
-        let starttime = getStartTime();
+        let starttime = lineinfo.offset === undefined
+            ? getStartTime()
+            : universalStartTime + lineinfo.offset;
         lines[i]["id"] = i;
         lines[i+1]["id"] = i+1;
         lines[i]["starttime"] = starttime;
@@ -648,6 +656,13 @@ async function generateTimeTables() {
         });
         lines[i+1]["orig"] = lines[i]["dest"];
         lines[i+1]["dest"] = lines[i]["orig"];
+        if (lineinfo.offset !== undefined) {
+            const desiredDepartureTime = universalStartTime + lineinfo.offset;
+            const departureOffsetFromLastStation = lines[i+1]["stops"][lines[i+1]["stops"].length - 1].dep;
+            const endtime = departureOffsetFromLastStation
+                + lines[i+1]["starttime"];
+            lines[i+1]["starttime"] -= endtime - desiredDepartureTime;
+        }
         i+=2;
     });
 

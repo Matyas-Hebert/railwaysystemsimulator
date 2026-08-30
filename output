@@ -1,0 +1,402 @@
+1 Praha 134
+2 Jindřichův Hradec 116
+3 Blansko 105
+4 České Budějovice 105
+5 Olomouc 104
+6 Brno 103
+7 Plzeň 103
+8 Svitavy 96
+9 Benešov 93
+10 Klatovy 92
+11 Třebíč 91
+12 Karlovy Vary 91
+13 Rokycany 89
+14 Žďár n. S. 86
+15 Ostrava 84
+16 Náchod 83
+17 Chomutov 83
+18 Opava 82
+19 Jičín 81
+20 Kladno 80
+21 Košice 79
+22 Čadca 78
+23 Rakovník 77
+24 Ústí n. O. 75
+25 Nový Jičín 74
+26 Mělník 74
+27 Příbram 73
+28 Český Krumlov 72
+29 Šumperk 72
+30 Děčín 71
+31 Pardubice 68
+32 Beroun 67
+33 Pelhřimov 66
+34 Frýdek-Místek 64
+35 Litoměřice 64
+36 Strakonice 63
+37 Hradec Králové 63
+38 Rychnov n. K. 63
+39 Mladá Boleslav 62
+40 Prostějov 61
+41 Česká Lípa 61
+42 Tábor 61
+43 Prachatice 61
+44 Kutná Hora 60
+45 Liberec 59
+46 Chrudim 59
+47 Karviná 58
+48 Vyškov 57
+49 Domažlice 57
+50 Semily 56
+51 Louny 53
+52 Břeclav 52
+53 Jablonec n. N. 52
+54 Přerov 52
+55 Uherské Hradiště 52
+56 Bratislava 50
+57 Zlín 49
+58 Havlíčkův Brod 49
+59 Teplice 48
+60 Jihlava 47
+61 Vsetín 47
+62 Levice 45
+63 Znojmo 42
+64 Stará Ľubovňa 42
+65 Kroměříž 41
+66 Rimavská Sobota 41
+67 Nymburk 40
+68 Sokolov 40
+69 Nové Zámky 39
+70 Cheb 38
+71 Nitra 37
+72 Dunajská Streda 37
+73 Liptovský Mikuláš 37
+74 Poprad 36
+75 Komárno 36
+76 Krupina 36
+77 Dolný Kubín 36
+78 Gelnica 35
+79 Kolín 34
+80 Bruntál 34
+81 Písek 34
+82 Hodonín 33
+83 Trutnov 33
+84 Žilina 33
+85 Myjava 32
+86 Rožňava 32
+87 Prešov 32
+88 Ilava 31
+89 Sabinov 31
+90 Trenčín 29
+91 Považská Bystrica 29
+92 Piešťany 29
+93 Banská Bystrica 29
+94 Ústí n. L. 28
+95 Nové Mesto n. V. 28
+96 Kysucké Nové Mesto 28
+97 Bardejov 27
+98 Bytča 26
+99 Hlohovec 26
+100 Prievidza 26
+101 Tachov 25
+102 Trnava 25
+103 Senica 25
+104 Trebišov 25
+105 Senec 24
+106 Revúca 24
+107 Námestovo 24
+108 Malacky 23
+109 Ružomberok 23
+110 Humenné 23
+111 Jeseník 22
+112 Martin 22
+113 Detva 22
+114 Most 21
+115 Púchov 21
+116 Tvrdošín 20
+117 Snina 20
+118 Zvolen 19
+119 Bánovce n. B. 19
+120 Pezinok 19
+121 Sobrance 19
+122 Brezno 18
+123 Šaľa 18
+124 Zlaté Moravce 18
+125 Spišská Nová Ves 17
+126 Turčianske Teplice 17
+127 Kežmarok 16
+128 Poltár 16
+129 Lučenec 15
+130 Topoľčany 15
+131 Stropkov 15
+132 Skalica 14
+133 Galanta 13
+134 Veľký Krtíš 13
+135 Medzilaborce 13
+136 Vranov nad Topľou 12
+137 Žarnovica 11
+138 Žiar nad Hronom 11
+139 Partizánske 9
+140 Levoča 9
+141 Svidník 9
+142 Banská Štiavnica 8
+143 Michalovce 8
+Biskupice is uvrat
+Děčín-Hl.N. is uvrat
+Praha - Vinohrady is uvrat
+Hranice na Moravě - Slavíč is uvrat
+Janovice nad Úhlavou-Jelenka is uvrat
+České Budějovice - Borek is uvrat
+Karlovy Vary - Doubí is uvrat
+Havlíčkův Brod-Hl.N. is uvrat
+Vyškov-Hl.N. is uvrat
+Frýdek Místek-Bahno is uvrat
+Ostrava-Janov is uvrat
+Roprachtice is uvrat
+Chomutov - Domovinka is uvrat
+Louny - Zahradní Město is uvrat
+Libochovice-Hl.N. is uvrat
+Poprad-Velká is uvrat
+Košice-Predmestie is uvrat
+Rimavská Sobota-Hl.N. is uvrat
+Švedlár is uvrat
+[DE] Zittau is uvrat
+Šumperk-Hl.N. is uvrat
+Břeclav-Hl.N. is uvrat
+Pardubice - Semtín is uvrat
+Velká nad Veličkou is uvrat
+Karlovy Vary-Hl.N. is uvrat
+Banská Štiavnica-Štefultov is uvrat
+Veselí nad Lužnicí-Horusice is uvrat
+[PL] Cieszyn-Glowny is uvrat
+Náchod-Hl.N. is uvrat
+Senica-Hl.S. is uvrat
+Prešov-Malý Šariš is uvrat
+Púchov-Horné Kočkovce is uvrat
+Lipany is uvrat
+Dolný Kubín is uvrat
+Marcelová is uvrat
+Kopidlo is uvrat
+Hlohovec-Šulekovo is uvrat
+Slavkov u Brna-Hl.N. is uvrat
+Benešov-Konopiště is uvrat
+Benešov-Konopiště is uvrat
+Detva-Sídlisko is uvrat
+Mohelnice-Mírovka is uvrat
+Mohelnice-Hl.N. is uvrat
+[PL] Miedzylesie is uvrat
+Trenčín-Záblatie is uvrat
+Mohelnice-Hl.N. is uvrat
+Ružomberok-Hl.S. is uvrat
+Rokycany-Litohlavy is uvrat
+Radnice is uvrat
+Děčín-Přípeř is uvrat
+Olomouc - Slavonín is uvrat
+Lanškroun-Hl.N. is uvrat
+Svitavy-Koclířov is uvrat
+Blansko-Hl.N. is uvrat
+low trips 2 for [CSA] AJ 4 (4) | Moravská Laštovička | 670 |  | Brno-Košice | {
+  company: 'CSA',
+  type: 11,
+  number: '4',
+  interval: 40200,
+  companynumber: '4',
+  nickname: 'Moravská Laštovička'
+}
+low trips 2 for [CSA] AJ 5 (5) | Tatranský Orel | 690 |  | Poprad-Praha | {
+  company: 'CSA',
+  type: 11,
+  number: '5',
+  interval: 41400,
+  companynumber: '5',
+  nickname: 'Tatranský Orel'
+}
+low trips 2 for [CSA] AJ 6 (6) | Lázeňský Skřivan | 709 |  | Brno-Karlovy Vary | {
+  company: 'CSA',
+  type: 11,
+  number: '6',
+  interval: 42540,
+  companynumber: '6',
+  nickname: 'Lázeňský Skřivan'
+}
+low trips 2 for [CSA] AJ 7 (7) | Moravský Kamzík | 729 |  | Brno-Poprad | {
+  company: 'CSA',
+  type: 11,
+  number: '7',
+  interval: 43740,
+  companynumber: '7',
+  nickname: 'Moravský Kamzík'
+}
+low trips 2 for [CSA] AJ 8 (8) | Lázeňský Albatros | 739 |  | Karlovy Vary-Košice | {
+  company: 'CSA',
+  type: 11,
+  number: '8',
+  interval: 44340,
+  companynumber: '8',
+  nickname: 'Lázeňský Albatros'
+}
+Hradec Králové-Hl.N. is uvrat
+OFFSET 0
+ddt:  17724
+dofls:  12461
+endtime:  30185
+OFFSET 7200
+ddt:  24924
+dofls:  9567
+endtime:  34491
+České Budějovice-Roudné is uvrat
+low trips 2 for [CSA] AJ 9 (9) | Jihočeský Havran | 720 |  | České Budějovice-Košice | {
+  company: 'CSA',
+  type: 11,
+  number: '9',
+  interval: 43200,
+  companynumber: '9',
+  nickname: 'Jihočeský Havran'
+}
+low trips 2 for [CSA] AJ 10 (10) | Pivovarský Orel | 723 |  | Bratislava-Plzeň | {
+  company: 'CSA',
+  type: 11,
+  number: '10',
+  interval: 43380,
+  companynumber: '10',
+  nickname: 'Pivovarský Orel'
+}
+Břeclav-Sever is uvrat
+Břeclav - Hrušák is uvrat
+Břeclav-Sever is uvrat
+low trips 2 for [CSA] AJ 11 (11) | Ještědský Sokol | 714 |  | Bratislava-Liberec | {
+  company: 'CSA',
+  type: 11,
+  number: '11',
+  interval: 42840,
+  companynumber: '11',
+  nickname: 'Ještědský Sokol'
+}
+low trips 2 for [CSA] AJ 12 (12) | Jizerský Orel | 731 |  | Košice-Liberec | {
+  company: 'CSA',
+  type: 11,
+  number: '12',
+  interval: 43860,
+  companynumber: '12',
+  nickname: 'Jizerský Orel'
+}
+OFFSET 0
+ddt:  17724
+dofls:  2516
+endtime:  20240
+OFFSET 3600
+ddt:  21324
+dofls:  1731
+endtime:  23055
+low trips 2 for [CSA] AJ 13 (13) | Jizerská Střela | 725 |  | Liberec-Žilina | {
+  company: 'CSA',
+  type: 11,
+  number: '13',
+  interval: 43500,
+  companynumber: '13',
+  nickname: 'Jizerská Střela'
+}
+low trips 2 for [CSA] AJ 14 (14) | Plzeňský Tetřev | 718 |  | Plzeň-Žilina | {
+  company: 'CSA',
+  type: 11,
+  number: '14',
+  interval: 43080,
+  companynumber: '14',
+  nickname: 'Plzeňský Tetřev'
+}
+REPEAT LINE NUMBERS/NICKNAMES
+REPEAT NICK: Dusík
+REPEAT NICK: Leoš
+REPEAT NUMBER: 45001
+REPEAT NICK: Vrána
+REPEAT NUMBER: 54161
+REPEAT NUMBER: 75191
+REPEAT NUMBER: 75192
+REPEAT NUMBER: 11823
+REPEAT NUMBER: 11925
+REPEAT NUMBER: 11926
+REPEAT NUMBER: 11927
+REPEAT NUMBER: 0110u
+REPEAT NICK: Česal
+REPEAT NICK: Kafé
+REPEAT NUMBER: 0075
+REPEAT NICK: Hrudka
+REPEAT NUMBER: 45889
+REPEAT NICK: Nána
+REPEAT NUMBER: 35002
+REPEAT NUMBER: 53169
+REPEAT NUMBER: 45392
+REPEAT NUMBER: 35007b
+REPEAT NICK: Třemšínská Víla
+REPEAT NICK: Letištní Express
+REPEAT NUMBER: 97707
+REPEAT NUMBER: 20316
+REPEAT NUMBER: 31573
+REPEAT NICK: Křemešnická Spojka
+
+MISSING NICKNAME FOR 232 TRAINS
+REPEAT TOWN NAMES
+MISSING Hl.N.?: Neratovice [Mělník]
+MISSING Hl.N.?: Mirošov [Rokycany]
+MISSING Hl.N.?: Lipová [Prostějov]
+MISSING Hl.N.?: Nejdek [Karlovy Vary]
+MISSING Hl.N.?: Horšovský Týn [Domažlice]
+MISSING Hl.N.?: Lipová [Cheb]
+MISSING Hl.N.?: Nebovidy [Brno]
+MISSING Hl.N.?: Nové Zámky [Olomouc]
+MISSING Hl.N.?: Dolany [Chrudim]
+MISSING Hl.N.?: Kralupy nad Vltavou [Mělník]
+MISSING Hl.N.?: Sedlec [Břeclav]
+MISSING Hl.N.?: Hlohovec [Břeclav]
+MISSING Hl.N.?: Troubky [Přerov]
+MISSING Hl.N.?: Myjava [Myjava]
+MISSING Hl.N.?: Sedlec [Hradec Králové]
+MISSING Hl.N.?: Bánovce nad Bebravou [Bánovce n. B.]
+MISSING Hl.N.?: Lipová [Nové Zámky]
+MISSING Hl.N.?: Dolany [Trnava]
+MISSING Hl.N.?: Kladno [Žďár n. S.]
+MISSING Hl.N.?: Mirošov [Vsetín]
+MISSING Hl.N.?: Dolný Kubín [Dolný Kubín]
+DOUBLE SPACE IN: Martin - Turčianská  Šťiavnička [Martin]
+MISSING Hl.N.?: Kamenický Šenov [Česká Lípa]
+WORD STARTING WITH LOWERCASE [HU] Ózd - pu. [Rimavská Sobota]
+MISSING Hl.N.?: Bohdanovce [Košice]
+MISSING Hl.N.?: Hlubočky [Olomouc]
+MISSING Hl.N.?: Dolany [Olomouc]
+MISSING Hl.N.?: Senec [Plzeň]
+MISSING Hl.N.?: Sedlec [Rokycany]
+MISSING Hl.N.?: Tomášov [Senec]
+MISSING Hl.N.?: Lipová [Svidník]
+MISSING Hl.N.?: Proseč [Svitavy]
+MISSING Hl.N.?: Sedlec [České Budějovice]
+MISSING Hl.N.?: Benešov [Pelhřimov]
+FORBIDDEN WORD Station Name [Chomutov]
+FORBIDDEN WORD Station Name [Chomutov]
+MISSING Hl.N.?: Čierne [Čadca]
+MISSING Hl.N.?: Písek [Čadca]
+MISSING Hl.N.?: Ratiboř [Vsetín]
+MISSING Hl.N.?: Jesenice [Rakovník]
+MISSING Hl.N.?: Maršov [Uherské Hradiště]
+MISSING Hl.N.?: Blansko [Český Krumlov]
+MISSING Hl.N.?: Hoštice [Strakonice]
+REPEAT STATION NAME: Skočice [Klatovy]
+MISSING Hl.N.?: Sedlec [Domažlice]
+MISSING Hl.N.?: [PL] Czerwonków [Opava]
+MISSING Hl.N.?: Rájec [Šumperk]
+REPEAT STATION NAME: [PL] Kamieniec [Karviná]
+REPEAT STATION NAME: Rafajovci [Čadca]
+REPEAT STATION NAME: LovosiceVchynice [Litoměřice]
+MISSING Hl.N.?: Mikulov [Teplice]
+MISSING Hl.N.?: Bukov [Čadca]
+REPEAT STATION NAME: Petrovice [Bytča]
+MISSING Hl.N.?: Sedlec [Praha]
+MISSING Hl.N.?: [DE] Reinhardtsdorf [Děčín]
+MISSING Hl.N.?: Dvorníky [Hlohovec]
+REPEAT STATION NAME: Králová nad Váhom [Šaľa]
+MISSING Hl.N.?: Chorvátský Grob [Pezinok]
+MISSING Hl.N.?: Provodov [Zlín]
+MISSING Hl.N.?: Hvožďany [Příbram]
+REPEAT STATION NAME: Čeřejov [České Budějovice]
+REPEAT STATION NAME: Žampach [Benešov]
+MISSING Hl.N.?: Bardejovské Kúpele [Bardejov]
+REPEAT STATION NAME: Fojtovská [Ostrava]
