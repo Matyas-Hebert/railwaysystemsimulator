@@ -1,0 +1,432 @@
+[
+  [
+    "Zamrzlá vyhýbka",
+    4,
+    0
+  ],
+  [
+    "Ztráta lopatky na uhlí",
+    6,
+    1
+  ],
+  [
+    "Srážka s jelenem",
+    7,
+    2
+  ],
+  [
+    "Želva na kolejích",
+    5,
+    1
+  ],
+  [
+    "Strojvedoucí pod vlivem",
+    17,
+    2
+  ],
+  [
+    "Spadlý strom na kolejích",
+    10,
+    0
+  ],
+  [
+    "Práce na železnici",
+    25,
+    0
+  ],
+  [
+    "Čekání na přípoj",
+    40,
+    0
+  ],
+  [
+    "Špinavé čelní sklo",
+    4,
+    1
+  ],
+  [
+    "Nedostatek finančních prostředků",
+    12,
+    1
+  ],
+  [
+    "Nedostatečný zůstatek kreditu strojvedoucího",
+    1,
+    1
+  ],
+  [
+    "Zaseklé závory",
+    8,
+    0
+  ],
+  [
+    "Drezura na trati",
+    3,
+    1
+  ],
+  [
+    "Vískání mastných vlasů topiči",
+    9,
+    1
+  ],
+  [
+    "Změna rozchodu kolejí",
+    5,
+    0
+  ],
+  [
+    "Srážka s mouchou",
+    1,
+    1
+  ],
+  [
+    "Výluka",
+    100,
+    0
+  ],
+  [
+    "Zpoždění vzniklé na území cizího státu",
+    50,
+    0
+  ],
+  [
+    "Přepadení vlaku",
+    2,
+    2
+  ],
+  [
+    "Výpadek elektřiny",
+    20,
+    0
+  ],
+  [
+    "Zatažení za záchrannou brzdu",
+    20,
+    0
+  ],
+  [
+    "Cestující v kolejišti",
+    15,
+    2
+  ],
+  [
+    "Porucha dveří",
+    10,
+    0
+  ],
+  [
+    "Upadlé kolo",
+    2,
+    2
+  ],
+  [
+    "Porucha stěračů",
+    2,
+    1
+  ],
+  [
+    "Nepřítomnost strojvedoucího",
+    20,
+    0
+  ],
+  [
+    "Porucha klimatizace",
+    8,
+    1
+  ],
+  [
+    "Porucha rozhlasu",
+    8,
+    1
+  ],
+  [
+    "Ošoupané brzdné destičky",
+    6,
+    2
+  ],
+  [
+    "Závada na přejezdu",
+    15,
+    0
+  ],
+  [
+    "Neznámý důvod",
+    150,
+    0
+  ],
+  [
+    "Červená na semaforu",
+    10,
+    0
+  ],
+  [
+    "Kozel a rudé tričko na trati",
+    1,
+    1
+  ],
+  [
+    "Spadlé vedení",
+    7,
+    0
+  ],
+  [
+    "Ukradené kabely",
+    15,
+    0
+  ],
+  [
+    "Nefunkční trolej",
+    10,
+    0
+  ],
+  [
+    "Vykolejení vlaku",
+    7,
+    2
+  ],
+  [
+    "Povodeň",
+    3,
+    2
+  ],
+  [
+    "Důchodce na přejezdu",
+    10,
+    2
+  ],
+  [
+    "Špatná orientace lokomotivy",
+    10,
+    1
+  ],
+  [
+    "Porucha a výměna lokomotivy",
+    10,
+    0
+  ],
+  [
+    "Omezená rychlost",
+    30,
+    0
+  ],
+  [
+    "Omezení na trati",
+    60,
+    0
+  ],
+  [
+    "Jazyková bariéra",
+    5,
+    0
+  ],
+  [
+    "Výpadek Wi-Fi",
+    10,
+    0
+  ],
+  [
+    "Policejní vyšetřování",
+    4,
+    2
+  ],
+  [
+    "Topící se personál",
+    3,
+    2
+  ],
+  [
+    "Neznalost trasy strojvedoucím",
+    15,
+    0
+  ],
+  [
+    "Výslech strojvedoucího",
+    2,
+    2
+  ],
+  [
+    "Vysoký počet cestujících",
+    40,
+    0
+  ],
+  [
+    "Nízký počet cestujících",
+    15,
+    1
+  ],
+  [
+    "Plně obsazený vůz",
+    30,
+    0
+  ],
+  [
+    "Zaučování kuchaře v jídelním voze",
+    4,
+    1
+  ],
+  [
+    "Historická jízda",
+    10,
+    0
+  ],
+  [
+    "Nedostatek uhlí",
+    4,
+    0
+  ],
+  [
+    "Nedostatek páry",
+    4,
+    0
+  ],
+  [
+    "Fronta na benzínové pumpě",
+    1,
+    1
+  ],
+  [
+    "Kolona",
+    2,
+    0
+  ],
+  [
+    "Zataženo",
+    15,
+    0
+  ],
+  [
+    "Déšť",
+    80,
+    0
+  ],
+  [
+    "Spadlý most",
+    2,
+    2
+  ],
+  [
+    "Špatné počasí",
+    20,
+    0
+  ],
+  [
+    "Nedostatečné osvětlení v tunelu",
+    5,
+    0
+  ],
+  [
+    "Rozbité okno",
+    8,
+    0
+  ],
+  [
+    "Ztráta vlakové soupravy",
+    4,
+    1
+  ],
+  [
+    "Objízdná trasa",
+    20,
+    0
+  ],
+  [
+    "Stávka zaměstnanců drah",
+    15,
+    0
+  ],
+  [
+    "Výpadek signálu GPS",
+    7,
+    0
+  ],
+  [
+    "Úklid vlaku",
+    40,
+    0
+  ],
+  [
+    "Výměna žárovky",
+    2,
+    1
+  ],
+  [
+    "Zapomenutá svačina v depu",
+    4,
+    1
+  ],
+  [
+    "Roj včel v kabině",
+    5,
+    1
+  ],
+  [
+    "Hustá mlha",
+    10,
+    0
+  ],
+  [
+    "Mlha",
+    20,
+    0
+  ],
+  [
+    "Sklon trati",
+    10,
+    0
+  ],
+  [
+    "Připalené jídlo v jídelním voze",
+    7,
+    1
+  ],
+  [
+    "Půdní sesuv",
+    4,
+    2
+  ],
+  [
+    "Úder blesku do soupravy",
+    9,
+    2
+  ],
+  [
+    "Zpoždění vlaku",
+    50,
+    0
+  ],
+  [
+    "Pomalá jízda",
+    50,
+    0
+  ],
+  [
+    "Úder meteoritu",
+    1,
+    2
+  ],
+  [
+    "Náhlá změna jizdního řádu",
+    30,
+    0
+  ],
+  [
+    "Neznámý předmět v pantografu",
+    3,
+    0
+  ],
+  [
+    "Hraniční kontrola",
+    10,
+    0
+  ],
+  [
+    "Přednost vlaku s vyšší prioritou",
+    25,
+    0
+  ],
+  [
+    "Příjezd prezidenta",
+    1,
+    1
+  ]
+]

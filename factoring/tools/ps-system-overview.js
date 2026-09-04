@@ -1,3 +1,12 @@
+import * as tripRoutes from "../src/trip-routes.js";
+import * as config from "../generated/config.js";
+import * as timetableData from "../generated/timetable.js";
+import * as systemData from "../generated/ps-systems.js";
+
+const lineTypeConfig = config.lineTypes;
+const timetable = timetableData.timetable;
+const psSystems = systemData.psSystems;
+
 const psSystemOverview = (() => {
     const LINE_TYPE_CODES = Object.freeze(lineTypeConfig.map(type => type.code));
     const sourceOptions = new Map();

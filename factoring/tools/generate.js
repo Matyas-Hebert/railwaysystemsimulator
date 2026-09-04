@@ -1,9 +1,16 @@
-const fs = require('fs').promises;
-const path = require('path');
-const { generateDistrictBorders } = require('./generate-district-borders');
-const { assignPsSystemIDs, generatePsSystems } = require('./generate-ps-systems');
-const { assignStationImportance } = require('./generate-station-importance');
-const { PS, PX, OS, OX, SP, R, SH, IC, EC, NJ, AR, AJ } = require('../config/line-type-constants');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+import { promises as fs } from 'node:fs';
+import path from 'node:path';
+import vm from "node:vm";
+import { fileURLToPath } from "node:url";
+import { generateDistrictBorders } from './generate-district-borders.js';
+import { assignPsSystemIDs, generatePsSystems } from './generate-ps-systems.js';
+import { assignStationImportance } from './generate-station-importance.js';
+import { dataOperators } from '../generated/config.js';
+import * as constants from "../src/constants.js";
+let PS, PX, OS, OX, SP, R, SH, IC, EC, NJ, AR, AJ;
 
 let lineTypeConfig;
 let journeyPricingConfig;
@@ -15,24 +22,143 @@ async function loadTestJson() {
     return JSON.parse(raw);
 }
 
+function parseTimingRule(expression) {
+    const ustMatch = expression.match(/^([><]?)\[(\d+)\]=(\d+)$/);
+    if (ustMatch !== null) {
+        return {
+            direction: ustMatch[1] || "both",
+            stationIndex: Number.parseInt(ustMatch[2], 10),
+            source: {
+                type: "ust",
+                offsetMinutes: Number.parseInt(ustMatch[3], 10)
+            }
+        };
+    }
+
+    const referenceMatch = expression.match(
+        /^([><]?)\[(\d+)\]=([A-Za-z][A-Za-z0-9_-]*)([><]?)\[(\d+)\](?:([+-])(\d+))?$/
+    );
+    if (referenceMatch === null) return null;
+
+    const offset = Number.parseInt(referenceMatch[7] || "0", 10);
+    return {
+        direction: referenceMatch[1] || "both",
+        stationIndex: Number.parseInt(referenceMatch[2], 10),
+        source: {
+            type: "line",
+            code: referenceMatch[3],
+            direction: referenceMatch[4] || null,
+            stationIndex: Number.parseInt(referenceMatch[5], 10),
+            offsetMinutes: referenceMatch[6] === "-" ? -offset : offset
+        }
+    };
+}
+
+function parseTimingConfig(value, lineName) {
+    if (typeof value !== "string" || value.trim() === "") {
+        return { code: null, timingRules: [] };
+    }
+
+    const sections = value.split(";").map(section => section.trim());
+    const codePattern = /^code=([A-Za-z][A-Za-z0-9_-]*)$/;
+    const containsValidDirective = sections.some((section, index) =>
+        index === 0
+            ? codePattern.test(section)
+            : parseTimingRule(section) !== null
+    );
+
+    if (!containsValidDirective) {
+        return { code: null, timingRules: [] };
+    }
+    if (sections.length !== 3) {
+        throw new Error(
+            "Timing configuration must contain exactly three semicolon-separated sections on line "
+            + lineName
+        );
+    }
+
+    let code = null;
+    if (sections[0] !== "") {
+        const codeMatch = sections[0].match(codePattern);
+        if (codeMatch === null) {
+            throw new Error("Invalid line code configuration on line " + lineName);
+        }
+        code = codeMatch[1];
+    }
+
+    const timingRules = sections.slice(1).filter(Boolean).map(section => {
+        const rule = parseTimingRule(section);
+        if (rule === null) {
+            throw new Error(
+                "Invalid timing rule \"" + section + "\" on line " + lineName
+            );
+        }
+        return rule;
+    });
+
+    const configuredDirections = new Set();
+    for (const rule of timingRules) {
+        if (rule.direction === "both") {
+            if (configuredDirections.size > 0 || timingRules.length > 1) {
+                throw new Error(
+                    "A bidirectional timing rule cannot be combined with another rule on line "
+                    + lineName
+                );
+            }
+            if (rule.source.type === "line"
+                && rule.source.direction !== null) {
+                throw new Error(
+                    "A bidirectional rule must use a bidirectional line reference on line "
+                    + lineName
+                );
+            }
+            configuredDirections.add(">");
+            configuredDirections.add("<");
+            continue;
+        }
+
+        if (configuredDirections.has(rule.direction)) {
+            throw new Error(
+                "Direction " + rule.direction
+                + " has more than one timing rule on line " + lineName
+            );
+        }
+        configuredDirections.add(rule.direction);
+    }
+
+    return { code, timingRules };
+}
+
 function parseLineName(name){
-    //"[ZSSK] R 0160b (2) | Bílá Paní | 72 |  | Brezno-Ilava |"
+    //"[ZSSK] R 0160b (2) | Bílá Paní | 72 | code=BREZNO;>[0]=0;<[5]=0 | Brezno-Ilava |"
     const parts = name.split('|').map(item => item.trim());
     const part1parts = parts[0].split(' ').map(item => item.trim());
     const writtenType = part1parts[1];
     const shorteningDisabled = writtenType.startsWith("u");
     const intervalParts = parts[2].split("+");
+    const timingConfig = parseTimingConfig(parts[3] || "", name);
     let companynumber = "";
 
     let data = {
         "company": part1parts[0].substring(1, part1parts[0].length-1),
         "type": shorteningDisabled ? writtenType.slice(1) : writtenType,
         "number": part1parts[2],
-        "interval": parseInt(intervalParts[0])*60
+        "interval": parseInt(intervalParts[0])*60,
+        "timingRules": timingConfig.timingRules
+    }
+
+    if (timingConfig.code !== null) {
+        data.code = timingConfig.code;
     }
 
     if (intervalParts.length > 1) {
         data.offset = parseInt(intervalParts[1]) * 60;
+    }
+    if (data.offset !== undefined && data.timingRules.length > 0) {
+        throw new Error(
+            "Legacy interval offset and fourth-field timing cannot be combined on line "
+            + name
+        );
     }
 
     if (shorteningDisabled) {
@@ -63,7 +189,169 @@ function getTrips(startTime, interval, traintype){
     }
 
     const availableTime = randomEnd - startTime;
-    return trips = Math.ceil(availableTime / interval);
+    return Math.ceil(availableTime / interval);
+}
+
+function resolveLineStartTimes(
+    lines,
+    schedulingDefinitions,
+    universalStartTime
+) {
+    const linesByCode = new Map();
+    const definitionByLineId = new Map();
+    const timingRuleByLineId = new Map();
+
+    for (const definition of schedulingDefinitions) {
+        definitionByLineId.set(definition.forwardLineId, definition);
+        definitionByLineId.set(definition.reverseLineId, definition);
+
+        if (definition.code !== null) {
+            if (linesByCode.has(definition.code)) {
+                throw new Error("Duplicate line timing code " + definition.code);
+            }
+            linesByCode.set(definition.code, definition);
+        }
+
+        for (const rule of definition.timingRules) {
+            const directions = rule.direction === "both"
+                ? [">", "<"]
+                : [rule.direction];
+            for (const direction of directions) {
+                const lineId = direction === ">"
+                    ? definition.forwardLineId
+                    : definition.reverseLineId;
+                timingRuleByLineId.set(lineId, {
+                    ...rule,
+                    direction
+                });
+            }
+        }
+    }
+
+    function getLineIdForDirection(definition, direction) {
+        return direction === ">"
+            ? definition.forwardLineId
+            : definition.reverseLineId;
+    }
+
+    function getStop(lineId, originalStopIndex, context) {
+        const line = lines[lineId];
+        if (!Number.isInteger(originalStopIndex)
+            || originalStopIndex < 0
+            || originalStopIndex >= line.stops.length) {
+            throw new Error(
+                "Invalid timetable stop index [" + originalStopIndex
+                + "] in " + context
+            );
+        }
+
+        const directionalStopIndex = lineId % 2 === 0
+            ? originalStopIndex
+            : line.stops.length - 1 - originalStopIndex;
+        return line.stops[directionalStopIndex];
+    }
+
+    function getLineLabel(lineId) {
+        const line = lines[lineId];
+        return (line.code || line.number)
+            + (lineId % 2 === 0 ? ">" : "<");
+    }
+
+    const resolving = [];
+    const resolved = new Set();
+
+    function resolve(lineId) {
+        if (resolved.has(lineId)) return;
+        const cycleIndex = resolving.indexOf(lineId);
+        if (cycleIndex !== -1) {
+            const cycle = [...resolving.slice(cycleIndex), lineId]
+                .map(getLineLabel)
+                .join(" -> ");
+            throw new Error("Circular timing dependency: " + cycle);
+        }
+
+        resolving.push(lineId);
+        const line = lines[lineId];
+        const definition = definitionByLineId.get(lineId);
+        const rule = timingRuleByLineId.get(lineId);
+
+        if (rule === undefined) {
+            if (definition.legacyOffset === undefined) {
+                line.starttime = getStartTime();
+            }
+            else if (lineId === definition.forwardLineId) {
+                line.starttime = universalStartTime + definition.legacyOffset;
+            }
+            else {
+                const originalFirstStop = getStop(
+                    lineId,
+                    0,
+                    "legacy timing for " + definition.sourceName
+                );
+                line.starttime = universalStartTime
+                    + definition.legacyOffset
+                    - originalFirstStop.dep;
+            }
+        }
+        else {
+            let desiredDeparture;
+            if (rule.source.type === "ust") {
+                desiredDeparture = universalStartTime
+                    + rule.source.offsetMinutes * 60;
+            }
+            else {
+                const referencedDefinition = linesByCode.get(rule.source.code);
+                if (referencedDefinition === undefined) {
+                    throw new Error(
+                        "Unknown line timing code " + rule.source.code
+                        + " referenced by " + definition.sourceName
+                    );
+                }
+
+                const referenceDirection = rule.source.direction
+                    || rule.direction;
+                const referencedLineId = getLineIdForDirection(
+                    referencedDefinition,
+                    referenceDirection
+                );
+                resolve(referencedLineId);
+                const referencedStop = getStop(
+                    referencedLineId,
+                    rule.source.stationIndex,
+                    "reference " + rule.source.code
+                    + referenceDirection + " on " + definition.sourceName
+                );
+                desiredDeparture = lines[referencedLineId].starttime
+                    + referencedStop.dep
+                    + rule.source.offsetMinutes * 60;
+            }
+
+            const ownStop = getStop(
+                lineId,
+                rule.stationIndex,
+                "timing rule for " + definition.sourceName
+            );
+            line.starttime = desiredDeparture - ownStop.dep;
+        }
+
+        resolving.pop();
+        resolved.add(lineId);
+    }
+
+    lines.forEach((line, lineId) => resolve(lineId));
+    lines.forEach((line, lineId) => {
+        line.trips = getTrips(line.starttime, line.interval, line.type);
+        if (line.trips <= 2) {
+            console.log(
+                "low trips",
+                line.trips,
+                "for",
+                schedulingDefinitions[Math.floor(lineId / 2)].sourceName,
+                line
+            );
+        }
+        delete line.timingRules;
+    });
 }
 
 function getStopTimeForType(typeId, uvrat=false){
@@ -152,16 +440,16 @@ function getTimeFromDistanceAndType(distance, typeID){
 }
 function getUvratStopIndices(line, map, stationIDtonewID){
     const overrides = line.waypointOverrides || [];
-    const found = new Set();
     const uvrat = [];
     let stopIndex = 0;
 
     line.stationIds.forEach((stationID, stationIndex) => {
         const station = map.stations[stationID];
         const timetableStationID = stationIDtonewID[stationID];
-        const repeat = timetableStationID == undefined || found.has(timetableStationID);
 
-        if (!overrides.includes(stationID) && !station.isWaypoint && !repeat){
+        if (!overrides.includes(stationID)
+            && !station.isWaypoint
+            && timetableStationID !== undefined){
             const previousStationID = line.stationIds[stationIndex - 1];
             const nextStationID = line.stationIds[stationIndex + 1];
 
@@ -169,7 +457,6 @@ function getUvratStopIndices(line, map, stationIDtonewID){
                 uvrat.push(stopIndex);
             }
 
-            found.add(timetableStationID);
             stopIndex++;
         }
     });
@@ -180,7 +467,6 @@ function getUvratStopIndices(line, map, stationIDtonewID){
 
 function getLineMetrics(line, map, stationIDtonewID){
     const overrides = line.waypointOverrides || [];
-    const found = new Set();
     const segmentDistances = [];
     let totalDistance = 0;
     let distanceSinceLastStop = 0;
@@ -201,13 +487,13 @@ function getLineMetrics(line, map, stationIDtonewID){
         }
 
         const timetableStationID = stationIDtonewID[stationID];
-        const repeat = timetableStationID === undefined || found.has(timetableStationID);
-        if (!overrides.includes(stationID) && !station.isWaypoint && !repeat){
+        if (!overrides.includes(stationID)
+            && !station.isWaypoint
+            && timetableStationID !== undefined){
             if (stopCount > 0){
                 segmentDistances.push(distanceSinceLastStop);
             }
             distanceSinceLastStop = 0;
-            found.add(timetableStationID);
             stopCount++;
         }
         previousStation = station;
@@ -433,7 +719,7 @@ function generateRoutesForTrips(timetable) {
                         selection -= routeImportances[routeIndex];
                         if (selection < 0) {
                             selectedRoute = routeIndex;
-                            break;
+                            break;Fsh
                         }
                     }
                 }
@@ -490,16 +776,28 @@ async function generateTimeTables() {
     const journeyPricingConfigPath = path.join(__dirname, "../config/journey-pricing.json");
     lineTypeConfig = JSON.parse(await fs.readFile(lineTypeConfigPath, "utf8"));
     journeyPricingConfig = JSON.parse(await fs.readFile(journeyPricingConfigPath, "utf8"));
+    ({ PS, PX, OS, OX, SP, R, SH, IC, EC, NJ, AR, AJ } = Object.fromEntries(
+        lineTypeConfig.map(type => [type.code.toUpperCase(), type.id])
+    ));
+    const dataOperatorConfig = JSON.parse(
+        await fs.readFile(path.join(__dirname, "../config/data-operators.json"), "utf8")
+    );
+    const goods = JSON.parse(
+        await fs.readFile(path.join(__dirname, "../config/goods.json"), "utf8") 
+    );
+    const delayReasons = JSON.parse(
+        await fs.readFile(path.join(__dirname, "../config/delay-reasons.json"), "utf8")
+    );
     const map = await loadTestJson();
 
-    stationIDtonewID = {};
+    let stationIDtonewID = {};
 
     const stations = [];
     const lines = [];
 
     let i = 0;
 
-    const citydatapath = path.join(__dirname, "../json/capitalsdata.json");
+    const citydatapath = path.join(__dirname, "../config/capitals-data.json");
     const raw = await fs.readFile(citydatapath, 'utf8');
     const citydata = JSON.parse(raw);
 
@@ -539,7 +837,8 @@ async function generateTimeTables() {
                 "lon": station.lng,
                 "lonlat": lonlat,
                 "departures": [],
-                "arrivals": []
+                "arrivals": [],
+                "shops": []
             });
             lonlattoid[lonlat] = i;
             if (Object.keys(districtcount).includes(district)){
@@ -566,6 +865,7 @@ async function generateTimeTables() {
 
     i = 0;
     let stationssections = {};
+    const schedulingDefinitions = [];
     Object.values(map.lines).forEach((line, lineID) => {
         const lineinfo = parseLineName(line.name);
         if (!(lineinfo.company in journeyPricingConfig.companies)) {
@@ -581,21 +881,18 @@ async function generateTimeTables() {
 
         lines.push({...lineinfo, uvrat});
         lines.push({...lineinfo, uvrat: reverseUvrat});
-        let starttime = lineinfo.offset === undefined
-            ? getStartTime()
-            : universalStartTime + lineinfo.offset;
         lines[i]["id"] = i;
         lines[i+1]["id"] = i+1;
-        lines[i]["starttime"] = starttime;
-        lines[i+1]["starttime"] = starttime;
-        let trips = getTrips(starttime, lineinfo.interval, lineinfo.type);
-        if (trips <= 2){
-            console.log("low trips", trips, "for", line.name, lineinfo);
-        }
-        lines[i]["trips"] = trips;
-        lines[i+1]["trips"] = trips;
         lines[i]["stops"] = [];
         lines[i+1]["stops"] = [];
+        schedulingDefinitions.push({
+            sourceName: line.name,
+            code: lineinfo.code || null,
+            timingRules: lineinfo.timingRules,
+            legacyOffset: lineinfo.offset,
+            forwardLineId: i,
+            reverseLineId: i + 1
+        });
 
         let isFirstStationOfLine = true;
         let previousStation = null;
@@ -604,7 +901,6 @@ async function generateTimeTables() {
         let distanceacc = 0;
         let lastlat;
         let lastlon;
-        let found = new Set();
         let j = 0;
         line.stationIds.forEach(stationID => {
             let station = map.stations[stationID];
@@ -613,8 +909,10 @@ async function generateTimeTables() {
             }
             lastlat = station.lat;
             lastlon = station.lng;
-            let repeat = stationIDtonewID[stationID] == undefined || found.has(stationIDtonewID[stationID]);
-            if (!overrides.includes(stationID) && !station.isWaypoint && !repeat){
+            const timetableStationID = stationIDtonewID[stationID];
+            if (!overrides.includes(stationID)
+                && !station.isWaypoint
+                && timetableStationID !== undefined){
                 let isuvrat = uvrat.includes(j);
                 if (isuvrat){
                     console.log(station.name, "is uvrat");
@@ -641,8 +939,6 @@ async function generateTimeTables() {
                 }
                 previousStation = stationID;
                 isFirstStationOfLine = false;
-                found.add(stationIDtonewID[previousStation]);
-                found.add(stationIDtonewID[stationID]);
                 j++;
             }
         });
@@ -656,15 +952,14 @@ async function generateTimeTables() {
         });
         lines[i+1]["orig"] = lines[i]["dest"];
         lines[i+1]["dest"] = lines[i]["orig"];
-        if (lineinfo.offset !== undefined) {
-            const desiredDepartureTime = universalStartTime + lineinfo.offset;
-            const departureOffsetFromLastStation = lines[i+1]["stops"][lines[i+1]["stops"].length - 1].dep;
-            const endtime = departureOffsetFromLastStation
-                + lines[i+1]["starttime"];
-            lines[i+1]["starttime"] -= endtime - desiredDepartureTime;
-        }
         i+=2;
     });
+
+    resolveLineStartTimes(
+        lines,
+        schedulingDefinitions,
+        universalStartTime
+    );
 
     stations.forEach(station => {
         station.isTransfer = isTransfer(station, stations, lines);
@@ -687,49 +982,42 @@ async function generateTimeTables() {
 
     generateRoutesForTrips(timetable);
     assignStationImportance(timetable);
-    timetable.stations.forEach(station => {
-        delete station.routeSelectionImportance;
-        delete station.localRouteSelectionImportance;
-    });
 
     const psSystems = generatePsSystems(timetable);
     assignPsSystemIDs(timetable, psSystems);
 
     //console.log(JSON.stringify(timetable, null, "\t"));
+    const trainTypeIds = Object.fromEntries(
+        lineTypeConfig.map(type => [type.code.toUpperCase(), type.id])
+    );
+    const browserConfig = [
+        "export const lineTypes = " + JSON.stringify(lineTypeConfig) + ";",
+        "export const trainTypeIds = " + JSON.stringify(trainTypeIds) + ";",
+        "export const journeyPricing = " + JSON.stringify(journeyPricingConfig) + ";",
+        "export const dataOperators = " + JSON.stringify(dataOperatorConfig) + ";",
+        "export const goods = " + JSON.stringify(goods) + ";",
+        "export const delayReasons = " + JSON.stringify(delayReasons) + ";"
+    ].join("\n") + "\n";
+
+    assignShopsToStations(timetable);
+
+    await fs.mkdir("factoring/generated", { recursive: true });
     await Promise.all([
-        fs.writeFile(
-            "factoring/json/timetable_data.js",
-            "const timetable = " + JSON.stringify(timetable) + ";"
-        ),
-        fs.writeFile(
-            "factoring/json/lonlat.js",
-            "const lonlattoid = " + JSON.stringify(lonlattoid) + ";"
-        ),
-        fs.writeFile(
-            "factoring/json/district-borders.json",
-            JSON.stringify(districtBorders, null, 2)
-        ),
-        fs.writeFile(
-            "factoring/json/district-borders.js",
-            "const districtBorders = " + JSON.stringify(districtBorders) + ";"
-        ),
-        fs.writeFile(
-            "factoring/json/ps-systems.json",
-            JSON.stringify(psSystems, null, 2) + String.fromCharCode(10)
-        ),
-        fs.writeFile(
-            "factoring/json/ps-systems.js",
-            "const psSystems = " + JSON.stringify(psSystems) + ";"
-        ),
-        fs.writeFile(
-            "factoring/config/line-types.js",
-            "const lineTypeConfig = " + JSON.stringify(lineTypeConfig) + ";\n"
-        ),
-        fs.writeFile(
-            "factoring/config/journey-pricing.js",
-            "const journeyPricingConfig = " + JSON.stringify(journeyPricingConfig) + ";\n"
-        )
+        fs.writeFile("factoring/generated/timetable.js",
+            "export const timetable = " + JSON.stringify(timetable) + ";\n"),
+        fs.writeFile("factoring/generated/lonlat.js",
+            "export const lonLatToId = " + JSON.stringify(lonlattoid) + ";\n"),
+        fs.writeFile("factoring/generated/district-borders.json",
+            JSON.stringify(districtBorders, null, 2) + "\n"),
+        fs.writeFile("factoring/generated/district-borders.js",
+            "export const districtBorders = " + JSON.stringify(districtBorders) + ";\n"),
+        fs.writeFile("factoring/generated/ps-systems.json",
+            JSON.stringify(psSystems, null, 2) + "\n"),
+        fs.writeFile("factoring/generated/ps-systems.js",
+            "export const psSystems = " + JSON.stringify(psSystems) + ";\n"),
+        fs.writeFile("factoring/generated/config.js", browserConfig)
     ]);
+
     return timetable;
 }
 
@@ -737,8 +1025,34 @@ function getTypeString(type){
     return lineTypeConfig[type].code.padEnd(2, " ");
 }
 
+function assignShopsToStations(timetable){
+    let counts = [0,0,0,0,0];
+    let max = [0,0,0,0,0];
+    let min = [9999,9999,9999,9999,9999];
+    timetable.stations.forEach(station => {
+        dataOperators.forEach(dataOperator => {
+            if (dataOperator.districts.includes(station.district)){
+                if (Math.pow(Math.random(), 1/station.importance) >= 0.95){
+                    let price = (Math.random()/2 + 0.5)*Math.pow(station.importance, 1/5)*dataOperator.priceMultiplier*18;
+                    station.shops.push([constants.SHOP_TYPE.DATA_SHOP, dataOperator.id, price]);
+                    console.log("OP: ", station.name, dataOperator.name, station.shops);
+                    counts[dataOperator.id] += 1;
+                    if (price > max[dataOperator.id]){
+                        max[dataOperator.id] = price;
+                    }
+                    if (price < min[dataOperator.id]){
+                        min[dataOperator.id] = price;
+                    }
+                }
+            }
+        })
+    });
+    console.log(counts, min, max);
+}
+
 async function checktimetable(){
     let timetable = await generateTimeTables();
+    
     const seen = new Set();
     const seennicks = new Set();
     const missingnicknames = [];

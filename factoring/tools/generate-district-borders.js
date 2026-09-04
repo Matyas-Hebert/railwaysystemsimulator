@@ -212,5 +212,4 @@ function generateDistrictBorders(stations, capitalsData) {
         };
     });
 }
-
-module.exports = { generateDistrictBorders };
+export { generateDistrictBorders };

@@ -1,27 +1,30 @@
-const fs = require("node:fs");
-const path = require("node:path");
-const vm = require("node:vm");
+import fs from "node:fs";
+import path from "node:path";
+import vm from "node:vm";
+import { fileURLToPath } from "node:url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const ITERATIONS = 10;
 const ITERATION_INFLUENCE = 0.35;
 const STOP_DECAY = 0.9;
 const SCORE_SPREAD_POWER = 3;
 const BASE_IMPORTANCE = 1;
-const { PS, OS } = require("../config/line-type-constants");
 const APP_DIRECTORY = path.resolve(__dirname, "..");
-const TIMETABLE_PATH = path.join(APP_DIRECTORY, "json", "timetable_data.js");
+const TIMETABLE_PATH = path.join(APP_DIRECTORY, "generated", "timetable.js");
 const OUTPUT_PATH = path.join(APP_DIRECTORY, "reports", "station-importance.txt");
 const LINE_TYPE_CONFIG_PATH = path.join(APP_DIRECTORY, "config", "line-types.json");
 const LINE_TYPE_CONFIG = JSON.parse(fs.readFileSync(LINE_TYPE_CONFIG_PATH, "utf8"));
 const LINE_TYPES = Object.freeze(LINE_TYPE_CONFIG);
 const IMPORTANCE_WITHOUT_PS_OS = Object.freeze(
-    LINE_TYPES.map(type => type.id === PS || type.id === OS
+    LINE_TYPES.map(type => type.id <= 3
         ? 0
         : type.stationImportance)
 );
 
 function loadTimetable() {
-    const source = fs.readFileSync(TIMETABLE_PATH, "utf8");
+    const source = fs.readFileSync(TIMETABLE_PATH, "utf8").replace(/^export /gm, "");
     const context = {};
     vm.createContext(context);
     vm.runInContext(source + ";globalThis.__timetable = timetable;", context);
@@ -197,8 +200,8 @@ function generateReport() {
     console.log(`Written ${OUTPUT_PATH}`);
 }
 
-module.exports = { assignStationImportance, generateReport };
+export { assignStationImportance, generateReport };
 
-if (require.main === module) {
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
     generateReport();
 }

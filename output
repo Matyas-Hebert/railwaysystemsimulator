@@ -195,115 +195,1164 @@ Olomouc - Slavonín is uvrat
 Lanškroun-Hl.N. is uvrat
 Svitavy-Koclířov is uvrat
 Blansko-Hl.N. is uvrat
+Hradec Králové-Hl.N. is uvrat
+České Budějovice-Roudné is uvrat
+Břeclav-Sever is uvrat
+Břeclav - Hrušák is uvrat
+Břeclav-Sever is uvrat
 low trips 2 for [CSA] AJ 4 (4) | Moravská Laštovička | 670 |  | Brno-Košice | {
   company: 'CSA',
   type: 11,
   number: '4',
   interval: 40200,
+  timingRules: [],
   companynumber: '4',
-  nickname: 'Moravská Laštovička'
+  nickname: 'Moravská Laštovička',
+  uvrat: [],
+  id: 2710,
+  stops: [
+    { sid: 6333, arr: 0, dep: 1800, dist: 0 },
+    { sid: 6185, arr: 4579, dep: 6379, dist: 340.6767070079099 }
+  ],
+  orig: 6333,
+  dest: 6185,
+  starttime: 18092,
+  trips: 2
+}
+low trips 2 for [CSA] AJ 4 (4) | Moravská Laštovička | 670 |  | Brno-Košice | {
+  company: 'CSA',
+  type: 11,
+  number: '4',
+  interval: 40200,
+  timingRules: [],
+  companynumber: '4',
+  nickname: 'Moravská Laštovička',
+  uvrat: [],
+  id: 2711,
+  stops: [
+    { sid: 6185, arr: -0, dep: 1800, dist: 0 },
+    { sid: 6333, arr: 4579, dep: 6379, dist: 340.6767070079099 }
+  ],
+  orig: 6185,
+  dest: 6333,
+  starttime: 14766,
+  trips: 2
 }
 low trips 2 for [CSA] AJ 5 (5) | Tatranský Orel | 690 |  | Poprad-Praha | {
   company: 'CSA',
   type: 11,
   number: '5',
   interval: 41400,
+  timingRules: [],
   companynumber: '5',
-  nickname: 'Tatranský Orel'
+  nickname: 'Tatranský Orel',
+  uvrat: [],
+  id: 2712,
+  stops: [
+    { sid: 6334, arr: 0, dep: 1800, dist: 0 },
+    { sid: 6184, arr: 5025, dep: 6825, dist: 452.3513637445076 }
+  ],
+  orig: 6334,
+  dest: 6184,
+  starttime: 16332,
+  trips: 2
+}
+low trips 2 for [CSA] AJ 5 (5) | Tatranský Orel | 690 |  | Poprad-Praha | {
+  company: 'CSA',
+  type: 11,
+  number: '5',
+  interval: 41400,
+  timingRules: [],
+  companynumber: '5',
+  nickname: 'Tatranský Orel',
+  uvrat: [],
+  id: 2713,
+  stops: [
+    { sid: 6184, arr: 0, dep: 1800, dist: 0 },
+    { sid: 6334, arr: 5025, dep: 6825, dist: 452.3513637445076 }
+  ],
+  orig: 6184,
+  dest: 6334,
+  starttime: 17525,
+  trips: 2
 }
 low trips 2 for [CSA] AJ 6 (6) | Lázeňský Skřivan | 709 |  | Brno-Karlovy Vary | {
   company: 'CSA',
   type: 11,
   number: '6',
   interval: 42540,
+  timingRules: [],
   companynumber: '6',
-  nickname: 'Lázeňský Skřivan'
+  nickname: 'Lázeňský Skřivan',
+  uvrat: [],
+  id: 2722,
+  stops: [
+    { sid: 6185, arr: 0, dep: 1800, dist: 0 },
+    { sid: 6356, arr: 4433, dep: 6233, dist: 304.259463881223 }
+  ],
+  orig: 6185,
+  dest: 6356,
+  starttime: 18521,
+  trips: 2
+}
+low trips 2 for [CSA] AJ 6 (6) | Lázeňský Skřivan | 709 |  | Brno-Karlovy Vary | {
+  company: 'CSA',
+  type: 11,
+  number: '6',
+  interval: 42540,
+  timingRules: [],
+  companynumber: '6',
+  nickname: 'Lázeňský Skřivan',
+  uvrat: [],
+  id: 2723,
+  stops: [
+    { sid: 6356, arr: 0, dep: 1800, dist: 0 },
+    { sid: 6185, arr: 4433, dep: 6233, dist: 304.259463881223 }
+  ],
+  orig: 6356,
+  dest: 6185,
+  starttime: 18399,
+  trips: 2
 }
 low trips 2 for [CSA] AJ 7 (7) | Moravský Kamzík | 729 |  | Brno-Poprad | {
   company: 'CSA',
   type: 11,
   number: '7',
   interval: 43740,
+  timingRules: [],
   companynumber: '7',
-  nickname: 'Moravský Kamzík'
+  nickname: 'Moravský Kamzík',
+  uvrat: [],
+  id: 2724,
+  stops: [
+    { sid: 6334, arr: 0, dep: 1800, dist: 0 },
+    { sid: 6185, arr: 4273, dep: 6073, dist: 264.1268611849628 }
+  ],
+  orig: 6334,
+  dest: 6185,
+  starttime: 18613,
+  trips: 2
+}
+low trips 2 for [CSA] AJ 7 (7) | Moravský Kamzík | 729 |  | Brno-Poprad | {
+  company: 'CSA',
+  type: 11,
+  number: '7',
+  interval: 43740,
+  timingRules: [],
+  companynumber: '7',
+  nickname: 'Moravský Kamzík',
+  uvrat: [],
+  id: 2725,
+  stops: [
+    { sid: 6185, arr: -0, dep: 1800, dist: 0 },
+    { sid: 6334, arr: 4273, dep: 6073, dist: 264.1268611849628 }
+  ],
+  orig: 6185,
+  dest: 6334,
+  starttime: 18435,
+  trips: 2
 }
 low trips 2 for [CSA] AJ 8 (8) | Lázeňský Albatros | 739 |  | Karlovy Vary-Košice | {
   company: 'CSA',
   type: 11,
   number: '8',
   interval: 44340,
+  timingRules: [],
   companynumber: '8',
-  nickname: 'Lázeňský Albatros'
+  nickname: 'Lázeňský Albatros',
+  uvrat: [],
+  id: 2732,
+  stops: [
+    { sid: 6356, arr: 0, dep: 1800, dist: 0 },
+    { sid: 6333, arr: 5733, dep: 7533, dist: 629.1737491508754 }
+  ],
+  orig: 6356,
+  dest: 6333,
+  starttime: 18197,
+  trips: 2
 }
-Hradec Králové-Hl.N. is uvrat
-OFFSET 0
-ddt:  17724
-dofls:  12461
-endtime:  30185
-OFFSET 7200
-ddt:  24924
-dofls:  9567
-endtime:  34491
-České Budějovice-Roudné is uvrat
+low trips 2 for [CSA] AJ 8 (8) | Lázeňský Albatros | 739 |  | Karlovy Vary-Košice | {
+  company: 'CSA',
+  type: 11,
+  number: '8',
+  interval: 44340,
+  timingRules: [],
+  companynumber: '8',
+  nickname: 'Lázeňský Albatros',
+  uvrat: [],
+  id: 2733,
+  stops: [
+    { sid: 6333, arr: -0, dep: 1800, dist: 0 },
+    { sid: 6356, arr: 5733, dep: 7533, dist: 629.1737491508754 }
+  ],
+  orig: 6333,
+  dest: 6356,
+  starttime: 14878,
+  trips: 2
+}
 low trips 2 for [CSA] AJ 9 (9) | Jihočeský Havran | 720 |  | České Budějovice-Košice | {
   company: 'CSA',
   type: 11,
   number: '9',
   interval: 43200,
+  timingRules: [],
   companynumber: '9',
-  nickname: 'Jihočeský Havran'
+  nickname: 'Jihočeský Havran',
+  uvrat: [],
+  id: 2786,
+  stops: [
+    { sid: 6333, arr: 0, dep: 1800, dist: 0 },
+    { sid: 6448, arr: 5230, dep: 7030, dist: 503.57840660994907 }
+  ],
+  orig: 6333,
+  dest: 6448,
+  starttime: 18464,
+  trips: 2
+}
+low trips 2 for [CSA] AJ 9 (9) | Jihočeský Havran | 720 |  | České Budějovice-Košice | {
+  company: 'CSA',
+  type: 11,
+  number: '9',
+  interval: 43200,
+  timingRules: [],
+  companynumber: '9',
+  nickname: 'Jihočeský Havran',
+  uvrat: [],
+  id: 2787,
+  stops: [
+    { sid: 6448, arr: 0, dep: 1800, dist: 0 },
+    { sid: 6333, arr: 5230, dep: 7030, dist: 503.57840660994907 }
+  ],
+  orig: 6448,
+  dest: 6333,
+  starttime: 19578,
+  trips: 2
 }
 low trips 2 for [CSA] AJ 10 (10) | Pivovarský Orel | 723 |  | Bratislava-Plzeň | {
   company: 'CSA',
   type: 11,
   number: '10',
   interval: 43380,
+  timingRules: [],
   companynumber: '10',
-  nickname: 'Pivovarský Orel'
+  nickname: 'Pivovarský Orel',
+  uvrat: [],
+  id: 2790,
+  stops: [
+    { sid: 6186, arr: 0, dep: 1800, dist: 0 },
+    { sid: 6449, arr: 4577, dep: 6377, dist: 340.30083048398575 }
+  ],
+  orig: 6186,
+  dest: 6449,
+  starttime: 15396,
+  trips: 2
 }
-Břeclav-Sever is uvrat
-Břeclav - Hrušák is uvrat
-Břeclav-Sever is uvrat
+low trips 2 for [CSA] AJ 10 (10) | Pivovarský Orel | 723 |  | Bratislava-Plzeň | {
+  company: 'CSA',
+  type: 11,
+  number: '10',
+  interval: 43380,
+  timingRules: [],
+  companynumber: '10',
+  nickname: 'Pivovarský Orel',
+  uvrat: [],
+  id: 2791,
+  stops: [
+    { sid: 6449, arr: 0, dep: 1800, dist: 0 },
+    { sid: 6186, arr: 4577, dep: 6377, dist: 340.30083048398575 }
+  ],
+  orig: 6449,
+  dest: 6186,
+  starttime: 17907,
+  trips: 2
+}
 low trips 2 for [CSA] AJ 11 (11) | Ještědský Sokol | 714 |  | Bratislava-Liberec | {
   company: 'CSA',
   type: 11,
   number: '11',
   interval: 42840,
+  timingRules: [],
   companynumber: '11',
-  nickname: 'Ještědský Sokol'
+  nickname: 'Ještědský Sokol',
+  uvrat: [],
+  id: 2810,
+  stops: [
+    { sid: 6186, arr: 0, dep: 1800, dist: 0 },
+    { sid: 6491, arr: 4551, dep: 6351, dist: 333.83225754010533 }
+  ],
+  orig: 6186,
+  dest: 6491,
+  starttime: 18098,
+  trips: 2
+}
+low trips 2 for [CSA] AJ 11 (11) | Ještědský Sokol | 714 |  | Bratislava-Liberec | {
+  company: 'CSA',
+  type: 11,
+  number: '11',
+  interval: 42840,
+  timingRules: [],
+  companynumber: '11',
+  nickname: 'Ještědský Sokol',
+  uvrat: [],
+  id: 2811,
+  stops: [
+    { sid: 6491, arr: 0, dep: 1800, dist: 0 },
+    { sid: 6186, arr: 4551, dep: 6351, dist: 333.83225754010533 }
+  ],
+  orig: 6491,
+  dest: 6186,
+  starttime: 17704,
+  trips: 2
 }
 low trips 2 for [CSA] AJ 12 (12) | Jizerský Orel | 731 |  | Košice-Liberec | {
   company: 'CSA',
   type: 11,
   number: '12',
   interval: 43860,
+  timingRules: [],
   companynumber: '12',
-  nickname: 'Jizerský Orel'
+  nickname: 'Jizerský Orel',
+  uvrat: [],
+  id: 2812,
+  stops: [
+    { sid: 6333, arr: 0, dep: 1800, dist: 0 },
+    { sid: 6491, arr: 5253, dep: 7053, dist: 509.2468917553357 }
+  ],
+  orig: 6333,
+  dest: 6491,
+  starttime: 16749,
+  trips: 2
 }
-OFFSET 0
-ddt:  17724
-dofls:  2516
-endtime:  20240
-OFFSET 3600
-ddt:  21324
-dofls:  1731
-endtime:  23055
+low trips 2 for [CSA] AJ 12 (12) | Jizerský Orel | 731 |  | Košice-Liberec | {
+  company: 'CSA',
+  type: 11,
+  number: '12',
+  interval: 43860,
+  timingRules: [],
+  companynumber: '12',
+  nickname: 'Jizerský Orel',
+  uvrat: [],
+  id: 2813,
+  stops: [
+    { sid: 6491, arr: -0, dep: 1800, dist: 0 },
+    { sid: 6333, arr: 5253, dep: 7053, dist: 509.2468917553357 }
+  ],
+  orig: 6491,
+  dest: 6333,
+  starttime: 17661,
+  trips: 2
+}
 low trips 2 for [CSA] AJ 13 (13) | Jizerská Střela | 725 |  | Liberec-Žilina | {
   company: 'CSA',
   type: 11,
   number: '13',
   interval: 43500,
+  timingRules: [],
   companynumber: '13',
-  nickname: 'Jizerská Střela'
+  nickname: 'Jizerská Střela',
+  uvrat: [],
+  id: 2828,
+  stops: [
+    { sid: 6491, arr: 0, dep: 1800, dist: 0 },
+    { sid: 6507, arr: 4471, dep: 6271, dist: 313.66655558138643 }
+  ],
+  orig: 6491,
+  dest: 6507,
+  starttime: 18818,
+  trips: 2
+}
+low trips 2 for [CSA] AJ 13 (13) | Jizerská Střela | 725 |  | Liberec-Žilina | {
+  company: 'CSA',
+  type: 11,
+  number: '13',
+  interval: 43500,
+  timingRules: [],
+  companynumber: '13',
+  nickname: 'Jizerská Střela',
+  uvrat: [],
+  id: 2829,
+  stops: [
+    { sid: 6507, arr: -0, dep: 1800, dist: 0 },
+    { sid: 6491, arr: 4471, dep: 6271, dist: 313.66655558138643 }
+  ],
+  orig: 6507,
+  dest: 6491,
+  starttime: 16754,
+  trips: 2
 }
 low trips 2 for [CSA] AJ 14 (14) | Plzeňský Tetřev | 718 |  | Plzeň-Žilina | {
   company: 'CSA',
   type: 11,
   number: '14',
   interval: 43080,
+  timingRules: [],
   companynumber: '14',
-  nickname: 'Plzeňský Tetřev'
+  nickname: 'Plzeňský Tetřev',
+  uvrat: [],
+  id: 2832,
+  stops: [
+    { sid: 6449, arr: 0, dep: 1800, dist: 0 },
+    { sid: 6507, arr: 4799, dep: 6599, dist: 395.6314508667849 }
+  ],
+  orig: 6449,
+  dest: 6507,
+  starttime: 14962,
+  trips: 2
 }
+low trips 2 for [CSA] AJ 14 (14) | Plzeňský Tetřev | 718 |  | Plzeň-Žilina | {
+  company: 'CSA',
+  type: 11,
+  number: '14',
+  interval: 43080,
+  timingRules: [],
+  companynumber: '14',
+  nickname: 'Plzeňský Tetřev',
+  uvrat: [],
+  id: 2833,
+  stops: [
+    { sid: 6507, arr: -0, dep: 1800, dist: 0 },
+    { sid: 6449, arr: 4799, dep: 6599, dist: 395.6314508667849 }
+  ],
+  orig: 6507,
+  dest: 6449,
+  starttime: 15153,
+  trips: 2
+}
+OP:  Svitavy - Hl.N. NaCl [ [ 0, 0, 36.936317157179055 ] ]
+OP:  Březová nad Svitavou - Hl.N. NaCl [ [ 0, 0, 23.32168204085565 ] ]
+OP:  Blansko - Hl.N. Pivofone [ [ 0, 1, 16.47409660929572 ] ]
+OP:  Brno - Hl.N. Pivofone [ [ 0, 1, 24.264210513383993 ] ]
+OP:  Brno - Hl.N. C-Static [ [ 0, 1, 24.264210513383993 ], [ 0, 3, 14.2300535069172 ] ]
+OP:  Břeclav - Hl.N. Pivofone [ [ 0, 1, 14.154678254745678 ] ]
+OP:  Brno - Královo Pole C-Static [ [ 0, 3, 9.893181129608747 ] ]
+OP:  Plzeň - Hl.N. Pivofone [ [ 0, 1, 20.18820075874371 ] ]
+OP:  Plzeň - Hl.N. C-Static [ [ 0, 1, 20.18820075874371 ], [ 0, 3, 14.628871993981122 ] ]
+OP:  Mnichovo Hradiště - Horní Nádraží NaCl [ [ 0, 0, 21.117293585868207 ] ]
+OP:  Jičín - Hl.N. NaCl [ [ 0, 0, 26.80669000775724 ] ]
+OP:  Hradec Králové - Hl.N. NaCl [ [ 0, 0, 36.283371316144695 ] ]
+OP:  Pardubice - Hl.N. NaCl [ [ 0, 0, 39.96486464630601 ] ]
+OP:  Pardubice - Hl.N. Pivofone [ [ 0, 0, 39.96486464630601 ], [ 0, 1, 20.246498838848126 ] ]
+OP:  Polička - Hl.N. Pivofone [ [ 0, 1, 23.647098723378186 ] ]
+OP:  Hovězí Ospik [ [ 0, 4, 10.181648942391636 ] ]
+OP:  Vsetín - Hl.N. NaCl [ [ 0, 0, 31.653363016948013 ] ]
+OP:  Halenkov NaCl [ [ 0, 0, 14.788381971997463 ] ]
+OP:  Lelekovice Pivofone [ [ 0, 1, 16.82828216922903 ] ]
+OP:  Ostrava - Hl.N. NaCl [ [ 0, 0, 26.99418796518303 ] ]
+OP:  Ostrava - Hl.N. Pivofone [ [ 0, 0, 26.99418796518303 ], [ 0, 1, 28.921519841613513 ] ]
+OP:  Ostrava - Hl.N. C-Static [
+  [ 0, 0, 26.99418796518303 ],
+  [ 0, 1, 28.921519841613513 ],
+  [ 0, 3, 19.33951914050938 ]
+]
+OP:  Ostrava - Vítkovice NaCl [ [ 0, 0, 18.629747564199675 ] ]
+OP:  Frýdek Místek - Hl.N. Pomelo [ [ 0, 2, 24.675062097549894 ] ]
+OP:  Zlín - Hl.N. NaCl [ [ 0, 0, 33.72293368213693 ] ]
+OP:  Zlín - Hl.N. Pivofone [ [ 0, 0, 33.72293368213693 ], [ 0, 1, 18.38208601688568 ] ]
+OP:  Otrokovice - Hl.N. Pomelo [ [ 0, 2, 12.455050166806705 ] ]
+OP:  Třemošná Pivofone [ [ 0, 1, 11.675925587928315 ] ]
+OP:  Plasy - Hl.N. C-Static [ [ 0, 3, 14.901426973273754 ] ]
+OP:  Bělotín NaCl [ [ 0, 0, 30.25208379131076 ] ]
+OP:  Olomouc - Hl.N. NaCl [ [ 0, 0, 37.44752360365204 ] ]
+OP:  Olomouc - Hl.N. C-Static [ [ 0, 0, 37.44752360365204 ], [ 0, 3, 22.70719890476562 ] ]
+OP:  Příbor NaCl [ [ 0, 0, 19.44322029060833 ] ]
+OP:  Ostrava - Šenov Pivofone [ [ 0, 1, 21.482373366684527 ] ]
+OP:  Ostrava - Šenov Pomelo [ [ 0, 1, 21.482373366684527 ], [ 0, 2, 16.108372286337293 ] ]
+OP:  Nový Dvůr Pivofone [ [ 0, 1, 12.940591916943918 ] ]
+OP:  Nový Dvůr C-Static [ [ 0, 1, 12.940591916943918 ], [ 0, 3, 11.33800679072601 ] ]
+OP:  Přerov - Dluhonice NaCl [ [ 0, 0, 14.542018306740513 ] ]
+OP:  Mikulov - Hl.N. Pivofone [ [ 0, 1, 12.648616173445005 ] ]
+OP:  Veselí nad Moravou Pivofone [ [ 0, 1, 12.238756383803187 ] ]
+OP:  Český Těšín - Hl.N. NaCl [ [ 0, 0, 18.567600919393 ] ]
+OP:  Teplice - Hl.N. NaCl [ [ 0, 0, 35.89535380289579 ] ]
+OP:  Teplice - Hl.N. Pivofone [ [ 0, 0, 35.89535380289579 ], [ 0, 1, 27.845082095672325 ] ]
+OP:  Ústí nad Labem - Západní Nádraží C-Static [ [ 0, 3, 12.850654778150417 ] ]
+OP:  Ústí nad Labem - Hl.N. Pivofone [ [ 0, 1, 20.451448704014997 ] ]
+OP:  Ústí nad Labem - Hl.N. C-Static [ [ 0, 1, 20.451448704014997 ], [ 0, 3, 15.202738172229676 ] ]
+OP:  Litoměřice - Hl.N. NaCl [ [ 0, 0, 31.4397593720771 ] ]
+OP:  Neratovice NaCl [ [ 0, 0, 34.13438285955744 ] ]
+OP:  Praha - Libeň Pivofone [ [ 0, 1, 19.03745681673097 ] ]
+OP:  Praha - Hl.N. NaCl [ [ 0, 0, 45.87440588242244 ] ]
+OP:  Praha - Hl.N. Pivofone [ [ 0, 0, 45.87440588242244 ], [ 0, 1, 31.3857239995618 ] ]
+OP:  Praha - Hl.N. C-Static [
+  [ 0, 0, 45.87440588242244 ],
+  [ 0, 1, 31.3857239995618 ],
+  [ 0, 3, 14.845389607452796 ]
+]
+OP:  Beroun - Hl.N. NaCl [ [ 0, 0, 33.60163889997521 ] ]
+OP:  Brandýs nad Labem NaCl [ [ 0, 0, 28.97205137760701 ] ]
+OP:  Brandýs nad Labem Pivofone [ [ 0, 0, 28.97205137760701 ], [ 0, 1, 20.425502046708015 ] ]
+OP:  Prostějov - Hl.N. Pivofone [ [ 0, 1, 18.725826871453528 ] ]
+OP:  Uničov - Hl.N. Pivofone [ [ 0, 1, 15.98756850406314 ] ]
+OP:  Uničov - Hl.N. C-Static [ [ 0, 1, 15.98756850406314 ], [ 0, 3, 10.81102723997904 ] ]
+OP:  Zábřeh - Hl.N. Ospik [ [ 0, 4, 13.037471594477411 ] ]
+OP:  Stříbro - Hl.N. NaCl [ [ 0, 0, 31.738150848738783 ] ]
+OP:  České Budějovice - Hl.N. Pivofone [ [ 0, 1, 20.71273977410458 ] ]
+OP:  Kolín - Hl.N. NaCl [ [ 0, 0, 43.33001166479876 ] ]
+OP:  Kolín - Hl.N. Pivofone [ [ 0, 0, 43.33001166479876 ], [ 0, 1, 19.249385283972682 ] ]
+OP:  Přelouč - Hl.N. Pivofone [ [ 0, 1, 23.173084828489053 ] ]
+OP:  Přelouč - Hl.N. C-Static [ [ 0, 1, 23.173084828489053 ], [ 0, 3, 18.640365587005235 ] ]
+OP:  Český Brod NaCl [ [ 0, 0, 20.219831340146314 ] ]
+OP:  Česká Třebová - Hl.N. Pivofone [ [ 0, 1, 17.51722424780241 ] ]
+OP:  Cheb - Hl.N. Pivofone [ [ 0, 1, 21.207497103063574 ] ]
+OP:  Chomutov - Hl.N. Ospik [ [ 0, 4, 14.002405915661221 ] ]
+OP:  Bílina Pivofone [ [ 0, 1, 11.150430088087589 ] ]
+OP:  Ústí nad Orlicí - Hl.N. NaCl [ [ 0, 0, 37.187707713521 ] ]
+OP:  Letohrad NaCl [ [ 0, 0, 25.25283963660572 ] ]
+OP:  Zákupy NaCl [ [ 0, 0, 18.685450049224354 ] ]
+OP:  Nový Bor Ospik [ [ 0, 4, 9.365798080176084 ] ]
+OP:  Brodek u Přerova NaCl [ [ 0, 0, 29.545157238799376 ] ]
+OP:  Dub nad Moravou NaCl [ [ 0, 0, 20.539507651022326 ] ]
+OP:  Třeboň - Dvorce C-Static [ [ 0, 3, 11.570273519025028 ] ]
+OP:  Libníč Pivofone [ [ 0, 1, 10.24544714788156 ] ]
+OP:  Brno - Bohunice Pivofone [ [ 0, 1, 12.999812345148003 ] ]
+OP:  Píšť C-Static [ [ 0, 3, 6.989221277137144 ] ]
+OP:  Opava - Hl.N. NaCl [ [ 0, 0, 21.242863508001157 ] ]
+OP:  Bohumín - Hl.N. C-Static [ [ 0, 3, 10.48880064241187 ] ]
+OP:  Sobotice Pivofone [ [ 0, 1, 15.214961591936113 ] ]
+OP:  Roudnice nad Labem - Dobříň NaCl [ [ 0, 0, 31.961040305723024 ] ]
+OP:  Lhotka nad Bečvou NaCl [ [ 0, 0, 18.991510752330477 ] ]
+OP:  Neveklov Pivofone [ [ 0, 1, 12.425512100836672 ] ]
+OP:  Neštětice Pivofone [ [ 0, 1, 13.41740237275685 ] ]
+OP:  Veselí nad Lužnicí - Hl.N. Pivofone [ [ 0, 1, 21.518771821575157 ] ]
+OP:  Vrčeň NaCl [ [ 0, 0, 22.332046961007112 ] ]
+OP:  Blatná NaCl [ [ 0, 0, 15.80017379343719 ] ]
+OP:  Praha - Hrdlořezy NaCl [ [ 0, 0, 30.532612438589837 ] ]
+OP:  Lysá nad Labem Pivofone [ [ 0, 1, 12.189275780651093 ] ]
+OP:  Chlumec nad Cidlinou NaCl [ [ 0, 0, 29.854751712206927 ] ]
+OP:  Chlumec nad Cidlinou Pivofone [ [ 0, 0, 29.854751712206927 ], [ 0, 1, 14.433875362736241 ] ]
+OP:  Slavošov Pivofone [ [ 0, 1, 11.082363938619016 ] ]
+OP:  Kutná Hora - Hl.N. NaCl [ [ 0, 0, 28.18322382557671 ] ]
+OP:  Čáslav - Hl.N. Pivofone [ [ 0, 1, 12.271332410774104 ] ]
+OP:  Jihlava - Hl.N. Pivofone [ [ 0, 1, 23.527743971975262 ] ]
+OP:  Hrochov Pivofone [ [ 0, 1, 14.020861997572112 ] ]
+OP:  Konice Pivofone [ [ 0, 1, 19.304347882970006 ] ]
+OP:  Olomouc - Neředín NaCl [ [ 0, 0, 14.153297282647832 ] ]
+OP:  Náměšť na Hané NaCl [ [ 0, 0, 25.763944010153445 ] ]
+OP:  Velké Opatovice - Hl.N. Pivofone [ [ 0, 1, 16.44713986998854 ] ]
+OP:  Olomouc - Černovír NaCl [ [ 0, 0, 21.244584658873908 ] ]
+OP:  Litovel Pivofone [ [ 0, 1, 15.665596686778606 ] ]
+OP:  Litovel C-Static [ [ 0, 1, 15.665596686778606 ], [ 0, 3, 13.281816945466302 ] ]
+OP:  Olomouc - Hejčín C-Static [ [ 0, 3, 16.289488768230484 ] ]
+OP:  Blovice NaCl [ [ 0, 0, 22.917709619289095 ] ]
+OP:  Chlumčany NaCl [ [ 0, 0, 11.721971551551034 ] ]
+OP:  Hradiště Pivofone [ [ 0, 1, 14.002406097507263 ] ]
+OP:  Olomouc - Nedvězí NaCl [ [ 0, 0, 29.068496141834622 ] ]
+OP:  Bystročice Pivofone [ [ 0, 1, 14.958546637248439 ] ]
+OP:  Věchnov Pivofone [ [ 0, 1, 11.005726213419566 ] ]
+OP:  Žďár nad Sázavou - Hl.N. NaCl [ [ 0, 0, 17.597055156600796 ] ]
+OP:  Přibyslav NaCl [ [ 0, 0, 15.789122034136794 ] ]
+OP:  Třešť NaCl [ [ 0, 0, 29.56494378539334 ] ]
+OP:  Třešť Pivofone [ [ 0, 0, 29.56494378539334 ], [ 0, 1, 15.626685383824354 ] ]
+OP:  Třešť C-Static [
+  [ 0, 0, 29.56494378539334 ],
+  [ 0, 1, 15.626685383824354 ],
+  [ 0, 3, 13.968930772883414 ]
+]
+OP:  České Budějovice - Čtyři Dvory NaCl [ [ 0, 0, 31.18866102201806 ] ]
+OP:  České Budějovice - Čtyři Dvory Pivofone [ [ 0, 0, 31.18866102201806 ], [ 0, 1, 17.04343896714154 ] ]
+OP:  Liteň - Město Pivofone [ [ 0, 1, 7.374873549586163 ] ]
+OP:  Moravské Budějovice - Hl.N. NaCl [ [ 0, 0, 15.777971511748605 ] ]
+OP:  Mojžíř Pivofone [ [ 0, 1, 19.10881356292974 ] ]
+OP:  Ústí nad Labem - Březno C-Static [ [ 0, 3, 14.824564629158854 ] ]
+OP:  Hořice NaCl [ [ 0, 0, 31.417755168785888 ] ]
+OP:  Vysoká Pec Pivofone [ [ 0, 1, 10.371856055937531 ] ]
+OP:  Karlovy Vary - Stará Role C-Static [ [ 0, 3, 11.970360981058874 ] ]
+OP:  Chodov NaCl [ [ 0, 0, 16.89598810128348 ] ]
+OP:  Osíčko Ospik [ [ 0, 4, 13.301171470432035 ] ]
+OP:  Bystřice pod Hostýnem - Hl.N. NaCl [ [ 0, 0, 23.8629669999041 ] ]
+OP:  Bystřice pod Hostýnem - Hl.N. Pivofone [ [ 0, 0, 23.8629669999041 ], [ 0, 1, 22.21067389935131 ] ]
+OP:  Praha - Černošice NaCl [ [ 0, 0, 26.615693288471256 ] ]
+OP:  Praha - Hlubočepy Pivofone [ [ 0, 1, 25.246328954245985 ] ]
+OP:  Korunní NaCl [ [ 0, 0, 21.412834122113825 ] ]
+OP:  Praha - Zličín Pivofone [ [ 0, 1, 27.079565017109935 ] ]
+OP:  Praha - Zličín C-Static [ [ 0, 1, 27.079565017109935 ], [ 0, 3, 10.19140165637131 ] ]
+OP:  Uherský Brod Pomelo [ [ 0, 2, 20.852457609795568 ] ]
+OP:  Pomněnice NaCl [ [ 0, 0, 21.600936720467054 ] ]
+OP:  Kostelec nad Černými Lesy Pivofone [ [ 0, 1, 16.697076058998128 ] ]
+OP:  Orlické Podhůří Pivofone [ [ 0, 1, 15.930072068951795 ] ]
+OP:  Lanškroun - Hl.N. NaCl [ [ 0, 0, 30.517727753153554 ] ]
+OP:  Bzenec Ospik [ [ 0, 4, 13.314542615782626 ] ]
+OP:  Zlín - Kudlov Pomelo [ [ 0, 2, 16.789826381068682 ] ]
+OP:  Tvržice NaCl [ [ 0, 0, 18.167614798496764 ] ]
+OP:  Velký Újezd Pivofone [ [ 0, 1, 11.597607928765209 ] ]
+OP:  Říčany NaCl [ [ 0, 0, 13.012761916926188 ] ]
+OP:  Zálezly Ospik [ [ 0, 4, 11.05753227842674 ] ]
+OP:  Rohov NaCl [ [ 0, 0, 13.939746617015684 ] ]
+OP:  Třebom Ospik [ [ 0, 4, 13.738646191305039 ] ]
+OP:  Horažďovice - Hl.N. NaCl [ [ 0, 0, 22.04833802994901 ] ]
+OP:  Kdyně Ospik [ [ 0, 4, 10.424718375822431 ] ]
+OP:  Nýrsko Ospik [ [ 0, 4, 10.086997932862786 ] ]
+OP:  Břeclav - Lanžhot NaCl [ [ 0, 0, 21.06841083808109 ] ]
+OP:  Odlezly NaCl [ [ 0, 0, 20.271939988743796 ] ]
+OP:  Pastuchovice Pivofone [ [ 0, 1, 9.45013937182983 ] ]
+OP:  Vroutek NaCl [ [ 0, 0, 20.40740577431155 ] ]
+OP:  Vroutek Pivofone [ [ 0, 0, 20.40740577431155 ], [ 0, 1, 20.588518791383414 ] ]
+OP:  Plzeň - Vinice Pivofone [ [ 0, 1, 16.518626123712437 ] ]
+OP:  Kotvrdovice Pivofone [ [ 0, 1, 11.829656399578282 ] ]
+OP:  Vimperk Ospik [ [ 0, 4, 12.57998236693537 ] ]
+OP:  Semily - Hl.N. Ospik [ [ 0, 4, 10.003176824949852 ] ]
+OP:  Praha - Holešovice NaCl [ [ 0, 0, 23.016615734565832 ] ]
+OP:  Praha - Holešovice C-Static [ [ 0, 0, 23.016615734565832 ], [ 0, 3, 14.726781028083217 ] ]
+OP:  Mělice Pivofone [ [ 0, 1, 13.928737319765748 ] ]
+OP:  Skuteč NaCl [ [ 0, 0, 21.09811172339225 ] ]
+OP:  Hulín NaCl [ [ 0, 0, 15.537748707493833 ] ]
+OP:  Chropyně Pivofone [ [ 0, 1, 13.045080929440022 ] ]
+OP:  Tovačov NaCl [ [ 0, 0, 33.152792105525386 ] ]
+OP:  Tovačov Pivofone [ [ 0, 0, 33.152792105525386 ], [ 0, 1, 13.695339671442655 ] ]
+OP:  Ivanovice na Hané Pivofone [ [ 0, 1, 20.212489080170553 ] ]
+OP:  Čadca - Hl.S. Ospik [ [ 0, 4, 13.458246730493862 ] ]
+OP:  Karviná - Hl.N. NaCl [ [ 0, 0, 23.914815460460115 ] ]
+OP:  Nové Strašecí NaCl [ [ 0, 0, 22.66928827477158 ] ]
+OP:  Slaný - Hl.N. Pivofone [ [ 0, 1, 21.661240684913075 ] ]
+OP:  Libochovice - Hl.N. NaCl [ [ 0, 0, 18.92775473035323 ] ]
+OP:  Sezemice NaCl [ [ 0, 0, 25.658037792202954 ] ]
+OP:  Třebechovice pod Orebem C-Static [ [ 0, 3, 10.230488269407413 ] ]
+OP:  Budišov nad Budišovkou Ospik [ [ 0, 4, 15.93510050270339 ] ]
+OP:  Nové Město nad Metují Ospik [ [ 0, 4, 11.259931126956303 ] ]
+OP:  Olomouc - Svatý Kopeček NaCl [ [ 0, 0, 24.284856374265342 ] ]
+OP:  Bohuňovice C-Static [ [ 0, 3, 5.390639481499902 ] ]
+OP:  Fojtka C-Static [ [ 0, 3, 9.431302862795954 ] ]
+OP:  Červená Řečice - Město NaCl [ [ 0, 0, 16.617242195358866 ] ]
+OP:  Chrudim - Slatiňany Pivofone [ [ 0, 1, 19.95280789620309 ] ]
+OP:  Čáslav - Filipov NaCl [ [ 0, 0, 27.226005165445468 ] ]
+OP:  Dačice Pivofone [ [ 0, 1, 15.635247191784899 ] ]
+OP:  Kašperské Hory NaCl [ [ 0, 0, 25.227369680643445 ] ]
+OP:  Pardubice - Pardubičky NaCl [ [ 0, 0, 43.52074722023935 ] ]
+OP:  Pardubice - Pardubičky Pivofone [ [ 0, 0, 43.52074722023935 ], [ 0, 1, 30.4895223048201 ] ]
+OP:  Pardubice - Pardubičky C-Static [
+  [ 0, 0, 43.52074722023935 ],
+  [ 0, 1, 30.4895223048201 ],
+  [ 0, 3, 15.931402590961405 ]
+]
+OP:  Pardubice - Semtín NaCl [ [ 0, 0, 43.21246604136304 ] ]
+OP:  Pardubice - Semtín C-Static [ [ 0, 0, 43.21246604136304 ], [ 0, 3, 12.889793276836757 ] ]
+OP:  Pardubice - Polabiny NaCl [ [ 0, 0, 34.896282556737134 ] ]
+OP:  Pardubice - Polabiny Pivofone [ [ 0, 0, 34.896282556737134 ], [ 0, 1, 27.33520926166989 ] ]
+OP:  Pardubice - Rosice Pivofone [ [ 0, 1, 20.107903784806695 ] ]
+OP:  Podbořany - Krásný Dvůr Ospik [ [ 0, 4, 13.493260035022349 ] ]
+OP:  Praha - Vinohrady NaCl [ [ 0, 0, 43.496399511988564 ] ]
+OP:  Praha - Vinohrady Pivofone [ [ 0, 0, 43.496399511988564 ], [ 0, 1, 30.5922291906233 ] ]
+OP:  Praha - Vinohrady C-Static [
+  [ 0, 0, 43.496399511988564 ],
+  [ 0, 1, 30.5922291906233 ],
+  [ 0, 3, 19.248357937214763 ]
+]
+OP:  Praha - Veleslavín Pivofone [ [ 0, 1, 21.061625449372585 ] ]
+OP:  Praha - Řeporyje Pivofone [ [ 0, 1, 21.079453160868816 ] ]
+OP:  Kolín - Veltruby NaCl [ [ 0, 0, 39.13339556425124 ] ]
+OP:  Kolín - Veltruby Pivofone [ [ 0, 0, 39.13339556425124 ], [ 0, 1, 24.01960514517923 ] ]
+OP:  Vysoké Mýto - Domoradice NaCl [ [ 0, 0, 39.43549845947249 ] ]
+OP:  Vysoké Mýto - Zámrsk NaCl [ [ 0, 0, 25.93647967147888 ] ]
+OP:  Vysoké Mýto - Sedlec Pivofone [ [ 0, 1, 16.43763393462344 ] ]
+OP:  Ostrava - Svinov Pivofone [ [ 0, 1, 15.194368169486681 ] ]
+OP:  Ostrava - Svinov Pomelo [ [ 0, 1, 15.194368169486681 ], [ 0, 2, 26.018624679736703 ] ]
+OP:  Ostrava - Přívoz NaCl [ [ 0, 0, 25.826044417421176 ] ]
+OP:  Uherské Hradiště - Míkovice NaCl [ [ 0, 0, 26.34690479110542 ] ]
+OP:  Zahnašovice C-Static [ [ 0, 3, 9.487843069687546 ] ]
+OP:  Ústí nad Labem - Střekov C-Static [ [ 0, 3, 11.104360109422577 ] ]
+OP:  Opatovec Pivofone [ [ 0, 1, 17.97625336637191 ] ]
+OP:  Olomouc - Nový Svět NaCl [ [ 0, 0, 25.258686156725812 ] ]
+OP:  Jihlava - Velký Beranov NaCl [ [ 0, 0, 22.47749864486933 ] ]
+OP:  Jihlava - Velký Beranov Pivofone [ [ 0, 0, 22.47749864486933 ], [ 0, 1, 18.69651368172531 ] ]
+OP:  Jihlava - Velký Beranov C-Static [
+  [ 0, 0, 22.47749864486933 ],
+  [ 0, 1, 18.69651368172531 ],
+  [ 0, 3, 11.809966236489448 ]
+]
+OP:  Jihlava - Sasov Pivofone [ [ 0, 1, 15.123897617536729 ] ]
+OP:  České Budějovice - Roudné Pivofone [ [ 0, 1, 15.213398390595133 ] ]
+OP:  České Budějovice - Roudné C-Static [ [ 0, 1, 15.213398390595133 ], [ 0, 3, 13.352650259645099 ] ]
+OP:  Karlovy Vary - Doubí NaCl [ [ 0, 0, 28.262164722823293 ] ]
+OP:  Sokolov - Dolní Rychnov Ospik [ [ 0, 4, 8.592709152090029 ] ]
+OP:  Bečov nad Teplou C-Static [ [ 0, 3, 13.188521354698608 ] ]
+OP:  Nové Zvolání Ospik [ [ 0, 4, 9.26793702164984 ] ]
+OP:  Brno - Žebětín NaCl [ [ 0, 0, 32.20868053098273 ] ]
+OP:  Brno - Žebětín Pivofone [ [ 0, 0, 32.20868053098273 ], [ 0, 1, 15.403285956963144 ] ]
+OP:  Brno - Maloměřice NaCl [ [ 0, 0, 28.41187717014601 ] ]
+OP:  Ochoz u Brna C-Static [ [ 0, 3, 9.005460948764043 ] ]
+OP:  Nový Dvůr Pivofone [ [ 0, 1, 14.032859964331479 ] ]
+OP:  Benešov - Václavice NaCl [ [ 0, 0, 44.279553401157955 ] ]
+OP:  Týnec nad Sázavou NaCl [ [ 0, 0, 26.43888474443221 ] ]
+OP:  Jílové u Prahy NaCl [ [ 0, 0, 20.654316997228527 ] ]
+OP:  Jílové u Prahy Pivofone [ [ 0, 0, 20.654316997228527 ], [ 0, 1, 26.537737404178987 ] ]
+OP:  Ivančice NaCl [ [ 0, 0, 24.16575288542335 ] ]
+OP:  Oslavany C-Static [ [ 0, 3, 9.004088674190003 ] ]
+OP:  Rosice - Tetčice Pivofone [ [ 0, 1, 16.73086034052496 ] ]
+OP:  Lednice NaCl [ [ 0, 0, 28.69797408977651 ] ]
+OP:  Lednice Pivofone [ [ 0, 0, 28.69797408977651 ], [ 0, 1, 15.722824392894633 ] ]
+OP:  Hodonín - Pánov NaCl [ [ 0, 0, 17.707674011640623 ] ]
+OP:  Hodonín - Dubňany NaCl [ [ 0, 0, 24.875911508085938 ] ]
+OP:  Mladá Vožice NaCl [ [ 0, 0, 30.050596939912918 ] ]
+OP:  Mladá Vožice Pivofone [ [ 0, 0, 30.050596939912918 ], [ 0, 1, 18.54762399363492 ] ]
+OP:  Nová Bystřice Pivofone [ [ 0, 1, 17.378813021524287 ] ]
+OP:  Trhové Sviny - Hl.N. C-Static [ [ 0, 3, 12.070417642540717 ] ]
+OP:  Písek - Semice Pivofone [ [ 0, 1, 16.660513004308534 ] ]
+OP:  Týn nad Vltavou Pivofone [ [ 0, 1, 16.168789124514355 ] ]
+OP:  Pelhřimov - Strměchy Ospik [ [ 0, 4, 10.402060312771676 ] ]
+OP:  České Budějovice - Nové Vráto Pivofone [ [ 0, 1, 18.47673735318393 ] ]
+OP:  Radomyšl Pivofone [ [ 0, 1, 11.711190589866781 ] ]
+OP:  Frýdek Místek - Baška NaCl [ [ 0, 0, 13.784082377100514 ] ]
+OP:  Frýdek Místek - Baška Pomelo [ [ 0, 0, 13.784082377100514 ], [ 0, 2, 14.457107854841801 ] ]
+OP:  Rychvald Pomelo [ [ 0, 2, 12.347429937564376 ] ]
+OP:  Polanka nad Odrou Pomelo [ [ 0, 2, 11.543461688114823 ] ]
+OP:  Šenov u Nového Jičína NaCl [ [ 0, 0, 21.759001193339515 ] ]
+OP:  Opava - Raduň Pomelo [ [ 0, 2, 27.131627280337895 ] ]
+OP:  Vřesina C-Static [ [ 0, 3, 15.343857359633807 ] ]
+OP:  Horní Lhota Ospik [ [ 0, 4, 12.752200885589485 ] ]
+OP:  Přerov - Újezdec NaCl [ [ 0, 0, 30.065366368103135 ] ]
+OP:  Brno - Kohoutovice NaCl [ [ 0, 0, 34.83960173917639 ] ]
+OP:  Brno - Lískovec NaCl [ [ 0, 0, 25.033071949134587 ] ]
+OP:  Brno - Lískovec Pivofone [ [ 0, 0, 25.033071949134587 ], [ 0, 1, 12.167994383769711 ] ]
+OP:  Habrovany NaCl [ [ 0, 0, 19.586790328910798 ] ]
+OP:  Olomouc - Letiště Pivofone [ [ 0, 1, 19.31184046799296 ] ]
+OP:  Olomouc - Letiště C-Static [ [ 0, 1, 19.31184046799296 ], [ 0, 3, 10.664285877741857 ] ]
+OP:  Prostějov - Držovice NaCl [ [ 0, 0, 29.309920042986175 ] ]
+OP:  Považská Bystrica - Hl.S. NaCl [ [ 0, 0, 17.782926266186827 ] ]
+OP:  Malacky - Hl.S. NaCl [ [ 0, 0, 14.556035429379218 ] ]
+OP:  Bratislava - Hl.S. Pivofone [ [ 0, 1, 27.26401745261848 ] ]
+OP:  Bratislava - Hl.S. Pomelo [ [ 0, 1, 27.26401745261848 ], [ 0, 2, 15.777517731353143 ] ]
+OP:  Trenčín - Hl.S. NaCl [ [ 0, 0, 35.200840618456695 ] ]
+OP:  Trenčín - Hl.S. Pomelo [ [ 0, 0, 35.200840618456695 ], [ 0, 2, 15.880260420449048 ] ]
+OP:  Dubnica nad Váhom Pomelo [ [ 0, 2, 16.46376240293674 ] ]
+OP:  Ilava - Hl.S. NaCl [ [ 0, 0, 32.077933182666456 ] ]
+OP:  Žilina - Hl.S. Pivofone [ [ 0, 1, 15.78813141262984 ] ]
+OP:  Bytča - Hl.S. NaCl [ [ 0, 0, 15.966147862961193 ] ]
+OP:  Luhačovice Pivofone [ [ 0, 1, 13.304456769919124 ] ]
+OP:  Moravské Lieskové NaCl [ [ 0, 0, 28.406628600374216 ] ]
+OP:  Gbely - Hl.S. NaCl [ [ 0, 0, 16.02821884036701 ] ]
+OP:  Svitavy - Vendolí Pivofone [ [ 0, 1, 31.9553313708792 ] ]
+OP:  Nitra - Hl.S. NaCl [ [ 0, 0, 30.833599788905747 ] ]
+OP:  Nitra - Hl.S. C-Static [ [ 0, 0, 30.833599788905747 ], [ 0, 3, 10.091150300571933 ] ]
+OP:  Banská Štiavnica - Hl.S. Pomelo [ [ 0, 2, 19.07691451558365 ] ]
+OP:  Javorník NaCl [ [ 0, 0, 20.89221301818099 ] ]
+OP:  Vitčice NaCl [ [ 0, 0, 19.739496361483468 ] ]
+OP:  Vitčice Pivofone [ [ 0, 0, 19.739496361483468 ], [ 0, 1, 10.431627882551604 ] ]
+OP:  Dunajská Lužná NaCl [ [ 0, 0, 23.06796889247687 ] ]
+OP:  Vysoké Mýto - Rychlodráha Pivofone [ [ 0, 1, 18.03545792253419 ] ]
+OP:  Košice - Hl.S. Pomelo [ [ 0, 2, 16.789753284694658 ] ]
+OP:  Košice - Hl.S. C-Static [ [ 0, 2, 16.789753284694658 ], [ 0, 3, 15.630055998649311 ] ]
+OP:  Poprad - Hl.S. Pomelo [ [ 0, 2, 18.32286315460914 ] ]
+OP:  Spišská Nová Ves Pomelo [ [ 0, 2, 12.534998687744574 ] ]
+OP:  Ružomberok - Hl.S. NaCl [ [ 0, 0, 24.209814851880616 ] ]
+OP:  Rožňava - Hl.S. NaCl [ [ 0, 0, 28.373874303650982 ] ]
+OP:  Šurany - Hl.S. NaCl [ [ 0, 0, 26.961361258574694 ] ]
+OP:  Česká Cikánka NaCl [ [ 0, 0, 22.85218486109791 ] ]
+OP:  Polička - Oldřiš NaCl [ [ 0, 0, 17.892878081085133 ] ]
+OP:  Nové Hrady Pivofone [ [ 0, 1, 20.589550118565622 ] ]
+OP:  Dolní Slověnice NaCl [ [ 0, 0, 18.706314011627903 ] ]
+OP:  Lomnice nad Lužnicí NaCl [ [ 0, 0, 20.737518804137764 ] ]
+OP:  Rožmberk Pivofone [ [ 0, 1, 9.107714940942126 ] ]
+OP:  Pístina NaCl [ [ 0, 0, 16.878943177741984 ] ]
+OP:  Dvůr Králové nad Labem Ospik [ [ 0, 4, 8.881825942212533 ] ]
+OP:  Harrachov Ospik [ [ 0, 4, 10.116181206461196 ] ]
+OP:  Komárovice C-Static [ [ 0, 3, 9.104551125561542 ] ]
+OP:  Miroslav NaCl [ [ 0, 0, 20.468519002481976 ] ]
+OP:  Praha - Újezd u Průhonic NaCl [ [ 0, 0, 17.683946248395493 ] ]
+OP:  Prievidza - Hl.S. Pomelo [ [ 0, 2, 15.923372655440545 ] ]
+OP:  Turčianske Teplice - Hl.S. Ospik [ [ 0, 4, 11.153485665791457 ] ]
+OP:  Bánovce nad Bebravou Pomelo [ [ 0, 2, 21.576849819042767 ] ]
+OP:  Šala - Hl.S. NaCl [ [ 0, 0, 18.358044697113474 ] ]
+OP:  Nitra - Krškany Pomelo [ [ 0, 2, 9.34533916396322 ] ]
+OP:  Pezinok Pomelo [ [ 0, 2, 21.627384265039453 ] ]
+OP:  Svaty Jur NaCl [ [ 0, 0, 19.908144087040966 ] ]
+OP:  Čachtice Pomelo [ [ 0, 2, 15.76087608347553 ] ]
+OP:  Bratislava - Podhradie Pivofone [ [ 0, 1, 9.274205789054628 ] ]
+OP:  Rovinka Pivofone [ [ 0, 1, 12.80568493848486 ] ]
+OP:  Nové Zámky - Šurany-Rychlodráha Pomelo [ [ 0, 2, 16.80860345496349 ] ]
+OP:  Krupina Ospik [ [ 0, 4, 14.226722178329073 ] ]
+OP:  Dobrá Niva Pomelo [ [ 0, 2, 15.654250258892716 ] ]
+OP:  Ladzany Ospik [ [ 0, 4, 14.361272280500309 ] ]
+OP:  Gabčíkovo - Hl.S. Pomelo [ [ 0, 2, 19.587185643787386 ] ]
+OP:  Pernink C-Static [ [ 0, 3, 15.909742486807373 ] ]
+OP:  Drmaly Ospik [ [ 0, 4, 7.425143334355028 ] ]
+OP:  Klášterec nad Ohří - Ciboušov NaCl [ [ 0, 0, 13.658809424581836 ] ]
+OP:  Nová Víska NaCl [ [ 0, 0, 17.40464695226728 ] ]
+OP:  Chlumec NaCl [ [ 0, 0, 20.728170832126004 ] ]
+OP:  Stradov Pivofone [ [ 0, 1, 15.665370101046523 ] ]
+OP:  Nová Baňa - Hl.S. NaCl [ [ 0, 0, 19.873743241657223 ] ]
+OP:  Nová Dubnica Pivofone [ [ 0, 1, 14.72700236218819 ] ]
+OP:  Rybníky NaCl [ [ 0, 0, 15.577877292137268 ] ]
+OP:  Vlachovice Pomelo [ [ 0, 2, 8.163576127578208 ] ]
+OP:  Divnice NaCl [ [ 0, 0, 11.580163066390908 ] ]
+OP:  Zázrivá NaCl [ [ 0, 0, 25.842739449734914 ] ]
+OP:  Praha - Kunratice Pivofone [ [ 0, 1, 19.339290369149154 ] ]
+OP:  Praha - Kunratice C-Static [ [ 0, 1, 19.339290369149154 ], [ 0, 3, 15.41755598135691 ] ]
+OP:  Praha - Baně C-Static [ [ 0, 3, 10.897018988271157 ] ]
+OP:  Praha - Čakovice C-Static [ [ 0, 3, 14.443970391660942 ] ]
+OP:  Neratovice - Chrást Pivofone [ [ 0, 1, 18.80339548879886 ] ]
+OP:  Byšice NaCl [ [ 0, 0, 29.414886117411086 ] ]
+OP:  Praha - Kopanina Pivofone [ [ 0, 1, 21.114891685343913 ] ]
+OP:  Praha - Kopanina C-Static [ [ 0, 1, 21.114891685343913 ], [ 0, 3, 14.51222728380799 ] ]
+OP:  Velké Přílepy Pivofone [ [ 0, 1, 18.861496207519355 ] ]
+OP:  Lichoceves NaCl [ [ 0, 0, 20.00317479405357 ] ]
+OP:  Lichoceves C-Static [ [ 0, 0, 20.00317479405357 ], [ 0, 3, 10.99597991663554 ] ]
+OP:  Velvary C-Static [ [ 0, 3, 13.162094648672936 ] ]
+OP:  Peruc NaCl [ [ 0, 0, 19.08021258604802 ] ]
+OP:  Tursko Pivofone [ [ 0, 1, 13.478652125808077 ] ]
+OP:  Otvovice C-Static [ [ 0, 3, 10.344461350476196 ] ]
+OP:  Vrbno NaCl [ [ 0, 0, 20.690971627359755 ] ]
+OP:  Mstětice Pivofone [ [ 0, 1, 12.356525767892494 ] ]
+OP:  Praha - Radotín NaCl [ [ 0, 0, 28.07452303831173 ] ]
+OP:  Batizovce NaCl [ [ 0, 0, 15.405966799570718 ] ]
+OP:  Kamenický Šenov NaCl [ [ 0, 0, 21.172937368011205 ] ]
+OP:  Praha - Koloděje NaCl [ [ 0, 0, 30.550534615547605 ] ]
+OP:  Praha - Koloděje Pivofone [ [ 0, 0, 30.550534615547605 ], [ 0, 1, 21.76496018978909 ] ]
+OP:  Praha - Koloděje C-Static [
+  [ 0, 0, 30.550534615547605 ],
+  [ 0, 1, 21.76496018978909 ],
+  [ 0, 3, 21.14194871725818 ]
+]
+OP:  Prešov - Hl.S. NaCl [ [ 0, 0, 21.607551111778466 ] ]
+OP:  Prešov - Hl.S. C-Static [ [ 0, 0, 21.607551111778466 ], [ 0, 3, 11.73639067923568 ] ]
+OP:  Humenné - Hl.S. NaCl [ [ 0, 0, 16.47559802330343 ] ]
+OP:  Sečovce - Pišky NaCl [ [ 0, 0, 28.222899627610865 ] ]
+OP:  Stropkov Ospik [ [ 0, 4, 14.556127470688448 ] ]
+OP:  Prešov - Šidlovec NaCl [ [ 0, 0, 22.130165080548448 ] ]
+OP:  Prešov - Šidlovec C-Static [ [ 0, 0, 22.130165080548448 ], [ 0, 3, 14.154680001610252 ] ]
+OP:  Prešov - Malý Šariš C-Static [ [ 0, 3, 15.721320597907487 ] ]
+OP:  Brno - Tuřany Letiště Pivofone [ [ 0, 1, 9.704453231912085 ] ]
+OP:  Kuřim - Podlesí Pivofone [ [ 0, 1, 14.586299242739951 ] ]
+OP:  JInačovice Pivofone [ [ 0, 1, 8.932026772299299 ] ]
+OP:  Brno - Chrlice NaCl [ [ 0, 0, 27.7277902582418 ] ]
+OP:  Brno - Holásky Pivofone [ [ 0, 1, 11.108479476491931 ] ]
+OP:  Ostrava - Výškovice Pomelo [ [ 0, 2, 12.903691261734979 ] ]
+OP:  Ostrava - Sovinec NaCl [ [ 0, 0, 21.84980756831625 ] ]
+OP:  Dolní Benešov Pomelo [ [ 0, 2, 20.24319696233897 ] ]
+OP:  Ostrava - Petřkovice Pomelo [ [ 0, 2, 16.587339492189898 ] ]
+OP:  Hradec Králové - Březhrad NaCl [ [ 0, 0, 22.423105215826297 ] ]
+OP:  Pardubice - Svítkov NaCl [ [ 0, 0, 19.65948798111327 ] ]
+OP:  Pardubice - Ohrazenice NaCl [ [ 0, 0, 34.27644096303459 ] ]
+OP:  Pardubice - Ohrazenice Pivofone [ [ 0, 0, 34.27644096303459 ], [ 0, 1, 25.12253724556739 ] ]
+OP:  Pardubice - Ohrazenice C-Static [
+  [ 0, 0, 34.27644096303459 ],
+  [ 0, 1, 25.12253724556739 ],
+  [ 0, 3, 13.04409184769283 ]
+]
+OP:  Srnojedy Pivofone [ [ 0, 1, 8.650019005187104 ] ]
+OP:  Černá za Bory Pivofone [ [ 0, 1, 11.988832202193194 ] ]
+OP:  [HU] Ózd - pu. Pomelo [ [ 0, 2, 11.213006817608402 ] ]
+OP:  Figa NaCl [ [ 0, 0, 15.665511744519245 ] ]
+OP:  Slovenská Lupča NaCl [ [ 0, 0, 14.616795325344118 ] ]
+OP:  Košice - Myslava C-Static [ [ 0, 3, 7.5872844476780115 ] ]
+OP:  Košice - Šebastovce Pomelo [ [ 0, 2, 15.15690244485723 ] ]
+OP:  Košice - Letiště C-Static [ [ 0, 3, 10.28269589309295 ] ]
+OP:  Košice - Terasa C-Static [ [ 0, 3, 13.415904395512094 ] ]
+OP:  Rudník NaCl [ [ 0, 0, 18.805173911153616 ] ]
+OP:  Rudník Pomelo [ [ 0, 0, 18.805173911153616 ], [ 0, 2, 11.154186393306853 ] ]
+OP:  Košická Polianka NaCl [ [ 0, 0, 12.435143868709758 ] ]
+OP:  Vyšná Hutka NaCl [ [ 0, 0, 22.96188104626147 ] ]
+OP:  Liberec - Radčice NaCl [ [ 0, 0, 18.878871652390565 ] ]
+OP:  Liberec - Františkov C-Static [ [ 0, 3, 5.333076409685457 ] ]
+OP:  Liberec - Hl.N. NaCl [ [ 0, 0, 28.39430143924086 ] ]
+OP:  Liberec - Hl.N. C-Static [ [ 0, 0, 28.39430143924086 ], [ 0, 3, 12.627790584547995 ] ]
+OP:  Dubecko Ospik [ [ 0, 4, 9.781777421740767 ] ]
+OP:  Újezd pod Troskami NaCl [ [ 0, 0, 16.208763502271818 ] ]
+OP:  Olomouc - Chomoutov NaCl [ [ 0, 0, 35.4590403516877 ] ]
+OP:  Olomouc - Nové Sady Pivofone [ [ 0, 1, 14.779752246684852 ] ]
+OP:  Hlubočky Pivofone [ [ 0, 1, 10.178063176525688 ] ]
+OP:  Žeravice NaCl [ [ 0, 0, 17.91149054715234 ] ]
+OP:  Týnišťko Pivofone [ [ 0, 1, 10.71789683125619 ] ]
+OP:  Plzeň - Doubravka C-Static [ [ 0, 3, 14.361968945745671 ] ]
+OP:  Radnice NaCl [ [ 0, 0, 27.683894271379973 ] ]
+OP:  Stupno NaCl [ [ 0, 0, 37.65956249079932 ] ]
+OP:  Žichlice NaCl [ [ 0, 0, 11.295605332086826 ] ]
+OP:  Zdice NaCl [ [ 0, 0, 16.56033761448969 ] ]
+OP:  Unhošť Pivofone [ [ 0, 1, 15.318468364199765 ] ]
+OP:  Plesná Pivofone [ [ 0, 1, 14.248367186530714 ] ]
+OP:  Bojnice - Centrum Pomelo [ [ 0, 2, 21.526260393280143 ] ]
+OP:  Turčianske Teplice - Horská Šťubna Ospik [ [ 0, 4, 16.048932032323222 ] ]
+OP:  Zvolen - Moťová NaCl [ [ 0, 0, 32.5566531040213 ] ]
+OP:  Detva - Sídlisko Ospik [ [ 0, 4, 14.950555357112618 ] ]
+OP:  Slovenská Ves Pomelo [ [ 0, 2, 14.851354817295654 ] ]
+OP:  Nová Ves u Brlohu Ospik [ [ 0, 4, 12.584739159263245 ] ]
+OP:  Jiřietín pod Jedlovou NaCl [ [ 0, 0, 22.526623868546807 ] ]
+OP:  Benešov nad Ploučnicí Ospik [ [ 0, 4, 22.135322925536965 ] ]
+OP:  Nemce Pomelo [ [ 0, 2, 11.090693328208383 ] ]
+OP:  Břestek NaCl [ [ 0, 0, 13.719885355312861 ] ]
+OP:  Bratislava - Jurajov Dvor NaCl [ [ 0, 0, 23.9170092393768 ] ]
+OP:  Báč Pomelo [ [ 0, 2, 8.109840451391563 ] ]
+OP:  Bernolákovo - Čerešňová NaCl [ [ 0, 0, 14.229535114502301 ] ]
+OP:  Hurbanova Ves Pomelo [ [ 0, 2, 12.684393305330541 ] ]
+OP:  Libušín Pivofone [ [ 0, 1, 13.96039636220155 ] ]
+OP:  Nučice Pivofone [ [ 0, 1, 11.719929612923842 ] ]
+OP:  Praha - Lochkov Pivofone [ [ 0, 1, 9.765700706933073 ] ]
+OP:  Liberec - Špičák NaCl [ [ 0, 0, 23.801761923422692 ] ]
+OP:  Varnsdorf - Hl.N. Ospik [ [ 0, 4, 9.772470335494607 ] ]
+OP:  Dolní Falknov Ospik [ [ 0, 4, 6.891442616709569 ] ]
+OP:  Vysoké Veselí NaCl [ [ 0, 0, 20.305400749715904 ] ]
+OP:  Vitiněves NaCl [ [ 0, 0, 33.12580461066794 ] ]
+OP:  Vitiněves Ospik [ [ 0, 0, 33.12580461066794 ], [ 0, 4, 20.311724764172784 ] ]
+OP:  Popovice NaCl [ [ 0, 0, 20.023754198750755 ] ]
+OP:  Marcelová NaCl [ [ 0, 0, 19.51324729736267 ] ]
+OP:  Žirovnice Pivofone [ [ 0, 1, 10.15914882599623 ] ]
+OP:  Česká Třebová - Rybník Pivofone [ [ 0, 1, 13.965071718414817 ] ]
+OP:  Proseč Pivofone [ [ 0, 1, 12.831133230205618 ] ]
+OP:  Lipná NaCl [ [ 0, 0, 11.83779503809043 ] ]
+OP:  Vladměřice NaCl [ [ 0, 0, 18.83088080558798 ] ]
+OP:  Humenné - Kochanovce Ospik [ [ 0, 4, 14.056748454161283 ] ]
+OP:  Koškovce Pomelo [ [ 0, 2, 22.270219619384875 ] ]
+OP:  Zlaté Pomelo [ [ 0, 2, 12.159982733394479 ] ]
+OP:  Granč - Petrovce Ospik [ [ 0, 4, 9.38706923833628 ] ]
+OP:  Banská Bystrica - Kremnička C-Static [ [ 0, 3, 8.75587577369864 ] ]
+OP:  Tekovské Lužany NaCl [ [ 0, 0, 23.97994222353594 ] ]
+OP:  [PL] Głubczyce NaCl [ [ 0, 0, 22.23716739704152 ] ]
+OP:  [PL] Głubczyce Pomelo [ [ 0, 0, 22.23716739704152 ], [ 0, 2, 11.89740555081243 ] ]
+OP:  Slezské Rudoltice Ospik [ [ 0, 4, 18.99262083128868 ] ]
+OP:  Markvartice NaCl [ [ 0, 0, 18.3578188474663 ] ]
+OP:  Hladov Pivofone [ [ 0, 1, 13.624218683477597 ] ]
+OP:  Litultovice Pomelo [ [ 0, 2, 12.866335849320235 ] ]
+OP:  Brumovice Pomelo [ [ 0, 2, 13.545352125444357 ] ]
+OP:  Skrochovice Ospik [ [ 0, 4, 8.165038738180241 ] ]
+OP:  Pocheň NaCl [ [ 0, 0, 27.43925724406833 ] ]
+OP:  Krnov - Kostelec Ospik [ [ 0, 4, 17.268043999375795 ] ]
+OP:  Davle NaCl [ [ 0, 0, 23.70439879526433 ] ]
+OP:  Zibohlavy NaCl [ [ 0, 0, 10.578960834413065 ] ]
+OP:  Nebovidy - Kolínsko-Kutnohorské Meziměstí Pivofone [ [ 0, 1, 28.49137998965198 ] ]
+OP:  Starý Kolín Pivofone [ [ 0, 1, 23.974658515730706 ] ]
+OP:  Kolín - Štítary NaCl [ [ 0, 0, 46.528533664668444 ] ]
+OP:  Kolín - Štítary Pivofone [ [ 0, 0, 46.528533664668444 ], [ 0, 1, 19.572278495530195 ] ]
+OP:  Žilina - Vlčince Pivofone [ [ 0, 1, 11.281481259238475 ] ]
+OP:  Žilina - Vlčince Pomelo [ [ 0, 1, 11.281481259238475 ], [ 0, 2, 20.736243265161846 ] ]
+OP:  Žilina - Vlčince C-Static [
+  [ 0, 1, 11.281481259238475 ],
+  [ 0, 2, 20.736243265161846 ],
+  [ 0, 3, 11.321531511211417 ]
+]
+OP:  Čoltovo Pomelo [ [ 0, 2, 8.979275682069295 ] ]
+OP:  Chobot NaCl [ [ 0, 0, 11.081937313932373 ] ]
+OP:  Chobot Pivofone [ [ 0, 0, 11.081937313932373 ], [ 0, 1, 11.236196829188732 ] ]
+OP:  Sochovice NaCl [ [ 0, 0, 20.552053852486885 ] ]
+OP:  Buzice NaCl [ [ 0, 0, 10.879783346380735 ] ]
+OP:  Přelouč - Klenovka NaCl [ [ 0, 0, 19.089182841352983 ] ]
+OP:  Bumbalka NaCl [ [ 0, 0, 12.783839133757384 ] ]
+OP:  Loděnice NaCl [ [ 0, 0, 20.65047738643449 ] ]
+OP:  Novosedly Pivofone [ [ 0, 1, 11.233614445036789 ] ]
+OP:  Přimda Ospik [ [ 0, 4, 15.363815973491612 ] ]
+OP:  Skočice Ospik [ [ 0, 4, 9.214325714414143 ] ]
+OP:  Bdeněves - Kozolupy C-Static [ [ 0, 3, 10.991757287018306 ] ]
+OP:  Čižice Pivofone [ [ 0, 1, 14.677575761841457 ] ]
+OP:  Ryšín NaCl [ [ 0, 0, 17.10657013913947 ] ]
+OP:  Hlavatce C-Static [ [ 0, 3, 9.542061636135992 ] ]
+OP:  Podeřiště Ospik [ [ 0, 4, 6.314515789824342 ] ]
+OP:  Veselí nad Lužnicí - Horusice Pivofone [ [ 0, 1, 22.418594645199864 ] ]
+OP:  Belá Pomelo [ [ 0, 2, 10.13466558535298 ] ]
+OP:  Trenčín - Zlatovce C-Static [ [ 0, 3, 15.549135180369133 ] ]
+OP:  Velká Mača Pomelo [ [ 0, 2, 7.696356806691738 ] ]
+OP:  Báb NaCl [ [ 0, 0, 14.628152660015193 ] ]
+OP:  Topoľčany - Továrníky NaCl [ [ 0, 0, 18.3340131928246 ] ]
+OP:  Raková Pomelo [ [ 0, 2, 9.015586350949494 ] ]
+OP:  Turzovka Pomelo [ [ 0, 2, 14.80929553606986 ] ]
+OP:  [PL] Jaworzynka NaCl [ [ 0, 0, 19.824612710243414 ] ]
+OP:  Čadca - Rieka NaCl [ [ 0, 0, 26.70750727358412 ] ]
+OP:  Staškov Pomelo [ [ 0, 2, 8.617762087175173 ] ]
+OP:  Zborov nad Bystricou Ospik [ [ 0, 4, 11.378222696209571 ] ]
+OP:  Vyšné Vane NaCl [ [ 0, 0, 20.561712124718603 ] ]
+OP:  Kučery Pivofone [ [ 0, 1, 11.745747359116143 ] ]
+OP:  Jablunkov - Bocanovice Pivofone [ [ 0, 1, 11.74715126287684 ] ]
+OP:  Guty NaCl [ [ 0, 0, 18.477612085887817 ] ]
+OP:  [PL] Krzyzowa Ospik [ [ 0, 4, 10.092441115523497 ] ]
+OP:  Socovce Ospik [ [ 0, 4, 11.94049823956526 ] ]
+OP:  Kozojedsko NaCl [ [ 0, 0, 18.357565050994335 ] ]
+OP:  Švábsko Pivofone [ [ 0, 1, 12.483815321568535 ] ]
+OP:  Drienov - Sever NaCl [ [ 0, 0, 26.784276517313284 ] ]
+OP:  Haniska NaCl [ [ 0, 0, 13.615203347046137 ] ]
+OP:  Prakovce Ospik [ [ 0, 4, 16.033029961166378 ] ]
+OP:  Stará Voda NaCl [ [ 0, 0, 22.213026454171562 ] ]
+OP:  Hámre NaCl [ [ 0, 0, 15.682791314129865 ] ]
+OP:  Uničov - Brníčko NaCl [ [ 0, 0, 21.154107615681962 ] ]
+OP:  Banka Pomelo [ [ 0, 2, 13.301195607446356 ] ]
+OP:  Nitrianská Blatnica Pivofone [ [ 0, 1, 15.82434391728616 ] ]
+OP:  Bohdanovce nad Trnavou C-Static [ [ 0, 3, 7.108437780041094 ] ]
+OP:  Plavecký Peter NaCl [ [ 0, 0, 18.371452112282206 ] ]
+OP:  Plavecký Peter Pomelo [ [ 0, 0, 18.371452112282206 ], [ 0, 2, 13.164535598615888 ] ]
+OP:  [PL] Ujsoly Pomelo [ [ 0, 2, 11.145228512016343 ] ]
+OP:  [PL] Glinka Ospik [ [ 0, 4, 14.355190830728635 ] ]
+OP:  Breza Ospik [ [ 0, 4, 9.681827340017508 ] ]
+OP:  Papradno - Brvniště NaCl [ [ 0, 0, 23.094012357265278 ] ]
+OP:  Štiavnik - Hl.S. NaCl [ [ 0, 0, 19.484409236550732 ] ]
+OP:  Považská Bystrica - Dedovec Pomelo [ [ 0, 2, 10.176787397825283 ] ]
+OP:  Visolaje Pomelo [ [ 0, 2, 9.525275531881693 ] ]
+OP:  Bohumín - Skřečon Pomelo [ [ 0, 2, 12.246290425090171 ] ]
+OP:  Bezděkov Ospik [ [ 0, 4, 8.544909825976871 ] ]
+OP:  Liblice NaCl [ [ 0, 0, 21.270062828906802 ] ]
+OP:  Chotětov NaCl [ [ 0, 0, 14.452897290781683 ] ]
+OP:  Skalná Pivofone [ [ 0, 1, 14.345638677677762 ] ]
+OP:  Šneky Pivofone [ [ 0, 1, 12.80390716412338 ] ]
+OP:  Karlovy Vary - Počerny Pivofone [ [ 0, 1, 17.25049046865174 ] ]
+OP:  Karlovy Vary - Dvory NaCl [ [ 0, 0, 25.155055029740424 ] ]
+OP:  Stránske Pomelo [ [ 0, 2, 9.579602087336351 ] ]
+OP:  Žilina - Hliny Pivofone [ [ 0, 1, 18.98960285371376 ] ]
+OP:  Žilina - Hliny Pomelo [ [ 0, 1, 18.98960285371376 ], [ 0, 2, 23.559208778607434 ] ]
+OP:  Osek NaCl [ [ 0, 0, 22.199000803390113 ] ]
+OP:  Železnice NaCl [ [ 0, 0, 12.353472382567144 ] ]
+OP:  Malobratřice NaCl [ [ 0, 0, 10.060046145283547 ] ]
+OP:  Přepeře za Kněžmostem Pivofone [ [ 0, 1, 8.091429357724277 ] ]
+OP:  Zádolí Ospik [ [ 0, 4, 12.375881029836663 ] ]
+OP:  Nový Bydžov - Starý Bydžov NaCl [ [ 0, 0, 31.349866983817726 ] ]
+OP:  Močenok NaCl [ [ 0, 0, 26.437977441018173 ] ]
+OP:  Lehota Pomelo [ [ 0, 2, 11.450213992641778 ] ]
+OP:  Pribeta NaCl [ [ 0, 0, 20.51292143646466 ] ]
+OP:  Dvor Mikuláš Pomelo [ [ 0, 2, 9.23181022998398 ] ]
+OP:  Knovíz NaCl [ [ 0, 0, 19.35735278108997 ] ]
+OP:  Nelahozeves Pivofone [ [ 0, 1, 10.823059762316387 ] ]
+OP:  Mostiště Pivofone [ [ 0, 1, 12.055423692036717 ] ]
+OP:  Hlohovice NaCl [ [ 0, 0, 23.599198694896565 ] ]
+OP:  Hřešihlavy NaCl [ [ 0, 0, 32.177187065372024 ] ]
+OP:  Třímany Pivofone [ [ 0, 1, 9.892832620275488 ] ]
+OP:  Kozojedy NaCl [ [ 0, 0, 21.341909828561032 ] ]
+OP:  Rakovník - Senomaty Pivofone [ [ 0, 1, 18.55078315031429 ] ]
+OP:  Kněževes NaCl [ [ 0, 0, 12.301797195360127 ] ]
+OP:  Velká Chmelištná Pivofone [ [ 0, 1, 16.260120068046945 ] ]
+OP:  Výrov NaCl [ [ 0, 0, 18.431164797611583 ] ]
+OP:  Diváky NaCl [ [ 0, 0, 13.857827691017564 ] ]
+OP:  Přerov - Henčlov Pivofone [ [ 0, 1, 9.661980912338308 ] ]
+OP:  Maršov NaCl [ [ 0, 0, 12.458038113942315 ] ]
+OP:  Lomnice NaCl [ [ 0, 0, 18.27480448632808 ] ]
+OP:  Lysice NaCl [ [ 0, 0, 25.660748271407083 ] ]
+OP:  Červená Řečice - Rozcestí Ospik [ [ 0, 4, 11.652999241600247 ] ]
+OP:  Mohelnice - Mírovka Ospik [ [ 0, 4, 13.241972946483541 ] ]
+OP:  Praha - Nová Libeň C-Static [ [ 0, 3, 9.606210088004802 ] ]
+OP:  Praha - Michle NaCl [ [ 0, 0, 31.74981483020047 ] ]
+OP:  Brno - Černovice C-Static [ [ 0, 3, 12.5596832121293 ] ]
+OP:  [AT] Teilhof Pivofone [ [ 0, 1, 15.800105648052442 ] ]
+OP:  [AT] Reingers NaCl [ [ 0, 0, 17.472396460190613 ] ]
+OP:  [AT] Heidenreichstein Pivofone [ [ 0, 1, 17.673188121721857 ] ]
+OP:  Trhové Sviny - Rejta NaCl [ [ 0, 0, 15.770439550935587 ] ]
+OP:  Horní Vesce Ospik [ [ 0, 4, 7.476253696066117 ] ]
+OP:  Mokrý Lom C-Static [ [ 0, 3, 8.004792616585053 ] ]
+OP:  Babín Pivofone [ [ 0, 1, 12.097695868820493 ] ]
+OP:  Pukňov Pivofone [ [ 0, 1, 11.01805828110977 ] ]
+OP:  Ondřejov Ospik [ [ 0, 4, 7.23484728980665 ] ]
+OP:  Svojanov Pivofone [ [ 0, 1, 14.849789998220892 ] ]
+OP:  Doubravice nad Svitavou Pivofone [ [ 0, 1, 12.32425239703028 ] ]
+OP:  Světlá NaCl [ [ 0, 0, 14.06268689879095 ] ]
+OP:  [PL] Cieszyn - Glowny NaCl [ [ 0, 0, 31.4966993523476 ] ]
+OP:  Český Těšín - Svibice NaCl [ [ 0, 0, 20.969261752216347 ] ]
+OP:  Nové Bránice NaCl [ [ 0, 0, 11.119721057828933 ] ]
+OP:  Paskov NaCl [ [ 0, 0, 13.388073051654802 ] ]
+OP:  Zábřeh - Nemile Ospik [ [ 0, 4, 18.3847503700299 ] ]
+OP:  Hlučín - Jasénky Pomelo [ [ 0, 2, 9.486214593692683 ] ]
+OP:  Darkovičky C-Static [ [ 0, 3, 6.209181843281436 ] ]
+OP:  Oudoleň Pivofone [ [ 0, 1, 11.470654525171275 ] ]
+OP:  Jablunkov - Radvanov Ospik [ [ 0, 4, 15.165810631761245 ] ]
+OP:  Břeclav - Sever NaCl [ [ 0, 0, 25.153898651012234 ] ]
+OP:  Uhrovec Pomelo [ [ 0, 2, 12.672454170124539 ] ]
+OP:  Žitná NaCl [ [ 0, 0, 19.426744618000605 ] ]
+OP:  Paušovce Pomelo [ [ 0, 2, 12.512328140419932 ] ]
+OP:  [AT] Eugenia Pivofone [ [ 0, 1, 14.872117274340713 ] ]
+OP:  [AT] Niederschrems NaCl [ [ 0, 0, 14.054086883360643 ] ]
+OP:  Horní Stropnice NaCl [ [ 0, 0, 17.25677876623498 ] ]
+OP:  Rybník Ospik [ [ 0, 4, 9.140753940744716 ] ]
+OP:  Olomouc - Blatec NaCl [ [ 0, 0, 42.11334016039298 ] ]
+OP:  Olomouc - Blatec Pivofone [ [ 0, 0, 42.11334016039298 ], [ 0, 1, 29.731819444522007 ] ]
+OP:  Olomouc - Blatec C-Static [
+  [ 0, 0, 42.11334016039298 ],
+  [ 0, 1, 29.731819444522007 ],
+  [ 0, 3, 13.642001323584925 ]
+]
+OP:  Senica - Kunov Pomelo [ [ 0, 2, 15.986372743383775 ] ]
+OP:  Hranice na Moravě - Severní Nádraží NaCl [ [ 0, 0, 29.2144698278611 ] ]
+OP:  Dolní Dvorce - Dyjíčka NaCl [ [ 0, 0, 16.219113395190117 ] ]
+OP:  Čadca - Bryndzárovci NaCl [ [ 0, 0, 16.608563405510736 ] ]
+OP:  Čadca - Rebrošovci NaCl [ [ 0, 0, 15.68636245339445 ] ]
+OP:  [PL] Gliniane Pivofone [ [ 0, 1, 9.232299707635054 ] ]
+OP:  Petrovice NaCl [ [ 0, 0, 14.708066479264549 ] ]
+OP:  Kecerovce C-Static [ [ 0, 3, 10.170660742581196 ] ]
+OP:  Jabloň Ospik [ [ 0, 4, 9.869804756028278 ] ]
+OP:  Peklo NaCl [ [ 0, 0, 17.058300969436278 ] ]
+OP:  Strašín NaCl [ [ 0, 0, 13.26266223462481 ] ]
+OP:  Volenice Pivofone [ [ 0, 1, 12.301974816980048 ] ]
+OP:  Stříbro - Sytno NaCl [ [ 0, 0, 35.6489816541 ] ]
+OP:  Radějovice C-Static [ [ 0, 3, 6.1907092883716075 ] ]
+OP:  Lhota u Stříbra Pivofone [ [ 0, 1, 9.251811126753257 ] ]
+OP:  Studená Pivofone [ [ 0, 1, 15.569464946281693 ] ]
+OP:  Chříč NaCl [ [ 0, 0, 17.967104355518522 ] ]
+OP:  Slatina NaCl [ [ 0, 0, 32.70599194461882 ] ]
+OP:  Řeřichy Pivofone [ [ 0, 1, 13.417797325904147 ] ]
+OP:  Rokycany - Litohlavy Pivofone [ [ 0, 1, 20.10696508428785 ] ]
+OP:  Kostelec Pivofone [ [ 0, 1, 16.56881950037574 ] ]
+OP:  Jíva Ospik [ [ 0, 4, 11.880023246562498 ] ]
+OP:  Rabakov NaCl [ [ 0, 0, 17.866751336853298 ] ]
+OP:  Semčice NaCl [ [ 0, 0, 24.193337482671602 ] ]
+OP:  Křovice NaCl [ [ 0, 0, 14.20179590048175 ] ]
+OP:  Křovice C-Static [ [ 0, 0, 14.20179590048175 ], [ 0, 3, 6.970132712878603 ] ]
+OP:  Panenský Týnec Pivofone [ [ 0, 1, 15.27250754717555 ] ]
+OP:  Žerotín Pivofone [ [ 0, 1, 12.40646844224889 ] ]
+OP:  [DE] Schoneck Ospik [ [ 0, 4, 14.355947677242655 ] ]
+OP:  Záboří NaCl [ [ 0, 0, 11.392699879196389 ] ]
+OP:  Horná Poruba NaCl [ [ 0, 0, 14.864086213762656 ] ]
+OP:  Dolná Poruba Pomelo [ [ 0, 2, 12.739502470382996 ] ]
+OP:  Kravaře Ospik [ [ 0, 4, 9.800520249923228 ] ]
+OP:  Březiny Ospik [ [ 0, 4, 13.709137809057891 ] ]
+OP:  Bělá Ospik [ [ 0, 4, 12.81599494295477 ] ]
+OP:  Knínice Pivofone [ [ 0, 1, 15.801335912224268 ] ]
+OP:  Malé Chvojno NaCl [ [ 0, 0, 20.769408208509283 ] ]
+OP:  Libouchec C-Static [ [ 0, 3, 18.83878799535546 ] ]
+OP:  Kamenec NaCl [ [ 0, 0, 19.59814080763007 ] ]
+OP:  Neštědice NaCl [ [ 0, 0, 17.435836536642896 ] ]
+OP:  [DE] Reinhardtsdorf NaCl [ [ 0, 0, 17.74071060938042 ] ]
+OP:  Zlaté Moravce - Žitavany Pomelo [ [ 0, 2, 13.21367400217349 ] ]
+OP:  Bratislava - Paškomon C-Static [ [ 0, 3, 8.86221013310484 ] ]
+OP:  Piešťany - Letiště NaCl [ [ 0, 0, 23.4365238887375 ] ]
+OP:  Hůrky Pivofone [ [ 0, 1, 9.934789671180303 ] ]
+OP:  Sebečice - Ves Pivofone [ [ 0, 1, 10.035877997327072 ] ]
+OP:  Řečany nad Labem NaCl [ [ 0, 0, 26.904788661926876 ] ]
+OP:  Přelouč - Vyhnálov NaCl [ [ 0, 0, 20.36418453046823 ] ]
+OP:  Přelouč - Vyhnálov C-Static [ [ 0, 0, 20.36418453046823 ], [ 0, 3, 14.42418942354209 ] ]
+OP:  Hradišťko Pivofone [ [ 0, 1, 13.331331647574274 ] ]
+OP:  Milčice NaCl [ [ 0, 0, 19.931236861774938 ] ]
+OP:  Poříčany NaCl [ [ 0, 0, 21.08244892362823 ] ]
+OP:  Nová Ves u Mratína Pivofone [ [ 0, 1, 7.958212281146453 ] ]
+OP:  Skorkov NaCl [ [ 0, 0, 17.9944748438227 ] ]
+OP:  Olbramovice NaCl [ [ 0, 0, 19.038948576969872 ] ]
+OP:  Sedlčany - Cihelný Vrch NaCl [ [ 0, 0, 26.279129465044033 ] ]
+OP:  Nový Jičín - Bernartice nad Odrou NaCl [ [ 0, 0, 26.44256873148111 ] ]
+OP:  Posluchov NaCl [ [ 0, 0, 13.572502394121924 ] ]
+OP:  Stará Ves NaCl [ [ 0, 0, 13.061291294800784 ] ]
+OP:  Klíny Ospik [ [ 0, 4, 7.724189956219776 ] ]
+OP:  Hodonín - Hranice Pivofone [ [ 0, 1, 16.969902600982994 ] ]
+OP:  Hodkovice C-Static [ [ 0, 3, 6.125539447651682 ] ]
+OP:  Jetřikov Ospik [ [ 0, 4, 12.03580033329919 ] ]
+OP:  Poněradž NaCl [ [ 0, 0, 14.708712534524489 ] ]
+OP:  Branná NaCl [ [ 0, 0, 18.57369246380398 ] ]
+OP:  Horní Jelení Ospik [ [ 0, 4, 9.536617586904509 ] ]
+OP:  Staré Hradiště C-Static [ [ 0, 3, 6.908020969841033 ] ]
+OP:  Janovka Pivofone [ [ 0, 1, 8.676211663991834 ] ]
+OP:  Rozkoš NaCl [ [ 0, 0, 16.264826220698303 ] ]
+OP:  Vyškov - Nosálovice Pivofone [ [ 0, 1, 17.148851606678605 ] ]
+OP:  Zlatníky NaCl [ [ 0, 0, 19.266880105062846 ] ]
+OP:  Uzovské Peklany Ospik [ [ 0, 4, 8.958359692179577 ] ]
+OP:  Úhorná Pomelo [ [ 0, 2, 13.267118203368227 ] ]
+OP:  Brzotín Pomelo [ [ 0, 2, 14.133611871920651 ] ]
+OP:  Klímkovci Ospik [ [ 0, 4, 10.671654475191763 ] ]
+OP:  Košice - Terminál [CSA] C-Static [ [ 0, 3, 9.49948440113264 ] ]
+OP:  Prešov - Táborisko Pomelo [ [ 0, 2, 17.132517383248175 ] ]
+OP:  [HU] Zabar Pomelo [ [ 0, 2, 14.686577325608647 ] ]
+OP:  [HU] Cered Pomelo [ [ 0, 2, 12.189537945272924 ] ]
+OP:  [HU] Sajóivánka NaCl [ [ 0, 0, 11.400704086026593 ] ]
+OP:  Cheb - Letiště Pivofone [ [ 0, 1, 11.161674769759333 ] ]
+OP:  Lomnice nad Popelkou - Letiště Ospik [ [ 0, 4, 11.374915977793515 ] ]
+OP:  Žilina - Hájik Pomelo [ [ 0, 2, 14.163001247282915 ] ]
+OP:  Dolný Kubín - Bysterec NaCl [ [ 0, 0, 23.807196815237255 ] ]
+OP:  Dolný Kubín - Bysterec Pomelo [ [ 0, 0, 23.807196815237255 ], [ 0, 2, 14.483054567153502 ] ]
+OP:  Zaječí [pPR] NaCl [ [ 0, 0, 17.459750623175072 ] ]
+OP:  Tlučná [CSA] C-Static [ [ 0, 3, 6.698454072235326 ] ]
+OP:  Vrcholtovice Pivofone [ [ 0, 1, 12.269570876693429 ] ]
+OP:  Černov [pPR] NaCl [ [ 0, 0, 17.653765446890958 ] ]
+OP:  Nemojov [pPR] Ospik [ [ 0, 4, 9.386055753215883 ] ]
+[ 276, 182, 72, 81, 71 ] [
+  10.060046145283547,
+  7.374873549586163,
+  7.696356806691738,
+  5.333076409685457,
+  6.314515789824342
+] [
+  46.528533664668444,
+  31.9553313708792,
+  27.131627280337895,
+  22.70719890476562,
+  22.135322925536965
+]
 REPEAT LINE NUMBERS/NICKNAMES
 REPEAT NICK: Dusík
 REPEAT NICK: Leoš

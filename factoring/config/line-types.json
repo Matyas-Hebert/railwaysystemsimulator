@@ -290,5 +290,31 @@
     "travelTimeOverheadSeconds": 1200,
     "minimalLength": 0,
     "canBeShortened": false
+  },
+  {
+    "id": 11,
+    "code": "Par",
+    "stopTimeSeconds": 240,
+    "uvratStopTimeSeconds": 240,
+    "stationImportance": 1.6,
+    "localRouteImportance": 1.6,
+    "workingWifiProbability": 0.15,
+    "startingDelayMeanSeconds": 150,
+    "cancellationProbabilityPerStop": 0.0023,
+    "maxSpeedKmh": 60,
+    "accelerationKmhPerHourSquared": 2000,
+    "delayModel": {
+      "randomOffset": 0.15,
+      "randomScale": 0.8695652173913043,
+      "logarithmDivisor": 6,
+      "baseOffset": 0.05,
+      "minimumMultiplier": null,
+      "maximumMultiplier": 2,
+      "recoveryMultiplier": 4,
+      "respectCurrentDelayMinimum": false
+    },
+    "travelTimeOverheadSeconds": 0,
+    "minimalLength": 30,
+    "canBeShortened": true
   }
 ]

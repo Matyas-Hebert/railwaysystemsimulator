@@ -1,16 +1,21 @@
-const fs = require("node:fs");
-const path = require("node:path");
-const vm = require("node:vm");
+import fs from "node:fs";
+import path from "node:path";
+import vm from "node:vm";
+import { fileURLToPath } from "node:url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const APP_DIRECTORY = path.resolve(__dirname, "..");
-const TIMETABLE_PATH = path.join(APP_DIRECTORY, "json", "timetable_data.js");
-const JSON_OUTPUT_PATH = path.join(APP_DIRECTORY, "json", "ps-systems.json");
-const JS_OUTPUT_PATH = path.join(APP_DIRECTORY, "json", "ps-systems.js");
+const TIMETABLE_PATH = path.join(APP_DIRECTORY, "generated", "timetable.js");
+const JSON_OUTPUT_PATH = path.join(APP_DIRECTORY, "generated", "ps-systems.json");
+const JS_OUTPUT_PATH = path.join(APP_DIRECTORY, "generated", "ps-systems.js");
 
-const { PS, PX } = require("../config/line-type-constants");
+const trainTypes = JSON.parse(fs.readFileSync(path.join(APP_DIRECTORY, "config", "line-types.json"), "utf8"));
+const { PS, PX } = Object.fromEntries(trainTypes.map(type => [type.code.toUpperCase(), type.id]));
 
 function loadTimetable() {
-    const source = fs.readFileSync(TIMETABLE_PATH, "utf8");
+    const source = fs.readFileSync(TIMETABLE_PATH, "utf8").replace(/^export /gm, "");
     const context = {};
     vm.createContext(context);
     vm.runInContext(source + ";globalThis.__timetable = timetable;", context);
@@ -181,6 +186,8 @@ function writePsSystems() {
     return systems;
 }
 
-if (require.main === module) writePsSystems();
+export { assignPsSystemIDs, generatePsSystems, writePsSystems };
 
-module.exports = { assignPsSystemIDs, generatePsSystems, writePsSystems };
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+    writePsSystems();
+}

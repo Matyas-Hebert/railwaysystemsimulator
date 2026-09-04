@@ -1,0 +1,57 @@
+.shop-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Individual Shop Row */
+.shop-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-surface-overlay-light);
+}
+
+/* Alternating background rows like the screenshot */
+.shop-item:nth-child(even) {
+  background-color: var(--color-primary-interactive);
+}
+
+.shop-item:nth-child(odd) {
+  background-color: var(--color-primary);
+}
+
+/* Company / Shop Name */
+.shop-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--color-text-inverse);
+}
+
+/* Item Name / Description */
+.shop-subtitle {
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  color: var(--color-text-default);
+}
+
+/* Action Button / Price */
+.shop-buy-btn {
+  background-color: var(--color-success);
+  color: var(--color-text-inverse);
+  border: none;
+  padding: 8px 0;
+  width: 60%;
+  max-width: 280px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 2px;
+}

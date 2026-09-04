@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title></title>
     <link href="styles/base.css" rel="stylesheet" />
+    <link href="styles/shop.css" rel="stylesheet" />
     <link href="styles/timetable.css" rel="stylesheet" />
     <link href="styles/idos.css" rel="stylesheet" />
     <link href="styles/settings.css" rel="stylesheet" />
@@ -15,40 +16,46 @@
 <body>
     <div id="_start">
         <div class="idossearch">
-            <input id="_startstart" onclick="stationSearch.show(this.value, _startoptions, false, 0, this, true, true)" oninput="stationSearch.show(this.value, _startoptions, false, 0, this, false, true)" type="text" placeholder="Zadejte stanici...">
+            <input id="_startstart" type="text" placeholder="Zadejte stanici...">
         </div>
         <div id="_startoptions"></div>
-        <button class="idossearchs" id="_startsearch" onclick="startGame()">ZAČÍT</button>
+        <button class="idossearchs" id="_startsearch">ZAČÍT</button>
     </div>
     <div id="_tables" class="tables">
         <div class="toppanel">
-            <div id="_clock" class="unchosen">??:??:??</div>
-            <div id="_money">0,-</div>
-            <div id="_wifi" class="wifi" onclick="activateWifiBoost()" aria-label="Stav Wi-Fi"></div>
+            <div id="_clock" class="unchosen">21:11:25</div>
+            <div id="_money">499K,-</div>
+            <div id="_energy">⚡75%</div>
+            <div class="connection-control">
+                <div id="_wifi" class="wifi" aria-label="Stav připojení"></div>
+                <div id="_operatorselection" class="operator-selection" hidden></div>
+            </div>
         </div>
         <div>
             <table class="tabs">
-                <td id="_tab0" class="chosen" onclick="selectSection(0)">Aktuálně</td>
-                <td id="_tab5" class="unchosen" onclick="selectSection(5)">Pěšo</td>
-                <td id="_tab1" class="unchosen" onclick="selectSection(1)">Stanice</td>
-                <td id="_tab10" class="unchosen" onclick="selectSection(10)">Trh</td>
+                <td id="_tab0" class="chosen">Aktuálně</td>
+                <td id="_tab5" class="unchosen">Pěšo</td>
+                <td id="_tab1" class="unchosen">Stanice</td>
+                <td id="_tab10" class="unchosen">Trh</td>
             </table>
             <table class="tabs">
-                <td id="_tab2" class="unchosen" onclick="selectSection(2)">Vlaky</td>
-                <td id="_tab3" class="unchosen" onclick="selectSection(3)">Statistiky</td>
-                <td id="_tab4" class="unchosen" onclick="selectSection(4)">IDOS</td>
+                <td id="_tab2" class="unchosen">Vlaky</td>
+                <td id="_tab3" class="unchosen">Statistiky</td>
+                <td id="_tab4" class="unchosen">IDOS</td>
             </table>
             <table class="tabs">
-                <td id="_tab6" class="unchosen" onclick="selectSection(6)">Foodora</td>
-                <td id="_tab7" class="unchosen" onclick="selectSection(7)">Kolekce</td>
-                <td id="_tab8" class="unchosen" onclick="selectSection(8)">Nastavení</td>
-                <td id="_tab9" class="unchosen" onclick="selectSection(9)">Mapa</td>
+                <td id="_tab6" class="unchosen">Foodora</td>
+                <td id="_tab7" class="unchosen">Kolekce</td>
+                <td id="_tab8" class="unchosen">Nastavení</td>
+                <td id="_tab9" class="unchosen">Mapa</td>
             </table>
             <table id="_information">
 
             </table>
         </div>
-        <div id="_section10"></div>
+        <div id="_section10">
+            <div id="_shopList" class="_shop-list"></div>
+        </div>
         <div id="_section6"></div>
         <div id="_section7"></div>
         <div id="_section9">
@@ -69,35 +76,35 @@
         <div id="_section8">
             <div class="settingsrow">
                 <div>DEVELOPER MODE</div>
-                <div class="off" onclick="settings.toggleDeveloper()" id="_developer">VYPNUTO</div>
+                <div class="off" id="_developer">VYPNUTO</div>
             </div>
             <div class="settingsrow">
                 <div>NOVÁ HRA</div>
-                <div onclick="settings.resetGame()" id="_newgame">RESET</div>
+                <div id="_newgame">RESET</div>
             </div>
             <div class="settingsrow" id="_autoupdaterow" style="display: none;">
                 <div>AUTOMATICKÉ AKTUALIZACE</div>
-                <div onclick="settings.toggleAutoUpdates()" id="_autoupdate">ZASTAVIT</div>
+                <div id="_autoupdate">ZASTAVIT</div>
             </div>
             <div class="settingsrow" id="_teleportrow" style="display: none;">
                 <div>TELEPORT NA STANICI</div>
                 <div class="settingscontrol">
                     <input id="_teleportid" type="number" inputmode="numeric" placeholder="ID stanice">
-                    <button id="_teleportbtn" onclick="settings.teleportToStation()">TELEPORT</button>
+                    <button id="_teleportbtn">TELEPORT</button>
                 </div>
             </div>
             <div class="settingsrow" id="_moneyrow" style="display: none;">
                 <div>PŘIDAT PENÍZE</div>
                 <div class="settingscontrol">
                     <input id="_moneyamount" type="number" inputmode="numeric" placeholder="Částka">
-                    <button id="_moneybtn" onclick="settings.addDeveloperMoney()">PŘIDAT</button>
+                    <button id="_moneybtn">PŘIDAT</button>
                 </div>
             </div>
             <div class="settingsrow" id="_timetravelrow" style="display: none;">
                 <div>CESTOVÁNÍ ČASEM</div>
                 <div class="settingscontrol">
                     <input id="_timetravelduration" type="number" inputmode="numeric" placeholder="Počet sekund (zápor pro minulost)">
-                    <button id="_timetravelbtn" onclick="settings.timeTravel()">TELEPORT</button>
+                    <button id="_timetravelbtn">TELEPORT</button>
                 </div>
             </div>
             <div id="_appversion" class="settings-version">Verze 1.3.6</div>
@@ -110,9 +117,9 @@
                 <div>Station 4</div>
             </div>
             <div class="s1optionsframe">
-                <div onclick="togglePinnedList()" class="pinnedlisttoggle" id="_pinnedlisttoggle">5</div>
-                <input id="_searchstation" onclick="stationSearch.show(this.value, _s1options, false, 0, _searchstation, true)" oninput="stationSearch.show(this.value, _s1options, false, 0, _searchstation, false)">
-                <div id="_s1optionsclose" onclick="stationSearch.closeStationOptions()">X</div>
+                <div class="pinnedlisttoggle" id="_pinnedlisttoggle">5</div>
+                <input id="_searchstation">
+                <div id="_s1optionsclose">X</div>
             </div>
 
             <div id="_s1options"></div>
@@ -120,13 +127,13 @@
         <div id="_section0">
             <div class="filters">
                 <div class="filters1">
-                    <div id="_arrivals" class="unselected" onclick="selectFilter('arrivals')">Příjezdy</div>
-                    <div id="_departures" class="selected" onclick="selectFilter('departures')">Odjezdy</div>
+                    <div id="_arrivals" class="unselected">Příjezdy</div>
+                    <div id="_departures" class="selected">Odjezdy</div>
                 </div>
                 <div id="_typefilters" class="filters2"></div>
                 <div class="filters3">
                     <div id="_destheader">Spoje do:</div>
-                    <select id="_destinations" class="selected" onchange="selectDestination(this.value)"></select>
+                    <select id="_destinations" class="selected"></select>
                 </div>
             </div>
             <div id="_timetableheader">
@@ -187,25 +194,25 @@
 
         </div>
         <div id="_section4" class="search-panel">
-            <div class="idossearchh" onclick="idos.switchLocations()">
+            <div class="idossearchh">
                 <span>ODKUD</span>
                 <span>KAM</span>
             </div>
             <div class="idossearch">
-                <input id="_idosstart" onclick="stationSearch.show(this.value, _section4options, true, 0, this, true)" oninput="stationSearch.show(this.value, _section4options, true, 0, this)" type="text" placeholder="Zadejte stanici...">
-                <input id="_idosend" onclick="stationSearch.show(this.value, _section4options, true, 1, this, true)" oninput="stationSearch.show(this.value, _section4options, true, 1, this)" type="text" placeholder="Cílová stanice...">
+                <input id="_idosstart" type="text" placeholder="Zadejte stanici...">
+                <input id="_idosend" type="text" placeholder="Cílová stanice...">
             </div>
             <div class="timesetting">
-                <div onclick="idos.decreaseTime()">&lt;</div>
-                <input id="_idostime" oninput="idos.updateTime()">
-                <div onclick="idos.increaseTime()">&gt;</div>
+                <div>&lt;</div>
+                <input id="_idostime">
+                <div>&gt;</div>
             </div>
             <label class="idos-air-routes">
-                <input type="checkbox" id="_idosairroutes" checked onchange="idos.setIncludeAirRoutes(this.checked)">
+                <input type="checkbox" id="_idosairroutes" checked>
                 <span>ZAHRNOUT LETECKÉ SPOJE (AR/AJ)</span>
             </label>
             <div id="_section4options"></div>
-            <button class="idossearchs" onclick="idos.print()">HLEDAT</button>
+            <button class="idossearchs">HLEDAT</button>
             <div id="_idosstats">
                 <div class="idos-stat-column">
                     <div id="_idosstatstime">1h51m</div>
@@ -244,33 +251,6 @@
             </table>
         </div>
     </div>
-
-    <script src="config/line-type-constants.js"></script>
-    <script src="config/line-types.js"></script>
-    <script src="config/journey-pricing.js"></script>
-    <script src="journey-pricing.js"></script>
-    <script src="json/timetable_data.js"></script>
-    <script src="json/delay_reasons.js"></script>
-    <script src="json/lonlat.js"></script>
-    <script src="json/district-borders.js"></script>
-    <script src="constants.js"></script>
-    <script src="trip-routes.js"></script>
-    <script src="game-state.js"></script>
-    <script src="delays.js"></script>
-    <script src="schedule.js"></script>
-    <script src="idos.js"></script>
-    <script src="search.js"></script>
-    <script src="walking.js"></script>
-    <script src="player-location.js"></script>
-    <script src="station-visits.js"></script>
-    <script src="line-visits.js"></script>
-    <script src="auto-boarding.js"></script>
-    <script src="auto-exit.js"></script>
-    <script src="foodora.js"></script>
-    <script src="collection-tab.js"></script>
-    <script src="station-information.js"></script>
-    <script src="map-tab.js"></script>
-    <script src="settings.js"></script>
-    <script src="timetableanalysis.js"></script>
+    <script type="module" src="./src/main.js"></script>
 </body>
 </html>
