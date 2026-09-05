@@ -10,7 +10,8 @@ import { assignPsSystemIDs, generatePsSystems } from './generate-ps-systems.js';
 import { assignStationImportance } from './generate-station-importance.js';
 import { dataOperators } from '../generated/config.js';
 import * as constants from "../src/constants.js";
-let PS, PX, OS, OX, SP, R, SH, IC, EC, NJ, AR, AJ;
+import { Param } from 'drizzle-orm';
+let PS, PX, OS, OX, SP, R, SH, IC, EC, NJ, AR, AJ, PAR;
 
 let lineTypeConfig;
 let journeyPricingConfig;
@@ -356,6 +357,7 @@ function resolveLineStartTimes(
 
 function getStopTimeForType(typeId, uvrat=false){
     const typeConfig = lineTypeConfig[typeId];
+    console.log(typeId);
     return uvrat
         ? typeConfig.uvratStopTimeSeconds
         : typeConfig.stopTimeSeconds;
@@ -541,6 +543,7 @@ function selectLineType(writtenType, line, metrics, uvrat){
     if (type === "NJ") return NJ;
     if (type === "AR") return AR;
     if (type === "AJ") return AJ;
+    if (type === "PAR") return PAR;
 
     throw new Error("Unknown train type " + writtenType + " on line " + line.name);
 }
@@ -776,7 +779,7 @@ async function generateTimeTables() {
     const journeyPricingConfigPath = path.join(__dirname, "../config/journey-pricing.json");
     lineTypeConfig = JSON.parse(await fs.readFile(lineTypeConfigPath, "utf8"));
     journeyPricingConfig = JSON.parse(await fs.readFile(journeyPricingConfigPath, "utf8"));
-    ({ PS, PX, OS, OX, SP, R, SH, IC, EC, NJ, AR, AJ } = Object.fromEntries(
+    ({ PS, PX, OS, OX, SP, R, SH, IC, EC, NJ, AR, AJ, PAR } = Object.fromEntries(
         lineTypeConfig.map(type => [type.code.toUpperCase(), type.id])
     ));
     const dataOperatorConfig = JSON.parse(

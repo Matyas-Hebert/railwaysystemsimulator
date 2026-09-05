@@ -10,7 +10,7 @@ let ticketSelectionOpen = false;
 
 const filters = {
     departures: true,
-    types: Array(12).fill(true),
+    types: Array(13).fill(true),
     statid: -1,
     ticketDestinationStatId: -1
 };

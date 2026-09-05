@@ -465,8 +465,11 @@ function print(table=_information, conns=runtime.getConnectionStructure(), check
         row.cells[1].innerHTML = "VYSTOUPIT";
         row.cells[1].style.backgroundColor = "#861313";
         row.cells[1].onclick = function(){
-            runtime.getGameState().changeTransportType(0);
-            runtime.getGameState().updateCurrentPosition({statID: delay.station});
+            runtime.getGameState().updateCurrentPosition({
+                transporttype: constants.TRANSPORT_TYPE.STATION,
+                statID: delay.station,
+                goalStatID: delay.station
+            });
             app.renderCurrentSection();
         };
     }

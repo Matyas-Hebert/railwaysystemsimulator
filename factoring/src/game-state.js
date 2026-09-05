@@ -1073,7 +1073,7 @@ export class GameState {
     }
 
     changeTransportType(n){
-        if (n != this.getCurrentPosition()){
+        if (n !== this.getCurrentPosition().transporttype){
             this.updateCurrentPosition({transporttype: n});
         }
     }
