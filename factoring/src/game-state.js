@@ -1025,6 +1025,10 @@ export class GameState {
         this.#collectionProgress.linesByCompanyAndType = linesByCompanyAndType;
     }
 
+    getLineType(lineId) {
+        return this.#lines[lineId].type;
+    }
+
     #saveCollectionProgress() {
         localStorage.setItem("_collectionprogress", JSON.stringify(this.#collectionProgress));
     }

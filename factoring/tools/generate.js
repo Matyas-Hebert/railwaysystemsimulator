@@ -467,6 +467,32 @@ function getUvratStopIndices(line, map, stationIDtonewID){
 }
 
 
+function removeConsecutiveDuplicateStops(line, map, stationIDtonewID) {
+    const overrides = line.waypointOverrides || [];
+    let previousTimetableStationID = null;
+
+    line.stationIds = line.stationIds.filter(stationID => {
+        const station = map.stations[stationID];
+        const timetableStationID = stationIDtonewID[stationID];
+        const isTimetableStop = !overrides.includes(stationID)
+            && !station.isWaypoint
+            && timetableStationID !== undefined;
+        if (!isTimetableStop) return true;
+
+        const isDuplicate = previousTimetableStationID === timetableStationID;
+        if (isDuplicate) {
+            console.warn(
+                "Removing consecutive duplicate stop " + station.name
+                + " (MetroDreamin ID " + stationID + ") from line " + line.name
+            );
+            return false;
+        }
+
+        previousTimetableStationID = timetableStationID;
+        return true;
+    });
+}
+
 function getLineMetrics(line, map, stationIDtonewID){
     const overrides = line.waypointOverrides || [];
     const segmentDistances = [];
@@ -810,7 +836,13 @@ async function generateTimeTables() {
     Object.values(map.stations).forEach(async (station, stationID) => {
         if (!station.isWaypoint){
             stationIDtonewID[station.id] = i;
+            let company = "Undetermined";
             let name = station.name;
+            let trimmedName = name.trim();
+            if (trimmedName.endsWith("]")){
+                name = trimmedName.slice(0, trimmedName.indexOf("[")).trim();
+                company = trimmedName.slice(trimmedName.indexOf("[") + 1, trimmedName.indexOf("]")).trim();
+            }
             let lon = Math.round(station.lng*10000);
             let lat = Math.round(station.lat*10000);
             let lonlat = String(lon)+String(lat);
@@ -841,7 +873,8 @@ async function generateTimeTables() {
                 "lonlat": lonlat,
                 "departures": [],
                 "arrivals": [],
-                "shops": []
+                "shops": [],
+                "company": company
             });
             lonlattoid[lonlat] = i;
             if (Object.keys(districtcount).includes(district)){
@@ -867,9 +900,9 @@ async function generateTimeTables() {
     });
 
     i = 0;
-    let stationssections = {};
     const schedulingDefinitions = [];
     Object.values(map.lines).forEach((line, lineID) => {
+        removeConsecutiveDuplicateStops(line, map, stationIDtonewID);
         const lineinfo = parseLineName(line.name);
         if (!(lineinfo.company in journeyPricingConfig.companies)) {
             console.log(line.name);

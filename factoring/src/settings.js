@@ -7,7 +7,7 @@ import * as config from "../generated/config.js";
 import * as constants from "./constants.js";
 import * as ta from "./timetable-analysis.js"
 
-    const APP_VERSION = "1.4.0.3";
+    const APP_VERSION = "1.4.0.7";
 
     function renderMoney() {
         const moneyDisplay = document.querySelector("#_money");
@@ -143,10 +143,36 @@ import * as ta from "./timetable-analysis.js"
         ta.updateClock();
     }
 
+    function hasPlaneDeparting(station){
+        const gs = runtime.getGameState();
+
+        return station.departures.some(lineId => {
+            const type = gs.getLineType(lineId);
+
+            return type === constants.TRAIN_TYPES.AJ
+                || type === constants.TRAIN_TYPES.AR;
+        });
+    }
+
+    function hasBoatDeparting(station){
+        const gs = runtime.getGameState();
+
+        return station.departures.some(lineId =>
+            gs.getLineType(lineId) === constants.TRAIN_TYPES.PAR
+        );
+    }
+
     function getStationName(station) {
+        let symbol = " ";
+        if (hasBoatDeparting(station)){
+            symbol += "⛴"
+        }
+        if (hasPlaneDeparting(station)){
+            symbol += "✈︎"
+        }
         return runtime.getGameState().getSettings().developer === true
-            ? station.name + " (" + String(station.id) + ")"
-            : station.name;
+            ? station.name + symbol + " (" + String(station.id) + ")"
+            : station.name + symbol;
     }
 
     function getStationNameMarkup(station) {
