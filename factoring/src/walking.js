@@ -225,14 +225,10 @@ function printProgress(table){
         const position = runtime.getGameState().getCurrentPosition();
         const newTime = app.getCurrentTimeInMilliseconds()-timetogo;
         const newStartStationId = position.goalStatID;
-        const newIwd = newStartStationId === null
-            ? getClosestStationIds(position.goalCoords)
-            : [...data.timetable.stations[newStartStationId].iwd];
         runtime.getGameState().updateCurrentPosition({
             time: newTime,
             coords: position.goalCoords,
             statID: newStartStationId,
-            iwd: newIwd,
             goalCoords: position.coords,
             goalStatID: position.statID
         });

@@ -22,7 +22,7 @@ export function updateEnergy(){
     gameState.setEnergy(gameState.getEnergy()+constants.ENERGY_RESTORATION_IDLE*timeAtIdleRate);
 
     if (timeAtIdleRate > 0){
-        gameState.setCurrentPosition(energySnap.positionAtIdleStart);
+        gameState.updateCurrentPosition(energySnap.positionAtIdleStart);
         gameState.setEnergySnapshot(null, constants.ENERGY_RESTORATION_IDLE, gameState.getEnergy(), null, now);
     }
     else{

@@ -883,7 +883,7 @@ function startGame(){
     runtime.getGameState().setEnergySnapshot(
         null,
         constants.ENERGY_RESTORATION_IDLE,
-        gameState.getEnergy(),
+        runtime.getGameState().getEnergy(),
         null,
         clock.getCurrentTimeInMilliseconds()
     );
