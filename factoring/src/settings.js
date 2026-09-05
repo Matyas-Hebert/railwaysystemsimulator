@@ -7,7 +7,7 @@ import * as config from "../generated/config.js";
 import * as constants from "./constants.js";
 import * as ta from "./timetable-analysis.js"
 
-    const APP_VERSION = "1.4.0.7";
+    const APP_VERSION = "1.4.0.10";
 
     function renderMoney() {
         const moneyDisplay = document.querySelector("#_money");

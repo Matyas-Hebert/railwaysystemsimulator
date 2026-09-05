@@ -25,6 +25,10 @@ function addShopItem(shopList, shopTitle, shopSubtitle, shopBuySubtitle, shopBuy
     shopList.appendChild(card);
 }
 
+function getDataUsePrice(seed, currentUses){
+    return currentUses >= 5 ? Math.round(seed*Math.pow(1.2, currentUses-4)) : Math.round(seed);
+}
+
 export function render(){
     let gameState = runtime.getGameState();
     let position = gameState.getCurrentPosition();
@@ -41,22 +45,34 @@ export function render(){
             let seed = Math.round(shop[2]);
 
             if (shopType == constants.SHOP_TYPE.DATA_SHOP){
+                gameState = runtime.getGameState();
+                let currentAmountOfUses = gameState.getUsesRemaining()[company];
+                console.log("caou:", currentAmountOfUses);
+                let singlePrice = Math.round(getDataUsePrice(seed, currentAmountOfUses));
+                let triplePrice = Math.round((getDataUsePrice(seed, currentAmountOfUses)+getDataUsePrice(seed, currentAmountOfUses+1)+getDataUsePrice(seed, currentAmountOfUses+2))*0.8);
+
                 let buyFunction1 = function(){
-                    let uses = gameState.getUsesRemaining();
-                    uses[company] += 1;
-                    gameState.buyWithMoney(seed);
-                    gameState.setUsesRemaining(uses);
-                    gameState.setSelectedOperator(company+1);
+                    if (gameState.getMoney() >= singlePrice){
+                        let uses = gameState.getUsesRemaining();
+                        uses[company] += 1;
+                        gameState.buyWithMoney(singlePrice);
+                        gameState.setUsesRemaining(uses);
+                        gameState.setSelectedOperator(company+1);
+                    }
+                    render();
                 }
                 let buyFunction3 = function(){
-                    let uses = gameState.getUsesRemaining();
-                    uses[company] += 3;
-                    gameState.buyWithMoney(Math.round(seed*2.5));
-                    gameState.setUsesRemaining(uses);
-                    gameState.setSelectedOperator(company+1);
+                    if (gameState.getMoney() >= triplePrice){
+                        let uses = gameState.getUsesRemaining();
+                        uses[company] += 3;
+                        gameState.buyWithMoney(triplePrice);
+                        gameState.setUsesRemaining(uses);
+                        gameState.setSelectedOperator(company+1);
+                    }
+                    render();
                 }
-                addShopItem(container, config.dataOperators[company].name, "DATA x1", "Koupit "+seed+",-", buyFunction1);
-                addShopItem(container, config.dataOperators[company].name, "DATA x3", "Koupit "+Math.round(seed*2.5)+",-", buyFunction3);
+                addShopItem(container, config.dataOperators[company].name, "DATA x1", "Koupit "+singlePrice+",-", buyFunction1);
+                addShopItem(container, config.dataOperators[company].name, "DATA x3", "Koupit "+triplePrice+",-", buyFunction3);
             }
         });
     }

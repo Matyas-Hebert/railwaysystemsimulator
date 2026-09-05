@@ -64,8 +64,12 @@ import * as constants from "./constants.js";
     }
 
     function renderIcon(status) {
+        console.log("rendering");
         const icon = document.querySelector("#_wifi");
+        icon.innerHTML = "";
         if (icon === null) return;
+
+        console.log("status: ", status);
 
         if (status.selectedOperator === 0) {
             icon.className = status.hasConnection ? "wifi" : "nowifi";
@@ -76,6 +80,16 @@ import * as constants from "./constants.js";
                     : "Wi-Fi připojení není dostupné"
             );
             return;
+        }
+        else if (status.usesRemaining > 5){
+            console.log("creating uses badge");
+            const usesBadge = document.createElement("span");
+            usesBadge.className = "connection-uses";
+            usesBadge.textContent = status.usesRemaining > 99
+                ? "99+"
+                : String(status.usesRemaining);
+
+            icon.appendChild(usesBadge);
         }
 
         const displayedUses = Math.min(
@@ -195,6 +209,15 @@ import * as constants from "./constants.js";
                     + String(Math.min(MAX_DISPLAYED_USES, uses));
                 if (!hasOperatorCoverage(operatorNumber) && uses > 0) {
                     statusIcon.classList.add("data-warning");
+                }
+                if (uses > 5){
+                    const usesBadge = document.createElement("span");
+                    usesBadge.className = "connection-uses";
+                    usesBadge.textContent = uses > 99
+                        ? "99+"
+                        : String(uses);
+
+                    statusIcon.appendChild(usesBadge);
                 }
             }
             name.textContent = operatorName;
