@@ -6,8 +6,9 @@ import * as data from "../generated/timetable.js";
 import * as config from "../generated/config.js";
 import * as constants from "./constants.js";
 import * as ta from "./timetable-analysis.js"
+import * as renderTimer from "./render-timer.js";
 
-    const APP_VERSION = "1.4.0.10";
+    const APP_VERSION = "1.4.1.8";
 
     function renderMoney() {
         const moneyDisplay = document.querySelector("#_money");
@@ -28,6 +29,16 @@ import * as ta from "./timetable-analysis.js"
         let current = runtime.getGameState().getEnergy();
         let max = runtime.getGameState().getMaxEnergy();
         energyDisplay.innerText = "⚡"+Math.floor((current*100)/max)+"%";
+    }
+
+    function changeAutoUpdateInterval(intervalDelta){
+        let interval = renderTimer.getRenderInterval();
+        console.log("ii", interval, intervalDelta);
+        if (interval+intervalDelta < 1000){
+            return;
+        }
+        renderTimer.setRenderInterval(interval+intervalDelta);
+        _autoupdateintervaltext.innerText = "AUTOMATICKÉ AKTUALIZACE KAŽDÝCH "+Math.floor((interval+intervalDelta)/1000)+" SEKUND";
     }
 
     function render() {
@@ -215,5 +226,6 @@ import * as ta from "./timetable-analysis.js"
     getStationName,
     getStationNameMarkup,
     setStationName,
-    timeTravel
+    timeTravel,
+    changeAutoUpdateInterval
 };

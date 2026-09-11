@@ -1,6 +1,6 @@
 ================================================================================================
 LINKY TYPU IC — POMĚR PŘÍMÉ VZDÁLENOSTI K DÉLCE LINKY
-Počet linek: 30 | Řazení: od nejvyššího poměru po nejnižší
+Počet linek: 32 | Řazení: od nejvyššího poměru po nejnižší
 ================================================================================================
    1. IC 7 — Bobr
       Dopravce: ČD | ID linky: 478
@@ -41,26 +41,26 @@ Počet linek: 30 | Řazení: od nejvyššího poměru po nejnižší
    7. IC 6 — Spartan
       Dopravce: ČD | ID linky: 437
       Trasa: Praha - Hl.N. → Ostrava - Hl.N.
-      Délka linky: 319.71 km | Přímá vzdálenost: 277.35 km
+      Délka linky: 319.72 km | Přímá vzdálenost: 277.35 km
       Poměr přímé vzdálenosti k délce: 0.8675 (86.75 %)
 
    8. IC 6 — Spartan
       Dopravce: ČD | ID linky: 436
       Trasa: Ostrava - Hl.N. → Praha - Hl.N.
-      Délka linky: 319.71 km | Přímá vzdálenost: 277.35 km
+      Délka linky: 319.72 km | Přímá vzdálenost: 277.35 km
       Poměr přímé vzdálenosti k délce: 0.8675 (86.75 %)
 
    9. IC 12 — Velbloud
       Dopravce: ZSSK | ID linky: 1120
       Trasa: Prešov - Hl.S. → Ostrava - Hl.N.
-      Délka linky: 274.39 km | Přímá vzdálenost: 232.90 km
-      Poměr přímé vzdálenosti k délce: 0.8488 (84.88 %)
+      Délka linky: 276.82 km | Přímá vzdálenost: 232.90 km
+      Poměr přímé vzdálenosti k délce: 0.8413 (84.13 %)
 
   10. IC 12 — Velbloud
       Dopravce: ZSSK | ID linky: 1121
       Trasa: Ostrava - Hl.N. → Prešov - Hl.S.
-      Délka linky: 274.39 km | Přímá vzdálenost: 232.90 km
-      Poměr přímé vzdálenosti k délce: 0.8488 (84.88 %)
+      Délka linky: 276.82 km | Přímá vzdálenost: 232.90 km
+      Poměr přímé vzdálenosti k délce: 0.8413 (84.13 %)
 
   11. IC 3 — Práče
       Dopravce: ČD | ID linky: 212
@@ -77,48 +77,48 @@ Počet linek: 30 | Řazení: od nejvyššího poměru po nejnižší
   13. IC 83412 — Východní Šíp
       Dopravce: pBEX | ID linky: 2700
       Trasa: Praha - Nová Libeň → Košice - Hl.S.
-      Délka linky: 653.10 km | Přímá vzdálenost: 514.18 km
-      Poměr přímé vzdálenosti k délce: 0.7873 (78.73 %)
+      Délka linky: 652.73 km | Přímá vzdálenost: 514.18 km
+      Poměr přímé vzdálenosti k délce: 0.7877 (78.77 %)
 
   14. IC 83412 — Východní Šíp
       Dopravce: pBEX | ID linky: 2701
       Trasa: Košice - Hl.S. → Praha - Nová Libeň
-      Délka linky: 653.10 km | Přímá vzdálenost: 514.18 km
-      Poměr přímé vzdálenosti k délce: 0.7873 (78.73 %)
+      Délka linky: 652.73 km | Přímá vzdálenost: 514.18 km
+      Poměr přímé vzdálenosti k délce: 0.7877 (78.77 %)
 
   15. IC 1 — Praotec
-      Dopravce: ČD | ID linky: 125
-      Trasa: Brno - Hl.N. → Praha - Veleslavín
-      Délka linky: 248.54 km | Přímá vzdálenost: 191.12 km
-      Poměr přímé vzdálenosti k délce: 0.7690 (76.90 %)
-
-  16. IC 1 — Praotec
       Dopravce: ČD | ID linky: 124
       Trasa: Praha - Veleslavín → Brno - Hl.N.
-      Délka linky: 248.54 km | Přímá vzdálenost: 191.12 km
-      Poměr přímé vzdálenosti k délce: 0.7690 (76.90 %)
+      Délka linky: 249.76 km | Přímá vzdálenost: 191.12 km
+      Poměr přímé vzdálenosti k délce: 0.7652 (76.52 %)
+
+  16. IC 1 — Praotec
+      Dopravce: ČD | ID linky: 125
+      Trasa: Brno - Hl.N. → Praha - Veleslavín
+      Délka linky: 249.76 km | Přímá vzdálenost: 191.12 km
+      Poměr přímé vzdálenosti k délce: 0.7652 (76.52 %)
 
   17. IC 501b — Krátký Tatranský Oblúk
       Dopravce: pPR | ID linky: 2764
-      Trasa: Vysoké Tatry → Bratislava - Nivy
+      Trasa: Bratislava - Nivy → Vysoké Tatry
       Délka linky: 330.02 km | Přímá vzdálenost: 251.59 km
       Poměr přímé vzdálenosti k délce: 0.7623 (76.23 %)
 
   18. IC 501b — Krátký Tatranský Oblúk
       Dopravce: pPR | ID linky: 2765
-      Trasa: Bratislava - Nivy → Vysoké Tatry
+      Trasa: Vysoké Tatry → Bratislava - Nivy
       Délka linky: 330.02 km | Přímá vzdálenost: 251.59 km
       Poměr přímé vzdálenosti k délce: 0.7623 (76.23 %)
 
   19. IC 9 — Pardál
-      Dopravce: ČD | ID linky: 601
-      Trasa: Bratislava - Hl.S. → Praha - Hl.N.
+      Dopravce: ČD | ID linky: 600
+      Trasa: Praha - Hl.N. → Bratislava - Hl.S.
       Délka linky: 384.19 km | Přímá vzdálenost: 290.49 km
       Poměr přímé vzdálenosti k délce: 0.7561 (75.61 %)
 
   20. IC 9 — Pardál
-      Dopravce: ČD | ID linky: 600
-      Trasa: Praha - Hl.N. → Bratislava - Hl.S.
+      Dopravce: ČD | ID linky: 601
+      Trasa: Bratislava - Hl.S. → Praha - Hl.N.
       Délka linky: 384.19 km | Přímá vzdálenost: 290.49 km
       Poměr přímé vzdálenosti k délce: 0.7561 (75.61 %)
 
@@ -135,49 +135,61 @@ Počet linek: 30 | Řazení: od nejvyššího poměru po nejnižší
       Poměr přímé vzdálenosti k délce: 0.7282 (72.82 %)
 
   23. IC 501 — Tatranský Oblúk
-      Dopravce: pPR | ID linky: 2759
-      Trasa: Košice - Terasa → Bratislava - Nivy
-      Délka linky: 425.96 km | Přímá vzdálenost: 307.99 km
+      Dopravce: pPR | ID linky: 2758
+      Trasa: Bratislava - Nivy → Košice - Terasa
+      Délka linky: 425.97 km | Přímá vzdálenost: 307.99 km
       Poměr přímé vzdálenosti k délce: 0.7230 (72.30 %)
 
   24. IC 501 — Tatranský Oblúk
-      Dopravce: pPR | ID linky: 2758
-      Trasa: Bratislava - Nivy → Košice - Terasa
-      Délka linky: 425.96 km | Přímá vzdálenost: 307.99 km
+      Dopravce: pPR | ID linky: 2759
+      Trasa: Košice - Terasa → Bratislava - Nivy
+      Délka linky: 425.97 km | Přímá vzdálenost: 307.99 km
       Poměr přímé vzdálenosti k délce: 0.7230 (72.30 %)
 
-  25. IC 83415 — Moravský Express
+  25. IC 83416 — Český Poledník
+      Dopravce: pBEX | ID linky: 2835
+      Trasa: Liberec - Hl.N. → Brno - Žebětín
+      Délka linky: 289.24 km | Přímá vzdálenost: 202.06 km
+      Poměr přímé vzdálenosti k délce: 0.6986 (69.86 %)
+
+  26. IC 83416 — Český Poledník
+      Dopravce: pBEX | ID linky: 2834
+      Trasa: Brno - Žebětín → Liberec - Hl.N.
+      Délka linky: 289.24 km | Přímá vzdálenost: 202.06 km
+      Poměr přímé vzdálenosti k délce: 0.6986 (69.86 %)
+
+  27. IC 83415 — Moravský Express
       Dopravce: pBEX | ID linky: 2628
       Trasa: Ostrava - Přívoz → Břeclav - Sever
       Délka linky: 236.24 km | Přímá vzdálenost: 155.72 km
       Poměr přímé vzdálenosti k délce: 0.6591 (65.91 %)
 
-  26. IC 83415 — Moravský Express
+  28. IC 83415 — Moravský Express
       Dopravce: pBEX | ID linky: 2629
       Trasa: Břeclav - Sever → Ostrava - Přívoz
       Délka linky: 236.24 km | Přímá vzdálenost: 155.72 km
       Poměr přímé vzdálenosti k délce: 0.6591 (65.91 %)
 
-  27. IC 2 — Moravan
-      Dopravce: ČD | ID linky: 141
-      Trasa: Olomouc - Hl.N. → Ostrava - Hl.N.
-      Délka linky: 127.46 km | Přímá vzdálenost: 78.62 km
-      Poměr přímé vzdálenosti k délce: 0.6168 (61.68 %)
-
-  28. IC 2 — Moravan
+  29. IC 2 — Moravan
       Dopravce: ČD | ID linky: 140
       Trasa: Ostrava - Hl.N. → Olomouc - Hl.N.
-      Délka linky: 127.46 km | Přímá vzdálenost: 78.62 km
-      Poměr přímé vzdálenosti k délce: 0.6168 (61.68 %)
+      Délka linky: 127.48 km | Přímá vzdálenost: 78.62 km
+      Poměr přímé vzdálenosti k délce: 0.6167 (61.67 %)
 
-  29. IC 83411 — Západní Šíp
-      Dopravce: pBEX | ID linky: 2633
-      Trasa: Praha - Nová Libeň → Karlovy Vary - Hl.N.
+  30. IC 2 — Moravan
+      Dopravce: ČD | ID linky: 141
+      Trasa: Olomouc - Hl.N. → Ostrava - Hl.N.
+      Délka linky: 127.48 km | Přímá vzdálenost: 78.62 km
+      Poměr přímé vzdálenosti k délce: 0.6167 (61.67 %)
+
+  31. IC 83411 — Západní Šíp
+      Dopravce: pBEX | ID linky: 2632
+      Trasa: Karlovy Vary - Hl.N. → Praha - Nová Libeň
       Délka linky: 239.38 km | Přímá vzdálenost: 114.87 km
       Poměr přímé vzdálenosti k délce: 0.4798 (47.98 %)
 
-  30. IC 83411 — Západní Šíp
-      Dopravce: pBEX | ID linky: 2632
-      Trasa: Karlovy Vary - Hl.N. → Praha - Nová Libeň
+  32. IC 83411 — Západní Šíp
+      Dopravce: pBEX | ID linky: 2633
+      Trasa: Praha - Nová Libeň → Karlovy Vary - Hl.N.
       Délka linky: 239.38 km | Přímá vzdálenost: 114.87 km
       Poměr přímé vzdálenosti k délce: 0.4798 (47.98 %)

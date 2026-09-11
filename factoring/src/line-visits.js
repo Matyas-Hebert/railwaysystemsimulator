@@ -13,8 +13,7 @@ import * as constants from "./constants.js";
         if (!line || position.tripID == null || position.day == null) return;
 
         const time = app.getCurrentTimeInSeconds();
-        const daysSinceEpoch = Math.floor(app.getCurrentTimeInMilliseconds() / constants.MILLISECONDS_PER_DAY);
-        const day = position.day >= 100 ? position.day - daysSinceEpoch : position.day;
+        const day = position.day >= 100 ? position.day - app.getCurrentDayNumber() : position.day;
         const destinationStationId = tripRoutes.getTripDestinationStationId(
             position.lineID,
             position.tripID

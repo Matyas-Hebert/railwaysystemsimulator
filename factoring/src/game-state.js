@@ -1029,6 +1029,10 @@ export class GameState {
         return this.#lines[lineId].type;
     }
 
+    getLine(lineId) {
+        return this.#lines[lineId];
+    }
+
     #saveCollectionProgress() {
         localStorage.setItem("_collectionprogress", JSON.stringify(this.#collectionProgress));
     }

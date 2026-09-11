@@ -1,0 +1,15 @@
+================================================================================================
+LINKY TYPU Par — POMĚR PŘÍMÉ VZDÁLENOSTI K DÉLCE LINKY
+Počet linek: 2 | Řazení: od nejvyššího poměru po nejnižší
+================================================================================================
+   1. Par 400 — Vltavan
+      Dopravce: PPS | ID linky: 2857
+      Trasa: Praha - Na Kampě → Písek - Přístaviště
+      Délka linky: 134.16 km | Přímá vzdálenost: 88.22 km
+      Poměr přímé vzdálenosti k délce: 0.6576 (65.76 %)
+
+   2. Par 400 — Vltavan
+      Dopravce: PPS | ID linky: 2856
+      Trasa: Písek - Přístaviště → Praha - Na Kampě
+      Délka linky: 134.16 km | Přímá vzdálenost: 88.22 km
+      Poměr přímé vzdálenosti k délce: 0.6576 (65.76 %)

@@ -86,6 +86,11 @@
                 <div>AUTOMATICKÉ AKTUALIZACE</div>
                 <div id="_autoupdate">ZASTAVIT</div>
             </div>
+            <div class="settingsrow" id="_autoupdatetimerow">
+                <div id="_autoupdateintervaltext">AUTOMATICKÉ AKTUALIZACE KAŽDÝCH x SEKUND</div>
+                <button id="_minusautoupdate">-</button>
+                <button id="_plusautoupdate">+</button>
+            </div>
             <div class="settingsrow" id="_teleportrow" style="display: none;">
                 <div>TELEPORT NA STANICI</div>
                 <div class="settingscontrol">
@@ -188,6 +193,28 @@
                 </div>
             </div>
             <table id="_traintimetableheader"></table>
+            <div id="_trainbuffoptions" class="buff-selector">
+                <button id="_fasterOption" class="_trainBuffOption selected" type="button">
+                    <span>RYCHLOST</span>
+                    <span>80,-</span>
+                </button>
+                <button id="_accelerationOption" class="_trainBuffOption selected" type="button">
+                    <span>ZRYCHLENÍ</span>
+                    <span>50,-</span>
+                </button>
+                <button id="_noDelayOption" class="_trainBuffOption selected" type="button">
+                    <span>NA ČAS</span>
+                    <span>80,-</span>
+                </button>
+                <button id="_skipNextStationOption" class="_trainBuffOption selected" type="button">
+                    <span>NA ZNAMENÍ</span>
+                    <span>25,-<span>
+                </button>
+                <button id="_waitOption" class="_trainBuffOption selected" type="button">
+                    <span>ČEKEJ</span>
+                    <span>25,-<span>
+                </button>
+            </div>
             <table id="_traintimetable"></table>
         </div>
         <div id="_section3">
@@ -249,6 +276,19 @@
                     <td id="_stopbtn">ZASTAVIT SE</td>
                 </tr>
             </table>
+            <div class="movement-selector">
+                <button id="_walkOption" class="movement-option selected" type="button">
+                    <span>CHŮZE</span>
+                </button>
+
+                <button id="_runOption" class="movement-option" type="button">
+                    <span>BĚH</span>
+                </button>
+
+                <button id="_sprintOption" class="movement-option" type="button">
+                    <span>SPRINT</span>
+                </button>
+            </div>
         </div>
     </div>
     <script type="module" src="./src/main.js"></script>

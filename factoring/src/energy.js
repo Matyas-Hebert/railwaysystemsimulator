@@ -1,6 +1,7 @@
 import * as constants from "./constants.js";
 import * as runtime from "./runtime.js";
 import * as clock from "./clock.js";
+import * as stationVisits from "./station-visits.js"
 
 export function updateEnergy(){
     let gameState = runtime.getGameState();
@@ -23,6 +24,9 @@ export function updateEnergy(){
 
     if (timeAtIdleRate > 0){
         gameState.updateCurrentPosition(energySnap.positionAtIdleStart);
+        if (energySnap.positionAtIdleStart?.transporttype == constants.TRANSPORT_TYPE.STATION){
+            stationVisits.setStationEntry(energySnap.positionAtIdleStart.statID, energySnap.idleStartTime);
+        }
         gameState.setEnergySnapshot(null, constants.ENERGY_RESTORATION_IDLE, gameState.getEnergy(), null, now);
     }
     else{

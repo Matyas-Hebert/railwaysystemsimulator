@@ -203,7 +203,7 @@ function boardTrain(lineID, tripID, day, stopIndex = null){
             : null
     };
     if (day <= 1000){
-        positionChanges.day = day+Math.floor(getCurrentTimeInMilliseconds() / constants.MILLISECONDS_PER_DAY);
+        positionChanges.day = day + clock.getCurrentDayNumber();
     }
     else{
         positionChanges.day = day;
@@ -212,7 +212,7 @@ function boardTrain(lineID, tripID, day, stopIndex = null){
 }
 function normalizeAutoBoardConnection(conn) {
     const day = conn.day <= 1000
-        ? conn.day + Math.floor(getCurrentTimeInMilliseconds() / constants.MILLISECONDS_PER_DAY)
+        ? conn.day + clock.getCurrentDayNumber()
         : conn.day;
     return {
         lineID: Number(conn.lineID),
@@ -437,14 +437,16 @@ function updateTime() {
 function getCurrentTimeInMilliseconds(){
     return clock.getCurrentTimeInMilliseconds();
 }
+function getCurrentDayNumber(){
+    return clock.getCurrentDayNumber();
+}
 
 function getCurrentTimeInSeconds(){
-    const currentDate = new Date();
+    const currentDate = new Date(getCurrentTimeInMilliseconds());
     const seconds = currentDate.getHours()*3600
         + currentDate.getMinutes()*60
-        + currentDate.getSeconds()
-        + runtime.getGameState().getTimeTravelled();
-    return ((seconds % constants.SECONDS_PER_DAY) + constants.SECONDS_PER_DAY) % constants.SECONDS_PER_DAY;
+        + currentDate.getSeconds();
+    return seconds;
 }
 
 function getCurrentTimeInMinutes(){
@@ -909,6 +911,7 @@ function renderCurrentSection(force = false){
         _start.style.display = "block";
         return;
     }
+    _trainbuffoptions.style.display = "grid";
     const currentTransportType = runtime.getGameState().getCurrentPosition().transporttype;
     if (currentTransportType === constants.TRANSPORT_TYPE.FIELD && runtime.getCurrentSection() === 0) {
         runtime.setCurrentSection(5);
@@ -952,7 +955,7 @@ function renderCurrentSection(force = false){
             runtime.getGameState().updateCurrentPosition({hidesinfront: true});
             schedule.print(_traintimetable, runtime.getGameState().getCurrentPosition(), true, true);
         }
-        if (runtime.getGameState().getCurrentPosition().transporttype === constants.TRANSPORT_TYPE.WALKING){
+        if (onFoot(runtime.getGameState().getCurrentPosition().transporttype)){
             _section0.style.display = "none";
             _section2.style.display = "block";
             _subsection5.style.display = "block";
@@ -978,7 +981,7 @@ function renderCurrentSection(force = false){
         trhTab.render();
     }
     if (runtime.getCurrentSection() == 5){
-        walking.printOptions(runtime.getGameState().getCurrentPosition().transporttype === constants.TRANSPORT_TYPE.WALKING ? -1 : runtime.getGameState().getCurrentPosition().statID);
+        walking.printOptions(onFoot(runtime.getGameState().getCurrentPosition().transporttype) ? -1 : runtime.getGameState().getCurrentPosition().statID);
     }
 
     stationInformation.render();
@@ -988,6 +991,18 @@ function renderCurrentSection(force = false){
     connection.refresh();
 }
 
+function onFoot(transporttype){
+    if (transporttype == constants.TRANSPORT_TYPE.WALKING){
+        return true;
+    }
+    if (transporttype == constants.TRANSPORT_TYPE.RUNNING){
+        return true;
+    }
+    if (transporttype == constants.TRANSPORT_TYPE.SPRINTING){
+        return true;
+    }
+    return false;
+}
 
 let isOpen = false;
 let justClosed = false;
@@ -1016,4 +1031,4 @@ window.addEventListener('scroll', () => {
 });
 
 
-export { formatTime, getCurrentTimeInMilliseconds, getCurrentTimeInSeconds, getCurrentTimeInMinutes, renderCurrentSection, changeCurrentSection, boardTrain, addRow, normalizeAutoBoardConnection, getTrainName, selectTicketDestination, selectDestination, selectFilter, selectSection, startGame, togglePinnedList, updateClock };
+export { formatTime, getCurrentTimeInMilliseconds, getCurrentDayNumber, getCurrentTimeInSeconds, getCurrentTimeInMinutes, renderCurrentSection, changeCurrentSection, boardTrain, addRow, normalizeAutoBoardConnection, getTrainName, selectTicketDestination, selectDestination, selectFilter, selectSection, startGame, togglePinnedList, updateClock };

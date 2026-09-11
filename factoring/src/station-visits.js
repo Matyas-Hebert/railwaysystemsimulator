@@ -18,6 +18,13 @@ import * as constants from "./constants.js";
         }
     }
 
+    function setStationEntry(stationId, enteredAt) {
+        runtime.getGameState().updateStationVisitState({
+            stationId: Number(stationId),
+            enteredAt
+        });
+    }
+
     function markVisited(stationId) {
         stationId = Number(stationId);
         if (!Number.isInteger(stationId)) return false;
@@ -31,6 +38,7 @@ import * as constants from "./constants.js";
         document.dispatchEvent(new CustomEvent("station-visited", {
             detail: { stationId }
         }));
+
         return true;
     }
 
@@ -97,5 +105,6 @@ import * as constants from "./constants.js";
     getVisitedStationIds,
     isVisited,
     markVisited,
-    reset
+    reset,
+    setStationEntry
 };

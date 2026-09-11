@@ -6,6 +6,8 @@ import * as app from "./timetable-analysis.js";
 import * as runtime from "./runtime.js";
 import * as data from "../generated/timetable.js";
 import * as constants from "./constants.js";
+import * as stationVisits from "./station-visits.js"
+import * as playerLocation from "./player-location.js"
 
 function getAutoTravelStatus(lineID) {
     const autoBoardSelection = runtime.getGameState().getAutoBoardSelection();
@@ -364,16 +366,23 @@ function updateTrackProgress(
     }
 }
 
+function getActualTrainArrivalTime(lineID, tripID, day, targetStopIndex){
+    let stopDelay = delays.getDelayAtStop(lineID, tripID, day, targetStopIndex);
+    const now = app.getCurrentTimeInMilliseconds();
+    const secondsSinceMidnight = app.getCurrentTimeInSeconds();
+    const currentDayStartMs = now - secondsSinceMidnight * 1000;
+    return currentDayStartMs + stopDelay.arrtime * 1000;
+}
+
 function print(table=_information, conns=runtime.getConnectionStructure(), checkifkick=false, getoffbutton=false){
     if (Object.keys(conns).length == 0){
         return;
     }
     let lineID = conns.lineID;
     let tripID = conns.tripID;
-    let dayssinceepoch = Math.floor(app.getCurrentTimeInMilliseconds() / constants.MILLISECONDS_PER_DAY);
     let day = conns.day;
     if (day >= 100){
-        day = day-dayssinceepoch;
+        day -= app.getCurrentDayNumber();
     }
     let hidesinfront = conns.hidesinfront;
     if (lineID == null || tripID == null){
@@ -398,11 +407,13 @@ function print(table=_information, conns=runtime.getConnectionStructure(), check
         if (delay.status === constants.TRAIN_STATUS.FINISHED){
             runtime.getGameState().changeTransportType(constants.TRANSPORT_TYPE.STATION);
             runtime.getGameState().updateCurrentPosition({statID: route.destinationStationId});
+            stationVisits.setStationEntry(route.destinationStationId, getActualTrainArrivalTime(lineID, tripID, day, route.endIndex));
             app.renderCurrentSection();
         }
         if (delay.status === constants.TRAIN_STATUS.CANCELLED_BEFORE_TARGET || delay.status === constants.TRAIN_STATUS.CANCELLED_AFTER_TARGET){
             runtime.getGameState().changeTransportType(constants.TRANSPORT_TYPE.STATION);
             runtime.getGameState().updateCurrentPosition({statID: delay.station});
+            stationVisits.setStationEntry(delay.station, getActualTrainArrivalTime(lineID, tripID, day, delay.stopIndex));
             app.renderCurrentSection();
         }
     }
@@ -435,7 +446,7 @@ function print(table=_information, conns=runtime.getConnectionStructure(), check
     let row = app.addRow({
         "table": _traintimetableheader,
         "c1t": "Vlak",
-        "c2t": "Z/DO",
+        "c2t": String(Math.round(playerLocation.getCurrentSpeedOfTrain(lineID, tripID, day)))+" km/h",
         "c3t": delaystring,
         "subtexttime": delayreason,
         "includered": delay.delay>=60 || delay.status === constants.TRAIN_STATUS.CANCELLED_BEFORE_TARGET,
@@ -450,6 +461,16 @@ function print(table=_information, conns=runtime.getConnectionStructure(), check
         "noclasssubtextdest": true,
         "includered": false,
         "onlythreecols": true});
+
+    // let nextrow = _trainbuffoptions.insertRow(-1);
+    // let o1 = nextrow.insertCell(0);
+    // o1.className = "_trainBuffOption";
+    // let o2 = nextrow.insertCell(1);
+    // o2.className = "_trainBuffOption";
+    // let o3 = nextrow.insertCell(2);
+    // o3.className = "_trainBuffOption";
+    // let o4 = nextrow.insertCell(3);
+    // o4.className = "_trainBuffOption";
 
     row.cells[0].onclick = function(){
         runtime.setTrainSectionData(conns);
@@ -470,6 +491,9 @@ function print(table=_information, conns=runtime.getConnectionStructure(), check
                 statID: delay.station,
                 goalStatID: delay.station
             });
+
+            stationVisits.setStationEntry(delay.station, app.getCurrentTimeInMilliseconds());
+
             app.renderCurrentSection();
         };
     }

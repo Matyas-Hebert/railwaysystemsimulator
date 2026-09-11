@@ -4,6 +4,8 @@ import * as app from "./timetable-analysis.js";
 import * as runtime from "./runtime.js";
 import * as data from "../generated/timetable.js";
 import * as constants from "./constants.js";
+import * as stationVisits from "./station-visits.js"
+import * as schedule from "./schedule.js"
 
     function shouldExit(status) {
         return status === constants.TRAIN_STATUS.STOPPED_AT_TARGET
@@ -44,11 +46,8 @@ import * as constants from "./constants.js";
         }
 
         const time = app.getCurrentTimeInSeconds();
-        const daysSinceEpoch = Math.floor(
-            app.getCurrentTimeInMilliseconds() / constants.MILLISECONDS_PER_DAY
-        );
         const relativeDay = position.day >= 100
-            ? position.day - daysSinceEpoch
+            ? position.day - app.getCurrentDayNumber()
             : position.day;
         const currentDelay = delays.get(
             position.lineID,
@@ -58,6 +57,8 @@ import * as constants from "./constants.js";
             relativeDay,
             targetStopIndex
         );
+        let lineID = position.lineID;
+        let tripID = position.tripID;
         if (!shouldExit(currentDelay.status)) return false;
 
         runtime.getGameState().setAutoExitStationId(null);
@@ -66,6 +67,7 @@ import * as constants from "./constants.js";
             statID: stationId,
             goalStatID: stationId
         });
+        stationVisits.setStationEntry(stationId, schedule.getActualTrainArrivalTime(lineID, tripID, relativeDay, targetStopIndex));
         return true;
     }
 

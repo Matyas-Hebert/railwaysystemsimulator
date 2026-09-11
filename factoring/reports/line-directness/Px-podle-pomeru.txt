@@ -1,6 +1,6 @@
 ================================================================================================
 LINKY TYPU Px — POMĚR PŘÍMÉ VZDÁLENOSTI K DÉLCE LINKY
-Počet linek: 112 | Řazení: od nejvyššího poměru po nejnižší
+Počet linek: 114 | Řazení: od nejvyššího poměru po nejnižší
 ================================================================================================
    1. Px 44445b — Rychlý Hanvald
       Dopravce: DPNisa | ID linky: 2128
@@ -171,14 +171,14 @@ Počet linek: 112 | Řazení: od nejvyššího poměru po nejnižší
       Poměr přímé vzdálenosti k délce: 0.8091 (80.91 %)
 
   29. Px 56314 — Zuzana
-      Dopravce: DPPr | ID linky: 2599
-      Trasa: Přelouč - Hl.N. → Pardubice - Hl.N.
+      Dopravce: DPPr | ID linky: 2598
+      Trasa: Pardubice - Hl.N. → Přelouč - Hl.N.
       Délka linky: 19.59 km | Přímá vzdálenost: 15.38 km
       Poměr přímé vzdálenosti k délce: 0.7851 (78.51 %)
 
   30. Px 56314 — Zuzana
-      Dopravce: DPPr | ID linky: 2598
-      Trasa: Pardubice - Hl.N. → Přelouč - Hl.N.
+      Dopravce: DPPr | ID linky: 2599
+      Trasa: Přelouč - Hl.N. → Pardubice - Hl.N.
       Délka linky: 19.59 km | Přímá vzdálenost: 15.38 km
       Poměr přímé vzdálenosti k délce: 0.7851 (78.51 %)
 
@@ -302,373 +302,385 @@ Počet linek: 112 | Řazení: od nejvyššího poměru po nejnižší
       Délka linky: 35.37 km | Přímá vzdálenost: 24.23 km
       Poměr přímé vzdálenosti k délce: 0.6849 (68.49 %)
 
-  51. Px 10013b — Rychlý Petr
+  51. Px 10008b — Dlouhý Masaryk
+      Dopravce: PID | ID linky: 2082
+      Trasa: Praha - Zdiby → Vrané nad Vltavou - Přístaviště
+      Délka linky: 42.16 km | Přímá vzdálenost: 26.21 km
+      Poměr přímé vzdálenosti k délce: 0.6217 (62.17 %)
+
+  52. Px 10008b — Dlouhý Masaryk
+      Dopravce: PID | ID linky: 2083
+      Trasa: Vrané nad Vltavou - Přístaviště → Praha - Zdiby
+      Délka linky: 42.16 km | Přímá vzdálenost: 26.21 km
+      Poměr přímé vzdálenosti k délce: 0.6217 (62.17 %)
+
+  53. Px 10013b — Rychlý Petr
       Dopravce: PID | ID linky: 2062
       Trasa: Praha - Uhříněves → Praha - Hl.N.
       Délka linky: 21.76 km | Přímá vzdálenost: 13.49 km
       Poměr přímé vzdálenosti k délce: 0.6196 (61.96 %)
 
-  52. Px 10013b — Rychlý Petr
+  54. Px 10013b — Rychlý Petr
       Dopravce: PID | ID linky: 2063
       Trasa: Praha - Hl.N. → Praha - Uhříněves
       Délka linky: 21.76 km | Přímá vzdálenost: 13.49 km
       Poměr přímé vzdálenosti k délce: 0.6196 (61.96 %)
 
-  53. Px 15327 — Ferka
+  55. Px 94000b — Rychlý Balbín
+      Dopravce: ČD | ID linky: 2879
+      Trasa: Dobříš - Stará Huť → Přibram - Zdaboř
+      Délka linky: 31.67 km | Přímá vzdálenost: 19.49 km
+      Poměr přímé vzdálenosti k délce: 0.6155 (61.55 %)
+
+  56. Px 94000b — Rychlý Balbín
+      Dopravce: ČD | ID linky: 2878
+      Trasa: Přibram - Zdaboř → Dobříš - Stará Huť
+      Délka linky: 31.67 km | Přímá vzdálenost: 19.49 km
+      Poměr přímé vzdálenosti k délce: 0.6155 (61.55 %)
+
+  57. Px 15327 — Ferka
       Dopravce: ČD | ID linky: 2799
       Trasa: Kůty → Valtice - Město
       Délka linky: 36.68 km | Přímá vzdálenost: 20.97 km
       Poměr přímé vzdálenosti k délce: 0.5717 (57.17 %)
 
-  54. Px 15327 — Ferka
+  58. Px 15327 — Ferka
       Dopravce: ČD | ID linky: 2798
       Trasa: Valtice - Město → Kůty
       Délka linky: 36.68 km | Přímá vzdálenost: 20.97 km
       Poměr přímé vzdálenosti k délce: 0.5717 (57.17 %)
 
-  55. Px 10001b — Rychlý Havel
+  59. Px 10001b — Rychlý Havel
       Dopravce: PID | ID linky: 2046
       Trasa: Praha - Chodov → Praha - Veleslavín
       Délka linky: 22.83 km | Přímá vzdálenost: 12.88 km
       Poměr přímé vzdálenosti k délce: 0.5640 (56.40 %)
 
-  56. Px 10001b — Rychlý Havel
+  60. Px 10001b — Rychlý Havel
       Dopravce: PID | ID linky: 2047
       Trasa: Praha - Veleslavín → Praha - Chodov
       Délka linky: 22.83 km | Přímá vzdálenost: 12.88 km
       Poměr přímé vzdálenosti k délce: 0.5640 (56.40 %)
 
-  57. Px 10006b — Rychlý Beneš
-      Dopravce: PID | ID linky: 2052
-      Trasa: Praha - Kamýk → Praha - Koloděje
-      Délka linky: 27.09 km | Přímá vzdálenost: 15.11 km
-      Poměr přímé vzdálenosti k délce: 0.5577 (55.77 %)
-
-  58. Px 10006b — Rychlý Beneš
+  61. Px 10006b — Rychlý Beneš
       Dopravce: PID | ID linky: 2053
       Trasa: Praha - Koloděje → Praha - Kamýk
       Délka linky: 27.09 km | Přímá vzdálenost: 15.11 km
       Poměr přímé vzdálenosti k délce: 0.5577 (55.77 %)
 
-  59. Px 20001b — Rychlý Bělohlav
+  62. Px 10006b — Rychlý Beneš
+      Dopravce: PID | ID linky: 2052
+      Trasa: Praha - Kamýk → Praha - Koloděje
+      Délka linky: 27.09 km | Přímá vzdálenost: 15.11 km
+      Poměr přímé vzdálenosti k délce: 0.5577 (55.77 %)
+
+  63. Px 20001b — Rychlý Bělohlav
       Dopravce: DPMCB | ID linky: 2134
       Trasa: České Budějovice - Borek → České Budějovice - Roudné
       Délka linky: 18.01 km | Přímá vzdálenost: 9.91 km
       Poměr přímé vzdálenosti k délce: 0.5503 (55.03 %)
 
-  60. Px 20001b — Rychlý Bělohlav
+  64. Px 20001b — Rychlý Bělohlav
       Dopravce: DPMCB | ID linky: 2135
       Trasa: České Budějovice - Roudné → České Budějovice - Borek
       Délka linky: 18.01 km | Přímá vzdálenost: 9.91 km
       Poměr přímé vzdálenosti k délce: 0.5503 (55.03 %)
 
-  61. Px 10005b — Rychlá Mozkovna
-      Dopravce: PID | ID linky: 2050
-      Trasa: Praha - Zbraslav → Praha - Řeporyje
-      Délka linky: 18.37 km | Přímá vzdálenost: 9.77 km
-      Poměr přímé vzdálenosti k délce: 0.5317 (53.17 %)
-
-  62. Px 10005b — Rychlá Mozkovna
-      Dopravce: PID | ID linky: 2051
-      Trasa: Praha - Řeporyje → Praha - Zbraslav
-      Délka linky: 18.37 km | Přímá vzdálenost: 9.77 km
-      Poměr přímé vzdálenosti k délce: 0.5317 (53.17 %)
-
-  63. Px 21240 — Martin Rusnák
+  65. Px 21240 — Martin Rusnák
       Dopravce: ZSSK | ID linky: 1930
       Trasa: Vrútky - Bagarov → Martin - Turčianská  Šťiavnička
       Délka linky: 21.65 km | Přímá vzdálenost: 11.48 km
       Poměr přímé vzdálenosti k délce: 0.5301 (53.01 %)
 
-  64. Px 21240 — Martin Rusnák
+  66. Px 21240 — Martin Rusnák
       Dopravce: ZSSK | ID linky: 1931
       Trasa: Martin - Turčianská  Šťiavnička → Vrútky - Bagarov
       Délka linky: 21.65 km | Přímá vzdálenost: 11.48 km
       Poměr přímé vzdálenosti k délce: 0.5301 (53.01 %)
 
-  65. Px 80401b — Rychlý Škvor
+  67. Px 80401b — Rychlý Škvor
       Dopravce: ČD | ID linky: 2264
       Trasa: Benešov - Hl.N. → Benešov - Václavice
       Délka linky: 9.86 km | Přímá vzdálenost: 5.15 km
       Poměr přímé vzdálenosti k délce: 0.5219 (52.19 %)
 
-  66. Px 80401b — Rychlý Škvor
+  68. Px 80401b — Rychlý Škvor
       Dopravce: ČD | ID linky: 2265
       Trasa: Benešov - Václavice → Benešov - Hl.N.
       Délka linky: 9.86 km | Přímá vzdálenost: 5.15 km
       Poměr přímé vzdálenosti k délce: 0.5219 (52.19 %)
 
-  67. Px 97716b — Zábřežský Žirafák
+  69. Px 10005b — Rychlá Mozkovna
+      Dopravce: PID | ID linky: 2050
+      Trasa: Praha - Zbraslav-Přístaviště → Praha - Řeporyje
+      Délka linky: 19.22 km | Přímá vzdálenost: 9.93 km
+      Poměr přímé vzdálenosti k délce: 0.5164 (51.64 %)
+
+  70. Px 10005b — Rychlá Mozkovna
+      Dopravce: PID | ID linky: 2051
+      Trasa: Praha - Řeporyje → Praha - Zbraslav-Přístaviště
+      Délka linky: 19.22 km | Přímá vzdálenost: 9.93 km
+      Poměr přímé vzdálenosti k délce: 0.5164 (51.64 %)
+
+  71. Px 97716b — Zábřežský Žirafák
       Dopravce: ČD | ID linky: 2494
       Trasa: Zábřeh - Hl.N. → Zábřeh - Lupéné
       Délka linky: 6.05 km | Přímá vzdálenost: 3.08 km
       Poměr přímé vzdálenosti k délce: 0.5097 (50.97 %)
 
-  68. Px 97716b — Zábřežský Žirafák
+  72. Px 97716b — Zábřežský Žirafák
       Dopravce: ČD | ID linky: 2495
       Trasa: Zábřeh - Lupéné → Zábřeh - Hl.N.
       Délka linky: 6.05 km | Přímá vzdálenost: 3.08 km
       Poměr přímé vzdálenosti k délce: 0.5097 (50.97 %)
 
-  69. Px 12128b — Krátký Rychlý Rumcajs
+  73. Px 12128b — Krátký Rychlý Rumcajs
       Dopravce: ČD | ID linky: 2738
       Trasa: Jičín - Soudná → Jičín - Čejkovice
       Délka linky: 6.69 km | Přímá vzdálenost: 3.37 km
       Poměr přímé vzdálenosti k délce: 0.5042 (50.42 %)
 
-  70. Px 12128b — Krátký Rychlý Rumcajs
+  74. Px 12128b — Krátký Rychlý Rumcajs
       Dopravce: ČD | ID linky: 2739
       Trasa: Jičín - Čejkovice → Jičín - Soudná
       Délka linky: 6.69 km | Přímá vzdálenost: 3.37 km
       Poměr přímé vzdálenosti k délce: 0.5042 (50.42 %)
 
-  71. Px 10017 — Letištní Express
+  75. Px 10017 — Letištní Express
       Dopravce: PID | ID linky: 2646
-      Trasa: Praha - Terminál [CSA] → Praha - Vinohrady
+      Trasa: Praha - Terminál → Praha - Vinohrady
       Délka linky: 27.21 km | Přímá vzdálenost: 13.50 km
       Poměr přímé vzdálenosti k délce: 0.4963 (49.63 %)
 
-  72. Px 10017 — Letištní Express
+  76. Px 10017 — Letištní Express
       Dopravce: PID | ID linky: 2647
-      Trasa: Praha - Vinohrady → Praha - Terminál [CSA]
+      Trasa: Praha - Vinohrady → Praha - Terminál
       Délka linky: 27.21 km | Přímá vzdálenost: 13.50 km
       Poměr přímé vzdálenosti k délce: 0.4963 (49.63 %)
 
-  73. Px 51714b — Rychlý Adamczyk
+  77. Px 51714b — Rychlý Adamczyk
       Dopravce: ČD | ID linky: 1978
       Trasa: Vrchlabí - Dolní Braná → Vrchlabí - Hl.N.
       Délka linky: 8.36 km | Přímá vzdálenost: 4.01 km
       Poměr přímé vzdálenosti k délce: 0.4795 (47.95 %)
 
-  74. Px 51714b — Rychlý Adamczyk
+  78. Px 51714b — Rychlý Adamczyk
       Dopravce: ČD | ID linky: 1979
       Trasa: Vrchlabí - Hl.N. → Vrchlabí - Dolní Braná
       Délka linky: 8.36 km | Přímá vzdálenost: 4.01 km
       Poměr přímé vzdálenosti k délce: 0.4795 (47.95 %)
 
-  75. Px 71002b — Rychlý Latterman
+  79. Px 71002b — Rychlý Latterman
       Dopravce: DPMO | ID linky: 2110
       Trasa: Olomouc - Hl.N. → Olomouc - Blatec
       Délka linky: 16.85 km | Přímá vzdálenost: 7.57 km
       Poměr přímé vzdálenosti k délce: 0.4491 (44.91 %)
 
-  76. Px 71002b — Rychlý Latterman
+  80. Px 71002b — Rychlý Latterman
       Dopravce: DPMO | ID linky: 2111
       Trasa: Olomouc - Blatec → Olomouc - Hl.N.
       Délka linky: 16.85 km | Přímá vzdálenost: 7.57 km
       Poměr přímé vzdálenosti k délce: 0.4491 (44.91 %)
 
-  77. Px 24124b — Rychlý Němec
+  81. Px 24124b — Rychlý Němec
       Dopravce: ČD | ID linky: 2008
       Trasa: Nový Bydžov - Starý Bydžov → Nový Bydžov - Hl.N.
       Délka linky: 8.65 km | Přímá vzdálenost: 3.77 km
       Poměr přímé vzdálenosti k délce: 0.4360 (43.60 %)
 
-  78. Px 24124b — Rychlý Němec
+  82. Px 24124b — Rychlý Němec
       Dopravce: ČD | ID linky: 2009
       Trasa: Nový Bydžov - Hl.N. → Nový Bydžov - Starý Bydžov
       Délka linky: 8.65 km | Přímá vzdálenost: 3.77 km
       Poměr přímé vzdálenosti k délce: 0.4360 (43.60 %)
 
-  79. Px 10008b — Dlouhý Masaryk
-      Dopravce: PID | ID linky: 2082
-      Trasa: Praha - Zdiby → Praha - Hl.N.
-      Délka linky: 21.24 km | Přímá vzdálenost: 9.18 km
-      Poměr přímé vzdálenosti k délce: 0.4324 (43.24 %)
-
-  80. Px 10008b — Dlouhý Masaryk
-      Dopravce: PID | ID linky: 2083
-      Trasa: Praha - Hl.N. → Praha - Zdiby
-      Délka linky: 21.24 km | Přímá vzdálenost: 9.18 km
-      Poměr přímé vzdálenosti k délce: 0.4324 (43.24 %)
-
-  81. Px 80400b — Rychlý Mareš
+  83. Px 80400b — Rychlý Mareš
       Dopravce: ČD | ID linky: 1410
       Trasa: Benešov - Hl.N. → Benešov - Václavice
       Délka linky: 11.90 km | Přímá vzdálenost: 5.15 km
       Poměr přímé vzdálenosti k délce: 0.4324 (43.24 %)
 
-  82. Px 80400b — Rychlý Mareš
+  84. Px 80400b — Rychlý Mareš
       Dopravce: ČD | ID linky: 1411
       Trasa: Benešov - Václavice → Benešov - Hl.N.
       Délka linky: 11.90 km | Přímá vzdálenost: 5.15 km
       Poměr přímé vzdálenosti k délce: 0.4324 (43.24 %)
 
-  83. Px 23168c — Rychlý Strmeň
+  85. Px 23168c — Rychlý Strmeň
       Dopravce: ZSSK | ID linky: 2183
       Trasa: Nové Zámky - Hl.S: → Šurany - Hl.S.
       Délka linky: 26.67 km | Přímá vzdálenost: 11.38 km
       Poměr přímé vzdálenosti k délce: 0.4266 (42.66 %)
 
-  84. Px 23168c — Rychlý Strmeň
+  86. Px 23168c — Rychlý Strmeň
       Dopravce: ZSSK | ID linky: 2182
       Trasa: Šurany - Hl.S. → Nové Zámky - Hl.S:
       Délka linky: 26.67 km | Přímá vzdálenost: 11.38 km
       Poměr přímé vzdálenosti k délce: 0.4266 (42.66 %)
 
-  85. Px 31570b — Rychlá Vrána
+  87. Px 31570b — Rychlá Vrána
       Dopravce: ČD | ID linky: 1828
       Trasa: Frýdek Místek - Panské Dvory → Frýdek Místek - Bahno
       Délka linky: 10.70 km | Přímá vzdálenost: 4.48 km
       Poměr přímé vzdálenosti k délce: 0.4186 (41.86 %)
 
-  86. Px 31570b — Rychlá Vrána
+  88. Px 31570b — Rychlá Vrána
       Dopravce: ČD | ID linky: 1829
       Trasa: Frýdek Místek - Bahno → Frýdek Místek - Panské Dvory
       Délka linky: 10.70 km | Přímá vzdálenost: 4.48 km
       Poměr přímé vzdálenosti k délce: 0.4186 (41.86 %)
 
-  87. Px 54163b — Rychlý Hájos
+  89. Px 54163b — Rychlý Hájos
       Dopravce: ČD | ID linky: 2180
       Trasa: Dunajská Streda - Velké Dvorníky → Dunajská Streda - Hl.S.
       Délka linky: 9.04 km | Přímá vzdálenost: 3.64 km
       Poměr přímé vzdálenosti k délce: 0.4025 (40.25 %)
 
-  88. Px 54163b — Rychlý Hájos
+  90. Px 54163b — Rychlý Hájos
       Dopravce: ČD | ID linky: 2181
       Trasa: Dunajská Streda - Hl.S. → Dunajská Streda - Velké Dvorníky
       Délka linky: 9.04 km | Přímá vzdálenost: 3.64 km
       Poměr přímé vzdálenosti k délce: 0.4025 (40.25 %)
 
-  89. Px 22000b — Rychlý Patejdl
+  91. Px 22000b — Rychlý Patejdl
       Dopravce: DPKV | ID linky: 1894
       Trasa: Karlovy Vary - Doubí → Karlovy Vary - Sedlec
       Délka linky: 11.57 km | Přímá vzdálenost: 4.56 km
       Poměr přímé vzdálenosti k délce: 0.3946 (39.46 %)
 
-  90. Px 22000b — Rychlý Patejdl
+  92. Px 22000b — Rychlý Patejdl
       Dopravce: DPKV | ID linky: 1895
       Trasa: Karlovy Vary - Sedlec → Karlovy Vary - Doubí
       Délka linky: 11.57 km | Přímá vzdálenost: 4.56 km
       Poměr přímé vzdálenosti k délce: 0.3946 (39.46 %)
 
-  91. Px 24121b — Rychlý Poláček
+  93. Px 24121b — Rychlý Poláček
       Dopravce: ČD | ID linky: 1998
       Trasa: Rychnov nad Kněžnou - Lipovka → Rychnov nad Kněžnou - Hl.N.
       Délka linky: 5.51 km | Přímá vzdálenost: 2.13 km
       Poměr přímé vzdálenosti k délce: 0.3873 (38.73 %)
 
-  92. Px 24121b — Rychlý Poláček
+  94. Px 24121b — Rychlý Poláček
       Dopravce: ČD | ID linky: 1999
       Trasa: Rychnov nad Kněžnou - Hl.N. → Rychnov nad Kněžnou - Lipovka
       Délka linky: 5.51 km | Přímá vzdálenost: 2.13 km
       Poměr přímé vzdálenosti k délce: 0.3873 (38.73 %)
 
-  93. Px 20317b — Rychlý Dřevínek
+  95. Px 20317b — Rychlý Dřevínek
       Dopravce: ČD | ID linky: 2252
       Trasa: Pelhřimov - Hl.N. → Pelhřimov - Kojčice
       Délka linky: 15.11 km | Přímá vzdálenost: 5.58 km
-      Poměr přímé vzdálenosti k délce: 0.3692 (36.92 %)
+      Poměr přímé vzdálenosti k délce: 0.3691 (36.91 %)
 
-  94. Px 20317b — Rychlý Dřevínek
+  96. Px 20317b — Rychlý Dřevínek
       Dopravce: ČD | ID linky: 2253
       Trasa: Pelhřimov - Kojčice → Pelhřimov - Hl.N.
       Délka linky: 15.11 km | Přímá vzdálenost: 5.58 km
-      Poměr přímé vzdálenosti k délce: 0.3692 (36.92 %)
+      Poměr přímé vzdálenosti k délce: 0.3691 (36.91 %)
 
-  95. Px 55701b — Rychlý Hilmera
+  97. Px 55701b — Rychlý Hilmera
       Dopravce: ČD | ID linky: 2088
       Trasa: Veltrusy - Všestudy → Veltrusy - Hl.N.
       Délka linky: 7.52 km | Přímá vzdálenost: 2.63 km
       Poměr přímé vzdálenosti k délce: 0.3493 (34.93 %)
 
-  96. Px 55701b — Rychlý Hilmera
+  98. Px 55701b — Rychlý Hilmera
       Dopravce: ČD | ID linky: 2089
       Trasa: Veltrusy - Hl.N. → Veltrusy - Všestudy
       Délka linky: 7.52 km | Přímá vzdálenost: 2.63 km
       Poměr přímé vzdálenosti k délce: 0.3493 (34.93 %)
 
-  97. Px 10535b — Rychlý Burket
+  99. Px 10535b — Rychlý Burket
       Dopravce: ZSSK | ID linky: 1910
       Trasa: Stará Lubovna - Nová Lubovna → Stará Lubovna - Hl.S.
       Délka linky: 8.91 km | Přímá vzdálenost: 3.08 km
       Poměr přímé vzdálenosti k délce: 0.3453 (34.53 %)
 
-  98. Px 10535b — Rychlý Burket
+ 100. Px 10535b — Rychlý Burket
       Dopravce: ZSSK | ID linky: 1911
       Trasa: Stará Lubovna - Hl.S. → Stará Lubovna - Nová Lubovna
       Délka linky: 8.91 km | Přímá vzdálenost: 3.08 km
       Poměr přímé vzdálenosti k délce: 0.3453 (34.53 %)
 
-  99. Px 10003 — Pavel
-      Dopravce: PID | ID linky: 660
-      Trasa: Praha - Řeporyje → Praha - Bubeneč
-      Délka linky: 31.73 km | Přímá vzdálenost: 9.57 km
-      Poměr přímé vzdálenosti k délce: 0.3015 (30.15 %)
-
- 100. Px 10003 — Pavel
+ 101. Px 10003 — Pavel
       Dopravce: PID | ID linky: 661
       Trasa: Praha - Bubeneč → Praha - Řeporyje
       Délka linky: 31.73 km | Přímá vzdálenost: 9.57 km
       Poměr přímé vzdálenosti k délce: 0.3015 (30.15 %)
 
- 101. Px 10003b — Rychlý Pavel
+ 102. Px 10003 — Pavel
+      Dopravce: PID | ID linky: 660
+      Trasa: Praha - Řeporyje → Praha - Bubeneč
+      Délka linky: 31.73 km | Přímá vzdálenost: 9.57 km
+      Poměr přímé vzdálenosti k délce: 0.3015 (30.15 %)
+
+ 103. Px 10003b — Rychlý Pavel
       Dopravce: PID | ID linky: 2048
       Trasa: Praha - Řeporyje → Praha - Bubeneč
       Délka linky: 31.73 km | Přímá vzdálenost: 9.57 km
       Poměr přímé vzdálenosti k délce: 0.3015 (30.15 %)
 
- 102. Px 10003b — Rychlý Pavel
+ 104. Px 10003b — Rychlý Pavel
       Dopravce: PID | ID linky: 2049
       Trasa: Praha - Bubeneč → Praha - Řeporyje
       Délka linky: 31.73 km | Přímá vzdálenost: 9.57 km
       Poměr přímé vzdálenosti k délce: 0.3015 (30.15 %)
 
- 103. Px 10007b — Rychlý Babiš
+ 105. Px 10007b — Rychlý Babiš
       Dopravce: PID | ID linky: 2054
       Trasa: Praha - Bubeneč → Praha - Zličín
       Délka linky: 32.43 km | Přímá vzdálenost: 9.07 km
       Poměr přímé vzdálenosti k délce: 0.2798 (27.98 %)
 
- 104. Px 10007b — Rychlý Babiš
+ 106. Px 10007b — Rychlý Babiš
       Dopravce: PID | ID linky: 2055
       Trasa: Praha - Zličín → Praha - Bubeneč
       Délka linky: 32.43 km | Přímá vzdálenost: 9.07 km
       Poměr přímé vzdálenosti k délce: 0.2798 (27.98 %)
 
- 105. Px 17981b — Rychlé Techono
+ 107. Px 17981b — Rychlé Techono
       Dopravce: ČD | ID linky: 2548
       Trasa: Rokycany - Litohlavy → Rokycany - Nové Město
       Délka linky: 15.17 km | Přímá vzdálenost: 4.18 km
       Poměr přímé vzdálenosti k délce: 0.2753 (27.53 %)
 
- 106. Px 17981b — Rychlé Techono
+ 108. Px 17981b — Rychlé Techono
       Dopravce: ČD | ID linky: 2549
       Trasa: Rokycany - Nové Město → Rokycany - Litohlavy
       Délka linky: 15.17 km | Přímá vzdálenost: 4.18 km
       Poměr přímé vzdálenosti k délce: 0.2753 (27.53 %)
 
- 107. Px 26608b — Rychlý Zentner
+ 109. Px 26608b — Rychlý Zentner
       Dopravce: ČD | ID linky: 2104
       Trasa: Podbořany - Krásný Dvůr → Podbořany - Hl.N.
       Délka linky: 15.93 km | Přímá vzdálenost: 4.01 km
       Poměr přímé vzdálenosti k délce: 0.2518 (25.18 %)
 
- 108. Px 26608b — Rychlý Zentner
+ 110. Px 26608b — Rychlý Zentner
       Dopravce: ČD | ID linky: 2105
       Trasa: Podbořany - Hl.N. → Podbořany - Krásný Dvůr
       Délka linky: 15.93 km | Přímá vzdálenost: 4.01 km
       Poměr přímé vzdálenosti k délce: 0.2518 (25.18 %)
 
- 109. Px 64064b — Rychlý Lagler
+ 111. Px 64064b — Rychlý Lagler
       Dopravce: ČD | ID linky: 2096
       Trasa: Teplice - Novosedlice → Teplice - Hl.N.
       Délka linky: 8.13 km | Přímá vzdálenost: 1.62 km
       Poměr přímé vzdálenosti k délce: 0.1995 (19.95 %)
 
- 110. Px 64064b — Rychlý Lagler
+ 112. Px 64064b — Rychlý Lagler
       Dopravce: ČD | ID linky: 2097
       Trasa: Teplice - Hl.N. → Teplice - Novosedlice
       Délka linky: 8.13 km | Přímá vzdálenost: 1.62 km
       Poměr přímé vzdálenosti k délce: 0.1995 (19.95 %)
 
- 111. Px 34583b — Rychlý Patočka
+ 113. Px 34583b — Rychlý Patočka
       Dopravce: MHDT | ID linky: 2130
       Trasa: Turnov - Hl.N. → Turnov - Bělá
       Délka linky: 10.16 km | Přímá vzdálenost: 1.92 km
       Poměr přímé vzdálenosti k délce: 0.1886 (18.86 %)
 
- 112. Px 34583b — Rychlý Patočka
+ 114. Px 34583b — Rychlý Patočka
       Dopravce: MHDT | ID linky: 2131
       Trasa: Turnov - Bělá → Turnov - Hl.N.
       Délka linky: 10.16 km | Přímá vzdálenost: 1.92 km

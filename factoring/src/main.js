@@ -9,6 +9,7 @@ import * as stationSearch from "./search.js";
 import * as data from "../generated/timetable.js";
 import * as lonlat from "../generated/lonlat.js";
 import * as config from "../generated/config.js";
+import * as renderTimer from "./render-timer.js";
 
 runtime.initializeGameState(new gameStateModule.GameState(
     data.timetable.stations,
@@ -49,6 +50,15 @@ function bindEvents() {
     element("_newgame").addEventListener("click", settings.resetGame);
     element("_autoupdate").addEventListener("click", settings.toggleAutoUpdates);
     element("_teleportbtn").addEventListener("click", settings.teleportToStation);
+    element("_minusautoupdate").addEventListener(
+        "click",
+        () => settings.changeAutoUpdateInterval(-1000)
+    );
+
+    element("_plusautoupdate").addEventListener(
+        "click",
+        () => settings.changeAutoUpdateInterval(1000)
+    );
     element("_moneybtn").addEventListener("click", settings.addDeveloperMoney);
     element("_timetravelbtn").addEventListener("click", settings.timeTravel);
     element("_pinnedlisttoggle").addEventListener("click", app.togglePinnedList);
@@ -89,8 +99,11 @@ foodora.initialize();
 settings.render();
 app.renderCurrentSection();
 setInterval(app.updateClock, 1000);
-setInterval(() => {
-    if (!settings.areAutoUpdatesPaused()) app.renderCurrentSection();
+
+renderTimer.initialize(() => {
+    if (!settings.areAutoUpdatesPaused()) {
+        app.renderCurrentSection();
+    }
 }, 5000);
 
 // Expose modules to the browser DevTools console

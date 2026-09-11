@@ -17,14 +17,14 @@ Počet linek: 8 | Řazení: od nejvyššího poměru po nejnižší
    3. Sh 152 — Rosa
       Dopravce: ČD | ID linky: 948
       Trasa: Hradec Králové - Hl.N. → Pardubice - Hl.N.
-      Délka linky: 27.16 km | Přímá vzdálenost: 19.73 km
-      Poměr přímé vzdálenosti k délce: 0.7262 (72.62 %)
+      Délka linky: 27.17 km | Přímá vzdálenost: 19.73 km
+      Poměr přímé vzdálenosti k délce: 0.7261 (72.61 %)
 
    4. Sh 152 — Rosa
       Dopravce: ČD | ID linky: 949
       Trasa: Pardubice - Hl.N. → Hradec Králové - Hl.N.
-      Délka linky: 27.16 km | Přímá vzdálenost: 19.73 km
-      Poměr přímé vzdálenosti k délce: 0.7262 (72.62 %)
+      Délka linky: 27.17 km | Přímá vzdálenost: 19.73 km
+      Poměr přímé vzdálenosti k délce: 0.7261 (72.61 %)
 
    5. Sh 165 — Sachr
       Dopravce: ČD | ID linky: 1054

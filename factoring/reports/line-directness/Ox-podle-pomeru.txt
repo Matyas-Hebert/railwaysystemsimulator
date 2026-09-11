@@ -1,6 +1,6 @@
 ================================================================================================
 LINKY TYPU Ox — POMĚR PŘÍMÉ VZDÁLENOSTI K DÉLCE LINKY
-Počet linek: 26 | Řazení: od nejvyššího poměru po nejnižší
+Počet linek: 30 | Řazení: od nejvyššího poměru po nejnižší
 ================================================================================================
    1. Ox 45393 — Rákošský Express
       Dopravce: ZSSK | ID linky: 1700
@@ -111,14 +111,14 @@ Počet linek: 26 | Řazení: od nejvyššího poměru po nejnižší
       Poměr přímé vzdálenosti k délce: 0.7404 (74.04 %)
 
   19. Ox 20244
-      Dopravce: ČD | ID linky: 451
-      Trasa: Blansko - Hořice → Prostějov - Držovice
+      Dopravce: ČD | ID linky: 450
+      Trasa: Prostějov - Držovice → Blansko - Hořice
       Délka linky: 55.06 km | Přímá vzdálenost: 40.34 km
       Poměr přímé vzdálenosti k délce: 0.7326 (73.26 %)
 
   20. Ox 20244
-      Dopravce: ČD | ID linky: 450
-      Trasa: Prostějov - Držovice → Blansko - Hořice
+      Dopravce: ČD | ID linky: 451
+      Trasa: Blansko - Hořice → Prostějov - Držovice
       Délka linky: 55.06 km | Přímá vzdálenost: 40.34 km
       Poměr přímé vzdálenosti k délce: 0.7326 (73.26 %)
 
@@ -134,25 +134,49 @@ Počet linek: 26 | Řazení: od nejvyššího poměru po nejnižší
       Délka linky: 29.14 km | Přímá vzdálenost: 20.23 km
       Poměr přímé vzdálenosti k délce: 0.6943 (69.43 %)
 
-  23. Ox 84219 — Chorvát
+  23. Ox 503B — Křemešnická Spojka
+      Dopravce: pPR | ID linky: 2816
+      Trasa: Pelhřimov - Strměchy → Telč
+      Délka linky: 45.71 km | Přímá vzdálenost: 30.96 km
+      Poměr přímé vzdálenosti k délce: 0.6774 (67.74 %)
+
+  24. Ox 503B — Křemešnická Spojka
+      Dopravce: pPR | ID linky: 2817
+      Trasa: Telč → Pelhřimov - Strměchy
+      Délka linky: 45.71 km | Přímá vzdálenost: 30.96 km
+      Poměr přímé vzdálenosti k délce: 0.6774 (67.74 %)
+
+  25. Ox 78461b — Rychlý Sanator
+      Dopravce: ČD | ID linky: 2899
+      Trasa: Velké Opatovice - Vespera-Malá Roudka → Šumperk - Holubí Vrch
+      Délka linky: 73.96 km | Přímá vzdálenost: 48.72 km
+      Poměr přímé vzdálenosti k délce: 0.6588 (65.88 %)
+
+  26. Ox 78461b — Rychlý Sanator
+      Dopravce: ČD | ID linky: 2898
+      Trasa: Šumperk - Holubí Vrch → Velké Opatovice - Vespera-Malá Roudka
+      Délka linky: 73.96 km | Přímá vzdálenost: 48.72 km
+      Poměr přímé vzdálenosti k délce: 0.6588 (65.88 %)
+
+  27. Ox 84219 — Chorvát
       Dopravce: ZSSK | ID linky: 1273
       Trasa: Sabinov - Orkucany → Spišské Vlachy
       Délka linky: 53.14 km | Přímá vzdálenost: 28.02 km
       Poměr přímé vzdálenosti k délce: 0.5273 (52.73 %)
 
-  24. Ox 84219 — Chorvát
+  28. Ox 84219 — Chorvát
       Dopravce: ZSSK | ID linky: 1272
       Trasa: Spišské Vlachy → Sabinov - Orkucany
       Délka linky: 53.14 km | Přímá vzdálenost: 28.02 km
       Poměr přímé vzdálenosti k délce: 0.5273 (52.73 %)
 
-  25. Ox 82105
+  29. Ox 82105
       Dopravce: ZSSK | ID linky: 984
       Trasa: Košice - Polov → Sečovce - Hl.S.
       Délka linky: 76.70 km | Přímá vzdálenost: 33.91 km
       Poměr přímé vzdálenosti k délce: 0.4421 (44.21 %)
 
-  26. Ox 82105
+  30. Ox 82105
       Dopravce: ZSSK | ID linky: 985
       Trasa: Sečovce - Hl.S. → Košice - Polov
       Délka linky: 76.70 km | Přímá vzdálenost: 33.91 km

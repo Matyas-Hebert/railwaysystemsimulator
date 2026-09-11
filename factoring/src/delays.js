@@ -38,6 +38,151 @@ function getStartingDelay(seed, type){
     return -Math.log(1-random)*getLineTypeConfig(type).startingDelayMeanSeconds;
 }
 
+function getDelayAtStop(
+    lineID,
+    tripNumber,
+    daynumber,
+    targetStopIndex
+) {
+    const line = data.timetable.lines[lineID];
+    const route = tripRoutes.getTripRoute(lineID, tripNumber);
+
+    if (line === undefined || route === null) {
+        return null;
+    }
+
+    if (
+        !Number.isInteger(targetStopIndex)
+        || targetStopIndex < route.startIndex
+        || targetStopIndex > route.endIndex
+    ) {
+        return null;
+    }
+
+    const stops = line.stops;
+    const targetStop = stops[targetStopIndex];
+
+    const starttime =
+        line.starttime
+        + line.interval * tripNumber
+        + daynumber * constants.SECONDS_PER_DAY;
+
+    let delay = getStartingDelay(
+        (tripNumber + 1) * 100
+        + lineID * 100000
+        + daynumber,
+        line.type
+    );
+
+    if (targetStopIndex === route.startIndex) {
+        return {
+            station: targetStop.sid,
+            stopIndex: targetStopIndex,
+
+            arrivalDelay: 0,
+            departureDelay: Math.round(delay),
+
+            arrtime: Math.round(starttime + targetStop.arr),
+            deptime: Math.round(starttime + targetStop.dep + delay),
+
+            cancelled: false
+        };
+    }
+
+    for (
+        let stopIndex = route.startIndex + 1;
+        stopIndex <= targetStopIndex;
+        stopIndex++
+    ) {
+        const previousStop = stops[stopIndex - 1];
+        const stop = stops[stopIndex];
+
+        const standardTravelTime = stop.arr - previousStop.dep;
+
+        const seed =
+            stopIndex
+            + (tripNumber + 1) * 50
+            + lineID * 25000
+            + (
+                app.getCurrentDayNumber() + daynumber
+            ) * 100000000;
+
+        const newDelay =
+            getNewDelayMultiplier(
+                seed,
+                delay / standardTravelTime,
+                line.type
+            ) * standardTravelTime;
+
+        const arrivalDelay = delay + newDelay;
+        const arrtime = starttime + stop.arr + arrivalDelay;
+
+        const isCancelled =
+            stopIndex < route.endIndex
+            && seededRandom(seed * 2 + 1)
+                <= getLineTypeConfig(line.type)
+                    .cancellationProbabilityPerStop;
+
+        if (isCancelled && stopIndex < targetStopIndex) {
+            return {
+                station: stop.sid,
+                stopIndex,
+                arrivalDelay: Math.round(arrivalDelay),
+                departureDelay: null,
+                arrtime: Math.round(arrtime),
+                deptime: null,
+                cancelled: true,
+                targetReached: false
+            };
+        }
+
+        if (isCancelled) {
+            return {
+                station: stop.sid,
+                stopIndex,
+                arrivalDelay: Math.round(arrivalDelay),
+                departureDelay: null,
+                arrtime: Math.round(arrtime),
+                deptime: null,
+                cancelled: true,
+                targetReached: true
+            };
+        }
+
+        delay = arrivalDelay;
+
+        const stopTime = stop.dep - stop.arr;
+        delay -= Math.min(delay, stopTime / 3);
+
+        const departureDelay = delay;
+        const deptime = starttime + stop.dep + departureDelay;
+
+        if (stopIndex === targetStopIndex) {
+            const isTerminus = stopIndex === route.endIndex;
+
+            return {
+                station: stop.sid,
+                stopIndex,
+
+                arrivalDelay: Math.round(arrivalDelay),
+                departureDelay: isTerminus
+                    ? null
+                    : Math.round(departureDelay),
+
+                arrtime: Math.round(arrtime),
+                deptime: isTerminus
+                    ? null
+                    : Math.round(deptime),
+
+                cancelled: false,
+                targetReached: true
+            };
+        }
+    }
+
+    return null;
+}
+
 function getDelay(
     lineID,
     tripNumber,
@@ -88,8 +233,7 @@ function getDelay(
         const stoptime = line.stops[i].dep - line.stops[i].arr;
         const stop = line.stops[i];
         const standardTravelTime = stop.arr - line.stops[i-1].dep
-        const dayssinceera = Math.floor(app.getCurrentTimeInMilliseconds() / (constants.MILLISECONDS_PER_DAY));
-        let seed = i + (tripNumber+1) * 50 + lineID * 25000 + (dayssinceera + daynumber)*100000000;
+        let seed = i + (tripNumber+1) * 50 + lineID * 25000 + (app.getCurrentDayNumber() + daynumber)*100000000;
         let newdelay = getNewDelayMultiplier(seed, delay/standardTravelTime, line.type)*standardTravelTime;
         const arrtime = starttime + stop.arr + delay + newdelay;
         if (arrtime > time){
@@ -185,5 +329,6 @@ function getDelayReason(lineID, tripID, day){
     getDelayReason as getReason,
     getStatusText as getStatusText,
     hasTrainWifi as hasTrainWifi,
-    hasTrainWifistation as hasStationWifi
+    hasTrainWifistation as hasStationWifi,
+    getDelayAtStop as getDelayAtStop
 };

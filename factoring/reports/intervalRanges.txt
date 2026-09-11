@@ -1,0 +1,51 @@
+INTERVAL RANGES THAT GUARANTEE A DAILY TRIP COUNT
+=================================================
+
+The generator calculates:
+    trips = ceil((endTime - startTime) / interval)
+
+AJ / AR LINES
+-------------
+AJ and AR use 24:00 as endTime. Random startTime is 03:40-05:30, giving
+1110-1220 available minutes.
+
+Guaranteed trips    Interval range
+1                   1220 min or longer
+2                   610 min to 1109 min 59 s
+3                   406 min 40 s to 554 min 59 s
+4                   305 min to 369 min 59 s
+5                   244 min to 277 min 29 s
+6                   203 min 20 s to 221 min 59 s
+7                   174 min 18 s to 184 min 59 s
+8                   152 min 30 s to 158 min 34 s
+9                   135 min 34 s to 138 min 44 s
+10                  122 min to 123 min 19 s
+11                  110 min 55 s to 110 min 59 s
+
+No interval guarantees exactly 12 or more AJ/AR trips.
+
+Common examples:
+120 min             10-11 trips
+180 min             7 trips
+240 min             5-6 trips
+360 min             4 trips
+480 min             3 trips
+720 min             2 trips
+1440 min            1 trip
+
+ORDINARY LINES
+--------------
+For intervals over 40 minutes, the available operating time ranges from
+about 930 to 1250 minutes.
+
+Guaranteed trips    Interval range
+1                   1250 min or longer
+2                   625 min to 929 min 59 s
+3                   416 min 40 s to 464 min 59 s
+
+No interval guarantees exactly 4 or more ordinary trips. Randomized end
+times make those produce a range of possible daily trip counts.
+
+GENERAL CHECK
+-------------
+For interval I:

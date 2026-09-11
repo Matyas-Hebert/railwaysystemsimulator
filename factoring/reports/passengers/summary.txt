@@ -1,0 +1,13 @@
+ODHAD DENNÍ POPTÁVKY CESTUJÍCÍCH
+================================
+Celková modelovaná poptávka: 9 000 000
+Simulovaných cest: 10 000
+Poptávka bez nalezeného spojení: 0
+Kapacita jednoho spoje: 300
+
+Model používá důležitost obou stanic, 1/sqrt(vzdálenosti), dvojnásobnou
+lokální poptávku uvnitř stejného Ps/Px systému, intervaly, jízdní dobu,
+přestupy, cenu, zkrácené trasy spojů a dvě rozdělené alternativy.
+
+Čísla jsou syntetický herní odhad. Absolutní úroveň určuje konstanta
+TOTAL_DAILY_PASSENGER_DEMAND na začátku skriptu.

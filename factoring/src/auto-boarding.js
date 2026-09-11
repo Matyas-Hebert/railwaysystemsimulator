@@ -57,8 +57,7 @@ import * as constants from "./constants.js";
             return false;
         }
         const time = app.getCurrentTimeInSeconds();
-        const daysSinceEpoch = Math.floor(app.getCurrentTimeInMilliseconds() / constants.MILLISECONDS_PER_DAY);
-        const relativeDay = selection.day - daysSinceEpoch;
+        const relativeDay = selection.day - app.getCurrentDayNumber();
         const currentDelay = delays.get(
             selection.lineID,
             selection.tripID,

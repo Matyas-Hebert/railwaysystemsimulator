@@ -1,5 +1,15 @@
 ================================================================================================
 LINKY TYPU AR — POMĚR PŘÍMÉ VZDÁLENOSTI K DÉLCE LINKY
-Počet linek: 0 | Řazení: od nejvyššího poměru po nejnižší
+Počet linek: 2 | Řazení: od nejvyššího poměru po nejnižší
 ================================================================================================
+   1. AR 2 — LLL
+      Dopravce: pDMD | ID linky: 2848
+      Trasa: Plzeň - Lhota-Letiště → Přibram - Dlouhá Lhota-Letiště
+      Délka linky: 59.38 km | Přímá vzdálenost: 58.04 km
+      Poměr přímé vzdálenosti k délce: 0.9775 (97.75 %)
 
+   2. AR 2 — LLL
+      Dopravce: pDMD | ID linky: 2849
+      Trasa: Přibram - Dlouhá Lhota-Letiště → Plzeň - Lhota-Letiště
+      Délka linky: 59.38 km | Přímá vzdálenost: 58.04 km
+      Poměr přímé vzdálenosti k délce: 0.9775 (97.75 %)

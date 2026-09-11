@@ -62,7 +62,7 @@ import * as constants from "./constants.js";
                         dist: candidateDistance,
                         start,
                         end,
-                        reward: (Math.random() + 9.5) * candidateDistance + 100,
+                        reward: (Math.random() + 4.5) * candidateDistance + 100,
                         state: ORDER_STATE.WAITING
                     };
                 }
@@ -115,8 +115,8 @@ import * as constants from "./constants.js";
             const card = document.createElement("div");
             card.className = pinned.includes(order.id) ? "foodora pinned-order" : "foodora";
             card.innerHTML = '<div class="delivery-pin-row"><button class="delivery-pin-button">📌</button></div>'
-                + '<div><div>Z</div><div>' + settings.getStationNameMarkup(order.start) + " (" + order.start.district + ")</div><div></div></div>"
-                + '<div><div>DO</div><div>' + settings.getStationNameMarkup(order.end) + " (" + order.end.district + ")</div><div></div></div>"
+                + '<div class="start-station"><div>Z</div><div>' + settings.getStationNameMarkup(order.start) + " (" + order.start.district + ")</div><div></div></div>"
+                + '<div class="end-station"><div>DO</div><div>' + settings.getStationNameMarkup(order.end) + " (" + order.end.district + ")</div><div></div></div>"
                 + '<div><div>ODMĚNA</div><div>' + String(Math.round(order.reward)) + ',-</div><button class="delivery-state"></button></div>'
                 + '<div class="options"><button class="cancel">ZRUŠIT<br>200,-</button><button class="route-start">NAJÍT TRASU<br>NA START</button><button class="route-end">NAJÍT TRASU<br>NA KONEC</button></div>';
 
@@ -144,6 +144,17 @@ import * as constants from "./constants.js";
                     render();
                 };
             }
+
+            card.querySelector(".start-station").onclick = () => {
+                console.log("what?");
+                runtime.setStationSectionId(order.start.id);
+                app.changeCurrentSection(1);
+            };
+
+            card.querySelector(".end-station").onclick = () => {
+                runtime.setStationSectionId(order.end.id);
+                app.changeCurrentSection(1);
+            };
 
             card.querySelector(".cancel").onclick = () => {
                 if (runtime.getGameState().getMoney() < CANCELLATION_COST) return;

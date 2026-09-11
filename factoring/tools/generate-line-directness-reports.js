@@ -1,8 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
+import { fileURLToPath } from "node:url";
 
-const APP_DIRECTORY = path.resolve(__dirname, "..");
+const TOOL_DIRECTORY = path.dirname(fileURLToPath(import.meta.url));
+const APP_DIRECTORY = path.resolve(TOOL_DIRECTORY, "..");
 const TIMETABLE_PATH = path.join(APP_DIRECTORY, "generated", "timetable.js");
 const OUTPUT_DIRECTORY = path.join(APP_DIRECTORY, "reports", "line-directness");
 const LINE_TYPE_CONFIG_PATH = path.join(APP_DIRECTORY, "config", "line-types.json");

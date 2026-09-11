@@ -108,9 +108,9 @@
           "auto_leave_price": 10
         },
         "AR": {
-          "price_per_km": 4,
-          "auto_board_price": 80,
-          "auto_leave_price": 80,
+          "price_per_km": 1.5,
+          "auto_board_price": 50,
+          "auto_leave_price": 50,
           "must_auto_ride": true
         },
         "AJ": {
@@ -133,18 +133,85 @@
     "DPMJ": {},
     "DPMK": {},
     "DPMO": {},
-    "DPMP": {},
+    "DPMP": {
+      "train_types": {
+        "Ps": {
+          "price_per_km": 0.5,
+          "auto_board_price": 4,
+          "auto_leave_price": 4,
+          "must_auto_ride": true
+        },
+        "Px": {
+          "price_per_km": 0.5,
+          "auto_board_price": 4,
+          "auto_leave_price": 4,
+          "must_auto_ride": true
+        },
+        "AR": {
+          "price_per_km": 1.5,
+          "auto_board_price": 250,
+          "auto_leave_price": 250,
+          "must_auto_ride": true
+        },
+        "AJ": {
+          "price_per_km": 3.5,
+          "auto_board_price": 250,
+          "auto_leave_price": 250,
+          "must_auto_ride": true
+        }
+      }
+    },
     "DPMŽ": {},
     "DPNisa": {},
     "DPO": {},
     "DPPr": {},
     "DPSaS": {},
+    "DPMZaO": {
+      "Ps": {
+          "price_per_km": 0.5,
+          "auto_board_price": 7,
+          "auto_leave_price": 7,
+          "must_auto_ride": true
+        },
+        "Px": {
+          "price_per_km": 0.5,
+          "auto_board_price": 7,
+          "auto_leave_price": 7,
+          "must_auto_ride": true
+        }
+    },
     "MHDT": {},
     "MÁV": {
       "must_auto_ride": true,
       "price_per_km": 0.1,
       "auto_board_price": 5,
       "auto_leave_price": 5
+    },
+    "MtL": {
+      "train_types": {
+        "Ps": {
+          "price_per_km": 0.3,
+          "auto_board_price": 12,
+          "auto_leave_price": 12
+        },
+        "Px": {
+          "price_per_km": 0.3,
+          "auto_board_price": 12,
+          "auto_leave_price": 12
+        },
+        "AR": {
+          "price_per_km": 4.5,
+          "auto_board_price": 60,
+          "auto_leave_price": 60,
+          "must_auto_ride": true
+        },
+        "AJ": {
+          "price_per_km": 6.5,
+          "auto_board_price": 120,
+          "auto_leave_price": 120,
+          "must_auto_ride": true
+        }
+      }
     },
     "pA2Z": {
       "must_auto_ride": false,

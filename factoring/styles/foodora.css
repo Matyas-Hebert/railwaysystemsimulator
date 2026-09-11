@@ -32,6 +32,7 @@
     top: 0.35rem;
     right: 0.35rem;
     justify-content: flex-end;
+    pointer-events: none;
 }
 
 .delivery-pin-button {
@@ -39,6 +40,7 @@
     border: 0;
     background: transparent;
     cursor: pointer;
+    pointer-events: auto;
 }
 
 .delivery-state, .foodora button {
@@ -53,3 +55,89 @@
 .unlock-slot-header { font-weight: bold; }
 .unlock-slot-body { justify-content: center; }
 .unlock-slot-action { width: 100%; text-align: center; }
+
+.movement-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.35rem;
+    width: 100%;
+    padding: 0.4rem;
+    box-sizing: border-box;
+}
+
+.buff-selector {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.35rem;
+    width: 100%;
+    padding: 0.4rem;
+    box-sizing: border-box;
+}
+
+._trainBuffOption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+
+    min-height: 3.5rem;
+    padding: 0.4rem 0.2rem;
+    border: 2px solid var(--color-border);
+
+    background-color: var(--color-primary);
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: white;
+}
+
+#_fasterOption {
+    background-color: yellow;
+    color:black;
+}
+
+#_accelerationOption {
+    background-color: red;
+}
+
+#_noDelayOption {
+    background-color: blue;
+}
+
+#_skipNextStationOption {
+    background-color: green;
+}
+
+#_waitOption {
+    background-color: purple;
+}
+
+.movement-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+
+    min-height: 3.5rem;
+    padding: 0.4rem 0.2rem;
+    border: 2px solid var(--color-border);
+
+    color: var(--color-text-inverse);
+    background-color: var(--color-primary);
+    font: inherit;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+
+.movement-option.selected, ._trainBuffoption.selected {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+}
+
+.movement-icon {
+    font-size: 1.35rem;
+    line-height: 1;
+}

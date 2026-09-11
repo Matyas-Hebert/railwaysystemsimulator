@@ -187,13 +187,42 @@ function getTimeFromDistAndSpeedMs(distKm, speedKmH){
     return (distKm/speedKmH)*3600*1000;
 }
 
+function switchMovementType(newTransportType) {
+    const gameState = runtime.getGameState();
+
+    energy.updateEnergy();
+
+    const position = gameState.getCurrentPosition();
+    const currentCoords = playerLocation.getWalkingCoords(position);
+    const currentTime = app.getCurrentTimeInMilliseconds();
+
+    gameState.updateCurrentPosition({
+        transporttype: newTransportType,
+        coords: currentCoords,
+        statID: null,
+        time: currentTime
+    });
+
+    gameState.setEnergySnapshotObject(
+        getEnergySnapshot(
+            newTransportType,
+            currentCoords,
+            position.goalStatID,
+            position.goalCoords
+        )
+    );
+
+    app.renderCurrentSection();
+}
+
 function printProgress(table){
     let gs = runtime.getGameState();
     const position = gs.getCurrentPosition();
     _traintimetableheader.innerHTML = "";
+    _trainbuffoptions.style.display = "none";
     table.innerHTML = "";
     let dist = getDistance(position.coords, position.goalCoords);
-    let mstime = getTimeFromDistAndSpeedMs(dist, getSpeedFromTransportType(constants.TRANSPORT_TYPE.WALKING));
+    let mstime = getTimeFromDistAndSpeedMs(dist, getSpeedFromTransportType(position.transporttype));
     let timeelapsed = app.getCurrentTimeInMilliseconds()-gs.getCurrentPosition().time;
     let timetogo = mstime-timeelapsed;
     let mins = Math.ceil(timetogo/(60*1000));
@@ -240,6 +269,27 @@ function printProgress(table){
         app.renderCurrentSection();
     }
     table.innerHTML = "";
+    _walkOption.className = "movement-option";
+    _runOption.className = "movement-option";
+    _sprintOption.className = "movement-option";
+    if (position.transporttype == constants.TRANSPORT_TYPE.WALKING){
+        _walkOption.classList.add("selected");
+    }
+    if (position.transporttype == constants.TRANSPORT_TYPE.RUNNING){
+        _runOption.classList.add("selected");
+    }
+    if (position.transporttype == constants.TRANSPORT_TYPE.SPRINTING){
+        _sprintOption.classList.add("selected");
+    }
+    _walkOption.onclick = function(){
+        switchMovementType(constants.TRANSPORT_TYPE.WALKING);
+    }
+    _runOption.onclick = function(){
+        switchMovementType(constants.TRANSPORT_TYPE.RUNNING);
+    }
+    _sprintOption.onclick = function(){
+        switchMovementType(constants.TRANSPORT_TYPE.SPRINTING);
+    }
     _stopbtn.onclick = function(){
         const currentCoords = playerLocation.getCurrentPlayerCoords();
         runtime.getGameState().updateCurrentPosition({
