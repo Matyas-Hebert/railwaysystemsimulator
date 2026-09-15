@@ -101,6 +101,7 @@ app.renderCurrentSection();
 setInterval(app.updateClock, 1000);
 
 renderTimer.initialize(() => {
+    let currSection = runtime.getCurrentSection()
     if (!settings.areAutoUpdatesPaused()) {
         app.renderCurrentSection();
     }

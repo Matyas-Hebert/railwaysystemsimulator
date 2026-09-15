@@ -3,6 +3,7 @@ import * as app from "./timetable-analysis.js";
 import * as data from "../generated/timetable.js";
 import * as config from "../generated/config.js";
 import * as constants from "./constants.js";
+import * as runtime from "./runtime.js";
 
 function getLineTypeConfig(type){
     return config.lineTypes[type];
@@ -304,29 +305,49 @@ function hasTrainWifistation(statID, day){
     return false;
 }
 
+function isValidReasonTypeForLineType(lineType, reasonType){
+    if (lineType == constants.TRAIN_TYPES.PAR){
+        return (reasonType == 4);
+    }
+    if (lineType == constants.TRAIN_TYPES.AJ || lineType == constants.TRAIN_TYPES.AR){
+        return (reasonType == 3);
+    }
+    return (reasonType <= 2);
+}
+
 function getDelayReason(lineID, tripID, day){
-    // config.delayReasons[0] je duvod, config.delayReasons[1] je weight
-    let total = 0;
-    config.delayReasons.forEach(reason => {
-        total += reason[1];
-    });
-    let seed = tripID+lineID*201+day*81573;
-    let r = seededRandom(seed);
-    let target = total*r;
-    total = 0;
-    for (let i = 0; i < config.delayReasons.length; i++) {
-        total += config.delayReasons[i][1];
-        if (total >= target) {
-            return config.delayReasons[i][0];
-        }
+    const lineType = runtime.getGameState().getLineType(lineID);
+    const validReasons = config.delayReasons.filter(reason =>
+        isValidReasonTypeForLineType(lineType, reason[2])
+    );
+    if (validReasons.length === 0) return null;
+
+    const totalWeight = validReasons.reduce(
+        (total, reason) => total + reason[1],
+        0
+    );
+    const seed = tripID + lineID * 201 + day * 81573;
+    const target = seededRandom(seed) * totalWeight;
+    let accumulatedWeight = 0;
+
+    for (const reason of validReasons) {
+        accumulatedWeight += reason[1];
+        if (accumulatedWeight >= target) return reason[3];
     }
 
-    return config.delayReasons[config.delayReasons.length - 1][0];
+    return validReasons[validReasons.length - 1][3];
+}
+
+function getDelayReasonName(reasonId){
+    return config.delayReasons.find(reason => reason[3] === reasonId)?.[0]
+        ?? reasonId
+        ?? "";
 }
 
     export {
     getDelay as get,
     getDelayReason as getReason,
+    getDelayReasonName as getReasonName,
     getStatusText as getStatusText,
     hasTrainWifi as hasTrainWifi,
     hasTrainWifistation as hasStationWifi,

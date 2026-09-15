@@ -752,7 +752,7 @@ async function printTimetable(stationID, includegetonbutton = true, table=_timet
 
     addRow({
         "table": table,
-        "c1t": "Vlak",
+        "c1t": "Spoj",
         "c2t": departures ? "Do" : "Z",
         "c3t": departures ? "Prav. Odjezd " : "Prav. Příjezd",
         "onlythreecols": true,
@@ -786,7 +786,7 @@ async function printTimetable(stationID, includegetonbutton = true, table=_timet
         const regionname = data.timetable.stations[destinationID].district;
 
         let delaystr = current.delay.status === constants.TRAIN_STATUS.CANCELLED_BEFORE_TARGET ? "Zrušeno ve stanici " + settings.getStationName(data.timetable.stations[current.delay.station]) :
-            (current.delay.delay >= 60 ? "+"+String(Math.floor(current.delay.delay/60)) : "")+(current.delay.delay >= 300 ? "<br>"+delays.getReason(current.lineID, current.trip, current.day) : "");
+            (current.delay.delay >= 60 ? "+"+String(Math.floor(current.delay.delay/60)) : "")+(current.delay.delay >= 300 ? "<br>"+delays.getReasonName(delays.getReason(current.lineID, current.trip, current.day)) : "");
 
         const stopsdata = [];
 
@@ -969,10 +969,10 @@ function renderCurrentSection(force = false){
         schedule.print(_traintimetable, runtime.getTrainSectionData());
     }
     if (runtime.getCurrentSection() == 6){
-        foodora.render();
+        //foodora.render();
     }
     if (runtime.getCurrentSection() == 7){
-        collectionTab.render();
+        //collectionTab.render();
     }
     if (runtime.getCurrentSection() == 9){
         mapTab.render();

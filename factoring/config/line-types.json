@@ -2,6 +2,7 @@
   {
     "id": 0,
     "code": "Ps",
+    "shownName": "Přestupní vlak",
     "stopTimeSeconds": 30,
     "uvratStopTimeSeconds": 360,
     "stationImportance": 0.2,
@@ -26,6 +27,7 @@
   {
     "id": 1,
     "code": "Px",
+    "shownName": "Přestupní vlak",
     "stopTimeSeconds": 30,
     "uvratStopTimeSeconds": 360,
     "stationImportance": 0.25,
@@ -50,6 +52,7 @@
   {
     "id": 2,
     "code": "Os",
+    "shownName": "Osobní vlak",
     "stopTimeSeconds": 30,
     "uvratStopTimeSeconds": 600,
     "stationImportance": 0.5,
@@ -74,6 +77,7 @@
   {
     "id": 3,
     "code": "Ox",
+    "shownName": "Osobní vlak",
     "stopTimeSeconds": 30,
     "uvratStopTimeSeconds": 600,
     "stationImportance": 0.6,
@@ -98,6 +102,7 @@
   {
     "id": 4,
     "code": "Sp",
+    "shownName": "Spěšný vlak",
     "stopTimeSeconds": 90,
     "uvratStopTimeSeconds": 600,
     "stationImportance": 1.2,
@@ -122,6 +127,7 @@
   {
     "id": 5,
     "code": "R",
+    "shownName": "Rychlík",
     "stopTimeSeconds": 90,
     "uvratStopTimeSeconds": 600,
     "stationImportance": 1.4,
@@ -146,6 +152,7 @@
   {
     "id": 6,
     "code": "Sh",
+    "shownName": "Shuttle",
     "stopTimeSeconds": 180,
     "uvratStopTimeSeconds": 600,
     "stationImportance": 1.7,
@@ -170,6 +177,7 @@
   {
     "id": 7,
     "code": "IC",
+    "shownName": "Intercity",
     "stopTimeSeconds": 180,
     "uvratStopTimeSeconds": 600,
     "stationImportance": 1.6,
@@ -194,6 +202,7 @@
   {
     "id": 8,
     "code": "EC",
+    "shownName": "Eurocity",
     "stopTimeSeconds": 180,
     "uvratStopTimeSeconds": 600,
     "stationImportance": 1.8,
@@ -218,6 +227,7 @@
   {
     "id": 9,
     "code": "NJ",
+    "shownName": "Noční vlak",
     "stopTimeSeconds": 90,
     "uvratStopTimeSeconds": 900,
     "stationImportance": 2.4,
@@ -242,6 +252,7 @@
   {
     "id": 10,
     "code": "AR",
+    "shownName": "Letadlo",
     "stopTimeSeconds": 1800,
     "uvratStopTimeSeconds": 900,
     "stationImportance": 8,
@@ -268,6 +279,7 @@
   {
     "id": 11,
     "code": "AJ",
+    "shownName": "Letadlo",
     "stopTimeSeconds": 1800,
     "uvratStopTimeSeconds": 900,
     "stationImportance": 12,
@@ -294,7 +306,8 @@
   {
     "id": 12,
     "code": "Par",
-    "stopTimeSeconds": 240,
+    "shownName": "Loď",
+    "stopTimeSeconds": 90,
     "uvratStopTimeSeconds": 240,
     "stationImportance": 1.6,
     "localRouteImportance": 1.6,

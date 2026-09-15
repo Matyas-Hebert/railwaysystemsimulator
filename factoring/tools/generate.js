@@ -1026,13 +1026,33 @@ async function generateTimeTables() {
     const trainTypeIds = Object.fromEntries(
         lineTypeConfig.map(type => [type.code.toUpperCase(), type.id])
     );
+
+    let trainReasons = 0
+    let airplaneReasons = 0
+    let boatReasons = 0
+
+    delayReasons.forEach(delayReason => {
+        if (delayReason[2] <= 2){
+            trainReasons += delayReason[1]
+        }
+        else if (delayReason[2] == 3){
+            airplaneReasons += delayReason[1]
+        }
+        else{
+            boatReasons += delayReason[1]
+        }
+    })
+
     const browserConfig = [
         "export const lineTypes = " + JSON.stringify(lineTypeConfig) + ";",
         "export const trainTypeIds = " + JSON.stringify(trainTypeIds) + ";",
         "export const journeyPricing = " + JSON.stringify(journeyPricingConfig) + ";",
         "export const dataOperators = " + JSON.stringify(dataOperatorConfig) + ";",
         "export const goods = " + JSON.stringify(goods) + ";",
-        "export const delayReasons = " + JSON.stringify(delayReasons) + ";"
+        "export const delayReasons = " + JSON.stringify(delayReasons) + ";",
+        "export const trainReasonTotal = " + trainReasons + ";",
+        "export const airplaneReasonTotal = " + airplaneReasons + ";",
+        "export const boatReasonTotal = " + boatReasons + ";"
     ].join("\n") + "\n";
 
     assignShopsToStations(timetable);

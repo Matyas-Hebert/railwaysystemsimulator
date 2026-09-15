@@ -23,7 +23,7 @@ import * as constants from "./constants.js";
     };
 
     const TRAIN_TYPE_NAMES = Object.freeze(config.lineTypes.map(type => type.code));
-    const DELAY_TYPE_NAMES = Object.freeze(["Běžné", "Vtipné", "Závažné"]);
+    const DELAY_TYPE_NAMES = Object.freeze(["Běžné", "Vtipné", "Závažné", "Letecké", "Lodní"]);
     const stationsByDistrict = new Map();
     const linesByCompany = new Map();
     const linesByCompanyAndType = new Map();
@@ -241,7 +241,7 @@ import * as constants from "./constants.js";
         return config.delayReasons.filter(reason => reason[2] === type);
     }
     function isDelayReasonCollected(reason) {
-        return runtime.getGameState().getCollectedDelayReasons().includes(reason[0]);
+        return runtime.getGameState().getCollectedDelayReasons().includes(reason[3]);
     }
     function setDelayFilter(filter) {
         state.delayFilter = filter;
@@ -309,7 +309,7 @@ import * as constants from "./constants.js";
             || status === constants.TRAIN_STATUS.STOPPED_PAST_TARGET;
     }
 
-    function getCurrentTrainsWithReason(delayReason) {
+    function getCurrentTrainsWithReason(delayReasonId) {
         const time = app.getCurrentTimeInSeconds();
         const matchingTrains = [];
 
@@ -328,7 +328,7 @@ import * as constants from "./constants.js";
                     );
                     if (!isActiveTrainStatus(currentDelay.status)
                         || currentDelay.delay <= 5 * 60
-                        || delays.getReason(line.id, tripID, day) !== delayReason) {
+                        || delays.getReason(line.id, tripID, day) !== delayReasonId) {
                         continue;
                     }
                     const tripStart = line.starttime + day * constants.SECONDS_PER_DAY + tripID * line.interval;
@@ -371,7 +371,7 @@ import * as constants from "./constants.js";
 
         const heading = document.createElement("div");
         heading.className = "collection-section-title";
-        heading.textContent = state.selectedDelayReason;
+        heading.textContent = delays.getReasonName(state.selectedDelayReason);
         content.appendChild(heading);
 
         const matchingTrains = getCurrentTrainsWithReason(state.selectedDelayReason);
@@ -422,7 +422,7 @@ import * as constants from "./constants.js";
                 ? "collection-line-btn visited"
                 : "collection-line-btn";
             button.textContent = (collected ? "✓ " : "") + reason[0];
-            button.onclick = () => selectDelayReason(reason[0]);
+            button.onclick = () => selectDelayReason(reason[3]);
             content.appendChild(button);
         });
     }

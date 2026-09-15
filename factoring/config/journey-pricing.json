@@ -123,6 +123,7 @@
     },
     "ČD": {},
     "DPB": {},
+    "DPHnM": {},
     "DPKV": {},
     "DPLM": {},
     "DPMB": {},
@@ -206,9 +207,9 @@
           "must_auto_ride": true
         },
         "AJ": {
-          "price_per_km": 6.5,
-          "auto_board_price": 120,
-          "auto_leave_price": 120,
+          "price_per_km": 4.5,
+          "auto_board_price": 90,
+          "auto_leave_price": 90,
           "must_auto_ride": true
         }
       }

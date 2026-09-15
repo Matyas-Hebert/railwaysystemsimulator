@@ -8,6 +8,7 @@ import * as data from "../generated/timetable.js";
 import * as constants from "./constants.js";
 import * as stationVisits from "./station-visits.js"
 import * as playerLocation from "./player-location.js"
+import * as config from "../generated/config.js"
 
 function getAutoTravelStatus(lineID) {
     const autoBoardSelection = runtime.getGameState().getAutoBoardSelection();
@@ -441,11 +442,13 @@ function print(table=_information, conns=runtime.getConnectionStructure(), check
         );
     }
     let delaystring = "+"+String(Math.floor(delay.delay/60));
-    let delayreason = (delay.delay >= 300 ? delays.getReason(lineID, tripID, day) : "");
+    let delayreason = (delay.delay >= 300 ? delays.getReasonName(delays.getReason(lineID, tripID, day)) : "");
+
+    let type = runtime.getGameState().getLineType(lineID);
 
     let row = app.addRow({
         "table": _traintimetableheader,
-        "c1t": "Vlak",
+        "c1t": config.lineTypes[type].shownName,
         "c2t": String(Math.round(playerLocation.getCurrentSpeedOfTrain(lineID, tripID, day)))+" km/h",
         "c3t": delaystring,
         "subtexttime": delayreason,

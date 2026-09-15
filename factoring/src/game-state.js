@@ -3,6 +3,7 @@ import * as walking from "./walking.js";
 import * as data from "../generated/timetable.js";
 import * as constants from "./constants.js";
 import * as clock from "./clock.js";
+import * as config from "../generated/config.js";
 
 export class GameState {
     #currentPosition = null;
@@ -634,8 +635,14 @@ export class GameState {
     }
 
     setCollectedDelayReasons(delayReasons) {
-        this.#collectedDelayReasons = [...new Set(delayReasons
-            .filter(reason => typeof reason === "string" && reason.length > 0))];
+        const validIds = new Set(config.delayReasons.map(reason => reason[3]));
+        const normalized = delayReasons.flatMap(savedReason => {
+            if (validIds.has(savedReason)) return [savedReason];
+            return config.delayReasons
+                .filter(reason => reason[0] === savedReason)
+                .map(reason => reason[3]);
+        });
+        this.#collectedDelayReasons = [...new Set(normalized)];
         localStorage.setItem("_collecteddelayreasons", JSON.stringify(this.#collectedDelayReasons));
     }
 

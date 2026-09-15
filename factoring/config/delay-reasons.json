@@ -2,431 +2,853 @@
   [
     "Zamrzlá vyhýbka",
     4,
-    0
+    0,
+    "train_zamrzla_vyhybka"
   ],
   [
     "Ztráta lopatky na uhlí",
     6,
-    1
+    1,
+    "train_ztrata_lopatky_na_uhli"
   ],
   [
     "Srážka s jelenem",
     7,
-    2
+    2,
+    "train_srazka_s_jelenem"
   ],
   [
     "Želva na kolejích",
     5,
-    1
+    1,
+    "train_zelva_na_kolejich"
   ],
   [
     "Strojvedoucí pod vlivem",
     17,
-    2
+    2,
+    "train_strojvedouci_pod_vlivem"
   ],
   [
     "Spadlý strom na kolejích",
     10,
-    0
+    0,
+    "train_spadly_strom_na_kolejich"
   ],
   [
     "Práce na železnici",
     25,
-    0
+    0,
+    "train_prace_na_zeleznici"
   ],
   [
     "Čekání na přípoj",
     40,
-    0
+    0,
+    "train_cekani_na_pripoj"
   ],
   [
     "Špinavé čelní sklo",
     4,
-    1
+    1,
+    "train_spinave_celni_sklo"
   ],
   [
     "Nedostatek finančních prostředků",
     12,
-    1
+    1,
+    "train_nedostatek_financnich_prostredku"
   ],
   [
     "Nedostatečný zůstatek kreditu strojvedoucího",
     1,
-    1
+    1,
+    "train_nedostatecny_zustatek_kreditu_strojvedouciho"
   ],
   [
     "Zaseklé závory",
     8,
-    0
+    0,
+    "train_zasekle_zavory"
   ],
   [
     "Drezura na trati",
     3,
-    1
+    1,
+    "train_drezura_na_trati"
   ],
   [
     "Vískání mastných vlasů topiči",
     9,
-    1
+    1,
+    "train_viskani_mastnych_vlasu_topici"
   ],
   [
     "Změna rozchodu kolejí",
     5,
-    0
+    0,
+    "train_zmena_rozchodu_koleji"
   ],
   [
     "Srážka s mouchou",
     1,
-    1
+    1,
+    "train_srazka_s_mouchou"
   ],
   [
     "Výluka",
     100,
-    0
+    0,
+    "train_vyluka"
   ],
   [
     "Zpoždění vzniklé na území cizího státu",
     50,
-    0
+    0,
+    "train_zpozdeni_vznikle_na_uzemi_ciziho_statu"
   ],
   [
     "Přepadení vlaku",
     2,
-    2
+    2,
+    "train_prepadeni_vlaku"
   ],
   [
     "Výpadek elektřiny",
     20,
-    0
+    0,
+    "train_vypadek_elektriny"
   ],
   [
     "Zatažení za záchrannou brzdu",
     20,
-    0
+    0,
+    "train_zatazeni_za_zachrannou_brzdu"
   ],
   [
     "Cestující v kolejišti",
     15,
-    2
+    2,
+    "train_cestujici_v_kolejisti"
   ],
   [
     "Porucha dveří",
     10,
-    0
+    0,
+    "train_porucha_dveri"
   ],
   [
     "Upadlé kolo",
     2,
-    2
+    2,
+    "train_upadle_kolo"
   ],
   [
     "Porucha stěračů",
     2,
-    1
+    1,
+    "train_porucha_steracu"
   ],
   [
     "Nepřítomnost strojvedoucího",
     20,
-    0
+    0,
+    "train_nepritomnost_strojvedouciho"
   ],
   [
     "Porucha klimatizace",
     8,
-    1
+    1,
+    "train_porucha_klimatizace"
   ],
   [
     "Porucha rozhlasu",
     8,
-    1
+    1,
+    "train_porucha_rozhlasu"
   ],
   [
     "Ošoupané brzdné destičky",
     6,
-    2
+    2,
+    "train_osoupane_brzdne_desticky"
   ],
   [
     "Závada na přejezdu",
     15,
-    0
+    0,
+    "train_zavada_na_prejezdu"
   ],
   [
     "Neznámý důvod",
     150,
-    0
+    0,
+    "train_neznamy_duvod"
   ],
   [
     "Červená na semaforu",
     10,
-    0
+    0,
+    "train_cervena_na_semaforu"
   ],
   [
     "Kozel a rudé tričko na trati",
     1,
-    1
+    1,
+    "train_kozel_a_rude_tricko_na_trati"
   ],
   [
     "Spadlé vedení",
     7,
-    0
+    0,
+    "train_spadle_vedeni"
   ],
   [
     "Ukradené kabely",
     15,
-    0
+    0,
+    "train_ukradene_kabely"
   ],
   [
     "Nefunkční trolej",
     10,
-    0
+    0,
+    "train_nefunkcni_trolej"
   ],
   [
     "Vykolejení vlaku",
     7,
-    2
+    2,
+    "train_vykolejeni_vlaku"
   ],
   [
     "Povodeň",
     3,
-    2
+    2,
+    "train_povoden"
   ],
   [
     "Důchodce na přejezdu",
     10,
-    2
+    2,
+    "train_duchodce_na_prejezdu"
   ],
   [
     "Špatná orientace lokomotivy",
     10,
-    1
+    1,
+    "train_spatna_orientace_lokomotivy"
   ],
   [
     "Porucha a výměna lokomotivy",
     10,
-    0
+    0,
+    "train_porucha_a_vymena_lokomotivy"
   ],
   [
     "Omezená rychlost",
     30,
-    0
+    0,
+    "train_omezena_rychlost"
   ],
   [
     "Omezení na trati",
     60,
-    0
+    0,
+    "train_omezeni_na_trati"
   ],
   [
     "Jazyková bariéra",
     5,
-    0
+    0,
+    "train_jazykova_bariera"
   ],
   [
     "Výpadek Wi-Fi",
     10,
-    0
+    0,
+    "train_vypadek_wi_fi"
   ],
   [
     "Policejní vyšetřování",
     4,
-    2
+    2,
+    "train_policejni_vysetrovani"
   ],
   [
     "Topící se personál",
     3,
-    2
+    2,
+    "train_topici_se_personal"
   ],
   [
     "Neznalost trasy strojvedoucím",
     15,
-    0
+    0,
+    "train_neznalost_trasy_strojvedoucim"
   ],
   [
     "Výslech strojvedoucího",
     2,
-    2
+    2,
+    "train_vyslech_strojvedouciho"
   ],
   [
     "Vysoký počet cestujících",
     40,
-    0
+    0,
+    "train_vysoky_pocet_cestujicich"
   ],
   [
     "Nízký počet cestujících",
     15,
-    1
+    1,
+    "train_nizky_pocet_cestujicich"
   ],
   [
     "Plně obsazený vůz",
     30,
-    0
+    0,
+    "train_plne_obsazeny_vuz"
   ],
   [
     "Zaučování kuchaře v jídelním voze",
     4,
-    1
+    1,
+    "train_zaucovani_kuchare_v_jidelnim_voze"
   ],
   [
     "Historická jízda",
     10,
-    0
+    0,
+    "train_historicka_jizda"
   ],
   [
     "Nedostatek uhlí",
     4,
-    0
+    0,
+    "train_nedostatek_uhli"
   ],
   [
     "Nedostatek páry",
     4,
-    0
+    0,
+    "train_nedostatek_pary"
   ],
   [
     "Fronta na benzínové pumpě",
     1,
-    1
+    1,
+    "train_fronta_na_benzinove_pumpe"
   ],
   [
     "Kolona",
     2,
-    0
+    0,
+    "train_kolona"
   ],
   [
     "Zataženo",
     15,
-    0
+    0,
+    "train_zatazeno"
   ],
   [
     "Déšť",
     80,
-    0
+    0,
+    "train_dest"
   ],
   [
     "Spadlý most",
     2,
-    2
+    2,
+    "train_spadly_most"
   ],
   [
     "Špatné počasí",
     20,
-    0
+    0,
+    "train_spatne_pocasi"
   ],
   [
     "Nedostatečné osvětlení v tunelu",
     5,
-    0
+    0,
+    "train_nedostatecne_osvetleni_v_tunelu"
   ],
   [
     "Rozbité okno",
     8,
-    0
+    0,
+    "train_rozbite_okno"
   ],
   [
     "Ztráta vlakové soupravy",
     4,
-    1
+    1,
+    "train_ztrata_vlakove_soupravy"
   ],
   [
     "Objízdná trasa",
     20,
-    0
+    0,
+    "train_objizdna_trasa"
   ],
   [
     "Stávka zaměstnanců drah",
     15,
-    0
+    0,
+    "train_stavka_zamestnancu_drah"
   ],
   [
     "Výpadek signálu GPS",
     7,
-    0
+    0,
+    "train_vypadek_signalu_gps"
   ],
   [
     "Úklid vlaku",
     40,
-    0
+    0,
+    "train_uklid_vlaku"
   ],
   [
     "Výměna žárovky",
     2,
-    1
+    1,
+    "train_vymena_zarovky"
   ],
   [
     "Zapomenutá svačina v depu",
     4,
-    1
+    1,
+    "train_zapomenuta_svacina_v_depu"
   ],
   [
     "Roj včel v kabině",
     5,
-    1
+    1,
+    "train_roj_vcel_v_kabine"
   ],
   [
     "Hustá mlha",
     10,
-    0
+    0,
+    "train_husta_mlha"
   ],
   [
     "Mlha",
     20,
-    0
+    0,
+    "train_mlha"
   ],
   [
     "Sklon trati",
     10,
-    0
+    0,
+    "train_sklon_trati"
   ],
   [
     "Připalené jídlo v jídelním voze",
     7,
-    1
+    1,
+    "train_pripalene_jidlo_v_jidelnim_voze"
   ],
   [
     "Půdní sesuv",
     4,
-    2
+    2,
+    "train_pudni_sesuv"
   ],
   [
     "Úder blesku do soupravy",
     9,
-    2
+    2,
+    "train_uder_blesku_do_soupravy"
   ],
   [
     "Zpoždění vlaku",
     50,
-    0
+    0,
+    "train_zpozdeni_vlaku"
   ],
   [
     "Pomalá jízda",
     50,
-    0
+    0,
+    "train_pomala_jizda"
   ],
   [
     "Úder meteoritu",
     1,
-    2
+    2,
+    "train_uder_meteoritu"
   ],
   [
     "Náhlá změna jizdního řádu",
     30,
-    0
+    0,
+    "train_nahla_zmena_jizdniho_radu"
   ],
   [
     "Neznámý předmět v pantografu",
     3,
-    0
+    0,
+    "train_neznamy_predmet_v_pantografu"
   ],
   [
     "Hraniční kontrola",
     10,
-    0
+    0,
+    "train_hranicni_kontrola"
   ],
   [
     "Přednost vlaku s vyšší prioritou",
     25,
-    0
+    0,
+    "train_prednost_vlaku_s_vyssi_prioritou"
   ],
   [
     "Příjezd prezidenta",
     1,
-    1
+    1,
+    "train_prijezd_prezidenta"
+  ],
+  [
+    "Husa v motoru",
+    1,
+    3,
+    "air_husa_v_motoru"
+  ],
+  [
+    "Tankování paliva",
+    50,
+    3,
+    "air_tankovani_paliva"
+  ],
+  [
+    "Přistavené schůdky",
+    15,
+    3,
+    "air_pristavene_schudky"
+  ],
+  [
+    "Ztráta zavazadla",
+    25,
+    3,
+    "air_ztrata_zavazadla"
+  ],
+  [
+    "Plná ranvej",
+    60,
+    3,
+    "air_plna_ranvej"
+  ],
+  [
+    "Špatné počasí",
+    80,
+    3,
+    "air_spatne_pocasi"
+  ],
+  [
+    "Vyfouklý autopilot",
+    2,
+    3,
+    "air_vyfoukly_autopilot"
+  ],
+  [
+    "Opilý pilot",
+    5,
+    3,
+    "air_opily_pilot"
+  ],
+  [
+    "Zamlžené čelní sklo",
+    8,
+    3,
+    "air_zamlzene_celni_sklo"
+  ],
+  [
+    "Upadlé křídlo",
+    1,
+    3,
+    "air_upadle_kridlo"
+  ],
+  [
+    "Zaseknutý podvozek",
+    5,
+    3,
+    "air_zaseknuty_podvozek"
+  ],
+  [
+    "Píchnutá pneumatika",
+    5,
+    3,
+    "air_pichnuta_pneumatika"
+  ],
+  [
+    "Stávka personálu",
+    18,
+    3,
+    "air_stavka_personalu"
+  ],
+  [
+    "Zaseknuté dveře",
+    10,
+    3,
+    "air_zaseknute_dvere"
+  ],
+  [
+    "Zpoždění pasažéra",
+    25,
+    3,
+    "air_zpozdeni_pasazera"
+  ],
+  [
+    "Zdlouhavé nalodění",
+    35,
+    3,
+    "air_zdlouhave_nalodeni"
+  ],
+  [
+    "Pád letadla",
+    1,
+    3,
+    "air_pad_letadla"
+  ],
+  [
+    "Uzavřené letiště",
+    12,
+    3,
+    "air_uzavrene_letiste"
+  ],
+  [
+    "Celní prohlídka",
+    18,
+    3,
+    "air_celni_prohlidka"
+  ],
+  [
+    "Nízký tlak v kabině",
+    10,
+    3,
+    "air_nizky_tlak_v_kabine"
+  ],
+  [
+    "Nefunkční klimatizace",
+    5,
+    3,
+    "air_nefunkcni_klimatizace"
+  ],
+  [
+    "Otrava jídlem",
+    3,
+    3,
+    "air_otrava_jidlem"
+  ],
+  [
+    "Rozbité polohování sedaček",
+    2,
+    3,
+    "air_rozbite_polohovani_sedacek"
+  ],
+  [
+    "Ztráta pneumatiky",
+    1,
+    3,
+    "air_ztrata_pneumatiky"
+  ],
+  [
+    "Střevní problémy",
+    7,
+    3,
+    "air_strevni_problemy"
+  ],
+  [
+    "Pracovní neschopnost",
+    15,
+    3,
+    "air_pracovni_neschopnost"
+  ],
+  [
+    "Smyk letadla",
+    2,
+    3,
+    "air_smyk_letadla"
+  ],
+  [
+    "Rozvodové řízení",
+    1,
+    3,
+    "air_rozvodove_rizeni"
+  ],
+  [
+    "Policejní vyšetřování",
+    3,
+    3,
+    "air_policejni_vysetrovani"
+  ],
+  [
+    "Letuška na nákupech",
+    2,
+    3,
+    "air_letuska_na_nakupech"
+  ],
+  [
+    "Mobil bez režimu letadlo",
+    15,
+    3,
+    "air_mobil_bez_rezimu_letadlo"
+  ],
+  [
+    "Hlodavci v palivovém potrubí",
+    2,
+    3,
+    "air_hlodavci_v_palivovem_potrubi"
+  ],
+  [
+    "Vogonská poezie",
+    1,
+    3,
+    "air_vogonska_poezie"
+  ],
+  [
+    "Krádež palubního radaru",
+    2,
+    3,
+    "air_kradez_palubniho_radaru"
+  ],
+  [
+    "Teroristé",
+    2,
+    3,
+    "air_teroriste"
+  ],
+  [
+    "Alergická reakce pasažéra",
+    8,
+    3,
+    "air_alergicka_reakce_pasazera"
+  ],
+  [
+    "Vyjeté koleje",
+    1,
+    3,
+    "air_vyjete_koleje"
+  ],
+  [
+    "Sopečný prach v cíli",
+    1,
+    3,
+    "air_sopecny_prach_v_cili"
+  ],
+  [
+    "Moucha na skle",
+    1,
+    3,
+    "air_moucha_na_skle"
+  ],
+  [
+    "Finále olympiády",
+    2,
+    3,
+    "air_finale_olympiady"
+  ],
+  [
+    "Došla instantní polévka",
+    4,
+    3,
+    "air_dosla_instantni_polevka"
+  ],
+  [
+    "Stopař",
+    1,
+    3,
+    "air_stopar"
+  ],
+  [
+    "Kormidlo na štorc",
+    4,
+    4,
+    "boat_kormidlo_na_storc"
+  ],
+  [
+    "Černý pasažér",
+    15,
+    4,
+    "boat_cerny_pasazer"
+  ],
+  [
+    "Pasažér přes palubu",
+    8,
+    4,
+    "boat_pasazer_pres_palubu"
+  ],
+  [
+    "Nedostatek ručníků",
+    3,
+    4,
+    "boat_nedostatek_rucniku"
+  ],
+  [
+    "Stopař",
+    2,
+    4,
+    "boat_stopar"
+  ],
+  [
+    "Potopa",
+    10,
+    4,
+    "boat_potopa"
+  ],
+  [
+    "Velké vlny",
+    70,
+    4,
+    "boat_velke_vlny"
+  ],
+  [
+    "Málo vody",
+    25,
+    4,
+    "boat_malo_vody"
+  ],
+  [
+    "Kachničky",
+    5,
+    4,
+    "boat_kachnicky"
+  ],
+  [
+    "Chaluhy",
+    15,
+    4,
+    "boat_chaluhy"
+  ],
+  [
+    "Kosatky na lovu",
+    3,
+    4,
+    "boat_kosatky_na_lovu"
+  ],
+  [
+    "Zhasnutý maják",
+    5,
+    4,
+    "boat_zhasnuty_majak"
+  ],
+  [
+    "Orientace podle hvězd",
+    3,
+    4,
+    "boat_orientace_podle_hvezd"
+  ],
+  [
+    "Kapitán přes palubu",
+    2,
+    4,
+    "boat_kapitan_pres_palubu"
   ]
 ]
