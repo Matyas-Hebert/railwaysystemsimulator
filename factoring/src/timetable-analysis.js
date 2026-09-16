@@ -892,7 +892,8 @@ function startGame(){
 };
 
 function selectSection(section){
-    if (section >= 0 && section <= 10){
+    if (section >= 0 && section <= 11
+        && (section !== 11 || runtime.getGameState().getSettings().developer === true)){
         changeCurrentSection(section);
     }
     if (runtime.getCurrentSection() == 4){
@@ -910,6 +911,10 @@ function renderCurrentSection(force = false){
     if (runtime.getGameState().getCurrentPosition() == null){
         _start.style.display = "block";
         return;
+    if (runtime.getCurrentSection() === 11
+        && runtime.getGameState().getSettings().developer !== true) {
+        runtime.setCurrentSection(8);
+    }
     }
     _trainbuffoptions.style.display = "grid";
     const currentTransportType = runtime.getGameState().getCurrentPosition().transporttype;
@@ -929,6 +934,7 @@ function renderCurrentSection(force = false){
     _section9.style.display = runtime.getCurrentSection() == 9 ? "block" : "none";
     _section10.style.display = runtime.getCurrentSection() == 10 ? "block" : "none";
     _subsection5.style.display = "none";
+    _section11.style.display = runtime.getCurrentSection() == 11 ? "block" : "none";
     _tab0.className = runtime.getCurrentSection() == 0 ? "chosen" : "unchosen";
     _tab1.className = runtime.getCurrentSection() == 1 ? "chosen" : "unchosen";
     _tab2.className = runtime.getCurrentSection() == 2 ? "chosen" : "unchosen";
@@ -941,6 +947,7 @@ function renderCurrentSection(force = false){
     _tab10.style.display = currentTransportType === constants.TRANSPORT_TYPE.STATION ? "block" : "none";
     _tab10.className = runtime.getCurrentSection() == 10 ? "chosen" : "unchosen";
     _tab0.style.display = currentTransportType === constants.TRANSPORT_TYPE.FIELD ? "none" : "block";
+    _tab11.className = runtime.getCurrentSection() == 11 ? "chosen" : "unchosen";
     _tab5.style.display = (
         currentTransportType === constants.TRANSPORT_TYPE.STATION
         || currentTransportType === constants.TRANSPORT_TYPE.FIELD
@@ -969,16 +976,19 @@ function renderCurrentSection(force = false){
         schedule.print(_traintimetable, runtime.getTrainSectionData());
     }
     if (runtime.getCurrentSection() == 6){
-        //foodora.render();
+        foodora.render();
     }
     if (runtime.getCurrentSection() == 7){
-        //collectionTab.render();
+        collectionTab.render();
     }
     if (runtime.getCurrentSection() == 9){
         mapTab.render();
     }
     if (runtime.getCurrentSection() == 10){
         trhTab.render();
+    }
+    if (runtime.getCurrentSection() == 11){
+        window.debugLog.render();
     }
     if (runtime.getCurrentSection() == 5){
         walking.printOptions(onFoot(runtime.getGameState().getCurrentPosition().transporttype) ? -1 : runtime.getGameState().getCurrentPosition().statID);

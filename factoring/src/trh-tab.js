@@ -2,6 +2,8 @@ import * as runtime from "./runtime.js";
 import * as constants from "./constants.js"
 import * as config from "../generated/config.js";
 
+let totalShops = 0
+
 function addShopItem(shopList, shopTitle, shopSubtitle, shopBuySubtitle, shopBuyFunction){
     const card = document.createElement("div");
     card.className = "shop-item";
@@ -23,6 +25,8 @@ function addShopItem(shopList, shopTitle, shopSubtitle, shopBuySubtitle, shopBuy
     card.appendChild(subtitle);
     card.appendChild(buyBtn);
     shopList.appendChild(card);
+
+    totalShops += 1
 }
 
 function getDataUsePrice(seed, currentUses){
@@ -30,6 +34,7 @@ function getDataUsePrice(seed, currentUses){
 }
 
 export function render(){
+    totalShops = 0
     let gameState = runtime.getGameState();
     let position = gameState.getCurrentPosition();
     const container = document.querySelector("#_shopList");
@@ -76,4 +81,6 @@ export function render(){
             }
         });
     }
+
+    _tab10.innerText = "Trh ("+totalShops+")"
 }

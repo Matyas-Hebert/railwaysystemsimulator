@@ -8,6 +8,7 @@
     <link href="styles/timetable.css" rel="stylesheet" />
     <link href="styles/idos.css" rel="stylesheet" />
     <link href="styles/settings.css" rel="stylesheet" />
+    <link href="styles/log.css" rel="stylesheet" />
     <link href="styles/foodora.css" rel="stylesheet" />
     <link href="styles/collection.css" rel="stylesheet" />
     <link href="styles/map.css" rel="stylesheet" />
@@ -48,6 +49,9 @@
                 <td id="_tab7" class="unchosen">Kolekce</td>
                 <td id="_tab8" class="unchosen">Nastavení</td>
                 <td id="_tab9" class="unchosen">Mapa</td>
+            </table>
+            <table class="tabs" id="_developertabs" style="display: none;">
+                <td id="_tab11" class="unchosen">Log</td>
             </table>
             <table id="_information">
 
@@ -113,6 +117,14 @@
                 </div>
             </div>
             <div id="_appversion" class="settings-version">Verze 1.3.6</div>
+        </div>
+        <div id="_section11" class="log-section">
+            <div class="log-toolbar">
+                <div>LOG A CHYBY</div>
+                <button id="_copylog" type="button">KOPÍROVAT</button>
+                <button id="_clearlog" type="button">VYMAZAT</button>
+            </div>
+            <textarea id="_debuglog" readonly spellcheck="false" aria-label="Log aplikace"></textarea>
         </div>
         <div id="_section1">
             <div id="_pinnedlist" class="pinnedlist">
@@ -291,6 +303,7 @@
             </div>
         </div>
     </div>
+    <script src="./src/debug-log.js"></script>
     <script type="module" src="./src/main.js"></script>
 </body>
 </html>

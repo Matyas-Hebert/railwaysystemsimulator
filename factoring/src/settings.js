@@ -8,7 +8,7 @@ import * as constants from "./constants.js";
 import * as ta from "./timetable-analysis.js"
 import * as renderTimer from "./render-timer.js";
 
-    const APP_VERSION = "1.4.1.9";
+    const APP_VERSION = "1.4.1.11";
 
     function renderMoney() {
         const moneyDisplay = document.querySelector("#_money");
@@ -53,6 +53,7 @@ import * as renderTimer from "./render-timer.js";
         const moneyInput = document.querySelector("#_moneyamount");
         const moneyButton = document.querySelector("#_moneybtn");
         const versionDisplay = document.querySelector("#_appversion");
+        const developerTabs = document.querySelector("#_developertabs");
         const developerEnabled = runtime.getGameState().getSettings().developer === true;
 
         developerButton.innerText = developerEnabled ? "ZAPNUTO" : "VYPNUTO";
@@ -67,6 +68,7 @@ import * as renderTimer from "./render-timer.js";
         moneyRow.style.display = developerEnabled ? "flex" : "none";
         moneyInput.disabled = !developerEnabled;
         moneyButton.disabled = !developerEnabled;
+        developerTabs.style.display = developerEnabled ? "table" : "none";
         renderMoney();
         renderEnergy();
         versionDisplay.innerText = "Verze " + APP_VERSION;

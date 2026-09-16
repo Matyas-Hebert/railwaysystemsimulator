@@ -43,7 +43,7 @@ function bindEvents() {
     element("_wifi").addEventListener("click", connection.handleIconClick);
 
     [[0,"_tab0"],[5,"_tab5"],[1,"_tab1"],[10,"_tab10"],[2,"_tab2"],[3,"_tab3"],
-     [4,"_tab4"],[6,"_tab6"],[7,"_tab7"],[8,"_tab8"],[9,"_tab9"]]
+     [4,"_tab4"],[6,"_tab6"],[7,"_tab7"],[8,"_tab8"],[9,"_tab9"],[11,"_tab11"]]
         .forEach(([section,id]) => element(id).addEventListener("click", () => app.selectSection(section)));
 
     element("_developer").addEventListener("click", settings.toggleDeveloper);
@@ -61,6 +61,14 @@ function bindEvents() {
     );
     element("_moneybtn").addEventListener("click", settings.addDeveloperMoney);
     element("_timetravelbtn").addEventListener("click", settings.timeTravel);
+    element("_clearlog").addEventListener("click", window.debugLog.clear);
+    element("_copylog").addEventListener("click", async () => {
+        try {
+            await navigator.clipboard.writeText(window.debugLog.getText());
+        } catch (error) {
+            console.error("Log se nepodařilo zkopírovat.", error);
+        }
+    });
     element("_pinnedlisttoggle").addEventListener("click", app.togglePinnedList);
 
     const stationInput = element("_searchstation");

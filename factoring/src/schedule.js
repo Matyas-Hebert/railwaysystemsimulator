@@ -646,5 +646,6 @@ function print(table=_information, conns=runtime.getConnectionStructure(), check
     toggle,
     print,
     addAutoTravelStatusRow,
-    updateTrackProgress as updateTrackProgress
+    updateTrackProgress as updateTrackProgress,
+    getActualTrainArrivalTime
 };
