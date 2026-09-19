@@ -11,7 +11,7 @@ import { assignStationImportance } from './generate-station-importance.js';
 import { dataOperators } from '../generated/config.js';
 import * as constants from "../src/constants.js";
 import { Param } from 'drizzle-orm';
-let PS, PX, OS, OX, SP, R, SH, IC, EC, NJ, AR, AJ, PAR;
+let PS, PX, OS, OX, SP, R, SH, IC, EC, NJ, AR, AJ, PAR, SC;
 
 let lineTypeConfig;
 let journeyPricingConfig;
@@ -566,6 +566,7 @@ function selectLineType(writtenType, line, metrics, uvrat){
         const ecTime = getJourneyTimeForType(metrics, uvrat, EC);
         return icTime <= ecTime ? IC : EC;
     }
+    if (type === "SC") return SC;
     if (type === "NJ") return NJ;
     if (type === "AR") return AR;
     if (type === "AJ") return AJ;
@@ -805,7 +806,7 @@ async function generateTimeTables() {
     const journeyPricingConfigPath = path.join(__dirname, "../config/journey-pricing.json");
     lineTypeConfig = JSON.parse(await fs.readFile(lineTypeConfigPath, "utf8"));
     journeyPricingConfig = JSON.parse(await fs.readFile(journeyPricingConfigPath, "utf8"));
-    ({ PS, PX, OS, OX, SP, R, SH, IC, EC, NJ, AR, AJ, PAR } = Object.fromEntries(
+    ({ PS, PX, OS, OX, SP, R, SH, IC, EC, NJ, AR, AJ, PAR, SC } = Object.fromEntries(
         lineTypeConfig.map(type => [type.code.toUpperCase(), type.id])
     ));
     const dataOperatorConfig = JSON.parse(

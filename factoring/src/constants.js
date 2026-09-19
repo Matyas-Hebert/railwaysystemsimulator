@@ -57,5 +57,6 @@ export const TRAIN_TYPES = Object.freeze({
     NJ: 9,
     AR: 10,
     AJ: 11,
-    PAR: 12
+    PAR: 12,
+    SC: 13
 });

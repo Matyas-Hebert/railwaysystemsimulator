@@ -99,7 +99,7 @@ function calculateStationImportance(timetable, typeWeights, routeAware = true) {
                 ) {
                     const stationID = line.stops[stopIndex].sid;
                     propagated[stationID] += upcomingImportance * lineWeight;
-                    upcomingImportance = importance[stationID]
+                    upcomingImportance = Math.sqrt(importance[stationID])
                         + STOP_DECAY * upcomingImportance;
                 }
             });

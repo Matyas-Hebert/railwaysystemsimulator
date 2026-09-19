@@ -329,5 +329,30 @@
     "travelTimeOverheadSeconds": 0,
     "minimalLength": 30,
     "canBeShortened": true
+  },
+  {
+    "id": 13,
+    "code": "SC",
+    "shownName": "Supercity",
+    "stopTimeSeconds": 180,
+    "uvratStopTimeSeconds": 600,
+    "stationImportance": 5,
+    "workingWifiProbability": 0.1,
+    "startingDelayMeanSeconds": 30,
+    "cancellationProbabilityPerStop": 0.001,
+    "maxSpeedKmh": 300,
+    "accelerationKmhPerHourSquared": 2750,
+    "delayModel": {
+      "randomOffset": -0.8,
+      "randomScale": 0.5,
+      "logarithmDivisor": 20,
+      "baseOffset": 0,
+      "minimumMultiplier": null,
+      "maximumMultiplier": 2,
+      "recoveryMultiplier": 1,
+      "respectCurrentDelayMinimum": false
+    },
+    "minimalLength": 0,
+    "canBeShortened": false
   }
 ]

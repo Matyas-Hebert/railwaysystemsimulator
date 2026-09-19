@@ -80,6 +80,14 @@
       "auto_board_price": 150,
       "auto_leave_price": 150,
       "bike_price": 300
+    },
+    {},
+    {
+      "auto_board_price": 60,
+      "auto_leave_price": 60,
+      "price_per_km": 3,
+      "must_auto_ride":true,
+      "bike_price": 300
     }
   ],
   "companies": {
@@ -121,7 +129,40 @@
         }
       }
     },
-    "ČD": {},
+    "ČD": {
+      "auto_board_price": 20,
+      "auto_leave_price": 20,
+      "Ps": {
+          "price_per_km": 0.4
+        },
+        "Px": {
+          "price_per_km": 0.4
+        },
+        "Os": {
+          "price_per_km": 0.5
+        },
+        "Ox": {
+          "price_per_km": 0.5
+        },
+        "Sp": {
+          "price_per_km": 0.6
+        },
+        "R": {
+          "price_per_km": 0.7
+        },
+        "Sh": {
+          "price_per_km": 0.4
+        },
+        "IC": {
+          "price_per_km": 1
+        },
+        "EC": {
+          "price_per_km": 1
+        },
+        "NJ": {
+          "price_per_km": 1.2
+        }
+    },
     "DPB": {},
     "DPHnM": {},
     "DPKV": {},
@@ -333,6 +374,70 @@
       "auto_board_price": 12,
       "auto_leave_price": 8
     },
+    "pVELA": {
+      "must_auto_ride": false,
+      "price_per_km": 0.65,
+      "auto_board_price": 10,
+      "auto_leave_price": 10,
+      "train_types": {
+        "Ps": {
+          "price_per_km": 0.10,
+          "auto_board_price": 3,
+          "auto_leave_price": 3
+        },
+        "Px": {
+          "price_per_km": 0.15,
+          "auto_board_price": 3,
+          "auto_leave_price": 3
+        },
+        "Os": {
+          "price_per_km": 0.25,
+          "auto_board_price": 5,
+          "auto_leave_price": 5
+        },
+        "Ox": {
+          "price_per_km": 0.25,
+          "auto_board_price": 5,
+          "auto_leave_price": 5
+        },
+        "Sp": {
+          "price_per_km": 0.40,
+          "auto_board_price": 7,
+          "auto_leave_price": 7
+        },
+        "R": {
+          "price_per_km": 0.40,
+          "auto_board_price": 7,
+          "auto_leave_price": 7
+        },
+        "Sh": {
+          "price_per_km": 0.30,
+          "auto_board_price": 5,
+          "auto_leave_price": 5
+        },
+        "IC": {
+          "price_per_km": 0.65,
+          "auto_board_price": 10,
+          "auto_leave_price": 10
+        },
+        "EC": {
+          "price_per_km": 0.65,
+          "auto_board_price": 10,
+          "auto_leave_price": 10
+        },
+        "NJ": {
+          "price_per_km": 0.80,
+          "auto_board_price": 15,
+          "auto_leave_price": 15
+        },
+        "SC": {
+          "must_auto_ride": false,
+          "price_per_km": 1.20,
+          "auto_board_price": 20,
+          "auto_leave_price": 20
+        }
+      }
+    },
     "PPS": {
       "must_auto_ride": false,
       "price_per_km": 0.6,
@@ -364,6 +469,16 @@
     "PID": {},
     "PKP": {},
     "PMDP": {},
-    "UZ": {}
+    "UZ": {},
+    "VRT": {
+      "train_types": {
+        "SC": {
+          "auto_board_price": 60,
+          "auto_leave_price": 60,
+          "price_per_km": 3,
+          "must_auto_ride":true
+        }
+      }
+    }
   }
 }
