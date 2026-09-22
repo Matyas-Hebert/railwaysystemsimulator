@@ -1,0 +1,59 @@
+Pumping lemma (pumpičkové pravidlo / teorém o pumpování) říká: 
+Každý regulární jazyk má určitou "délku pumpování" p. Jakékoliv slovo z tohoto jazyka, které je alespoň tak dlouhé jako p, se dá rozdělit na tři části tak,
+že jeho prostřední část lze libovolně opakovat (pumpovat), a vzniklé slovo bude stále patřit do daného jazyka.
+
+Slouží primárně jako nástroj pro DŮKAZ SPOREM, že nějaký jazyk NENÍ regulární.
+
+--------------------------------------------------------------------------------
+
+FORMÁLNÍ DEFINICE
+
+Nechť L je regulární jazyk. Pak existuje číslo p >= 1 (délka pumpování) takové, že pro každé slovo w z L, kde |w| >= p, existuje rozklad w = xyz splňující tři podmínky:
+
+1. |y| >= 1        (pumpovaná část y je neprázdná)
+2. |xy| <= p       (pumpování probíhá na začátku slova, v rámci prvních p symbolů)
+3. Pro každé k >= 0 platí: x (y^k) z spadá do L
+   (pro k=0 máme xz, pro k=1 xyz, pro k=2 xyyz, pro k=3 xyyyz... vše musí patřit do L)
+
+--------------------------------------------------------------------------------
+
+INTUITIVNÍ PRINCIP (Proč to platí?)
+
+Každý regulární jazyk je přijímán nějakým deterministickým konečným automatem (DKA). Ten má ale jen KONEČNÝ počet stavů (řekněme p stavů).
+
+Pokud automat přijímá slovo w, které je dlouhé alespoň p znaků (má p nebo více přečtených symbolů), musí při jeho zpracování projít alespoň p + 1 stavů.
+
+Podle Dirichletova principu (krabičkového pravidla) se při tom musel alespoň jeden stav ZOPAKOVAT. V posloupnosti stavů tedy vznikne SMYČKA:
+
+- Část slova 'x' dovede automat z počátečního stavu do začátku smyčky.
+- Část slova 'y' projde smyčku a vrátí automat do stejného stavu.
+- Část slova 'z' dovede automat ze smyčky do koncového stavu.
+
+Jelikož 'y' odpovídá smyčce, automat může tuto smyčku:
+- Oběhnout 0-krát (k=0) -> slovo xz
+- Oběhnout 1-krát (k=1) -> slovo xyz
+- Oběhnout k-krát (k>=2) -> slovo x (y^k) z
+
+Automat nedokáže počítat, kolikrát smyčkou prošel. Všechna tato vygenerovaná slovíčka tedy musí bezpodmínečně přijmout!
+
+--------------------------------------------------------------------------------
+
+NÁZORNÝ PŘÍKLAD
+
+Mějme regulární jazyk L generovaný výrazem a* b.
+Nechť p = 3.
+
+Vezmeme slovo w = aaab (délka |w| = 4 >= 3). Slovo spadá do L.
+
+Rozdělíme ho na w = x y z tak, aby platilo |xy| <= 3 a |y| >= 1:
+- x = a
+- y = aa
+- z = b
+(Ověření: |y| = 2 >= 1, |xy| = |aaa| = 3 <= 3)
+
+Nyní zkuste pumpovat y^k:
+- k = 0: x (y^0) z = a b           -> patří do a* b? ANO!
+- k = 1: x (y^1) z = a aa b = aaab -> patří do a* b? ANO!
+- k = 2: x (y^2) z = a aaaa b      -> patří do a* b? ANO!
+
+Protože byl jazyk regulární, rozklad existuje a pumpování funguje.

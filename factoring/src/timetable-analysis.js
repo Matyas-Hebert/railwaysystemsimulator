@@ -1041,4 +1041,4 @@ window.addEventListener('scroll', () => {
 });
 
 
-export { formatTime, getCurrentTimeInMilliseconds, getCurrentDayNumber, getCurrentTimeInSeconds, getCurrentTimeInMinutes, renderCurrentSection, changeCurrentSection, boardTrain, addRow, normalizeAutoBoardConnection, getTrainName, selectTicketDestination, selectDestination, selectFilter, selectSection, startGame, togglePinnedList, updateClock };
+export { getTripNumberByTime, formatTime, getCurrentTimeInMilliseconds, getCurrentDayNumber, getCurrentTimeInSeconds, getCurrentTimeInMinutes, renderCurrentSection, changeCurrentSection, boardTrain, addRow, normalizeAutoBoardConnection, getTrainName, selectTicketDestination, selectDestination, selectFilter, selectSection, startGame, togglePinnedList, updateClock };

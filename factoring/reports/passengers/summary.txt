@@ -3,7 +3,8 @@ ODHAD DENNÍ POPTÁVKY CESTUJÍCÍCH
 Celková modelovaná poptávka: 9 000 000
 Simulovaných cest: 10 000
 Poptávka bez nalezeného spojení: 0
-Kapacita jednoho spoje: 300
+Kapacita spoje podle typu: Ps: 100, Px: 150, Os: 400, Ox: 400, Sp: 500, R: 600, Sh: 400, IC: 900, EC: 900, NJ: 250, AR: 150, AJ: 300, Par: 500, SC: 450
+Cenová penalizace (min / měnová jednotka): normální rozdělení bez záporných hodnot, průměr 0.005, směrodatná odchylka 0.001
 
 Model používá důležitost obou stanic, 1/sqrt(vzdálenosti), dvojnásobnou
 lokální poptávku uvnitř stejného Ps/Px systému, intervaly, jízdní dobu,

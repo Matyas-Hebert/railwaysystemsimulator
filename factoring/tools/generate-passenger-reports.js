@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { lineTypes } from "../generated/config.js";
 import { timetable } from "../generated/timetable.js";
 
 const TOOL_DIRECTORY = path.dirname(fileURLToPath(import.meta.url));
@@ -15,18 +16,17 @@ const SIMULATED_JOURNEYS = Number.isInteger(requestedJourneyCount)
     && requestedJourneyCount > 0
     ? requestedJourneyCount : DEFAULT_SIMULATED_JOURNEYS;
 const DESTINATION_CANDIDATES = 40;
-const PASSENGERS_PER_TRIP = 300;
 const SAME_PS_OR_PX_SYSTEM_MULTIPLIER = 2;
 const TRANSFER_PENALTY_MINUTES = 12;
-const PRICE_PENALTY_MINUTES_PER_CURRENCY_UNIT = 0.005;
+const PRICE_PENALTY_MEAN = 0.005;
+const PRICE_PENALTY_STANDARD_DEVIATION = 0.001;
 const ALTERNATIVE_OVERLAP_PENALTY_MINUTES = 25;
 const ROUTE_SPLIT_TEMPERATURE_MINUTES = 35;
+const ASSIGNMENT_ROUNDS = 12;
+const CROWDING_PENALTY_MINUTES = 30;
+const CAPACITY_EPSILON = 1e-8;
 const RANDOM_SEED = 0x4d44524d;
 
-const lineTypes = JSON.parse(fs.readFileSync(
-    path.join(APP_DIRECTORY, "config", "line-types.json"),
-    "utf8"
-));
 const pricing = JSON.parse(fs.readFileSync(
     path.join(APP_DIRECTORY, "config", "journey-pricing.json"),
     "utf8"
@@ -44,6 +44,25 @@ function createRandom(seed) {
 }
 
 const random = createRandom(RANDOM_SEED);
+
+// One nonnegative normal sample per journey, shared by both route alternatives.
+function samplePricePenalty() {
+    let penalty;
+    do {
+        const normal = Math.sqrt(-2 * Math.log(1 - random()))
+            * Math.cos(2 * Math.PI * random());
+        penalty = PRICE_PENALTY_MEAN + PRICE_PENALTY_STANDARD_DEVIATION * normal;
+    } while (penalty < 0);
+    return penalty;
+}
+
+function getTrainCapacity(line) {
+    const capacity = lineTypes[line.type]?.trainCapacity;
+    if (!Number.isFinite(capacity) || capacity <= 0) {
+        throw new Error(`Missing or invalid trainCapacity for line ${line.id} (type ${line.type}).`);
+    }
+    return capacity;
+}
 
 function distanceKm(first, second) {
     const radius = 6371;
@@ -95,6 +114,7 @@ function buildNetwork() {
     const sections = new Map();
 
     timetable.lines.forEach(line => {
+        const trainCapacity = getTrainCapacity(line);
         const routeCounts = new Map();
         for (let tripId = 0; tripId < line.trips; tripId++) {
             const [startIndex, endIndex] = getConfiguredRoute(line, tripId);
@@ -130,10 +150,12 @@ function buildNetwork() {
                         toId: to.sid,
                         distance: Number(to.dist) || 0,
                         capacity: 0,
-                        demand: 0
+                        demand: 0,
+                        transported: 0,
+                        unmet: 0
                     });
                 }
-                sections.get(sectionKey).capacity += trips * PASSENGERS_PER_TRIP;
+                sections.get(sectionKey).capacity += trips * trainCapacity;
 
                 const edgeKey = `${pattern.id}:${index}`;
                 const existingEdge = edgeByPatternAndSection.get(edgeKey);
@@ -205,7 +227,7 @@ function getStateKey(stationId, patternId) {
     return stationId * STATE_MULTIPLIER + patternId + 1;
 }
 
-function findRoute(originId, destinationId, penalizedPatterns = new Set()) {
+function findRoute(originId, destinationId, pricePenalty, penalizedPatterns = new Set(), respectCapacity = false) {
     const heap = new MinHeap();
     const best = new Map();
     const previous = new Map();
@@ -235,14 +257,20 @@ function findRoute(originId, destinationId, penalizedPatterns = new Set()) {
             break;
         }
         for (const edge of network.adjacency[state.stationId]) {
+            const section = network.sections.get(edge.sectionKey);
+            if (respectCapacity && section.capacity - section.transported <= CAPACITY_EPSILON) continue;
             const changingService = state.patternId !== edge.patternId;
             let addedCost = edge.travelMinutes
                 + edge.distance
                 * pricePerKmByLine[edge.lineId]
-                * PRICE_PENALTY_MINUTES_PER_CURRENCY_UNIT;
+                * pricePenalty;
             if (changingService) {
                 addedCost += 720 / Math.max(1, edge.trips);
                 if (state.patternId !== -1) addedCost += TRANSFER_PENALTY_MINUTES;
+            }
+            if (respectCapacity) {
+                addedCost += CROWDING_PENALTY_MINUTES
+                    * (section.transported / section.capacity) ** 4;
             }
             if (penalizedPatterns.has(edge.patternId)) {
                 addedCost += ALTERNATIVE_OVERLAP_PENALTY_MINUTES;
@@ -272,17 +300,20 @@ function findRoute(originId, destinationId, penalizedPatterns = new Set()) {
         key = step.previousKey;
     }
     edges.reverse();
-    return { cost: destinationState.cost, edges };
+    // The overlap penalty discovers alternatives; it is not a passenger cost.
+    const overlapCost = edges.reduce((sum, edge) => sum
+        + (penalizedPatterns.has(edge.patternId) ? ALTERNATIVE_OVERLAP_PENALTY_MINUTES : 0), 0);
+    return { cost: destinationState.cost - overlapCost, edges };
 }
 
-function getAlternatives(originId, destinationId) {
-    const first = findRoute(originId, destinationId);
+function getAlternatives(originId, destinationId, pricePenalty, respectCapacity = false) {
+    const first = findRoute(originId, destinationId, pricePenalty, new Set(), respectCapacity);
     if (!first) return [];
     const usedPatterns = new Set(first.edges.map(edge => edge.patternId));
-    const second = findRoute(originId, destinationId, usedPatterns);
+    const second = findRoute(originId, destinationId, pricePenalty, usedPatterns, respectCapacity);
     if (!second) return [first];
-    const firstSignature = first.edges.map(edge => edge.patternId).join(",");
-    const secondSignature = second.edges.map(edge => edge.patternId).join(",");
+    const firstSignature = first.edges.map(edge => `${edge.patternId}:${edge.sectionKey}`).join(",");
+    const secondSignature = second.edges.map(edge => `${edge.patternId}:${edge.sectionKey}`).join(",");
     return firstSignature === secondSignature ? [first] : [first, second];
 }
 
@@ -354,7 +385,7 @@ const stationStats = timetable.stations.map(station => ({
 function assignRoute(route, passengers) {
     let previousPattern = -1;
     route.edges.forEach((edge, index) => {
-        network.sections.get(edge.sectionKey).demand += passengers;
+        network.sections.get(edge.sectionKey).transported += passengers;
         lineStats[edge.lineId].passengerKm += passengers * edge.distance;
         if (edge.patternId !== previousPattern) {
             lineStats[edge.lineId].boardings += passengers;
@@ -368,39 +399,100 @@ function assignRoute(route, passengers) {
     });
 }
 
+function splitDemand(alternatives, passengers) {
+    const minimumCost = Math.min(...alternatives.map(route => route.cost));
+    const weights = alternatives.map(route =>
+        Math.exp(-(route.cost - minimumCost) / ROUTE_SPLIT_TEMPERATURE_MINUTES)
+    );
+    const total = weights.reduce((sum, weight) => sum + weight, 0);
+    return alternatives.map((route, index) => ({ route, passengers: passengers * weights[index] / total }));
+}
+
+// All journeys propose against the same snapshot. Scale whole journeys by their
+// tightest section, so sampling order cannot reserve seats ahead of other users.
+function allocateProposals(proposals) {
+    const requested = new Map();
+    for (const proposal of proposals) {
+        proposal.sectionCounts = new Map();
+        for (const edge of proposal.route.edges) {
+            const key = edge.sectionKey;
+            proposal.sectionCounts.set(key, (proposal.sectionCounts.get(key) ?? 0) + 1);
+            requested.set(key, (requested.get(key) ?? 0) + proposal.passengers);
+        }
+    }
+    const ratios = new Map([...requested].map(([key, demand]) => {
+        const section = network.sections.get(key);
+        return [key, demand > 0 ? Math.min(1, Math.max(0, section.capacity - section.transported) / demand) : 0];
+    }));
+    let assigned = 0;
+    for (const proposal of proposals) {
+        const ratio = Math.min(1, ...[...proposal.sectionCounts.keys()].map(key => ratios.get(key)));
+        const passengers = proposal.passengers * ratio;
+        assignRoute(proposal.route, passengers);
+        proposal.journey.remaining = Math.max(0, proposal.journey.remaining - passengers);
+        assigned += passengers;
+    }
+    return assigned;
+}
+
 let unreachableDemand = 0;
+let transportedDemand = 0;
+let roundsCompleted = 0;
+const journeys = [];
 const passengersPerSample = TOTAL_DAILY_PASSENGER_DEMAND / SIMULATED_JOURNEYS;
 for (let sample = 0; sample < SIMULATED_JOURNEYS; sample++) {
-    if (sample%100 == 0){
-        console.log(sample+"/"+SIMULATED_JOURNEYS);
-    }
+    const pricePenalty = samplePricePenalty();
     const originId = weightedIndex(cumulativeOriginWeights, totalOriginWeight);
     const destinationId = chooseDestination(originId);
-    if (destinationId === null) continue;
+    if (destinationId === null) {
+        unreachableDemand += passengersPerSample;
+        continue;
+    }
     stationStats[originId].origins += passengersPerSample;
     stationStats[destinationId].destinations += passengersPerSample;
-
-    const alternatives = getAlternatives(originId, destinationId);
+    const alternatives = getAlternatives(originId, destinationId, pricePenalty);
     if (alternatives.length === 0) {
         unreachableDemand += passengersPerSample;
         continue;
     }
-    const minimumCost = Math.min(...alternatives.map(route => route.cost));
-    const attractiveness = alternatives.map(route =>
-        Math.exp(-(route.cost - minimumCost) / ROUTE_SPLIT_TEMPERATURE_MINUTES)
-    );
-    const totalAttractiveness = attractiveness.reduce((sum, value) => sum + value, 0);
-    alternatives.forEach((route, index) => {
-        assignRoute(
-            route,
-            passengersPerSample * attractiveness[index] / totalAttractiveness
-        );
-    });
+    journeys.push({ originId, destinationId, pricePenalty, alternatives, remaining: passengersPerSample });
     if ((sample + 1) % 250 === 0) {
-        process.stdout.write(`\rSimulated ${sample + 1}/${SIMULATED_JOURNEYS} journeys`);
+        process.stdout.write(`\rSampled ${sample + 1}/${SIMULATED_JOURNEYS} journeys`);
     }
 }
 process.stdout.write("\n");
+
+for (let round = 0; round < ASSIGNMENT_ROUNDS; round++) {
+    const proposals = [];
+    for (const journey of journeys) {
+        if (journey.remaining <= CAPACITY_EPSILON) continue;
+        const alternatives = round === 0 ? journey.alternatives : getAlternatives(
+            journey.originId, journey.destinationId, journey.pricePenalty, true
+        );
+        if (alternatives.length === 0) continue;
+        for (const proposal of splitDemand(alternatives, journey.remaining)) {
+            proposals.push({ ...proposal, journey });
+        }
+    }
+    if (proposals.length === 0) break;
+    const assigned = allocateProposals(proposals);
+    transportedDemand += assigned;
+    roundsCompleted++;
+    console.log(`Assignment round ${round + 1}/${ASSIGNMENT_ROUNDS}: ${Math.round(assigned)} passengers`);
+    if (assigned <= CAPACITY_EPSILON) break;
+}
+
+// Attribute remaining demand to the original preferred routes, once only.
+// It is diagnostic demand, not passengers who boarded part of a journey.
+const unservedDemand = journeys.reduce((sum, journey) => sum + journey.remaining, 0);
+for (const journey of journeys) {
+    for (const { route, passengers } of splitDemand(journey.alternatives, journey.remaining)) {
+        for (const edge of route.edges) network.sections.get(edge.sectionKey).unmet += passengers;
+    }
+}
+for (const section of network.sections.values()) {
+    section.demand = section.transported + section.unmet;
+}
 
 function lineName(line) {
     return `${line.company} ${lineTypes[line.type]?.code ?? "?"} ${line.number}`;
@@ -413,8 +505,7 @@ function stationName(stationId) {
 const sectionStats = [...network.sections.values()].map(section => ({
     ...section,
     utilization: section.capacity > 0 ? section.demand / section.capacity : Infinity,
-    transported: Math.min(section.demand, section.capacity),
-    unmet: Math.max(0, section.demand - section.capacity)
+    load: section.capacity > 0 ? section.transported / section.capacity : 0
 }));
 
 sectionStats.forEach(section => {
@@ -441,11 +532,20 @@ const summary = [
     `Celková modelovaná poptávka: ${formatNumber(TOTAL_DAILY_PASSENGER_DEMAND)}`,
     `Simulovaných cest: ${formatNumber(SIMULATED_JOURNEYS)}`,
     `Poptávka bez nalezeného spojení: ${formatNumber(unreachableDemand)}`,
-    `Kapacita jednoho spoje: ${PASSENGERS_PER_TRIP}`,
+    `Přepravené celé cesty: ${formatNumber(transportedDemand)}`,
+    `Neobsloužená poptávka po přerozdělení: ${formatNumber(unservedDemand)}`,
+    `Dokončená kola přerozdělení: ${roundsCompleted} / ${ASSIGNMENT_ROUNDS}`,
+    `Kapacita spoje podle typu: ${lineTypes.map(type => `${type.code}: ${type.trainCapacity}`).join(", ")}`,
+    `Cenová penalizace (min / měnová jednotka): normální rozdělení bez záporných hodnot, průměr ${PRICE_PENALTY_MEAN}, směrodatná odchylka ${PRICE_PENALTY_STANDARD_DEVIATION}`,
     "",
     "Model používá důležitost obou stanic, 1/sqrt(vzdálenosti), dvojnásobnou",
     "lokální poptávku uvnitř stejného Ps/Px systému, intervaly, jízdní dobu,",
-    "přestupy, cenu, zkrácené trasy spojů a dvě rozdělené alternativy.",
+    "přestupy, cenu, zkrácené trasy spojů a dvě alternativy v každém kole.",
+    "Kapacita je denní součet, nikoli obsazenost jednotlivých odjezdů.",
+    "Plné úseky se při přerozdělení vynechávají; vytížené mají cenovou přirážku v minutách.",
+    "Poptávka v úsecích = přepraveno + zbylá poptávka na původních trasách.",
+    "Neobsloužená poptávka může zůstat i kvůli omezenému počtu kol a alternativ.",
+    "Neuspokojené úsekové poptávky se nesčítají jako počet cestujících.",
     "",
     "Čísla jsou syntetický herní odhad. Absolutní úroveň určuje konstanta",
     "TOTAL_DAILY_PASSENGER_DEMAND na začátku skriptu."
@@ -471,19 +571,19 @@ const sectionReport = [...sectionStats]
     .map((section, index) => [
         `${index + 1}. ${lineName(timetable.lines[section.lineId])}`,
         `   ${stationName(section.fromId)} → ${stationName(section.toId)}`,
-        `   Poptávka: ${formatNumber(section.demand)} | Kapacita: ${formatNumber(section.capacity)} | Vytížení: ${formatPercent(section.utilization)}`,
+        `   Poptávka: ${formatNumber(section.demand)} | Kapacita: ${formatNumber(section.capacity)} | Poptávka / kapacita: ${formatPercent(section.utilization)} | Obsazenost: ${formatPercent(section.load)}`,
         `   Přepraveno: ${formatNumber(section.transported)} | Neuspokojená poptávka: ${formatNumber(section.unmet)}`
     ].join("\n")).join("\n\n");
 
 const overcrowdedReport = sectionStats
-    .filter(section => section.demand > section.capacity)
+    .filter(section => section.unmet > CAPACITY_EPSILON)
     .sort((first, second) => second.utilization - first.utilization)
     .map((section, index) => [
         `${index + 1}. ${lineName(timetable.lines[section.lineId])}`,
         `   ${stationName(section.fromId)} → ${stationName(section.toId)}`,
         `   ${formatNumber(section.demand)} / ${formatNumber(section.capacity)} (${formatPercent(section.utilization)})`,
-        `   Chybějící kapacita: ${formatNumber(section.unmet)} cestujících`
-    ].join("\n")).join("\n\n") || "Žádné přetížené úseky.";
+        `   Neobsloužená poptávka na původní trase: ${formatNumber(section.unmet)} cestujících`
+    ].join("\n")).join("\n\n") || "Žádná neobsloužená úseková poptávka.";
 
 const stationReport = stationStats
     .sort((first, second) =>

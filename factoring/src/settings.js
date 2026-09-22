@@ -8,7 +8,7 @@ import * as constants from "./constants.js";
 import * as ta from "./timetable-analysis.js"
 import * as renderTimer from "./render-timer.js";
 
-    const APP_VERSION = "1.4.1.12";
+    const APP_VERSION = "1.4.1.13";
 
     function renderMoney() {
         const moneyDisplay = document.querySelector("#_money");

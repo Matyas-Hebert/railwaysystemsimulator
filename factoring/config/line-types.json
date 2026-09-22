@@ -22,7 +22,8 @@
       "respectCurrentDelayMinimum": true
     },
     "minimalLength": 10,
-    "canBeShortened": true
+    "canBeShortened": true,
+    "trainCapacity": 100
   },
   {
     "id": 1,
@@ -47,7 +48,8 @@
       "respectCurrentDelayMinimum": true
     },
     "minimalLength": 15,
-    "canBeShortened": true
+    "canBeShortened": true,
+    "trainCapacity": 150
   },
   {
     "id": 2,
@@ -72,7 +74,8 @@
       "respectCurrentDelayMinimum": false
     },
     "minimalLength": 30,
-    "canBeShortened": true
+    "canBeShortened": true,
+    "trainCapacity": 400
   },
   {
     "id": 3,
@@ -97,7 +100,8 @@
       "respectCurrentDelayMinimum": false
     },
     "minimalLength": 30,
-    "canBeShortened": true
+    "canBeShortened": true,
+    "trainCapacity": 400
   },
   {
     "id": 4,
@@ -122,7 +126,8 @@
       "respectCurrentDelayMinimum": false
     },
     "minimalLength": 50,
-    "canBeShortened": true
+    "canBeShortened": true,
+    "trainCapacity": 500
   },
   {
     "id": 5,
@@ -147,7 +152,8 @@
       "respectCurrentDelayMinimum": false
     },
     "minimalLength": 70,
-    "canBeShortened": true
+    "canBeShortened": true,
+    "trainCapacity": 600
   },
   {
     "id": 6,
@@ -172,7 +178,8 @@
       "respectCurrentDelayMinimum": false
     },
     "minimalLength": 0,
-    "canBeShortened": false
+    "canBeShortened": false,
+    "trainCapacity": 400
   },
   {
     "id": 7,
@@ -197,7 +204,8 @@
       "respectCurrentDelayMinimum": false
     },
     "minimalLength": 120,
-    "canBeShortened": true
+    "canBeShortened": true,
+    "trainCapacity": 900
   },
   {
     "id": 8,
@@ -222,7 +230,8 @@
       "respectCurrentDelayMinimum": false
     },
     "minimalLength": 150,
-    "canBeShortened": true
+    "canBeShortened": true,
+    "trainCapacity": 900
   },
   {
     "id": 9,
@@ -247,7 +256,8 @@
       "respectCurrentDelayMinimum": false
     },
     "minimalLength": 0,
-    "canBeShortened": false
+    "canBeShortened": false,
+    "trainCapacity": 250
   },
   {
     "id": 10,
@@ -274,7 +284,8 @@
     },
     "travelTimeOverheadSeconds": 900,
     "minimalLength": 0,
-    "canBeShortened": false
+    "canBeShortened": false,
+    "trainCapacity": 150
   },
   {
     "id": 11,
@@ -301,7 +312,8 @@
     },
     "travelTimeOverheadSeconds": 1200,
     "minimalLength": 0,
-    "canBeShortened": false
+    "canBeShortened": false,
+    "trainCapacity": 300
   },
   {
     "id": 12,
@@ -328,7 +340,8 @@
     },
     "travelTimeOverheadSeconds": 0,
     "minimalLength": 30,
-    "canBeShortened": true
+    "canBeShortened": true,
+    "trainCapacity": 500
   },
   {
     "id": 13,
@@ -353,6 +366,7 @@
       "respectCurrentDelayMinimum": false
     },
     "minimalLength": 0,
-    "canBeShortened": false
+    "canBeShortened": false,
+    "trainCapacity": 450
   }
 ]

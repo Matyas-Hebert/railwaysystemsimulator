@@ -17,6 +17,8 @@ export class GameState {
     #visitedStationIds = new Set();
     #collectionProgress = {
         stationsByDistrict: {},
+        stationsByCountry: {},
+        stationsByCountryAndDistrict: {},
         linesByCompany: {},
         linesByCompanyAndType: {}
     };
@@ -667,6 +669,14 @@ export class GameState {
         return structuredClone(this.#collectionProgress);
     }
 
+    getVisitedStationCountForCountry(country) {
+        return this.#collectionProgress.stationsByCountry[country] ?? 0;
+    }
+
+    getVisitedStationCountForCountryAndDistrict(country, district) {
+        return this.#collectionProgress.stationsByCountryAndDistrict[country]?.[district] ?? 0;
+    }
+
     getVisitedStationCountForDistrict(district) {
         return this.#collectionProgress.stationsByDistrict[district] ?? 0;
     }
@@ -1007,12 +1017,28 @@ export class GameState {
 
     #rebuildStationCollectionProgress() {
         const stationsByDistrict = {};
+        const stationsByCountry = {};
+        const stationsByCountryAndDistrict = {};
         this.#visitedStationIds.forEach(stationId => {
-            const district = this.#stations[stationId]?.district;
+            const station = this.#stations[stationId];
+            if (!station) return;
+            const country = station.country;
+            const district = station.district;
+            if (district) {
+                stationsByDistrict[district] = (stationsByDistrict[district] ?? 0) + 1;
+            }
+            if (!country) return;
+            stationsByCountry[country] = (stationsByCountry[country] ?? 0) + 1;
             if (!district) return;
-            stationsByDistrict[district] = (stationsByDistrict[district] ?? 0) + 1;
+            if (!stationsByCountryAndDistrict[country]) {
+                stationsByCountryAndDistrict[country] = {};
+            }
+            const districts = stationsByCountryAndDistrict[country];
+            districts[district] = (districts[district] ?? 0) + 1;
         });
         this.#collectionProgress.stationsByDistrict = stationsByDistrict;
+        this.#collectionProgress.stationsByCountry = stationsByCountry;
+        this.#collectionProgress.stationsByCountryAndDistrict = stationsByCountryAndDistrict;
     }
 
     #rebuildLineCollectionProgress() {

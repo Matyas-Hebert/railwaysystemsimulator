@@ -12,6 +12,7 @@ import * as constants from "./constants.js";
     const state = {
         activeCategory: "stations",
         selectedDistrict: null,
+        selectedCountry: null,
         districtSort: "alphabetical",
         selectedCompany: null,
         selectedTrainType: null,
@@ -22,21 +23,46 @@ import * as constants from "./constants.js";
         delayFilter: "all"
     };
 
+    const COUNTRY_NAMES = Object.freeze({
+        CZ: "Česko",
+        SK: "Slovensko",
+        AT: "Rakousko",
+        DE: "Německo",
+        PL: "Polsko",
+        HU: "Maďarsko",
+        UA: "Ukrajina"
+    });
+
+    function getCountryName(country) {
+        return COUNTRY_NAMES[country] ?? country;
+    }
+
     const TRAIN_TYPE_NAMES = Object.freeze(config.lineTypes.map(type => type.code));
     const DELAY_TYPE_NAMES = Object.freeze(["Běžné", "Vtipné", "Závažné", "Letecké", "Lodní"]);
-    const stationsByDistrict = new Map();
+    const stationsByCountry = new Map();
+    const stationsByCountryAndDistrict = new Map();
     const linesByCompany = new Map();
     const linesByCompanyAndType = new Map();
 
     data.timetable.stations.forEach(station => {
-        if (!station?.district) return;
-        if (!stationsByDistrict.has(station.district)) {
-            stationsByDistrict.set(station.district, []);
+        if (!station?.country) return;
+        if (!stationsByCountry.has(station.country)) {
+            stationsByCountry.set(station.country, []);
+            stationsByCountryAndDistrict.set(station.country, new Map());
         }
-        stationsByDistrict.get(station.district).push(station);
+        stationsByCountry.get(station.country).push(station);
+        const districts = stationsByCountryAndDistrict.get(station.country);
+        if (!station.district) return;
+        if (!districts.has(station.district)) districts.set(station.district, []);
+        districts.get(station.district).push(station);
     });
-    stationsByDistrict.forEach(stations => {
+    stationsByCountry.forEach(stations => {
         stations.sort((a, b) => a.name.localeCompare(b.name, "cs"));
+    });
+    stationsByCountryAndDistrict.forEach(districts => {
+        districts.forEach(stations => {
+            stations.sort((a, b) => a.name.localeCompare(b.name, "cs"));
+        });
     });
 
     data.timetable.lines.forEach(line => {
@@ -173,7 +199,7 @@ import * as constants from "./constants.js";
     function openLine(line) {
         const currentTime = app.getCurrentTimeInSeconds();
         const firstStationId = line.stops[0].sid;
-        const nextTrip = getTripNumberByTime(line, firstStationId, currentTime);
+        const nextTrip = app.getTripNumberByTime(line, firstStationId, currentTime);
         runtime.setTrainSectionData({
             lineID: line.id,
             tripID: nextTrip.trip,
@@ -440,6 +466,7 @@ import * as constants from "./constants.js";
     }
     function selectCategory(category) {
         state.activeCategory = category;
+        state.selectedCountry = null;
         state.selectedDistrict = null;
         state.selectedCompany = null;
         state.selectedTrainType = null;
@@ -448,6 +475,13 @@ import * as constants from "./constants.js";
         state.selectedDelayType = null;
         state.selectedDelayReason = null;
         state.delayFilter = "all";
+        render();
+    }
+
+    function selectCountry(country) {
+        state.selectedCountry = country;
+        state.selectedDistrict = null;
+        state.stationFilter = "all";
         render();
     }
 
@@ -462,19 +496,19 @@ import * as constants from "./constants.js";
         render();
     }
 
-    function getDistrictProgress(district) {
-        const stations = getStationsForDistrict(district);
-        return stations.length === 0 ? 0 : getVisitedCount(district) / stations.length;
+    function getDistrictProgress(country, district) {
+        const stations = getStationsForDistrict(country, district);
+        return stations.length === 0 ? 0 : getVisitedCount(country, district) / stations.length;
     }
 
-    function sortDistricts(districts) {
+    function sortDistricts(country, districts) {
         return [...districts].sort((a, b) => {
             if (state.districtSort === "station-count") {
-                const countDifference = getStationsForDistrict(b).length - getStationsForDistrict(a).length;
+                const countDifference = getStationsForDistrict(country, b).length - getStationsForDistrict(country, a).length;
                 if (countDifference !== 0) return countDifference;
             }
             if (state.districtSort === "progress") {
-                const progressDifference = getDistrictProgress(b) - getDistrictProgress(a);
+                const progressDifference = getDistrictProgress(country, b) - getDistrictProgress(country, a);
                 if (progressDifference !== 0) return progressDifference;
             }
             return a.localeCompare(b, "cs");
@@ -504,16 +538,44 @@ import * as constants from "./constants.js";
         return controls;
     }
 
-    function getDistricts() {
-        return [...stationsByDistrict.keys()].sort((a, b) => a.localeCompare(b, "cs"));
+    function getCountries() {
+        return [...stationsByCountry.keys()];
     }
 
-    function getStationsForDistrict(district) {
-        return stationsByDistrict.get(district) ?? [];
+    function getStationsForCountry(country) {
+        return stationsByCountry.get(country) ?? [];
     }
 
-    function getVisitedCount(district) {
-        return runtime.getGameState().getVisitedStationCountForDistrict(district);
+    function sortCountries(countries) {
+        return [...countries].sort((a, b) => {
+            const stationsA = getStationsForCountry(a);
+            const stationsB = getStationsForCountry(b);
+            if (state.districtSort === "station-count") {
+                const difference = stationsB.length - stationsA.length;
+                if (difference !== 0) return difference;
+            }
+            if (state.districtSort === "progress") {
+                const progressA = stationsA.length === 0 ? 0 : getVisitedCount(a) / stationsA.length;
+                const progressB = stationsB.length === 0 ? 0 : getVisitedCount(b) / stationsB.length;
+                if (progressB !== progressA) return progressB - progressA;
+            }
+            return getCountryName(a).localeCompare(getCountryName(b), "cs");
+        });
+    }
+
+    function getDistricts(country) {
+        return [...(stationsByCountryAndDistrict.get(country)?.keys() ?? [])];
+    }
+
+    function getStationsForDistrict(country, district) {
+        return stationsByCountryAndDistrict.get(country)?.get(district) ?? [];
+    }
+
+    function getVisitedCount(country, district = null) {
+        const gameState = runtime.getGameState();
+        return district === null
+            ? gameState.getVisitedStationCountForCountry(country)
+            : gameState.getVisitedStationCountForCountryAndDistrict(country, district);
     }
 
     function createNavigation() {
@@ -552,8 +614,13 @@ import * as constants from "./constants.js";
         return navigation;
     }
 
-    function renderDistrictList(content) {
-        const districts = sortDistricts(getDistricts());
+    function renderDistrictList(content, country) {
+        content.appendChild(createBackButton("← Zpět na země", () => selectCountry(null)));
+        const heading = document.createElement("div");
+        heading.className = "collection-section-title";
+        heading.textContent = getCountryName(country);
+        content.appendChild(heading);
+        const districts = sortDistricts(country, getDistricts(country));
         content.appendChild(createDistrictSortControls());
         if (districts.length === 0) {
             renderEmptyState(content);
@@ -561,9 +628,9 @@ import * as constants from "./constants.js";
         }
 
         districts.forEach(district => {
-            const stations = getStationsForDistrict(district);
+            const stations = getStationsForDistrict(country, district);
             const button = document.createElement("button");
-            const visitedCount = getVisitedCount(district);
+            const visitedCount = getVisitedCount(country, district);
             const visitedPercentage = stations.length === 0
                 ? 0
                 : Math.min(100, Math.max(0, visitedCount / stations.length * 100));
@@ -571,6 +638,29 @@ import * as constants from "./constants.js";
             button.style.setProperty("--visited-percentage", String(visitedPercentage) + "%");
             button.textContent = district + " (" + String(visitedCount) + "/" + String(stations.length) + ")";
             button.onclick = () => selectDistrict(district);
+            content.appendChild(button);
+        });
+    }
+
+    function renderCountryList(content) {
+        const countries = sortCountries(getCountries());
+        content.appendChild(createDistrictSortControls());
+        if (countries.length === 0) {
+            renderEmptyState(content);
+            return;
+        }
+
+        countries.forEach(country => {
+            const stations = getStationsForCountry(country);
+            const button = document.createElement("button");
+            const visitedCount = getVisitedCount(country);
+            const visitedPercentage = stations.length === 0
+                ? 0
+                : Math.min(100, Math.max(0, visitedCount / stations.length * 100));
+            button.className = "collection-district-btn";
+            button.style.setProperty("--visited-percentage", String(visitedPercentage) + "%");
+            button.textContent = getCountryName(country) + " (" + String(visitedCount) + "/" + String(stations.length) + ")";
+            button.onclick = () => selectCountry(country);
             content.appendChild(button);
         });
     }
@@ -611,20 +701,23 @@ import * as constants from "./constants.js";
         }
         return stations;
     }
-    function renderStationList(content) {
-        const backButton = document.createElement("button");
-        backButton.className = "collection-back-btn";
-        backButton.textContent = "← Zpět na okresy";
-        backButton.onclick = () => selectCategory("stations");
-        content.appendChild(backButton);
+
+    function renderStationList(content, country) {
+        const hasDistricts = country === "CZ" || country === "SK";
+        content.appendChild(createBackButton(
+            hasDistricts ? "← Zpět na okresy" : "← Zpět na země",
+            () => hasDistricts ? selectDistrict(null) : selectCountry(null)
+        ));
 
         const heading = document.createElement("div");
         heading.className = "collection-section-title";
-        heading.textContent = state.selectedDistrict;
+        heading.textContent = hasDistricts ? state.selectedDistrict : getCountryName(country);
         content.appendChild(heading);
         content.appendChild(createStationFilterControls());
 
-        const stations = filterStations(getStationsForDistrict(state.selectedDistrict));
+        const stations = filterStations(hasDistricts
+            ? getStationsForDistrict(country, state.selectedDistrict)
+            : getStationsForCountry(country));
         if (stations.length === 0) {
             renderEmptyState(content);
             return;
@@ -664,11 +757,15 @@ import * as constants from "./constants.js";
         content.className = "collection-content";
 
         if (state.activeCategory === "stations") {
-            if (state.selectedDistrict === null) {
-                renderDistrictList(content);
+            if (state.selectedCountry === null) {
+                renderCountryList(content);
+            }
+            else if ((state.selectedCountry === "CZ" || state.selectedCountry === "SK")
+                && state.selectedDistrict === null) {
+                renderDistrictList(content, state.selectedCountry);
             }
             else {
-                renderStationList(content);
+                renderStationList(content, state.selectedCountry);
             }
         }
         else if (state.activeCategory === "lines") {
